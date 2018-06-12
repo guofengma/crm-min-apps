@@ -603,10 +603,10 @@ export default class Tool {
     }
 
     /**
-     * 判断字符串中是否只包含字母或数字
+     * 判断密码
      */
-    static checkString(value) {
-        var Regx = /^[A-Za-z0-9]*$/;
+    static checkPwd(value) {
+        var Regx = /^[A-Za-z0-9]{6,16}*$/ ;
         if (Regx.test(value)) {
             return true;
         }

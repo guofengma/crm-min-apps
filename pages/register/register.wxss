@@ -31,3 +31,9 @@
 .codeBtn{
   color: #ff979f;
 }
+.login-view{
+  font-size: 26rpx;
+  text-align: center;
+  margin-top: 20rpx;
+  color: #666;
+}

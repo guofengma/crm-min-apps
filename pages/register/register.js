@@ -1,39 +1,61 @@
-// pages/register/register.js
-Page({
+let { Tool, RequestFactory } = global;
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
     getCodeBtEnable: true,
     second: '59',
     showSecond: false,
     time: Object,
-    disabled:true
+    disabled:true,
+    phone:'',
+    pwd:'',
+    code:''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
   
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
   
   },
-  formSubmit(e){
-    console.log(e.detail)
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-  
+    
+  },
+  formSubmit(e) {
+    console.log(e.detail)
+    Tool.showAlert("请输入短信验证码");
+    Tool.navigateTo('/pages/login/login')
+  },
+  changeInput(e){
+    let n = parseInt(e.currentTarget.dataset.index)
+    switch (n) {
+      case 1:
+        this.setData({
+          phone: e.detail.value
+        });
+        break;
+      case 2:
+        this.setData({
+          code: e.detail.value
+        });
+        break;
+      case 3:
+        this.setData({
+          pwd: e.detail.value
+        });
+        break;
+    }
+    this.isBtnDisabled()
+  },
+  isBtnDisabled: function(){
+    if(!(Tool.isEmptyStr(this.data.phone) || Tool.isEmptyStr(this.data.pwd) || Tool.isEmptyStr(this.data.code))){
+      this.setData({
+        disabled: false
+      });
+    } else {
+      this.setData({
+        disabled: true
+      });
+    }
   },
   getCodeTap: function () { // 获取验证码
     let tempEnable = this.data.getCodeBtEnable;
@@ -66,7 +88,6 @@ Page({
       });
       return;
     }
-
     var time = setTimeout(function () {
       that.setData({
         second: second - 1,
@@ -79,7 +100,9 @@ Page({
       time: time
     });
   },
-
+  toLogin(){
+    Tool.navigateTo('/pages/login/login')
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

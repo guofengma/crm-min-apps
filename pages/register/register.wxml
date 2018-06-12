@@ -2,20 +2,21 @@
   <view class='section'>
     <view class='flexR'>
       <text>手机号</text>
-      <input type='text' name='phone' placeholder="请输入手机号"></input>
+      <input type='text' name='phone' placeholder="请输入手机号" value='{{phone}}' bindinput='changeInput' data-index='1'></input>
     </view>
     <view class='codeView flexR '>
       <text>验证码</text>
-      <input type='text' name='code' placeholder="请输入验证号"></input>
+      <input type='text' name='code' placeholder="请输入验证号" value='{{code}}' bindinput='changeInput' data-index='2'></input>
       <text catchtap="getCodeTap" class='codeBtn'>{{showSecond? second+"后重新获取":"获取验证码"}}</text>
     </view>
     <view class='flexR'>
       <text>密码</text>
-      <input type='text' name='phone' placeholder="请设置密码"></input>
+      <input type='text' name='password' placeholder="请设置密码" value='{{pwd}}' bindinput='changeInput'data-index='3'></input>
     </view>
   </view>
   <view class='tips'>密码为6~18位数字或字母组合(设置的手机号将作为账号登录)</view>
   <view class="btn-area">
     <button formType="submit" class='loginBtn' disabled='{{disabled}}' >下一步</button>
+    <view bindtap='toLogin' class='login-view'>登录</view>
   </view>
 </form>
