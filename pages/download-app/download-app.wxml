@@ -1,0 +1,7 @@
+<view class='download'>
+   <view class='logo-app'></view>
+   <view>
+     <text>诺女郎经销商老用户请下载APP激活</text>
+     <view class='downloadBtn'>下载APP</view>
+   </view>
+</view>

@@ -1,0 +1,30 @@
+.download{
+  height: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  background: url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/download-app-bg.png) no-repeat left bottom;
+  background-size: 100%;
+  box-sizing: border-box;
+  padding-top: 85rpx;
+}
+.logo-app{
+  width:336rpx;
+  height: 340rpx;
+  margin: 0 auto;
+  margin-bottom: 149rpx;
+  border-radius: 336rpx;
+  background: url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/download-app-img.png) no-repeat left top;
+  background-size: 100%;
+}
+.downloadBtn{
+  display: inline-block;
+  width: 370rpx;
+	height: 96rpx;
+  line-height: 96rpx;
+	border-radius: 48rpx;
+  color: #eb2332;
+  text-align: center;
+	border: solid 1px #eb2230;
+  margin: 0 auto;
+  margin-top: 34rpx;
+}
