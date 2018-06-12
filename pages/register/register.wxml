@@ -1,4 +1,4 @@
-<form bindsubmit="formSubmit">
+<form bindsubmit="formSubmit" class='form'>
   <view class='section'>
     <view class='flexR'>
       <text>手机号</text>

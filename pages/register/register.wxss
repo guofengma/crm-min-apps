@@ -14,10 +14,6 @@
   box-sizing: border-box;
   background: #fff;
 }
-.section input{
-  margin-left: 45rpx;
-  width:380rpx;
-}
 .codeView{
   border-top:1rpx solid #eeeeee;
   margin-bottom: 20rpx;

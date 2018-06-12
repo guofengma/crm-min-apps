@@ -20,13 +20,13 @@
   padding: 60rpx 10rpx 22rpx 10rpx;
   box-sizing: border-box;
 }
-.form input{
-  margin-left:50rpx; 
-}
 .form .loginBtn{
   margin-top: 80rpx;
   margin-bottom: 22rpx;
 }
 .form text{
   font-size: 22rpx;
+}
+.pwdImg{
+  width: 40rpx;
 }

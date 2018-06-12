@@ -49,3 +49,16 @@ page{
 button[disabled]:not([type]) {
   background-color: #dddddd;
 }
+.flexR>text{
+  height: 1.4rem;
+  line-height: 1.4rem;
+}
+.form input{
+  margin-left: 45rpx;
+  width:380rpx;
+}
+.ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

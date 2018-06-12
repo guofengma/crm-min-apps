@@ -1,2 +1,37 @@
-<!--pages/register/register-code.wxml-->
-<text>pages/register/register-code.wxml</text>
+<view class='code-view'>
+  <view class='code-name'>授权码录入</view>
+  <view>
+     <form bindsubmit="formSubmit" class='form'>
+        <view class='flexR form-group'>
+          <text>会员ID录入</text>
+          <input type='text' name='id' placeholder="请输入会员ID"></input>
+        </view>
+        <view class="btn-area">
+          <button formType="submit" class='loginBtn' >下一步</button>
+        </view>
+    </form>
+  </view>
+  <view class='inviterInfo '>
+    <view class='tips flexR'>
+     <image src='../../../img/tips-icon.png' mode="widthFix"></image>
+      请选择以下用户作为您的邀请者
+    </view>
+    <view class='inviter flexR'>
+       <view class='flexC'>
+         <image src='../../../img/default-userImg.png' mode="widthFix"></image>
+         <text class='inviter-name ellipsis'>欧阳娜娜</text>
+         <text class='inviter-level ellipsis'>欧阳娜娜11111</text>
+       </view>
+    </view>
+    <view>
+      <button class='changeBtn'>换一换</button>
+    </view>
+    <view class='rule flexR'>
+      <image src='{{isAgree? "../../../img/select-icon.png":"../../../img/no-select.png"}}' 
+             mode="widthFix" 
+             bindtap='agreeCilcked'>
+      </image>
+      <text>阅读并接受《用户协议》</text>
+    </view>
+  </view>
+</view>

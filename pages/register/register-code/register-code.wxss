@@ -1,1 +1,64 @@
-/* pages/register/register-code.wxss */
+.flexR{
+  justify-content: flex-start;
+}
+.form-group{
+  background: #fff;
+  padding: 40rpx 40rpx 20rpx 40rpx;
+}
+.code-view{
+  font-size: 26rpx;
+}
+.code-view>.code-name{
+  padding: 30rpx 40rpx;
+  color: #c8c8c8;
+}
+.loginBtn{
+  margin-bottom: 490rpx;
+  margin-top: 50rpx;
+}
+.inviterInfo{
+  font-size: 22rpx;
+  color: #666666;
+}
+.tips image{
+  width: 30rpx;
+  margin-right: 8rpx;
+}
+.inviter image{
+  border-radius: 70rpx;
+  width: 70rpx;
+}
+.inviterInfo{
+  width: 580rpx;
+  margin: 0 auto;
+}
+.tips{
+  margin-bottom: 52rpx;
+}
+.inviter-name{
+  width: 62rpx;
+}
+.inviter-level{
+  width: 110rpx;
+}
+.inviter .flexC{
+  margin-right:50rpx;
+}
+.changeBtn{
+  width: 130rpx;
+	height: 40rpx;
+  line-height: 40rpx;
+	background-color: #d3d0d4;
+	border-radius: 5px;
+  color: #fff;
+  font-size: 24rpx;
+  margin-top:36rpx;
+  margin-bottom:60rpx;
+}
+.rule image{
+  width: 36rpx;
+  margin-right: 10rpx;
+}
+.rule.flexR{
+  justify-content: center;
+}

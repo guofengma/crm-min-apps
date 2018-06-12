@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    isSee:false
   },
   onLoad: function (options) {
   
@@ -13,7 +13,11 @@ Page({
   onReady: function () {
   
   },
-
+  isSeePwd(){
+    this.setData({
+      isSee:!this.data.isSee
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
