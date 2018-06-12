@@ -1,0 +1,25 @@
+.loginContainer{
+  position: relative;
+  padding-bottom:83rpx;
+  box-sizing: border-box;
+  height: 100%;
+}
+.logoView{
+  position: absolute;
+  top: 69rpx;
+  width: 100%;
+}
+.logoView{
+  position: absolute;
+  top: 69rpx;
+  width: 100%;
+}
+.loginBg{
+  width: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.loginBtn{
+  
+}

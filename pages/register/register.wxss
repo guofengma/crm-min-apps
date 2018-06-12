@@ -1,0 +1,33 @@
+.section{
+  font-size: 26rpx;
+  margin: 20rpx 0;
+}
+.section text{
+  min-height:1.4rem;
+  line-height: 1.4rem;
+}
+.section .flexR{
+  justify-content:flex-start;
+}
+.section>view{
+  padding: 40rpx 40rpx 20rpx 40rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+.section input{
+  margin-left: 45rpx;
+  width:380rpx;
+}
+.codeView{
+  border-top:1rpx solid #eeeeee;
+  margin-bottom: 20rpx;
+}
+.tips{
+  font-size: 22rpx;
+  color: #999999;
+  text-align: center;
+  margin-bottom: 154rpx;
+}
+.codeBtn{
+  color: #ff979f;
+}

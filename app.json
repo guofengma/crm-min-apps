@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/login/login-wx/login-wx",
+    "pages/register/register"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "商城",
+    "backgroundColor": "#F8F8F8",
+    "backgroundTextStyle": "light"
+  }
+}
