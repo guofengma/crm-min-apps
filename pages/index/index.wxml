@@ -12,4 +12,5 @@
   </view> -->
    <button bindtap='btnClicked' data-id='/pages/login/login-wx/login-wx' >登陆页面</button>
    <button bindtap='btnClicked' data-id='/pages/register/register' >注册</button>
+   <button bindtap='btnClicked' data-id='/pages/download-app/download-app' >下载</button>
 </view>

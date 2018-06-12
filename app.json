@@ -4,7 +4,9 @@
     "pages/login/login",
     "pages/login/login-wx/login-wx",
     "pages/register/register",
-    "pages/real-name/real-name"
+    "pages/real-name/real-name",
+    "pages/download-app/download-app",
+    "pages/register/register-code/register-code"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

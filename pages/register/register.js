@@ -6,7 +6,7 @@ Page({
     second: '59',
     showSecond: false,
     time: Object,
-    disabled:true,
+    disabled:false,
     phone:'',
     pwd:'',
     code:''
@@ -21,9 +21,16 @@ Page({
     
   },
   formSubmit(e) {
-    console.log(e.detail)
-    Tool.showAlert("请输入短信验证码");
-    Tool.navigateTo('/pages/login/login')
+    Tool.navigateTo('/pages/register/register-code/register-code')
+  //   if (!Tool.checkPhone(this.data.phone)) {
+  //     Tool.showAlert("请输入正确的手机号");
+  //     return
+  //   }
+  //   if (!Tool.checkPwd(this.data.pwd)) {
+  //     Tool.showAlert("密码格式不正确");
+  //     return
+  //   }
+  //   Tool.navigateTo('/pages/real-name/real-name')
   },
   changeInput(e){
     let n = parseInt(e.currentTarget.dataset.index)
@@ -58,6 +65,10 @@ Page({
     }
   },
   getCodeTap: function () { // 获取验证码
+    if (!Tool.checkPhone(this.data.phone)){
+      Tool.showAlert("请输入正确的手机号");
+      return
+    }
     let tempEnable = this.data.getCodeBtEnable;
     if (!tempEnable) {
       return;

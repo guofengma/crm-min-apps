@@ -1,18 +1,34 @@
-// pages/real-name/real-name.js
+let { Tool, RequestFactory } = global;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    region: [],
+    show:false,
+    provinces: ['1111','2222'],
+    city:[[111,222],[2222222222,3333]],
+    citys:[]
+  },
+  bindRegionChange: function (e) {
+    this.setData({
+      region: e.detail.value
+    })
+  },
+  bindChange(e){
+    console.log(e.detail.value)
+    this.setData({
+      citys: this.data.city[e.detail.value[0]]
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+   
   },
 
   /**
@@ -28,7 +44,33 @@ Page({
   onShow: function () {
   
   },
-
+  formSubmit(e){
+    let info = e.detail.value
+    if (!Tool.checkIdentityCode(info.IDcard)) {
+      Tool.showAlert("请输入正确的中文姓名");
+      return
+    }
+    if (!Tool.checkIdentityCode(info.IDcard)){
+      Tool.showAlert("请输入正确的身份证号");
+      return 
+    }
+    if (!Tool.checkIdentityCode(info.IDcard)) {
+      Tool.showAlert("请输入正确的身份证号");
+      return
+    }
+    if (!Tool.isEmptyStr(this.data.address)) {
+      Tool.showAlert("请输入详细地址");
+      return
+    }
+  },
+  dimiss(){
+    Tool.navigateTo('/pages/index/index')
+  },
+  open(){
+    this.setData({
+      show: !this.data.show
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

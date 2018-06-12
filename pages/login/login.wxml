@@ -1,0 +1,26 @@
+<view>
+  <view class='bg-view'>
+    <view class='logoView'>
+      <image class='logo' src='../../../img/login-bg2.png'></image>
+    </view>
+  </view>
+  <view class='form flexR'>
+   <form bindsubmit="formSubmit" >
+      <view class='flexR form-group'>
+          <text>手机号</text>
+          <input type='text' name='phone' placeholder="请输入手机号" value='{{phone}}' bindinput='changeInput' data-index='1'></input>
+        </view>
+        <view class='flexR form-group' >
+          <text>密码</text>
+          <input type='text' name='password' placeholder="请设置密码" value='{{pwd}}' bindinput='changeInput'data-index='3' style='margin-left:71rpx'></input>
+        </view>
+      <view class="btn-area">
+        <button formType="submit" class='loginBtn'>登录</button>
+        <view class='choose'>
+          <text data-id='1' bindtap='goPage' class='fl'>立即注册</text>
+          <text data-id='1' bindtap='goPage' class='fr'>忘记密码</text>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>

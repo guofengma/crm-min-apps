@@ -22,6 +22,9 @@
   border-top:1rpx solid #eeeeee;
   margin-bottom: 20rpx;
 }
+.pwdVeiw input{
+  margin-left: 71rpx;
+}
 .tips{
   font-size: 22rpx;
   color: #999999;
