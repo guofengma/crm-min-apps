@@ -1,0 +1,16 @@
+input{
+  font-size: 26rpx;
+  padding-left: 60rpx;
+  width: 565rpx;
+	height: 60rpx;
+	background-color: #eeeeee;
+	border-radius: 4rpx;
+  margin-right: 25rpx;
+}
+.search{
+  width: 100rpx;
+	height: 60rpx;
+	background-color: #eeeeee;
+	border-radius: 30rpx;
+  font-size: 30rpx;
+}

@@ -1,4 +1,7 @@
 <!--index.wxml-->
+<import src='/components/search-bar/search-bar.wxml' />
+
 <view class="container">
+    <template is="search-field" />
    <button bindtap='btnClicked' data-id='/pages/register/register' >注册</button>
 </view>
