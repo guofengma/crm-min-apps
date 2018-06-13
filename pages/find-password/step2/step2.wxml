@@ -1,0 +1,18 @@
+<form bindsubmit="formSubmit" class='form'>
+  <view class='section'>
+    <view class='flexR codeView'>
+      <text>验证码</text>
+      <input type='text' name='code' placeholder="请输入验证号" value='{{code}}' bindinput='changeInput' data-index='1'></input>
+      <text catchtap="getCodeTap" class='codeBtn'>{{showSecond? second+"后重新获取":"获取验证码"}}</text>
+    </view>
+    <view class='flexR'>
+      <text>新密码</text>
+      <input type='{{isSee? "text":"password"}}' name='password' placeholder="请设置密码" value='{{pwd}}' bindinput='changeInput' data-index='2'></input>
+      <image class='pwdImg' style='margin-left:90rpx' src='{{isSee? "../../../img/see-pwd-icon.png":"../../../img/unsee-pwd-icon.png"}}' mode="widthFix" bindtap='isSeePwd'></image>
+    </view>
+  </view>
+  <view class='tips'>密码为6~18位数字或字母的组合</view>
+  <view class="btn-area">
+    <button formType="submit" class='loginBtn' disabled='{{disabled}}' >完成</button>
+  </view>
+</form>

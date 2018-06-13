@@ -1,0 +1,13 @@
+.flexR{
+  justify-content: flex-start;
+}
+.form-group{
+  background: #fff;
+  padding: 40rpx 40rpx 20rpx 40rpx;
+}
+.step1{
+  font-size: 26rpx
+}
+.btn-area{
+  margin-top: 190rpx;
+}

@@ -7,7 +7,7 @@
           <input type='text' name='id' placeholder="请输入会员ID"></input>
         </view>
         <view class="btn-area">
-          <button formType="submit" class='loginBtn' >下一步</button>
+          <button formType="submit" class='loginBtn'>下一步</button>
         </view>
     </form>
   </view>

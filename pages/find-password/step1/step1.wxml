@@ -1,0 +1,14 @@
+<view class='step1'>
+  <view class='tips-view'>忘记密码？手机验证</view>
+  <view>
+     <form bindsubmit="formSubmit" class='form'>
+        <view class='flexR form-group'>
+          <text>+86</text>
+          <input type='text' name='phone' placeholder="请输入手机号码" bindinput='changeInput' ></input>
+        </view>
+        <view class="btn-area">
+          <button formType="submit" class='loginBtn' disabled='{{disabled}}' >下一步</button>
+        </view>
+    </form>
+  </view>
+</view>

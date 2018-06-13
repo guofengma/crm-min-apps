@@ -8,9 +8,6 @@ Page({
   data: {
     region: [],
     show:false,
-    provinces: ['1111','2222'],
-    city:[[111,222],[2222222222,3333]],
-    citys:[]
   },
   bindRegionChange: function (e) {
     this.setData({

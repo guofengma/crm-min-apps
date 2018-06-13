@@ -6,35 +6,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isSee:false
+    disabled:true,
+
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
   
   },
-  onReady: function () {
-  
-  },
-  isSeePwd(){
-    this.setData({
-      isSee:!this.data.isSee
-    })
-  },
-  goPage(e){
-    let n = e.currentTarget.dataset.id
-    let page = n == 1 ? '/pages/register/register' :'/pages/find-password/step1/step1'
-    Tool.navigateTo(page)
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
   
   },
-  formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
-  },
-  bindtap(e){
-    
+  changeInput(e){
+    let disabled = true
+    console.log(e.detail.value)
+    if (Tool.isEmptyStr(e.detail.value)){
+      disabled = true
+    } else {
+      disabled = false
+    }
+    this.setData({
+      disabled: disabled
+    })
+  }, 
+  formSubmit(e){
+    console.log(e.detail.value.phone)
+    if (!Tool.checkPhone(e.detail.value.phone)) {
+      Tool.showAlert("请输入正确的手机号");
+      return
+    }
+    // pages/find-password/step2/step2
+    Tool.navigateTo('/pages/find-password/step2/step2?phone=' + e.detail.value.phone)
   },
   /**
    * 生命周期函数--监听页面隐藏

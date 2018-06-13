@@ -6,7 +6,9 @@
     "pages/register/register",
     "pages/real-name/real-name",
     "pages/download-app/download-app",
-    "pages/register/register-code/register-code"
+    "pages/register/register-code/register-code",
+    "pages/find-password/step1/step1",
+    "pages/find-password/step2/step2"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

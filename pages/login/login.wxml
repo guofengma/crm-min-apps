@@ -19,7 +19,7 @@
         <button formType="submit" class='loginBtn'>登录</button>
         <view class='choose'>
           <text data-id='1' bindtap='goPage' class='fl'>立即注册</text>
-          <text data-id='1' bindtap='goPage' class='fr'>忘记密码</text>
+          <text data-id='2' bindtap='goPage' class='fr'>忘记密码</text>
         </view>
       </view>
     </form>

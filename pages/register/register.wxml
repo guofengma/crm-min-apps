@@ -11,7 +11,8 @@
     </view>
     <view class='flexR pwdVeiw'>
       <text>密码</text>
-      <input type='text' name='password' placeholder="请设置密码" value='{{pwd}}' bindinput='changeInput'data-index='3'></input>
+      <input type='text' name='password' placeholder="请设置密码" value='{{pwd}}' bindinput='changeInput' data-index='3'></input>
+      <image class='pwdImg' style='margin-left:90rpx' src='{{isSee? "../../img/see-pwd-icon.png":"../../img/unsee-pwd-icon.png"}}' mode="widthFix" bindtap='isSeePwd'></image>
     </view>
   </view>
   <view class='tips'>密码为6~18位数字或字母的组合(设置的手机号将作为账号登录)</view>

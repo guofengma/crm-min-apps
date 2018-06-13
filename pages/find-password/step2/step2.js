@@ -6,17 +6,19 @@ Page({
     second: '59',
     showSecond: false,
     time: Object,
-    disabled:false,
-    phone:'',
-    pwd:'',
-    code:'',
+    disabled: true,
+    phone: '',
+    pwd: '',
+    code: '',
     isSee: false
   },
   onLoad: function (options) {
-  
+    this.setData({
+      phone: options.phone
+    })
   },
   onShow: function () {
-    
+
   },
   isSeePwd() {
     this.setData({
@@ -25,30 +27,25 @@ Page({
   },
   formSubmit(e) {
     Tool.navigateTo('/pages/register/register-code/register-code')
-  //   if (!Tool.checkPhone(this.data.phone)) {
-  //     Tool.showAlert("请输入正确的手机号");
-  //     return
-  //   }
-  //   if (!Tool.checkPwd(this.data.pwd)) {
-  //     Tool.showAlert("密码格式不正确");
-  //     return
-  //   }
-  //   Tool.navigateTo('/pages/real-name/real-name')
+    //   if (!Tool.checkPhone(this.data.phone)) {
+    //     Tool.showAlert("请输入正确的手机号");
+    //     return
+    //   }
+    //   if (!Tool.checkPwd(this.data.pwd)) {
+    //     Tool.showAlert("密码格式不正确");
+    //     return
+    //   }
+    //   Tool.navigateTo('/pages/real-name/real-name')
   },
-  changeInput(e){
+  changeInput(e) {
     let n = parseInt(e.currentTarget.dataset.index)
     switch (n) {
       case 1:
         this.setData({
-          phone: e.detail.value
-        });
-        break;
-      case 2:
-        this.setData({
           code: e.detail.value
         });
         break;
-      case 3:
+      case 2:
         this.setData({
           pwd: e.detail.value
         });
@@ -56,8 +53,8 @@ Page({
     }
     this.isBtnDisabled()
   },
-  isBtnDisabled: function(){
-    if(!(Tool.isEmptyStr(this.data.phone) || Tool.isEmptyStr(this.data.pwd) || Tool.isEmptyStr(this.data.code))){
+  isBtnDisabled: function () {
+    if (!( Tool.isEmptyStr(this.data.pwd) || Tool.isEmptyStr(this.data.code))) {
       this.setData({
         disabled: false
       });
@@ -68,7 +65,7 @@ Page({
     }
   },
   getCodeTap: function () { // 获取验证码
-    if (!Tool.checkPhone(this.data.phone)){
+    if (!Tool.checkPhone(this.data.phone)) {
       Tool.showAlert("请输入正确的手机号");
       return
     }
@@ -114,41 +111,4 @@ Page({
       time: time
     });
   },
-  toLogin(){
-    Tool.navigateTo('/pages/login/login')
-  },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })

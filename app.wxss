@@ -62,3 +62,10 @@ button[disabled]:not([type]) {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.pwdImg{
+  width: 40rpx;
+}
+.tips-view{
+  padding: 30rpx 40rpx;
+  color: #c8c8c8;
+}

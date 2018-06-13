@@ -4,7 +4,7 @@
 .tips{
   color:#c8c8c8;
 }
-.realName input,.tips,textarea{
+.realName input,.tips,textarea,.cell-line{
   width: 580rpx;
   height: 84rpx;
   line-height: 84rpx;
@@ -13,6 +13,7 @@
 	border: 2rpx solid  #dddddd;
   padding: 0 38rpx;
   box-sizing: border-box;
+  color: #c8c8c8;
 }
 textarea{
   height: 196rpx;

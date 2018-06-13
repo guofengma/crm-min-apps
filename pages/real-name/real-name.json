@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "实名制认证"
+  "navigationBarTitleText": "实名制认证",
+  "usingComponents": {
+    "city-picker": "/components/city-picker/city-picker"
+  }
 }

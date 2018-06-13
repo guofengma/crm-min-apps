@@ -27,6 +27,3 @@
 .form text{
   font-size: 22rpx;
 }
-.pwdImg{
-  width: 40rpx;
-}
