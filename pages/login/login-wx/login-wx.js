@@ -1,86 +1,109 @@
-// pages/login/login-wx/login-wx.js
+let { Tool, RequestFactory, Storage } = global
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    userInfo:'',
+    visiable:false,
+    isAgree:false,
+    encryptedData:'',
+    iv:'',
+    openid:'',
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    console.log(options)
+    this.setData({
+      openid: Storage.getWxOpenid(),
+      userInfo: Storage.wxUserInfo() 
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
   
   },
   getPhoneNumber(e){
+    this.setData({
+      encryptedData: e.detail.encryptedData,
+      iv: e.detail.iv,
+    })
     console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
     if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: '未授权',
-        success: function (res) { }
-      })
+       console.log('用户拒绝了你的请求')
     } else {
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: '同意授权',
-        success: function (res) { }
+      this.setData({
+        visiable: !this.data.visiable,
       })
     }   
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  agreeGetUser(e){
+    console.log(e)
+    console.log(e.detail.userInfo)
+    if (!this.data.canIUse){
+      this.getUserInfo()
+    }
+    this.setData({
+      visiable: !this.data.visiable
+    })
+    if (e.detail.userInfo !== undefined){
+      this.getLogin(e.detail.userInfo)
+    } else {
+      this.tips()
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  requetLogin(){
+    let params ={
+      encryptedData: this.data.encryptedData,
+      iv: this.data.iv,
+      openid: this.data.openid,
+      nickname: this.data.userInfo.nickName,
+      headImg: this.data.userInfo.avatarUrl
+    }
+    console.log(params)
+    let r = global.RequestFactory.wechatLogin(params);
+    r.finishBlock = (req) => {
+      console.log(req)
+    }
+    r.failBlock = (req) => {
+      if (req.responseObject.code == 600){
+        Tool.navigateTo('/pages/register/register')
+      }
+    }
+    r.addToQueue();
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  getUserInfo(){
+    wx.getUserInfo({
+      success: res => {
+        this.getLogin(res.userInfo)
+      },
+      fail: function () {
+        this.tips()
+      }
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  getLogin(userInfo){
+    this.setData({
+      userInfo: userInfo
+    })
+    Storage.setWxUserInfo(userInfo)
+    this.requetLogin()
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  tips(){
+    wx.showModal({
+      title: '用户未授权',
+      content: '如需正常使用该小程序功能，请按确定并在授权管理中选中“用户信息”，然后点按确定。最后再重新进入小程序即可正常使用。',
+      showCancel: false,
+      success: function (resbtn) {
+        if (resbtn.confirm) {
+          wx.openSetting({
+            success: function success(resopen) {
+              //  获取用户数据
+              // that.checkSettingStatu();
+            }
+          });
+        }
+      }
+    })
   }
 })

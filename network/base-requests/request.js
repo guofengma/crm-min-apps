@@ -15,7 +15,12 @@ export default class Request {
         this.manageLoadingPrompt = true;
 
         //接口URL
-        this.baseUrl = 'http://172.16.10.252';
+        // this.baseUrl = 'http://172.16.10.51:8102';
+        if (bParam.port) {
+          this.baseUrl = 'http://172.16.10.51:' + bParam.port
+        } else {
+          this.baseUrl = 'http://172.16.10.51:8102';
+        }
 
         //拼接了bodyParam的最终url
         this._url = '';
@@ -89,7 +94,7 @@ export default class Request {
                     global.Tool.hideLoading();
                 }
 
-                console.debug('<============================== 请求结束：' + that.name);
+                console.log('<============================== 请求结束：' + that.name);
                 console.debug('result:');
                 console.debug('==============================\n\n\n');
 
@@ -179,9 +184,9 @@ export default class Request {
     body() {
 
       delete this.bodyParam.url
+      delete this.bodyParam.port
       this._body = this.bodyParam
       return this._body;
-
     }
 }
 

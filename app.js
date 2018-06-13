@@ -16,41 +16,25 @@ App({
     global.Event = Event;
     global.Touches = Touches;
     global.RequestFactory = RequestFactory;
-
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         let code = res.code
-        console.log(code)
         if(code){
-          wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session',
-            data: {
-              //小程序唯一标识
-              appid: global.TCGlobal.AppId,
-              //小程序的 app secret
-              secret: global.TCGlobal.Secret,
-              grant_type: 'authorization_code',
-              js_code: res.code
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: function (res) {
-              console.log(res.data.openid) 
-            }
-          })
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
+          this.getUserInfos(code)
         }
       } 
     })
-    // 获取用户信息
+  },
+  globalData: {
+    userInfo: null,
+    openid:null,
+    code:null,
+  },
+  getUserInfos(code){
+    let self = this 
+    self.toLogin(code)
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -59,7 +43,7 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
+              global.Storage.setWxUserInfo(res.userInfo)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -71,7 +55,21 @@ App({
       }
     })
   },
-  globalData: {
-    userInfo: null
+  toLogin(code){
+    let self = this;
+    let params = {code:code}
+    let r = global.RequestFactory.verifyWechat(params);
+    r.finishBlock = (req) => {
+      console.log(req.responseObject)
+    }
+    r.failBlock = (req) =>{
+      if (req.responseObject.code ==600 ){
+        global.Storage.setWxOpenid(req.responseObject.data)
+        wx.switchTab({
+          url: '/pages/login/login-wx/login-wx'
+        })
+      }
+    }
+    r.addToQueue();
   }
 })

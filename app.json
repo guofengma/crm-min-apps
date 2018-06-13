@@ -16,5 +16,21 @@
     "navigationBarTitleText": "商城",
     "backgroundColor": "#F8F8F8",
     "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#af8327",
+    "color": "#808080",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/login/login-wx/login-wx",
+        "text": "登录"
+      }
+    ]
   }
 }

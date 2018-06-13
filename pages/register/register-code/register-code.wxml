@@ -4,7 +4,7 @@
      <form bindsubmit="formSubmit" class='form'>
         <view class='flexR form-group'>
           <text>会员ID录入</text>
-          <input type='text' name='id' placeholder="请输入会员ID"></input>
+          <input type='text' name='id' placeholder="请输入会员ID" value='{{inviteId}}'></input>
         </view>
         <view class="btn-area">
           <button formType="submit" class='loginBtn'>下一步</button>
@@ -17,14 +17,14 @@
       请选择以下用户作为您的邀请者
     </view>
     <view class='inviter flexR'>
-       <view class='flexC'>
-         <image src='../../../img/default-userImg.png' mode="widthFix"></image>
-         <text class='inviter-name ellipsis'>欧阳娜娜</text>
-         <text class='inviter-level ellipsis'>欧阳娜娜11111</text>
+       <view class='flexC'wx:for='{{invite}}' wx:key="unique" bindtap='inviterClicked' data-key='{{item.invite_id}}'>
+         <image src='{{ item.head_img? item.head_img:"../../../img/default-userImg.png"}}' mode="widthFix"></image>
+         <text class='inviter-name ellipsis'>{{item.realname}}</text>
+         <text class='inviter-level ellipsis'>{{item.invite_id}}</text>
        </view>
     </view>
     <view>
-      <button class='changeBtn'>换一换</button>
+      <button class='changeBtn' bindtap='queryInviterList'>换一换</button>
     </view>
     <view class='rule flexR'>
       <image src='{{isAgree? "../../../img/select-icon.png":"../../../img/no-select.png"}}' 

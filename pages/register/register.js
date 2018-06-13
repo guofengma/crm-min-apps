@@ -6,7 +6,7 @@ Page({
     second: '59',
     showSecond: false,
     time: Object,
-    disabled:false,
+    disabled:true,
     phone:'',
     pwd:'',
     code:'',
@@ -24,16 +24,27 @@ Page({
     })
   },
   formSubmit(e) {
-    Tool.navigateTo('/pages/register/register-code/register-code')
-  //   if (!Tool.checkPhone(this.data.phone)) {
-  //     Tool.showAlert("请输入正确的手机号");
-  //     return
-  //   }
-  //   if (!Tool.checkPwd(this.data.pwd)) {
-  //     Tool.showAlert("密码格式不正确");
-  //     return
-  //   }
-  //   Tool.navigateTo('/pages/real-name/real-name')
+    if (!Tool.checkPhone(this.data.phone)) {
+      Tool.showAlert("请输入正确的手机号");
+      return
+    }
+    if (!Tool.checkPwd(this.data.pwd)) {
+      Tool.showAlert("密码格式不正确");
+      return
+    }
+    this.verifyPhone(e.detail.value)
+  },
+  verifyPhone(params){
+    let r = RequestFactory.findMemberByPhone(params);
+    r.finishBlock = (req) => {
+      Tool.navigateTo('/pages/register/register-code/register-code?phone=' + this.data.phone + "&password=" + this.data.pwd)
+    }
+    r.failBlock = (req) => {
+      if (req.responseObject.code == 600) {
+        console.log(req.responseObject.data)
+      }
+    }
+    r.addToQueue();
   },
   changeInput(e){
     let n = parseInt(e.currentTarget.dataset.index)
@@ -76,20 +87,19 @@ Page({
     if (!tempEnable) {
       return;
     }
-    console.log('gecode')
     this.setData({
       getCodeBtEnable: !tempEnable,
       showSecond: true
     });
-
     this.countdown(this);
-    // let r = RequestWriteFactory.verifyCodeGet(this.data.phone, '1');
-    // r.finishBlock = (req) => {
-    //   wx.showToast({
-    //     title: '验证码已发送',
-    //   })
-    // };
-    // r.addToQueue();
+    let r = RequestFactory.sendRegistrationCode(this.data.phone);
+    r.finishBlock = (req) => {
+      console.log(req.responseObject)
+      wx.showToast({
+        title: '验证码已发送',
+      })
+    };
+    r.addToQueue();
   },
   countdown: function (that) { // 倒计时
     let second = that.data.second;
@@ -116,39 +126,5 @@ Page({
   },
   toLogin(){
     Tool.navigateTo('/pages/login/login')
-  },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   }
 })
