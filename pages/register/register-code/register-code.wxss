@@ -27,6 +27,7 @@
 .inviter image{
   border-radius: 70rpx;
   width: 70rpx;
+  height: 70rpx;
 }
 .inviterInfo{
   width: 580rpx;
@@ -61,4 +62,7 @@
 }
 .rule.flexR{
   justify-content: center;
+}
+.flexC>text{
+  text-align: center
 }

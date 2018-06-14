@@ -14,8 +14,10 @@ export default class Request {
         //request自己控制loading提示
         this.manageLoadingPrompt = true;
 
-        //接口URL
+        //正式
         // this.baseUrl = 'http://172.16.10.51:8102';
+
+        // 开发 
         if (bParam.port) {
           this.baseUrl = 'http://172.16.10.51:' + bParam.port
         } else {
@@ -113,13 +115,9 @@ export default class Request {
                 //失败，有异常
                 else
                 {
-
-                    //弹窗，提示服务器错误
-                    that.failBlock(that);
-                    global.Tool.showAlert(res.data.msg);
-
-                    let error = res.data.brief;
-                    console.debug('请求出错：'+error);
+                  //弹窗，提示服务器错误
+                  that.failBlock(that);
+                  // global.Tool.showAlert(res.data.msg);
                 }
             },
             fail:function () {
@@ -182,7 +180,6 @@ export default class Request {
 
     //拼接body
     body() {
-
       delete this.bodyParam.url
       delete this.bodyParam.port
       this._body = this.bodyParam

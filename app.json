@@ -9,7 +9,8 @@
     "pages/register/register-code/register-code",
     "pages/find-password/step1/step1",
     "pages/find-password/step2/step2",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/search/search-result/search-result"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

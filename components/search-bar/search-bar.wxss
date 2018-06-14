@@ -20,3 +20,12 @@ input{
 .search-field{
   padding: 16rpx 0;
 }
+.search-img{
+  position: absolute;
+  width: 30rpx;
+  left: 20rpx;
+  top:12rpx;
+}
+.search-bar{
+  position: relative;
+}

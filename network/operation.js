@@ -51,7 +51,9 @@ export default class Operation {
        
         // 获取区
         this.getAreaList = '/admin/area/getAreaList'
-
+        
+        // 实名制
+        this.signMemberInfo = '/user/memberSign/signMemberInfo'
         
         __instance(this);
     }

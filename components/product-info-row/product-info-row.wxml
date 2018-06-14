@@ -1,0 +1,13 @@
+<!--商品信息  -->
+<import src='/components/product-info/product-info.wxml' />
+
+<template name="product-row">
+  <view class="product-row">
+    <view class='view-prd-img'>
+      <image src='/img/search-result-1.png'></image>
+    </view>
+    <view class='cell-line'>
+      <template is="product-info"/>
+    </view> 
+  </view>
+</template>

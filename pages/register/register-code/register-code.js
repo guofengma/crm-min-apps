@@ -31,6 +31,7 @@ Page({
     console.log(params)
     let r = RequestFactory.signMember(params);
     r.finishBlock = (req) => {
+      Storage.setMemberId(req.responseObject.data.id)
       Tool.navigateTo('/pages/real-name/real-name')
     }
     r.failBlock = (req) => {

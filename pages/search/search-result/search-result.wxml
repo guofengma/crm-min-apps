@@ -1,0 +1,19 @@
+<!--搜索  -->
+<import src='/components/search-bar/search-bar.wxml' />
+
+<!--商品展示横向  -->
+<import src='/components/product-info-row/product-info-row.wxml' />
+
+<!--商品展示竖向  -->
+<import src='/components/product-info-column/product-info-column.wxml' />
+
+<view class="search-result-container">
+   <template is="search-field"/>
+   <nav-bar bind:changeShow="changeShow" ></nav-bar>
+   <scroll-view class="search-result" scroll-y>
+      <view class='content' style='background:{{show? "#fff":""}}'>
+        <template is="product-row" wx:if='{{show}}' data="{{title:item}}" /> 
+        <template is="product-column" wx:else data="{{title:item}}" />   
+      </view>
+   </scroll-view>
+</view>

@@ -2,9 +2,11 @@
 <import src='/components/search-bar/search-bar.wxml' />
 
 <view class="container">
-    <template is="search-field" />
+   <view bindtap='searchClicked'>
+     <template is="search-field" data='{{disabled:true}}'/>
+   </view>
    <button bindtap='btnClicked' data-id='/pages/register/register' >注册</button>
    <button bindtap='btnClicked' data-id='/pages/real-name/real-name' >实名制</button>
    <button bindtap='btnClicked' data-id='/pages/register/register-code/register-code' >注册2</button>
-   
+   <button bindtap='btnClicked' data-id='/pages/search/search-result/search-result' >搜索结果</button>
 </view>

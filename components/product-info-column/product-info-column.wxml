@@ -1,0 +1,31 @@
+<!--商品信息  -->
+<import src='/components/product-info/product-info.wxml' />
+
+<template name="product-column">
+   <view class='product-column'>
+      <view>
+        <view class='view-prd-img-c'>
+          <image src='/img/search-result-1.png'></image>
+        </view>
+        <view class='cell-line-c'>
+          <template is="product-info"/>
+        </view>
+      </view>
+      <view>
+        <view class='view-prd-img-c'>
+          <image src='/img/search-result-1.png'></image>
+        </view>
+        <view class='cell-line-c'>
+          <template is="product-info"/>
+        </view>
+      </view>
+      <view>
+        <view class='view-prd-img-c'>
+          <image src='/img/search-result-1.png'></image>
+        </view>
+        <view class='cell-line-c'>
+          <template is="product-info"/>
+        </view>
+      </view>
+   </view>
+</template>

@@ -1,4 +1,4 @@
-let { Tool, RequestFactory } = global;
+let { Tool, RequestFactory, Storage } = global
 
 Page({
 
@@ -11,22 +11,12 @@ Page({
     hidden: false // 解决textarea最高层级的问题 
   },
   pickerClicked(e){
+    console.log(e.detail)
     this.setData({
-      hidden: e.detail
+      hidden: e.detail.hidden,
+      region: e.detail.result
     })
   },
-  bindRegionChange: function (e) {
-    this.setData({
-      region: e.detail.value
-    })
-  },
-  bindChange(e){
-    console.log(e.detail.value)
-    this.setData({
-      citys: this.data.city[e.detail.value[0]]
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -48,25 +38,43 @@ Page({
   
   },
   formSubmit(e){
-    let info = e.detail.value
-    if (!Tool.checkIdentityCode(info.IDcard)) {
+    let params = e.detail.value
+    params.province = this.data.region[0].zipcode
+    if (this.data.region[1]){
+      params.city = this.data.region[1].zipcode
+    }
+    if (this.data.region[2]){
+      params.area = this.data.region[2].zipcode
+    }
+    // 获取用户ID
+    params.id = Storage.memberId()
+    console.log(params)
+    if (!Tool.checkName(params.realname)) {
       Tool.showAlert("请输入正确的中文姓名");
       return
     }
-    if (!Tool.checkIdentityCode(info.IDcard)){
+    if (!Tool.checkIdentityCode(params.idcard)){
       Tool.showAlert("请输入正确的身份证号");
       return 
     }
-    if (!Tool.checkIdentityCode(info.IDcard)) {
-      Tool.showAlert("请输入正确的身份证号");
+    if (this.data.region.length == 0) {
+      Tool.showAlert("请选择你所在的省市区");
       return
     }
-    if (!Tool.isEmptyStr(this.data.address)) {
+    if (Tool.isEmptyStr(params.address)) {
       Tool.showAlert("请输入详细地址");
       return
     }
+    this.requestSignMemberInfo(params)
   },
-  dimiss(){
+  requestSignMemberInfo(params){
+    let r = global.RequestFactory.signMemberInfo(params);
+    r.finishBlock = (req) => {
+      this.dismiss()
+    }
+    r.addToQueue();
+  },
+  dismiss(){
     wx.switchTab({
       url: '/pages/index/index'
     })

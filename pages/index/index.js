@@ -11,6 +11,9 @@ Page({
   onLoad: function () {
     
   },
+  searchClicked(){
+    Tool.navigateTo('/pages/search/search')
+  },
   btnClicked: function(e) {
     let page = e.currentTarget.dataset.id
     Tool.navigateTo(page)

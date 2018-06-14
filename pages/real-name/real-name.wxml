@@ -3,13 +3,13 @@
     <image src='../../img/realname-bg.png' mode="widthFix"></image>
   </view>
   <form bindsubmit="formSubmit">
-    <input type='text' name='name' placeholder="请输入姓名" placeholder-style='color:#c8c8c8'></input>
-    <input type='text' name='IDcard' placeholder="请输入身份证号码" placeholder-style='color:#c8c8c8' ></input>
+    <input type='text' name='realname' placeholder="请输入姓名" placeholder-style='color:#c8c8c8'></input>
+    <input type='text' name='idcard' placeholder="请输入身份证号码" placeholder-style='color:#c8c8c8' ></input>
     <view class='form-group cell-line'>
       <city-picker bind:pickerClicked="pickerClicked"></city-picker>
     </view>
      <textarea name='address' placeholder='请输入详细地址' placeholder-style='color:#c8c8c8' hidden='{{hidden}}' />
      <button formType="submit" class='loginBtn' >提交</button>
-     <view class='dimiss' bindtap='dimiss'>跳过</view>
+     <view class='dimiss' bindtap='dismiss'>跳过</view>
   </form>
 </view>

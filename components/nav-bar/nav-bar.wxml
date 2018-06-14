@@ -1,3 +1,8 @@
-<view class='navbar'>
-
+<view class='nav-bar'>
+  <view>综合</view>
+  <view>销量</view>
+  <view>价格</view>
+  <view class='img-view' bindtap='changeShow'>
+    <image src='{{show? "/img/nav-icon-2.png":"/img/nav-icon-1.png"}}' mode='widthFix'></image>
+  </view>
 </view>

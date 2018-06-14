@@ -607,7 +607,7 @@ export default class Tool {
      */
     static checkPwd(value) {
         console.log(value)
-        var Regx = /^[a-z0-9A-Z]{6,18}$/;
+        var Regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
         if (Regx.test(value)) {
           return true;
         }
@@ -626,10 +626,10 @@ export default class Tool {
     }
     // 判断人名
     static checkName(value){
-      if (!(/^[\u4E00-\u9FA5]{2,10}$/.test(value))){
+      if (!(/^([a-zA-Z0-9\u4e00-\u9fa5\·]{2,10})$/.test(value))){
         return false 
       } else {
-        return ture
+        return true
       }
     }
     // 判断身份证号是否适合规格

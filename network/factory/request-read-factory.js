@@ -97,5 +97,11 @@ export default class RequestFactory {
     return this.request(url, params, '获取区');
   }
 
+  // 实名制 
+  static signMemberInfo(params) {
+    let url = Operation.sharedInstance().signMemberInfo;
+    return this.request(url, params, '用户实名制');
+  }
+
 }
 

@@ -1,66 +1,54 @@
-// pages/search/search.js
+let { Tool, RequestFactory, Storage } = global
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    keyWord:'',
+    history: [],
+    hotWords:[]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    let history = Storage.getHistorySearch()
+    if(history){
+      this.setData({
+        history: history
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-  
-  },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  getKeyword(e){
+    this.setData({
+      keyWord:e.detail.value
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  deleteKeyword(){
+    Storage.clearHistorySearch()
+    this.setData({
+      history:[]
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  searchKeyword(){
+    if (Tool.isEmptyStr(this.data.keyWord)){
+      return 
+    }
+    let str = this.data.keyWord.length > 5 ? this.data.keyWord.slice(0, 5) + "..." : this.data.keyWord
+    let keywords = this.data.history
+    if (keywords.length>0){
+      keywords.length == 10 ? keywords.splice(9, 1) : keywords
+      keywords.unshift(str)
+      Storage.setHistorySearch(keywords)
+    } else {
+      Storage.setHistorySearch([str])
+    }
+    this.requestKeyword()
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  requestKeyword(){
+    Tool.navigateTo('/pages/search/search-result/search-result')
   }
+
 })

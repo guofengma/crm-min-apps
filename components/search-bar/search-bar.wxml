@@ -1,6 +1,9 @@
 <template name="search-field">
-  <view catchtap="searchClicked" class="search-field flexR">
-    <input value='{{keyWorder}}' readonly="{{readonly}}" placeholder='搜索商品'></input>
-    <view class='search'>搜索</view>
+  <view class="search-field flexR">
+    <view class='search-bar'>
+      <image src='/img/search.png' class='search-img' mode='widthFix'></image>
+      <input value='{{keyWord}}' disabled='{{disabled}}' placeholder='搜索商品' bindinput='getKeyword'></input>
+    </view>
+    <view class='search' bindtap='searchKeyword'>搜索</view>
   </view>
 </template>

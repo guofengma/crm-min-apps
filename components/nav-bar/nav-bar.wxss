@@ -1,0 +1,19 @@
+.img-view{
+  width: 50rpx;
+}
+.img-view image{
+  vertical-align:bottom;
+}
+.nav-bar{
+  display: flex;
+  height: 96rpx;
+  background: #fff;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 30rpx;
+  color: #999999;
+  box-sizing: border-box;
+  padding-left: 40rpx;
+  border-top: 1px  solid #eeeeee;
+  border-bottom: 1px  solid #eeeeee;
+}

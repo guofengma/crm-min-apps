@@ -19,7 +19,7 @@ Component({
     shi_index: 0,//picker-view市项选择的value值
     qu_index: 0,//picker-view区县项选择的value值
     shengshi: null,//取到该数据的所有省市区数据
-    result: [],//最后取到的省市区名字
+    result:[],//最后取到的省市区名字
     animationData: {},
     isChoose:false,
     picker:[0,0,0]
@@ -39,7 +39,7 @@ Component({
       this.setData({
         animationData: animation.export()
       })
-      this.triggerEvent('pickerClicked', true)
+      this.pickerTriggerEvent(true)
     },
     //取消按钮
     cancel: function () {  //这里也是动画，然其高度变为0
@@ -53,12 +53,12 @@ Component({
       this.setData({
         animationData: animation.export()
       });
-      　　//取消不传值，这里就把result 的值赋值为{}
+      　　//取消不传值，这里就把result 的值赋值为[]
       this.setData({
-        result: {}
+        result:[]
       });
       console.log(this.data.result);
-      this.triggerEvent('pickerClicked', false)
+      this.pickerTriggerEvent(false)
     },
     //确认按钮
     makeSure: function () {
@@ -78,7 +78,7 @@ Component({
           this.data.qu[this.data.picker[2]]
         ]
       });
-      this.triggerEvent('pickerClicked', false)
+      this.pickerTriggerEvent(false)
     },
     //滚动选择的时候触发事件
     bindChange: function (e) {
@@ -99,6 +99,9 @@ Component({
         this.setIndex(val[0], val[1], 0)
         return
       }
+    },
+    pickerTriggerEvent(hidden){
+      this.triggerEvent('pickerClicked', { hidden: hidden, result: this.data.result })
     },
     setIndex(sheng,shi,qu){
       this.setData({
