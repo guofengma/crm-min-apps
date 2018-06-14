@@ -122,11 +122,23 @@ export default class Storage {
     static clearHistorySearch() {
         this.setterFor('historySearch', null);
     }
+
     // 获取 openId
     static setWxOpenid(Openid){
       this.setterFor('openid', Openid)
     }
+
     static getWxOpenid() {
       return this.getterFor('openid');
+    }
+
+    // 用户账号信息
+
+    static setUserAccountInfo(info) {
+      this.setterFor('userAccountInfo', info)
+    }
+
+    static getUserAccountInfo() {
+      return this.getterFor('userAccountInfo');
     }
 }

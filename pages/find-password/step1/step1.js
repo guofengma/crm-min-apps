@@ -21,7 +21,6 @@ Page({
   },
   changeInput(e){
     let disabled = true
-    console.log(e.detail.value)
     if (Tool.isEmptyStr(e.detail.value)){
       disabled = true
     } else {
@@ -38,7 +37,7 @@ Page({
       return
     }
     // pages/find-password/step2/step2
-    Tool.navigateTo('/pages/find-password/step2/step2?phone=' + e.detail.value.phone)
+    Tool.redirectTo('/pages/find-password/step2/step2?phone=' + e.detail.value.phone)
   },
   /**
    * 生命周期函数--监听页面隐藏

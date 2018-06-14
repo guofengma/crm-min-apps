@@ -31,8 +31,7 @@ Page({
     console.log(params)
     let r = RequestFactory.signMember(params);
     r.finishBlock = (req) => {
-      console.log(req)
-      // Tool.navigateTo('/pages/real-name/real-name')
+      Tool.navigateTo('/pages/real-name/real-name')
     }
     r.failBlock = (req) => {
       console.log(req)

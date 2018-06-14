@@ -1,11 +1,12 @@
 input{
-  font-size: 26rpx;
-  padding-left: 60rpx;
-  width: 565rpx;
-	height: 60rpx;
-	background-color: #eeeeee;
-	border-radius: 4rpx;
-  margin-right: 25rpx;
+  font-size:26rpx;
+  padding-left:60rpx;
+  width:565rpx;
+  height:60rpx;
+  background-color:#eeeeee;
+  border-radius:6rpx;
+  margin-right:25rpx;
+  box-sizing:border-box;
 }
 .search{
   width: 100rpx;
@@ -13,4 +14,9 @@ input{
 	background-color: #eeeeee;
 	border-radius: 30rpx;
   font-size: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
+.search-field{
+  padding: 16rpx 0;
 }

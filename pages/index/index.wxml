@@ -4,4 +4,7 @@
 <view class="container">
     <template is="search-field" />
    <button bindtap='btnClicked' data-id='/pages/register/register' >注册</button>
+   <button bindtap='btnClicked' data-id='/pages/real-name/real-name' >实名制</button>
+   <button bindtap='btnClicked' data-id='/pages/register/register-code/register-code' >注册2</button>
+   
 </view>

@@ -26,16 +26,17 @@ Page({
     })
   },
   formSubmit(e) {
-    Tool.navigateTo('/pages/register/register-code/register-code')
-    //   if (!Tool.checkPhone(this.data.phone)) {
-    //     Tool.showAlert("请输入正确的手机号");
-    //     return
-    //   }
-    //   if (!Tool.checkPwd(this.data.pwd)) {
-    //     Tool.showAlert("密码格式不正确");
-    //     return
-    //   }
-    //   Tool.navigateTo('/pages/real-name/real-name')
+    if (!Tool.checkPwd(this.data.pwd)) {
+      Tool.showAlert("密码格式不正确");
+      return
+    }
+    let params = e.detail.value
+    params.phone = this.data.phone
+    let r = RequestFactory.resetPassword(params);
+    r.finishBlock = (req) => {
+      Tool.redirectTo('/pages/login/login')
+    };
+    r.addToQueue();
   },
   changeInput(e) {
     let n = parseInt(e.currentTarget.dataset.index)
@@ -80,13 +81,13 @@ Page({
     });
 
     this.countdown(this);
-    // let r = RequestWriteFactory.verifyCodeGet(this.data.phone, '1');
-    // r.finishBlock = (req) => {
-    //   wx.showToast({
-    //     title: '验证码已发送',
-    //   })
-    // };
-    // r.addToQueue();
+    let r = RequestFactory.sendUserUpdateCode({ phone: this.data.phone});
+    r.finishBlock = (req) => {
+      wx.showToast({
+        title: '验证码已发送',
+      })
+    };
+    r.addToQueue();
   },
   countdown: function (that) { // 倒计时
     let second = that.data.second;

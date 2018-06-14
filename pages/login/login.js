@@ -25,12 +25,13 @@ Page({
     Tool.navigateTo(page)
   },
   formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
     let params = e.detail.value
-    let r = RequestFactory.findMemberByPhone(params);
+    let r = RequestFactory.passwordLogin(params);
     r.finishBlock = (req) => {
-      console.log(req)
+      wx.switchTab({
+        url: '/pages/index/index'
+      })
     }
-    // r.addToQueue();
+    r.addToQueue();
   },
 })

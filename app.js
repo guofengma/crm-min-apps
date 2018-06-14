@@ -60,7 +60,7 @@ App({
     let params = {code:code}
     let r = global.RequestFactory.verifyWechat(params);
     r.finishBlock = (req) => {
-      console.log(req.responseObject)
+      Storage.setUserAccountInfo(req.responseObject.data)
     }
     r.failBlock = (req) =>{
       if (req.responseObject.code ==600 ){

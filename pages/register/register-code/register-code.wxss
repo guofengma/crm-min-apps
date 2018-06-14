@@ -13,7 +13,7 @@
   color: #c8c8c8;
 }
 .loginBtn{
-  margin-bottom: 490rpx;
+  margin-bottom: 400rpx;
   margin-top: 50rpx;
 }
 .inviterInfo{

@@ -5,7 +5,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    z-index: 999999;
+    z-index: 9999999999999;
     background: rgba(0,0,0,0.5);
 }
 .cascade_hei{
@@ -41,4 +41,10 @@
     height: 80rpx;
     width: 100%;
     margin-bottom: 20rpx;
+}
+.result{
+  display: flex;
+  justify-content: flex-start;
+  height: 84rpx;
+  line-height: 84rpx;
 }

@@ -64,10 +64,15 @@ Page({
     let r = global.RequestFactory.wechatLogin(params);
     r.finishBlock = (req) => {
       console.log(req)
+      wx.switchTab({
+        url: '//pages/index/index'
+      })
     }
     r.failBlock = (req) => {
       if (req.responseObject.code == 600){
         Tool.navigateTo('/pages/register/register')
+      } else if (req.responseObject.code == 215){
+        Tool.navigateTo('/pages/download-app/download-app')
       }
     }
     r.addToQueue();

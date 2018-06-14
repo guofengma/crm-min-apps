@@ -1,6 +1,6 @@
 <template name="search-field">
   <view catchtap="searchClicked" class="search-field flexR">
-    <input value='{{keyWorder}}' readonly="{{readonly}}"></input>
+    <input value='{{keyWorder}}' readonly="{{readonly}}" placeholder='搜索商品'></input>
     <view class='search'>搜索</view>
   </view>
 </template>
