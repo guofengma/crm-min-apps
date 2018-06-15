@@ -1,36 +1,47 @@
-// pages/search/seach-result/seach-result.js
+let { Tool, RequestFactory} = global
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    show:false
+    show:false, //展示形式  false：网状 
+    keyword:'', 
+    tipVal:'', // 默认是无 取值 1 2 3 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-  changeShow(e){
+    console.log(options)
     this.setData({
-      show: e.detail
-    })  
+      keyword:options.keyword
+    })
+  },
+  onShow: function () {
+    
+  },
+  onScroll(){
+    // 向下滑动的时候请求数据
+  },
+  productCliked(e){
+    console.log(e.currentTarget.dataset.index)
+    Tool.navigateTo('/pages/product-detail/product-detail?')
+  },
+  navbarClicked(e){
+    let n = e.detail
+    switch (n) {
+      case 1:
+      
+        break;
+      case 2:
+        
+        break;
+      case 3:
+        
+        break;
+      default:
+        this.setData({
+          show: n
+        })  
+    }
   }
 })

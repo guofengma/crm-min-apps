@@ -3,23 +3,7 @@
 
 <template name="product-column">
    <view class='product-column'>
-      <view>
-        <view class='view-prd-img-c'>
-          <image src='/img/search-result-1.png'></image>
-        </view>
-        <view class='cell-line-c'>
-          <template is="product-info"/>
-        </view>
-      </view>
-      <view>
-        <view class='view-prd-img-c'>
-          <image src='/img/search-result-1.png'></image>
-        </view>
-        <view class='cell-line-c'>
-          <template is="product-info"/>
-        </view>
-      </view>
-      <view>
+      <view bindtap='productCliked' data-index='1'>
         <view class='view-prd-img-c'>
           <image src='/img/search-result-1.png'></image>
         </view>

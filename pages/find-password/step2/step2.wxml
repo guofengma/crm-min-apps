@@ -11,7 +11,7 @@
       <image class='pwdImg' style='margin-left:90rpx' src='{{isSee? "../../../img/see-pwd-icon.png":"../../../img/unsee-pwd-icon.png"}}' mode="widthFix" bindtap='isSeePwd'></image>
     </view>
   </view>
-  <view class='tips'>密码为6~18位数字或字母的组合</view>
+  <view class='tips'>密码为6~18位数字和字母的组合</view>
   <view class="btn-area">
     <button formType="submit" class='loginBtn' disabled='{{disabled}}' >完成</button>
   </view>

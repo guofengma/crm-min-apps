@@ -2,7 +2,7 @@
   <view class="search-field flexR">
     <view class='search-bar'>
       <image src='/img/search.png' class='search-img' mode='widthFix'></image>
-      <input value='{{keyWord}}' disabled='{{disabled}}' placeholder='搜索商品' bindinput='getKeyword'></input>
+      <input value='{{keyWord}}' disabled='{{disabled}}' placeholder='搜索商品' bindinput='getKeyword' value='{{keyword}}'></input>
     </view>
     <view class='search' bindtap='searchKeyword'>搜索</view>
   </view>

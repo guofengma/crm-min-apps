@@ -60,7 +60,6 @@ Page({
       nickname: this.data.userInfo.nickName,
       headImg: this.data.userInfo.avatarUrl
     }
-    console.log(params)
     let r = global.RequestFactory.wechatLogin(params);
     r.finishBlock = (req) => {
       console.log(req)

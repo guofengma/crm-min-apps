@@ -1,3 +1,11 @@
+page{
+  height: 100%;
+  background-color:#F8F8F8;
+}
+button[disabled]:not([type]) {
+  background-color: #dddddd;
+}
+
 .flexR{
   display: flex;
   flex-direction: row;
@@ -42,13 +50,6 @@ image{
   color: #fff;
   font-size: 28rpx;
 }
-page{
-  height: 100%;
-  background-color:#F8F8F8;
-}
-button[disabled]:not([type]) {
-  background-color: #dddddd;
-}
 .flexR>text{
   height: 1.4rem;
   line-height: 1.4rem;
@@ -57,10 +58,19 @@ button[disabled]:not([type]) {
   margin-left: 45rpx;
   width:380rpx;
 }
+/*溢出省略号  */
 .ellipsis{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.ellipsis-2{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  line-height:38rpx;
 }
 .pwdImg{
   width: 40rpx;

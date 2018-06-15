@@ -15,7 +15,10 @@ export default class Operation {
 
     constructor() {
         if (__instance()) return __instance();
-        
+
+
+    /*************  注册登录相关接口 *********************/
+       
         // 验证openid是否注册
         this.verifyWechat = '/user/memberLogin/verifyWechat'
 
@@ -42,18 +45,26 @@ export default class Operation {
 
         // 忘记密码短信
         this.sendUserUpdateCode = '/commonAPI/phoneCode/sendUserUpdateCode'
+        
+        // 实名制
+        this.signMemberInfo = '/user/memberSign/signMemberInfo'
+
+
+    /**********  获取省市区 *******************/
 
         // 获取省
         this.getProvinceList = '/admin/area/getProvinceList'
 
         // 获取市
         this.getCityList = '/admin/area/getCityList'
-       
+
         // 获取区
         this.getAreaList = '/admin/area/getAreaList'
-        
-        // 实名制
-        this.signMemberInfo = '/user/memberSign/signMemberInfo'
+
+    /********************** 搜索 *********************/  
+    
+        this.getHotWordsListActive= '/user/hotword/getHotWordsListActive'
+          
         
         __instance(this);
     }

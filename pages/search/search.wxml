@@ -2,20 +2,20 @@
 <import src='/components/search-bar/search-bar.wxml' />
 
 <view class="search-container">
-   <template is="search-field" />
+   <template is="search-field" data='{{keyWord}}'/>
    <view class='history-search'>
      <view class='cell-line' wx:if="{{history.length>0}}">
         <text>历史搜索</text>
         <image src='/img/delete.png' mode='widthFix' bindtap='deleteKeyword'></image>
      </view>
      <view class='cell-result'>
-       <view wx:for='{{history}}' wx:key="unique">{{item}}</view>
+       <view wx:for='{{history}}' wx:key="unique" bindtap='getHotkeyword' data-keyword='{{item}}' >{{item}}</view>
      </view>
    </view>
    <view class='hotwords'>
       <view  class='cell-line'>热门搜索</view>
       <view class='cell-result'>
-        <view wx:for='{{hotWords}}' wx:key="unique">{{}}</view>
+         <view wx:for='{{hotWords}}' wx:key="unique" bindtap='getHotkeyword' data-keyword='{{item.wordName}}'>{{item.wordName}}</view> 
       </view>
    </view>
 </view>

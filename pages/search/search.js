@@ -17,9 +17,25 @@ Page({
         history: history
       })
     }
+    this.requestGetHotWordsListActive()
   },
   onShow: function () {
 
+  },
+  requestGetHotWordsListActive(){
+    let r = RequestFactory.getHotWordsListActive();
+    r.finishBlock = (req) => {
+      this.setData({
+        hotWords: req.responseObject.data
+      })
+    }
+    r.addToQueue();
+  },
+  getHotkeyword(e){
+    this.setData({
+      keyWord: e.currentTarget.dataset.keyword
+    })
+    this.requestKeyword()
   },
   getKeyword(e){
     this.setData({
@@ -48,7 +64,6 @@ Page({
     this.requestKeyword()
   },
   requestKeyword(){
-    Tool.navigateTo('/pages/search/search-result/search-result')
+    Tool.redirectTo('/pages/search/search-result/search-result?keyword=' + this.data.keyWord)
   }
-
 })

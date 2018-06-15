@@ -1,12 +1,9 @@
-.img-view{
-  width: 50rpx;
-}
 .img-view image{
-  vertical-align:bottom;
+  vertical-align:middle;
+  width: 50rpx;
 }
 .nav-bar{
   display: flex;
-  height: 96rpx;
   background: #fff;
   align-items: center;
   justify-content: space-around;
@@ -16,4 +13,16 @@
   padding-left: 40rpx;
   border-top: 1px  solid #eeeeee;
   border-bottom: 1px  solid #eeeeee;
+}
+.nav-bar>view{
+   height: 96rpx;
+   line-height: 96rpx;
+   box-sizing: border-box;
+   padding: 0 40rpx;
+}
+.active{
+  color: #e60012;
+}
+.up-down{
+  width: 20rpx;
 }

@@ -10,7 +10,8 @@
     "pages/find-password/step1/step1",
     "pages/find-password/step2/step2",
     "pages/search/search",
-    "pages/search/search-result/search-result"
+    "pages/search/search-result/search-result",
+    "pages/product-detail/product-detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

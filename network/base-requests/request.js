@@ -16,12 +16,14 @@ export default class Request {
 
         //正式
         // this.baseUrl = 'http://172.16.10.51:8102';
-
+    
         // 开发 
+        // this.baseUrl = 'http://172.16.10.51:'
+        this.baseUrl = 'http://172.16.10.253:'
         if (bParam.port) {
-          this.baseUrl = 'http://172.16.10.51:' + bParam.port
+          this.baseUrl = this.baseUrl + bParam.port
         } else {
-          this.baseUrl = 'http://172.16.10.51:8102';
+          this.baseUrl = this.baseUrl+'8102';
         }
 
         //拼接了bodyParam的最终url

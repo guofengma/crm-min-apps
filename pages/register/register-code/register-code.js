@@ -5,7 +5,8 @@ Page({
     invite:[],
     inviteId:'',
     userInfo:'',
-    openid:''
+    openid:'',
+    num:4, // 请求推荐人的个数
   },
   onLoad: function (options) {
     console.log(options)
@@ -57,7 +58,7 @@ Page({
     })
   },
   queryInviterList(){
-    let r = RequestFactory.queryInviterList();
+    let r = RequestFactory.queryInviterList({ amount:this.data.num});
     r.finishBlock = (req) => {
       this.setData({
         invite: req.responseObject.data

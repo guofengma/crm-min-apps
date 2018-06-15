@@ -452,7 +452,7 @@ export default class Tool {
             complete: complete,
         })
     }
-
+   
     static navigateTo(url, success, fail, complete) {
         console.log('\n\n******************************************************************************************');
         console.log('navigateTo:' + url);
@@ -607,7 +607,7 @@ export default class Tool {
      */
     static checkPwd(value) {
         console.log(value)
-        var Regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+        var Regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/;
         if (Regx.test(value)) {
           return true;
         }

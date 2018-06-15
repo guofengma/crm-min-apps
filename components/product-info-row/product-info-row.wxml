@@ -2,7 +2,7 @@
 <import src='/components/product-info/product-info.wxml' />
 
 <template name="product-row">
-  <view class="product-row">
+  <view class="product-row" bindtap='productCliked' data-index='1'>
     <view class='view-prd-img'>
       <image src='/img/search-result-1.png'></image>
     </view>

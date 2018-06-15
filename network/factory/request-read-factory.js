@@ -59,9 +59,9 @@ export default class RequestFactory {
   }
 
   // 获取邀请者ID queryInviterList
-  static queryInviterList(){
+  static queryInviterList(params){
     let url = Operation.sharedInstance().queryInviterList;
-    return this.request(url, {}, '获取邀请者列表');
+    return this.request(url, params, '获取邀请者列表');
   }
 
   // 忘记密码
@@ -102,6 +102,11 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().signMemberInfo;
     return this.request(url, params, '用户实名制');
   }
+  //获取热搜词
 
+  static getHotWordsListActive(){
+    let url = Operation.sharedInstance().getHotWordsListActive;
+    return this.request(url,{}, '获取热搜词');
+  }
 }
 

@@ -7,13 +7,20 @@
 <!--商品展示竖向  -->
 <import src='/components/product-info-column/product-info-column.wxml' />
 
+<!--搜索结果异常显示  -->
+<import src='/components/result-tips/result-tips.wxml' />
+
 <view class="search-result-container">
-   <template is="search-field"/>
-   <nav-bar bind:changeShow="changeShow" ></nav-bar>
-   <scroll-view class="search-result" scroll-y>
+   <template is="search-field" data='{{keyword}}'/>
+   <nav-bar bind:navbarClicked="navbarClicked" ></nav-bar>
+   <scroll-view class="search-result" scroll-y bindscrolltolower='onScroll'>
       <view class='content' style='background:{{show? "#fff":""}}'>
+        <!--商品展示 横向或纵向显示  -->
         <template is="product-row" wx:if='{{show}}' data="{{title:item}}" /> 
         <template is="product-column" wx:else data="{{title:item}}" />   
+
+        <!--搜索结果异常显示 tipVal  -->
+        <template is="result-tips" v-if='{{tipVal}}' data="{{tipVal}}" />
       </view>
    </scroll-view>
 </view>
