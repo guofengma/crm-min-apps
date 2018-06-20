@@ -43,10 +43,14 @@
   <!--产品图文详情切换  -->
   <view  class='prd-info-box'>
     <view class='prd-info-line'>
-      <text class='{{show? "red":""}}'>详情</text>
-      <text class='{{!show? "red":""}}'>参数</text>
+      <view class='first-line' bindtap='infoChoose' data-show='1'>
+        <text class='{{show? "red":""}}'>详情</text>
+      </view>
+      <view bindtap='infoChoose' data-show='2'>
+        <text class='{{!show? "red":""}}'>参数</text>
+      </view>
     </view>
-    <view  class='prd-info-cell'>
+    <view  class='prd-info-cell' bindtap='infoChoose'>
       <view wx:if='{{show}}'>1111</view>
       <view wx:else>2222</view>
     </view>

@@ -19,5 +19,11 @@ Page({
     this.setData({
       activeIndex: e.detail.current+1
     })
+  },
+  infoChoose(e){
+    let show = e.currentTarget.dataset.show ==1 ?  true:false
+    this.setData({
+      show: show
+    })
   }
 })

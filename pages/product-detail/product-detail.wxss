@@ -91,4 +91,36 @@
 }
 .prd-info-line{
   font-size: 30rpx;
+  border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+}
+.prd-info-line>view{
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.first-line{
+  position: relative;
+}
+.first-line:after{ 
+  content:"";
+  width: 2rpx;
+  height: 50rpx;
+  position: absolute;
+  background: #eee;
+  right: 0;
+  top: 15rpx;
+}
+.prd-info-line text{
+  display: inline-block;
+  height: 100%;
+  box-sizing: border-box;
+  line-height: 80rpx;
+  border-bottom: 6rpx solid transparent;
+  padding: 0 16rpx;
+}
+.prd-info-line text.red{
+  border-bottom: 6rpx solid #e60012;
 }
