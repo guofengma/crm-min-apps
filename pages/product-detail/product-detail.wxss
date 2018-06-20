@@ -1,0 +1,94 @@
+.slider{
+  height: 710rpx;
+  width: 100%;
+  position: relative;
+}
+.slider .slide-image{
+  width: 100%;
+  height: 100%;
+}
+.slider swiper{
+  height: 100%;
+}
+.activeIndex{
+  background: rgba(0,0,0,0.7);
+  font-size: 26rpx;
+  color: #fff;
+  padding: 8rpx 24rpx;
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+  border-radius: 20rpx;
+  z-index: 100;
+}
+.slider-nav{
+  position: absolute;
+  width: 100%;
+  padding: 0 30rpx;
+  left: 0;
+  top: 12rpx;
+  z-index: 100;
+}
+.slider-nav image{
+  width: 70rpx;
+}
+.prduct-detail-view>view{
+  background: #fff;
+}
+.prd-info{
+  color: #bbb;
+  font-size: 22rpx;
+  height: 255rpx;
+  padding: 30rpx;
+}
+.prd-name{
+  font-size: 30rpx;
+  color: #222;
+  max-height: 80rpx;
+  margin-bottom: 25rpx;
+}
+.price1{
+  font-size: 36rpx;
+}
+.price2,.label-pd{
+  font-size: 20rpx;
+  margin-left: 7rpx;
+}
+.label-pd{
+  border-radius: 6rpx;
+  background-color: #e60012;
+  color: #fff;
+  padding: 4rpx 10rpx;
+  margin-right: 30rpx;
+}
+.label,.price3{
+  border:1rpx solid #e60012;
+  border-radius: 6rpx;
+  padding: 4rpx 16rpx;
+}
+.label{
+  font-size: 26rpx;
+}
+.price3{
+  font-size: 18rpx;
+  margin-right: 23rpx;
+}
+.shippingInfo{
+  margin-top: 25rpx;
+}
+.chooseBox{
+  margin: 24rpx 0;
+  font-size: 26rpx;
+}
+.chooseBox>view{
+  height: 90rpx;
+  line-height: 90rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+.chooseBox view.gray{
+  border-top: 1rpx solid #eee
+}
+.prd-info-line{
+  font-size: 30rpx;
+}

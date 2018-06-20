@@ -1,0 +1,102 @@
+.model-view-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10002;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+     line-height: 28rpx;
+}
+.product-specification{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    background-color: white;
+    box-sizing: border-box;
+    padding-top:40rpx;
+    position: relative;
+}
+.scroll-y{
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  max-height: 680rpx;
+  min-height: 200rpx;
+}
+.header{
+  padding-left: 280rpx;
+  position: relative;
+  height: 150rpx;
+}
+.img-view{
+  width: 222rpx;
+  height: 222rpx;
+  box-sizing:border-box;
+  padding: 4rpx;
+  border-radius: 6rpx;
+  background: #fff;
+  position: absolute;
+  left:22rpx;
+  top:-86rpx;
+  border:1rpx solid #eee;
+}
+.header-content>view{
+  margin-bottom: 16rpx;
+}
+.cancel{
+  position: absolute;
+  right: 30rpx;
+  top: -8rpx;
+}
+.img-view image{
+  width: 214rpx;
+  height: 214rpx;
+}
+.prd-type-info{
+  font-size: 26rpx;
+  border-bottom: 1rpx solid #eee;
+  padding-bottom: 10rpx;
+  padding-top: 25rpx
+}
+.type-name{
+  margin-bottom: 30rpx;
+}
+.prd-type-info,.counter{
+  color: #666;
+}
+.price{
+  color: #e60012;
+  font-size: 36rpx;
+}
+.type-list>view{
+  display: inline-block;
+  padding: 20rpx 30rpx;
+  color: #222222;
+  background-color: #eeeeee;
+  border-radius: 6rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+.active{
+  background-color: #e60012;
+}
+.counter{
+  height: 180rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.btn{
+  height: 97rpx;
+  line-height: 97rpx;
+	background-color: #e60012;
+	border: 1px  solid #eeeeee;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+}

@@ -1,0 +1,43 @@
+<view class='prd-info-type' bindtap='typeClicked'>
+  规格 <text>选择产品规格</text>
+</view>
+
+<view class='model-view-bg ' wx:if="{{visiable}}">
+ <view class='product-specification'>
+    <view class='header'>
+      <view class='img-view'>
+        <image src='/img/search-result-2.png'></image>
+      </view>
+      <!--产品信息  -->
+      <view class='header-content'>
+         <view class='price'>¥ 455.00</view>
+         <view>库存454654件</view>
+         <view>选择颜色分类，尺寸</view>
+      </view>
+      <!--取消  -->
+      <icon class='cancel' type="cancel" size="30" color='#dddddd' bindtap='typeClicked'/>
+    </view>
+    <!--滚动区域  -->
+    <scroll-view scroll-y  class='scroll-y'>
+      <!--类型  -->
+      <view class='prd-type-info'>
+        <view class='type-name'>颜色分类</view>
+        <view class='type-list'>
+          <view>金色</view>
+        </view>
+      </view>
+      <!--数量选择器  -->
+      <view class='counter'>
+        <text>购买数量</text>
+        <adder-subtractor    count="{{innerCount}}"
+                        bind:subClicked="counterSubClicked"
+                        bind:inputOnChange="counterInputOnChange"
+                        bind:addClicked="counterAddClicked"/>
+      </view>
+    </scroll-view>
+    
+
+    <!--按钮  -->
+    <view class='btn'>确认</view>
+ </view>
+</view>

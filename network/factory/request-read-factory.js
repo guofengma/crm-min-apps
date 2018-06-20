@@ -108,5 +108,14 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().getHotWordsListActive;
     return this.request(url,{}, '获取热搜词');
   }
+
+  // 获取商品列表 queryProductListAPP
+
+  static queryProductListAPP(params) {
+    // 1代表升序 2代表降序
+    let url = Operation.sharedInstance().queryProductListAPP;
+    console.log(url)
+    return this.request(url, {}, '获取商品列表');
+  }
 }
 

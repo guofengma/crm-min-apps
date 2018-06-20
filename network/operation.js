@@ -65,7 +65,10 @@ export default class Operation {
     
         this.getHotWordsListActive= '/user/hotword/getHotWordsListActive'
           
-        
+    /********************** 列表 *********************/
+
+        this.queryProductListAPP = '/user/productApp/queryProductListAPP'
+
         __instance(this);
     }
 

@@ -12,15 +12,26 @@ Page({
   },
   onLoad: function (options) {
     console.log(options)
-    this.setData({
-      keyword:options.keyword
-    })
+    // this.setData({
+    //   keyword:options.keyword
+    // })
+    this.requestQueryProductList()
   },
   onShow: function () {
     
   },
   onScroll(){
     // 向下滑动的时候请求数据
+  },
+  requestQueryProductList(){
+    let r = RequestFactory.queryProductListAPP();
+    r.finishBlock = (req) => {
+      console.log(req.responseObject.data)
+      // this.setData({
+      //   hotWords: req.responseObject.data
+      // })
+    }
+    r.addToQueue();
   },
   productCliked(e){
     console.log(e.currentTarget.dataset.index)
