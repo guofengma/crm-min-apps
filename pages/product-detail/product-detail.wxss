@@ -189,10 +189,12 @@
   width: 44rpx;
 }
 .bottom-bar .cell-line{
-  padding-right:50rpx;
-  padding-left:20rpx;
+  padding-right:45rpx;
+  padding-left:15rpx;
   text-align: center;
   line-height:26rpx;
+  box-sizing: border-box;
+  width: 130rpx;
 }
 .bottom-bar>view>view{
   font-size: 22rpx;

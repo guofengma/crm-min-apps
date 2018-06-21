@@ -101,7 +101,7 @@
       </view>
       <view class='cell-line' bindtap='collectionClicked'>
         <image src='{{isCollection? "/img/star.png":"/img/star-gray.png" }}' mode='widthFix' ></image>
-        <view  class='gray'>收藏</view>
+        <view  class='gray'>{{isCollection? "已收藏":"收藏" }}</view>
       </view>
       <view class='add-cart' bindtap='btnClicked' data-key='1'>
         加入购物车

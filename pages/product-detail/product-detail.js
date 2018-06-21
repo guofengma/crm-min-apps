@@ -114,5 +114,8 @@ Page({
     this.setData({
       msgShow: !this.data.msgShow
     })
+  },
+  cartClicked(){
+    Tool.navigateTo('/pages/shopping-cart/shopping-cart')
   }
 })
