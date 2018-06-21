@@ -10,6 +10,17 @@ export default class RequestFactory {
   // 统一的请求 
   static request(url,params,name){
     params.url = url
+    let sysInfo = global.Storage.sysInfo()
+    
+    // 手机型号
+    params.device = sysInfo.model
+
+    // 微信版本
+    params.wechatVersion = sysInfo.version
+
+    // 系统版本
+    params.systemVersion = sysInfo.system
+
     let req = new Request(params);
     req.name = name;//用于日志输出
     return req;
@@ -111,11 +122,17 @@ export default class RequestFactory {
 
   // 获取商品列表 queryProductListAPP
 
-  static queryProductListAPP(params) {
+  static queryProductListAPP(params={}) {
     // 1代表升序 2代表降序
     let url = Operation.sharedInstance().queryProductListAPP;
     console.log(url)
-    return this.request(url, {}, '获取商品列表');
+    return this.request(url, params, '获取商品列表');
+  }
+  // 详情页 findProductByIdApp
+  static findProductByIdApp(params) {
+    // 1代表升序 2代表降序
+    let url = Operation.sharedInstance().findProductByIdApp;
+    return this.request(url, params, '获取商品详情页');
   }
 }
 

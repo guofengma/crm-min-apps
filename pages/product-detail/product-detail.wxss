@@ -1,3 +1,12 @@
+/*商品展示竖向  */
+/* @import "/components/product-info-column/product-info-column"; */
+
+@import "/components/msg-tips/msg-tips.wxss";
+
+.prduct-detail-view{
+  padding-bottom: 150rpx;
+}
+/*轮播部分  */
 .slider{
   height: 710rpx;
   width: 100%;
@@ -28,6 +37,7 @@
   left: 0;
   top: 12rpx;
   z-index: 100;
+  min-height: 50rpx;
 }
 .slider-nav image{
   width: 70rpx;
@@ -61,13 +71,14 @@
   padding: 4rpx 10rpx;
   margin-right: 30rpx;
 }
-.label,.price3{
+.chooseBox .label,.price3{
   border:1rpx solid #e60012;
   border-radius: 6rpx;
   padding: 4rpx 16rpx;
 }
-.label{
+.chooseBox .label{
   font-size: 26rpx;
+  margin-right: 20rpx;
 }
 .price3{
   font-size: 18rpx;
@@ -123,4 +134,135 @@
 }
 .prd-info-line text.red{
   border-bottom: 6rpx solid #e60012;
+}
+.prd-info-cell>view{
+  min-height: 400rpx;
+}
+.price-tips-box{
+  font-size: 26rpx;
+  padding:0  30rpx;
+  margin-top: 20rpx;
+}
+.price-tips{
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.price-tips-box .gray{
+  padding: 30rpx 0;
+}
+/*推荐 猜你喜欢  */
+/* .prduct-detail-view .recommend-box{
+  background: transparent;
+}
+.recommend-title{
+  text-align: center;
+  font-size: 26rpx;
+  padding-top: 50rpx;
+  padding-bottom: 24rpx;
+}
+.recommend-title image{
+  width: 40rpx;
+  vertical-align:middle;
+  position:relative;
+  top:-4rpx;
+}
+.you-like{
+  border-left: 6rpx solid #e60012;
+  margin-left: 30rpx;
+  padding-left:14rpx; 
+  font-size: 30rpx;
+  margin-bottom: 34rpx;
+} */
+
+/*底部的bar   */
+.bottom-bar{
+  justify-content: flex-start;
+  padding: 14rpx 30rpx;
+  padding-right: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.bottom-bar image{
+  width: 44rpx;
+}
+.bottom-bar .cell-line{
+  padding-right:50rpx;
+  padding-left:20rpx;
+  text-align: center;
+  line-height:26rpx;
+}
+.bottom-bar>view>view{
+  font-size: 22rpx;
+}
+.add-cart,.buy-btn{
+  width: 220rpx;
+	height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 28rpx;
+  background-blend-mode: normal, normal;
+}
+.add-cart{
+	background-image: linear-gradient(90deg, 	#ffb607 0%, #ff8400 100%), 
+	linear-gradient(#ffffff, 	#ffffff);
+	border-radius: 40rpx 0px 0rpx 40rpx;
+}
+.buy-btn{  
+	background-image: linear-gradient(90deg, #ff6c00 0%, #e60012 100%), 
+	linear-gradient(#ffffff, #ffffff);
+	border-radius: 0px 40rpx 40rpx 0px;
+}
+/*置顶  */
+.goTop{
+  position: fixed;
+  right: 30rpx;
+  bottom: 120rpx;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+  border: 1rpx solid #eee;
+  overflow: hidden;
+  text-align: center;
+  font-size: 22rpx;
+  box-sizing: border-box;
+  padding-top: 14rpx;
+}
+.goTop image{
+  vertical-align: middle;
+  width: 40rpx;
+}
+
+/*topbar  */
+.topbar image{
+  width: 76rpx;
+  height: 76rpx; 
+}
+.topbar{
+  height: 90rpx;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  border-bottom: 1rpx solid #eee;
+  border-top: 1rpx solid #eee;
+}
+.msg-view{
+  width: 100rpx;
+  height: 100%;
+  position: absolute;
+  right: 0rpx;
+}
+.msg-view:after{ 
+  content:"";
+  width: 8rpx;
+  height: 40rpx;
+  position: absolute;
+  border-left: 8rpx dotted #222;
+  right: 50rpx;
+  top:25rpx;
 }

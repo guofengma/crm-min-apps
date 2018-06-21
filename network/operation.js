@@ -63,11 +63,13 @@ export default class Operation {
 
     /********************** 搜索 *********************/  
     
-        this.getHotWordsListActive= '/user/hotword/getHotWordsListActive'
+        this.getHotWordsListActive = '/user/hotWord/getHotWordListActive'
           
     /********************** 列表 *********************/
 
         this.queryProductListAPP = '/user/productApp/queryProductListAPP'
+
+        this.findProductByIdApp = '/user/productApp/findProductByIdApp'
 
         __instance(this);
     }

@@ -26,7 +26,7 @@ Component({
           break;
       }
       // 开始各种请求 
-      this.triggerEvent('navbarClicked',n)
+      this.triggerEvent('navbarClicked', { n: n, sort:this.data.priceShow.up})
     },
     setActiveIndex(val){
       // 调整价格的箭头显示

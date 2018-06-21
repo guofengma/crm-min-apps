@@ -11,6 +11,10 @@
     background-color: rgba(0,0,0,.5);
      line-height: 28rpx;
 }
+.prd-info-type{
+  display: flex;
+  align-items: center;
+}
 .product-specification{
     display: flex;
     flex-direction: column;
@@ -63,8 +67,12 @@
   padding-bottom: 10rpx;
   padding-top: 25rpx
 }
+.prd-info-type image{
+  width: 16rpx;
+  margin-left: 58rpx;
+}
 .type-name{
-  margin-bottom: 30rpx;
+  margin-bottom: 60rpx;
 }
 .prd-type-info,.counter{
   color: #666;
@@ -82,8 +90,9 @@
   margin-right: 20rpx;
   margin-bottom: 20rpx;
 }
-.active{
+.type-list .active{
   background-color: #e60012;
+  color: #fff;
 }
 .counter{
   height: 180rpx;
@@ -99,4 +108,14 @@
   text-align: center;
   color: #fff;
   font-size: 32rpx;
+}
+.cell-name{
+  color: #999;
+  margin-right: 64rpx;
+}
+.cell-content{
+  width:500rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

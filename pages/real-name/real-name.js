@@ -75,9 +75,7 @@ Page({
     r.addToQueue();
   },
   dismiss(){
-    wx.switchTab({
-      url: '/pages/index/index'
-    })
+    Tool.switchTab('/pages/index/index')
   },
   open(){
     this.setData({

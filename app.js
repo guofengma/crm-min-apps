@@ -22,7 +22,8 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         let code = res.code
         if(code){
-          this.getUserInfos(code)
+          this.globalData.code = code;
+          this.getSystemInfo();
         }
       } 
     })
@@ -56,6 +57,7 @@ App({
     })
   },
   toLogin(code){
+    if(!code) return
     let self = this;
     let params = {code:code}
     let r = global.RequestFactory.verifyWechat(params);
@@ -94,6 +96,7 @@ App({
       res.windowWidth = res.windowWidth * res.rate;
       console.log('getSystemInfo');
       Storage.setSysInfo(res);
+      that.getUserInfos(that.globalData.code)
       that.globalData.systemInfo = res
       typeof cb == "function" && cb(that.globalData.systemInfo)
     }

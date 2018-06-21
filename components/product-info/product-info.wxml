@@ -1,11 +1,12 @@
 <template name="product-info">
-  <view class='info'>shdksahfkahdkahdlakhsd哈哈哈看会电视看的还是看电视呜呜呜呜呜</view>
-  <view class='tips'>6月1号大酬宾</view>
+  <view class='info'>{{name}}</view>
+  <!-- <view class='tips'>6月1号大酬宾</view> -->
   <view class='label'>
-    <image src='/img/icon-baoyou.png' mode='widthFix'></image>
+    <image wx:if='{{freight_type==2}}' src='/img/icon-baoyou.png' mode='widthFix'></image>
+    <image wx:if='{{min_payment}}' src='/img/icon-jifen.png' mode='widthFix'></image>
   </view>
   <view class='price'>
-    <text class='now'>￥150.00</text>
-    <text class='old'>￥150.00</text>
+    <text class='now'>￥{{group_price}}</text>
+    <!-- <text class='old'>￥{{original_price}}</text> -->
   </view>
 </template>
