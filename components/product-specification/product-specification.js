@@ -1,6 +1,7 @@
 Component({
   properties: {
-    productTypeList:Array
+    productTypeList:Array,
+    priceList: Array,
   },
   data: {
     visiable:false,
@@ -8,15 +9,12 @@ Component({
     isSelect:false,// 是否选择了商品类型
     productType: '',
     isActive:[{index:'',val:''}],
-    // productTypeList:[
-    //   {name:'颜色分类',list:['金色','黄色']},
-    //   { name: '颜色分类', list: ['金色', '黄色']}
-    // ]
   },
   methods: {
     makeSureType(e){
       console.log(this.properties.productTypeList)
       if (this.data.isActive.length == this.properties.productTypeList.length){
+        console.log(11111)
         let isActive = this.data.isActive
         let productType = []
         for (let i = 0; i < isActive.length;i++){
@@ -24,13 +22,20 @@ Component({
         }
         console.log(productType)
         this.triggerEvent('subClicked', productType);
-        productType = '已选：""' + productType.join('""') + '""'
-        // this.setData({
-        //   productType: productType
-        // })
-        
+        let productType2 = '已选：""' + productType.join('""') + '""'
+
+        let seletType = productType.join('-')
+        this.chooseType(seletType)
+        this.types 
+        this.setData({
+          productType: productType2
+        })      
         this.typeClicked()
       }
+    },
+    chooseType(types){
+      console.log(types)
+      console.log(this.data.priceList)
     },
     typeListClicked(e){
       let key = e.currentTarget.dataset.type
@@ -51,32 +56,12 @@ Component({
         visiable: !this.data.visiable
       })
     },
-    counterAddClicked(e) {
-      this.setData({
-        innerCount: this.data.innerCount + 1
-      })
-    },
-    counterSubClicked(e) {
-      let count = this.data.innerCount - 1;
-      if (count < 1 || count == undefined) {
-        count = 1;
-      }
-      this.setData({
-        innerCount: count,
-      })
-    },
     counterInputOnChange(e) {
-      let count = e.detail.e.detail.value;
-      if (count == null || count == undefined) {
-        count = 1;
-      }
-      count = parseInt(count);
-      if (count <= 0) {
-        count = 1;
-      }
+      let count = e.detail.innerCount;
       this.setData({
         innerCount: count,
       })
+      this.triggerEvent('counterInputOnChange', this.data.innerCount);
     },
   }
 })

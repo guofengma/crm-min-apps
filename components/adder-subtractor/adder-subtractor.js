@@ -1,31 +1,44 @@
-// components/adder-subtractor/component/adder.js
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
     count: Number,
+    countSize: Number,
   },
-
-  /**
-   * 组件的初始数据
-   */
   data: {
-
+    innerCount:0
   },
-
-  /**
-   * 组件的方法列表
-   */
   methods: {
     subClicked: function (e) {
-      this.triggerEvent('subClicked', { ...this.data, e });
+      // 减
+      let count = this.data.innerCount - 1;
+      if (count < 1 || count == undefined) {
+        count = 1;
+      }
+      this.setData({
+        innerCount: count,
+      })
+      this.trigger(e);
     },
     inputOnChange: function (e) {
-      this.triggerEvent('inputOnChange', { ...this.data, e });
+      // 手动填写数字
+      this.setData({
+        innerCount: this.data.innerCount + 1
+      })
+      this.trigger(e);
     },
     addClicked: function (e) {
-      this.triggerEvent('addClicked', { ...this.data, e });
+      // 加
+      this.setData({
+        innerCount: this.data.innerCount + 1
+      })
+      this.trigger(e);
+    },
+    trigger(e){
+      this.triggerEvent('countChange', { ...this.data, e });
     }
+  },
+  ready: function () {
+    this.setData({
+      innerCount: this.data.count
+    })
   }
 })

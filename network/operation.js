@@ -65,11 +65,40 @@ export default class Operation {
     
         this.getHotWordsListActive = '/user/hotWord/getHotWordListActive'
           
-    /********************** 列表 *********************/
+    /********************** 产品 *********************/
 
+        // 产品列表
         this.queryProductListAPP = '/user/productApp/queryProductListAPP'
 
+        // 产品详情
+
         this.findProductByIdApp = '/user/productApp/findProductByIdApp'
+
+
+    /********************** 购物车 *********************/
+        // 新增
+        
+        this.addToShoppingCart  = '/user/shoppingCart/addToShoppingCart'
+
+        // 修改
+
+        this.updateShoppingCart = '/user/shoppingCart/updateShoppingCartItemsByProductId'
+
+        // 同步
+
+        this.shoppingCartFormCookieToSession ='/user/shoppingCart/shoppingCartFormCookieToSession'
+
+        // 查询
+
+        this.getShoppingCartList  ='/user/shoppingCart/getShoppingCartList'
+
+        // 删除
+
+        this.deleteFromShoppingCart = '/user/shoppingCart/deleteFromShoppingCartByProductId'
+
+        // 购物车超过上限
+
+        this.shoppingCartLimit = '/user/shoppingCart/shoppingCartFormCookieToSessionProductNumberIsAble'
 
         __instance(this);
     }

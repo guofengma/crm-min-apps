@@ -12,7 +12,8 @@
     "pages/search/search",
     "pages/search/search-result/search-result",
     "pages/product-detail/product-detail",
-    "pages/shopping-cart/shopping-cart"
+    "pages/shopping-cart/shopping-cart",
+    "pages/my/my"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
@@ -23,17 +24,33 @@
   },
   "tabBar": {
     "backgroundColor": "#ffffff",
-    "selectedColor": "#af8327",
-    "color": "#808080",
+    "selectedColor": "#e60012",
+    "color": "#999999",
     "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "/img/tabbar/ad01.png",
+        "selectedIconPath": "/img/tabbar/ad01-01.png"
       },
       {
-        "pagePath": "pages/login/login-wx/login-wx",
-        "text": "登录"
+        "pagePath": "pages/index/index",
+        "text": "发现",
+        "iconPath": "/img/tabbar/ad03.png",
+        "selectedIconPath": "/img/tabbar/ad03-03.png"
+      },
+      {
+        "pagePath": "pages/shopping-cart/shopping-cart",
+        "text": "购物车",
+        "iconPath": "/img/tabbar/ad04.png",
+        "selectedIconPath": "/img/tabbar/ad04-04.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/img/tabbar/ad05.png",
+        "selectedIconPath": "/img/tabbar/ad05-05.png"
       }
     ]
   }

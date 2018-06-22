@@ -1,66 +1,62 @@
-// pages/shopping-cart/shopping-cart.js
+let { Tool, RequestFactory } = global
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    innerCount:1,
+    chooseImgShow:[], // 保存勾选的个数
+    selectAll:false, //是否全选
+    cartList:[1]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
   
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
   
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  chooseClicked(e){
+    let index = e.currentTarget.dataset.index 
+    let activeArr = this.data.chooseImgShow
+    if (activeArr[index] === undefined){
+      activeArr[index] = false
+    }
+    activeArr[index] = !activeArr[index]
+    this.setData({
+      chooseImgShow:activeArr
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  cartProductClicked(e){
+    let index = e.currentTarget.dataset.index
+    console.log(index)
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  counterInputOnChange(e) {
+    let count = e.detail.innerCount;
+    this.setData({
+      innerCount: count,
+    })
+    this.triggerEvent('counterInputOnChange', this.data.innerCount);
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  deleteCart(e){
+    wx.showModal({
+      title: '提示',
+      content: '确定删除吗？',
+      success: function (res) {
+        if (res.confirm) {
+          // let r = RequestFactory.deleteCart(requestData);
+          // r.finishBlock = (req) => {
+          // }
+          // r.addToQueue();
+        }
+      }
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  selectAllClicked(){
+    let activeArr =[]
+    for (let i = 0; i < this.data.cartList.length;i++){
+      activeArr[i] = true
+    }
+    this.setData({
+      selectAll: !this.data.selectAll,
+      chooseImgShow: activeArr
+    })
   }
 })

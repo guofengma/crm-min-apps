@@ -1,2 +1,28 @@
-<!--pages/shopping-cart/shopping-cart.wxml-->
-<text>pages/shopping-cart/shopping-cart.wxml</text>
+<import src='/components/cart-product-info/cart-product-info.wxml' />
+
+<scroll-view class="search-result" scroll-y bindscrolltolower='onScroll'>
+  <view class='shopping-cart'>
+    <view class='shopping-cart-line flexR' bindlongpress='deleteCart' data-index='{{0}}'>
+      <view class='chooseImg' bindtap='chooseClicked' data-index='{{0}}'>
+       <image src='{{ chooseImgShow[0]? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>
+      </view>
+      <template is="cart-product-info" data='{{innerCount,imgSize:160,countSize:50}}'/>
+    </view>
+  </view>
+  <!--底部的bar  -->
+  <view class='cart-bar flexR'>
+    <view class='leftBar flexR boxSize'>
+      <view class='flexR' bindtap='selectAllClicked'>
+        <image src='{{ selectAll? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>
+        <text class='gray'>全选</text>
+      </view>
+      <view>
+        合计：
+        <text class='red'>¥ 150</text>
+      </view>
+    </view>
+    <view class='cart-btn redBg'>结算</view>
+  </view>
+</scroll-view>
+
+

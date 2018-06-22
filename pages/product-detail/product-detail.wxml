@@ -5,6 +5,8 @@
 <!-- 消息显示模板 -->
 <import src= "/components/msg-tips/msg-tips.wxml"/>
 
+<import src="../../libs/wxParse/wxParse.wxml" />
+
 <scroll-view class="bigWrap" scroll-y="true" scroll-top="{{scrollTop}}"   bindscroll="scroll" style="height:100%">
   <view class='prduct-detail-view'>
     <!--topbar  -->
@@ -35,7 +37,7 @@
     <view class='prd-info boxSize'>
       <view class='prd-name ellipsis-2'>{{productInfo.name}}</view>
       <view class='price'>
-        <text class='price1 red'>¥ {{productInfo.min_price}}</text>
+        <text class='price1 red'>¥ {{productInfo.levelPrice}}</text>
         <text class='price2 gray'>¥ {{productInfo.original_price}}</text>
         <text class='label-pd'>拼店价</text>
         <text class='price3 red'>积分价：¥ {{productInfo.min_payment}}</text>
@@ -48,7 +50,7 @@
     <!--产品规格选择  -->
     <view class='chooseBox'>
       <view>
-        <product-specification id='prd-info-type' bind:subClicked="typeSubClicked"  productTypeList='{{productTypeList}}'></product-specification >
+        <product-specification id='prd-info-type' bind:subClicked="typeSubClicked"  productTypeList='{{productTypeList}}' priceList='{{priceList}}' bind:counterInputOnChange='counterInputOnChange'></product-specification >
       </view>
       <view class='gray'>
         <text class='label red' >服务</text>
@@ -67,7 +69,7 @@
       </view>
       <view  class='prd-info-cell' bindtap='infoChoose'>
         <view wx:if='{{show}}'>
-          <image src='data:image/jpeg;base64,{{productInfo.content}}'></image>
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
         </view>
         <view wx:else>2222</view>
       </view>

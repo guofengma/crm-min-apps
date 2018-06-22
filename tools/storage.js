@@ -141,4 +141,13 @@ export default class Storage {
     static getUserAccountInfo() {
       return this.getterFor('userAccountInfo');
     }
+
+    // 存cookie
+    static setUserCookie(info) {
+      this.setterFor('userCookie', info)
+    }
+   
+    static getUserCookie() {
+      return this.getterFor('userCookie');
+    }
 }

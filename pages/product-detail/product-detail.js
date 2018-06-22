@@ -1,5 +1,7 @@
 let { Tool, RequestFactory, Storage } = global
 
+import WxParse from '../../libs/wxParse/wxParse.js';
+
 Page({
   data: {
     imgUrls: [],
@@ -11,7 +13,9 @@ Page({
     floorstatus:false, // 是否显示置顶的按钮
     productId:'', // 商品id
     productInfo:'', // 商品信息
-    productTypeList:[]
+    productTypeList:[],
+    productBuyCount:1, //商品购买数量
+    priceList:[],
   },
   onLoad: function (options) {
     this.setData({
@@ -22,31 +26,60 @@ Page({
   onShow: function () {
   
   },
+  msgTipsClicked(e){
+    let n = e.currentTarget.dataset.index
+    switch (n) {
+      case 1:
+        console.log(n)
+        break;
+      case 2:
+        Tool.navigateTo('/pages/index/index')
+        break;
+      case 3:
+
+        break;  
+    }
+  },
   requestFindProductByIdApp(params){
     let r = RequestFactory.findProductByIdApp(params);
     let productInfo = this.data.productInfo
     r.finishBlock = (req) => {
       let datas = req.responseObject.data
       console.log(datas)
-      let price = datas.product.group_price
-      if (price > datas.product.v1){
-        price = datas.product.v1
-      }
-      if (price > datas.product.v2) {
-        price = datas.product.v2
-      }
-      if (price > datas.product.v3) {
-        price = datas.product.v3
-      }
-      if (price > datas.product.v4) {
-        price = datas.product.v4
-      }
-      datas.product.min_price = price
+      // let price = datas.product.group_price
+      // if (price > datas.product.v1){
+      //   price = datas.product.v1
+      // }
+      // if (price > datas.product.v2) {
+      //   price = datas.product.v2
+      // }
+      // if (price > datas.product.v3) {
+      //   price = datas.product.v3
+      // }
+      // if (price > datas.product.v4) {
+      //   price = datas.product.v4
+      // }
+      // datas.product.min_price = price
+      let typeList = datas.saleSpecValueList;
+      typeList.forEach((item)=>{
+        item.typeList = item.spec_values.split(',')
+      })
       this.setData({
         imgUrls: datas.ImgUrl,
         productInfo:datas.product,
-        productTypeList: datas.infoValue
+        productTypeList: datas.saleSpecValueList,
+        priceList: datas.priceList
       })
+      /**
+      * WxParse.wxParse(bindName , type, data, target,imagePadding)
+      * 1.bindName绑定的数据名(必填)
+      * 2.type可以为html或者md(必填)
+      * 3.data为传入的具体数据(必填)
+      * 4.target为Page对象,一般为this(必填)
+      * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+      */
+      let html = datas.product.content 
+      WxParse.wxParse('article', 'html', html, this, 5);
     }
     r.addToQueue();
   },
@@ -117,5 +150,23 @@ Page({
   },
   cartClicked(){
     Tool.navigateTo('/pages/shopping-cart/shopping-cart')
+  },
+  counterInputOnChange(e){
+    this.setData({
+      productBuyCount:e.detail
+    })
+  },
+  onShareAppMessage: function (res) {
+
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    let imgUrl = this.data.imgUrls[0].original_img ? this.data.imgUrls[0].original_img:''
+    return {
+      title: "飓热小程序",
+      path: '/pages/product-detail/product-detail?productId' + this.data.productId,
+      imgUrl: imgUrl
+    }
   }
 })

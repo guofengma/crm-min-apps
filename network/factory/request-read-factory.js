@@ -26,6 +26,7 @@ export default class RequestFactory {
     return req;
   }
   
+  /***********/ 
   // 获取openid verifyWechat
   static verifyWechat(params) {
     let url = Operation.sharedInstance().verifyWechat;
@@ -132,6 +133,43 @@ export default class RequestFactory {
   static findProductByIdApp(params) {
     // 1代表升序 2代表降序
     let url = Operation.sharedInstance().findProductByIdApp;
+    return this.request(url, params, '获取商品详情页');
+  }
+
+  /**************购物车********************/ 
+  static addToShoppingCart(params) {
+    // 1代表升序 2代表降序
+    let url = Operation.sharedInstance().addToShoppingCart;
+    return this.request(url, params, '获取商品详情页');
+  }
+
+  static updateShoppingCart(params) {
+    // 1代表升序 2代表降序
+    let url = Operation.sharedInstance().updateShoppingCart;
+    return this.request(url, params, '获取商品详情页');
+  }
+
+  static shoppingCartFormCookieToSession(params) {
+    // 1代表升序 2代表降序
+    let url = Operation.sharedInstance().shoppingCartFormCookieToSession;
+    return this.request(url, params, '获取商品详情页');
+  }
+
+  static getShoppingCartList(params) {
+    // 1代表升序 2代表降序
+    let url = Operation.sharedInstance().getShoppingCartList;
+    return this.request(url, params, '获取商品详情页');
+  }
+  
+  static deleteFromShoppingCart(params) {
+    // 1代表升序 2代表降序
+    let url = Operation.sharedInstance().deleteFromShoppingCart;
+    return this.request(url, params, '获取商品详情页');
+  }
+  // shoppingCartLimit
+  static shoppingCartLimit(params) {
+    // 1代表升序 2代表降序
+    let url = Operation.sharedInstance().shoppingCartLimit;
     return this.request(url, params, '获取商品详情页');
   }
 }

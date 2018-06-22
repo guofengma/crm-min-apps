@@ -58,6 +58,10 @@ export default class Request {
         //是否有队列管理请求
         this.isManagedByQueue = false;
 
+        // header
+
+        this.header = ''
+
         /**
          * 调用finishBlock前的预处理，可作为factory中的统一处理
          */
@@ -95,11 +99,10 @@ export default class Request {
               'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (res) {
-
                 if (that.managerLoadingPrompt) {
                     global.Tool.hideLoading();
                 }
-
+                that.header = res.header
                 console.log('<============================== 请求结束：' + that.name);
                 console.debug('result:');
                 console.debug('==============================\n\n\n');

@@ -3,31 +3,31 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 200rpx;
-    height: 60rpx;
+    /* width: 200rpx; */
     border: 1rpx solid lightgray;
     border-radius: 10rpx;
 }
-
+.adder-subtractor,.adder-subtractor .subtractor,.adder-subtractor .adder{
+    height: 60rpx;
+}
+.adder-subtractor .subtractor,.adder-subtractor .adder{
+    width: 60rpx;
+}
 .adder-subtractor .subtractor{
     display: flex;
     flex: 0 0 auto;
-    height: 60rpx;
-    width: 60rpx;
     border-right: 1px solid lightgray;
 }
 
 .adder-subtractor .adder{
     display: flex;
     flex: 0 0 auto;
-    height: 60rpx;
-    width: 60rpx;
     border-left: 1px solid lightgray;
 }
 
 .adder-subtractor input{
     display: flex;
-    flex: 1;
+    /* flex: 1; */
     text-align: center;
     font-size: 26rpx;
 }

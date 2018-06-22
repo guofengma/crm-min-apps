@@ -7,6 +7,9 @@ import TCGlobal, {
   RequestFactory
 } from './tools/tcglobal';
 
+const normalizeUserCookie = (cookies = '') => {
+   
+};
 App({
   onLaunch: function () {
     //设置全局变量
@@ -62,16 +65,28 @@ App({
     let params = {code:code}
     let r = global.RequestFactory.verifyWechat(params);
     r.finishBlock = (req) => {
+      console.log(req)
+      Storage.setUserCookie(req.header['Set-Cookie'])
+      let cookies = req.header['Set-Cookie']
+      let __cookies = [];
+      const COOKIE_KEY = '__cookie_key__';
+      // (cookies.match(/([\w\-.]*)=([\w\]*);/g) || [] ).forEach((str) => {
+      //   console.log(str)
+      // });
+      // (cookies.match(/([\w\-.]*)=([^\s=]+=);/g) || []).forEach((str) => {
+      //   console.log(str)
+      // });
+      // (cookies.match(/([\w\-.]*)=([^\s=]+==);/g) || []).forEach((str) => {
+      //   console.log(str)
+      // });
+      wx.setStorageSync(COOKIE_KEY, __cookies.join(' '));
       Storage.setUserAccountInfo(req.responseObject.data)
       Storage.setMemberId(req.responseObject.data.id)
     }
     r.failBlock = (req) =>{
       if (req.responseObject.code ==600 ){
         global.Storage.setWxOpenid(req.responseObject.data)
-        wx.switchTab({
-          url: '/pages/login/login-wx/login-wx'
-        })
-        // Tool.switchTab('/pages/login/login-wx/login-wx')
+        Tool.navigateTo('/pages/login/login-wx/login-wx')
       }
     }
     r.addToQueue();

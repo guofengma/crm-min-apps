@@ -35,15 +35,11 @@ Page({
     // 向下滑动的时候请求数据
     if (this.data.currentPage > this.data.totalPage) return
     let page = this.data.currentPage
-    page++
+    page+=1
+    let {params} = this.data
+    params.page = page
     this.setData({
-      currentPage: page
-    })
-    let params = {
-      pageSize: this.data.pageSize,
-      page: this.data.currentPage
-    }
-    this.setData({
+      currentPage: page,
       params: params
     })
     this.requestQueryProductList(this.data.params)
@@ -53,7 +49,6 @@ Page({
     let productInfo = this.data.productInfo
     r.finishBlock = (req) => {
       let datas = req.responseObject.data
-      console.log(req.responseObject.data)
       this.setData({
         productInfo: productInfo.concat(datas.data),
         totalPage: datas.total
@@ -62,12 +57,18 @@ Page({
     r.addToQueue();
   },
   productCliked(e){
-    console.log(e.currentTarget.dataset.id)
     Tool.navigateTo('/pages/product-detail/product-detail?productId='+ e.currentTarget.dataset.id)
   },
   navbarClicked(e){
+    // 1 综合 2销量 3价格 不是数字为变化排版
     let n = e.detail.n
     let sort = e.detail.sort
+    if (n === false || n === true){
+      this.setData({
+        show: n
+      })
+      return
+    }
     let params = {
       pageSize: this.data.pageSize,
       page: 1
@@ -82,22 +83,12 @@ Page({
         let sortType = sort? 1:2
         params.sort = sortType
         break;
-      default:
-        this.setData({
-          show: n
-        })
-        console.log(n) 
     }
-    params.pageSize = this.data.pageSize
     this.setData({
       params: params,
       currentPage:1,
       productInfo: []
     }) 
-    console.log(this.data.params)
-    if (!isNaN(n)){
-      console.log(11111)
-      this.requestQueryProductList(this.data.params)
-    } 
+    this.requestQueryProductList(this.data.params)
   }
 })

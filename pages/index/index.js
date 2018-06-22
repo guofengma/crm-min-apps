@@ -18,6 +18,8 @@ Page({
     let page = e.currentTarget.dataset.id
     Tool.navigateTo(page)
   },
+  onShareAppMessage: function (res) {
+  }
   // requestInfo: function () {
   //   let self = this;
   //   let r = RequestFactory.Login();

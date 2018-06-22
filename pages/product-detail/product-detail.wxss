@@ -3,6 +3,8 @@
 
 @import "/components/msg-tips/msg-tips.wxss";
 
+@import "/libs/wxParse/wxParse.wxss";
+
 .prduct-detail-view{
   padding-bottom: 150rpx;
 }
@@ -39,7 +41,7 @@
   z-index: 100;
   min-height: 50rpx;
 }
-.slider-nav image{
+.slider-nav>image{
   width: 70rpx;
 }
 .prduct-detail-view>view{

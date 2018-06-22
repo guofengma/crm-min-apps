@@ -85,6 +85,9 @@ image{
 .gray {
   color: #bbbbbb;
 }
+.redBg{
+  background-color: #e60012
+}
 /*模态背景框，半透明黑色，全屏*/
 .model-view-bg {
     display: flex;
