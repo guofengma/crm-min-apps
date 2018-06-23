@@ -12,7 +12,7 @@ Page({
     productInfo:[], // 商品信息
     totalPage:'', // 页面总页数
     currentPage:1, // 当前的页数
-    pageSize: 3, // 每次加载请求的条数 默认10 
+    pageSize: 10, // 每次加载请求的条数 默认10 
     params:{}
   },
   onLoad: function (options) {
@@ -33,7 +33,7 @@ Page({
   },
   onScroll(){
     // 向下滑动的时候请求数据
-    if (this.data.currentPage > this.data.totalPage) return
+    if (this.data.currentPage >= this.data.totalPage) return
     let page = this.data.currentPage
     page+=1
     let {params} = this.data
