@@ -20,7 +20,7 @@ export default class Request {
         // 开发 
         // this.baseUrl = 'http://172.16.10.51:'
         this.baseUrl = 'http://172.16.10.9:'
-        //this.baseUrl = 'http://172.16.10.253:'
+        // this.baseUrl = 'http://172.16.10.253:'
         if (bParam.port) {
           this.baseUrl = this.baseUrl + bParam.port
         } else {
@@ -61,7 +61,10 @@ export default class Request {
         // header
 
         this.header = ''
+        
+        // cookie
 
+        this.cookie = ''
         /**
          * 调用finishBlock前的预处理，可作为factory中的统一处理
          */
@@ -85,10 +88,10 @@ export default class Request {
 
     //发起请求
     start() {
-      console.log(this._url)
         let that = this;
         this.url();
         this.body();
+        this.hasCookie()
         this.requestStatus = RequestStatus.requesting;
         wx.request({
             data:this._body,
@@ -96,7 +99,8 @@ export default class Request {
             dataType:'json',
             method:this.requestMethod,
             header: {
-              'content-type': 'application/x-www-form-urlencoded'
+              'content-type': 'application/x-www-form-urlencoded',
+              'Cookie': this.cookie
             },
             success: function (res) {
                 if (that.managerLoadingPrompt) {
@@ -191,6 +195,17 @@ export default class Request {
       delete this.bodyParam.port
       this._body = this.bodyParam
       return this._body;
+    }
+
+    // 是否带上cookie 请求 
+    hasCookie(){
+
+      if (this.bodyParam.hasCookie){
+        delete this.bodyParam.hasCookie
+        console.log(global.Storage.getUserCookie())
+        this.cookie = global.Storage.getUserCookie() || ' '
+        return this.cookie
+      }      
     }
 }
 

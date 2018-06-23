@@ -68,7 +68,7 @@ export default class Operation {
     /********************** 产品 *********************/
 
         // 产品列表
-        this.queryProductListAPP = '/user/productApp/queryProductListAPP'
+        this.queryProductListAPP = '/user/productApp/queryProductListApp'
 
         // 产品详情
 

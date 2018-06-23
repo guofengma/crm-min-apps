@@ -1,4 +1,4 @@
-<view class='prd-info-type' bindtap='typeClicked'>
+<view class='prd-info-type' bindtap='isVisiableClicked'>
   <view class='cell-name'>规格</view>
   <view class='cell-content'>{{productType? productType:'选择产品规格'}}</view>
   <image mode='widthFix' src='/img/common-accessory-icon.png'></image>
@@ -12,12 +12,12 @@
       </view>
       <!--产品信息  -->
       <view class='header-content'>
-         <view class='price'>¥ 455.00</view>
-         <view>库存454654件</view>
-         <view>选择颜色分类，尺寸</view>
+         <view class='price'>¥ {{selectPrdList.levelPrice? selectPrdList.levelPrice:productInfo.levelPrice}}</view>
+         <view>库存{{selectPrdList.stock?  selectPrdList.stock:priceList[0].stock}}件</view>
+         <view class='tips'>{{tips}}</view>
       </view>
       <!--取消  -->
-      <icon class='cancel' type="cancel" size="30" color='#dddddd' bindtap='typeClicked'/>
+      <icon class='cancel' type="cancel" size="30" color='#dddddd' bindtap='isVisiableClicked'/>
     </view>
     <!--滚动区域  -->
     <scroll-view scroll-y  class='scroll-y'>

@@ -62,9 +62,14 @@ Page({
     }
     let r = global.RequestFactory.wechatLogin(params);
     r.finishBlock = (req) => {
-      console.log(req)
+      
+      // 获取 cookies
+      let cookies = req.header['Set-Cookie']
+      // 存相关信息
+      Tool.formatCookie(cookies)
+
       wx.switchTab({
-        url: '//pages/index/index'
+        url: '/pages/index/index'
       })
     }
     r.failBlock = (req) => {

@@ -16,6 +16,13 @@ Page({
     productTypeList:[],
     productBuyCount:1, //商品购买数量
     priceList:[],
+    nodes:  [{
+      name:  "table",
+      attrs:  {
+        class: "table"
+      },
+      children: [],
+    }]  
   },
   onLoad: function (options) {
     this.setData({
@@ -30,10 +37,10 @@ Page({
     let n = e.currentTarget.dataset.index
     switch (n) {
       case 1:
-        console.log(n)
+        Tool.navigateTo('')
         break;
       case 2:
-        Tool.navigateTo('/pages/index/index')
+        Tool.switchTab('/pages/index/index')
         break;
       case 3:
 
@@ -46,20 +53,6 @@ Page({
     r.finishBlock = (req) => {
       let datas = req.responseObject.data
       console.log(datas)
-      // let price = datas.product.group_price
-      // if (price > datas.product.v1){
-      //   price = datas.product.v1
-      // }
-      // if (price > datas.product.v2) {
-      //   price = datas.product.v2
-      // }
-      // if (price > datas.product.v3) {
-      //   price = datas.product.v3
-      // }
-      // if (price > datas.product.v4) {
-      //   price = datas.product.v4
-      // }
-      // datas.product.min_price = price
       let typeList = datas.saleSpecValueList;
       typeList.forEach((item)=>{
         item.typeList = item.spec_values.split(',')
@@ -69,6 +62,39 @@ Page({
         productInfo:datas.product,
         productTypeList: datas.saleSpecValueList,
         priceList: datas.priceList
+      })
+      let tr = []
+      let tbody = this.data.nodes
+      for (let i = 0; i < datas.infoValue.length;i++){ 
+        console.log(datas.infoValue.length)
+        tr.push(
+          {
+            name: "tr",
+            attrs: { class: "tr" },
+            children: [ {
+              name: "td",
+              attrs: { class:'td frist-td'},
+              children: [{
+                type: "text",
+                text: datas.infoValue[i].parm
+              }]
+            },
+            {
+              name: "td",
+              attrs: { class: 'td td2'},
+              children: [{
+                type: "text",
+                text: datas.infoValue[i].parm_value
+              }]
+            }
+            ]
+          }  
+
+        )
+      }
+      tbody[0].children = tr
+      this.setData({
+        nodes: tbody
       })
       /**
       * WxParse.wxParse(bindName , type, data, target,imagePadding)
@@ -107,12 +133,12 @@ Page({
     })
   },
   cartClicked(){
-    Tool.navigateTo('')
+    Tool.switchTab('/pages/shopping-cart/shopping-cart')
   },
   btnClicked(e){
     let n = parseInt(e.currentTarget.dataset.key)
     if (!this.data.selectType){
-      this.selectComponent("#prd-info-type").typeClicked()
+      this.selectComponent("#prd-info-type").isVisiableClicked()
     }
     switch (n) {
       case 1:
@@ -147,9 +173,6 @@ Page({
     this.setData({
       msgShow: !this.data.msgShow
     })
-  },
-  cartClicked(){
-    Tool.navigateTo('/pages/shopping-cart/shopping-cart')
   },
   counterInputOnChange(e){
     this.setData({

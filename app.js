@@ -65,21 +65,12 @@ App({
     let params = {code:code}
     let r = global.RequestFactory.verifyWechat(params);
     r.finishBlock = (req) => {
-      console.log(req)
-      Storage.setUserCookie(req.header['Set-Cookie'])
+      
+      // 获取 cookies
       let cookies = req.header['Set-Cookie']
-      let __cookies = [];
-      const COOKIE_KEY = '__cookie_key__';
-      // (cookies.match(/([\w\-.]*)=([\w\]*);/g) || [] ).forEach((str) => {
-      //   console.log(str)
-      // });
-      // (cookies.match(/([\w\-.]*)=([^\s=]+=);/g) || []).forEach((str) => {
-      //   console.log(str)
-      // });
-      // (cookies.match(/([\w\-.]*)=([^\s=]+==);/g) || []).forEach((str) => {
-      //   console.log(str)
-      // });
-      wx.setStorageSync(COOKIE_KEY, __cookies.join(' '));
+
+      // 存相关信息
+      Tool.formatCookie(cookies)
       Storage.setUserAccountInfo(req.responseObject.data)
       Storage.setMemberId(req.responseObject.data.id)
     }

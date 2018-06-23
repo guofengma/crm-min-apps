@@ -704,6 +704,22 @@ export default class Tool {
       }
       return false
     }
+    // 格式化服务器端返回的cookie
 
+    static formatCookie(cookies) {
+      let __cookies = [];
+      (cookies.match(/([\w\-.]*)=([^\s]+);/g) ||[]).forEach((str) => {
+        if (str.indexOf('Path=/') !== 0) {
+          __cookies.push(str);
+        } else if (str.indexOf('token2') != -1){
+          let token2 = str.slice(7)
+          __cookies.push(token2);
+        }
+      });
+      //  最后发送的
+      let myCookie = __cookies.join('')
+      global.Storage.setUserCookie(myCookie)
+      return myCookie
+    }
 }
 

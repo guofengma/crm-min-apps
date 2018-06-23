@@ -270,3 +270,35 @@
   right: 50rpx;
   top:25rpx;
 }
+
+/*table的样式  */
+.table-view{
+  text-align: center;
+  padding:30rpx;
+}
+.table {
+  width: 99%;
+  border: 1rpx solid #ddd;
+  border-collapse:collapse;
+  font-size: 24rpx;
+  table-layout:fixed;
+  white-space: normal;
+  word-break:break-all;
+}
+.table .td.frist-td{
+  background: #F8F8F8;
+  width: 24%;
+  color: #222;
+  overflow: hidden
+}
+.table .td2{
+  width: 76%;
+  color: #999999;
+  height: 80rpx;
+  text-align: left;
+  padding-left: 30rpx;
+  overflow: hidden
+}
+.table .tr{
+  border: 1rpx solid #ddd;
+}

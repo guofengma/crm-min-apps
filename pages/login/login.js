@@ -27,10 +27,21 @@ Page({
   formSubmit: function (e) {
     let params = e.detail.value
     let r = RequestFactory.passwordLogin(params);
+
     r.finishBlock = (req) => {
+      
+      // 获取 cookies
+      let cookies = req.header['Set-Cookie']
+      // 存相关信息
+      Tool.formatCookie(cookies)
+
       wx.switchTab({
         url: '/pages/index/index'
       })
+    }
+
+    r.failBlock = (req) => {
+      Tool.showAlert(req.responseObject.msg)
     }
     r.addToQueue();
   },

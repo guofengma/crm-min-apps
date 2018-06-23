@@ -113,9 +113,12 @@
   color: #999;
   margin-right: 64rpx;
 }
-.cell-content{
+.cell-content,.tips{
   width:500rpx;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.tips{
+  width: 400rpx;
 }
