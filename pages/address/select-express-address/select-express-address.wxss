@@ -1,0 +1,35 @@
+@import "/components/address-info/address-info";
+
+@import "/pages/address/select-address-common";
+
+.select-selfLifting-address .adress-icon{
+  width: 44rpx;
+}
+.adress-edit-choose image{
+  width: 32rpx;
+}
+.adress-edit-choose{
+  padding:20rpx 30rpx; 
+  border-top: 1rpx solid #eee;
+}
+.adress-edit-choose>view{
+  width: 50%;
+  font-size: 26rpx;
+}
+.choose-leftbar{
+  background:url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/choose-circle.png) no-repeat; 
+  background-size: 32rpx;
+  padding-left: 50rpx;
+}
+.choose-rightbar.flexR{
+  justify-content: flex-end;
+}
+.choose-rightbar>view{
+  padding-left: 50rpx;
+}
+.edit{
+  background:url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/choose-circle.png) no-repeat; 
+}
+.del{
+  
+}

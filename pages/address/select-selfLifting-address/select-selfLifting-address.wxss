@@ -1,0 +1,8 @@
+@import "/components/address-info/address-info";
+
+@import "/pages/address/select-address-common";
+
+.select-selfLifting-address .adress-icon{
+  width: 44rpx;
+}
+

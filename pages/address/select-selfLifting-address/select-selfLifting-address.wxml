@@ -1,4 +1,4 @@
-<import src='/components/adress-info/adress-info.wxml' />
+<import src='/components/address-info/address-info.wxml' />
 <view class='select-selfLifting-address'>
   <view class='select-adress-box {{active? "active":""}}'>
     <template is="adress-info" data=''/>

@@ -1,4 +1,4 @@
-<import src='/components/adress-info/adress-info.wxml' />
+<import src='/components/address-info/address-info.wxml' />
 
 
 <view class='orderComfirm'>

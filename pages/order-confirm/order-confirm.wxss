@@ -1,4 +1,4 @@
-@import "/components/adress-info/adress-info";
+@import "/components/address-info/address-info";
 
 .adress-view{
   padding: 30rpx 100rpx 33rpx 30rpx;

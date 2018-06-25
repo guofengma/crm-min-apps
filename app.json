@@ -15,8 +15,8 @@
     "pages/shopping-cart/shopping-cart",
     "pages/my/my",
     "pages/order-confirm/order-confirm",
-    "pages/adress/select-express-address/select-express-address",
-    "pages/adress/select-selfLifting-address/select-selfLifting-address"
+    "pages/address/select-express-address/select-express-address",
+    "pages/address/select-selfLifting-address/select-selfLifting-address"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
