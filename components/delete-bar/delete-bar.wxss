@@ -5,9 +5,6 @@
  overflow: hidden;
 }
 .content {
- /* 
- padding: 10rpx;
- line-height: 22rpx; */
  width: 100%;
  margin-right:0;
  -webkit-transition: all 0.4s;
@@ -28,6 +25,7 @@
  transform: translateX(90px);
  -webkit-transition: all 0.4s;
  transition: all 0.4s;
+ font-size: 30rpx;
 }
 .touch-move-active .content,
 .touch-move-active .del {
