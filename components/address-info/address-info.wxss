@@ -12,3 +12,7 @@
 .adress-info-leftbar{
   width: 93.3%;
 }
+.no-address{
+  font-size: 26rpx;
+  color: #c8c8c8;
+}

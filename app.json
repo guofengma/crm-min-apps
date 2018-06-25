@@ -16,7 +16,9 @@
     "pages/my/my",
     "pages/order-confirm/order-confirm",
     "pages/address/select-express-address/select-express-address",
-    "pages/address/select-selfLifting-address/select-selfLifting-address"
+    "pages/address/select-selfLifting-address/select-selfLifting-address",
+    "pages/address/choose-address/choose-address",
+    "pages/address/new-address/new-address"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

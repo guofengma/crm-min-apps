@@ -1,8 +1,8 @@
 <import src='/components/address-info/address-info.wxml' />
 
-<view class='select-express-address'>
+<view class='select-express-address' >
   <view class='select-adress-box  {{active? "active":""}}'>
-    <view class='topBar'>
+    <view class='topBar' >
       <template is="adress-info" data=''/>
     </view>
     <view class='adress-edit-choose flexR-sb gray'>
@@ -14,5 +14,10 @@
         <view class='del'>删除</view>
       </view>
     </view>
+  </view>
+
+  <!--新增按钮  -->
+  <view class='add-address-btn  flexR redBg' bindtap='newAddress'>
+    + 添加新的收货地址
   </view>
 </view>

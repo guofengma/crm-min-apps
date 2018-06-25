@@ -3,7 +3,13 @@
   <view class='select-adress-box {{active? "active":""}}'>
     <template is="adress-info" data=''/>
     <view class='leftbar flexR'>
-        <image src='{{active? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>
+      <image src='{{active? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>
     </view>
+  </view>
+
+  <!--设置-->
+  <view class='flexR-sb edit-view boxSize {{active? "active":""}}'>
+    <view class='default-view flexR gray'>设置为默认提货地址</view>
+    <view class='btn redBg flexR'>确认</view>
   </view>
 </view>

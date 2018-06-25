@@ -1,5 +1,7 @@
 @import "/components/address-info/address-info";
 
+@import "/components/cart-product-info/cart-product-info.wxss";
+
 .adress-view{
   padding: 30rpx 100rpx 33rpx 30rpx;
   position: relative;
@@ -17,4 +19,16 @@
 }
 .choose-adress-icon image{
   vertical-align: middle;
+}
+.order-info-other{
+  font-size: 26rpx;
+  background: #fff;
+}
+.order-info-other>view{
+  height: 88rpx;
+  border-top: 1rpx solid #eee;
+  padding: 0 30rpx;
+}
+.order-info-other image{
+  width: 20rpx;
 }

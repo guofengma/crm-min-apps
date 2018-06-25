@@ -21,7 +21,6 @@ Component({
     shengshi: null,//取到该数据的所有省市区数据
     result:[],//最后取到的省市区名字
     animationData: {},
-    isChoose:false,
     picker:[0,0,0]
   },
 
@@ -53,11 +52,7 @@ Component({
       this.setData({
         animationData: animation.export()
       });
-      　　//取消不传值，这里就把result 的值赋值为[]
-      this.setData({
-        result:[]
-      });
-      console.log(this.data.result);
+      //取消不传值，这里就把result 的值赋值为[]
       this.pickerTriggerEvent(false)
     },
     //确认按钮
@@ -71,7 +66,6 @@ Component({
       animation.height(0 + 'rpx').step()
       this.setData({
         animationData: animation.export(),
-        isChoose:true,
         result:[
           this.data.sheng[this.data.picker[0]],
           this.data.shi[this.data.picker[1]],
@@ -99,6 +93,9 @@ Component({
         this.setIndex(val[0], val[1], 0)
         return
       }
+      this.setData({
+        picker: val
+      })
     },
     pickerTriggerEvent(hidden){
       this.triggerEvent('pickerClicked', { hidden: hidden, result: this.data.result })

@@ -6,7 +6,16 @@
     <input type='text' name='realname' placeholder="请输入姓名" placeholder-style='color:#c8c8c8'></input>
     <input type='text' name='idcard' placeholder="请输入身份证号码" placeholder-style='color:#c8c8c8' ></input>
     <view class='form-group cell-line'>
-      <city-picker bind:pickerClicked="pickerClicked"></city-picker>
+      <city-picker bind:pickerClicked="pickerClicked">
+        <view>
+           <view wx:if='{{region.length==0}}'>请选择你所在的省市区</view> 
+           <view wx:else class='result'>
+            <view>{{region[0].name}}</view>
+            <view>{{region[1].name? " - "+ region[1].name+ " - ":''}}</view>
+            <view>{{region[2].name}}</view>
+          </view>
+        </view>
+      </city-picker>
     </view>
      <textarea name='address' placeholder='请输入详细地址' placeholder-style='color:#c8c8c8' hidden='{{hidden}}' />
      <button formType="submit" class='loginBtn' >提交</button>

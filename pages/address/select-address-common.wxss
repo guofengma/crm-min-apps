@@ -6,7 +6,7 @@
   margin-top: 20rpx;
   box-shadow: 0px 0px 20rpx 0px rgba(102, 102, 102, 0.1);
   border-radius: 20rpx;
-  background: #fff url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/line-bg.png) no-repeat left bottom; 
+  background: #fff url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/line-bg-dark.png) no-repeat left bottom; 
   background-size: 100%;
   overflow: hidden;
   position: relative;
@@ -30,11 +30,11 @@
   right: 0;
   top: 0;
 }
-.select-adress-box.active .leftbar, .select-express-address .topBar{
+.select-adress-box.active .leftbar,.select-adress-box.active .topBar {
   background:url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/default-text.png) no-repeat right top;
   background-size: 70rpx 70rpx; 
 }
-.select-express-address .topBar {
+.topBar {
   padding-right: 44rpx;
   background-size: 64rpx 64rpx; 
 }

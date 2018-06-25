@@ -10,8 +10,8 @@
       </view>
       <view class='prd-count-box flexR'>
         <view class='red'>¥ 150</view>
-        <adder-subtractor count="{{innerCount}}" countSize='{{countSize}}' bind:countChange="counterInputOnChange"/>
         <view wx:if="{{showQnt}}" class='gray' >×2</view>
+        <adder-subtractor wx:else count="{{innerCount}}" countSize='{{countSize}}' bind:countChange="counterInputOnChange"/>
       </view>
     </view>
   </view>

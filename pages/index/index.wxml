@@ -13,4 +13,5 @@
    <button bindtap='btnClicked' data-id='/pages/order-confirm/order-confirm' >确认订单</button>
    <button bindtap='btnClicked' data-id='/pages/address/select-selfLifting-address/select-selfLifting-address' >自提地址选择</button>
    <button bindtap='btnClicked' data-id='/pages/address/select-express-address/select-express-address' >快递地址选择</button>
+    <button bindtap='btnClicked' data-id='/pages/address/choose-address/choose-address' >订单地址选择</button>
 </view>

@@ -25,11 +25,14 @@
   justify-content: flex-end;
 }
 .choose-rightbar>view{
-  padding-left: 50rpx;
+  padding-left: 44rpx;
 }
 .edit{
-  background:url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/choose-circle.png) no-repeat; 
+  background:url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/edit-icon.png) no-repeat; 
+  background-size: 36rpx;
+  margin-right: 30rpx;
 }
 .del{
-  
+  background:url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/delete-icon.png) no-repeat; 
+  background-size: 36rpx;
 }

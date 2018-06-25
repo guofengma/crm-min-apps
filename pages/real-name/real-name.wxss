@@ -85,3 +85,10 @@ textarea{
 .dimiss{
   margin-bottom: 50rpx;
 }
+
+.result{
+  display: flex;
+  justify-content: flex-start;
+  height: 84rpx;
+  line-height: 84rpx;
+}

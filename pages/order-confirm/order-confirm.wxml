@@ -1,11 +1,40 @@
 <import src='/components/address-info/address-info.wxml' />
 
+<import src='/components/cart-product-info/cart-product-info.wxml' />
+
 
 <view class='orderComfirm'>
-  <view class='adress-view'>
+  <view class='adress-view' bindtap='adressClicked'>
     <template is="adress-info" data=''/>
     <view class='choose-adress-icon flexC'>
      <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
+    </view>
+  </view>
+
+  <!--商品信息  -->
+  <view class='order-prd-info'>
+   <template is="cart-product-info" data='{{innerCount,imgSize:180,showQnt:true}}'/>
+  </view>
+
+  <view  class='order-info-other'>
+    <view class='flexR-sb'>
+      <view>优惠券</view>
+      <view class='gray'>
+        不支持积分消费
+        <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
+      </view>
+    </view>
+    <view class='flexR-sb'>
+      <view>共800000积分，可用80000积分</view>
+      <view class='gray'>不支持积分消费</view>
+    </view>
+    <view class='flexR-sb'>
+      <view>运费</view>
+      <view class='gray'>¥ 7.00</view>
+    </view>
+    <view class='flexR-sb'>
+      <view>买家留言</view>
+      <input value='选填：填写内容已与卖家协商确认'></input>
     </view>
   </view>
 </view>
