@@ -45,7 +45,6 @@ Page({
     this.requestQueryProductList(this.data.params)
   },
   requestQueryProductList(params){
-    console.log(params)
     let r = RequestFactory.queryProductListAPP(params);
     let productInfo = this.data.productInfo
     r.finishBlock = (req) => {

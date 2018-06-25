@@ -5,13 +5,23 @@ Page({
     innerCount:1,
     chooseImgShow:[], // 保存勾选的个数
     selectAll:false, //是否全选
-    cartList:[1]
+    cartList:[1],
+    items:[
+      { isTouchMove:false},
+      { isTouchMove: false }
+    ]
   },
   onLoad: function (options) {
-  
+    
   },
   onShow: function () {
-  
+
+  },
+  pickerClicked(e){
+    let n = e.detail
+    this.setData({
+      items: e.detail
+    })
   },
   chooseClicked(e){
     let index = e.currentTarget.dataset.index 
@@ -26,7 +36,6 @@ Page({
   },
   cartProductClicked(e){
     let index = e.currentTarget.dataset.index
-    console.log(index)
   },
   counterInputOnChange(e) {
     let count = e.detail.innerCount;

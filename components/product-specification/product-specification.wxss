@@ -1,30 +1,30 @@
 .model-view-bg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10002;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,.5);
-    line-height: 28rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10002;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+  line-height: 28rpx;
 }
 .prd-info-type{
   display: flex;
   align-items: center;
 }
 .product-specification{
-    display: flex;
-    flex-direction: column;
-    align-self: flex-end;
-    justify-content: flex-end;
-    width: 100%;
-    background-color: white;
-    box-sizing: border-box;
-    padding-top:40rpx;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+  background-color: white;
+  box-sizing: border-box;
+  padding-top:40rpx;
+  position: relative;
 }
 .scroll-y{
   padding: 0 40rpx;
