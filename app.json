@@ -13,7 +13,8 @@
     "pages/search/search-result/search-result",
     "pages/product-detail/product-detail",
     "pages/shopping-cart/shopping-cart",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/order-confirm/order-confirm"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

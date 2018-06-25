@@ -14,7 +14,7 @@
 .chooseImg image,.leftBar image{
   width: 46rpx;
 }
-.cart-product-info{
+.move-box{
   width: 89%;
 }
 .chooseImg{

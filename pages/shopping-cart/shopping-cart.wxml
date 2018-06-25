@@ -6,12 +6,10 @@
       <view class='chooseImg' bindtap='chooseClicked' data-index='{{0}}'>
        <image src='{{ chooseImgShow[index]? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>
       </view>
-      <view>
-      <!-- <view style='width:89%'> -->
+      <view class='move-box'>
         <delete-bar  bind:pickerClicked="pickerClicked" item='{{items}}' index="{{index}}">
-        <template is="cart-product-info" data='{{innerCount,imgSize:160,countSize:50}}'/>
+          <template is="cart-product-info" data='{{innerCount,imgSize:160,countSize:50}}'/>
         </delete-bar>
-      <!-- </view> -->
       </view>
     </view>
   </view>

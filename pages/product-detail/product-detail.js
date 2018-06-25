@@ -145,7 +145,7 @@ Page({
         
         break;
       case 2:
-
+        Tool.navigateTo('/pages/order-confirm/order-confirm')
         break;
     }
   },
