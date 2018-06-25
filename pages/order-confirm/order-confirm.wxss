@@ -1,1 +1,20 @@
-/* pages/order-confirm/order-confirm.wxss */
+@import "/components/adress-info/adress-info";
+
+.adress-view{
+  padding: 30rpx 100rpx 33rpx 30rpx;
+  position: relative;
+  border-top: 1rpx solid #eee;
+  background: #fff url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/line-bg.png) no-repeat left bottom;
+  background-size: 100%;
+}
+.choose-adress-icon{
+  width: 24rpx;
+  margin-left: 160rpx;
+  position:absolute;
+  height:100%;
+  right: 30rpx;
+  top:0;
+}
+.choose-adress-icon image{
+  vertical-align: middle;
+}

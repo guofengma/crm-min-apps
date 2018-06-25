@@ -1,0 +1,11 @@
+<import src='/components/adress-info/adress-info.wxml' />
+
+
+<view class='orderComfirm'>
+  <view class='adress-view'>
+    <template is="adress-info" data=''/>
+    <view class='choose-adress-icon flexC'>
+     <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
+    </view>
+  </view>
+</view>

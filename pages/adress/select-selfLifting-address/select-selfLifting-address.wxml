@@ -1,0 +1,9 @@
+<import src='/components/adress-info/adress-info.wxml' />
+<view class='select-selfLifting-address'>
+  <view class='select-adress-box {{active? "active":""}}'>
+    <template is="adress-info" data=''/>
+    <view class='leftbar flexR'>
+        <image src='{{active? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>
+    </view>
+  </view>
+</view>

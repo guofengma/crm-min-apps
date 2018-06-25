@@ -10,4 +10,7 @@
    <button bindtap='btnClicked' data-id='/pages/register/register-code/register-code' >注册2</button>
    <button bindtap='btnClicked' data-id='/pages/real-name/real-name' >实名制</button>
    <button bindtap='btnClicked' data-id='/pages/search/search-result/search-result' >搜索结果</button>
+   <button bindtap='btnClicked' data-id='/pages/order-confirm/order-confirm' >确认订单</button>
+   <button bindtap='btnClicked' data-id='/pages/adress/select-selfLifting-address/select-selfLifting-address' >自提地址选择</button>
+   <button bindtap='btnClicked' data-id='/pages/adress/select-express-address/select-express-address' >快递地址选择</button>
 </view>

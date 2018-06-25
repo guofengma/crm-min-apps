@@ -12,6 +12,12 @@ button[disabled]:not([type]) {
   align-items: center;
   justify-content:center; 
 }
+.flexR-sb{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between; 
+}
 .flexC{
   display: flex;
   flex-direction: column;
