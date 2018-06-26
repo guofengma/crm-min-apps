@@ -205,6 +205,6 @@ export default class RequestFactory {
         let url = Operation.sharedInstance().queryUserAddressList;
         return this.request(url, params, '地址列表', true);
     }
-
+  
 }
 

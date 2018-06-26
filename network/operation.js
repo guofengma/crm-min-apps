@@ -105,6 +105,8 @@ export default class Operation {
         /********************** 地址管理 *********************/
         this.addUserAddress  ='/user/userAddress/addUserAddress';
         this.queryUserAddressList  ='/user/userAddress/queryUserAddressList'
+
+        
     }
 
     static sharedInstance() {
