@@ -7,8 +7,8 @@ Page({
    */
   data: {
     active:true,
-    adressType:1,
-    adressList:[]
+    addressType:1,
+    addressList:[]
   },
 
   /**
@@ -16,7 +16,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      adressType: options.type
+      addressType: options.addressType
     })
   },
   onShow: function () {
@@ -24,9 +24,9 @@ Page({
   },
   newAddress() {
     let page = ''
-    let adressType = this.data.adressType
-    if (adressType == 1){
-      if ( this.data.adressList.length > 0){
+    let addressType = this.data.addressType
+    if (addressType == 1){
+      if (this.data.addressType.length > 0){
         page = '/pages/address/select-express-address/select-express-address'
       } else {
         page = '/pages/address/new-address/new-address'

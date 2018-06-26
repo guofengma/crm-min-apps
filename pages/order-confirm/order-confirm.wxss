@@ -8,6 +8,7 @@
   border-top: 1rpx solid #eee;
   background: #fff url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/line-bg.png) no-repeat left bottom;
   background-size: 100%;
+  margin-bottom: 20rpx;
 }
 .choose-adress-icon{
   width: 24rpx;
@@ -23,13 +24,14 @@
 .order-info-other{
   font-size: 26rpx;
   background: #fff;
+  margin-bottom: 196rpx;
 }
 .order-info-other>view{
   height: 88rpx;
   border-top: 1rpx solid #eee;
   padding: 0 30rpx;
 }
-.order-info-other image{
+.order-info-other .gray image{
   width: 20rpx;
 }
 .leaving-msg{
@@ -42,4 +44,38 @@
 .order-info-other view.flexR-sb>view{
   height:1.4rem;
   line-height: 1.4rem;
+}
+.switch{
+  width:60rpx;
+}
+.btn{
+  width: 200rpx;
+  color: #fff;
+  height: 97rpx;
+  font-size: 32rpx;
+  margin-left: 24rpx;
+}
+.payBar{
+  justify-content: flex-end;
+  font-size: 30rpx;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 1rpx solid #eee;
+}
+.choose-addressType{
+  width: 690rpx;
+  margin:20rpx auto;
+  border:  2rpx solid #61686c;
+  font-size: 26rpx;
+}
+.choose-addressType>view{
+  width: 50%;
+  background: #fff;
+  height: 50rpx;
+  color:#61686c;
+}
+.choose-addressType>view.active{
+  background:  #61686c;
+  color: #fff;
 }

@@ -3,15 +3,15 @@
     <view class='adress-icon'>
       <image src='/img/adress-icon-1.png' mode='widthFix'></image>
     </view>
-    <!--adressType 1为快递 2为自提  -->
+    <!--addressType 1为快递 2为自提  -->
     <view class='adress-info-leftbar'>
       <view class='no-address' wx:if='{{address}}' >
-        {{adressType==1?  "请选择一个收货地址":"请选择自提地址"}}
+        {{addressType==1?  "请选择一个收货地址":"请选择自提地址"}}
       </view>
       <!--姓名 电话  -->
       <view wx:else class='flexR-sb consignee'>
         <text>chen weiwei </text>
-        <text wx:if='{{adressType==1}}'>187583289999</text>
+        <text wx:if='{{addressType==1}}'>187583289999</text>
       </view>
       <view class='adress-content gray'>
         杭州市滨江区大家还是看见好多卡活动刷卡机会点卡啊手机打哈空间

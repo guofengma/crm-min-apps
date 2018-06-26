@@ -2,7 +2,8 @@ let { Tool, RequestFactory } = global
 
 Page({
   data: {
-    active: true
+    active: true,
+    addressType:1
   },
   onLoad: function (options) {
 
