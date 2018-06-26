@@ -5,6 +5,8 @@ Page({
     src:'/img/address-icon-gray.png',
     imgSrcUrl:'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/',
     logIcon: 'order-state-3-dark.png',
+    isCancel: false,//是否取消订单
+    isDelete: false, //是否删除订单
   },
   onLoad: function (options) {
   
@@ -12,10 +14,21 @@ Page({
   onShow: function () {
   
   },
+  dismissCancel(){
+    //取消取消订单
+    this.setData({
+      isCancel:false
+    })
+  },
+  reasonClicked(e){
+    //取消订单的理由
+  },
+  cancelOrder(){
+    //取消订单
+  },
   orderState(){
     //按钮状态 left right middle 分别是底部左边 右边 和订单详情中的按钮文案
     let state = ''
-    let 
     switch (n) {
       case 1:
         state = { status: '等待买家付款', left: '取消支付', right: '继续支付', middle: '', orderIcon:"order-state-1.png"}

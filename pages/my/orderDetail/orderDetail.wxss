@@ -2,6 +2,10 @@
 
 @import "/components/address-info/address-info";
 
+@import "/components/tips-cancel-order/tips-cancel-order";
+
+@import "/components/tips-delete-order/tips-delete-order";
+
 .orderDetail{
   font-size: 26rpx;
   position: relative;
@@ -158,4 +162,14 @@
 }
 .right-icon{
   width: 22rpx;
+}
+
+/*模态框的样式  */
+
+.model-view-bg .tips-box{
+  width: 590rpx;
+	min-height: 300rpx;
+	background-color: #ffffff;
+	border-radius: 20rpx;
+  box-sizing: border-box;
 }
