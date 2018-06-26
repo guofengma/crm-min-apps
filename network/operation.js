@@ -102,9 +102,27 @@ export default class Operation {
 
         __instance(this);
 
-        /********************** 地址管理 *********************/
+    /********************** 地址管理 *********************/
+        // 新增地址
+
         this.addUserAddress  ='/user/userAddress/addUserAddress';
+
+        // 获取列表
+        
         this.queryUserAddressList  ='/user/userAddress/queryUserAddressList'
+        
+        // 更新地址
+
+        this.updateUserAddress = '/user/userAddress/updateUserAddress'
+
+        // 设置默认地址
+
+        this.setDefaultAddress ='/user/userAddress/setDefaultAddress'
+
+        // 删除地址 
+
+        this.deleteUserAddress  ='/user/userAddress/deleteUserAddress '
+
     }
 
     static sharedInstance() {

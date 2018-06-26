@@ -84,11 +84,12 @@ Component({
       return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
     },
     //删除事件
-    del: function (e) {
+    itemDelete: function (e) {
       this.setData({
         scroll: true
       })
       this.data.items.splice(e.currentTarget.dataset.index, 1)
+      
       this.setData({
         items: this.data.items
       })

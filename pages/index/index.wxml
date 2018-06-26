@@ -15,4 +15,5 @@
    <button bindtap='btnClicked' data-id='/pages/address/select-express-address/select-express-address' >快递地址选择</button>
    <button bindtap='btnClicked' data-id='/pages/address/choose-address/choose-address' >订单地址选择</button>
    <button bindtap='btnClicked' data-id='/pages/my/my-order/my-order' >我的订单</button>
+   <button bindtap='btnClicked' data-id='/pages/my/orderDetail/orderDetail' >我的订单详情</button>
 </view>

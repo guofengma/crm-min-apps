@@ -92,7 +92,8 @@ image{
   color: #bbbbbb;
 }
 .redBg{
-  background-color: #e60012
+  background-color: #e60012;
+  color: #fff;
 }
 /*模态背景框，半透明黑色，全屏*/
 .model-view-bg {
