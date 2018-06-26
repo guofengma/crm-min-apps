@@ -14,10 +14,10 @@ Page({
   onShow: function () {
   
   },
-  adressClicked(){
+  addressClicked(){
     Tool.navigateTo('/pages/address/choose-address/choose-address?addressType=' + this.data.addressType)
   },
-  changeAdressType(e){
+  changeAddressType(e){
     console.log(e.currentTarget.dataset.index)
     let index = e.currentTarget.dataset.index
     this.setData({

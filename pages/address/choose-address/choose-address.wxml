@@ -1,8 +1,8 @@
 <import src='/components/address-info/address-info.wxml' />
 
-<view class='select-adress-box {{active? "active":""}}'>
+<view class='select-address-box {{active? "active":""}}'>
   <view class='topBar'>
-    <template is="adress-info" data='{{adressType}}'/>
+    <template is="address-info" data='{{addressType}}'/>
   </view>
 </view>
 

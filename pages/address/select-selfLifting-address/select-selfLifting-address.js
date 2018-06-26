@@ -2,7 +2,7 @@
 Page({
   data: {
     active:true,
-    addressType:2
+    addressType:2,
   },
 
   /**

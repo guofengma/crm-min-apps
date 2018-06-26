@@ -2,7 +2,7 @@
 
 @import "/pages/address/select-address-common";
 
-.select-selfLifting-address .adress-icon{
+.select-selfLifting-address .address-icon{
   width: 44rpx;
 }
 
