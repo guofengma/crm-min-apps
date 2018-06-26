@@ -1,25 +1,21 @@
-<template name="address-info">
-    <view class='select-address-box {{active? "active":""}}' wx:for="{{addressList}}" wx:key="unique" data-id="item.id">
-        <view class='topBar'>
-            <view class="address-info flexR-sb">
-                <view class='address-icon'>
-                    <image src='/img/address-icon-1.png' mode='widthFix'></image>
-                </view>
-                <!--addressType 1为快递 2为自提  -->
-                <view class='address-info-leftbar'>
-                    <view class='no-address' wx:if='{{address}}'>
-                        {{addressType==1? "请选择一个收货地址":"请选择自提地址"}}
-                    </view>
-                    <!--姓名 电话  -->
-                    <view wx:else class='flexR-sb consignee'>
-                        <text>{{item.receiver}}</text>
-                        <text wx:if='{{addressType==1}}'>{{item.recevicePhone}}</text>
-                    </view>
-                    <view class='address-content gray'>
-                        {{item.province}}{{item.city}}{{item.area}}{{item.address}}
-                    </view>
-                </view>
-            </view>
-        </view>
+<template name="adress-info">
+  <view class="adress-info flexR-sb">
+    <view class='adress-icon'>
+      <image src='/img/adress-icon-1.png' mode='widthFix'></image>
     </view>
+    <!--addressType 1为快递 2为自提  -->
+    <view class='adress-info-leftbar'>
+      <view class='no-address' wx:if='{{address}}' >
+        {{addressType==1?  "请选择一个收货地址":"请选择自提地址"}}
+      </view>
+      <!--姓名 电话  -->
+      <view wx:else class='flexR-sb consignee'>
+        <text>chen weiwei </text>
+        <text wx:if='{{addressType==1}}'>187583289999</text>
+      </view>
+      <view class='adress-content gray'>
+        杭州市滨江区大家还是看见好多卡活动刷卡机会点卡啊手机打哈空间
+      </view>
+    </view>
+  </view>
 </template>

@@ -4,18 +4,30 @@
 
 
 <view class='orderComfirm'>
-  <view class='address-view' bindtap='addressClicked'>
-    <template is="address-info" data=''/>
-    <view class='choose-address-icon flexC'>
+  <!--订单地址类型  -->
+  <view class='choose-addressType flexR'>
+    <view data-index='1' 
+          class='flexR {{addressType==1? "active":""}}' 
+          style='width:{{!canSelfLifting? "100%":"50%"}}'
+          bindtap='changeAdressType'>快递</view>
+    <view wx:if='{{canSelfLifting}}' 
+          data-index='2' 
+          class='flexR addressType2 {{addressType==2? "active":""}}' 
+          bindtap='changeAdressType'
+          >自提</view>
+  </view>
+  <!--订单地址信息  -->
+  <view class='adress-view' bindtap='adressClicked'>
+    <template is="adress-info" data='{{addressType,address}}'/>
+    <view class='choose-adress-icon flexC'>
      <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
     </view>
   </view>
-
   <!--商品信息  -->
   <view class='order-prd-info'>
    <template is="cart-product-info" data='{{innerCount,imgSize:180,showQnt:true}}'/>
   </view>
-
+  <!--购买支付信息  -->
   <view  class='order-info-other'>
     <view class='flexR-sb'>
       <view>优惠券</view>
@@ -29,8 +41,11 @@
         共800000积分，可用80000积分
         <text class='red'>抵¥80</text>
       </view>
-      <!-- <view class='gray'>不支持积分消费 </view> -->
-      <switch bindchange="switchChange"/>
+      <view class='gray' wx:if='{{!canUseIntegral.canUse}}'>不支持积分消费 </view> 
+      <image class='switch' wx:else 
+        src='{{ canUseIntegral.isUse? "/img/switch-2.png":"/img/switch-1.png"}}' 
+        mode='widthFix' bindtap='switchChange'  >
+      </image>
     </view>
     <view class='flexR-sb'>
       <view>运费</view>
@@ -40,5 +55,10 @@
       <view>买家留言：</view>
       <input placeholder='选填：填写内容已与卖家协商确认'></input>
     </view>
+  </view>
+  <!--支付bar  -->
+  <view class='flexR payBar'>
+    <view>应付款 <text class='red'>¥：50.00</text></view>
+    <view class='btn redBg flexR'>提交订单</view>
   </view>
 </view>

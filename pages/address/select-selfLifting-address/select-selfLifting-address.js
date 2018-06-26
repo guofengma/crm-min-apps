@@ -1,7 +1,8 @@
 // pages/adress/select-selfLifting-address/select-selfLifting-address.js
 Page({
   data: {
-    active:true
+    active:true,
+    addressType:2
   },
 
   /**
