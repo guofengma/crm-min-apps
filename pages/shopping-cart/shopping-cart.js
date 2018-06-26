@@ -2,14 +2,15 @@ let { Tool, RequestFactory } = global
 
 Page({
   data: {
-    innerCount:1,
+    innerCount:[1,1],
     chooseImgShow:[], // 保存勾选的个数
     selectAll:false, //是否全选
     cartList:[1],
     items:[
       { isTouchMove:false},
       { isTouchMove: false }
-    ]
+    ],
+    itemIndex:0,
   },
   onLoad: function (options) {
     
@@ -39,10 +40,17 @@ Page({
   },
   counterInputOnChange(e) {
     let count = e.detail.innerCount;
-    this.setData({
-      innerCount: count,
-    })
-    this.triggerEvent('counterInputOnChange', this.data.innerCount);
+    let index = e.detail.e.currentTarget.dataset.index
+    console.log(e.detail.e.currentTarget.dataset)
+    if(index !== undefined){
+      let innerCount = this.data.innerCount
+      innerCount[index] = count
+      this.setData({
+        innerCount: count
+      })
+    }
+   
+    console.log(e.detail.e)
   },
   deleteCart(e){
     wx.showModal({
