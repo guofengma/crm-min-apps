@@ -194,6 +194,7 @@ export default class RequestFactory {
   }
 
   /**************地址管理********************/
+
   static addUserAddress(params) {
       params.port = '8102';
       let url = Operation.sharedInstance().addUserAddress;
@@ -224,6 +225,6 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().deleteUserAddress;
     return this.request(url, params, '删除地址', true);
   }
-
+  
 }
 

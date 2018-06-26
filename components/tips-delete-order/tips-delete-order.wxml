@@ -1,0 +1,5 @@
+<template name="tips-delete-order">
+  <view class="tips-delete-order model-view-bg ">   
+    
+  </view>
+</template>

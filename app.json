@@ -19,7 +19,8 @@
     "pages/address/select-selfLifting-address/select-selfLifting-address",
     "pages/address/choose-address/choose-address",
     "pages/address/new-address/new-address",
-    "pages/my/my-order/my-order"
+    "pages/my/my-order/my-order",
+    "pages/my/orderDetail/orderDetail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

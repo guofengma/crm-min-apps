@@ -1,0 +1,5 @@
+<template name="tips-cancel-order">
+  <view class="tips-cancel-order model-view-bg ">
+    
+  </view>
+</template>
