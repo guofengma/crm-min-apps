@@ -193,18 +193,37 @@ export default class RequestFactory {
     return this.request(url, params, '最大数量同步购物车', true);
   }
 
-    /**************地址管理********************/
-    static addUserAddress(params) {
-        params.port = '8102';
-        let url = Operation.sharedInstance().addUserAddress;
-        return this.request(url, params, '添加地址', true);
-    }
+  /**************地址管理********************/
+  static addUserAddress(params) {
+      params.port = '8102';
+      let url = Operation.sharedInstance().addUserAddress;
+      return this.request(url, params, '添加地址', true);
+  }
 
-    static queryUserAddressList(params) {
-        params.port = '8102';
-        let url = Operation.sharedInstance().queryUserAddressList;
-        return this.request(url, params, '地址列表', true);
-    }
+  static queryUserAddressList(params) {
+      params.port = '8102';
+      let url = Operation.sharedInstance().queryUserAddressList;
+      return this.request(url, params, '获取地址列表', true);
+  }
   
+  
+  static updateUserAddress(params) {
+    params.port = '8102';
+    let url = Operation.sharedInstance().updateUserAddress;
+    return this.request(url, params, '更新地址', true);
+  }
+
+  static setDefaultAddress(params) {
+    params.port = '8102';
+    let url = Operation.sharedInstance().setDefaultAddress;
+    return this.request(url, params, '设置默认地址', true);
+  }
+
+  static deleteUserAddress(params) {
+    params.port = '8102';
+    let url = Operation.sharedInstance().deleteUserAddress;
+    return this.request(url, params, '删除地址', true);
+  }
+
 }
 
