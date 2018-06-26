@@ -17,14 +17,21 @@ Page({
   dismissCancel(){
     //取消取消订单
     this.setData({
-      isCancel:false
+      isCancel:false,
+      isDelete:false,
     })
   },
   reasonClicked(e){
     //取消订单的理由
+    console.log(e)
   },
   cancelOrder(){
     //取消订单
+    console.log('取消订单')
+  },
+  deleteOrder(){
+    //删除订单
+    console.log('删除订单')
   },
   orderState(){
     //按钮状态 left right middle 分别是底部左边 右边 和订单详情中的按钮文案

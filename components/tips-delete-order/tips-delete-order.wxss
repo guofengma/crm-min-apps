@@ -1,6 +1,6 @@
 .tips-icon{
   position: absolute;
-  top: -80rpx;
+  top: -94rpx;
   left:0;
   width: 100%;
 }
@@ -31,6 +31,7 @@
   width: 220rpx;
 	height: 69rpx; 
   border-radius: 10rpx;
+  font-size: 28rpx;
 }
 .tips-delete-order .leftBtn{
   background-color: #dddddd;
