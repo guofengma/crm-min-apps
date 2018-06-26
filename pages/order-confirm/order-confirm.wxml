@@ -25,16 +25,20 @@
       </view>
     </view>
     <view class='flexR-sb'>
-      <view>共800000积分，可用80000积分</view>
-      <view class='gray'>不支持积分消费</view>
+      <view>
+        共800000积分，可用80000积分
+        <text class='red'>抵¥80</text>
+      </view>
+      <!-- <view class='gray'>不支持积分消费 </view> -->
+      <switch bindchange="switchChange"/>
     </view>
     <view class='flexR-sb'>
       <view>运费</view>
       <view class='gray'>¥ 7.00</view>
     </view>
-    <view class='flexR-sb'>
-      <view>买家留言</view>
-      <input value='选填：填写内容已与卖家协商确认'></input>
+    <view class='flexR-sb leaving-msg'>
+      <view>买家留言：</view>
+      <input placeholder='选填：填写内容已与卖家协商确认'></input>
     </view>
   </view>
 </view>

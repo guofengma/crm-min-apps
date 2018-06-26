@@ -1,6 +1,6 @@
 <view class="realName">
   <view class='imgView'>
-    <image src='../../img/realname-bg.png' mode="widthFix"></image>
+    <image src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/realname-bg.png' mode="widthFix"></image>
   </view>
   <form bindsubmit="formSubmit">
     <input type='text' name='realname' placeholder="请输入姓名" placeholder-style='color:#c8c8c8'></input>

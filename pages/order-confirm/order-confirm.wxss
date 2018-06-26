@@ -32,3 +32,14 @@
 .order-info-other image{
   width: 20rpx;
 }
+.leaving-msg{
+  justify-content: flex-start;
+}
+.leaving-msg input{
+  width: 500rpx;
+  padding-left: 10rpx;
+}
+.order-info-other view.flexR-sb>view{
+  height:1.4rem;
+  line-height: 1.4rem;
+}
