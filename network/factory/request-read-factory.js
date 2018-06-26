@@ -192,5 +192,19 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().shoppingCartLimit;
     return this.request(url, params, '最大数量同步购物车', true);
   }
+
+    /**************地址管理********************/
+    static addUserAddress(params) {
+        params.port = '8102';
+        let url = Operation.sharedInstance().addUserAddress;
+        return this.request(url, params, '添加地址', true);
+    }
+
+    static queryUserAddressList(params) {
+        params.port = '8102';
+        let url = Operation.sharedInstance().queryUserAddressList;
+        return this.request(url, params, '地址列表', true);
+    }
+
 }
 

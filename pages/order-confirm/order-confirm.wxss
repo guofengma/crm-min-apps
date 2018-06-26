@@ -2,14 +2,14 @@
 
 @import "/components/cart-product-info/cart-product-info.wxss";
 
-.adress-view{
+.address-view{
   padding: 30rpx 100rpx 33rpx 30rpx;
   position: relative;
   border-top: 1rpx solid #eee;
   background: #fff url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/line-bg.png) no-repeat left bottom;
   background-size: 100%;
 }
-.choose-adress-icon{
+.choose-address-icon{
   width: 24rpx;
   margin-left: 160rpx;
   position:absolute;
@@ -17,7 +17,7 @@
   right: 30rpx;
   top:0;
 }
-.choose-adress-icon image{
+.choose-address-icon image{
   vertical-align: middle;
 }
 .order-info-other{

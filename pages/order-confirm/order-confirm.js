@@ -14,7 +14,7 @@ Page({
   onShow: function () {
   
   },
-  adressClicked(){
+  addressClicked(){
     Tool.navigateTo('/pages/address/choose-address/choose-address')
   }
 })

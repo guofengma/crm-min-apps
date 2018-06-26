@@ -1,15 +1,15 @@
-.adress-icon{
+.address-icon{
   width:6.7%; 
   margin-right: 20rpx;
 }
 .consignee{
   font-size: 30rpx;
 }
-.adress-content{
+.address-content{
   font-size: 26rpx;
   text-align: justify;
 }
-.adress-info-leftbar{
+.address-info-leftbar{
   width: 93.3%;
 }
 .no-address{

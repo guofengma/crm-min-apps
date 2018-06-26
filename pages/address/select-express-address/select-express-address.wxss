@@ -2,17 +2,17 @@
 
 @import "/pages/address/select-address-common";
 
-.select-selfLifting-address .adress-icon{
+.select-selfLifting-address .address-icon{
   width: 44rpx;
 }
-.adress-edit-choose image{
+.address-edit-choose image{
   width: 32rpx;
 }
-.adress-edit-choose{
+.address-edit-choose{
   padding:20rpx 30rpx; 
   border-top: 1rpx solid #eee;
 }
-.adress-edit-choose>view{
+.address-edit-choose>view{
   width: 50%;
   font-size: 26rpx;
 }

@@ -4,9 +4,9 @@
 
 
 <view class='orderComfirm'>
-  <view class='adress-view' bindtap='adressClicked'>
-    <template is="adress-info" data=''/>
-    <view class='choose-adress-icon flexC'>
+  <view class='address-view' bindtap='addressClicked'>
+    <template is="address-info" data=''/>
+    <view class='choose-address-icon flexC'>
      <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
     </view>
   </view>

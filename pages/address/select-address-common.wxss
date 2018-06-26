@@ -1,6 +1,6 @@
 /*地址选择的样式*/
 
-.select-adress-box{
+.select-address-box{
   width: 690rpx;
   margin: 0 auto;
   margin-top: 20rpx;
@@ -12,25 +12,25 @@
   position: relative;
   box-sizing: border-box;
 }
-.select-selfLifting-address .select-adress-box{
+.select-selfLifting-address .select-address-box{
   padding-right: 15%;
 }
-.select-adress-box.active{
+.select-address-box.active{
   background-image: url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/line-bg.png);
 }
-.select-adress-box .adress-info{
+.select-address-box .address-info{
   box-sizing: border-box;
   /* padding-left: 34rpx; */
   padding: 40rpx 0 40rpx 34rpx;
 }
-.select-adress-box .leftbar{
+.select-address-box .leftbar{
   height: 100%;
   width: 15%;
   position: absolute;
   right: 0;
   top: 0;
 }
-.select-adress-box.active .leftbar,.select-adress-box.active .topBar {
+.select-address-box.active .leftbar,.select-address-box.active .topBar {
   background:url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/default-text.png) no-repeat right top;
   background-size: 70rpx 70rpx; 
 }

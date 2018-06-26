@@ -101,6 +101,10 @@ export default class Operation {
         this.shoppingCartLimit = '/user/shoppingCart/shoppingCartFormCookieToSessionProductNumberIsAble'
 
         __instance(this);
+
+        /********************** 地址管理 *********************/
+        this.addUserAddress  ='/user/userAddress/addUserAddress';
+        this.queryUserAddressList  ='/user/userAddress/queryUserAddressList'
     }
 
     static sharedInstance() {
