@@ -9,17 +9,17 @@
     <view data-index='1' 
           class='flexR {{addressType==1? "active":""}}' 
           style='width:{{!canSelfLifting? "100%":"50%"}}'
-          bindtap='changeAdressType'>快递</view>
+          bindtap='changeAddressType'>快递</view>
     <view wx:if='{{canSelfLifting}}' 
           data-index='2' 
           class='flexR addressType2 {{addressType==2? "active":""}}' 
-          bindtap='changeAdressType'
+          bindtap='changeAddressType'
           >自提</view>
   </view>
   <!--订单地址信息  -->
-  <view class='adress-view' bindtap='adressClicked'>
-    <template is="adress-info" data='{{addressType,address}}'/>
-    <view class='choose-adress-icon flexC'>
+  <view class='address-view' bindtap='addressClicked'>
+    <template is="address-info" data='{{addressType,address}}'/>
+    <view class='choose-address-icon flexC'>
      <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
     </view>
   </view>

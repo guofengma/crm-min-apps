@@ -1,13 +1,10 @@
 <import src='/components/address-info/address-info.wxml' />
 
-<view>
-  <template is="address-info" data='{{addressType,addressList}}'/>
+<view class='select-address-box {{active? "active":""}}'>
+  <view class='topBar'>
+    <template is="address-info" data='{{addressType}}'/>
+  </view>
 </view>
-<!--<view class='select-address-box {{active? "active":""}}'>-->
-  <!--<view class='topBar'>-->
-    <!--<template is="address-info" data='{{addressType,addressList}}'/>-->
-  <!--</view>-->
-<!--</view>-->
 
 <!--新增按钮  -->
 <view class='add-address-btn  flexR redBg' bindtap='newAddress'>

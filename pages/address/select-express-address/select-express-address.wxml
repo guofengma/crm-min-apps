@@ -1,11 +1,11 @@
 <import src='/components/address-info/address-info.wxml' />
 
 <view class='select-express-address' >
-  <view class='select-adress-box  {{active? "active":""}}'>
+  <view class='select-address-box  {{active? "active":""}}'>
     <view class='topBar' >
-      <template is="adress-info" data='{{addressType}}'/>
+      <template is="address-info" data='{{addressType}}'/>
     </view>
-    <view class='adress-edit-choose flexR-sb gray'>
+    <view class='address-edit-choose flexR-sb gray'>
       <view class='choose-leftbar boxSize'>
         {{active? '':"设为"}}默认地址
       </view>
