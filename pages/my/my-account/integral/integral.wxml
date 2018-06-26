@@ -1,0 +1,35 @@
+<view>
+    <view class='cash'>
+        <view class="item">
+            <view class="title">
+                积分账户（分））
+            </view>
+            <view class="num">
+                600.00
+            </view>
+        </view>
+    </view>
+    <view class="list-area">
+        <view class="list-item">
+            <image src="/img/avatar.jpg"></image>
+            <view>
+                <view class="style">店主分红</view>
+                <view class="time">2018-05-25 12:15:45</view>
+            </view>
+            <view class="money {{add?'add':''}}">
+                <text>{{add?'+':'-'}}</text>100.50
+            </view>
+        </view>
+        <view class="list-item">
+            <image src="/img/avatar.jpg"></image>
+            <view>
+                <view class="style">店主分红</view>
+                <view class="time">2018-05-25 12:15:45</view>
+            </view>
+            <view class="money {{add?'add':''}}">
+                <text>{{add?'+':'-'}}</text>100.50
+            </view>
+        </view>
+    </view>
+</view>
+

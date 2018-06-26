@@ -1,20 +1,50 @@
-// pages/my/my.js
+// pages/pay/pay.js
 Page({
 
     /**
      * 页面的初始数据
      */
-    data: {},
-    //跳到我的订单页面
-    allOrder() {
-        wx.redirectTo({
-            url:'my-order/my-order'
+    data: {
+        isToken:false,
+        isLeft:false,
+        isZfb:false,
+        isWx:false,
+        isCard:false
+    },
+    //代币支付
+    chooseToken() {
+        this.setData({
+            isToken:!this.data.isToken
         })
     },
-    //跳到我的账户页面
-    myAccount() {
-        wx.redirectTo({
-            url:'my-account/my-account'
+    //余额支付
+    chooseLeft() {
+        this.setData({
+            isLeft:!this.data.isLeft
+        })
+    },
+    //银行卡
+    chooseCard() {
+        this.setData({
+            isZfb:false,
+            isWx:false,
+            isCard:!this.data.isCard,
+        })
+    },
+    //微信
+    chooseWx() {
+        this.setData({
+            isZfb:false,
+            isWx:!this.data.isWx,
+            isCard:false,
+        })
+    },
+    //支付宝
+    chooseZfb() {
+        this.setData({
+            isZfb:!this.data.isZfb,
+            isWx:false,
+            isCard:false,
         })
     },
 

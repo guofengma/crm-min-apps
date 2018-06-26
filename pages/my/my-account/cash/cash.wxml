@@ -1,0 +1,38 @@
+<view>
+    <view class='cash'>
+        <view class="item">
+            <view class="title">
+                现金账户（元）
+            </view>
+            <view class="num">
+                600.00
+            </view>
+            <view class="btn">提现</view>
+        </view>
+    </view>
+    <view class="list-area">
+        <view class="list-item">
+            <image src="/img/avatar.jpg"></image>
+            <view>
+                <view class="style">店主分红</view>
+                <view class="time">2018-05-25 12:15:45</view>
+                <view class="number">流水号：123456789012345678</view>
+            </view>
+            <view class="money {{add?'add':''}}">
+                <text>{{add?'+':'-'}}</text>100.50
+            </view>
+        </view>
+        <view class="list-item">
+            <image src="/img/avatar.jpg"></image>
+            <view>
+                <view class="style">店主分红</view>
+                <view class="time">2018-05-25 12:15:45</view>
+                <view class="number">流水号：123456789012345678</view>
+            </view>
+            <view class="money {{add?'add':''}}">
+                <text>{{add?'+':'-'}}</text>100.50
+            </view>
+        </view>
+    </view>
+</view>
+

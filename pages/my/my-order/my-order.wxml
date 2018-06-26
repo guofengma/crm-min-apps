@@ -1,1 +1,130 @@
+<view class='my-order'>
+  <view class="tab-area">
+      <view class="{{num==0?'active':''}}" bindtap="getList" data-index="0">全部</view>
+      <view class="{{num==1?'active':''}}" bindtap="getList" data-index="1">待支付</view>
+      <view class="{{num==2?'active':''}}" bindtap="getList" data-index="2">待发货</view>
+      <view class="{{num==3?'active':''}}" bindtap="getList" data-index="3">待收货</view>
+      <view class="{{num==4?'active':''}}" bindtap="getList" data-index="4">已完成</view>
+  </view>
+    <scroll-view scroll-y>
+        <view class="order-list">
+            <view class="header">
+                <view class="left">
+                    订单编号：45154155164512
+                </view>
+                <view class="order-status right">
+                    待支付
+                </view>
+            </view>
+            <view class="clearfix"></view>
+            <view class="body">
+                <view class="item-area">
+                    <view class="item">
+                        <image src="/img/avatar.jpg" alt=""></image>
+                        <view class="goods-inf">
+                            <view class="ellipsis-2">HEERIOBAN 慵懒随意春装2018新款女毛呢格纹编制流苏...小香风外套毛呢格纹编制流苏...小香风外套毛呢格纹编制流苏...小香风外套</view>
+                            <view class="color-classify">颜色分类：长袖  紫色</view>
+                        </view>
+                        <view>
+                            <view class="price">￥150.00</view>
+                            <view class="org-price">￥159.00</view>
+                            <view class="num">x2</view>
+                        </view>
+                    </view>
+                    <view class="item">
+                        <image src="/img/avatar.jpg" alt=""></image>
+                        <view class="goods-inf">
+                            <view class="ellipsis-2">HEERIOBAN 慵懒随意春装2018新款女毛呢格纹编制流苏...小香风外套毛呢格纹编制流苏...小香风外套毛呢格纹编制流苏...小香风外套</view>
+                            <view class="color-classify">颜色分类：长袖  紫色</view>
+                        </view>
+                        <view>
+                            <view class="price">￥150.00</view>
+                            <view class="org-price">￥159.00</view>
+                            <view class="num">x2</view>
+                        </view>
+                    </view>
+                </view>
 
+                <view class="amount">
+                    <text>共2件商品  合计：</text>
+                    <text class="money">￥300.00</text>
+                    <text class="freight">(含运费0.00)</text>
+                </view>
+                <view class="time">
+                    创建时间：2018-05-05 12:45:45
+                </view>
+                <view class="footer">
+                    <view class="left">
+                        27:45:45后自动取消订单
+                    </view>
+                    <view class="right">
+                        <view class="cancel-btn">取消订单</view>
+                        <view class="pay-btn">立即支付</view>
+                    </view>
+                </view>
+                <view class="clearfix"></view>
+            </view>
+
+        </view>
+        <view class="order-list">
+            <view class="header">
+                <view class="left">
+                    订单编号：45154155164512
+                </view>
+                <view class="order-status right">
+                    待支付
+                </view>
+            </view>
+            <view class="clearfix"></view>
+            <view class="body">
+                <view class="item-area">
+                    <view class="item">
+                        <image src="/img/avatar.jpg" alt=""></image>
+                        <view class="goods-inf">
+                            <view class="ellipsis-2">HEERIOBAN 慵懒随意春装2018新款女毛呢格纹编制流苏...小香风外套毛呢格纹编制流苏...小香风外套毛呢格纹编制流苏...小香风外套</view>
+                            <view class="color-classify">颜色分类：长袖  紫色</view>
+                        </view>
+                        <view>
+                            <view class="price">￥150.00</view>
+                            <view class="org-price">￥159.00</view>
+                            <view class="num">x2</view>
+                        </view>
+                    </view>
+                    <view class="item">
+                        <image src="/img/avatar.jpg" alt=""></image>
+                        <view class="goods-inf">
+                            <view class="ellipsis-2">HEERIOBAN 慵懒随意春装2018新款女毛呢格纹编制流苏...小香风外套毛呢格纹编制流苏...小香风外套毛呢格纹编制流苏...小香风外套</view>
+                            <view class="color-classify">颜色分类：长袖  紫色</view>
+                        </view>
+                        <view>
+                            <view class="price">￥150.00</view>
+                            <view class="org-price">￥159.00</view>
+                            <view class="num">x2</view>
+                        </view>
+                    </view>
+                </view>
+
+                <view class="amount">
+                    <text>共2件商品  合计：</text>
+                    <text class="money">￥300.00</text>
+                    <text class="freight">(含运费0.00)</text>
+                </view>
+                <view class="time">
+                    创建时间：2018-05-05 12:45:45
+                </view>
+                <view class="footer">
+                    <view class="left">
+                        27:45:45后自动取消订单
+                    </view>
+                    <view class="right">
+                        <view class="cancel-btn">取消订单</view>
+                        <view class="pay-btn">立即支付</view>
+                    </view>
+                </view>
+                <view class="clearfix"></view>
+            </view>
+
+        </view>
+    </scroll-view>
+
+</view>

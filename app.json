@@ -20,7 +20,13 @@
     "pages/address/choose-address/choose-address",
     "pages/address/new-address/new-address",
     "pages/my/my-order/my-order",
-    "pages/my/orderDetail/orderDetail"
+    "pages/my/orderDetail/orderDetail",
+    "pages/my/my-account/my-account",
+    "pages/my/my-account/cash/cash",
+    "pages/my/my-account/token/token",
+    "pages/my/my-account/integral/integral",
+    "pages/my/my-account/deposit/deposit",
+    "pages/order-confirm/pay/pay"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

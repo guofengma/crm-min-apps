@@ -1,0 +1,38 @@
+<view>
+    <view class='cash'>
+        <view class="item">
+            <view class="title">
+                代币账户（币）
+            </view>
+            <view class="num">
+                600
+            </view>
+            <view class="btn">购买</view>
+        </view>
+    </view>
+    <view class="list-area">
+        <view class="list-item">
+            <image src="/img/avatar.jpg"></image>
+            <view class="detail">
+                <view class="style">店主分红</view>
+                <view class="time">2018-05-25 12:15:45</view>
+                <view class="number">订单号：123456789012345678</view>
+            </view>
+            <view class="money {{add?'add':''}}">
+                <text>{{add?'+':'-'}}</text>100.50
+            </view>
+        </view>
+        <view class="list-item">
+            <image src="/img/avatar.jpg"></image>
+            <view class="detail">
+                <view class="style">店主分红</view>
+                <view class="time">2018-05-25 12:15:45</view>
+                <view class="number">订单号：123456789012345678</view>
+            </view>
+            <view class="money {{add?'add':''}}">
+                <text>{{add?'+':'-'}}</text>100.50
+            </view>
+        </view>
+    </view>
+</view>
+
