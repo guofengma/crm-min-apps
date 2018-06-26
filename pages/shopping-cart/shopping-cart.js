@@ -46,7 +46,7 @@ Page({
       let innerCount = this.data.innerCount
       innerCount[index] = count
       this.setData({
-        innerCount: count
+        innerCount: innerCount
       })
     }
    
