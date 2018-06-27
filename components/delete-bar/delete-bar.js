@@ -24,7 +24,7 @@ Component({
         startY: e.changedTouches[0].clientY,
         items: this.data.items
       })
-      this.triggerEvent('deleteClicked', this.data.items )
+      this.triggerEvent('deleteClicked', { items:this.data.items} )
     },
     touchend() {
       // this.setData({
@@ -67,7 +67,7 @@ Component({
       that.setData({
         items: that.data.items
       })
-      this.triggerEvent('deleteClicked', this.data.items)
+      this.triggerEvent('deleteClicked', { items: this.data.items})
     },
     /**
      * 计算滑动角度
@@ -90,7 +90,7 @@ Component({
       this.setData({
         items: this.data.items
       })
-      this.triggerEvent('deleteClicked', { ...this.data.items,index})
+      this.triggerEvent('deleteClicked', { items: this.data.items,index})
     }
   },
   ready: function () {

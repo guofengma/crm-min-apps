@@ -5,11 +5,10 @@ Page({
     innerCount:[1,1],
     chooseImgShow:[], // 保存勾选的个数
     selectAll:false, //是否全选
-    cartList:[1],
     items:[
       { isTouchMove:false},
       { isTouchMove: false }
-    ],
+    ], // 保存购物车的数据
     itemIndex:0,
   },
   onLoad: function (options) {
@@ -19,9 +18,12 @@ Page({
 
   },
   deleteClicked(e){
-    let n = e.detail
+    let items = e.detail.items
+    if (e.detail.index !== undefined){
+      // this.deleteCart(items,index)
+    }
     this.setData({
-      items: e.detail
+      items: items
     })
   },
   chooseClicked(e){
@@ -53,9 +55,9 @@ Page({
     let index = e.currentTarget.dataset.index
   },
   counterInputOnChange(e) {
+    // 数量变化的时候 
     let count = e.detail.innerCount;
     let index = e.detail.e.currentTarget.dataset.index
-    console.log(e.detail.e.currentTarget.dataset)
     if(index !== undefined){
       let innerCount = this.data.innerCount
       innerCount[index] = count
@@ -63,13 +65,15 @@ Page({
         innerCount: innerCount
       })
     }
-   
-    console.log(e.detail.e)
   },
-  deleteCart(e){
+  deleteCart(items,index){
+    // 删除购物车
     let r = RequestFactory.deleteCart(requestData);
     r.finishBlock = (req) => {
-
+      items.splice(e.detail.index, 1)
+      this.setData({
+        items: items
+      })
     }
     r.addToQueue();
   },

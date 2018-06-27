@@ -1,4 +1,5 @@
-// pages/my/orderDetail/orderDetail.js
+let { Tool, RequestFactory, Storage } = global
+
 Page({
   data: {
     addressType:1,
@@ -7,9 +8,14 @@ Page({
     logIcon: 'order-state-3-dark.png',
     isCancel: false,//是否取消订单
     isDelete: false, //是否删除订单
+    secondArry:[],
+    state:1,
+    orderTime:'2018-6-27 10:10:00',
+    time: Object,
+    countdown:''
   },
   onLoad: function (options) {
-  
+    this.time()
   },
   onShow: function () {
   
@@ -32,6 +38,55 @@ Page({
   deleteOrder(){
     //删除订单
     console.log('删除订单')
+  },
+  time(){
+    //待付款订单 倒计时处理
+    // if (this.data.state == '1') {
+        
+        let orderTime = this.data.orderTime;
+        //转化为时间戳
+        let timeInterval = Tool.timeIntervalFromString(orderTime);
+        console.log(timeInterval)
+        // 把当前的时间格式化 
+        let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
+        let nowTimeInterval = Tool.timeIntervalFromString(now);
+        // 当前时间和订单时间的差数
+        let duration = 30 * 60 - (nowTimeInterval - timeInterval);
+        //开始倒计时 
+        this.setData({
+          duration: duration
+        });
+        this.countdown(this);
+    // }
+        
+  },
+  countdown(that){
+    
+    clearTimeout(that.data.time);
+
+    let second = that.data.duration;
+     
+    if (that.data.state == '1') {
+      if (second > 0) {//秒数>0
+        let countDownTime = Tool.timeStringForTimeCount(second);
+        that.setData({
+          duration: second -1,
+          countdown: countDownTime + '后自动取消订单'
+        });
+      } else {
+        that.setData({
+          countdown: '交易关闭'
+        });
+      }
+    }
+
+    var time = setTimeout(function () {
+      that.countdown(that);
+    }, 1000)
+
+    that.setData({
+      time: time
+    });
   },
   orderState(){
     //按钮状态 left right middle 分别是底部左边 右边 和订单详情中的按钮文案

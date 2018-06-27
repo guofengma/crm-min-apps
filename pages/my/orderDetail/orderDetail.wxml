@@ -10,7 +10,7 @@
   <view class='order-state boxSize'>
     <view class='order-state-icon'>
       <view class='order-status'>等待买家付款</view>
-      <view class='timeDown'>28:24:45后自动取消订单</view>
+      <view class='timeDown'>{{countdown}}</view>
     </view>
   </view>
   
