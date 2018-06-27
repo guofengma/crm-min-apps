@@ -204,7 +204,14 @@ export default class RequestFactory {
   static queryUserAddressList(params = {}) {
       params.port = '8102';
       let url = Operation.sharedInstance().queryUserAddressList;
-      return this.request(url, params, '获取地址列表', true);
+      let req =  this.request(url, params, '获取地址列表', true);
+      req.preprocessCallback = (req, firstData) => {
+        let data = req.responseObject.data
+        data.forEach((item) => {
+          item.addressInfo = item.province + item.city + item.area + item.address
+        })
+      }
+      return req 
   }
   
   

@@ -1,7 +1,9 @@
 @import "/components/address-info/address-info";
 
 @import "/pages/address/select-address-common";
-
+.select-address-box {
+  background-image: url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/line-bg.png);
+}
 .select-selfLifting-address .address-icon{
   width: 44rpx;
 }
@@ -17,9 +19,12 @@
   font-size: 26rpx;
 }
 .choose-leftbar{
-  background:url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/choose-circle.png) no-repeat; 
+  background:transparent  url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/choose-circle.png) no-repeat; 
   background-size: 32rpx;
   padding-left: 50rpx;
+}
+.select-address-box.active .choose-leftbar{
+  background-image: url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/choose-right-icon.png) ;
 }
 .choose-rightbar.flexR{
   justify-content: flex-end;

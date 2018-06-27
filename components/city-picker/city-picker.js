@@ -5,7 +5,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    region:Array
   },
 
   /**
@@ -81,8 +81,6 @@ Component({
       let old_sheng_index = this.data.sheng_index
       let old_shi_index = this.data.shi_index
       let old_qu_index = this.data.qu_index
-      console.log(val);
-      console.log(old_sheng_index, old_shi_index, old_qu_index)
       if(old_sheng_index != val[0]){
         this.getCityList(this.data.sheng[val[0]].zipcode) 
         this.setIndex(val[0],0,0)

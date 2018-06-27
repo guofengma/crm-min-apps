@@ -52,7 +52,6 @@ Page({
     let productInfo = this.data.productInfo
     r.finishBlock = (req) => {
       let datas = req.responseObject.data
-      console.log(datas)
       let typeList = datas.saleSpecValueList;
       typeList.forEach((item)=>{
         item.typeList = item.spec_values.split(',')
