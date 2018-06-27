@@ -31,7 +31,8 @@ export default class Tool {
         return new Tool();
     }
 
-    static formatTime(date) {
+    static formatTime(timestamp) {
+        let date=new Date(timestamp);
         let year = date.getFullYear();
         let month = date.getMonth() + 1;
         let day = date.getDate();

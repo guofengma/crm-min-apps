@@ -1,5 +1,6 @@
 Page({
     data: {
+        account:'',
         add:false,
         isExplain:false,
         isLevel:false,
@@ -46,7 +47,9 @@ Page({
         })
     },
     onLoad: function (options) {
-
+        this.setData({
+            account:options.account
+        })
     },
     onShow: function () {
 

@@ -5,29 +5,24 @@
                 积分账户（分））
             </view>
             <view class="num">
-                600.00
+                {{account}}
             </view>
         </view>
     </view>
     <view class="list-area">
-        <view class="list-item">
-            <image src="/img/avatar.jpg"></image>
-            <view>
-                <view class="style">店主分红</view>
-                <view class="time">2018-05-25 12:15:45</view>
+        <view class="list-item" wx:for="{{list}}" wx:key="unique">
+            <image wx:if="{{item.use_type==1}}" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/icon12@2x.png"></image>
+            <image wx:elif="{{item.use_type==2}}" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/icon13@2x.png"></image>
+            <image wx:else src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/icon3_03-04@2x.png"></image>
+            <view class="detail">
+                <view class="style" wx:if="{{item.use_type==1}}">注册赠送</view>
+                <view class="style" wx:elif="{{item.use_type==2}}">活动赠送</view>
+                <view class="style" wx:elif="{{item.use_type==3}}">积分消费</view>
+                <view class="style" wx:else>消费</view>
+                <view class="time">{{item.create_time}}</view>
             </view>
-            <view class="money {{add?'add':''}}">
-                <text>{{add?'+':'-'}}</text>100.50
-            </view>
-        </view>
-        <view class="list-item">
-            <image src="/img/avatar.jpg"></image>
-            <view>
-                <view class="style">店主分红</view>
-                <view class="time">2018-05-25 12:15:45</view>
-            </view>
-            <view class="money {{add?'add':''}}">
-                <text>{{add?'+':'-'}}</text>100.50
+            <view class="money {{item.add?'add':''}}">
+                <text>{{item.add?'+':'-'}}</text>{{item.user_score}}
             </view>
         </view>
     </view>

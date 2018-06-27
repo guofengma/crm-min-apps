@@ -4,7 +4,7 @@
             现金账户（元）
         </view>
         <view class="num">
-            600.00
+            {{available_balance}}
         </view>
     </view>
     <view class="token item" bindtap="toPage" data-index="1">
@@ -12,7 +12,7 @@
             代币账户（币）
         </view>
         <view class="num">
-            600
+             {{token_coin}}
         </view>
     </view>
     <view class="deposit item" bindtap="toPage" data-index="2">
@@ -28,7 +28,7 @@
             积分账户（分）
         </view>
         <view class="num">
-            600
+             {{user_score}}
         </view>
     </view>
 </view>

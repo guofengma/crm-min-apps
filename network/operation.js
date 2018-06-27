@@ -127,6 +127,23 @@ export default class Operation {
 
         this.queryStoreHouseList = '/user/userAddress/queryStoreHouseList'
 
+      /********************** 我的账户 *********************/
+        // 分页查询现金账户收支明细
+
+        this.queryDetailBalanceListAPP  ='/user/detailBalance/queryDetailBalanceListAPP';
+
+        // 分页查询代币账户收支明细
+
+        this.queryDetailTokenCoinListAPP  ='/user/detailTokenCoin/queryDetailTokenCoinListAPP';
+
+        // 分页查询积分账户收支明细
+
+        this.queryDetailUserScorePageListAPP  ='/user/detailUserScore/queryDetailUserScorePageListAPP';
+
+        // 查询经销商账户信息
+
+        this.findDealerAccountByIdAPP  ='/user/dealer/findDealerAccountByIdAPP';
+
     }
 
     static sharedInstance() {
