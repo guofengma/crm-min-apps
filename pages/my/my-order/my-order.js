@@ -35,7 +35,7 @@ Page({
             });
             let r;
             if(index==0){//全部订单
-                r = global.RequestFactory.queryCompletedOrderPageList(params);
+                r = global.RequestFactory.queryAllOrderPageList(params);
             }else if(index==1){//待支付
                 r = global.RequestFactory.queryUnPaidOrderPageList(params);
             }else if(index==2){//待发货
@@ -48,15 +48,9 @@ Page({
             let list = this.data.list;
             r.finishBlock = (req) => {
                 let datas=[];
-
                 for (let i in req.responseObject.data.data[0]) {
                     let item = req.responseObject.data.data[0][i];
                     item.orderCreateTime = Tool.formatTime(item.orderCreateTime);
-                    // if (item.use_type == 1 || item.use_type == 3) {
-                    //     item.add = false
-                    // } else {
-                    //     item.add = true
-                    // }
                     datas.push(item);
                 }
                 this.setData({

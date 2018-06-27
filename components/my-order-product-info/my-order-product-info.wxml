@@ -1,19 +1,19 @@
 <template name="my-order-product-info">
   <view class="my-order-product-info boxSize flexR" >
     <view class='leftbar'>
-      <image src='/img/search-result-2.png' mode='widthFix'></image>
+      <image src='{{imgUrl}}' mode='widthFix'></image>
     </view>
     <view class='right-bar flexR-sb'>
       <view class='topbar'>
-        <view class='ellipsis-2'>哈哈哈哈哈时代开始打了快速打击爱来的哈开会大大的熬到阿卡酒店哈看的哈领导力阿卡酒店哈阿卡酒店哈阿卡酒店哈阿卡</view>
+        <view class='ellipsis-2'>{{productName}}</view>
         <view class='gray ellipsis-2 '>
-          很快就安徽大活动卡活动卡活动啊大大爱老客户拉黑的气候温和无i卡刷卡金黄色很快就安徽大活动卡活动卡活动啊大大爱老客户拉黑的气候温和无i卡刷卡金黄
+          {{spec}}
         </view>
       </view>
       <view class='flexC' >
-        <view>¥ 150</view>
-        <view class='cost-price'>¥ 159</view>
-        <view  class='gray'>x2</view>
+        <view>¥ {{price}}</view>
+        <view class='cost-price'>¥ {{price}}</view>
+        <view  class='gray'>x{{num}}</view>
       </view>
     </view>
   </view>

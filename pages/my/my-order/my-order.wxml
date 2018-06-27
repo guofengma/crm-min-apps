@@ -9,7 +9,7 @@
             <view class="{{num==3?'active':''}}" bindtap="getList" data-index="3">待收货</view>
             <view class="{{num==4?'active':''}}" bindtap="getList" data-index="4">已完成</view>
         </view>
-        <view class="order-list" wx:for="{{list}}" wx:key="unique" bindtap="toOrderDetail" data-id="item.id" data-index="item.status">
+        <view class="order-list" wx:for="{{list}}" wx:key="unique" bindtap="toOrderDetail" data-id="{{item.id}}" data-status="{{item.status}}">
             <view class="header">
                 <view class="left">
                     订单编号：{{item.orderNum}}

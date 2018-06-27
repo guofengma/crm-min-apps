@@ -147,6 +147,10 @@ export default class Operation {
 
         /********************** 我的订单 *********************/
 
+        // 全部订单
+
+        this.queryAllOrderPageList  ='/order/order/queryAllOrderPageList';
+
         // 已完成订单
 
         this.queryCompletedOrderPageList  ='/order/order/queryCompletedOrderPageList';

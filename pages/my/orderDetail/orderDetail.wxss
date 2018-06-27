@@ -18,14 +18,18 @@
   padding-top: 35rpx;
   padding-left: 50rpx;
   background-size: 100%;
+  /*display: flex*/
 }
 .order-status{
   font-size: 36rpx;
 }
 .order-state-icon{
   padding-left: 70rpx;
-  background: transparent url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/order-state-1.png) no-repeat 10rpx center;
-  background-size: 42rpx 42rpx;
+  /*background: transparent url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/order-state-1.png) no-repeat 10rpx center;*/
+  /*background-size: 42rpx 42rpx;*/
+    /*width: 42rpx;*/
+    /*height: 42rpx;*/
+    /*margin: 5rpx 5rpx 0 0*/
 }
 .order-state-info>view{
   width: 690rpx;
