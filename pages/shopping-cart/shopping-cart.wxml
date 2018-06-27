@@ -4,7 +4,7 @@
   <view class='shopping-cart'>
     <view class='shopping-cart-line flexR'  data-index='{{index}}' wx:for='{{items}}' wx:key='' >
       <view class='chooseImg' bindtap='chooseClicked' data-index='{{index}}'>
-       <image src='{{ chooseImgShow[index]? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>
+       <image src='{{ item.isSelect? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>
       </view>
       <!--侧滑删除代码  -->
       <view class='move-box'>
@@ -23,7 +23,7 @@
       </view>
       <view>
         合计：
-        <text class='red'>¥ 150</text>
+        <text class='red'>¥ {{totalPrice}}</text>
       </view>
     </view>
     <view class='cart-btn redBg'>结算</view>

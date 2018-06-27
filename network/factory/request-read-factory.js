@@ -185,7 +185,7 @@ export default class RequestFactory {
   
   static deleteFromShoppingCart(params) {
     let url = Operation.sharedInstance().deleteFromShoppingCart;
-    return this.request(url, params, '获取商品详情页', true);
+    return this.request(url, params, '删除购物车', true);
   }
 
   static shoppingCartLimit(params) {
