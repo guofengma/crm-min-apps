@@ -203,7 +203,6 @@ export default class Request {
 
       if (this.bodyParam.hasCookie){
         delete this.bodyParam.hasCookie
-        console.log(global.Storage.getUserCookie())
         this.cookie = global.Storage.getUserCookie() || ' '
         return this.cookie
       }      

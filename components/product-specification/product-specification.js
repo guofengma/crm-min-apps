@@ -12,6 +12,7 @@ Component({
     isActive:[{index:'',val:''}],
     selectPrdList:'', //已选的类型的商品价格等信息
     tips:'',// 提示语
+    typeClicked:0, // 0 规格栏点击 1 加入购物车点击 2 立即购买点击
   },
   methods: {
     makeSureType(show){
@@ -32,7 +33,7 @@ Component({
           productType: productType2
         })
         if (show !== true){
-          this.triggerEvent('subClicked', { index });
+          this.triggerEvent('subClicked', { ...index, typeClicked: this.data.typeClicked });
           this.isVisiableClicked()
         }
       }
@@ -45,14 +46,13 @@ Component({
           this.setData({
             selectPrdList: list[i]
           })
-          return i
+          return { index: i, id: list[i].id}
         }
       }
     },
     typeListClicked(e){
       // 选择的类型 使其 active
       let key = e.currentTarget.dataset.type
-      console.log(key)
       let val = e.currentTarget.dataset.index
       let typeVal = e.currentTarget.dataset.typename
       let obj = this.data.isActive
@@ -67,8 +67,9 @@ Component({
         this.makeSureType(true)
       }
     },
-    isVisiableClicked(){
+    isVisiableClicked(n){
       // 规格选择提示拼接
+      let types = n || 0
       let tips = []
       for (let i = 0; i < this.data.productTypeList.length;i++){
         tips.push(this.data.productTypeList[i].spec)
@@ -77,7 +78,8 @@ Component({
       //是否显示模态框
       this.setData({
         tips:tips,
-        visiable: !this.data.visiable
+        visiable: !this.data.visiable,
+        typeClicked: types
       })
     },
     counterInputOnChange(e) {

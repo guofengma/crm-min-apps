@@ -1,16 +1,14 @@
 <template name="cart-product-info">
   <view class="cart-product-info flexR" bindtap='cartProductClicked' data-index = '{{1}}'>
     <view class='leftbar'>
-      <image src='/img/search-result-2.png' class='search-img' style='width:{{imgSize}}rpx;height:{{imgSize}}rpx'></image>
+      <image src='{{showImg}}' class='search-img' style='width:{{imgSize}}rpx;height:{{imgSize}}rpx'></image>
     </view>
     <view class='right-bar' style='width:{{480}}rpx'>
-      <view class='ellipsis-2'>哈哈哈哈哈时代开始打了快速打击爱来的哈开会大大的熬到阿卡酒店哈看的哈领导力阿卡酒店哈阿卡酒店哈阿卡酒店哈阿卡酒店哈阿卡酒店哈</view>
-      <view class='gray ellipsis-2'>
-        很快就安徽大活动卡活动卡活动啊大大爱老客户拉黑的气候温和无i卡刷卡金黄色很快就安徽大活动卡活动卡活动啊大大爱老客户拉黑的气候温和无i卡刷卡金黄色
-      </view>
+      <view class='ellipsis-2'>{{showName}}</view>
+      <view class='gray ellipsis-2'>{{showType}}</view>
       <view class='prd-count-box flexR'>
-        <view class='red'>¥ 150</view>
-        <view wx:if="{{showQnt}}" class='gray' >×2</view>
+        <view class='red'>¥ {{showPrice}}</view>
+        <view wx:if="{{showQnt}}" class='gray' >×{{showQnt}}</view>
         <adder-subtractor wx:else count="{{innerCount}}" index="{{index}}" countSize='{{countSize}}' bind:countChange="counterInputOnChange"/>
       </view>
     </view>

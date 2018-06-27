@@ -1,21 +1,41 @@
-let { Tool, RequestFactory } = global
+let { Tool, RequestFactory, Storage, Event } = global
 
 Page({
   data: {
-    innerCount:[1,1],
+    innerCount:[],
     chooseImgShow:[], // 保存勾选的个数
     selectAll:false, //是否全选
-    items:[
-      { isTouchMove:false},
-      { isTouchMove: false }
-    ], // 保存购物车的数据
+    items:[], // 保存购物车的数据
     itemIndex:0,
   },
   onLoad: function (options) {
-    
+    this.getShoppingCartList()
+    Event.on('updateShoppingCart', this.getShoppingCartList, this)
   },
   onShow: function () {
 
+  },
+  
+  getShoppingCartList(){
+    // 查询购物车
+    let innerCount = []
+    let r = RequestFactory.getShoppingCartList();
+    r.finishBlock = (req) => {
+      let data = req.responseObject.data
+      data.forEach((item,index)=>{
+        item.isTouchMove = false
+        item.showImg = item.ImgUrl[0].small_img
+        item.showPrice = item.priceList.levelPrice
+        item.showName = item.product.name
+        item.showType = item.priceList.spec
+        innerCount.push(item.priceList.productNumber|| 1)
+      })
+      this.setData({
+        items: data,
+        innerCount: innerCount
+      })
+    };
+    r.addToQueue();
   },
   deleteClicked(e){
     let items = e.detail.items

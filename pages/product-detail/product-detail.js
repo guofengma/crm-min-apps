@@ -1,4 +1,4 @@
-let { Tool, RequestFactory, Storage } = global
+let { Tool, RequestFactory, Storage, Event } = global
 
 import WxParse from '../../libs/wxParse/wxParse.js';
 
@@ -9,7 +9,7 @@ Page({
     show:true,
     msgShow:false,
     isCollection:false, // 是否收藏了该商品
-    selectType:'', // 是否选择了商品类型
+    selectType:{}, // 是否选择了商品类型
     floorstatus:false, // 是否显示置顶的按钮
     productId:'', // 商品id
     productInfo:'', // 商品信息
@@ -47,7 +47,20 @@ Page({
         break;  
     }
   },
-  
+  addToShoppingCart(){
+    // 加入购物车
+    let params = {
+      productId: this.data.productInfo.id,
+      productNumber: this.data.productBuyCount,
+      sareSpecId: this.data.selectType.id
+    }
+    let r = RequestFactory.addToShoppingCart(params);
+    r.finishBlock = (req) => {
+      Event.emit('updateShoppingCart')
+      Tool.showSuccessToast('添加成功')
+    };
+    r.addToQueue();
+  },
   requestFindProductByIdApp(params){
     // 查询商品信息
     let r = RequestFactory.findProductByIdApp(params);
@@ -114,6 +127,11 @@ Page({
     this.setData({
       selectType: e.detail
     })
+    if (this.data.selectType.typeClicked ==1){
+      this.addToShoppingCart()
+    } else {
+
+    }
   },
   sliderChange(e){
     this.setData({
@@ -138,17 +156,19 @@ Page({
   },
   btnClicked(e){
     let n = parseInt(e.currentTarget.dataset.key)
-    if (!this.data.selectType){
-      this.selectComponent("#prd-info-type").isVisiableClicked()
+    if (!this.data.selectType.id){
+      this.selectComponent("#prd-info-type").isVisiableClicked(n)
+    } else {
+      switch (n) {
+        case 1:
+          this.addToShoppingCart()
+          break;
+        case 2:
+          Tool.navigateTo('/pages/order-confirm/order-confirm')
+          break;
+      }
     }
-    switch (n) {
-      case 1:
-        
-        break;
-      case 2:
-        Tool.navigateTo('/pages/order-confirm/order-confirm')
-        break;
-    }
+   
   },
   goTop: function (e) {
     this.setData({

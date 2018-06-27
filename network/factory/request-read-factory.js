@@ -8,7 +8,7 @@ import Operation from '../operation'
 //读取请求具体封装
 export default class RequestFactory {
   // 统一的请求 
-  static request(url,params,name,hasCookie){
+  static request(url, params = {},name,hasCookie){
 
     let sysInfo = global.Storage.sysInfo()
 
@@ -147,7 +147,7 @@ export default class RequestFactory {
   /**************产品********************/
 
   
-  static queryProductListAPP(params={}) {
+  static queryProductListAPP(params) {
     // 1代表升序 2代表降序
     let url = Operation.sharedInstance().queryProductListAPP;
     console.log(url)
@@ -195,12 +195,12 @@ export default class RequestFactory {
 
   /**************地址管理********************/
 
-  static addUserAddress(params = {}) {
+  static addUserAddress(params) {
       let url = Operation.sharedInstance().addUserAddress;
       return this.request(url, params, '添加地址', true);
   }
 
-  static queryUserAddressList(params = {}) {
+  static queryUserAddressList(params) {
       let url = Operation.sharedInstance().queryUserAddressList;
       let req =  this.request(url, params, '获取地址列表', true);
       req.preprocessCallback = (req, firstData) => {
@@ -214,22 +214,22 @@ export default class RequestFactory {
   }
   
   
-  static updateUserAddress(params = {}) {
+  static updateUserAddress(params) {
     let url = Operation.sharedInstance().updateUserAddress;
     return this.request(url, params, '更新地址', true);
   }
 
-  static setDefaultAddress(params = {}) {
+  static setDefaultAddress(params) {
     let url = Operation.sharedInstance().setDefaultAddress;
     return this.request(url, params, '设置默认地址', true);
   }
 
-  static deleteUserAddress(params = {}) {
+  static deleteUserAddress(params) {
     let url = Operation.sharedInstance().deleteUserAddress;
     return this.request(url, params, '删除地址', true);
   }
    
-  static queryStoreHouseList(params = {}) {
+  static queryStoreHouseList(params) {
     let url = Operation.sharedInstance().queryStoreHouseList;
     let req = this.request(url, params, '获取自提地址列表', true);
     req.preprocessCallback = (req, firstData) => {
