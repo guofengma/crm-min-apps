@@ -145,6 +145,24 @@ export default class Operation {
 
         this.findDealerAccountByIdAPP  ='/user/dealer/findDealerAccountByIdAPP';
 
+        /********************** 我的订单 *********************/
+
+        // 已完成订单
+
+        this.queryCompletedOrderPageList  ='/order/order/queryCompletedOrderPageList';
+
+        // 待支付订单
+
+        this.queryUnPaidOrderPageList  ='/order/order/queryUnPaidOrderPageList';
+
+        // 待发货订单
+
+        this.queryUnSendOutOrderPageList  ='/order/order/queryUnSendOutOrderPageList';
+
+        // 已完成订单详情
+
+        this.getCompletedOrderDetail  ='/order/order/getCompletedOrderDetail';
+
     }
 
     static sharedInstance() {
