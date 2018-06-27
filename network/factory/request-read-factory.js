@@ -267,26 +267,34 @@ export default class RequestFactory {
       return this.request(url, params, '经销商账户', true);
   }
 
-    /**************我的订单********************/
-    static queryCompletedOrderPageList(params) {
-        params.port = '8103';
-        let url = Operation.sharedInstance().queryCompletedOrderPageList;
-        return this.request(url, params, '已完成订单', true);
-    }
-    static queryUnPaidOrderPageList(params) {
-        params.port = '8103';
-        let url = Operation.sharedInstance().queryUnPaidOrderPageList;
-        return this.request(url, params, '待支付订单', true);
-    }
-    static queryUnSendOutOrderPageList(params) {
-        params.port = '8103';
-        let url = Operation.sharedInstance().queryUnSendOutOrderPageList;
-        return this.request(url, params, '待发货订单', true);
-    }
-    static getCompletedOrderDetail(params) {
-        params.port = '8103';
-        let url = Operation.sharedInstance().getCompletedOrderDetail;
-        return this.request(url, params, '已完成订单详情', true);
-    }
+  /**************我的订单********************/
+
+  static queryCompletedOrderPageList(params) {
+      params.port = '8103';
+      let url = Operation.sharedInstance().queryCompletedOrderPageList;
+      return this.request(url, params, '已完成订单', true);
+  }
+  static queryUnPaidOrderPageList(params) {
+      params.port = '8103';
+      let url = Operation.sharedInstance().queryUnPaidOrderPageList;
+      return this.request(url, params, '待支付订单', true);
+  }
+  static queryUnSendOutOrderPageList(params) {
+      params.port = '8103';
+      let url = Operation.sharedInstance().queryUnSendOutOrderPageList;
+      return this.request(url, params, '待发货订单', true);
+  }
+  static getCompletedOrderDetail(params) {
+      params.port = '8103';
+      let url = Operation.sharedInstance().getCompletedOrderDetail;
+      return this.request(url, params, '已完成订单详情', true);
+  }
+
+  /*******************订单结算******************** */
+
+  static makeSureOrder(params) {
+    let url = Operation.sharedInstance().makeSureOrder;
+    return this.request(url, params, '购物车订单结算', true);
+  }
 }
 

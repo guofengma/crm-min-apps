@@ -163,6 +163,12 @@ export default class Operation {
 
         this.getCompletedOrderDetail  ='/order/order/getCompletedOrderDetail';
 
+        /******************提交订单 订单结算*********************** */
+
+        // 购物车结算
+        
+        this.makeSureOrder = ' /order/order/makeSureOrder'
+
     }
 
     static sharedInstance() {
