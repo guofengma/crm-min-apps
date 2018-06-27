@@ -143,11 +143,25 @@ export default class Storage {
     }
 
     // 存cookie
+
     static setUserCookie(info) {
       this.setterFor('userCookie', info)
     }
    
     static getUserCookie() {
       return this.getterFor('userCookie');
+    }
+
+    // 存购物车 
+    static setShoppingCart(info) {
+      this.setterFor('userShoppingCart', info)
+    }
+    
+    static getShoppingCart() {
+      return this.getterFor('userShoppingCart');
+    }
+    
+    static clearShoppingCart() {
+      this.setterFor('userShoppingCart', null);
     }
 }

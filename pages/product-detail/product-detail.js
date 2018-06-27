@@ -4,6 +4,7 @@ import WxParse from '../../libs/wxParse/wxParse.js';
 
 Page({
   data: {
+    didLogin:false,
     imgUrls: [],
     activeIndex:1, // 轮播图片的index 
     show:true,
@@ -25,8 +26,11 @@ Page({
     }]  
   },
   onLoad: function (options) {
+    // 如果有cookie的话 表示已经登录了 
+    let didLogin = Storage.getUserCookie()? true:false
     this.setData({
-      productId: options.productId
+      productId: options.productId,
+      didLogin: didLogin
     })
     this.requestFindProductByIdApp({ productId:this.data.productId})
   },
@@ -47,12 +51,30 @@ Page({
         break;  
     }
   },
+  setStoragePrd(params,index){
+    let list = Storage.getShoppingCart()
+    if (!list){
+      list = []
+    }
+    params.showName = this.data.productInfo.name
+    params.showType = this.data.selectType.typeName
+    params.showPrice = this.data.priceList[index].levelPrice
+    params.isSelect = false
+    params.showImg = this.data.imgUrls[0].small_img
+    list.push(params)
+    Storage.setShoppingCart(list)
+    Event.emit('updateStorageShoppingCart')
+  },
   addToShoppingCart(){
     // 加入购物车
     let params = {
       productId: this.data.productInfo.id,
       productNumber: this.data.productBuyCount,
       sareSpecId: this.data.selectType.id
+    }
+    if(!this.data.didLogin){
+      this.setStoragePrd(params, this.data.selectType.index)
+      return 
     }
     let r = RequestFactory.addToShoppingCart(params);
     r.finishBlock = (req) => {

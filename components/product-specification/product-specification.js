@@ -46,7 +46,7 @@ Component({
           this.setData({
             selectPrdList: list[i]
           })
-          return { index: i, id: list[i].id}
+          return { index: i, id: list[i].id, typeName: list[i].spec}
         }
       }
     },

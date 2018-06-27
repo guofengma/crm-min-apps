@@ -3,17 +3,53 @@ let { Tool, RequestFactory, Storage, Event } = global
 Page({
   data: {
     innerCount:[],
+    didLogin:false,
     selectAll:false, //是否全选
     items:[], // 保存购物车的数据
     itemIndex:0,
     totalPrice:0, // 总价
   },
   onLoad: function (options) {
-    this.getShoppingCartList()
+    let didLogin = Storage.getUserCookie() ? true : false
+    this.setData({
+      didLogin: didLogin
+    })
+    if (this.data.didLogin){
+      this.getShoppingCartList()
+    } else {
+      this.getStorageShoppingCart()
+    }
+    
     Event.on('updateShoppingCart', this.getShoppingCartList, this)
+    Event.on('updateStorageShoppingCart', this.getStorageShoppingCart, this)
   },
   onShow: function () {
 
+  },
+  getStorageShoppingCart(){   
+    let list = Storage.getShoppingCart()
+    let innerCount = []
+    if(list){
+      for (let i = 0; i < list.length; i++) {
+        innerCount.push(list[i].productNumber)
+      }
+      this.setData({
+        items:list,
+        innerCount: innerCount
+      })
+      
+    }
+  },
+  updateStorageShoppingCart(count, index){
+    let list = this.data.items
+    let innerCount = this.data.innerCount
+    list[index].productNumber = count
+    innerCount[index] = count
+    this.setData({
+      items: list,
+      innerCount: innerCount
+    })
+    Storage.setShoppingCart(list)
   },
   updateShoppingCart(count,index){
     // 更新购物车
@@ -104,6 +140,10 @@ Page({
     let count = e.detail.innerCount;
     let index = e.detail.e.currentTarget.dataset.index
     if (index !== undefined){
+      if(!this.data.didLogin){
+        this.updateStorageShoppingCart(count, index)
+        return
+      }
       this.updateShoppingCart(count,index)
     }
   },
