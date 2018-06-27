@@ -24,7 +24,7 @@ Component({
         startY: e.changedTouches[0].clientY,
         items: this.data.items
       })
-      this.triggerEvent('pickerClicked', this.data.items )
+      this.triggerEvent('deleteClicked', this.data.items )
     },
     touchend() {
       // this.setData({
@@ -52,11 +52,8 @@ Component({
             that.setData({
               scroll: false
             })
-
             v.isTouchMove = false
-          }
-
-          else {
+          } else {
             //左滑
             that.setData({
               scroll: false
@@ -70,7 +67,7 @@ Component({
       that.setData({
         items: that.data.items
       })
-      this.triggerEvent('pickerClicked', this.data.items)
+      this.triggerEvent('deleteClicked', this.data.items)
     },
     /**
      * 计算滑动角度
@@ -88,12 +85,12 @@ Component({
       this.setData({
         scroll: true
       })
-      this.data.items.splice(e.currentTarget.dataset.index, 1)
-      
+      // this.data.items.splice(e.currentTarget.dataset.index, 1)
+      let index = e.currentTarget.dataset.index
       this.setData({
         items: this.data.items
       })
-      this.triggerEvent('pickerClicked', this.data.items)
+      this.triggerEvent('deleteClicked', { ...this.data.items,index})
     }
   },
   ready: function () {

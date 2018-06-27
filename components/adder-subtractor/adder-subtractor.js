@@ -2,6 +2,7 @@ Component({
   properties: {
     count: Number,
     countSize: Number,
+    index: Number,
   },
   data: {
     innerCount:0
@@ -21,7 +22,7 @@ Component({
     inputOnChange: function (e) {
       // 手动填写数字
       this.setData({
-        innerCount: this.data.innerCount + 1
+        innerCount: e.detail.value
       })
       this.trigger(e);
     },
