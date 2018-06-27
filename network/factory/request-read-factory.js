@@ -232,6 +232,23 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().deleteUserAddress;
     return this.request(url, params, '删除地址', true);
   }
-  
+
+    /**************我的账户********************/
+    static queryDetailBalanceListAPP(params) {
+        let url = Operation.sharedInstance().queryDetailBalanceListAPP;
+        return this.request(url, params, '现金账户', true);
+    }
+    static queryDetailTokenCoinListAPP(params) {
+        let url = Operation.sharedInstance().queryDetailTokenCoinListAPP;
+        return this.request(url, params, '代币账户', true);
+    }
+    static queryDetailUserScorePageListAPP(params) {
+        let url = Operation.sharedInstance().queryDetailUserScorePageListAPP;
+        return this.request(url, params, '积分账户', true);
+    }
+    static findDealerAccountByIdAPP(params) {
+        let url = Operation.sharedInstance().findDealerAccountByIdAPP;
+        return this.request(url, params, '经销商账户', true);
+    }
 }
 

@@ -18,23 +18,22 @@
     <view class="my-order">
         <view class="title">
             <view><text>我的订单</text></view>
-            <view bindtap="allOrder">
+            <view bindtap="allOrder" data-index="0">
                 <text>全部订单</text>
                 <image class="jt-img" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png" alt=""></image>
             </view>
-
         </view>
         <view class="clearfix"></view>
         <view class="body">
-            <view>
+            <view bindtap="allOrder" data-index="1">
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/dfk_03@2x.png" alt=""></image>
                 <view>待付款</view>
             </view>
-            <view>
+            <view bindtap="allOrder" data-index="2">
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/wfh_03-02@2x.png" alt=""></image>
                 <view>待发货</view>
             </view>
-            <view>
+            <view bindtap="allOrder" data-index="3">
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/yfh_03-03@2x.png" alt=""></image>
                 <view>待收货</view>
             </view>

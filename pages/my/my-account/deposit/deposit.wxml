@@ -5,7 +5,7 @@
                 现金账户（元）
             </view>
             <view class="num">
-                600.00
+                {{account}}
             </view>
             <view class="btn">兑换代币</view>
             <view class="explain" bindtap="explain">

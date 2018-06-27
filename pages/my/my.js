@@ -1,4 +1,5 @@
 // pages/my/my.js
+let { Tool, RequestFactory } = global;
 Page({
 
     /**
@@ -6,16 +7,13 @@ Page({
      */
     data: {},
     //跳到我的订单页面
-    allOrder() {
-        wx.redirectTo({
-            url:'my-order/my-order'
-        })
+    allOrder(e) {
+        let index=e.currentTarget.dataset.index;
+        Tool.navigateTo('my-order/my-order?index='+index)
     },
     //跳到我的账户页面
     myAccount() {
-        wx.redirectTo({
-            url:'my-account/my-account'
-        })
+        Tool.navigateTo('my-account/my-account')
     },
 
     /**

@@ -23,6 +23,9 @@
     top:50rpx;
     left: 50rpx;
 }
+.detail{
+    width: 48%;
+}
 .btn{
     width: 200rpx;
     height: 88rpx;
