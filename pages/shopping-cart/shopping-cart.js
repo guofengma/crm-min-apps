@@ -6,8 +6,8 @@ Page({
     didLogin:false,
     selectAll:false, //是否全选
     items:[], // 保存购物车的数据
-    itemIndex:0,
     totalPrice:0, // 总价
+    selectList:[], //选中的产品
   },
   onLoad: function (options) {
     let didLogin = Storage.getUserCookie() ? true : false
@@ -122,14 +122,18 @@ Page({
   },
   getTotalPrice(index){
     let items = this.data.items
+    let selectList = []
     let totalPrice = 0
     for (let i = 0; i<items.length;i++){
       if (items[i].isSelect){
         totalPrice += items[i].priceList.productNumber * items[i].showPrice
+        let list = { "price_id": items[i].priceList.id, "num": items[i].priceList.productNumber }
+        selectList.push(list)
       }
     }
     this.setData({
-      totalPrice: totalPrice
+      totalPrice: totalPrice,
+      selectList: selectList
     })
   },
   cartProductClicked(e){
@@ -173,5 +177,9 @@ Page({
       selectAll: !this.data.selectAll,
       chooseImgShow: activeArr
     })
+  },
+  makeOrder(){
+    let params = JSON.stringify(this.data.selectList)
+    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + params)
   }
 })
