@@ -18,21 +18,35 @@ Page({
   onShow: function () {
 
   },
-  pickerClicked(e){
+  deleteClicked(e){
     let n = e.detail
     this.setData({
       items: e.detail
     })
   },
   chooseClicked(e){
+    // 点击选择
     let index = e.currentTarget.dataset.index 
+    let selectAll = false 
+    let selectAllArr = []
     let activeArr = this.data.chooseImgShow
     if (activeArr[index] === undefined){
       activeArr[index] = false
     }
     activeArr[index] = !activeArr[index]
+
+    for (let i = 0; i < activeArr.length; i++) {
+      if (activeArr[i] === true) {
+        selectAllArr.push(activeArr[i])
+      }
+    }
+    if (selectAllArr.length == this.data.items.length) {
+      selectAll = true
+    }
+
     this.setData({
-      chooseImgShow:activeArr
+      chooseImgShow:activeArr,
+      selectAll: selectAll
     })
   },
   cartProductClicked(e){
@@ -53,24 +67,20 @@ Page({
     console.log(e.detail.e)
   },
   deleteCart(e){
-    wx.showModal({
-      title: '提示',
-      content: '确定删除吗？',
-      success: function (res) {
-        if (res.confirm) {
-          // let r = RequestFactory.deleteCart(requestData);
-          // r.finishBlock = (req) => {
-          // }
-          // r.addToQueue();
-        }
-      }
-    })
+    let r = RequestFactory.deleteCart(requestData);
+    r.finishBlock = (req) => {
+
+    }
+    r.addToQueue();
   },
   selectAllClicked(){
-    let activeArr =[]
-    for (let i = 0; i < this.data.cartList.length;i++){
-      activeArr[i] = true
-    }
+    //点击全选 
+    let activeArr = []
+    if (!this.data.selectAll){
+      for (let i = 0; i < this.data.items.length; i++) {
+        activeArr[i] = true
+      }
+    } 
     this.setData({
       selectAll: !this.data.selectAll,
       chooseImgShow: activeArr
