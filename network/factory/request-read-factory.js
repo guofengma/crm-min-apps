@@ -209,6 +209,7 @@ export default class RequestFactory {
         let data = req.responseObject.data
         data.forEach((item) => {
           item.addressInfo = item.province + item.city + item.area + item.address
+          item.hasData = true
         })
       }
       return req 
@@ -232,6 +233,22 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().deleteUserAddress;
     return this.request(url, params, '删除地址', true);
   }
-  
+   
+  static queryStoreHouseList(params = {}) {
+    params.port = '8102';
+    let url = Operation.sharedInstance().queryStoreHouseList;
+    let req = this.request(url, params, '获取自提地址列表', true);
+    req.preprocessCallback = (req, firstData) => {
+      let data = req.responseObject.data
+      data.forEach((item,index) => {
+        item.addressInfo = item.province + item.city + item.area + item.address
+        item.hasData = true
+        if(index == 0){
+          item.defaultStatus =1
+        }
+      })
+    }
+    return req 
+  }
 }
 

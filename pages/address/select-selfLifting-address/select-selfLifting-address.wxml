@@ -1,11 +1,13 @@
 <import src='/components/address-info/address-info.wxml' />
 <view class='select-selfLifting-address'>
-  <view class='select-address-box {{active? "active":""}}'>
-    <template is="address-info" data=''/>
-    <view class='leftbar flexR'>
-      <image src='{{active? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>
+  <block wx:for='{{addressList}}' wx:key='unique'>
+    <view class='select-address-box {{index ===0 ? "active":""}}'>
+      <template is="address-info"data='{{addressType,...item}}'/>
+      <view class='leftbar flexR'>
+        <image src='{{index==0 ? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>
+      </view>
     </view>
-  </view>
+  </block>
 
   <!--设置-->
   <view class='flexR-sb edit-view boxSize {{active? "active":""}}'>

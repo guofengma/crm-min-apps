@@ -74,7 +74,6 @@ Component({
         tips.push(this.data.productTypeList[i].spec)
       }
       tips = tips.join(',')
-      console.log(tips)
       //是否显示模态框
       this.setData({
         tips:tips,

@@ -1,63 +1,25 @@
-// pages/adress/select-selfLifting-address/select-selfLifting-address.js
+let { Tool, RequestFactory} = global
 Page({
   data: {
-    active:true,
+    addressList:[],
     addressType:2,
+    active:true
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    this.queryStoreHouseList()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-  
+    
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  queryStoreHouseList(){
+    let r = RequestFactory.queryStoreHouseList();
+    r.finishBlock = (req) => {
+      if (req.responseObject.data.length > 0) {
+        this.setData({
+          addressList: req.responseObject.data
+        })
+      }
+    };
+    r.addToQueue();
   }
 })

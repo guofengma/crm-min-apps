@@ -47,7 +47,9 @@ Page({
         break;  
     }
   },
+  
   requestFindProductByIdApp(params){
+    // 查询商品信息
     let r = RequestFactory.findProductByIdApp(params);
     let productInfo = this.data.productInfo
     r.finishBlock = (req) => {

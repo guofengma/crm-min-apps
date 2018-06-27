@@ -7,7 +7,7 @@ Page({
    */
   data: {
     active:true,
-    addressType:1,
+    addressType:2,
     addressList:[]
   },
 
@@ -19,19 +19,19 @@ Page({
       this.setData({
         addressType: options.addressType
       })
-    } 
-    this.chooseType() 
+    }
+    this.queryAddressList()
   },
   onShow: function () {
   
   },
-  chooseType(){
-    if (this.data.addressType ==1 ){
-      this.queryUserAddressList()
+  queryAddressList() {
+    let r = ''
+    if (this.data.addressType ==1 ) {
+      r = RequestFactory.queryUserAddressList();
+    } else {
+      r = RequestFactory.queryStoreHouseList();
     }
-  },
-  queryUserAddressList() {
-    let r = RequestFactory.queryUserAddressList();
     r.finishBlock = (req) => {
       if (req.responseObject.data.length > 0) {
         this.setData({

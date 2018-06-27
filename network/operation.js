@@ -121,7 +121,11 @@ export default class Operation {
 
         // 删除地址 
 
-        this.deleteUserAddress  ='/user/userAddress/deleteUserAddress '
+        this.deleteUserAddress  ='/user/userAddress/deleteUserAddress'
+
+        // 自提地址
+
+        this.queryStoreHouseList = '/user/userAddress/queryStoreHouseList'
 
     }
 
