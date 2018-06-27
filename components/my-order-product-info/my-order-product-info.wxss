@@ -13,6 +13,8 @@
 }
 .my-order-product-info image{
   vertical-align:middle;
+  width: 160rpx !important;
+  height: 160rpx !important;
 }
 .leftbar{
   margin-right: 30rpx;

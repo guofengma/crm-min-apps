@@ -8,22 +8,25 @@
 
 <view class='orderDetail'>
   <view class='order-state boxSize'>
-    <view class='order-state-icon'>
-      <view class='order-status'>等待买家付款</view>
-      <view class='timeDown'>{{countdown}}</view>
+    <view class='order-state-icon' style="background:url('{{imgSrcUrl+state.orderIcon}}') no-repeat 10rpx center;background-size:42rpx 42rpx">
+      <!--<image class='order-state-icon' src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/order-state-1.png"></image>-->
+      <view class='order-status'>
+        {{state.status}}
+      </view>
+      <view class='timeDown' wx:if="{{status==1}}">{{countdown}}</view>
     </view>
   </view>
   
   <!--订单的物流状态  -->
   <view class='order-state-info'>
     <view class='boxSize'>
-      <!--等待付款的时候显示和代发货  -->
+      <!--等待付款的时候显示和待发货  -->
       <!-- <template is="address-info" data='{{addressType}}'/> -->
 
       <!-- 已发货的时候显示 -->
       <view class='logistics flexR-sb'>
         <view>
-          <view class='info'>仓库正在烧苗出仓</view>
+          <view class='info'>仓库正在扫描出仓...</view>
           <view class='gray'>2018-04-15 12:45:45</view>
         </view>
         <view class='right-icon'>
@@ -36,13 +39,13 @@
   <view class='container'>
     <!--地址信息 如果发货了 显示地址 -->
     <view class='my-order-address'>
-      <template is="address-info" data='{{addressType,src}}'/>
+      <template is="address-info" data="{{addressType,src,...address,hasData}}"/>
     </view>
 
     <!--订单信息  -->
     <view class='order-prd-info'>
-      <block>
-        <template is="my-order-product-info"  />
+      <block wx:for="{{detail.list}}" wx:key="unique">
+        <template is="my-order-product-info" data="{{...item}}"/>
         <view class='sale-after flexR'>
           <view class='order-btn btn-left flexR'>删除订单</view>
         </view>
@@ -57,7 +60,7 @@
       </view>
       <view class='flexR-sb'>
           <text>运费（快递）</text>
-          <text>¥20</text>
+          <text>¥{{detail.freightPrice}}</text>
       </view>
       <view class='flexR-sb'>
           <text>优惠券优惠</text>
@@ -65,11 +68,11 @@
       </view>
       <view class='flexR-sb'>
           <text>积分抵扣</text>
-          <text>-¥20</text>
+          <text>-¥{{detail.tokenCoin}}</text>
       </view>
       <view class='flexR-sb total'>
           <text>订单总价</text>
-          <text>¥20</text>
+          <text>¥{{detail.totalPrice}}</text>
       </view>
       <view class='flexR-sb total totalPay'>
           <view class='popup'>
@@ -85,12 +88,12 @@
       <!--复制按钮  -->
       <view class='copy-btn gray flexR'>复制</view>
       <view class='content gray'>
-        <view>订单编号：4545515613165465464</view>
-        <view>创建时间：2018-05-14 12:15:</view>
-        <view>平台付款时间：2018-05-14 12:15:</view>
-        <view>三方付款时间：2018-05-14 12:15:</view>
+        <view>订单编号：{{detail.orderNum}}</view>
+        <view>创建时间：{{detail.createTime}}</view>
+        <view>平台付款时间：{{detail.sysPayTime}}</view>
+        <view>三方付款时间：{{detail.payTime}}</view>
         <view>微信交易号：2东方航空电话费肯定会</view>
-        <view>发货时间：2018-05-14 12:15:</view>
+        <view>发货时间：{{detail.deliveryTime}}</view>
         <view>成交时间：2018-05-14 12:15:</view>
       </view>
     </view>
