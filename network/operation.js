@@ -128,6 +128,7 @@ export default class Operation {
         this.queryStoreHouseList = '/user/userAddress/queryStoreHouseList'
 
       /********************** 我的账户 *********************/
+      
         // 分页查询现金账户收支明细
 
         this.queryDetailBalanceListAPP  ='/user/detailBalance/queryDetailBalanceListAPP';

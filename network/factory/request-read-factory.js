@@ -196,13 +196,11 @@ export default class RequestFactory {
   /**************地址管理********************/
 
   static addUserAddress(params = {}) {
-      params.port = '8102';
       let url = Operation.sharedInstance().addUserAddress;
       return this.request(url, params, '添加地址', true);
   }
 
   static queryUserAddressList(params = {}) {
-      params.port = '8102';
       let url = Operation.sharedInstance().queryUserAddressList;
       let req =  this.request(url, params, '获取地址列表', true);
       req.preprocessCallback = (req, firstData) => {
@@ -217,25 +215,21 @@ export default class RequestFactory {
   
   
   static updateUserAddress(params = {}) {
-    params.port = '8102';
     let url = Operation.sharedInstance().updateUserAddress;
     return this.request(url, params, '更新地址', true);
   }
 
   static setDefaultAddress(params = {}) {
-    params.port = '8102';
     let url = Operation.sharedInstance().setDefaultAddress;
     return this.request(url, params, '设置默认地址', true);
   }
 
   static deleteUserAddress(params = {}) {
-    params.port = '8102';
     let url = Operation.sharedInstance().deleteUserAddress;
     return this.request(url, params, '删除地址', true);
   }
    
   static queryStoreHouseList(params = {}) {
-    params.port = '8102';
     let url = Operation.sharedInstance().queryStoreHouseList;
     let req = this.request(url, params, '获取自提地址列表', true);
     req.preprocessCallback = (req, firstData) => {
@@ -252,19 +246,22 @@ export default class RequestFactory {
   }
 
   /**************我的账户********************/
-  
+
   static queryDetailBalanceListAPP(params) {
       let url = Operation.sharedInstance().queryDetailBalanceListAPP;
       return this.request(url, params, '现金账户', true);
   }
+
   static queryDetailTokenCoinListAPP(params) {
       let url = Operation.sharedInstance().queryDetailTokenCoinListAPP;
       return this.request(url, params, '代币账户', true);
   }
+
   static queryDetailUserScorePageListAPP(params) {
       let url = Operation.sharedInstance().queryDetailUserScorePageListAPP;
       return this.request(url, params, '积分账户', true);
   }
+  
   static findDealerAccountByIdAPP(params) {
       let url = Operation.sharedInstance().findDealerAccountByIdAPP;
       return this.request(url, params, '经销商账户', true);
