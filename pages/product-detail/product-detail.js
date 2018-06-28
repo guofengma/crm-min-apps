@@ -68,6 +68,15 @@ Page({
     Storage.setShoppingCart(list)
     Event.emit('updateStorageShoppingCart')
   },
+  makeSureOrder(){
+    let params = {
+      productId: this.data.productInfo.id,
+      num: this.data.productBuyCount,
+      price_id: this.data.selectType.id
+    }
+
+    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify([params]) )
+  },
   addToShoppingCart(){
     // 加入购物车
     let params = {
@@ -189,7 +198,8 @@ Page({
           this.addToShoppingCart()
           break;
         case 2:
-          Tool.navigateTo('/pages/order-confirm/order-confirm')
+          this.makeSureOrder()
+          // Tool.navigateTo('/pages/order-confirm/order-confirm')
           break;
       }
     }

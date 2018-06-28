@@ -40,7 +40,7 @@
     </view>
     <view class='flexR-sb'>
       <view>
-        可用积分：{{orderInfos.totalScore}}
+        商品积分：{{orderInfos.totalScore}}用户可用积分：{{orderInfos.dealer.user_score}}
         <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
       </view>
       <view class='gray' wx:if='{{!orderInfos.canUseScore}}'>不支持积分消费 </view> 

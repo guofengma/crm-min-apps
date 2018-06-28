@@ -5,6 +5,8 @@
  */
 'use strict';
 
+var bmap = require('../libs/baidu-map/bmap-wx.min');
+
 //工具类
 
 
@@ -581,9 +583,6 @@ export default class Tool {
         wx.getLocation({
             // type:'gcj02',
             success: function (res) {
-                console.log('location');
-                console.log(res);
-
                 var that = this;
                 /* 获取定位地理位置 */
                 // 新建bmap对象
@@ -595,8 +594,6 @@ export default class Tool {
                 };
                 var success = function (data) {
                     //返回数据内，已经包含经纬度
-                    console.log(data);
-
                     res.wxMarkerData = data.wxMarkerData;
                     res.originalData = data.originalData;
                     cb(res);

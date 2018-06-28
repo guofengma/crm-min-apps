@@ -176,6 +176,10 @@ export default class Operation {
         
         this.makeSureOrder = '/order/order/makeSureOrder'
 
+        // 提交订单
+
+        this.submitOrder ='/order/order/submitOrder'
+
     }
 
     static sharedInstance() {

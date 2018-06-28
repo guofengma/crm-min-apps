@@ -115,9 +115,18 @@ export default class RequestFactory {
   /********************获取省市区********************/
 
   // 获取省
-  static getProvinceList() {
+  static getProvinceList(params) {
     let url = Operation.sharedInstance().getProvinceList;
-    return this.request(url, { port: '8101' }, '获取省份');
+    let req = this.request(url, { port: '8101' }, '获取省份');
+    if(params !== undefined){
+      req.preprocessCallback = (req, firstData) => {
+        let data = req.responseObject.data
+        data.forEach((item) => {
+          //req.responseObject.datashowzipcode = (item.name == params ? item.zipcode:-1)
+        })
+      }
+    }
+    return req
   }
 
   // 获取市
@@ -303,7 +312,13 @@ export default class RequestFactory {
   static makeSureOrder(params) {
     params.port = '8103'
     let url = Operation.sharedInstance().makeSureOrder;
-    return this.request(url, params, '购物车确认订单', true);
+    return this.request(url, params, '购物车提交订单', true);
+  }
+
+  static submitOrder(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().submitOrder;
+    return this.request(url, params, '订单结算', true);
   }
 }
 

@@ -103,7 +103,7 @@ Page({
     // 更新购物车
     let prd = this.data.items[index]
     let params = {
-      productId: prd.product.id,
+      sareSpecId: prd.id,
       productNumber: count
     }
     let r = RequestFactory.updateShoppingCart(params);
@@ -123,11 +123,11 @@ Page({
       let data = req.responseObject.data
       data.forEach((item,index)=>{
         item.isTouchMove = false  //是否移动 
-        item.showImg = item.ImgUrl[0].small_img
-        item.showPrice = item.priceList.levelPrice
-        item.showName = item.product.name
-        item.showType = item.priceList.spec
-        item.showCount = item.priceList.productNumber || 1  // 商品数量
+        item.showImg = item.spec_img
+        item.showPrice = item.levelPrice
+        item.showName = item.name
+        item.showType = item.spec
+        item.showCount = item.productNumber || 1  // 商品数量
         item.isSelect = false  //是否选择 
       })
       this.setData({
@@ -176,8 +176,8 @@ Page({
     let totalPrice = 0
     for (let i = 0; i<items.length;i++){
       if (items[i].isSelect){
-        totalPrice += items[i].priceList.productNumber * items[i].showPrice
-        let list = { "price_id": items[i].priceList.id, "num": items[i].priceList.productNumber }
+        totalPrice += items[i].productNumber * items[i].showPrice
+        let list = { "price_id": items[i].id, "num": items[i].productNumber }
         selectList.push(list)
       }
     }
@@ -208,7 +208,7 @@ Page({
   deleteCart(items,index){
     // 删除购物车
     let params = {
-      productId: items[index].product.id,
+      sareSpecId: items[index].id,
     }
     let r = RequestFactory.deleteFromShoppingCart(params);
     r.finishBlock = (req) => {

@@ -49,7 +49,17 @@ Page({
     })
   },
   searchKeyword(){
-    if (!Tool.isEmptyStr(this.data.keyWord)){
+    let callBack = (res) =>{
+      if(res){
+        this.getProvinceList()
+      }
+      
+      this.requestKeyword()
+    }
+    Tool.queryLocation(callBack)
+  },
+  setStorageKeyword(){
+    if (!Tool.isEmptyStr(this.data.keyWord)) {
       let str = this.data.keyWord.length > 5 ? this.data.keyWord.slice(0, 5) + "..." : this.data.keyWord
       let keywords = this.data.history
       if (keywords.length > 0) {
@@ -64,5 +74,15 @@ Page({
   },
   requestKeyword(){
     Tool.redirectTo('/pages/search/search-result/search-result?keyword=' + this.data.keyWord)
-  }
+  },
+  getProvinceList() {
+    let r = RequestFactory.getProvinceList();
+    r.finishBlock = (req) => {
+      let data = req.responseObject.data
+      this.setData({
+        sheng: data
+      })
+    }
+    r.addToQueue();
+  },
 })

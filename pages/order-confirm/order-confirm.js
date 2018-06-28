@@ -9,7 +9,7 @@ Page({
     address:'', //地址
     params:'',
     orderInfos:"",
-    addressList:{}
+    addressList:[]
   },
   onLoad: function (options) {
     this.setData({
@@ -45,7 +45,9 @@ Page({
       if (item.hasSelfLifting){
         this.queryStoreHouseList()
       }
-      item.reducePrice = item.userScoreToBalance * item.totalScore
+      let score = item.dealer.user_score > item.totalScore ? item.totalScore : item.dealer.user_score
+      item.showScore = score 
+      item.reducePrice = item.userScoreToBalance * score
       item.showProduct = showProduct
       item.canUseScore = item.totalScore>0? true:false
       let addressList = this.data.addressList
@@ -85,6 +87,29 @@ Page({
     r.addToQueue();
   },
   payBtnClicked(){
-    Tool.redirectTo('/pages/order-confirm/pay/pay')
+    let score = this.data.orderInfos.showScore
+    if (!this.data.isUseIntegral){
+        score=0
+    }
+    let params = {
+      address: this.data.orderInfos.default_addr.address,
+      areaCode: this.data.orderInfos.default_addr.areaCode,
+      buyerRemark:'',
+      cityCode: this.data.orderInfos.default_addr.cityCode,
+      orderProductList: this.data.params,
+      pickedUp: this.data.addressType,
+      provinceCode: this.data.orderInfos.default_addr.provinceCode,
+      receiver: this.data.orderInfos.default_addr.receiver,
+      recevicePhone: this.data.orderInfos.default_addr.recevicePhone,
+      storehouseId: this.data.orderInfos.provinceCode||'',
+      useScore: score
+    }
+    console.log(params)
+    let r = RequestFactory.submitOrder(params);
+    r.finishBlock = (req) => {
+      let data = req.responseObject.data
+      Tool.redirectTo('/pages/order-confirm/pay/pay?data=' + JSON.stringify(data))
+    };
+    r.addToQueue();
   }
 })

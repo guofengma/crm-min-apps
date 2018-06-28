@@ -6,7 +6,7 @@
             <view>代币支付</view>
         </view>
         <view class="right">
-            <text>可用代币：25枚</text>
+            <text>可用代币：{{data.dealer.token_coin}}枚</text>
             <image bindtap="chooseToken" src="{{isToken?'/img/choose-icon-c.png':'/img/choose-icon.png'}}"></image>
         </view>
         <view class="clearfix"></view>
@@ -17,7 +17,7 @@
             <view>余额支付</view>
         </view>
         <view class="right">
-            <text>可用金额：5455.50</text>
+            <text>可用金额：{{data.dealer.available_balance}}</text>
             <image bindtap="chooseLeft" src="{{isLeft?'/img/choose-icon-c.png':'/img/choose-icon.png'}}"></image>
         </view>
         <view class="clearfix"></view>
@@ -54,7 +54,7 @@
         <view class="clearfix"></view>
     </view>
     <view class="footer">
-        <view>合计：<text>￥158.50</text></view>
+        <view>合计：<text>￥{{data.totalAmounts}}</text></view>
         <view>立即支付</view>
     </view>
 </view>
