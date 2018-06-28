@@ -22,32 +22,68 @@ Page({
     
     Event.on('updateShoppingCart', this.getShoppingCartList, this)
     Event.on('updateStorageShoppingCart', this.getStorageShoppingCart, this)
+
+    this.shoppingCartLimit()
   },
   onShow: function () {
 
   },
+  getFormCookieToSessionParams(){
+    let list = Storage.getShoppingCart()
+    if (!list) return
+    let isArrParams = []
+    for (let i = 0; i < list.length; i++) {
+      isArrParams.push({
+        productId: list[i].productId, sareSpecId: list[i].sareSpecId, productNumber: list[i].showCount
+      })
+    }
+    return JSON.stringify(isArrParams)
+  },
+  shoppingCartLimit(){
+    let isArrParams = this.getFormCookieToSessionParams()
+    let params = { jsonString: isArrParams}
+
+    let r = RequestFactory.shoppingCartLimit(params);
+    r.finishBlock = (req) => {
+      this.shoppingCartFormCookieToSession(params)
+      Tool.showComfirm(req.responseObject.msg, callBack)
+    };
+    r.failBlock = (req) => {
+      if (req.responseObject.code == 600) {
+        // 本地购物车数量和服务器数量的和 超过上限
+        let that = this
+        let callBack = () =>{
+          that.shoppingCartFormCookieToSession(params)
+        }
+        Tool.showComfirm(req.responseObject.msg, callBack)
+      }
+    }
+    r.addToQueue();
+
+  },
+  shoppingCartFormCookieToSession(params){
+
+    // 同步本地购物车到服务器
+    let r = RequestFactory.shoppingCartFormCookieToSession(params);
+    r.finishBlock = (req) => {
+      Storage.clearShoppingCart()
+      this.getStorageShoppingCart()
+    };
+    r.addToQueue();
+  },
   getStorageShoppingCart(){   
     let list = Storage.getShoppingCart()
-    let innerCount = []
     if(list){
-      for (let i = 0; i < list.length; i++) {
-        innerCount.push(list[i].productNumber)
-      }
       this.setData({
         items:list,
-        innerCount: innerCount
-      })
-      
+      }) 
     }
   },
   updateStorageShoppingCart(count, index){
     let list = this.data.items
-    let innerCount = this.data.innerCount
-    list[index].productNumber = count
-    innerCount[index] = count
+    list[index].showCount = count
     this.setData({
       items: list,
-      innerCount: innerCount
     })
     Storage.setShoppingCart(list)
   },
@@ -60,32 +96,30 @@ Page({
     }
     let r = RequestFactory.updateShoppingCart(params);
     r.finishBlock = (req) => {
-      let innerCount = this.data.innerCount
-      innerCount[index] = count
+      let list = this.data.items
+      list[index].showCount = count
       this.setData({
-        innerCount: innerCount
+        items: list
       })
     };
     r.addToQueue();
   },
   getShoppingCartList(){
     // 查询购物车
-    let innerCount = []
     let r = RequestFactory.getShoppingCartList();
     r.finishBlock = (req) => {
       let data = req.responseObject.data
       data.forEach((item,index)=>{
-        item.isTouchMove = false
+        item.isTouchMove = false  //是否移动 
         item.showImg = item.ImgUrl[0].small_img
         item.showPrice = item.priceList.levelPrice
         item.showName = item.product.name
-        item.showType = item.priceList.spec  
-        innerCount.push(item.priceList.productNumber|| 1) // 购物车的数量
+        item.showType = item.priceList.spec
+        item.showCount = item.priceList.productNumber || 1  // 商品数量
         item.isSelect = false  //是否选择 
       })
       this.setData({
         items: data,
-        innerCount: innerCount
       })
     };
     r.addToQueue();
@@ -93,6 +127,10 @@ Page({
   deleteClicked(e){
     let items = e.detail.items
     if (e.detail.index !== undefined){
+      if(!this.data.didLogin){
+        this.deleteStorageShoppingCart(e.detail.index)
+        return 
+      }
       this.deleteCart(items, e.detail.index)
     }
     this.setData({
@@ -165,6 +203,14 @@ Page({
     };
     r.addToQueue();
   },
+  deleteStorageShoppingCart(index){
+    let list = this.data.items
+    list.splice(index,1)
+    this.setData({
+      items: list,
+    })
+    Storage.setShoppingCart(list)
+  },
   selectAllClicked(){
     //点击全选 
     let activeArr = []
@@ -181,5 +227,9 @@ Page({
   makeOrder(){
     let params = JSON.stringify(this.data.selectList)
     Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + params)
-  }
+  },
+  onUnload: function () {
+    Event.off('updateStorageShoppingCart', this.getStorageShoppingCart);
+    Event.off('updateShoppingCart', this.getShoppingCartList);
+  },
 })

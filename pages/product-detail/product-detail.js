@@ -27,10 +27,12 @@ Page({
   },
   onLoad: function (options) {
     // 如果有cookie的话 表示已经登录了 
+
     let didLogin = Storage.getUserCookie()? true:false
+    
     this.setData({
       productId: options.productId,
-      didLogin: didLogin
+      // didLogin: didLogin
     })
     this.requestFindProductByIdApp({ productId:this.data.productId})
   },
@@ -61,6 +63,7 @@ Page({
     params.showPrice = this.data.priceList[index].levelPrice
     params.isSelect = false
     params.showImg = this.data.imgUrls[0].small_img
+    params.showCount = this.data.productBuyCount
     list.push(params)
     Storage.setShoppingCart(list)
     Event.emit('updateStorageShoppingCart')

@@ -171,7 +171,7 @@ export default class Operation {
 
         // 购物车结算
         
-        this.makeSureOrder = ':8103/order/order/makeSureOrder'
+        this.makeSureOrder = '/order/order/makeSureOrder'
 
     }
 

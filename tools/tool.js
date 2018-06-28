@@ -277,7 +277,20 @@ export default class Tool {
             }
         });
     }
-
+    //弹窗自定义
+    static showComfirm(msg, okCB = () => { }) {
+      wx.showModal({
+        content: msg,
+        showCancel: true,
+        cancelText: '取消',
+        confirmText: '确认',
+        success: function (res) {
+          if (res.confirm) {
+            okCB();
+          }
+        }
+      });
+    }
     static showSuccessToast(title, finish = null) {
         let duration = 1000;
 
