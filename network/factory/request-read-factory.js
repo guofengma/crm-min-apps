@@ -269,11 +269,6 @@ export default class RequestFactory {
 
   /**************我的订单********************/
 
-  static queryAllOrderPageList(params) {
-      params.port = '8103';
-      let url = Operation.sharedInstance().queryAllOrderPageList;
-      return this.request(url, params, '全部订单', true);
-  }
   static queryCompletedOrderPageList(params) {
       params.port = '8103';
       let url = Operation.sharedInstance().queryCompletedOrderPageList;
