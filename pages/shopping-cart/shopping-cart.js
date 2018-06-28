@@ -190,9 +190,13 @@ Page({
     let index = e.currentTarget.dataset.index
   },
   counterInputOnChange(e) {
+    console.log(e)
     // 数量变化的时候 
     let count = e.detail.innerCount;
     let index = e.detail.e.currentTarget.dataset.index
+    let btnName = e.detail.e.currentTarget.dataset.name
+    // 如果产品的数量是1 点击了减按钮 那么不做操作
+    if (btnName == 'reduce' && this.data.items[index].showCount == 1) return 
     if (index !== undefined){
       if(!this.data.didLogin){
         this.updateStorageShoppingCart(count, index)

@@ -161,6 +161,14 @@ export default class RequestFactory {
     return this.request(url, params, '获取商品详情页', true);
   }
 
+  // 关键字搜索产品
+
+  static searchProduct(params) {
+    let url = Operation.sharedInstance().searchProduct;
+    return this.request(url, params, '关键字搜索', true);
+  }
+
+
   /**************购物车********************/
 
   static addToShoppingCart(params) {

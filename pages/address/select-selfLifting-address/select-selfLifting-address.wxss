@@ -13,6 +13,7 @@
   bottom: 0;
   padding-left: 30rpx;
   border-top: 1rpx solid #eee;
+  background: #fff;
 }
 .default-view{
   background: url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/choose-circle.png) no-repeat left center;

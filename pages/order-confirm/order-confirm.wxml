@@ -18,38 +18,40 @@
   </view>
   <!--订单地址信息  -->
   <view class='address-view' bindtap='addressClicked'>
-    <template is="address-info" data='{{addressType,address}}'/>
+    <template is="address-info" data='{{addressType,...orderInfos.address}}'/>
     <view class='choose-address-icon flexC'>
      <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
     </view>
   </view>
   <!--商品信息  -->
   <view class='order-prd-info'>
-   <template is="cart-product-info" data='{{innerCount,imgSize:180,showQnt:true}}'/>
+    <block wx:for="{{orderInfos.showProduct}}" wx:key='unique'>
+       <template is="cart-product-info" data='{{innerCount,imgSize:180,...item}}'/>
+    </block>
   </view>
   <!--购买支付信息  -->
   <view  class='order-info-other'>
     <view class='flexR-sb'>
       <view>优惠券</view>
       <view class='gray'>
-        不支持积分消费
+        不支持使用优惠券
         <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
       </view>
     </view>
     <view class='flexR-sb'>
       <view>
-        共800000积分，可用80000积分
-        <text class='red'>抵¥80</text>
+        可用积分：{{orderInfos.totalScore}}
+        <text class='red'>抵 ¥ </text>
       </view>
-      <view class='gray' wx:if='{{!canUseIntegral.canUse}}'>不支持积分消费 </view> 
+      <view class='gray' wx:if='{{!canUseScore}}'>不支持积分消费 </view> 
       <image class='switch' wx:else 
-        src='{{ canUseIntegral.isUse? "/img/switch-2.png":"/img/switch-1.png"}}' 
+        src='{{ isUseIntegral? "/img/switch-2.png":"/img/switch-1.png"}}' 
         mode='widthFix' bindtap='switchChange'  >
       </image>
     </view>
     <view class='flexR-sb'>
       <view>运费</view>
-      <view class='gray'>¥ 7.00</view>
+      <view class='gray'>¥ {{orderInfos.totalFreightFee}}</view>
     </view>
     <view class='flexR-sb leaving-msg'>
       <view>买家留言：</view>
@@ -58,7 +60,7 @@
   </view>
   <!--支付bar  -->
   <view class='flexR payBar'>
-    <view>应付款 <text class='red'>¥：50.00</text></view>
-    <view class='btn redBg flexR'>提交订单</view>
+    <view>应付款 <text class='red'>¥：{{orderInfos.totalAmounts}}</text></view>
+    <view class='btn redBg flexR' bindtap='payBtnClicked'>提交订单</view>
   </view>
 </view>

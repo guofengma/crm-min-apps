@@ -74,6 +74,9 @@ export default class Operation {
 
         this.findProductByIdApp = '/user/productApp/findProductByIdApp'
 
+        // 搜索产品
+
+        this.searchProduct ='/user/search/searchProduct'
 
     /********************** 购物车 *********************/
         // 新增

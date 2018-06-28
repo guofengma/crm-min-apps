@@ -18,7 +18,7 @@
   right: 30rpx;
   top:0;
 }
-.choose-address-icon image{
+.choose-address-icon image,.order-info-other .gray image{
   vertical-align: middle;
 }
 .order-info-other{
@@ -33,6 +33,8 @@
 }
 .order-info-other .gray image{
   width: 20rpx;
+  position: relative;
+  top: -2.5rpx;
 }
 .leaving-msg{
   justify-content: flex-start;
