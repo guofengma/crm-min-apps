@@ -2,7 +2,7 @@
 <view class="order">
     <view class="bg-area">
         <view class="img-area">
-            <image class="avatar-img" src="/img/avatar.jpg" alt=""></image>
+            <image class="avatar-img" src="/img/default-userImg.png" alt=""></image>
         </view>
         <view class="info">
             <view>
@@ -66,7 +66,7 @@
     </view>
     <view class="wrap">
         <view class="item line">
-            <view>
+            <view bindtap="myCollection">
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/sc_18-08@2x.png" alt=""></image>
                 <text>我的收藏</text>
             </view>

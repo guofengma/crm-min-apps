@@ -49,17 +49,16 @@ Page({
     })
   },
   searchKeyword(){
-    if (Tool.isEmptyStr(this.data.keyWord)){
-      return 
-    }
-    let str = this.data.keyWord.length > 5 ? this.data.keyWord.slice(0, 5) + "..." : this.data.keyWord
-    let keywords = this.data.history
-    if (keywords.length>0){
-      keywords.length == 10 ? keywords.splice(9, 1) : keywords
-      keywords.unshift(str)
-      Storage.setHistorySearch(keywords)
-    } else {
-      Storage.setHistorySearch([str])
+    if (!Tool.isEmptyStr(this.data.keyWord)){
+      let str = this.data.keyWord.length > 5 ? this.data.keyWord.slice(0, 5) + "..." : this.data.keyWord
+      let keywords = this.data.history
+      if (keywords.length > 0) {
+        keywords.length == 10 ? keywords.splice(9, 1) : keywords
+        keywords.unshift(str)
+        Storage.setHistorySearch(keywords)
+      } else {
+        Storage.setHistorySearch([str])
+      }
     }
     this.requestKeyword()
   },

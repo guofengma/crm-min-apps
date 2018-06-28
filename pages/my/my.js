@@ -15,7 +15,9 @@ Page({
     myAccount() {
         Tool.navigateTo('my-account/my-account')
     },
-
+    myCollection(){
+      Tool.navigateTo('/pages/my/my-collection/my-collection')
+    },
     /**
      * 生命周期函数--监听页面加载
      */

@@ -117,3 +117,19 @@ image{
   width: 100%;
   font-size: 30rpx;
 }
+.label-by,.label-jf{
+  margin-right: 15rpx;
+  padding: 0rpx 8rpx;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+}
+.label-by{
+  color: #0186f5;
+  border:1rpx solid #0186f5;
+  background: #f0f8ff; 
+}
+.label-jf{
+  color: #fff;
+  background:#3cb034;
+  border:1rpx solid #3cb034;
+}

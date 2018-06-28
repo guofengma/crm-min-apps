@@ -15,7 +15,7 @@
 .select-selfLifting-address .select-address-box{
   padding-right: 15%;
 }
-.select-address-box.active{
+.select-address-box.active, .select-selfLifting-address .select-address-box{
   background-image: url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/line-bg.png);
 }
 .select-address-box .address-info{

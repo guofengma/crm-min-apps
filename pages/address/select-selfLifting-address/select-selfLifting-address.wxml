@@ -1,17 +1,17 @@
 <import src='/components/address-info/address-info.wxml' />
 <view class='select-selfLifting-address'>
   <block wx:for='{{addressList}}' wx:key='unique'>
-    <view class='select-address-box {{index ===0 ? "active":""}}'>
+    <view class='select-address-box'>
       <template is="address-info"data='{{addressType,...item}}'/>
-      <view class='leftbar flexR'>
+      <!-- <view class='leftbar flexR'>
         <image src='{{index==0 ? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>
-      </view>
+      </view> -->
     </view>
   </block>
 
   <!--设置-->
-  <view class='flexR-sb edit-view boxSize {{active? "active":""}}'>
+  <!-- <view class='flexR-sb edit-view boxSize {{active? "active":""}}'>
     <view class='default-view flexR gray'>设置为默认提货地址</view>
     <view class='btn redBg flexR'>确认</view>
-  </view>
+  </view> -->
 </view>

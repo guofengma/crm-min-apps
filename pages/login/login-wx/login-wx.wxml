@@ -1,8 +1,8 @@
 <view class='flexC loginContainer'>
   <view class='loginBg'>
-    <image class='loginImg-wx' src='../../../img/login-bg2.png' mode="widthFix"></image>
+    <image class='loginImg-wx' src='/img/login-bg2.png' mode="widthFix"></image>
     <view class='logoView flexR'>
-      <image class='logo' src='../../../img/login-bg2.png'></image>
+      <image class='logo' src='/img/default-userImg.png'></image>
     </view>
   </view>
   <view>

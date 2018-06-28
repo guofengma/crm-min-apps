@@ -1,7 +1,7 @@
 <view>
   <view class='bg-view'>
     <view class='logoView'>
-      <image class='logo' src='../../../img/login-bg2.png'></image>
+      <image class='logo' src='/img/default-userImg.png'></image>
     </view>
   </view>
   <view class='form flexR'>
@@ -13,7 +13,7 @@
         <view class='flexR form-group' >
           <text>密码</text>
           <input type='{{isSee? "text":"password"}}' name='password' placeholder="请设置密码" value='{{pwd}}'  style='margin-left:71rpx'></input>
-          <image class='pwdImg' src='{{isSee? "../../img/see-pwd-icon.png":"../../img/unsee-pwd-icon.png"}}' mode="widthFix" bindtap='isSeePwd'></image>
+          <image class='pwdImg' src='{{isSee? "/img/see-pwd-icon.png":"/img/unsee-pwd-icon.png"}}' mode="widthFix" bindtap='isSeePwd'></image>
         </view>
       <view class="btn-area">
         <button formType="submit" class='loginBtn'>登录</button>

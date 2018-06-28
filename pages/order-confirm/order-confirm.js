@@ -9,6 +9,7 @@ Page({
     address:'', //地址
     params:'',
     orderInfos:"",
+    addressList:{}
   },
   onLoad: function (options) {
     this.setData({
@@ -34,16 +35,24 @@ Page({
       item.priceList.forEach((item)=>{
         showProduct.push({
           showImg: item.spec_img,
-          showName: item.spec,
+          showName: item.name,
           showType: item.spec,
           showPrice: item.sale_price,
           showQnt: item.num
         })
       })
+      item.hasSelfLifting = (item.dealer.picked_up==1? true:false)
+      if (item.hasSelfLifting){
+        this.queryStoreHouseList()
+      }
+      item.reducePrice = item.userScoreToBalance * item.totalScore
       item.showProduct = showProduct
       item.canUseScore = item.totalScore>0? true:false
+      let addressList = this.data.addressList
+      addressList[1] = item.address
       this.setData({
-        orderInfos: item
+        orderInfos: item,
+        addressList: addressList
       })
     };
     r.addToQueue();
@@ -61,6 +70,19 @@ Page({
     this.setData({
       isUseIntegral: !this.data.isUseIntegral
     })
+  },
+  queryStoreHouseList() {
+    let r = RequestFactory.queryStoreHouseList();
+    r.finishBlock = (req) => {
+      if (req.responseObject.data.length > 0) {
+        let addressList = this.data.addressList
+        addressList[2] = req.responseObject.data[0]
+        this.setData({
+          addressList: addressList
+        })
+      }
+    };
+    r.addToQueue();
   },
   payBtnClicked(){
     Tool.redirectTo('/pages/order-confirm/pay/pay')

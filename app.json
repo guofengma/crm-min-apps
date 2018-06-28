@@ -26,7 +26,8 @@
     "pages/my/my-account/token/token",
     "pages/my/my-account/integral/integral",
     "pages/my/my-account/deposit/deposit",
-    "pages/order-confirm/pay/pay"
+    "pages/order-confirm/pay/pay",
+    "pages/my/my-collection/my-collection"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

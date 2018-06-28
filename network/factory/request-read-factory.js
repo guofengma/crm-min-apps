@@ -303,7 +303,7 @@ export default class RequestFactory {
   static makeSureOrder(params) {
     params.port = '8103'
     let url = Operation.sharedInstance().makeSureOrder;
-    return this.request(url, params, '购物车订单结算', true);
+    return this.request(url, params, '购物车确认订单', true);
   }
 }
 

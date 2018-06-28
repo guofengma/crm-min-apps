@@ -16,20 +16,31 @@ Page({
     params:{}
   },
   onLoad: function (options) {
-    this.setData({
-      keyword:options.keyword
-    })
     let params = {
       pageSize: this.data.pageSize,
-      page: this.data.currentPage
+      page: this.data.currentPage,
+      keyword: ''+options.keyword || ''
     }
     this.setData({
+      keyword: options.keyword || '',
       params: params
     })
-    this.requestQueryProductList(params)
+    this.getRequestUrl(params)
   },
   onShow: function () {
     
+  },
+  searchProduct(params){
+    let r = RequestFactory.searchProduct(params);
+    let productInfo = this.data.productInfo
+    r.finishBlock = (req) => {
+      let datas = req.responseObject.data
+      this.setData({
+        productInfo: productInfo.concat(datas.data),
+        totalPage: datas.total
+      })
+    }
+    r.addToQueue();
   },
   onScroll(){
     // 向下滑动的时候请求数据
@@ -59,6 +70,13 @@ Page({
   productCliked(e){
     Tool.navigateTo('/pages/product-detail/product-detail?productId='+ e.currentTarget.dataset.id)
   },
+  getRequestUrl(params){
+    if (this.data.keyword) {
+      this.searchProduct(params)
+    } else {
+      this.requestQueryProductList(params)
+    }
+  },
   navbarClicked(e){
     // 1 综合 2销量 3价格 不是数字为变化排版
     let n = e.detail.n
@@ -71,7 +89,8 @@ Page({
     }
     let params = {
       pageSize: this.data.pageSize,
-      page: 1
+      page: 1,
+      keyword: this.data.keyword || ''
     }
     switch (n) {
       case 1:
@@ -89,6 +108,6 @@ Page({
       currentPage:1,
       productInfo: []
     }) 
-    this.requestQueryProductList(this.data.params)
+    this.getRequestUrl(this.data.params)
   }
 })
