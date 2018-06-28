@@ -29,10 +29,10 @@ Page({
     // 如果有cookie的话 表示已经登录了 
 
     let didLogin = Storage.getUserCookie()? true:false
-    
+
     this.setData({
       productId: options.productId,
-      // didLogin: didLogin
+      didLogin: didLogin
     })
     this.requestFindProductByIdApp({ productId:this.data.productId})
   },

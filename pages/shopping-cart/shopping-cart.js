@@ -10,23 +10,36 @@ Page({
     selectList:[], //选中的产品
   },
   onLoad: function (options) {
+    this.getLoginCart()
+    Event.on('updateShoppingCart', this.getShoppingCartList, this)
+    Event.on('updateStorageShoppingCart', this.getStorageShoppingCart, this)
+  },
+  onShow: function () {
+
+  },
+  getLoginCart(){
     let didLogin = Storage.getUserCookie() ? true : false
     this.setData({
       didLogin: didLogin
     })
-    if (this.data.didLogin){
-      this.getShoppingCartList()
+    if (this.data.didLogin) {
+      let hasStorageShoppingCart = this.hasStorageShoppingCart()
+      if (hasStorageShoppingCart){
+        this.shoppingCartLimit()
+      } else {
+        this.getShoppingCartList()
+      }
     } else {
       this.getStorageShoppingCart()
     }
-    
-    Event.on('updateShoppingCart', this.getShoppingCartList, this)
-    Event.on('updateStorageShoppingCart', this.getStorageShoppingCart, this)
-
-    this.shoppingCartLimit()
   },
-  onShow: function () {
-
+  hasStorageShoppingCart(){
+    let list = Storage.getShoppingCart()
+    if(list){
+      return true
+    } else {
+      return false 
+    }
   },
   getFormCookieToSessionParams(){
     let list = Storage.getShoppingCart()
@@ -46,7 +59,6 @@ Page({
     let r = RequestFactory.shoppingCartLimit(params);
     r.finishBlock = (req) => {
       this.shoppingCartFormCookieToSession(params)
-      Tool.showComfirm(req.responseObject.msg, callBack)
     };
     r.failBlock = (req) => {
       if (req.responseObject.code == 600) {
@@ -67,7 +79,7 @@ Page({
     let r = RequestFactory.shoppingCartFormCookieToSession(params);
     r.finishBlock = (req) => {
       Storage.clearShoppingCart()
-      this.getStorageShoppingCart()
+      this.getShoppingCartList()
     };
     r.addToQueue();
   },

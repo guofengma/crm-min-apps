@@ -22,7 +22,7 @@ Page({
     let params = { orderProductList:this.data.params}
     let r = RequestFactory.makeSureOrder(params);
     r.finishBlock = (req) => {
-
+      
     };
     r.addToQueue();
   },

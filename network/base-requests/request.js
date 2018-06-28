@@ -15,7 +15,7 @@ export default class Request {
         this.manageLoadingPrompt = true;
 
         //正式
-        // this.baseUrl = 'http://172.16.10.51:8102';
+        // this.baseUrl = '';
     
         // 开发 
         // this.baseUrl = 'http://172.16.10.51:'
