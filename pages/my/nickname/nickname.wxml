@@ -1,0 +1,10 @@
+<!--pages/my/setting.wxml-->
+<view class="order">
+    <view class="wrap">
+        <view class="section">
+            <input type="text" class="inp" />
+        </view>
+    </view>
+    <view class="btn">保存</view>
+</view>
+

@@ -1,4 +1,4 @@
-/* pages/my/my.wxss */
+/* pages/my/setting.wxss */
 .order{
     font-size:26rpx;
     color: #222222;

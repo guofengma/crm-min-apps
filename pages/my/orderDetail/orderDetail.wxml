@@ -18,13 +18,13 @@
   </view>
   
   <!--订单的物流状态  -->
-  <view class='order-state-info'>
+  <view class='order-state-info' wx:if="status==2||status==3||status==7">
     <view class='boxSize'>
       <!--等待付款的时候显示和待发货  -->
       <!-- <template is="address-info" data='{{addressType}}'/> -->
 
       <!-- 待发货/已发货/已完成的时候显示 -->
-      <view class='logistics flexR-sb' wx:if="status==2||status==3||status==7">
+      <view class='logistics flexR-sb'>
         <view>
           <view class='info'>{{state.info}}</view>
           <view class='gray'>{{state.time}}</view>
@@ -103,8 +103,8 @@
   <!--order bar  -->
 
   <view class='order-bar flexR boxSize'>
-    <view class='order-btn btn-left flexR'>删除订单</view>
-    <view class='order-btn red flexR'>再次购买</view>
+    <view class='order-btn btn-left flexR'>{{state.left}}</view>
+    <view class='order-btn red flexR'>{{state.right}}</view>
   </view>
 </view>
 

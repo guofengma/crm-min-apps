@@ -1,0 +1,81 @@
+/* pages/my/setting.wxss */
+.order {
+    font-size: 26rpx;
+    color: #222222;
+    padding-top: 30rpx;
+}
+
+.wrap {
+    margin-top: 30rpx
+}
+
+.item {
+    background: #fff;
+    height: 96rpx;
+    line-height: 96rpx;
+    padding: 0 30rpx;
+    display: flex;
+}
+
+.item view:first-child {
+    width: 75%
+}
+
+.item view:nth-child(2) {
+    width: 25%;
+    text-align: right;
+    margin-right: 20rpx
+}
+
+.line {
+    border-bottom: 1px solid #eee
+}
+
+.item image {
+    width: 35rpx;
+    height: 30rpx;
+    vertical-align: middle;
+    margin-right: 5rpx;
+}
+
+
+
+.clearfix {
+    clear: both;
+}
+
+.jt-img {
+    width: 30rpx !important;
+    height: 30rpx !important;
+    vertical-align: middle;
+    margin-left: 10rpx;
+}
+
+
+.item .user-img {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    background-color: #ff7e00;
+    border: solid 1rpx #ff7e00;
+}
+.level{
+    width: 137rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    background-color: #ff7e00;
+    border-radius: 20rpx;
+    color: #fff;
+    display: inline-block;
+}
+.identify{
+    width: 165rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    background-color: #0186f5;
+    border-radius: 20rpx;
+    color: #fff;
+    display: inline-block;
+}

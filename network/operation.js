@@ -166,6 +166,10 @@ export default class Operation {
 
         this.queryUnSendOutOrderPageList  ='/order/order/queryUnSendOutOrderPageList';
 
+        // 待收货订单
+
+        this.queryWaitReceivingOrderPageList  ='/order/order/queryWaitReceivingOrderPageList';
+
         // 已完成订单详情
 
         this.getOrderDetail  ='/order/order/getOrderDetail';
