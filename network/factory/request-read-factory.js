@@ -301,10 +301,10 @@ export default class RequestFactory {
       let url = Operation.sharedInstance().queryUnSendOutOrderPageList;
       return this.request(url, params, '待发货订单', true);
   }
-  static getCompletedOrderDetail(params) {
+  static getOrderDetail(params) {
       params.port = '8103';
-      let url = Operation.sharedInstance().getCompletedOrderDetail;
-      return this.request(url, params, '已完成订单详情', true);
+      let url = Operation.sharedInstance().getOrderDetail;
+      return this.request(url, params, '订单详情', true);
   }
 
   /*******************订单结算******************** */

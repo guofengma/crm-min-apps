@@ -23,11 +23,11 @@
       <!--等待付款的时候显示和待发货  -->
       <!-- <template is="address-info" data='{{addressType}}'/> -->
 
-      <!-- 已发货的时候显示 -->
-      <view class='logistics flexR-sb'>
+      <!-- 待发货/已发货/已完成的时候显示 -->
+      <view class='logistics flexR-sb' wx:if="status==2||status==3||status==7">
         <view>
-          <view class='info'>仓库正在扫描出仓...</view>
-          <view class='gray'>2018-04-15 12:45:45</view>
+          <view class='info'>{{state.info}}</view>
+          <view class='gray'>{{state.time}}</view>
         </view>
         <view class='right-icon'>
           <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
@@ -56,7 +56,7 @@
     <view class='order-pay-info gray boxSize'>
       <view class='flexR-sb'>
           <text>商品价格</text>
-          <text>¥20</text>
+          <text>¥{{detail.totalPrice}}</text>
       </view>
       <view class='flexR-sb'>
           <text>运费（快递）</text>
@@ -68,11 +68,11 @@
       </view>
       <view class='flexR-sb'>
           <text>积分抵扣</text>
-          <text>-¥{{detail.tokenCoin}}</text>
+          <text>-¥{{detail.userScore}}</text>
       </view>
       <view class='flexR-sb total'>
           <text>订单总价</text>
-          <text>¥{{detail.totalPrice}}</text>
+          <text>¥{{detail.totalPrice+detail.freightPrice}}</text>
       </view>
       <view class='flexR-sb total totalPay'>
           <view class='popup'>
