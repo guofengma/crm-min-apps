@@ -6,17 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {},
-    //跳到我的订单页面
-    allOrder(e) {
-        let index=e.currentTarget.dataset.index;
-        Tool.navigateTo('my-order/my-order?index='+index)
-    },
-    //跳到我的账户页面
-    myAccount() {
-        Tool.navigateTo('my-account/my-account')
-    },
-    myCollection(){
-      Tool.navigateTo('/pages/my/my-collection/my-collection')
+    nickname(){
+      Tool.navigateTo('/pages/my/nickname/nickname')
     },
     /**
      * 生命周期函数--监听页面加载

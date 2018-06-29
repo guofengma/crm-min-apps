@@ -5,11 +5,11 @@
             <view>
                 <text>账号与安全</text>
             </view>
-            <view bindtap="myAccount">
+            <view>
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
-        <view class="item line">
+        <view class="item line" bindtap="address">
             <view>
                 <text>收货地址管理</text>
             </view>
@@ -19,10 +19,10 @@
         </view>
         <view class="item line">
             <view bindtap="myCollection">
-                <text>消息推送（系统推送设置）</text>
+                <text>消息推送</text>
             </view>
             <view>
-                <text>123456</text>
+                <switch  bindchange="switchChange"/>
             </view>
         </view>
         <view class="item line">
@@ -33,7 +33,7 @@
                 <text>123456</text>
             </view>
         </view>
-        <view class="item line">
+        <view class="item line" bindtap="aboutUs">
             <view>
                 <text>关于我们</text>
             </view>
@@ -42,6 +42,24 @@
             </view>
         </view>
     </view>
-    <view class="btn">退出登录</view>
+    <view class="btn" bindtap="loginOut">退出登录</view>
+    <view class="tips-delete-order model-view-bg " wx:if='{{isLoginOut}}'>
+        <view>
+            <view class='tips-box '>
+                <view class='tips-icon flexR'>
+                    <view>
+                        <image src="/img/tktx_03@2x.png"></image>
+                    </view>
+                </view>
+                <view class='content'>
+                    <view class='big'>是否确认退出登录</view>
+                </view>
+                <view class='flexR-sb btn-content'>
+                    <view class='redBg deleteBtn flexR' bindtap='outSure'>确定</view>
+                    <view class='deleteBtn leftBtn gray flexR' bindtap='cancel'>取消</view>
+                </view>
+            </view>
+        </view>
+    </view>
 </view>
 

@@ -5,35 +5,26 @@ Page({
     /**
      * 页面的初始数据
      */
-    data: {
-        isLoginOut:false
+    data: {},
+    //跳到我的订单页面
+    allOrder(e) {
+        let index=e.currentTarget.dataset.index;
+        Tool.navigateTo('my-order/my-order?index='+index)
     },
-    switchChange(){
-
+    //跳到我的账户页面
+    myAccount() {
+        Tool.navigateTo('my-account/my-account')
     },
-    //收货地址
-    address(){
-        Tool.navigateTo('/pages/address/select-express-address/select-express-address')
+    myCollection(){
+      Tool.navigateTo('/pages/my/my-collection/my-collection')
     },
-    //关于我们
-    aboutUs(){
-        Tool.navigateTo('/pages/my/aboutUs/aboutUs')
+    //跳到我的信息页面
+    personalData(){
+        Tool.navigateTo('my-personalData/my-personalData')
     },
-    //退出登录
-    loginOut(){
-        this.setData({
-            isLoginOut:true
-        })
-    },
-    //确定
-    outSure(){
-
-    },
-    //取消
-    cancel(){
-        this.setData({
-            isLoginOut:false
-        })
+    //跳到设置页面
+    setting(){
+        Tool.navigateTo('setting/setting')
     },
     /**
      * 生命周期函数--监听页面加载

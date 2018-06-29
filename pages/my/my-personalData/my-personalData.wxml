@@ -1,26 +1,30 @@
 <!--pages/my/setting.wxml-->
 <view class="order">
-    <view class="wrap">
+    <view>
         <view class="item line">
             <view>
                 <text>头像</text>
             </view>
-            <view bindtap="myAccount">
-                <text>更多</text>
-                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
+            <view>
+                <image class="user-img" src="/img/default-userImg.png"></image>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png'
+                       mode='widthFix'></image>
             </view>
         </view>
-        <view class="item line">
+        <view class="item">
             <view>
                 <text>昵称</text>
             </view>
-            <view>
+            <view bindtap="nickname">
                 <text>张三</text>
-                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png'
+                       mode='widthFix'></image>
             </view>
         </view>
+    </view>
+    <view class="wrap">
         <view class="item line">
-            <view bindtap="myCollection">
+            <view>
                 <text>授权ID</text>
             </view>
             <view>
@@ -32,10 +36,10 @@
                 <text>会员等级</text>
             </view>
             <view>
-                <text>123456</text>
+                <text class="level">荣誉总监</text>
             </view>
         </view>
-        <view class="item line">
+        <view class="item">
             <view>
                 <text>手机号</text>
             </view>
@@ -43,21 +47,27 @@
                 <text>123456</text>
             </view>
         </view>
-        <view class="item line">
+    </view>
+
+    <view class="wrap">
+        <view class="item">
             <view>
                 <text>所在区域</text>
             </view>
             <view>
                 <text>123456</text>
-                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png'
+                       mode='widthFix'></image>
             </view>
         </view>
-        <view class="item line">
+    </view>
+    <view class="wrap">
+        <view class="item">
             <view>
                 <text>实名认证</text>
             </view>
             <view>
-                <text>123456</text>
+                <text class="identify">已实名认证</text>
             </view>
         </view>
     </view>

@@ -16,9 +16,9 @@
         </view>
     </view>
     <view class="my-order">
-        <view class="title">
+        <view class="title" bindtap="allOrder" data-index="0">
             <view><text>我的订单</text></view>
-            <view bindtap="allOrder" data-index="0">
+            <view>
                 <text>全部订单</text>
                 <image class="jt-img" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png" alt=""></image>
             </view>
@@ -44,12 +44,12 @@
         </view>
     </view>
     <view class="wrap">
-        <view class="item line">
+        <view class="item line" bindtap="myAccount">
             <view>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/wdzh_18@2x.png" alt=""></image>
                 <text>我的账户</text>
             </view>
-            <view bindtap="myAccount">
+            <view>
                 <text>更多</text>
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>

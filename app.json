@@ -29,7 +29,9 @@
     "pages/order-confirm/pay/pay",
     "pages/my/my-collection/my-collection",
     "pages/my/my-personalData/my-personalData",
-    "pages/my/setting/setting"
+    "pages/my/setting/setting",
+    "pages/my/nickname/nickname",
+    "pages/my/aboutUs/aboutUs"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
