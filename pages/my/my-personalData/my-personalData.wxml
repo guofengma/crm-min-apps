@@ -7,8 +7,7 @@
             </view>
             <view>
                 <image class="user-img" src="/img/default-userImg.png"></image>
-                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png'
-                       mode='widthFix'></image>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
         <view class="item">
