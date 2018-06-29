@@ -184,6 +184,12 @@ export default class Operation {
 
         this.submitOrder ='/order/order/submitOrder'
 
+        /******************我的---设置*********************** */
+
+        //退出登录
+
+        this.exitLogin ='/user/memberLogin/exitLogin';
+
     }
 
     static sharedInstance() {

@@ -9,7 +9,9 @@ Page({
     
   },
   onLoad: function () {
-    
+    if(app.globalData.flag){//退出登录
+      Tool.navigationPop();
+    }
   },
   searchClicked(){
     Tool.navigateTo('/pages/search/search')

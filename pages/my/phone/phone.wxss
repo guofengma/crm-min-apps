@@ -1,26 +1,43 @@
 /* pages/my/account.wxss */
-.order{
+.phone{
     font-size:26rpx;
     color: #222222;
-    padding-top: 30rpx
+    padding-top: 30rpx;
 }
-
-.item{background: #fff;height: 96rpx;line-height: 96rpx;padding: 0 30rpx;display: flex;}
-.item view:first-child{width: 75%}
-.item view:nth-child(2){width: 25%;text-align: right;margin-right: 20rpx}
-.line{border-bottom: 1px solid #eee}
-
-.clearfix{
-    clear: both;
+.tips{
+    height: 66rpx;
+    line-height: 36rpx;
+    padding:0 30rpx;
+    color: #c8c8c8;
 }
-
-.jt-img{
-    width:30rpx !important;
-    height: 30rpx !important;
-    vertical-align: middle;
-    margin-left: 10rpx;
+.section{
+    display: flex;
+    height: 96rpx;
+    line-height: 96rpx;
+    background: #fff
 }
-
+.item{
+    width: 20%;
+    padding-left: 30rpx;
+}
+.inp{
+    height: 96rpx;
+    line-height: 96rpx;
+    background-color: #ffffff;
+    padding: 0 30rpx;
+}
+.lar-inp{
+    width: 80%;
+}
+.small-inp{
+    width: 50%
+}
+.code{
+  text-align: right;
+  width: 30%;
+  margin-right: 30rpx;
+  color: #ff979f;
+}
 .btn{
     width: 80%;
     margin-left: 10%;
@@ -34,6 +51,7 @@
     border: solid 1rpx #dddddd;
     margin-top: 50rpx;
 }
+
 
 .tips-icon{
     position: absolute;

@@ -1,4 +1,4 @@
-// pages/my/setting.js
+// pages/my/account.js
 let { Tool, RequestFactory } = global;
 Page({
 

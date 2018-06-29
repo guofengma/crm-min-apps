@@ -1,4 +1,4 @@
-<!--pages/my/setting.wxml-->
+<!--pages/my/account.wxml-->
 <view class="aboutUs">
    <view class="logo-area">
        <image class="logo-img" src="/img/default-userImg.png"></image>
