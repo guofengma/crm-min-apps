@@ -6,12 +6,12 @@ Page({
      * 页面的初始数据
      */
     data: {
-        isToken:false,
-        isLeft:false,
-        payList: { "totalAmounts": 2048, "totalPrice": 1000.0, "dealer": { "token_coin": 111, "address": "11111", "picked_up": 1, "level": 2, "phone": "18758328354", "user_score": 1111, "level_id": 3, "blocked_coin": 222, "blocked_balances": 11, "id": 9, "available_balance": 222, "realname": "陈微微" }, "orderNum": "2018062832941932456934139", "tokenCoinToBalance": 2, "totalScore": 0,'showTotalAmounts':'10' }, // 提交订单时返回的数据
+        payList:'',
         isShow:false, // 显示支付结果
         result:1, //支付结果
-        payWayActive:[false,false,false]
+        payWayActive:[false,false,false],
+        useAmount:[false,false],
+        useBalance:0
     },
     onLoad: function (options) {
       // 提交订单时返回的数据
@@ -21,39 +21,33 @@ Page({
       //   payList: payList
       // })
     },
-    //代币支付
-    chooseToken() {
-      this.setData({
-        isToken: !this.data.isToken,
-      })
-      let payList = this.data.payList
-      let token = Number(payList.dealer.token_coin * payList.tokenCoinToBalance)
-      this.changePrice(this.data.isToken, token)
-    },
-    //余额支付
-    chooseLeft() {
-        let payList = this.data.payList
-        let balance = payList.dealer.available_balance
-        this.setData({
-          isLeft:!this.data.isLeft,
-        })
-        this.changePrice(this.data.isLeft, balance)
-    },
-    changePrice(isUse,useAmount){
-      if (this.data.payList.showTotalAmounts > 0) {
-        let payList = this.data.payList
-        let price = Number(payList.showTotalAmounts) 
-        let showTotalAmounts = Number(payList.showTotalAmounts)
-        if (isUse) {
-          showTotalAmounts = price - useAmount > 0 ? (price - useAmount) : 0
-        } else {
-          showTotalAmounts = price + useAmount
-        }
-        payList.showTotalAmounts = parseInt(showTotalAmounts * 100) / 100
-        this.setData({
-          payList: payList
-        })
-      }
+    changePrice(e){
+      // 使用代币支付 和余额支付 
+      // let index = e.currentTarget.dataset.index
+      // let useAmount = this.data.useAmount
+      // useAmount[index] = !useAmount[index]
+      // let payList = this.data.payList
+      // let totalAmounts = payList.totalAmounts
+      // let usePrice = ''
+      // let useBalance = ''
+      // useAmount.forEach((item,key)=>{
+      //   if(item && key==0){
+      //     usePrice = payList.dealer.token_coin * payList.tokenCoinToBalance
+      //     totalAmounts = totalAmounts - usePrice > 0 ? (totalAmounts - usePrice) : 0
+      //   } else if (item && key == 1) {
+      //     usePrice = payList.dealer.available_balance
+      //     let n = totalAmounts - usePrice
+      //     useBalance = n > 0 ? usePrice : Math.abs(parseInt(n * 100) / 100)
+      //     totalAmounts = n > 0 ? n : 0
+      //   }
+    
+      // })
+      // payList.showTotalAmounts = parseInt(totalAmounts * 100) / 100
+      // this.setData({
+      //   useAmount: useAmount,
+      //   payList: payList,
+      //   useBalance: useBalance
+      // })
     },
     payWay(e){
       let index = e.currentTarget.dataset.index
@@ -63,7 +57,29 @@ Page({
         payWayActive: payWay
       })
     },
+    payBtnCliked(){
+      let payWay = this.isSelectPayWay()
+      console.log(payWay)
+      if (payWay.isSelect){
+
+      } else {
+        Tool.showAlert('请选择支付方式')
+      }
+    },
+    isSelectPayWay(){
+      let payway = ''
+      this.data.payWayActive.forEach((item,index)=>{
+        if(item){
+          console.log(11111)
+          payway =  {isSelect:true,index:index}
+          return payway
+        } else {
+          payway =  {isSelect: false, index: null }
+        }
+      })
+      return payway
+    },
     goPage(){
-      Tool.redirectTo('')
+      Tool.redirectTo('/pages/my/my-order/my-order')
     }
 })
