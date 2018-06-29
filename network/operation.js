@@ -168,7 +168,7 @@ export default class Operation {
 
         // 已完成订单详情
 
-        this.getCompletedOrderDetail  ='/order/order/getCompletedOrderDetail';
+        this.getOrderDetail  ='/order/order/getOrderDetail';
 
         /******************提交订单 订单结算*********************** */
 

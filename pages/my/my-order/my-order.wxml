@@ -41,7 +41,7 @@
                         </view>
                         <view>
                             <view class="price">￥{{item.price}}</view>
-                            <view class="org-price">￥{{item.price}}</view>
+                            <!--<view class="org-price">￥{{item.price}}</view>-->
                             <view class="num">x{{item.num}}</view>
                         </view>
                     </view>

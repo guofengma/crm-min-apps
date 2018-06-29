@@ -9,13 +9,20 @@ Page({
             recevicePhone:'',
             addressInfo:''
         },
+        hasData:true,
         imgSrcUrl: 'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/',
         logIcon: 'order-state-3-dark.png',
         isCancel: false,//是否取消订单
         isDelete: false, //是否删除订单
         secondArry: [],
         state: {
-            orderIcon: "order-state-1.png"
+            status:'',
+            left:'',
+            right:'',
+            middle:'',
+            orderIcon: "order-state-1.png",
+            info:'',
+            time:'',
         },
         orderTime: '2018-6-27 10:10:00',
         time: Object,
@@ -23,7 +30,6 @@ Page({
         detail: {},//详情信息
         orderId: '',//订单ID
         status: '',//订单状态
-        hasData:true
     },
     onLoad: function (options) {
         this.setData({
@@ -42,29 +48,22 @@ Page({
             orderId: this.data.orderId
         };
         let r;
-        let index = this.data.status;
-        if (index == 0) {//全部订单
-            r = global.RequestFactory.queryCompletedOrderPageList(params);
-        } else if (index == 1) {//待支付
-            r = global.RequestFactory.queryUnPaidOrderPageList(params);
-        } else if (index == 2) {//待发货
-            r = global.RequestFactory.queryUnSendOutOrderPageList(params);
-        } else if (index == 3) {//待收货
-            r = global.RequestFactory.queryCompletedOrderPageList(params);
-        } else if (index == 7) {//已完成
-            r = global.RequestFactory.getCompletedOrderDetail(params);
-        }
+        r = global.RequestFactory.getOrderDetail(params);
         r.finishBlock = (req) => {
             let detail=req.responseObject.data;
             detail.createTime=detail.createTime?Tool.formatTime(detail.createTime):'';
             detail.sysPayTime=detail.sysPayTime?Tool.formatTime(detail.sysPayTime):'';
             detail.payTime=detail.payTime?Tool.formatTime(detail.payTime):'';
             detail.deliveryTime=detail.deliveryTime?Tool.formatTime(detail.deliveryTime):'';
+            let address={};
+            address.receiver=detail.receiver;
+            address.recevicePhone=detail.recevicePhone;
+            address.addressInfo= detail.province + detail.city + detail.area + detail.address;
+            this.data.state.time= detail.deliveryTime;
             this.setData({
-                detail: req.responseObject.data,
-                receiver: req.responseObject.data.receiver,
-                recevicePhone: req.responseObject.data.recevicePhone,
-                addressInfo: req.responseObject.data.province + req.responseObject.data.city + req.responseObject.data.area + req.responseObject.data.address
+                detail: detail,
+                address: address,
+                state:this.data.state
             })
         };
         r.addToQueue();
@@ -144,23 +143,23 @@ Page({
         //按钮状态 left right middle 分别是底部左边 右边 和订单详情中的按钮文案
         var state = '';
         if (n == 1) {
-            state = {status: '等待买家付款', left: '取消支付', right: '继续支付', middle: '', orderIcon: "order-state-1.png"}
+            state = {status: '等待买家付款', left: '取消支付', right: '继续支付', middle: '', orderIcon: "order-state-1.png",info:'',time:''}
         } else if (n == 2) {
-            state = {status: '等待卖家发货', left: '订单退款', right: '订单退款', middle: '退款', orderIcon: "order-state-2.png"}
+            state = {status: '买家已付款', left: '订单退款', right: '订单退款', middle: '退款', orderIcon: "order-state-2.png",info:'等待卖家收货...',time:''}
         } else if (n == 3) {
-            state = {status: '等待买家收货', left: '查看物流', right: '确认收货', middle: '退换货', orderIcon: "order-state-3.png"}
+            state = {status: '买家已发货', left: '查看物流', right: '确认收货', middle: '退换货', orderIcon: "order-state-3.png",info:'仓库正在扫描出仓...',time:''}
         } else if (n == 4) {
-            state = {status: '等待买家自提', left: '', right: '确认收货', middle: '退款', orderIcon: "order-state-3.png"}
+            state = {status: '等待买家自提', left: '', right: '确认收货', middle: '退款', orderIcon: "order-state-3.png",info:'',time:''}
         } else if (n == 5) {
-            state = {status: '订单已完成', left: '', right: '删除订单', middle: '', orderIcon: "order-state-5.png"};
+            state = {status: '交易已完成', left: '', right: '删除订单', middle: '', orderIcon: "order-state-5.png",info:'已签收',time:''};
         } else if (n == 6) {// 退款 退货等  判断 middle的状态
-            state = {status: '退货中', left: '取消支付', right: '继续支付', middle: '', orderIcon: "order-state-5.png"}
+            state = {status: '退货中', left: '取消支付', right: '继续支付', middle: '', orderIcon: "order-state-5.png",info:'',time:''}
         } else if (n == 7) {// 售后完成 或者 退换货等都完成 判断 middle的状态
-            state = {status: '订单已完成', left: '', right: '删除订单', middle: '', orderIcon: "order-state-5.png"};
+            state = {status: '订单已完成', left: '', right: '删除订单', middle: '', orderIcon: "order-state-5.png",info:'已签收',time:''};
         } else if (n == 8) {
-            state = {status: '交易关闭', left: '', right: '删除订单', middle: '', orderIcon: "order-state-6.png"}
+            state = {status: '交易关闭', left: '', right: '删除订单', middle: '', orderIcon: "order-state-6.png",info:'',time:''}
         } else if (n == 9) {// 不显示 ？
-            state = {status: '删除订单', left: '', right: '', middle: ''}
+            state = {status: '删除订单', left: '', right: '', middle: '',info:'',time:''}
         }
         // switch (n) {
         //     case 1:
