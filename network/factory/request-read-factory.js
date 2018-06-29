@@ -290,6 +290,11 @@ export default class RequestFactory {
       let url = Operation.sharedInstance().queryCompletedOrderPageList;
       return this.request(url, params, '已完成订单', true);
   }
+  static queryAllOrderPageList(params) {
+      params.port = '8103';
+      let url = Operation.sharedInstance().queryAllOrderPageList;
+      return this.request(url, params, '全部订单', true);
+  }
   static queryUnPaidOrderPageList(params) {
       params.port = '8103';
       let url = Operation.sharedInstance().queryUnPaidOrderPageList;
@@ -299,6 +304,11 @@ export default class RequestFactory {
       params.port = '8103';
       let url = Operation.sharedInstance().queryUnSendOutOrderPageList;
       return this.request(url, params, '待发货订单', true);
+  }
+  static queryWaitReceivingOrderPageList(params) {
+      params.port = '8103';
+      let url = Operation.sharedInstance().queryWaitReceivingOrderPageList;
+      return this.request(url, params, '待收货订单', true);
   }
   static getOrderDetail(params) {
       params.port = '8103';

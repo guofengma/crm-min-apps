@@ -41,7 +41,7 @@ Page({
             }else if(index==2){//待发货
                 r = global.RequestFactory.queryUnSendOutOrderPageList(params);
             }else if(index==3){//待收货
-                r = global.RequestFactory.queryCompletedOrderPageList(params);
+                r = global.RequestFactory.queryWaitReceivingOrderPageList(params);
             }else if(index==4){//已完成
                 r = global.RequestFactory.queryCompletedOrderPageList(params);
             }
