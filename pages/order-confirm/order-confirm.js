@@ -1,4 +1,4 @@
-let { Tool, RequestFactory } = global
+let { Tool, RequestFactory, Event } = global
 
 Page({
   data: {
@@ -9,12 +9,18 @@ Page({
     address:'', //地址
     params:'',
     orderInfos:"",
-    addressList:[]
+    addressList:[],
+    door:1, //1是产品详情页进入 2是购物车进入
   },
   onLoad: function (options) {
     this.setData({
-      params: options.params
+      params: options.params,
+      door: options.type
     })
+    if(options.type == 2) {
+      // 如果是购物车的结算 刷新购物车
+      Event.emit('updateStorageShoppingCart')
+    }
     this.requestOrderInfo()
   },
   onShow: function () {

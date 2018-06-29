@@ -131,12 +131,13 @@ Page({
         item.isSelect = false  //是否选择 
       })
       this.setData({
-        items: data,
+        items: data
       })
     };
     r.addToQueue();
   },
   deleteClicked(e){
+    console.log(e.detail.items)
     let items = e.detail.items
     if (e.detail.index !== undefined){
       if(!this.data.didLogin){
@@ -176,8 +177,8 @@ Page({
     let totalPrice = 0
     for (let i = 0; i<items.length;i++){
       if (items[i].isSelect){
-        totalPrice += items[i].productNumber * items[i].showPrice
-        let list = { "price_id": items[i].id, "num": items[i].productNumber }
+        totalPrice += items[i].showCount * items[i].showPrice
+        let list = { "price_id": items[i].id, "num": items[i].showCount }
         selectList.push(list)
       }
     }
@@ -190,7 +191,6 @@ Page({
     let index = e.currentTarget.dataset.index
   },
   counterInputOnChange(e) {
-    console.log(e)
     // 数量变化的时候 
     let count = e.detail.innerCount;
     let index = e.detail.e.currentTarget.dataset.index
@@ -200,10 +200,11 @@ Page({
     if (index !== undefined){
       if(!this.data.didLogin){
         this.updateStorageShoppingCart(count, index)
-        return
-      }
-      this.updateShoppingCart(count,index)
+      } else {
+        this.updateShoppingCart(count, index)
+      }  
     }
+    this.getTotalPrice()
   },
   deleteCart(items,index){
     // 删除购物车
@@ -242,7 +243,15 @@ Page({
   },
   makeOrder(){
     let params = JSON.stringify(this.data.selectList)
-    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + params)
+    
+    // 如果没有登录 那么就跳转到登录页面
+    
+    if(!this.data.didLogin){
+      Tool.navigateTo('/pages/login/login-wx/login-wx')
+      return
+    }
+    
+    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + params+'&type=2')
   },
   onUnload: function () {
     Event.off('updateStorageShoppingCart', this.getStorageShoppingCart);

@@ -69,13 +69,17 @@ Page({
     Event.emit('updateStorageShoppingCart')
   },
   makeSureOrder(){
+    if (!this.data.didLogin) {
+      Tool.navigateTo('/pages/login/login-wx/login-wx')
+      return
+    }
     let params = {
       productId: this.data.productInfo.id,
       num: this.data.productBuyCount,
       price_id: this.data.selectType.id
     }
 
-    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify([params]) )
+    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify([params])+'&type=1' )
   },
   addToShoppingCart(){
     // 加入购物车

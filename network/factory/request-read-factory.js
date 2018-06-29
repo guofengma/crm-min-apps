@@ -122,7 +122,7 @@ export default class RequestFactory {
       req.preprocessCallback = (req, firstData) => {
         let data = req.responseObject.data
         data.forEach((item) => {
-          //req.responseObject.datashowzipcode = (item.name == params ? item.zipcode:-1)
+          req.responseObject.data.showZipcode = (item.name == params ? item.zipcode:-1)
         })
       }
     }
@@ -141,14 +141,6 @@ export default class RequestFactory {
     params.port = '8101'
     let url = Operation.sharedInstance().getAreaList;
     return this.request(url, params, '获取区');
-  }
-
- 
-  //获取热搜词
-
-  static getHotWordsListActive(){
-    let url = Operation.sharedInstance().getHotWordsListActive;
-    return this.request(url,{}, '获取热搜词',true);
   }
 
   // 获取商品列表 queryProductListAPP
@@ -170,6 +162,13 @@ export default class RequestFactory {
     return this.request(url, params, '获取商品详情页', true);
   }
 
+
+  //获取热搜词
+
+  static getHotWordsListActive() {
+    let url = Operation.sharedInstance().getHotWordsListActive;
+    return this.request(url, {}, '获取热搜词', true);
+  }
   // 关键字搜索产品
 
   static searchProduct(params) {

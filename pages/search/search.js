@@ -11,6 +11,7 @@ Page({
     hotWords:[]
   },
   onLoad: function (options) {
+    
     let history = Storage.getHistorySearch()
     if(history){
       this.setData({
@@ -21,6 +22,14 @@ Page({
   },
   onShow: function () {
 
+  },
+  getLocation(){
+    let callBack = (res) =>{
+      if(res){
+        this.getProvinceList()
+      }
+    }
+    Tool.queryLocation()
   },
   requestGetHotWordsListActive(){
     let r = RequestFactory.getHotWordsListActive();
@@ -49,16 +58,6 @@ Page({
     })
   },
   searchKeyword(){
-    let callBack = (res) =>{
-      if(res){
-        this.getProvinceList()
-      }
-      
-      this.requestKeyword()
-    }
-    Tool.queryLocation(callBack)
-  },
-  setStorageKeyword(){
     if (!Tool.isEmptyStr(this.data.keyWord)) {
       let str = this.data.keyWord.length > 5 ? this.data.keyWord.slice(0, 5) + "..." : this.data.keyWord
       let keywords = this.data.history

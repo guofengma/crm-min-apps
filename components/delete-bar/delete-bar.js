@@ -14,6 +14,9 @@ Component({
   methods: {
     //手指触摸动作开始 记录起点X坐标
     touchstart: function (e) {
+      this.setData({
+        items: this.properties.item
+      })
       //开始触摸时 重置所有删除
       this.data.items.forEach(function (v, i) {
         if (v.isTouchMove)//只操作为true的
@@ -24,7 +27,7 @@ Component({
         startY: e.changedTouches[0].clientY,
         items: this.data.items
       })
-      this.triggerEvent('deleteClicked', { items:this.data.items} )
+      //this.triggerEvent('deleteClicked', { items:this.data.items} )
     },
     touchend() {
       // this.setData({
@@ -94,8 +97,8 @@ Component({
     }
   },
   ready: function () {
-    this.setData({
-      items: this.properties.item
-    })
+    // this.setData({
+    //   items: this.properties.item
+    // })
   }
 })
