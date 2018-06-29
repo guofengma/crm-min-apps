@@ -2,14 +2,14 @@
 <view class="order">
     <view class="bg-area" bindtap="personalData">
         <view class="img-area">
-            <image class="avatar-img" src="/img/default-userImg.png" alt=""></image>
+            <image class="avatar-img" src="{{userInfos.headImg||'/img/default-userImg.png'}}" alt=""></image>
         </view>
         <view class="info">
             <view>
-                <text>张檬</text>
-                <image class="smrz-img" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/smyh_03@2x.png" alt=""></image>
+                <text>{{userInfos.showName}}</text>
+                <image class="smrz-img" wx:if='{{userInfos.isRealname}}' src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/smyh_03@2x.png" alt=""></image>
             </view>
-            <view>明星CEO</view>
+            <view>{{userInfos.levelName || ''}}</view>
         </view>
         <view>
             <image class="jt-img" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/jt_06@2x.png" alt=""></image>

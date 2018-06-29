@@ -6,28 +6,29 @@
 import RequestQueue from './request-queue';
 import RequestStatus from './request-status';
 
-
 //请求基类
 export default class Request {
-
+    getBaseUrl(bParam) {
+      //正式
+      // this.baseUrl = '';
+      // 开发 
+      // this.baseUrl = 'http://172.16.10.51:'
+      this.baseUrl = 'http://172.16.10.56:'
+      // this.baseUrl = 'http://172.16.10.9:'
+      // this.baseUrl = 'http://172.16.10.53:'
+      // this.baseUrl = 'http://172.16.10.253:'
+      if (bParam.port) {
+        this.baseUrl = this.baseUrl + bParam.port
+      } else {
+        this.baseUrl = this.baseUrl + '8102';
+      }
+      return this.baseUrl
+    }
     constructor(bParam) {
         //request自己控制loading提示
         this.manageLoadingPrompt = true;
 
-        //正式
-        // this.baseUrl = '';
-    
-        // 开发 
-        this.baseUrl = 'http://172.16.10.51:'
-        // this.baseUrl = 'http://172.16.10.56:'
-        // this.baseUrl = 'http://172.16.10.9:'
-        // this.baseUrl = 'http://172.16.10.53:'
-        // this.baseUrl = 'http://172.16.10.253:'
-        if (bParam.port) {
-          this.baseUrl = this.baseUrl + bParam.port
-        } else {
-          this.baseUrl = this.baseUrl+'8102';
-        }
+        this.baseUrl = this.getBaseUrl(bParam)
 
         //拼接了bodyParam的最终url
         this._url = '';

@@ -190,6 +190,27 @@ export default class Operation {
 
         this.exitLogin ='/user/memberLogin/exitLogin';
 
+        // 修改用户头像
+        
+        this.updateDealerHeadImg = '/user/dealer/updateDealerHeadImgById';
+
+        // 上传图片的地址
+
+        this.aliyunOSSUploadImage ='/commonAPI/ossClient/aliyunOSSUploadImage'
+
+        // 修改用户昵称
+
+        this.updateDealerNickname = '/user/dealer/updateDealerNicknameById';
+
+        // 修改所在区域
+
+        this.updateDealerRegion = '/user/dealer/updateDealerRegionById';
+
+        //  修改密码
+
+        this.updateDealerPassword = '/user/dealer/updateDealerPassword';
+
+
     }
 
     static sharedInstance() {

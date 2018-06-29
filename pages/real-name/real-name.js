@@ -70,6 +70,8 @@ Page({
   requestSignMemberInfo(params){
     let r = global.RequestFactory.signMemberInfo(params);
     r.finishBlock = (req) => {
+      Storage.setUserAccountInfo(req.responseObject.data)
+      Storage.setMemberId(req.responseObject.data.id)
       this.dismiss()
     }
     r.addToQueue();

@@ -1,12 +1,12 @@
 <!--pages/my/account.wxml-->
 <view class="order">
     <view>
-        <view class="item line">
+        <view class="item line" bindtap='modifyImageTap'>
             <view>
                 <text>头像</text>
             </view>
             <view>
-                <image class="user-img" src="/img/default-userImg.png"></image>
+                <image class="user-img" src="{{ userInfos.headImg ||'/img/default-userImg.png'}}"></image>
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
@@ -15,9 +15,8 @@
                 <text>昵称</text>
             </view>
             <view bindtap="nickname">
-                <text>张三</text>
-                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png'
-                       mode='widthFix'></image>
+                <text>{{userInfos.nickname}}</text>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
     </view>
@@ -27,15 +26,15 @@
                 <text>授权ID</text>
             </view>
             <view>
-                <text>123456</text>
+                <text>{{userInfos.code||''}}</text>
             </view>
         </view>
         <view class="item line">
             <view>
                 <text>会员等级</text>
             </view>
-            <view>
-                <text class="level">荣誉总监</text>
+            <view wx:if='{{userInfos.levelName}}'>
+                <text class="level">{{userInfos.levelName||''}}</text>
             </view>
         </view>
         <view class="item">
@@ -43,7 +42,7 @@
                 <text>手机号</text>
             </view>
             <view>
-                <text>123456</text>
+                <text>{{userInfos.phone}}</text>
             </view>
         </view>
     </view>
@@ -60,13 +59,13 @@
             </view>
         </view>
     </view>
-    <view class="wrap">
+    <view class="wrap" bindtap='realName'>
         <view class="item">
             <view>
                 <text>实名认证</text>
             </view>
-            <view>
-                <text class="identify">已实名认证</text>
+            <view >
+                <text class="identify">{{userInfos.isRealname? "已实名认证":"未实名认知"}}</text>
             </view>
         </view>
     </view>

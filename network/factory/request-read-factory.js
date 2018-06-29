@@ -328,5 +328,36 @@ export default class RequestFactory {
         let url = Operation.sharedInstance().exitLogin;
         return this.request(url, params, '退出登录', true);
     }
+    
+    // 上传图片的地址 
+    static aliyunOSSUploadImage(){
+      let params = {
+        port:8100
+      }
+      let baseUrl = new Request(params).getBaseUrl(params)
+      let url = Operation.sharedInstance().aliyunOSSUploadImage;
+      return baseUrl+url 
+    }
+
+    static updateDealerHeadImg(params) {
+      let url = Operation.sharedInstance().updateDealerHeadImg;
+      return this.request(url, params, '修改用户头像', true);
+    }
+
+    static updateDealerNickname(params) {
+      let url = Operation.sharedInstance().updateDealerNickname;
+      return this.request(url, params, '修改用户昵称', true);
+    }
+
+    static updateDealerRegion(params) {
+      let url = Operation.sharedInstance().updateDealerRegion;
+      return this.request(url, params, '修改所在区域', true);
+    }
+
+    static updateDealerHeadImgById(params) {
+      let url = Operation.sharedInstance().exitLogin;
+      return this.request(url, params, '修改密码', true);
+    }
+
 }
 

@@ -732,5 +732,19 @@ export default class Tool {
       global.Storage.setUserCookie(myCookie)
       return myCookie
     }
+
+    // 获取用户账号信息 
+
+    static getUserInfos(that){
+      let userInfo = global.Storage.getUserAccountInfo()
+      if (userInfo) {
+        let idcard = userInfo.idcard
+        userInfo.showName = idcard ? userInfo.realname : userInfo.nickname
+        userInfo.isRealname = idcard ? true : false
+      }
+      that.setData({
+        userInfos: userInfo || ''
+      })
+    }
 }
 
