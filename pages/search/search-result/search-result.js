@@ -13,19 +13,25 @@ Page({
     totalPage:'', // 页面总页数
     currentPage:1, // 当前的页数
     pageSize: 10, // 每次加载请求的条数 默认10 
-    params:{}
+    params:{},
+    code:''
   },
   onLoad: function (options) {
+    
     let params = {
       pageSize: this.data.pageSize,
       page: this.data.currentPage,
-      keyword: ''+options.keyword || ''
+      keyword: options.keyword || '',
+      areaCode: options.code || -1,
     }
     this.setData({
       keyword: options.keyword || '',
-      params: params
+      params: params,
+      code: options.code
     })
-    this.getRequestUrl(params)
+
+    // this.getRequestUrl(params)
+    this.requestQueryProductList(params)
   },
   onShow: function () {
     
@@ -56,10 +62,17 @@ Page({
     this.requestQueryProductList(this.data.params)
   },
   requestQueryProductList(params){
-    let r = RequestFactory.queryProductListAPP(params);
+    let r = ''
+    if (this.data.keyword){
+      r = RequestFactory.searchProduct(params)
+    } else {
+      r = RequestFactory.queryProductListAPP(params);
+    }
+    params.id = 1
     let productInfo = this.data.productInfo
     r.finishBlock = (req) => {
       let datas = req.responseObject.data
+      console.log(productInfo.concat(datas.data))
       this.setData({
         productInfo: productInfo.concat(datas.data),
         totalPage: datas.total
@@ -90,7 +103,8 @@ Page({
     let params = {
       pageSize: this.data.pageSize,
       page: 1,
-      keyword: this.data.keyword || ''
+      keyword: this.data.keyword || -1,
+      areaCode: this.data.code || -1,
     }
     switch (n) {
       case 1:

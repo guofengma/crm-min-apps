@@ -164,4 +164,15 @@ export default class Storage {
     static clearShoppingCart() {
       this.setterFor('userShoppingCart', null);
     }
+
+    // 订单确认页面地址
+
+    static setOrderAddress(info) {
+      this.setterFor('OrderAddress', info)
+    }
+
+    static getOrderAddress() {
+      return this.getterFor('OrderAddress');
+    }
+
 }

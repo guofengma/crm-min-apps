@@ -8,7 +8,9 @@ Page({
   data: {
     keyWord:'',
     history: [],
-    hotWords:[]
+    hotWords:[],
+    province:'',
+    provinceCode:-1
   },
   onLoad: function (options) {
     
@@ -19,6 +21,7 @@ Page({
       })
     }
     this.requestGetHotWordsListActive()
+    this.getLocation()
   },
   onShow: function () {
 
@@ -26,10 +29,13 @@ Page({
   getLocation(){
     let callBack = (res) =>{
       if(res){
-        this.getProvinceList()
+        this.setData({
+          province: res.originalData.result.addressComponent.province
+        })
+        this.getProvinceList(this.data.province)
       }
     }
-    Tool.queryLocation()
+    Tool.queryLocation(callBack)
   },
   requestGetHotWordsListActive(){
     let r = RequestFactory.getHotWordsListActive();
@@ -72,14 +78,21 @@ Page({
     this.requestKeyword()
   },
   requestKeyword(){
-    Tool.redirectTo('/pages/search/search-result/search-result?keyword=' + this.data.keyWord)
+    Tool.redirectTo('/pages/search/search-result/search-result?keyword=' +this.data.keyWord+'&code=' + this.data.provinceCode)
   },
   getProvinceList() {
     let r = RequestFactory.getProvinceList();
     r.finishBlock = (req) => {
       let data = req.responseObject.data
+      let showProvince = ''
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].name == this.data.province) {
+          showProvince = data[i]
+          break
+        }
+      }
       this.setData({
-        sheng: data
+        provinceCode: showProvince.zipcode || -1
       })
     }
     r.addToQueue();

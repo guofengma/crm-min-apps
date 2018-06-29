@@ -69,6 +69,7 @@ Page({
     Event.emit('updateStorageShoppingCart')
   },
   makeSureOrder(){
+    // 立即购买
     if (!this.data.didLogin) {
       Tool.navigateTo('/pages/login/login-wx/login-wx')
       return
@@ -168,7 +169,7 @@ Page({
     if (this.data.selectType.typeClicked ==1){
       this.addToShoppingCart()
     } else {
-
+      this.makeSureOrder()
     }
   },
   sliderChange(e){

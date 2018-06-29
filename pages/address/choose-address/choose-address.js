@@ -1,4 +1,4 @@
-let { Tool, RequestFactory } = global
+let { Tool, RequestFactory, Event, Storage} = global
 
 Page({
 
@@ -7,7 +7,7 @@ Page({
    */
   data: {
     active:true,
-    addressType:2,
+    addressType:1,
     addressList:[]
   },
 
@@ -41,6 +41,12 @@ Page({
     };
     r.addToQueue();
   },
+  addressClicked(e){
+    let index = e.currentTarget.dataset.index
+    Storage.setOrderAddress(this.data.addressList[index])
+    Event.emit('updateOrderAddress')
+    Tool.navigationPop()
+  },
   newAddress() {
     let page = ''
     let addressType = this.data.addressType
@@ -51,7 +57,7 @@ Page({
         page = '/pages/address/new-address/new-address'
       }
     } else {
-      page = '/pages/address/select-selfLifting-address/select-selfLifting-address'
+      // page = '/pages/address/select-selfLifting-address/select-selfLifting-address'
     }
     Tool.navigateTo(page)
   }

@@ -68,11 +68,11 @@ export default class Operation {
     /********************** 产品 *********************/
 
         // 产品列表
-        this.queryProductListAPP = '/user/productApp/queryProductListApp'
+        this.queryProductListAPP = '/user/productApp/queryProductList'
 
         // 产品详情
 
-        this.findProductByIdApp = '/user/productApp/findProductByIdApp'
+        this.findProductByIdApp = '/user/productApp/findProductById'
 
         // 搜索产品
 

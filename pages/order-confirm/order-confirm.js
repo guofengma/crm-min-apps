@@ -1,4 +1,4 @@
-let { Tool, RequestFactory, Event } = global
+let { Tool, RequestFactory, Event, Storage } = global
 
 Page({
   data: {
@@ -10,6 +10,7 @@ Page({
     params:'',
     orderInfos:"",
     addressList:[],
+    remark:'', // 买家留言
     door:1, //1是产品详情页进入 2是购物车进入
   },
   onLoad: function (options) {
@@ -17,11 +18,8 @@ Page({
       params: options.params,
       door: options.type
     })
-    if(options.type == 2) {
-      // 如果是购物车的结算 刷新购物车
-      Event.emit('updateStorageShoppingCart')
-    }
     this.requestOrderInfo()
+    Event.on('updateOrderAddress', this.updateOrderAddress,this)
   },
   onShow: function () {
   
@@ -31,12 +29,19 @@ Page({
     let r = RequestFactory.makeSureOrder(params);
     r.finishBlock = (req) => {
       let item = req.responseObject.data
+      // 渲染地址列表
+      let userAdress = item.default_addr
       item.address= {
-        hasData: item.default_addr.receiver? true:false,
-        receiver:item.default_addr.receiver,
-        recevicePhone:item.default_addr.recevicePhone,
-        addressInfo:item.default_addr.province + item.default_addr.city + item.default_addr.area + item.default_addr.address
+        hasData: userAdress.receiver? true:false,
+        receiver: userAdress.receiver,
+        recevicePhone: userAdress.recevicePhone,
+        addressInfo: userAdress.province + userAdress.city + userAdress.area + userAdress.address,
+        address: userAdress.address,
+        areaCode: userAdress.areaCode,
+        cityCode: userAdress.cityCode,
+        provinceCode: userAdress.provinceCode
       }
+      //渲染产品信息列表
       let showProduct =[]
       item.priceList.forEach((item)=>{
         showProduct.push({
@@ -47,15 +52,19 @@ Page({
           showQnt: item.num
         })
       })
+      // 是否有自提的权限
       item.hasSelfLifting = (item.dealer.picked_up==1? true:false)
       if (item.hasSelfLifting){
         this.queryStoreHouseList()
       }
+      // 积分抵扣计算
       let score = item.dealer.user_score > item.totalScore ? item.totalScore : item.dealer.user_score
       item.showScore = score 
       item.reducePrice = item.userScoreToBalance * score
       item.showProduct = showProduct
-      item.canUseScore = item.totalScore>0? true:false
+      // 当商品可以使用积分 用户积分大于0的时候 显示可以使用积分 
+      item.canUseScore = (item.totalScore > 0 && item.dealer.user_score)? true:false
+
       let addressList = this.data.addressList
       addressList[1] = item.address
       this.setData({
@@ -75,8 +84,16 @@ Page({
     })
   },
   switchChange(){
+    let order = this.data.orderInfos
+
+    if (!this.data.isUseIntegral){
+      order.totalAmounts -= order.reducePrice
+    } else {
+      order.totalAmounts += order.reducePrice
+    }
     this.setData({
-      isUseIntegral: !this.data.isUseIntegral
+      isUseIntegral: !this.data.isUseIntegral,
+      orderInfos: order
     })
   },
   queryStoreHouseList() {
@@ -92,30 +109,49 @@ Page({
     };
     r.addToQueue();
   },
+  updateOrderAddress(){
+    let address = Storage.getOrderAddress()
+    let addressList = this.data.addressList
+    addressList[this.data.addressType] = address
+    this.setData({
+      addressList: addressList
+    })
+  },
+  remarkChange(e){
+    this.setData({
+      remark: e.detail.value
+    })
+  },
   payBtnClicked(){
     let score = this.data.orderInfos.showScore
     if (!this.data.isUseIntegral){
         score=0
     }
+    let orderAddress = this.data.addressList[this.data.addressType]
+    let storehouseId = this.data.addressType == 2? orderAddress.id : ''
     let params = {
-      address: this.data.orderInfos.default_addr.address,
-      areaCode: this.data.orderInfos.default_addr.areaCode,
-      buyerRemark:'',
-      cityCode: this.data.orderInfos.default_addr.cityCode,
+      address: orderAddress.address,
+      areaCode: orderAddress.areaCode || '',
+      buyerRemark: this.data.remark,
+      cityCode: orderAddress.cityCode || '',
       orderProductList: this.data.params,
       pickedUp: this.data.addressType,
-      provinceCode: this.data.orderInfos.default_addr.provinceCode,
-      receiver: this.data.orderInfos.default_addr.receiver,
-      recevicePhone: this.data.orderInfos.default_addr.recevicePhone,
-      storehouseId: this.data.orderInfos.provinceCode||'',
+      provinceCode: orderAddress.provinceCode || '',
+      receiver: orderAddress.receiver || '',
+      recevicePhone: orderAddress.recevicePhone || '',
+      storehouseId: storehouseId,
       useScore: score
     }
     console.log(params)
     let r = RequestFactory.submitOrder(params);
-    r.finishBlock = (req) => {
+    r.finishBlock = (req) => {        
+      Event.emit('updateStorageShoppingCart')
       let data = req.responseObject.data
       Tool.redirectTo('/pages/order-confirm/pay/pay?data=' + JSON.stringify(data))
     };
     r.addToQueue();
+  },
+  onUnload: function () {
+    Event.off('updateOrderAddress', this.updateOrderAddress)
   }
 })

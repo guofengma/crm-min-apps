@@ -40,7 +40,7 @@
     </view>
     <view class='flexR-sb'>
       <view>
-        商品积分：{{orderInfos.totalScore}}用户可用积分：{{orderInfos.dealer.user_score}}
+        商品积分：{{orderInfos.totalScore}},用户可用积分：{{orderInfos.dealer.user_score}}
         <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
       </view>
       <view class='gray' wx:if='{{!orderInfos.canUseScore}}'>不支持积分消费 </view> 
@@ -55,7 +55,7 @@
     </view>
     <view class='flexR-sb leaving-msg'>
       <view>买家留言：</view>
-      <input placeholder='选填：填写内容已与卖家协商确认'></input>
+      <input placeholder='选填：填写内容已与卖家协商确认' value='{{remark}}' bindinput='remarkChange'></input>
     </view>
   </view>
   <!--支付bar  -->

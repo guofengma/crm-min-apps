@@ -1,7 +1,7 @@
 <import src='/components/address-info/address-info.wxml' />
 
-<block  wx:for='{{addressList}}' wx:key='unique'>
-  <view class='select-address-box {{item.defaultStatus == 1? "active":""}}'>
+<block  wx:for='{{addressList}}' wx:key='unique' >
+  <view class='select-address-box {{item.defaultStatus == 1? "active":""}}' data-index='{{index}}' bindtap="addressClicked">
     <view class='topBar'>
       <template is="address-info" data='{{addressType,...item}}'/>
     </view>
@@ -9,6 +9,6 @@
 </block>
 
 <!--新增按钮  -->
-<view class='add-address-btn  flexR redBg' bindtap='newAddress'>
+<view class='add-address-btn  flexR redBg' wx:if="{{addressType==1}}" bindtap='newAddress'>
   编辑
 </view>

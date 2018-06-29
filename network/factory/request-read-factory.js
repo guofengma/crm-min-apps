@@ -115,18 +115,9 @@ export default class RequestFactory {
   /********************获取省市区********************/
 
   // 获取省
-  static getProvinceList(params) {
+  static getProvinceList() {
     let url = Operation.sharedInstance().getProvinceList;
-    let req = this.request(url, { port: '8101' }, '获取省份');
-    if(params !== undefined){
-      req.preprocessCallback = (req, firstData) => {
-        let data = req.responseObject.data
-        data.forEach((item) => {
-          req.responseObject.data.showZipcode = (item.name == params ? item.zipcode:-1)
-        })
-      }
-    }
-    return req
+    return this.request(url, { port: '8101' }, '获取省份');
   }
 
   // 获取市
