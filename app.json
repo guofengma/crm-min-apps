@@ -31,7 +31,10 @@
     "pages/my/my-personalData/my-personalData",
     "pages/my/setting/setting",
     "pages/my/nickname/nickname",
-    "pages/my/aboutUs/aboutUs"
+    "pages/my/aboutUs/aboutUs",
+    "pages/my/account/account",
+    "pages/my/phone/phone",
+    "pages/my/password/password"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

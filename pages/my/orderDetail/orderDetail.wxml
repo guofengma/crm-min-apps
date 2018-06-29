@@ -79,7 +79,7 @@
             <view></view>
           </view>
           <text >需付款</text>
-          <text class='red'>¥20</text>
+          <text class='red'>¥{{detail.orderTotalPrice}}</text>
       </view>
     </view>
 

@@ -320,5 +320,13 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().submitOrder;
     return this.request(url, params, '订单结算', true);
   }
+
+
+    /*******************我的---设置******************** */
+
+    static exitLogin(params) {
+        let url = Operation.sharedInstance().exitLogin;
+        return this.request(url, params, '退出登录', true);
+    }
 }
 

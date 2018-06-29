@@ -1,57 +1,50 @@
 // pages/my/account.js
 let { Tool, RequestFactory } = global;
-const app=getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        isLoginOut:false
+        isNext:false,
+        time:60,
+        isTime:false
     },
-    switchChange(){
-
-    },
-    //账号与安全
-    account(){
-        Tool.navigateTo('/pages/my/account/account')
-    },
-    //收货地址
-    address(){
-        Tool.navigateTo('/pages/address/select-express-address/select-express-address')
-    },
-    //关于我们
-    aboutUs(){
-        Tool.navigateTo('/pages/my/aboutUs/aboutUs')
-    },
-    //退出登录
-    loginOut(){
+    //下一步
+    next(){
         this.setData({
-            isLoginOut:true
+            isNext:true
         })
     },
     //确定
-    outSure(){
-        let params={};
-        let r = global.RequestFactory.exitLogin(params);
-        r.finishBlock = (req) => {
-            let data=req.responseObject;
-            if(data.code==200){
-                Tool.showSuccessToast(data.data);
-                app.globalData.flag=true;
-                wx.reLaunch({
-                    url:'../../index/index'
-                })
-            }
+    sure(){
 
-        };
-        r.addToQueue();
     },
-    //取消
+    // 取消
     cancel(){
         this.setData({
-            isLoginOut:false
+            isNext:false
         })
+    },
+    getCode(){
+        this.countTime()
+
+    },
+    countTime(){
+        let that=this;
+        let timer = setInterval(function() {
+            that.setData({
+                time:--that.data.time,
+                isTime:true
+            });
+            if (that.data.time <= 0) {
+                that.setData({
+                    time:60,
+                    isTime:false
+                });
+                clearInterval(timer);
+            }
+        }, 1000);
     },
     /**
      * 生命周期函数--监听页面加载

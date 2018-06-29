@@ -1,4 +1,4 @@
-<!--pages/my/setting.wxml-->
+<!--pages/my/account.wxml-->
 <view class="order">
     <view class="wrap">
         <view class="section">
