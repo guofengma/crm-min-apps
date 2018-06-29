@@ -199,7 +199,6 @@ Page({
           break;
         case 2:
           this.makeSureOrder()
-          // Tool.navigateTo('/pages/order-confirm/order-confirm')
           break;
       }
     }

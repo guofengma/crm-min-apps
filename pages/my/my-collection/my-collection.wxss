@@ -1,0 +1,26 @@
+.img-view{
+  width:240rpx;
+}
+.move-box{
+  background: #fff;
+  border-top: 1rpx solid #eee;
+}
+.my-collection{
+  padding: 20rpx 30rpx;
+ 
+}
+.productInfo-view{
+  width: 420rpx;
+  font-size: 26rpx;
+}
+.prd-name{
+  font-size: 30rpx;
+}
+.text-view .gray{
+  text-decoration: line-through;
+  margin-left: 20rpx;
+}
+.label-view{
+  margin-top: 15rpx;
+  margin-bottom: 40rpx;
+}

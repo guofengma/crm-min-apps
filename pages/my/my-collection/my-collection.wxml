@@ -1,0 +1,24 @@
+<block wx:for='{{productList}}' wx:key="unique">
+  <view class='move-box'>
+    <delete-bar  bind:deleteClicked="deleteClicked" item='{{productList}}' index="{{index}}">
+      <view class='flexR-sb my-collection boxSize'>
+          <view class='img-view'>
+            <image src='/img/search-result-1.png' mode='widthFix'></image>
+          </view>
+          <view class='productInfo-view'>
+            <view class='ellipsis-2 prd-name'>
+              哈哈哈哈哈 这周加班了很多久  哈哈哈哈啊哈哈开始都是好的开始撒开多少都不
+            </view>
+            <view class='label-view'>
+              <text class='label-by'>包邮</text >
+              <text  class='label-jf'>积分</text >
+            </view>
+            <view class='text-view'>
+              <text class='red'>¥150.00</text>
+              <text class='gray'>¥150.00</text>
+            </view> 
+          </view>
+      </view>
+    </delete-bar>
+  </view>
+</block>
