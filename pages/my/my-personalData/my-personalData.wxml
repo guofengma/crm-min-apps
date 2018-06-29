@@ -1,0 +1,65 @@
+<!--pages/my/setting.wxml-->
+<view class="order">
+    <view class="wrap">
+        <view class="item line">
+            <view>
+                <text>头像</text>
+            </view>
+            <view bindtap="myAccount">
+                <text>更多</text>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
+            </view>
+        </view>
+        <view class="item line">
+            <view>
+                <text>昵称</text>
+            </view>
+            <view>
+                <text>张三</text>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
+            </view>
+        </view>
+        <view class="item line">
+            <view bindtap="myCollection">
+                <text>授权ID</text>
+            </view>
+            <view>
+                <text>123456</text>
+            </view>
+        </view>
+        <view class="item line">
+            <view>
+                <text>会员等级</text>
+            </view>
+            <view>
+                <text>123456</text>
+            </view>
+        </view>
+        <view class="item line">
+            <view>
+                <text>手机号</text>
+            </view>
+            <view>
+                <text>123456</text>
+            </view>
+        </view>
+        <view class="item line">
+            <view>
+                <text>所在区域</text>
+            </view>
+            <view>
+                <text>123456</text>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
+            </view>
+        </view>
+        <view class="item line">
+            <view>
+                <text>实名认证</text>
+            </view>
+            <view>
+                <text>123456</text>
+            </view>
+        </view>
+    </view>
+</view>
+

@@ -27,7 +27,9 @@
     "pages/my/my-account/integral/integral",
     "pages/my/my-account/deposit/deposit",
     "pages/order-confirm/pay/pay",
-    "pages/my/my-collection/my-collection"
+    "pages/my/my-collection/my-collection",
+    "pages/my/my-personalData/my-personalData",
+    "pages/my/setting/setting"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

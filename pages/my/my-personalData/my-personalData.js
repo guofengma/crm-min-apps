@@ -18,14 +18,6 @@ Page({
     myCollection(){
       Tool.navigateTo('/pages/my/my-collection/my-collection')
     },
-    //跳到我的信息页面
-    personalData(){
-        Tool.navigateTo('my-personalData/my-personalData')
-    },
-    //跳到设置页面
-    setting(){
-        Tool.navigateTo('setting/setting')
-    },
     /**
      * 生命周期函数--监听页面加载
      */
