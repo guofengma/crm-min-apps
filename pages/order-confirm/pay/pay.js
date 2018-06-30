@@ -63,12 +63,21 @@ Page({
         Tool.showAlert('请选择支付方式')
         return
       } 
-      this.payOrder()
+      this.payOrder(payWay.index)
     },
-    payOrder(){
+    payOrder(payType){
+      let params ={
+        amounts: this.data.payList.showTotalAmounts,
+        balance: 0, // 先按照0 写死
+        orderNum: this.data.payList.orderNum,
+        tokenCoin: 0, // 先按照0 写死
+        "type": payType,
+      }
       let r = RequestFactory.repay(params);
       r.finishBlock = (req) => {
-        
+        let callBack = () =>{
+        }
+        Tool.showComfirm('模拟第三方支付，点击确认为支付')
       };
       r.addToQueue();
     },

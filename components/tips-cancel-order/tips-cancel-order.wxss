@@ -32,4 +32,5 @@
   height: 100rpx;
   position: absolute;
   right: 0;
+  top: 0;
 }
