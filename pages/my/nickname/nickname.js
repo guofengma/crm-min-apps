@@ -21,7 +21,7 @@ Page({
       r.finishBlock = (req) => {
         Storage.setUserAccountInfo(req.responseObject.data)
         Event.emit('refreshMemberInfoNotice');//发出通知
-        //Tool.navigationPop()
+        Tool.navigationPop()
       };
       r.addToQueue();
     }

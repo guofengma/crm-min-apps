@@ -9,13 +9,13 @@ Page({
     toPage(e) {
         let index = e.currentTarget.dataset.index;
         if (index == 0) {
-            Tool.redirectTo('cash/cash?account='+this.data.available_balance)
+            Tool.navigateTo('cash/cash?account='+this.data.available_balance)
         } else if (index == 1) {
-            Tool.redirectTo('token/token?account='+this.data.token_coin)
+            Tool.navigateTo('token/token?account='+this.data.token_coin)
         } else if (index == 2) {
-            Tool.redirectTo('deposit/deposit?account='+this.data.token_coin)
+            Tool.navigateTo('deposit/deposit?account='+this.data.token_coin)
         } else if (index == 3) {
-            Tool.redirectTo('integral/integral?account='+this.data.user_score)
+            Tool.navigateTo('integral/integral?account='+this.data.user_score)
         }
     },
 

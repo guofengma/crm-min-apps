@@ -23,7 +23,7 @@
                 <text>微信账号</text>
             </view>
             <view>
-                <text>1111</text>
+                <!--<text>1111</text>-->
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
