@@ -38,7 +38,7 @@ Component({
       this.setData({
         animationData: animation.export()
       })
-      this.pickerTriggerEvent(true)
+      this.pickerTriggerEvent(true,1)
     },
     //取消按钮
     cancel: function () {  //这里也是动画，然其高度变为0
@@ -53,7 +53,7 @@ Component({
         animationData: animation.export()
       });
       //取消不传值，这里就把result 的值赋值为[]
-      this.pickerTriggerEvent(false)
+      this.pickerTriggerEvent(false,1)
     },
     //确认按钮
     makeSure: function () {
@@ -72,7 +72,7 @@ Component({
           this.data.qu[this.data.picker[2]]
         ]
       });
-      this.pickerTriggerEvent(false)
+      this.pickerTriggerEvent(false,2)
     },
     //滚动选择的时候触发事件
     bindChange: function (e) {
@@ -95,8 +95,8 @@ Component({
         picker: val
       })
     },
-    pickerTriggerEvent(hidden){
-      this.triggerEvent('pickerClicked', { hidden: hidden, result: this.data.result })
+    pickerTriggerEvent(hidden,btnType){
+      this.triggerEvent('pickerClicked', { hidden: hidden, btnType:btnType,result: this.data.result })
     },
     setIndex(sheng,shi,qu){
       this.setData({

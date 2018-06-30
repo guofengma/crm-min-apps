@@ -17,14 +17,14 @@
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
-        <view class="item line">
+        <!-- <view class="item line">
             <view bindtap="myCollection">
                 <text>消息推送</text>
             </view>
             <view>
                 <switch  bindchange="switchChange"/>
             </view>
-        </view>
+        </view> -->
         <view class="item line">
             <view>
                 <text>清除缓存</text>

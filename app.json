@@ -33,6 +33,7 @@
     "pages/my/nickname/nickname",
     "pages/my/aboutUs/aboutUs",
     "pages/my/account/account",
+    "pages/my/phone/step1/step1",
     "pages/my/phone/phone",
     "pages/my/password/password"
   ],

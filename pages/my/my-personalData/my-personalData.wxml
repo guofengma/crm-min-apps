@@ -48,16 +48,18 @@
     </view>
 
     <view class="wrap">
-        <view class="item">
-            <view>
+      <city-picker bind:pickerClicked="pickerClicked" id='picker' region='{{region}}'>
+          <view class="item">
+              <view>
                 <text>所在区域</text>
-            </view>
-            <view>
-                <text>123456</text>
-                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png'
-                       mode='widthFix'></image>
-            </view>
-        </view>
+              </view>
+              <view>
+                  <text>{{region[0].name + region[1].name+ region[2].name || ''}}</text>
+                  <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png'
+                        mode='widthFix'></image>
+              </view>
+          </view>
+        </city-picker>
     </view>
     <view class="wrap" bindtap='realName'>
         <view class="item">

@@ -1,5 +1,5 @@
 // pages/my/account.js
-let { Tool, RequestFactory } = global;
+let { Tool, RequestFactory, Event } = global;
 const app=getApp();
 Page({
 
@@ -8,9 +8,6 @@ Page({
      */
     data: {
         isLoginOut:false
-    },
-    switchChange(){
-
     },
     //账号与安全
     account(){
@@ -53,59 +50,14 @@ Page({
             isLoginOut:false
         })
     },
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
-
+      this.refreshMemberInfoNotice()
+      Event.on('refreshMemberInfoNotice', this.refreshMemberInfoNotice, this);
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+    refreshMemberInfoNotice() {
+      Tool.getUserInfos(this)
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
     onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+      Event.off('refreshMemberInfoNotice', this.refreshMemberInfoNotice);
     }
 })

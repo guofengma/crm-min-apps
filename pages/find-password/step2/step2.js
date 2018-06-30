@@ -74,12 +74,10 @@ Page({
     if (!tempEnable) {
       return;
     }
-    console.log('gecode')
     this.setData({
       getCodeBtEnable: !tempEnable,
       showSecond: true
     });
-
     this.countdown(this);
     let r = RequestFactory.sendUserUpdateCode({ phone: this.data.phone});
     r.finishBlock = (req) => {

@@ -6,7 +6,7 @@
                 <text>修改手机号</text>
             </view>
             <view>
-                <text>1111</text>
+                <text>{{userInfos.phone || ''}}</text>
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>

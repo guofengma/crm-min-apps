@@ -2,9 +2,9 @@
 <view class="order">
     <view class="wrap">
         <view class="section">
-            <input type="text" class="inp" />
+            <input type="text" class="inp" bindinput='inputChange' value='{{nickname}}' />
         </view>
     </view>
-    <view class="btn">保存</view>
+    <view class="btn" bindtap='updateDealerNickname'>保存</view>
 </view>
 

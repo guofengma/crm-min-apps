@@ -741,10 +741,53 @@ export default class Tool {
         let idcard = userInfo.idcard
         userInfo.showName = idcard ? userInfo.realname : userInfo.nickname
         userInfo.isRealname = idcard ? true : false
+        userInfo.showPhone = userInfo.phone.slice(0, 3) + "*****" + userInfo.phone.slice(7)
       }
       that.setData({
         userInfos: userInfo || ''
       })
+      return userInfo
+    }
+    // 倒计时是否可以点击
+
+    static codeEnable(that,cb=()=>{}) {
+      let tempEnable = that.data.getCodeBtEnable;
+        if (!tempEnable) {
+          return;
+        }
+        that.setData({
+          getCodeBtEnable: !tempEnable,
+          showSecond: that
+        });
+        this.countdown(that,this);
+        cb()
+      }
+
+    // 倒计时
+
+    static countdown(that,self) {
+      // that 调用页面中的this slef 当前页面调用的this
+      let second = that.data.second;
+      clearTimeout(that.data.time);
+      if (second == 0) {
+        that.setData({
+          second: '59',
+          getCodeBtEnable: true,
+          showSecond: false
+        });
+        return;
+      }
+      var time = setTimeout(function () {
+        that.setData({
+          second: second - 1,
+          getCodeBtEnable: false,
+          showSecond: true,
+        });
+        self.countdown(that,self);
+      }, 1000)
+      that.setData({
+        time: time
+      });
     }
 }
 

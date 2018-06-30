@@ -210,7 +210,25 @@ export default class Operation {
 
         this.updateDealerPassword = '/user/dealer/updateDealerPassword';
 
+        // 微信账号解绑 
 
+        this.updateDealerOpenid ='/user/dealer/updateDealerOpenidById'
+
+        //  修改手机号
+
+        this.updateDealerNewPhone = '/user/dealer/updateDealerNewPhoneById'
+
+        // 旧手机短信短信
+
+        this.sendUserPhoneCode  = '/commonAPI/phoneCode/sendUserPhoneCode'
+
+        // 验证旧手机短信是否正确
+
+        this.updateDealerPhoneById = '/user/dealer/updateDealerPhoneById'
+
+        // 新手机短信
+
+        this.sendUserNewPhoneCode ='/commonAPI/phoneCode/sendUserNewPhoneCode'
     }
 
     static sharedInstance() {

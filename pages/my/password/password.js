@@ -1,104 +1,62 @@
-// pages/my/account.js
-let { Tool, RequestFactory } = global;
+let { Tool, RequestFactory, Storage, Event } = global
+
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
-        isNext:false,
-        time:60,
-        isTime:false
+      reNew:'',
+      old:'',
+      newPwd:'',
+      isFinished:false,
     },
-    //下一步
-    next(){
-        this.setData({
-            isNext:true
-        })
-    },
-    //确定
-    sure(){
-
-    },
-    // 取消
-    cancel(){
-        this.setData({
-            isNext:false
-        })
-    },
-    getCode(){
-        this.countTime()
-
-    },
-    countTime(){
-        let that=this;
-        let timer = setInterval(function() {
-            that.setData({
-                time:--that.data.time,
-                isTime:true
-            });
-            if (that.data.time <= 0) {
-                that.setData({
-                    time:60,
-                    isTime:false
-                });
-                clearInterval(timer);
-            }
-        }, 1000);
-    },
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
 
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+    changeReNewPwd(e){
+      this.setData({
+        reNew: e.detail.value
+      })
+      this.isAllwrite()
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
+    changeOldPwd(e) {
+      this.setData({
+        old: e.detail.value
+      })
+      this.isAllwrite()
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
+    changeNewPwd(e) {
+      this.setData({
+        newPwd: e.detail.value
+      })
+      this.isAllwrite()
     },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
+    isAllwrite(){
+      let isFinished = false 
+      if (!Tool.isEmptyStr(this.data.reNew) && !Tool.isEmptyStr(this.data.newPwd) && !Tool.isEmptyStr(this.data.old)){
+        isFinished = true
+      }
+      this.setData({
+        isFinished: isFinished
+      })
     },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+    updateDealerPassword(){
+      if (this.data.newPwd !== this.data.newPwd){
+        Tool.showAlert('两次输入密码不一致')
+        return
+      }
+      if (!Tool.checkPwd(this.data.newPwd)) {
+        Tool.showAlert("密码格式不正确");
+        return
+      }
+      let params = {
+        oldPassword: this.data.old,
+        NewPassword: this.data.newPwd
+      }
+      let r = RequestFactory.updateDealerPassword(params);
+      r.finishBlock = (req) => {
+        Tool.navigationPop()
+      };
+      r.failBlock = (req) => {
+        Tool.showAlert(req.responseObject.msg)
+      }
+      r.addToQueue();
     }
 })

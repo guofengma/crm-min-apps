@@ -1,5 +1,5 @@
 // pages/my/account.js
-let { Tool, RequestFactory } = global;
+let { Tool, RequestFactory, Event } = global;
 Page({
 
     /**
@@ -7,98 +7,81 @@ Page({
      */
     data: {
         isNext:false,
-        time:60,
-        isTime:false
+        isTime:false,
+        phone:'',
+        getCodeBtEnable: true,
+        second: '59',
+        showSecond: false,
+        time: Object,
+        disabled: true,
+        code: "",
     },
-    //下一步
-    next(){
-        this.setData({
-            isNext:true
-        })
-    },
-    //确定
-    sure(){
-
-    },
-    // 取消
-    cancel(){
-        this.setData({
-            isNext:false
-        })
-    },
-    getCode(){
-        this.countTime()
-
-    },
-    countTime(){
-        let that=this;
-        let timer = setInterval(function() {
-            that.setData({
-                time:--that.data.time,
-                isTime:true
-            });
-            if (that.data.time <= 0) {
-                that.setData({
-                    time:60,
-                    isTime:false
-                });
-                clearInterval(timer);
-            }
-        }, 1000);
-    },
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
 
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+    //下一步
+    next(){
+      if (!Tool.checkPhone(this.data.phone)) {
+        Tool.showAlert("请输入正确的手机号");
+        return
+      }
+      if (Tool.isEmptyStr(this.data.code)) {
+        Tool.showAlert("请输入验证码");
+        return
+      }
+      this.setData({
+        isNext: true
+      })
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
+    //确定
+    sure(){
+      let params = {
+        code: this.data.code,
+        phone: this.data.phone
+      }
+      let r = RequestFactory.updateDealerNewPhone(params);
+      r.finishBlock = (req) => {
+        Event.emit('refreshMemberInfoNotice');
+      };
+      r.failBlock = (req) => {
+        Tool.showAlert(req.responseObject.msg)
+      }
+      r.addToQueue();
+      this.cancel()
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
+    // 取消
+    cancel(){
+      this.setData({
+          isNext:false
+      })
     },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
+    changeInput(e) {
+      this.setData({
+        code: e.detail.value
+      })
     },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
+    changePhone(e){
+      this.setData({
+        phone: e.detail.value
+      })
     },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
+    getCodeTap() {
+      if (!Tool.checkPhone(this.data.phone)) {
+        Tool.showAlert("请输入正确的手机号");
+        return
+      }
+      let params = {
+        phone:this.data.phone
+      }
+      let callBack = () => {
+        let r = RequestFactory.sendUserNewPhoneCode(params);
+        r.finishBlock = (req) => {
+          wx.showToast({
+            title: '验证码已发送',
+          })
+        };
+        r.addToQueue();
+      }
+      Tool.codeEnable(this, callBack)
     },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
 })

@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -75,6 +75,12 @@
 					"id": -1,
 					"name": "电话",
 					"pathName": "pages/my/phone/phone",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "修改账号",
+					"pathName": "pages/my/password/step1/step1",
 					"query": ""
 				}
 			]

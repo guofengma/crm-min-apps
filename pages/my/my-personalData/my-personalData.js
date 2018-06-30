@@ -1,5 +1,5 @@
 // pages/my/account.js
-let { Tool, RequestFactory, Event } = global;
+let { Tool, RequestFactory, Event, Storage } = global;
 Page({
     data: {
       userInfos: ''
@@ -9,7 +9,33 @@ Page({
      
     },
     onLoad: function (options) {
+      Event.on('refreshMemberInfoNotice', this.refreshMemberInfoNotice, this);
+      this.refreshMemberInfoNotice()
+    },
+    refreshMemberInfoNotice(){
       Tool.getUserInfos(this)
+    },
+    pickerClicked(e) {
+      this.setData({
+        region: e.detail.result
+      })
+      if (e.detail.btnType == 2){
+        this.updateDealerRegion(e)
+      } 
+    },
+    updateDealerRegion(e){
+      let params = {
+        provinceId: this.data.region[0].zipcode,
+        cityId: this.data.region[1].zipcode,
+        areaId: this.data.region[2].zipcode,
+      }
+      let r = RequestFactory.updateDealerRegion(params);
+      r.finishBlock = (req) => {
+        Storage.setUserAccountInfo(req.responseObject.data)
+        Event.emit('refreshMemberInfoNotice');//发出通知
+        //Tool.navigationPop()
+      };
+      r.addToQueue();
     },
     modifyImageTap: function () {
       let self = this;
@@ -34,9 +60,9 @@ Page({
               }
               let r = RequestFactory.updateDealerHeadImg(params);
               r.finishBlock = (req) => {
-                // Storage.setUserAccountInfo(req.responseObject.data)
+                Storage.setUserAccountInfo(req.responseObject.data)
                 Event.emit('refreshMemberInfoNotice');//发出通知
-                Tool.navigationPop()
+                // Tool.navigationPop()
               };
               r.addToQueue();
             }

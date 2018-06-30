@@ -3,11 +3,15 @@
     <view class='tips'>我们将发送验证码到您的新手机上，请注意查收</view>
     <view class="wrap">
         <view class="section">
-            <view class="item">新手机</view><input type="text" class="lar-inp inp" placeholder-style="color:#c8c8c8;" placeholder="请输入手机号"/>
+            <view class="item">新手机</view>
+            <input type="text" class="lar-inp inp" placeholder-style="color:#c8c8c8;" placeholder="请输入手机号" value='{{phone}}'
+              bindinput='changePhone'
+            />
         </view>
         <view class="section">
-            <view class="item">验证码</view><input type="text" class="small-inp inp" placeholder-style="color:#c8c8c8;" placeholder="请输入验证码"/>
-            <view bindtap="getCode" class='code'>{{isTime?time+'s后重新获取':'获取验证码'}}</view>
+            <view class="item">验证码</view>
+            <input type="text" class="small-inp inp" placeholder-style="color:#c8c8c8;" placeholder="请输入验证码" value='{{code}}' bindinput='changeInput'/>
+            <view bindtap="getCodeTap" class='code'>{{showSecond? second+"后重新获取":"获取验证码"}}</view>
         </view>
     </view>
     <view class="btn" bindtap="next">下一步</view>

@@ -29,7 +29,6 @@ Page({
       'nickname': this.data.userInfo.nickName,
       'openid': this.data.openid
     };
-    console.log(params)
     let r = RequestFactory.signMember(params);
     r.finishBlock = (req) => {
       Storage.setMemberId(req.responseObject.data.id)
