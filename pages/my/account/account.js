@@ -1,5 +1,5 @@
 // pages/my/account.js
-let { Tool, RequestFactory, Event } = global;
+let { Tool, RequestFactory, Event,Storage } = global;
 Page({
 
     /**
