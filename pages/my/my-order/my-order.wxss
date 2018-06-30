@@ -114,8 +114,9 @@
     width: 40%;
 }
 .footer .right{
-    width: 50%;
+    width: 52%;
     text-align: right;
+    margin-top: -10rpx;
 }
 .cancel-btn{
     width: 160rpx;
@@ -140,10 +141,21 @@
     display: inline-block;
     margin-left: 10rpx;
 }
+
+/*模态框的样式  */
 .model-view-bg .tips-box{
     width: 590rpx;
     min-height: 300rpx;
     background-color: #ffffff;
     border-radius: 20rpx;
     box-sizing: border-box;
+}
+.model-view-bg .cancel-btn{
+    background-color: #e60012;
+    color: #fff;
+    width:276rpx;
+    height:80rpx;
+    line-height: 80rpx;
+    margin:20rpx;
+    border-radius:10rpx;
 }
