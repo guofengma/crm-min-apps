@@ -59,6 +59,7 @@ Page({
     },
     payBtnCliked(){
       let payWay = this.isSelectPayWay()
+      console.log(payWay)
       if (!payWay.isSelect){
         Tool.showAlert('请选择支付方式')
         return
@@ -66,32 +67,56 @@ Page({
       this.payOrder(payWay.index)
     },
     payOrder(payType){
+      let payway = payType==0? 16:2
       let params ={
         amounts: this.data.payList.showTotalAmounts,
         balance: 0, // 先按照0 写死
         orderNum: this.data.payList.orderNum,
         tokenCoin: 0, // 先按照0 写死
-        "type": payType,
+        "type": payway,
       }
       let r = RequestFactory.repay(params);
       r.finishBlock = (req) => {
-        let callBack = () =>{
+        let okCb = () =>{
+          this.paySuccess(payway, req.responseObject.data.outTradeNo)
         }
-        Tool.showComfirm('模拟第三方支付，点击确认为支付')
+        let errCb = () => {
+          this.showResult(false)
+        }
+        Tool.showComfirm('模拟第三方支付，点击确认为支付', okCb, errCb)
       };
+      Tool.showErrMsg(r)
+      r.addToQueue();
+    },
+    paySuccess(payway,outTradeNo){
+      let params ={
+        amounts: this.data.payList.showTotalAmounts,
+        outTradeNo:outTradeNo,
+        payTime: Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss"),
+        tradeNo:'',
+        'type':payway
+      }
+      let r = RequestFactory.paySuccess(params);
+      r.finishBlock = (req) => {
+        this.showResult(true)
+      };
+      Tool.showErrMsg(r)
       r.addToQueue();
     },
     isSelectPayWay(){
-      let payway = ''
+      let payway = { isSelect: false, index: null }
       this.data.payWayActive.forEach((item,index)=>{
         if(item){
           payway =  {isSelect:true,index:index}
-          return payway
-        } else {
-          payway =  {isSelect: false, index: null }
-        }
+        } 
       })
       return payway
+    },
+    showResult(bool){
+      this.setData({
+        isShow:true,
+        result:bool,
+      })
     },
     goPage(){
       Tool.redirectTo('/pages/my/my-order/my-order')
