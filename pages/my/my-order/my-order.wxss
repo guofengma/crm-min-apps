@@ -114,8 +114,9 @@
     width: 40%;
 }
 .footer .right{
-    width: 50%;
+    width: 52%;
     text-align: right;
+    margin-top: -10rpx;
 }
 .cancel-btn{
     width: 160rpx;
