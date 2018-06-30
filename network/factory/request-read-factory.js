@@ -306,6 +306,26 @@ export default class RequestFactory {
       let url = Operation.sharedInstance().getOrderDetail;
       return this.request(url, params, '订单详情', true);
   }
+  static confirmReceipt(params) {
+      params.port = '8103';
+      let url = Operation.sharedInstance().confirmReceipt;
+      return this.request(url, params, '确认收货', true);
+  }
+  static deleteOrder(params) {
+      params.port = '8103';
+      let url = Operation.sharedInstance().deleteOrder;
+      return this.request(url, params, '删除订单', true);
+  }
+  static deleteClosedOrder(params) {
+      params.port = '8103';
+      let url = Operation.sharedInstance().deleteClosedOrder;
+      return this.request(url, params, '删除订单', true);
+  }
+  static cancelOrder(params) {
+      params.port = '8103';
+      let url = Operation.sharedInstance().cancelOrder;
+      return this.request(url, params, '取消订单', true);
+  }
 
   /*******************订单结算******************** */
 

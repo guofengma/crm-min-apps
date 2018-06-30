@@ -18,7 +18,7 @@
   </view>
   
   <!--订单的物流状态  -->
-  <view class='order-state-info' wx:if="status==2||status==3||status==7">
+  <view class='order-state-info' wx:if="{{status==2||status==3||status==7}}">
     <view class='boxSize'>
       <!--等待付款的时候显示和待发货  -->
       <!-- <template is="address-info" data='{{addressType}}'/> -->
@@ -46,8 +46,8 @@
     <view class='order-prd-info'>
       <block wx:for="{{detail.list}}" wx:key="unique">
         <template is="my-order-product-info" data="{{...item}}"/>
-        <view class='sale-after flexR'>
-          <view class='order-btn btn-left flexR'>删除订单</view>
+        <view class='sale-after flexR' wx:if="{{state.middle}}">
+          <view class='order-btn btn-left flexR'>{{state.middle[0]}}</view>
         </view>
       </block>
     </view>
@@ -86,9 +86,9 @@
     <!--订单付款信息  -->
     <view class='order-create-info '>
       <!--复制按钮  -->
-      <view class='copy-btn gray flexR'>复制</view>
+      <view class='copy-btn gray flexR' bindtap="copy">复制</view>
       <view class='content gray'>
-        <view>订单编号：{{detail.orderNum}}</view>
+        <view>订单编号：<text selectable="true">{{detail.orderNum}}</text></view>
         <view>创建时间：{{detail.createTime}}</view>
         <view>平台付款时间：{{detail.sysPayTime}}</view>
         <view>三方付款时间：{{detail.payTime}}</view>
@@ -102,9 +102,9 @@
 
   <!--order bar  -->
 
-  <view class='order-bar flexR boxSize'>
-    <view class='order-btn btn-left flexR'>{{state.left}}</view>
-    <view class='order-btn red flexR'>{{state.right}}</view>
+  <view class='order-bar flexR boxSize' wx:if="{{status!=4}}">
+    <view class='order-btn btn-left flexR' wx:if="{{state.left}}">{{state.left}}</view>
+    <view class='order-btn red flexR' wx:if="{{state.right}}">{{state.right}}</view>
   </view>
 </view>
 

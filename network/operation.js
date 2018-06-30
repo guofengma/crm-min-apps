@@ -174,6 +174,22 @@ export default class Operation {
 
         this.getOrderDetail  ='/order/order/getOrderDetail';
 
+        // 确认收货
+
+        this.confirmReceipt  ='/order/order/confirmReceipt';
+
+        // 删除已完成订单
+
+        this.deleteOrder  ='/order/order/deleteOrder';
+
+        // 删除已关闭(取消) 订单
+
+        this.deleteClosedOrder  ='/order/order/deleteClosedOrder';
+
+        // 取消订单
+
+        this.cancelOrder  ='/order/order/cancelOrder';
+
         /******************提交订单 订单结算*********************** */
 
         // 购物车结算

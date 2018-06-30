@@ -15,6 +15,7 @@
 .tips-delete-order .tips-box{
   position: relative;
   padding: 150rpx 50rpx 50rpx 50rpx;
+  background: #fff;
 }
 .tips-delete-order .content{
   font-size:30rpx;
@@ -35,6 +36,7 @@
 }
 .tips-delete-order .leftBtn{
   background-color: #dddddd;
+  margin-right: 10rpx;
 }
 .tips-delete-order>view{
   padding-top: 100rpx
