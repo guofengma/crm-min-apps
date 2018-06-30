@@ -30,7 +30,7 @@
             <view>银行卡支付</view>
         </view>
         <view class="right">
-            <image bindtap="payWay" src="{{payWayActive[0]?'/img/choose-icon-c.png':'/img/choose-icon.png'}}" data-index='0'></image>
+            <image bindtap="payWay" src="{{payWayActive[0]?'/img/choose-icon-c.png':'/img/choose-icon.png'}}" data-index='16'></image>
         </view>
         <view class="clearfix"></view>
     </view>
@@ -40,7 +40,7 @@
             <view>微信支付</view>
         </view>
         <view class="right">
-            <image bindtap="payWay" src="{{payWayActive[1]?'/img/choose-icon-c.png':'/img/choose-icon.png'}}" data-index='1'></image>
+            <image bindtap="payWay" src="{{payWayActive[1]?'/img/choose-icon-c.png':'/img/choose-icon.png'}}" data-index='2'></image>
         </view>
         <view class="clearfix"></view>
     </view>

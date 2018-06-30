@@ -280,7 +280,7 @@ export default class Tool {
         });
     }
     //弹窗自定义
-    static showComfirm(msg, okCB = () => { }) {
+    static showComfirm(msg, okCB = () => { }, errCB = () => { }) {
       wx.showModal({
         content: msg,
         showCancel: true,
@@ -289,6 +289,8 @@ export default class Tool {
         success: function (res) {
           if (res.confirm) {
             okCB();
+          } else {
+            errCB()
           }
         }
       });
