@@ -24,23 +24,23 @@
         <view class="clearfix"></view>
     </view>
     <view class="inf">平台支付仅限APP使用</view>
-    <view class="wrap">
+    <view class="wrap" bindtap="payWay" data-index='0' data-val='16'>
         <view class="left">
             <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/icon_03-05@2x.png"></image>
             <view>银行卡支付</view>
         </view>
         <view class="right">
-            <image bindtap="payWay" src="{{payWayActive[0]?'/img/choose-icon-c.png':'/img/choose-icon.png'}}" data-index='16'></image>
+            <image src="{{payWayActive[0]?'/img/choose-icon-c.png':'/img/choose-icon.png'}}" ></image>
         </view>
         <view class="clearfix"></view>
     </view>
-    <view class="wrap">
+    <view class="wrap" bindtap="payWay"  data-index='1' data-val='16'>
         <view class="left">
             <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/icon_03-08@2x.png"></image>
             <view>微信支付</view>
         </view>
         <view class="right">
-            <image bindtap="payWay" src="{{payWayActive[1]?'/img/choose-icon-c.png':'/img/choose-icon.png'}}" data-index='2'></image>
+            <image src="{{payWayActive[1]?'/img/choose-icon-c.png':'/img/choose-icon.png'}}"></image>
         </view>
         <view class="clearfix"></view>
     </view>
@@ -62,7 +62,7 @@
 
 <view class="pay-tips boxSize model-view-bg " wx:if='{{isShow}}'>
   <view class='tips-box overflow flexC'>
-    <block wx:if='{{result==1}}'>
+    <block wx:if='{{result}}'>
       <image src='/img/pay-right.png' mode='widthFix'></image>
       <view class='tips-title'>支付成功！</view>
       <view class='gray'>已通知商家，会给你尽快发货</view>

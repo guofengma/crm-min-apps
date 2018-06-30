@@ -791,5 +791,13 @@ export default class Tool {
         time: time
       });
     }
+
+    // 展示错误信息
+
+    static showErrMsg(r) {
+      r.failBlock = (req) => {
+        this.showAlert(req.responseObject.msg)
+      }
+    }
 }
 

@@ -114,6 +114,7 @@
         <view class='order-btn red flexR' wx:if="{{state.right=='确认收货'}}" bindtap="confirmReceipt">{{state.right}}
         </view>
         <view class='order-btn red flexR' wx:if="{{state.right=='删除订单'}}" bindtap="deleteItem">{{state.right}}</view>
+        <view class='order-btn red flexR' wx:if="{{state.right=='继续支付'}}" bindtap="deleteItem">{{state.right}}</view>
     </block>
 
 </view>
