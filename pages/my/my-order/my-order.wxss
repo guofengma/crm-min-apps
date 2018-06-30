@@ -1,8 +1,10 @@
-/*搜索产品异常显示  */
-@import  "/components/result-tips/result-tips";
+
 @import "/components/tips-cancel-order/tips-cancel-order";
 
 @import "/components/tips-delete-order/tips-delete-order";
+/*搜索产品异常显示  */
+@import  "/components/result-tips/result-tips";
+
 .tab-area{
     display: flex;
     justify-content: space-around;
@@ -137,4 +139,11 @@
     text-align: center;
     display: inline-block;
     margin-left: 10rpx;
+}
+.model-view-bg .tips-box{
+    width: 590rpx;
+    min-height: 300rpx;
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    box-sizing: border-box;
 }

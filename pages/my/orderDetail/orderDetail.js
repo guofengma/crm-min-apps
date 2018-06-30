@@ -30,6 +30,8 @@ Page({
         detail: {},//详情信息
         orderId: '',//订单ID
         status: '',//订单状态
+        content:'',//取消订单理由
+        reason:'',
     },
     onLoad: function (options) {
         this.setData({
@@ -78,6 +80,17 @@ Page({
     onShow: function () {
 
     },
+    //删除订单
+    deleteItem() {
+        let id = this.data.orderId;
+        let status = this.data.detail.status;
+        this.setData({
+            isDelete: true,
+            orderId:id,
+            status:status
+        });
+
+    },
     dismissCancel() {
         //取消取消订单
         this.setData({
@@ -85,17 +98,82 @@ Page({
             isDelete: false,
         })
     },
+    deleteOrder(){
+        let r;
+        let params = {
+            orderId: this.data.orderId,
+        };
+        if(this.data.status==7){//已完成订单
+            r=RequestFactory.deleteOrder(params)
+        }else{
+            r=RequestFactory.deleteClosedOrder(params)
+        }
+        r.finishBlock = (req) => {
+            if(req.responseObject.code==200){
+                this.setData({
+                    isDelete:false,
+                });
+                Tool.navigateTo('../my-order/my-order')
+            }else{
+                Tool.showSuccessToast(req.responseObject.msg)
+            }
+
+        };
+        r.addToQueue();
+    },
+    //取消订单
     reasonClicked(e) {
         //取消订单的理由
-        console.log(e)
+        let content=e.currentTarget.dataset.content;
+        let index=e.currentTarget.dataset.index;
+        this.setData({
+            content:content,
+            reason:index
+        });
     },
-    cancelOrder() {
-        //取消订单
-        console.log('取消订单')
+    cancelOrder(){
+        if(this.data.content==''){
+            Tool.showAlert('请选择取消理由！');
+        }
+        let params = {
+            buyerRemark: this.data.content,
+            orderNum: this.data.detail.orderNum,
+        };
+        let r=RequestFactory.cancelOrder(params);
+        r.finishBlock = (req) => {
+            if(req.responseObject.code==200){
+                Tool.navigateTo('../my-order/my-order')
+            }else{
+                Tool.showSuccessToast(req.responseObject.msg)
+            }
+
+        };
+        r.addToQueue();
     },
-    deleteOrder() {
-        //删除订单
-        console.log('删除订单')
+    cancelItem() {
+        this.setData({
+            isCancel: true,
+        });
+    },
+    //确认收货
+    confirmReceipt() {
+        let id = this.data.orderId;
+        let params = {
+            orderId: id,
+        };
+        let that=this;
+        Tool.showComfirm('确认收货？', function () {
+            let r = RequestFactory.confirmReceipt(params);
+            r.finishBlock = (req) => {
+                if(req.responseObject.code==200){
+                    Tool.navigateTo('../my-order/my-order')
+                }else{
+                    Tool.showSuccessToast(req.responseObject.msg)
+                }
+
+            };
+            r.addToQueue();
+        })
     },
     //复制
     copy(e){
@@ -161,7 +239,7 @@ Page({
         //按钮状态 left right middle 分别是底部左边 右边 和订单详情中的按钮文案
         var state = '';
         if (n == 1) {
-            state = {status: '等待买家付款', left: '取消支付', right: '继续支付', middle: '', orderIcon: "order-state-1.png",info:'',time:''}
+            state = {status: '等待买家付款', left: '取消订单', right: '继续支付', middle: '', orderIcon: "order-state-1.png",info:'',time:''}
         } else if (n == 2) {
             state = {status: '买家已付款', left: '订单退款', right: '订单退款', middle: ['退款','退款中','退款成功','退款失败'], orderIcon: "order-state-2.png",info:'等待卖家收货...',time:''}
         } else if (n == 3) {
@@ -169,11 +247,11 @@ Page({
         } else if (n == 4) {
             state = {status: '等待买家自提', left: '', right: '确认收货', middle: ['退换','退换成功','退换失败'], orderIcon: "order-state-3.png",info:'',time:''}
         } else if (n == 5) {
-            state = {status: '交易已完成', left: '', right: '删除订单', middle: ['申请售后','售后中','售后成功','售后失败'], orderIcon: "order-state-5.png",info:'已签收',time:''};
+            state = {status: '交易已完成', left: '删除订单', right: '再次购买', middle: ['申请售后','售后中','售后成功','售后失败'], orderIcon: "order-state-5.png",info:'已签收',time:''};
         } else if (n == 6) {// 退款 退货等  判断 middle的状态
             state = {status: '退货中', left: '取消支付', right: '继续支付', middle: '', orderIcon: "order-state-5.png",info:'',time:''}
         } else if (n == 7) {// 售后完成 或者 退换货等都完成 判断 middle的状态
-            state = {status: '订单已完成', left: '', right: '删除订单', middle: '', orderIcon: "order-state-5.png",info:'已签收',time:''};
+            state = {status: '订单已完成', left: '删除订单', right: '再次购买', middle: '', orderIcon: "order-state-5.png",info:'已签收',time:''};
         } else if (n == 8) {
             state = {status: '交易关闭', left: '', right: '删除订单', middle: '', orderIcon: "order-state-6.png",info:'',time:''}
         } else if (n == 9) {// 不显示 ？
