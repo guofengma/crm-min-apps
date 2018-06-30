@@ -257,45 +257,14 @@ Page({
         } else if (n == 9) {// 不显示 ？
             state = {status: '删除订单', left: '', right: '', middle: '',info:'',time:''}
         }
-        // switch (n) {
-        //     case 1:
-        //         state = {status: '等待买家付款', left: '取消支付', right: '继续支付', middle: '', orderIcon: "order-state-1.png"}
-        //         break;
-        //     case 2:
-        //         state = {status: '等待卖家发货', left: '订单退款', right: '订单退款', middle: '退款', orderIcon: "order-state-2.png"}
-        //         break;
-        //     case 3:
-        //         state = {status: '等待买家收货', left: '查看物流', right: '确认收货', middle: '退换货', orderIcon: "order-state-3.png"}
-        //         break;
-        //     case 4:
-        //         state = {status: '等待买家自提', left: '', right: '确认收货', middle: '退款', orderIcon: "order-state-3.png"}
-        //         break;
-        //     case 5:
-        //         state = {status: '交易已完成', left: '', right: '删除订单', middle: '申请售后', orderIcon: "order-state-5.png"}
-        //         break;
-        //     case 6:
-        //         // 退款 退货等  判断 middle的状态
-        //         state = {status: '退货中', left: '取消支付', right: '继续支付', middle: '', orderIcon: "order-state-5.png"}
-        //         break;
-        //     case 7:
-        //         // 售后完成 或者 退换货等都完成 判断 middle的状态
-        //         state = {status: '订单已完成', left: '', right: '删除订单', middle: '', orderIcon: "order-state-5.png"};
-        //         console.log(state);
-        //         break;
-        //     case 8:
-        //         state = {status: '交易关闭', left: '', right: '删除订单', middle: '', orderIcon: "order-state-6.png"}
-        //         break;
-        //     case 9:
-        //         // 不显示 ？
-        //         state = {status: '删除订单', left: '', right: '', middle: ''}
-        //         break;
-        // }
         return state
     },
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+    continuePay() {
+      let params = {
+        totalAmounts: this.detail.orderTotalPrice, //支付的钱
+        orderNum: this.data.detail.orderNum,// 订单号
+        outTradeNo: this.data.detail.outTrandNo, // 是否继续支付
+      }
+      Tool.navigateTo('/pages/order-confirm/pay/pay?isContinuePay=' + true + '&data=' + JSON.stringify(params))
     }
 })

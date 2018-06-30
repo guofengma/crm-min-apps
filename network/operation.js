@@ -212,7 +212,15 @@ export default class Operation {
 
         this.paySuccess = '/order/order/paySuccess'
 
+        // 继续去支付
 
+        this.continueToPay  = '/order/order/continueToPay'
+
+        // 继续支付
+
+        this.continuePay = '/order/order/continuePay'
+
+        
         /******************我的---设置*********************** */
 
         //退出登录

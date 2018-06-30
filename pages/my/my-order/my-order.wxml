@@ -83,11 +83,11 @@
                         </view>
                         <view class="right" wx:if="{{num==4||(num==0&&item.status==7)}}">
                             <view class="cancel-btn" bindtap="deleteItem" data-id="{{item.id}}" data-status="{{item.status}}">删除订单</view>
-                            <view class="pay-btn">再次购买</view>
+                            <view class="pay-btn" bindtap=''>再次购买</view>
                         </view>
                         <view class="right" wx:elif="{{num==1||(num==0&&item.status==1)}}">
                             <view class="cancel-btn" bindtap="cancelItem" data-ordernum="{{item.orderNum}}">取消订单</view>
-                            <view class="pay-btn">立即支付</view>
+                            <view class="pay-btn" bindtap='continuePay' data-ordernum="{{item.orderNum}}"  data-tradeno="{{item.outTrandNo}}"  data-num='{{item.price}}'>立即支付</view>
                         </view>
                         <view class="right" wx:elif="{{num==3||(num==0&&item.status==3)}}">
                             <view class="cancel-btn">查看物流</view>

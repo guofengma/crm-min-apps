@@ -1,6 +1,6 @@
 <!--pages/pay/pay.wxml-->
 <view class="pay">
-    <view class="wrap gray">
+    <view class="wrap gray" wx:if='{{!isContinuePay}}'>
         <view class="left">
             <image src="/img/icon_03@2x.png"></image>
             <view>代币支付</view>
@@ -11,7 +11,7 @@
         </view>
         <view class="clearfix"></view>
     </view>
-    <view class="wrap gray ">
+    <view class="wrap gray " wx:if='{{!isContinuePay}}'>
         <view class="left">
             <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/icon_03-03@2x.png"></image>
             <view>余额支付</view>
@@ -55,7 +55,7 @@
         <view class="clearfix"></view>
     </view> -->
     <view class="footer">
-        <view>合计：<text>￥{{payList.showTotalAmounts}}</text></view>
+        <view>{{!isContinuePay ? '合计':'剩余还需支付'}}：<text>￥{{payList.showTotalAmounts}}</text></view>
         <view bindtap='payBtnCliked'>立即支付</view>
     </view>
 </view>

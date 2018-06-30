@@ -11,15 +11,23 @@ Page({
         result:1, //支付结果
         payWayActive:[false,false,false],
         useAmount:[false,false],
-        useBalance:0
+        useBalance:0,
+        isContinuePay:false, //是否是继续支付
+        outTrandNo:'',
+        payType:'',//上次支付时选择的支付方式
     },
     onLoad: function (options) {
       // 提交订单时返回的数据
       let payList = JSON.parse(options.data)
       payList.showTotalAmounts = payList.totalAmounts
       this.setData({
-        payList: payList
+        payList: payList,
+        isContinuePay: options.isContinuePay || false
       })
+      // 如果有值 去继续支付
+      if (this.data.payList.outTradeNo){
+        this.continueToPay()
+      }
     },
     changePrice(e){
       // 使用代币支付 和余额支付 
@@ -59,26 +67,30 @@ Page({
     },
     payBtnCliked(){
       let payWay = this.isSelectPayWay()
-      console.log(payWay)
       if (!payWay.isSelect){
         Tool.showAlert('请选择支付方式')
         return
       } 
-      this.payOrder(payWay.index)
+      let payType = payWay.index == 0 ? 16 : 2
+      if (this.data.payList.outTradeNo){
+        this.continuePay(payType)
+      } else{
+        this.payOrder(payType)
+      }
+      
     },
     payOrder(payType){
-      let payway = payType==0? 16:2
       let params ={
         amounts: this.data.payList.showTotalAmounts,
         balance: 0, // 先按照0 写死
         orderNum: this.data.payList.orderNum,
         tokenCoin: 0, // 先按照0 写死
-        "type": payway,
+        "type": payType,
       }
       let r = RequestFactory.repay(params);
       r.finishBlock = (req) => {
         let okCb = () =>{
-          this.paySuccess(payway, req.responseObject.data.outTradeNo)
+          this.paySuccess(payType, req.responseObject.data.outTradeNo)
         }
         let errCb = () => {
           this.showResult(false)
@@ -120,5 +132,40 @@ Page({
     },
     goPage(){
       Tool.redirectTo('/pages/my/my-order/my-order')
+    },
+    continuePay(payType) {
+      let params = {
+        outTradeNo: this.data.payList.outTradeNo,
+        "type": payType
+      }
+      let r = RequestFactory.continuePay(params);
+      r.finishBlock = (req) => {
+        let okCb = () => {
+          this.paySuccess(payType, req.responseObject.data.outTradeNo)
+        }
+        let errCb = () => {
+          this.showResult(false)
+        }
+        Tool.showComfirm('模拟第三方支付，点击确认为支付', okCb, errCb)
+      };
+      Tool.showErrMsg(r)
+      r.addToQueue();
+    },
+    continueToPay() {
+      let params = {
+        outTradeNo: this.data.payList.outTradeNo
+      }
+      let r = RequestFactory.continueToPay(params);
+      r.finishBlock = (req) => {
+        let datas = req.responseObject.data
+        let payList = this.data.payList
+        payList.showTotalAmounts = datas.amounts
+        this.setData({
+          payType: datas.type,
+          payList:payList
+        })
+      };
+      Tool.showErrMsg(r)
+      r.addToQueue();
     }
 })

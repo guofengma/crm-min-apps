@@ -358,6 +358,20 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().paySuccess;
     return this.request(url, params, '第三方支付回调接口', true);
   }
+  
+  static continueToPay(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().continueToPay;
+    return this.request(url, params, '继续去支付', true);
+  }
+
+  static continuePay(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().continuePay;
+    return this.request(url, params, '继续支付', true);
+  }
+
+  
 
   /*******************我的---设置******************** */
 

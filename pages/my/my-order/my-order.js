@@ -204,11 +204,17 @@ Page({
             });
         }
         this.getData(this.data.num);
+    },
+    continuePay(e){
+      let outTrandNo = e.currentTarget.dataset.tradeno
+      let num = e.currentTarget.dataset.num // 支付的钱
+      let orderNum = e.currentTarget.dataset.ordernum //订单号
+      let params={
+        totalAmounts: num,
+        orderNum: orderNum,
+        outTradeNo: outTrandNo
+      }
+      console.log(params)
+      Tool.navigateTo('/pages/order-confirm/pay/pay?isContinuePay=' + true + '&data=' + JSON.stringify(params))
     }
-    ,
-    onShow: function () {
-
-    }
-    ,
-
 })
