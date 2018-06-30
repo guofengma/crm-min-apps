@@ -40,9 +40,7 @@ Page({
       Tool.navigateTo('/pages/register/register-code/register-code?phone=' + this.data.phone + "&password=" + this.data.pwd)
     }
     r.failBlock = (req) => {
-      if (req.responseObject.code == 600) {
-        console.log(req.responseObject.data)
-      }
+      Tool.showAlert(req.responseObject.msg)
     }
     r.addToQueue();
   },

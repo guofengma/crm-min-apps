@@ -21,7 +21,7 @@
         </view>
         <view class="wrap">
             <city-picker bind:pickerClicked="pickerClicked" id='picker' region='{{region}}'>
-              <view bindtap="getAddress" class="item mar-top2 line">
+              <view  class="item mar-top2 line">
                 <view>
                     <text>收货地址</text>
                 </view>

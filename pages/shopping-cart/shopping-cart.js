@@ -121,18 +121,20 @@ Page({
     let r = RequestFactory.getShoppingCartList();
     r.finishBlock = (req) => {
       let data = req.responseObject.data
-      data.forEach((item,index)=>{
-        item.isTouchMove = false  //是否移动 
-        item.showImg = item.spec_img
-        item.showPrice = item.levelPrice
-        item.showName = item.name
-        item.showType = item.spec
-        item.showCount = item.productNumber || 1  // 商品数量
-        item.isSelect = false  //是否选择 
-      })
-      this.setData({
-        items: data
-      })
+      if(data){
+        data.forEach((item, index) => {
+          item.isTouchMove = false  //是否移动 
+          item.showImg = item.spec_img
+          item.showPrice = item.levelPrice
+          item.showName = item.name
+          item.showType = item.spec
+          item.showCount = item.productNumber || 1  // 商品数量
+          item.isSelect = false  //是否选择 
+        })
+        this.setData({
+          items: data
+        })
+      }
     };
     r.addToQueue();
   },

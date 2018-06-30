@@ -31,16 +31,20 @@ Page({
       let item = req.responseObject.data
       // 渲染地址列表
       let userAdress = item.default_addr
-      item.address= {
-        hasData: userAdress.receiver? true:false,
-        receiver: userAdress.receiver,
-        recevicePhone: userAdress.recevicePhone,
-        addressInfo: userAdress.province + userAdress.city + userAdress.area + userAdress.address,
-        address: userAdress.address,
-        areaCode: userAdress.areaCode,
-        cityCode: userAdress.cityCode,
-        provinceCode: userAdress.provinceCode
+
+      if (userAdress){
+        item.address = {
+          hasData: userAdress.receiver ? true : false,
+          receiver: userAdress.receiver,
+          recevicePhone: userAdress.recevicePhone,
+          addressInfo: userAdress.province + userAdress.city + userAdress.area + userAdress.address,
+          address: userAdress.address,
+          areaCode: userAdress.areaCode,
+          cityCode: userAdress.cityCode,
+          provinceCode: userAdress.provinceCode
+        }
       }
+     
       //渲染产品信息列表
       let showProduct =[]
       item.priceList.forEach((item)=>{
@@ -116,6 +120,21 @@ Page({
     this.setData({
       addressList: addressList
     })
+    let params ={
+      cityCode: address.cityCode,
+      orderProductList: this.data.params
+    }
+    let orderInfos = this.data.orderInfos
+    let r = RequestFactory.calcFreight(params);
+    r.finishBlock = (req) => {
+      let data = req.responseObject.data
+      orderInfos.totalAmounts = data.totalAmounts
+      orderInfos.totalFreightFee = data.totalFreightFee
+      this.setData({
+        orderInfos: orderInfos
+      })
+    };
+    r.addToQueue();
   },
   remarkChange(e){
     this.setData({

@@ -321,6 +321,23 @@ export default class RequestFactory {
     return this.request(url, params, '订单结算', true);
   }
 
+  static calcFreight(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().calcFreight;
+    return this.request(url, params, '订单修改地址 邮费计算', true);
+  }
+
+  static repay(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().repay;
+    return this.request(url, params, '预支付', true);
+  }
+
+  static paySuccess(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().paySuccess;
+    return this.request(url, params, '第三方支付回调接口', true);
+  }
 
   /*******************我的---设置******************** */
 
@@ -387,5 +404,6 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().updateDealerNewPhone;
     return this.request(url, params, '修改手机账号', true);
   }
+  
 }
 

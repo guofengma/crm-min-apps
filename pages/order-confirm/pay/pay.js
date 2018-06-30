@@ -15,11 +15,11 @@ Page({
     },
     onLoad: function (options) {
       // 提交订单时返回的数据
-      // let payList = JSON.parse(options.data)
-      // payList.showTotalAmounts = payList.totalAmounts
-      // this.setData({
-      //   payList: payList
-      // })
+      let payList = JSON.parse(options.data)
+      payList.showTotalAmounts = payList.totalAmounts
+      this.setData({
+        payList: payList
+      })
     },
     changePrice(e){
       // 使用代币支付 和余额支付 
@@ -59,18 +59,23 @@ Page({
     },
     payBtnCliked(){
       let payWay = this.isSelectPayWay()
-      console.log(payWay)
-      if (payWay.isSelect){
-
-      } else {
+      if (!payWay.isSelect){
         Tool.showAlert('请选择支付方式')
-      }
+        return
+      } 
+      this.payOrder()
+    },
+    payOrder(){
+      let r = RequestFactory.repay(params);
+      r.finishBlock = (req) => {
+        
+      };
+      r.addToQueue();
     },
     isSelectPayWay(){
       let payway = ''
       this.data.payWayActive.forEach((item,index)=>{
         if(item){
-          console.log(11111)
           payway =  {isSelect:true,index:index}
           return payway
         } else {

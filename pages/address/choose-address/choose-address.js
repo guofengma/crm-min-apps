@@ -21,6 +21,7 @@ Page({
       })
     }
     this.queryAddressList()
+    Event.on('updateAdressList', this.queryAddressList, this)
   },
   onShow: function () {
   
@@ -51,7 +52,7 @@ Page({
     let page = ''
     let addressType = this.data.addressType
     if (addressType == 1){
-      if (this.data.addressType.length > 0){
+      if (this.data.addressList.length > 0){
         page = '/pages/address/select-express-address/select-express-address'
       } else {
         page = '/pages/address/new-address/new-address'

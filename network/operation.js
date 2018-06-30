@@ -68,11 +68,11 @@ export default class Operation {
     /********************** 产品 *********************/
 
         // 产品列表
-        this.queryProductListAPP = '/user/productApp/queryProductList'
+        this.queryProductListAPP = '/user/product/queryProductList'
 
         // 产品详情
 
-        this.findProductByIdApp = '/user/productApp/findProductById'
+        this.findProductByIdApp = '/user/product/findProductById'
 
         // 搜索产品
 
@@ -183,6 +183,19 @@ export default class Operation {
         // 提交订单
 
         this.submitOrder ='/order/order/submitOrder'
+
+        // 订单修改地址 邮费计算
+
+        this.calcFreight  = '/order/order/calcFreight'
+
+        // 预支付
+
+        this.repay = '/order/order/prePay'
+
+        // 第三方支付回调接口
+
+        this.paySuccess = '/order/order/paySuccess'
+
 
         /******************我的---设置*********************** */
 
