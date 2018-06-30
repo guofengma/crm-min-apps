@@ -1,3 +1,6 @@
+<import src='/components/tips-cancel-order/tips-cancel-order.wxml' />
+
+<import src='/components/tips-delete-order/tips-delete-order.wxml' />
 <view>
     <!--搜索结果异常显示  -->
     <import src='/components/result-tips/result-tips.wxml' />
@@ -9,8 +12,8 @@
             <view class="{{num==3?'active':''}}" bindtap="getList" data-index="3">待收货</view>
             <view class="{{num==4?'active':''}}" bindtap="getList" data-index="4">已完成</view>
         </view>
-        <view class="order-list" wx:for="{{list}}" wx:key="unique" bindtap="toOrderDetail" data-id="{{item.id}}" data-status="{{item.status}}">
-            <view class="header">
+        <view class="order-list" wx:for="{{list}}" wx:key="unique" wx:for-item="item">
+            <view class="header" bindtap="toOrderDetail" data-id="{{item.id}}" data-status="{{item.status}}">
                 <view class="left">
                     订单编号：{{item.orderNum}}
                 </view>
@@ -24,6 +27,7 @@
                         <text wx:elif="{{item.status==2}}">待发货</text>
                         <text wx:elif="{{item.status==3}}">待收货</text>
                         <text wx:elif="{{item.status==4}}">待自提</text>
+                        <text wx:elif="{{item.status==5}}">已确认</text>
                         <text wx:elif="{{item.status==7}}">已完成</text>
                         <text wx:elif="{{item.status==8}}">已关闭</text>
                     </text>
@@ -31,18 +35,18 @@
             </view>
             <view class="clearfix"></view>
             <view class="body">
-                <view class="item-area">
-                    <view class="item" wx:for="{{item.orderProduct}}" wx:key="item">
-                        <image src="{{item.imgUrl}}" alt=""></image>
+                <view class="item-area" bindtap="toOrderDetail" data-id="{{item.id}}" data-status="{{item.status}}">
+                    <view class="item" wx:for="{{item.orderProduct}}" wx:key="item"  wx:for-item="oItem">
+                        <image src="{{oItem.imgUrl}}" alt=""></image>
                         <view class="goods-inf">
-                            <view class="ellipsis-2">{{item.productName}}
+                            <view class="ellipsis-2">{{oItem.productName}}
                             </view>
                             <view class="color-classify">颜色分类：长袖 紫色</view>
                         </view>
                         <view>
-                            <view class="price">￥{{item.price}}</view>
+                            <view class="price">￥{{oItem.price}}</view>
                             <!--<view class="org-price">￥{{item.price}}</view>-->
-                            <view class="num">x{{item.num}}</view>
+                            <view class="num">x{{oItem.num}}</view>
                         </view>
                     </view>
                     <!--<view class="item">-->
@@ -71,22 +75,22 @@
                     <text wx:elif="{{num==3||(num==0&&item.status==3)}}">发货时间：</text>
                     <text wx:else>创建时间：</text>{{item.orderCreateTime}}
                 </view>
-                <view wx:if="{{num!=2&&item.status!=2}}">
+                <view wx:if="{{num!=2&&item.status!=2&&item.status!=5}}">
                     <view class="footer">
                         <view class="left" wx:if="{{num==1||(num==0&&item.status==1)}}">
                             27:45:45后自动取消订单
                         </view>
                         <view class="right" wx:if="{{num==4||(num==0&&item.status==7)}}">
-                            <view class="cancel-btn">删除订单</view>
+                            <view class="cancel-btn" bindtap="deleteItem" data-id="{{item.id}}" data-status="{{item.status}}">删除订单</view>
                             <view class="pay-btn">再次购买</view>
                         </view>
                         <view class="right" wx:elif="{{num==1||(num==0&&item.status==1)}}">
-                            <view class="cancel-btn">取消订单</view>
+                            <view class="cancel-btn" bindtap="cancelItem" data-ordernum="{{item.orderNum}}">取消订单</view>
                             <view class="pay-btn">立即支付</view>
                         </view>
                         <view class="right" wx:elif="{{num==3||(num==0&&item.status==3)}}">
                             <view class="cancel-btn">查看物流</view>
-                            <view class="pay-btn">确认收货</view>
+                            <view class="pay-btn" bindtap="confirmReceipt"  data-id="{{item.id}}">确认收货</view>
                         </view>
                     </view>
                     <view class="clearfix"></view>
@@ -161,5 +165,10 @@
         </view>-->
 
     </view>
+
+    <!--提示框  -->
+    <template is="tips-cancel-order" data='{{isCancel,reason,content}}'/>
+
+    <template is="tips-delete-order" data='{{isDelete}}'/>
 </view>
 

@@ -1,6 +1,8 @@
 /*搜索产品异常显示  */
 @import  "/components/result-tips/result-tips";
+@import "/components/tips-cancel-order/tips-cancel-order";
 
+@import "/components/tips-delete-order/tips-delete-order";
 .tab-area{
     display: flex;
     justify-content: space-around;

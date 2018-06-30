@@ -40,6 +40,9 @@ Page({
         if (options.status == 1) {
             this.time()
         }
+        if(options.status==4){
+            this.addressType=2
+        }
         this.getDetail();//获取详情
     },
     //获取详情
@@ -56,9 +59,13 @@ Page({
             detail.payTime=detail.payTime?Tool.formatTime(detail.payTime):'';
             detail.deliveryTime=detail.deliveryTime?Tool.formatTime(detail.deliveryTime):'';
             let address={};
-            address.receiver=detail.receiver;
-            address.recevicePhone=detail.recevicePhone;
-            address.addressInfo= detail.province + detail.city + detail.area + detail.address;
+            if(detail.status==4){
+              address.addressInfo = '自提点：' + detail.storehouseProvince + detail.storehouseCity + detail.storehouseArea + detail.storehouseAddress;
+            }else{
+                address.receiver=detail.receiver;
+                address.recevicePhone=detail.recevicePhone;
+                address.addressInfo= detail.province + detail.city + detail.area + detail.address;
+            }
             this.data.state.time= detail.deliveryTime;
             this.setData({
                 detail: detail,
@@ -89,6 +96,17 @@ Page({
     deleteOrder() {
         //删除订单
         console.log('删除订单')
+    },
+    //复制
+    copy(e){
+        let that=this;
+        wx.setClipboardData({
+            data: that.data.detail.orderNum,
+            success: function(res) {
+               Tool.showSuccessToast('复制成功')
+            }
+        });
+
     },
     time() {
         //待付款订单 倒计时处理
@@ -145,13 +163,13 @@ Page({
         if (n == 1) {
             state = {status: '等待买家付款', left: '取消支付', right: '继续支付', middle: '', orderIcon: "order-state-1.png",info:'',time:''}
         } else if (n == 2) {
-            state = {status: '买家已付款', left: '订单退款', right: '订单退款', middle: '退款', orderIcon: "order-state-2.png",info:'等待卖家收货...',time:''}
+            state = {status: '买家已付款', left: '订单退款', right: '订单退款', middle: ['退款','退款中','退款成功','退款失败'], orderIcon: "order-state-2.png",info:'等待卖家收货...',time:''}
         } else if (n == 3) {
-            state = {status: '买家已发货', left: '查看物流', right: '确认收货', middle: '退换货', orderIcon: "order-state-3.png",info:'仓库正在扫描出仓...',time:''}
+            state = {status: '卖家已发货', left: '查看物流', right: '确认收货', middle: ['申请售后','售后中','售后成功','售后失败'], orderIcon: "order-state-3.png",info:'仓库正在扫描出仓...',time:''}
         } else if (n == 4) {
-            state = {status: '等待买家自提', left: '', right: '确认收货', middle: '退款', orderIcon: "order-state-3.png",info:'',time:''}
+            state = {status: '等待买家自提', left: '', right: '确认收货', middle: ['退换','退换成功','退换失败'], orderIcon: "order-state-3.png",info:'',time:''}
         } else if (n == 5) {
-            state = {status: '交易已完成', left: '', right: '删除订单', middle: '', orderIcon: "order-state-5.png",info:'已签收',time:''};
+            state = {status: '交易已完成', left: '', right: '删除订单', middle: ['申请售后','售后中','售后成功','售后失败'], orderIcon: "order-state-5.png",info:'已签收',time:''};
         } else if (n == 6) {// 退款 退货等  判断 middle的状态
             state = {status: '退货中', left: '取消支付', right: '继续支付', middle: '', orderIcon: "order-state-5.png",info:'',time:''}
         } else if (n == 7) {// 售后完成 或者 退换货等都完成 判断 middle的状态
