@@ -13,13 +13,13 @@
 <view class="search-result-container">
    <template is="search-field" data='{{keyword}}'/>
    <nav-bar bind:navbarClicked="navbarClicked" ></nav-bar>
-   <scroll-view class="search-result" scroll-y bindscrolltolower='onScroll'>
+   <scroll-view class="search-result" scroll-y bindscrolltolower='onScroll' wx:if='{{productInfo.length>0}}'>
       <view class='content' style='background:{{show? "#fff":""}}'>
         <!--商品展示 横向或纵向显示  -->
         <template is="product-row" wx:if='{{show}}' data="{{productInfo}}" /> 
-        <template is="product-column" wx:else data="{{productInfo}}" />   
-        <!--搜索结果异常显示 tipVal  -->
-        <template is="result-tips" v-if='{{tipVal}}' data="{{tipVal}}" />
+        <template is="product-column" wx:else data="{{productInfo}}" />  
       </view>
    </scroll-view>
+  <!--搜索结果异常显示 tipVal  -->
+  <template is="result-tips" v-if='{{tipVal}}' data="{{tipVal}}" />
 </view>

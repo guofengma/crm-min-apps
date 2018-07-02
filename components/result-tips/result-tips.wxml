@@ -1,5 +1,5 @@
 <template name="result-tips">
-  <view class='tips-img-view' wx:if="{{tipVal == 1}}">
+  <view class='tips-img-view' wx:if="{{tipVal == 1}}" bindtap='reloadNet'>
     <image src='/img/search-result-1.png' mode='widthFix'></image>
     <view>网络异常,请点击重新加载~</view>
   </view>

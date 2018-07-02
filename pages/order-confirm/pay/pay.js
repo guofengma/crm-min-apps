@@ -89,13 +89,7 @@ Page({
       }
       let r = RequestFactory.repay(params);
       r.finishBlock = (req) => {
-        let okCb = () =>{
-          this.paySuccess(payType, req.responseObject.data.outTradeNo)
-        }
-        let errCb = () => {
-          this.showResult(false)
-        }
-        Tool.showComfirm('模拟第三方支付，点击确认为支付', okCb, errCb)
+        this.test(payType, req)
       };
       Tool.showErrMsg(r)
       r.addToQueue();
@@ -140,13 +134,7 @@ Page({
       }
       let r = RequestFactory.continuePay(params);
       r.finishBlock = (req) => {
-        let okCb = () => {
-          this.paySuccess(payType, req.responseObject.data.outTradeNo)
-        }
-        let errCb = () => {
-          this.showResult(false)
-        }
-        Tool.showComfirm('模拟第三方支付，点击确认为支付', okCb, errCb)
+        this.test(payType, req)
       };
       Tool.showErrMsg(r)
       r.addToQueue();
@@ -167,5 +155,14 @@ Page({
       };
       Tool.showErrMsg(r)
       r.addToQueue();
+    },
+    test(payType,req){
+      let okCb = () => {
+        this.paySuccess(payType, req.responseObject.data.outTradeNo)
+      }
+      let errCb = () => {
+        this.showResult(false)
+      }
+      Tool.showComfirm('模拟第三方支付，点击确认为支付', okCb, errCb)
     }
 })

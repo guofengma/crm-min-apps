@@ -261,7 +261,7 @@ Page({
     },
     continuePay() {
       let params = {
-        totalAmounts: this.detail.orderTotalPrice, //支付的钱
+        totalAmounts: this.data.detail.orderTotalPrice, //支付的钱
         orderNum: this.data.detail.orderNum,// 订单号
         outTradeNo: this.data.detail.outTrandNo, // 是否继续支付
       }

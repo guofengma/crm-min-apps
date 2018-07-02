@@ -206,15 +206,15 @@ Page({
         this.getData(this.data.num);
     },
     continuePay(e){
-      let outTrandNo = e.currentTarget.dataset.tradeno
-      let num = e.currentTarget.dataset.num // 支付的钱
-      let orderNum = e.currentTarget.dataset.ordernum //订单号
-      let params={
-        totalAmounts: num,
-        orderNum: orderNum,
-        outTradeNo: outTrandNo
+      let item = e.currentTarget.dataset.item
+      let params = {
+        totalAmounts: item.price + item.freightPrice, //总价
+        orderNum: item.orderNum, // 订单号
+        outTradeNo: item.outTrandNo  // 流水号
       }
-      console.log(params)
       Tool.navigateTo('/pages/order-confirm/pay/pay?isContinuePay=' + true + '&data=' + JSON.stringify(params))
+    },
+    continueBuy(e){
+      
     }
 })

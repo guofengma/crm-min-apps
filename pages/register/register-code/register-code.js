@@ -34,9 +34,7 @@ Page({
       Storage.setMemberId(req.responseObject.data.id)
       Tool.navigateTo('/pages/real-name/real-name')
     }
-    r.failBlock = (req) => {
-      console.log(req)
-    }
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   formSubmit(e){

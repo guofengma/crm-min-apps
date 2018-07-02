@@ -36,17 +36,8 @@ Page({
   onShow: function () {
     
   },
-  searchProduct(params){
-    let r = RequestFactory.searchProduct(params);
-    let productInfo = this.data.productInfo
-    r.finishBlock = (req) => {
-      let datas = req.responseObject.data
-      this.setData({
-        productInfo: productInfo.concat(datas.data),
-        totalPage: datas.total
-      })
-    }
-    r.addToQueue();
+  reloadNet(){
+    this.requestQueryProductList(this.data.params)
   },
   onScroll(){
     // 向下滑动的时候请求数据
@@ -68,28 +59,36 @@ Page({
     } else {
       r = RequestFactory.queryProductListAPP(params);
     }
-    params.id = 1
     let productInfo = this.data.productInfo
     r.finishBlock = (req) => {
       let datas = req.responseObject.data
-      console.log(productInfo.concat(datas.data))
-      this.setData({
-        productInfo: productInfo.concat(datas.data),
-        totalPage: datas.total
-      })
+      if (datas.resultCount > 0) {
+        this.setData({
+          productInfo: productInfo.concat(datas.data),
+          totalPage: datas.total
+        })
+      } else if (datas.resultCount == 0) {
+        this.setData({
+          tipVal: 2
+        })
+      } else {
+        this.setData({
+          tipVal: 1
+        })
+      }
     }
     r.addToQueue();
   },
   productCliked(e){
     Tool.navigateTo('/pages/product-detail/product-detail?productId='+ e.currentTarget.dataset.id)
   },
-  getRequestUrl(params){
-    if (this.data.keyword) {
-      this.searchProduct(params)
-    } else {
-      this.requestQueryProductList(params)
-    }
-  },
+  // getRequestUrl(params){
+  //   if (this.data.keyword) {
+  //     this.searchProduct(params)
+  //   } else {
+  //     this.requestQueryProductList(params)
+  //   }
+  // },
   navbarClicked(e){
     // 1 综合 2销量 3价格 不是数字为变化排版
     let n = e.detail.n
@@ -122,6 +121,6 @@ Page({
       currentPage:1,
       productInfo: []
     }) 
-    this.getRequestUrl(this.data.params)
+    this.requestQueryProductList(params)
   }
 })

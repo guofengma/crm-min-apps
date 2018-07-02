@@ -2,7 +2,8 @@
 let { Tool, RequestFactory, Event, Storage } = global;
 Page({
     data: {
-      userInfos: ''
+      userInfos: '',
+      region:''
     },
     nickname(){
       Tool.navigateTo('/pages/my/nickname/nickname')
