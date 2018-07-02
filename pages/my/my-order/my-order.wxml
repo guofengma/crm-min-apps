@@ -68,7 +68,7 @@
 
                 <view class="amount">
                     <text>共{{item.orderProduct.length}}件商品 合计：</text>
-                    <text class="money">￥{{item.price+item.freightPrice}}</text>
+                    <text class="money">￥{{item.totalPrice+item.freightPrice}}</text>
                     <text class="freight">(含运费￥{{item.freightPrice}})</text>
                 </view>
                 <view class="time">

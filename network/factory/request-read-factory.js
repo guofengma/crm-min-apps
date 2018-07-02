@@ -371,6 +371,11 @@ export default class RequestFactory {
     return this.request(url, params, '继续支付', true);
   }
 
+  static againToPrePay(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().againToPrePay;
+    return this.request(url, params, '继续去预支付', true);
+  }
   
 
   /*******************我的---设置******************** */

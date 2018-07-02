@@ -55,7 +55,8 @@
         <view class="clearfix"></view>
     </view> -->
     <view class="footer">
-        <view>{{!isContinuePay ? '合计':'剩余还需支付'}}：<text>￥{{payList.showTotalAmounts}}</text></view>
+        <!--{{payList.scorePrice? '积分抵扣'+payList.scorePrice+'元,':""}}  -->
+        <view>{{!isContinuePay ? '合计':'还需支付'}}：<text>￥{{payList.showTotalAmounts}}</text></view>
         <view bindtap='payBtnCliked'>立即支付</view>
     </view>
 </view>

@@ -5,13 +5,6 @@
    <view bindtap='searchClicked'>
      <template is="search-field" data='{{disabled:true}}'/>
    </view>
-   <button bindtap='btnClicked' data-id='/pages/login/login-wx/login-wx' >微信登陆</button>
-   <button bindtap='btnClicked' data-id='/pages/register/register' >注册</button>
-   <button bindtap='btnClicked' data-id='/pages/register/register-code/register-code' >注册2</button>
-   <button bindtap='btnClicked' data-id='/pages/real-name/real-name' >注册-实名制</button>
-   <button bindtap='btnClicked' data-id='/pages/address/select-selfLifting-address/select-selfLifting-address' >自提地址选择</button>
-   <button bindtap='btnClicked' data-id='/pages/address/select-express-address/select-express-address' >快递地址选择</button>
-   <button bindtap='btnClicked' data-id='/pages/address/choose-address/choose-address' >订单地址选择</button>
-   <button bindtap='btnClicked' data-id='/pages/my/orderDetail/orderDetail' >我的订单详情</button>
-   <button bindtap='btnClicked' data-id='/pages/my/phone/phone' >修改2</button>
+   <!-- <button bindtap='btnClicked' data-id='/pages/login/login-wx/login-wx' >微信登陆</button>
+   <button bindtap='btnClicked' data-id='/pages/register/register' >注册</button> -->
 </view>

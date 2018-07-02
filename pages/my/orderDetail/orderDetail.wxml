@@ -14,7 +14,7 @@
         <view class='order-status'>
             {{state.status}}
         </view>
-        <view class='timeDown' wx:if="{{status==1}}">{{countdown}}</view>
+        <view class='timeDown' wx:if="{{detail.status==1}}">{{countdown}}</view>
     </view>
 </view>
 

@@ -219,6 +219,10 @@ export default class Operation {
         // 继续支付
 
         this.continuePay = '/order/order/continuePay'
+        
+        // 继续去预支付
+
+        this.againToPrePay  ='/order/order/againToPrePay'
 
         
         /******************我的---设置*********************** */

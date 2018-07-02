@@ -24,7 +24,6 @@ Page({
             info:'',
             time:'',
         },
-        orderTime: '2018-6-27 10:10:00',
         time: Object,
         countdown: '',
         detail: {},//详情信息
@@ -74,6 +73,9 @@ Page({
                 address: address,
                 state:this.data.state
             })
+            if (detail.status == 1){
+              this.time()
+            }
         };
         r.addToQueue();
     },
@@ -188,12 +190,11 @@ Page({
     },
     time() {
         //待付款订单 倒计时处理
-        // if (this.data.state == '1') {
+      if (this.data.detail.status == '1') {
 
-        let orderTime = this.data.orderTime;
+        let orderTime = this.data.detail.createTime;
         //转化为时间戳
         let timeInterval = Tool.timeIntervalFromString(orderTime);
-        console.log(timeInterval)
         // 把当前的时间格式化 
         let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
         let nowTimeInterval = Tool.timeIntervalFromString(now);
@@ -204,7 +205,7 @@ Page({
             duration: duration
         });
         this.countdown(this);
-        // }
+      }
 
     },
     countdown(that) {
@@ -212,8 +213,8 @@ Page({
         clearTimeout(that.data.time);
 
         let second = that.data.duration;
-
-        if (that.data.state == '1') {
+        let detail = that.data.detail
+        if (detail.status == '1') {
             if (second > 0) {//秒数>0
                 let countDownTime = Tool.timeStringForTimeCount(second);
                 that.setData({
@@ -221,9 +222,11 @@ Page({
                     countdown: countDownTime + '后自动取消订单'
                 });
             } else {
-                that.setData({
-                    countdown: '交易关闭'
-                });
+              detail.status = '8'
+              that.setData({
+                detail:detail,
+                state: this.orderState(8)//订单状态相关信息
+              });
             }
         }
 
@@ -263,7 +266,7 @@ Page({
       let params = {
         totalAmounts: this.data.detail.orderTotalPrice, //支付的钱
         orderNum: this.data.detail.orderNum,// 订单号
-        outTradeNo: this.data.detail.outTrandNo, // 是否继续支付
+        outTradeNo: this.data.detail.outTradeNo||'', // 是否继续支付
       }
       Tool.navigateTo('/pages/order-confirm/pay/pay?isContinuePay=' + true + '&data=' + JSON.stringify(params))
     }

@@ -27,6 +27,8 @@ Page({
       // 如果有值 去继续支付
       if (this.data.payList.outTradeNo){
         this.continueToPay()
+      } else if (!this.data.payList.outTradeNo && options.isContinuePay ){
+        this.againToPrePay()
       }
     },
     changePrice(e){
@@ -151,6 +153,23 @@ Page({
         this.setData({
           payType: datas.type,
           payList:payList
+        })
+      };
+      Tool.showErrMsg(r)
+      r.addToQueue();
+    },
+    againToPrePay(){
+      let params = {
+        orderNum: this.data.payList.orderNum,
+      }
+      let r = RequestFactory.againToPrePay(params);
+      r.finishBlock = (req) => {
+        let datas = req.responseObject.data
+        let payList = this.data.payList
+        payList.showTotalAmounts = datas.needPay
+        payList.scorePrice = datas.scorePrice
+        this.setData( {
+            payList: payList
         })
       };
       Tool.showErrMsg(r)

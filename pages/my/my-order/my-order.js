@@ -225,7 +225,7 @@ Page({
     continuePay(e){
       let item = e.currentTarget.dataset.item
       let params = {
-        totalAmounts: item.price + item.freightPrice, //总价
+        totalAmounts: item.totalPrice + item.freightPrice, //总价
         orderNum: item.orderNum, // 订单号
         outTradeNo: item.outTrandNo  // 流水号
       }
