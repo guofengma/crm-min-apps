@@ -57,23 +57,23 @@
     <view class='order-pay-info gray boxSize'>
         <view class='flexR-sb'>
             <text>商品价格</text>
-            <text>¥{{detail.totalPrice}}</text>
+            <text>¥{{detail.totalPrice-detail.freightPrice}}</text>
         </view>
         <view class='flexR-sb'>
             <text>运费（快递）</text>
             <text>¥{{detail.freightPrice}}</text>
         </view>
-        <view class='flexR-sb'>
-            <text>优惠券优惠</text>
-            <text>-¥20</text>
-        </view>
+        <!--<view class='flexR-sb'>-->
+            <!--<text>优惠券优惠</text>-->
+            <!--<text>-¥20</text>-->
+        <!--</view>-->
         <view class='flexR-sb'>
             <text>积分抵扣</text>
-            <text>-¥{{detail.userScore}}</text>
+            <text>-¥{{detail.userScore?detail.userScore:'0'}}</text>
         </view>
         <view class='flexR-sb total'>
             <text>订单总价</text>
-            <text>¥{{detail.totalPrice+detail.freightPrice}}</text>
+            <text>¥{{detail.totalPrice}}</text>
         </view>
         <view class='flexR-sb total totalPay'>
             <view class='popup'>
@@ -111,8 +111,7 @@
         <view class='order-btn btn-left flexR' wx:if="{{state.left=='取消订单'}}" bindtap="cancelItem">{{state.left}}</view>
     </block>
     <block wx:if="{{state.right}}">
-        <view class='order-btn red flexR' wx:if="{{state.right=='确认收货'}}" bindtap="confirmReceipt">{{state.right}}
-        </view>
+        <view class='order-btn red flexR' wx:if="{{state.right=='确认收货'}}" bindtap="confirmReceipt">{{state.right}}</view>
         <view class='order-btn red flexR' wx:if="{{state.right=='删除订单'}}" bindtap="deleteItem">{{state.right}}</view>
         <view class='order-btn red flexR' wx:if="{{state.right=='继续支付'}}" bindtap="continuePay">{{state.right}}</view>
     </block>
