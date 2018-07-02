@@ -32,6 +32,8 @@
   background: #fff;
   border-top: 1rpx solid #eee;
   border-bottom: 1rpx solid #eee;
+  z-index: 999999;
+  left:0;
 }
 .cart-btn{
   width: 30%;

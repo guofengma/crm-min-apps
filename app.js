@@ -66,14 +66,15 @@ App({
         let params = {code: code}
         let r = global.RequestFactory.verifyWechat(params);
         r.finishBlock = (req) => {
+          Tool.loginOpt(req)
+            // // 获取 cookies
+            // let cookies = req.header['Set-Cookie']
 
-            // 获取 cookies
-            let cookies = req.header['Set-Cookie']
-
-            // 存相关信息
-            Tool.formatCookie(cookies)
-            Storage.setUserAccountInfo(req.responseObject.data)
-            Storage.setMemberId(req.responseObject.data.id)
+            // // 存相关信息
+            // Tool.formatCookie(cookies)
+            // Storage.setUserAccountInfo(req.responseObject.data)
+            // Storage.setMemberId(req.responseObject.data.id)
+            
         }
         r.failBlock = (req) => {
             if (req.responseObject.code == 600) {

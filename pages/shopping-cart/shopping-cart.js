@@ -230,16 +230,16 @@ Page({
   },
   selectAllClicked(){
     //点击全选 
-    let activeArr = []
-    if (!this.data.selectAll){
-      for (let i = 0; i < this.data.items.length; i++) {
-        activeArr[i] = true
-      }
-    } 
+    let items = this.data.items
+    let selectAll = this.data.selectAll
+    for (let i = 0; i < items.length; i++) {
+      items[i].isSelect = !selectAll
+    }
     this.setData({
-      selectAll: !this.data.selectAll,
-      chooseImgShow: activeArr
+      selectAll: !selectAll,
+      items: items
     })
+    this.getTotalPrice()
   },
   makeOrder(){
     let params = JSON.stringify(this.data.selectList)

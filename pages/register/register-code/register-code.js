@@ -32,13 +32,13 @@ Page({
     let r = RequestFactory.signMember(params);
     r.finishBlock = (req) => {
       Storage.setMemberId(req.responseObject.data.id)
+      Tool.loginOpt(req)
       Tool.navigateTo('/pages/real-name/real-name')
     }
     Tool.showErrMsg(r)
     r.addToQueue();
   },
   formSubmit(e){
-    console.log(e.detail.value.id)
     if(Tool.isEmptyStr(e.detail.value.id)){
       Tool.showAlert('请输入会员ID或选择一个邀请者')
       return

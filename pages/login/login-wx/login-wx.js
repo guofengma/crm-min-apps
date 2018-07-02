@@ -28,7 +28,6 @@ Page({
       encryptedData: e.detail.encryptedData,
       iv: e.detail.iv,
     })
-    console.log(e.detail.errMsg)
     if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
        console.log('用户拒绝了你的请求')
     } else {

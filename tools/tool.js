@@ -819,6 +819,8 @@ export default class Tool {
       this.formatCookie(cookies)
       global.Storage.setUserAccountInfo(req.responseObject.data)
       global.Event.emit('didLogin');
+      global.Storage.setWxOpenid(req.responseObject.data.openid)
+      global.Storage.setMemberId(req.responseObject.data.id)
       global.Event.emit('refreshMemberInfoNotice');
     }
 }
