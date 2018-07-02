@@ -5,6 +5,6 @@
    <view bindtap='searchClicked'>
      <template is="search-field" data='{{disabled:true}}'/>
    </view>
-   <!-- <button bindtap='btnClicked' data-id='/pages/login/login-wx/login-wx' >微信登陆</button>
-   <button bindtap='btnClicked' data-id='/pages/register/register' >注册</button> -->
+   <button bindtap='btnClicked' data-id='/pages/login/login-wx/login-wx' >微信登陆</button>
+   <button bindtap='btnClicked' data-id='/pages/register/register' >注册</button> 
 </view>

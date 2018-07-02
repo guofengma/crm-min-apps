@@ -64,10 +64,11 @@ Page({
     r.finishBlock = (req) => {
       
       // 获取 cookies
-      let cookies = req.header['Set-Cookie']
-      // 存相关信息
-      Tool.formatCookie(cookies)
-
+      // let cookies = req.header['Set-Cookie']
+      // // 存相关信息
+      // Tool.formatCookie(cookies)
+      // Storage.setUserAccountInfo(req.responseObject.data)
+      Tool.loginOpt(req)
       wx.switchTab({
         url: '/pages/index/index'
       })

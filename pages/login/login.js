@@ -1,4 +1,4 @@
-let { Tool, RequestFactory } = global;
+let { Tool, RequestFactory, Storage } = global
 
 Page({
 
@@ -29,12 +29,7 @@ Page({
     let r = RequestFactory.passwordLogin(params);
 
     r.finishBlock = (req) => {
-      
-      // 获取 cookies
-      let cookies = req.header['Set-Cookie']
-      // 存相关信息
-      Tool.formatCookie(cookies)
-
+      Tool.loginOpt(req)
       wx.switchTab({
         url: '/pages/index/index'
       })

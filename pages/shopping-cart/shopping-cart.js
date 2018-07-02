@@ -13,15 +13,13 @@ Page({
     this.getLoginCart()
     Event.on('updateShoppingCart', this.getShoppingCartList, this)
     Event.on('updateStorageShoppingCart', this.getStorageShoppingCart, this)
+    Event.on('didLogin', this.getLoginCart, this);
   },
   onShow: function () {
 
   },
   getLoginCart(){
-    let didLogin = Storage.getUserCookie() ? true : false
-    this.setData({
-      didLogin: didLogin
-    })
+    Tool.didLogin(this)
     if (this.data.didLogin) {
       let hasStorageShoppingCart = this.hasStorageShoppingCart()
       if (hasStorageShoppingCart){
@@ -258,5 +256,6 @@ Page({
   onUnload: function () {
     Event.off('updateStorageShoppingCart', this.getStorageShoppingCart);
     Event.off('updateShoppingCart', this.getShoppingCartList);
+    Event.off('didLogin', this.didLogin);
   },
 })

@@ -1,5 +1,5 @@
 // pages/my/account.js
-let { Tool, RequestFactory, Event } = global;
+let { Tool, RequestFactory, Event, Storage} = global;
 const app=getApp();
 Page({
 
@@ -36,6 +36,9 @@ Page({
             if(data.code==200){
                 Tool.showSuccessToast(data.data);
                 app.globalData.flag=true;
+                Storage.setUserCookie(null)
+                Storage.setUserAccountInfo(null)
+                Event.emit('didLogin');
                 wx.reLaunch({
                     url:'../../index/index'
                 })

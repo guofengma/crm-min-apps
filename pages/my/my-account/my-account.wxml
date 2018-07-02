@@ -20,7 +20,7 @@
             待提现账户（元）
         </view>
         <view class="num">
-            600.00
+            {{blocked_balances}}
         </view>
     </view>
     <view class="integral item" bindtap="toPage" data-index="3">

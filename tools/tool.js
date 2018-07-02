@@ -800,5 +800,26 @@ export default class Tool {
         this.showAlert(req.responseObject.msg)
       }
     }
+
+    // 是否登录
+
+    static didLogin(that) {
+      let didLogin = global.Storage.getUserCookie() ? true : false
+      that.setData({
+        didLogin: didLogin
+      })
+      return didLogin
+    }
+
+    // 登录以后的操作
+
+    static loginOpt(req){
+      // 获取 cookies
+      let cookies = req.header['Set-Cookie']
+      this.formatCookie(cookies)
+      global.Storage.setUserAccountInfo(req.responseObject.data)
+      global.Event.emit('didLogin');
+      global.Event.emit('refreshMemberInfoNotice');
+    }
 }
 

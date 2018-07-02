@@ -29,6 +29,7 @@ Page({
                 available_balance: data.available_balance,
                 token_coin: data.token_coin,
                 user_score: data.user_score,
+                blocked_balances: data.blocked_balances,
             })
 
         };

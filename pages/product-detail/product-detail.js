@@ -28,16 +28,21 @@ Page({
   onLoad: function (options) {
     // 如果有cookie的话 表示已经登录了 
 
-    let didLogin = Storage.getUserCookie()? true:false
+    // let didLogin = Storage.getUserCookie()? true:false
 
     this.setData({
       productId: options.productId,
-      didLogin: didLogin
+      // didLogin: didLogin
     })
+    this.didLogin()
     this.requestFindProductByIdApp({ productId:this.data.productId})
+    Event.on('didLogin', this.didLogin, this);
   },
   onShow: function () {
   
+  },
+  didLogin() {
+    Tool.didLogin(this)
   },
   msgTipsClicked(e){
     let n = e.currentTarget.dataset.index
@@ -119,7 +124,6 @@ Page({
       let tr = []
       let tbody = this.data.nodes
       for (let i = 0; i < datas.infoValue.length;i++){ 
-        console.log(datas.infoValue.length)
         tr.push(
           {
             name: "tr",
@@ -251,5 +255,8 @@ Page({
       path: '/pages/product-detail/product-detail?productId' + this.data.productId,
       imgUrl: imgUrl
     }
-  }
+  },
+  onUnload: function () {
+    Event.off('didLogin', this.didLogin);
+  },
 })
