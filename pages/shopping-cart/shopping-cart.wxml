@@ -1,6 +1,6 @@
 <import src='/components/cart-product-info/cart-product-info.wxml' />
 
-<scroll-view class="search-result" scroll-y bindscrolltolower='onScroll'>
+<scroll-view class="search-result" scroll-y >
   <view class='shopping-cart'>
     <view class='shopping-cart-line flexR'  data-index='{{index}}' wx:for='{{items}}' wx:key='' >
       <view class='chooseImg' bindtap='chooseClicked' data-index='{{index}}'>
@@ -14,7 +14,9 @@
       </view>
     </view>
   </view>
-  <!--底部的bar  -->
+</scroll-view>
+
+<!--底部的bar  -->
   <view class='cart-bar flexR'>
     <view class='leftBar flexR boxSize'>
       <view class='flexR' bindtap='selectAllClicked'>
@@ -28,6 +30,3 @@
     </view>
     <view class='cart-btn redBg' bindtap='makeOrder'>结算</view>
   </view>
-</scroll-view>
-
-

@@ -5,6 +5,7 @@
 }
 .shopping-cart{
   padding-top: 5rpx;
+  padding-bottom: 30rpx;
 }
 .shopping-cart-line.flexR{
   justify-content: flex-start;
@@ -21,19 +22,31 @@
   width:11%;
   text-align: right;
 }
-
+.search-result{
+  height:calc(100% - 100rpx);
+}
 /*底部bar  */
 .cart-bar{
-  height: 100rpx;
+  /* height: 100rpx;
   font-size: 26rpx;
   position: fixed;
   bottom: 0;
   width: 100%;
   background: #fff;
   border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee; */
+  position:fixed;
+  display:flex;
+  align-items:center;
+  bottom:0;
+  width:100%;
+  height:100rpx;
+  background:#fff;
+  z-index:9999;
+  justify-content:space-between;
+  border-top: 1rpx solid #eee;
   border-bottom: 1rpx solid #eee;
-  z-index: 999999;
-  left:0;
+  font-size: 26rpx;
 }
 .cart-btn{
   width: 30%;

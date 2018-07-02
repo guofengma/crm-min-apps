@@ -137,7 +137,6 @@ Page({
     r.addToQueue();
   },
   deleteClicked(e){
-    console.log(e.detail.items)
     let items = e.detail.items
     if (e.detail.index !== undefined){
       if(!this.data.didLogin){
