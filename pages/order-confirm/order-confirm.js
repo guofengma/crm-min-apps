@@ -111,6 +111,7 @@ Page({
         })
       }
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   updateOrderAddress(){
@@ -134,6 +135,7 @@ Page({
         orderInfos: orderInfos
       })
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   remarkChange(e){
@@ -161,13 +163,13 @@ Page({
       storehouseId: storehouseId,
       useScore: score
     }
-    console.log(params)
     let r = RequestFactory.submitOrder(params);
     r.finishBlock = (req) => {        
       Event.emit('updateStorageShoppingCart')
       let data = req.responseObject.data
       Tool.redirectTo('/pages/order-confirm/pay/pay?data=' + JSON.stringify(data))
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   onUnload: function () {

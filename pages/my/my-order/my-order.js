@@ -266,4 +266,7 @@ Page({
         time: time
       });
     },
+    onUnload: function () {
+      clearTimeout(this.data.time);
+    },
 })

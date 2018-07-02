@@ -103,6 +103,7 @@ Page({
       Event.emit('updateShoppingCart')
       Tool.showSuccessToast('添加成功')
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   requestFindProductByIdApp(params){
@@ -164,6 +165,7 @@ Page({
       let html = datas.product.content 
       WxParse.wxParse('article', 'html', html, this, 5);
     }
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   typeSubClicked(e){

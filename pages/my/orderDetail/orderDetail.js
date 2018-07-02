@@ -269,5 +269,8 @@ Page({
         outTradeNo: this.data.detail.outTradeNo||'', // 是否继续支付
       }
       Tool.navigateTo('/pages/order-confirm/pay/pay?isContinuePay=' + true + '&data=' + JSON.stringify(params))
-    }
+    },
+    onUnload: function () {
+      clearTimeout(this.data.time);
+    },
 })
