@@ -74,12 +74,12 @@
                 <view class="time">
                     <text wx:if="{{num==4||(num==0&&item.status==7)}}">完成时间：</text>
                     <text wx:elif="{{num==3||(num==0&&item.status==3)}}">发货时间：</text>
-                    <text wx:else>创建时间：</text>{{item.orderCreateTime}}
+                    <text wx:else>创建时间：</text>{{item.createTime}}
                 </view>
                 <view wx:if="{{num!=2&&item.status!=2&&item.status!=5&&item.status!=8&&item.status!=9&&item.status!=10}}">
                     <view class="footer">
                         <view class="left" wx:if="{{num==1||(num==0&&item.status==1)}}">
-                            27:45:45后自动取消订单
+                            {{item.countDownTime}}
                         </view>
                         <view class="right" wx:if="{{num==4||(num==0&&item.status==7)}}">
                             <view class="cancel-btn" bindtap="deleteItem" data-id="{{item.id}}" data-status="{{item.status}}">删除订单</view>

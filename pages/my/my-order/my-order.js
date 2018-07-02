@@ -16,7 +16,8 @@ Page({
         status:'',
         content:'',//取消订单理由
         reason:'',
-        orderNum:''
+        orderNum:'',
+        key: 0,
     },
     //获取列表数据
     getList(e) {
@@ -25,7 +26,8 @@ Page({
             num: index,
             hasNext: true,
             list: [],
-            tipVal: ''
+            tipVal: '',
+            key: 0
         });
         this.getData(index);
     },
@@ -54,28 +56,43 @@ Page({
             }
             let list = this.data.list;
             r.finishBlock = (req) => {
-                let datas = [];
-                for (let i in req.responseObject.data.data[0]) {
-                    let item = req.responseObject.data.data[0][i];
-                    item.orderCreateTime = Tool.formatTime(item.orderCreateTime);
-                    datas.push(item);
+              let datas = [];
+              let secondMap = new Map();
+              let key = this.data.key;
+              for (let i in req.responseObject.data.data[0]) {
+                let item = req.responseObject.data.data[0][i];
+                item.createTime = Tool.formatTime(item.orderCreateTime);
+                if (item.status == 1) {
+                  let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
+                  let timeInterval = Tool.timeIntervalFromString(item.createTime);
+                  let nowTimeInterval = Tool.timeIntervalFromString(now);
+                  let duration = 30 * 60 - (nowTimeInterval - timeInterval);
+                  secondMap.set(key, duration);
                 }
+                key++;
+                datas.push(item);
+              }
+              this.setData({
+                list: list.concat(datas),
+                totalPage: req.responseObject.data.total,
+                secondArry: secondMap,
+                key: key
+              });
+              if (this.data.totalPage > this.data.currentPage) {
                 this.setData({
-                    list: list.concat(datas),
-                    totalPage: req.responseObject.data.total,
+                  currentPage: ++this.data.currentPage
+                })
+              } else {
+                this.data.hasNext = false
+              }
+              if (!this.data.list.length) {
+                this.setData({
+                  tipVal: 2
                 });
-                if (this.data.totalPage > this.data.currentPage) {
-                    this.setData({
-                        currentPage: ++this.data.currentPage
-                    })
-                } else {
-                    this.data.hasNext = false
-                }
-                if (!this.data.list.length) {
-                    this.setData({
-                        tipVal: 2
-                    });
-                }
+              }
+              if (secondMap.size > 0) {
+                this.countdown(this);
+              }
             };
             r.addToQueue();
         }
@@ -216,5 +233,37 @@ Page({
     },
     continueBuy(e){
       
-    }
+    },
+    /**
+    * 倒计时
+    */
+    countdown: function (that) {
+      clearTimeout(this.data.time);
+
+      let mapArry = that.data.secondArry;
+      let orderArry = that.data.list;
+      for (let i = 0; i < orderArry.length; i++) {
+        let order = orderArry[i];
+        if (order.status == 1) {
+          let second = mapArry.get(i);
+          if (second > 0) {//秒数>0
+            let countDownTime = Tool.timeStringForTimeCount(second);
+            order.countDownTime = countDownTime + '后自动取消订单';
+            mapArry.set(i, second - 1);
+
+          } else {
+            order.countDownTime = '交易关闭';
+          }
+        }
+      }
+
+      var time = setTimeout(function () {
+        that.countdown(that);
+      }, 1000)
+
+      that.setData({
+        list: orderArry,
+        time: time
+      });
+    },
 })
