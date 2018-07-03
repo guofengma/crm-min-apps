@@ -87,6 +87,7 @@ Page({
       this.setData({
         items:list,
       }) 
+      this.getTotalPrice()
     }
   },
   updateStorageShoppingCart(count, index){
@@ -95,6 +96,7 @@ Page({
     this.setData({
       items: list,
     })
+    this.getTotalPrice()
     Storage.setShoppingCart(list)
   },
   updateShoppingCart(count,index){
@@ -111,6 +113,7 @@ Page({
       this.setData({
         items: list
       })
+      this.getTotalPrice()
     };
     r.addToQueue();
   },
@@ -132,6 +135,7 @@ Page({
         this.setData({
           items: data
         })
+        this.getTotalPrice()
       }
     };
     r.addToQueue();
@@ -148,6 +152,7 @@ Page({
     this.setData({
       items: items
     })
+    this.getTotalPrice()
   },
   chooseClicked(e){
     // 点击选择
@@ -216,6 +221,7 @@ Page({
       this.setData({
         items: items
       })
+      this.getTotalPrice()
     };
     r.addToQueue();
   },
@@ -225,6 +231,7 @@ Page({
     this.setData({
       items: list,
     })
+    this.getTotalPrice()
     Storage.setShoppingCart(list)
   },
   selectAllClicked(){
@@ -251,6 +258,9 @@ Page({
     }
     
     Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + params+'&type=2')
+  },
+  cartProductClicked(e){
+    Tool.navigateTo('/pages/product-detail/product-detail?productId=' + e.currentTarget.dataset.id)
   },
   onUnload: function () {
     Event.off('updateStorageShoppingCart', this.getStorageShoppingCart);

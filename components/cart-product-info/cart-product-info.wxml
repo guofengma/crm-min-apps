@@ -1,5 +1,5 @@
 <template name="cart-product-info">
-  <view class="cart-product-info flexR" bindtap='cartProductClicked' data-index = '{{1}}'>
+  <view class="cart-product-info flexR" bindtap='cartProductClicked' data-id = '{{product_id}}'>
     <view class='leftbar'>
       <image src='{{showImg}}' class='search-img' style='width:{{imgSize}}rpx;height:{{imgSize}}rpx'></image>
     </view>

@@ -39,6 +39,7 @@ Page({
                 Storage.setUserCookie(null)
                 Storage.setUserAccountInfo(null)
                 Event.emit('didLogin');
+                this.cancel()
                 wx.reLaunch({
                     url:'../../index/index'
                 })

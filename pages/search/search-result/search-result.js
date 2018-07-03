@@ -36,6 +36,14 @@ Page({
   onShow: function () {
     
   },
+  getKeyword(e) {
+    this.setData({
+      keyword: e.detail.value
+    })
+  },
+  searchKeyword(){
+    this.navbarClicked({detail:{n:1}})
+  },
   reloadNet(){
     this.requestQueryProductList(this.data.params)
   },

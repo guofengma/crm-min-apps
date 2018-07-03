@@ -64,6 +64,8 @@
   bottom: 0;
   width: 100%;
   border-top: 1rpx solid #eee;
+  background: #fff;
+  z-index: 9999;
 }
 .choose-addressType{
   width: 690rpx;

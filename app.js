@@ -19,24 +19,27 @@ App({
         global.Event = Event;
         global.Touches = Touches;
         global.RequestFactory = RequestFactory;
-        // 登录
-        wx.login({
-            success: res => {
-                // 发送 res.code 到后台换取 openId, sessionKey, unionId
-                let code = res.code
-                if (code) {
-                    this.globalData.code = code;
-                    this.getSystemInfo();
-                }
-            }
-        })
-        this.getSystemInfo();
+        this.wxLogin()
     },
     globalData: {
         userInfo: null,
         openid: null,
         code: null,
         flag: false//退出登录使用参数
+    },
+    wxLogin(){
+      // 小程序登录
+      wx.login({
+        success: res => {
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          let code = res.code
+          if (code) {
+            this.globalData.code = code;
+            this.getSystemInfo();
+          }
+        }
+      })
+      this.getSystemInfo();
     },
     getUserInfos(code) {
         let self = this
@@ -62,19 +65,10 @@ App({
     },
     toLogin(code) {
         if (!code) return
-        let self = this;
         let params = {code: code}
         let r = global.RequestFactory.verifyWechat(params);
         r.finishBlock = (req) => {
           Tool.loginOpt(req)
-            // // 获取 cookies
-            // let cookies = req.header['Set-Cookie']
-
-            // // 存相关信息
-            // Tool.formatCookie(cookies)
-            // Storage.setUserAccountInfo(req.responseObject.data)
-            // Storage.setMemberId(req.responseObject.data.id)
-            
         }
         r.failBlock = (req) => {
             if (req.responseObject.code == 600) {

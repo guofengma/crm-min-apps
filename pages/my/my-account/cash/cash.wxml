@@ -5,7 +5,7 @@
                 现金账户（元）
             </view>
             <view class="num">
-                {{account}}
+                {{account||''}}
             </view>
             <view class="btn" bindtap="beCash">提现</view>
         </view>
