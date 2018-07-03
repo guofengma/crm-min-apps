@@ -797,12 +797,13 @@ export default class Tool {
 
     static showErrMsg(r) {
       r.failBlock = (req) => {
+        let page = this.getCurrentPageUrlWithArgs() //获取当前额页面
         let callBack = ()=>{
 
         }
         if (req.responseObject.code==210){
           callBack =()=>{
-            wx.relauch
+            this.navigateTo('/pages/login/login-wx/login-wx?isBack='+true)
           }
         }
         this.showAlert(req.responseObject.msg, callBack)
@@ -830,6 +831,32 @@ export default class Tool {
       global.Storage.setWxOpenid(req.responseObject.data.openid)
       global.Storage.setMemberId(req.responseObject.data.id)
       global.Event.emit('refreshMemberInfoNotice');
+    }
+
+    /*获取当前页url*/
+    static getCurrentPageUrl() {
+      let pages = getCurrentPages()    //获取加载的页面
+      let currentPage = pages[pages.length - 1]    //获取当前页面的对象
+      let url = currentPage.route    //当前页面url
+      return url
+    }
+
+    /*获取当前页带参数的url*/
+    static getCurrentPageUrlWithArgs() {
+      let pages = getCurrentPages()    //获取加载的页面
+      let currentPage = pages[pages.length - 1]    //获取当前页面的对象
+      let url = currentPage.route    //当前页面url
+      let options = currentPage.options    //如果要获取url中所带的参数可以查看options
+
+      //拼接url的参数
+      let urlWithArgs = url + '?'
+      for (let key in options) {
+        let value = options[key]
+        urlWithArgs += key + '=' + value + '&'
+      }
+      urlWithArgs = urlWithArgs.substring(0, urlWithArgs.length - 1)
+
+      return urlWithArgs
     }
 }
 

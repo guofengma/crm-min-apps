@@ -7,6 +7,7 @@ Page({
     items:[], // 保存购物车的数据
     totalPrice:0, // 总价
     selectList:[], //选中的产品
+    tipVal:''
   },
   onLoad: function (options) {
     this.getLoginCart()
@@ -121,7 +122,7 @@ Page({
     let r = RequestFactory.getShoppingCartList();
     r.finishBlock = (req) => {
       let data = req.responseObject.data
-      if(data){
+      if(data.length>0){
         data.forEach((item, index) => {
           item.isTouchMove = false  //是否移动 
           item.showImg = item.spec_img
@@ -135,6 +136,10 @@ Page({
           items: data
         })
         this.getTotalPrice()
+      } else {
+        this.setData({
+          tipVal: 2
+        })
       }
     };
     r.addToQueue();

@@ -122,3 +122,7 @@
 .tips{
   width: 400rpx;
 }
+.type-list .no-store{
+  color: #b4b4b4;
+  background-color: #eeeeee;
+}

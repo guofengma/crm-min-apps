@@ -1,5 +1,8 @@
 <import src='/components/cart-product-info/cart-product-info.wxml' />
 
+<!--搜索结果异常显示  -->
+<import src='/components/result-tips/result-tips.wxml' />
+
 <scroll-view class="search-result" scroll-y >
   <view class='shopping-cart'>
     <view class='shopping-cart-line flexR'  data-index='{{index}}' wx:for='{{items}}' wx:key='' >
@@ -14,10 +17,12 @@
       </view>
     </view>
   </view>
+  <!--搜索结果异常显示 tipVal  -->
+  <template is="result-tips" v-if='{{tipVal}}' data="{{tipVal}}" />
 </scroll-view>
 
 <!--底部的bar  -->
-  <view class='cart-bar flexR'>
+  <view class='cart-bar flexR' wx:if='{{items.length>0}}'>
     <view class='leftBar flexR boxSize'>
       <view class='flexR' bindtap='selectAllClicked'>
         <image src='{{ selectAll? "/img/choose-icon-c.png":"/img/choose-icon.png"}}' mode='widthFix'></image>

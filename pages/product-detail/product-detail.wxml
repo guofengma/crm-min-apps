@@ -54,7 +54,7 @@
       </view>
       <view class='gray'>
         <text class='label red' >服务</text>
-        正品保障*急速发货 2小时内发货
+        正品保障·急速发货 七天无理由退换货
       </view>
     </view>
     <!--产品图文详情切换  -->
@@ -67,7 +67,7 @@
           <text class='{{!show? "red":""}}'>参数</text>
         </view>
       </view>
-      <view  class='prd-info-cell' bindtap='infoChoose'>
+      <view  class='prd-info-cell'>
         <view wx:if='{{show}}'>
           <template is="wxParse" data="{{wxParseData:article.nodes}}" />
         </view>

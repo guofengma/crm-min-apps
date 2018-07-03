@@ -265,6 +265,10 @@ Page({
       imgUrl: imgUrl
     }
   },
+  wxParseTagATap: function (e) {
+    let link = e.currentTarget.dataset.src
+    console.log(link)
+  },
   onUnload: function () {
     Event.off('didLogin', this.didLogin);
   },
