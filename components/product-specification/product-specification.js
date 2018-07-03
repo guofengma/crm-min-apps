@@ -2,7 +2,8 @@ Component({
   properties: {
     productTypeList:Array,
     priceList: Array,
-    productInfo:Object
+    productInfo:Object,
+    imgUrl:String
   },
   data: {
     visiable:false,

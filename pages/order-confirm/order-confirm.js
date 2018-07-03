@@ -126,6 +126,7 @@ Page({
       orderProductList: this.data.params
     }
     let orderInfos = this.data.orderInfos
+    if (this.data.addressType==2) return
     let r = RequestFactory.calcFreight(params);
     r.finishBlock = (req) => {
       let data = req.responseObject.data

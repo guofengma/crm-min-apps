@@ -38,9 +38,13 @@
         <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
       </view>
     </view>
-    <view class='flexR-sb'>
-      <view>
+    <view class='flexR-sb user_score' style='height:auto !important'>
+      <!-- <view>
         商品积分：{{orderInfos.totalScore}},用户可用积分：{{orderInfos.dealer.user_score}}
+        <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
+      </view> -->
+       <view class='reducePrice'>
+        <view>商品积分：{{orderInfos.totalScore}},用户可用积分：{{orderInfos.dealer.user_score}}</view>
         <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
       </view>
       <view class='gray' wx:if='{{!orderInfos.canUseScore}}'>不支持积分消费 </view> 
@@ -51,7 +55,7 @@
     </view>
     <view class='flexR-sb'>
       <view>运费</view>
-      <view class='gray'>¥ {{orderInfos.totalFreightFee}}</view>
+      <view class='gray'>¥ {{addressType==1? orderInfos.totalFreightFee:0}}</view>
     </view>
     <view class='flexR-sb leaving-msg'>
       <view>买家留言：</view>

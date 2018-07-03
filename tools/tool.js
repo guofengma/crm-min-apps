@@ -797,7 +797,15 @@ export default class Tool {
 
     static showErrMsg(r) {
       r.failBlock = (req) => {
-        this.showAlert(req.responseObject.msg)
+        let callBack = ()=>{
+
+        }
+        if (req.responseObject.code==210){
+          callBack =()=>{
+            wx.relauch
+          }
+        }
+        this.showAlert(req.responseObject.msg, callBack)
       }
     }
 

@@ -11,13 +11,14 @@ Page({
     encryptedData:'',
     iv:'',
     openid:'',
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    isBack:false
   },
   onLoad: function (options) {
-    console.log(options)
     this.setData({
       openid: Storage.getWxOpenid(),
-      userInfo: Storage.wxUserInfo() 
+      userInfo: Storage.wxUserInfo(),
+      isBack: options.isBack || false
     })
   },
   onShow: function () {
@@ -37,8 +38,6 @@ Page({
     }   
   },
   agreeGetUser(e){
-    console.log(e)
-    console.log(e.detail.userInfo)
     if (!this.data.canIUse){
       this.getUserInfo()
     }
@@ -61,16 +60,13 @@ Page({
     }
     let r = global.RequestFactory.wechatLogin(params);
     r.finishBlock = (req) => {
-      
-      // 获取 cookies
-      // let cookies = req.header['Set-Cookie']
-      // // 存相关信息
-      // Tool.formatCookie(cookies)
-      // Storage.setUserAccountInfo(req.responseObject.data)
+      // 存相关信息
       Tool.loginOpt(req)
-      wx.switchTab({
-        url: '/pages/index/index'
-      })
+      if (this.data.isBack){
+        Tool.navigationPop()
+      } else {
+        Tool.switchTab('/pages/index/index')
+      }
     }
     r.failBlock = (req) => {
       if (req.responseObject.code == 600){

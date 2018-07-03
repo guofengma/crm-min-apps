@@ -77,6 +77,7 @@ Page({
               this.time()
             }
         };
+        Tool.showErrMsg(r)
         r.addToQueue();
     },
     onShow: function () {
@@ -121,6 +122,7 @@ Page({
             }
 
         };
+        Tool.showErrMsg(r)
         r.addToQueue();
     },
     //取消订单
@@ -150,6 +152,7 @@ Page({
             }
 
         };
+        Tool.showErrMsg(r)
         r.addToQueue();
     },
     cancelItem() {
@@ -174,6 +177,7 @@ Page({
                 }
 
             };
+            Tool.showErrMsg(r)
             r.addToQueue();
         })
     },
@@ -244,7 +248,7 @@ Page({
         if (n == 1) {
             state = {status: '等待买家付款', left: '取消订单', right: '继续支付', middle: '', orderIcon: "order-state-1.png",info:'',time:''}
         } else if (n == 2) {
-          state = { status: '买家已付款', left: '订单退款', right: '订单退款', middle: ['退款', '退款中', '退款成功', '退款失败'], orderIcon: "order-state-2.png.png",info:'等待卖家收货...',time:''}
+          state = { status: '买家已付款', left: '订单退款', right: '订单退款', middle: ['退款', '退款中', '退款成功', '退款失败'], orderIcon: "order-state-2.png.png",info:'等待卖家发货...',time:''}
         } else if (n == 3) {
             state = {status: '卖家已发货', left: '查看物流', right: '确认收货', middle: ['申请售后','售后中','售后成功','售后失败'], orderIcon: "order-state-3.png",info:'仓库正在扫描出仓...',time:''}
         } else if (n == 4) {

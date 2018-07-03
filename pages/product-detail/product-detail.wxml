@@ -50,7 +50,7 @@
     <!--产品规格选择  -->
     <view class='chooseBox'>
       <view>
-        <product-specification id='prd-info-type' bind:subClicked="typeSubClicked"  productTypeList='{{productTypeList}}' priceList='{{priceList}}' productInfo='{{productInfo}}' bind:counterInputOnChange='counterInputOnChange'></product-specification >
+        <product-specification id='prd-info-type' bind:subClicked="typeSubClicked"  productTypeList='{{productTypeList}}' priceList='{{priceList}}' productInfo='{{productInfo}}' bind:counterInputOnChange='counterInputOnChange' imgUrl="{{imgUrls[0].small_img}}"></product-specification >
       </view>
       <view class='gray'>
         <text class='label red' >服务</text>

@@ -44,8 +44,8 @@
   padding-left: 10rpx;
 }
 .order-info-other view.flexR-sb>view{
-  height:1.4rem;
-  line-height: 1.4rem;
+  /* height:1.4rem;
+  line-height: 1.4rem; */
 }
 .switch{
   width:60rpx;
@@ -82,4 +82,11 @@
 .choose-addressType>view.active{
   background:  #61686c;
   color: #fff;
+}
+.reducePrice{
+  min-height:88rpx;
+  width:60%;
+  text-align:justify;
+  line-height:38rpx;
+  padding-top:15rpx;
 }

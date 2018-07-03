@@ -8,7 +8,7 @@
  <view class='product-specification'>
     <view class='header'>
       <view class='img-view'>
-        <image src='/img/search-result-2.png'></image>
+        <image src='{{imgUrl}}'></image>
       </view>
       <!--产品信息  -->
       <view class='header-content'>

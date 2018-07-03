@@ -59,8 +59,8 @@ Page({
               let datas = [];
               let secondMap = new Map();
               let key = this.data.key;
-              for (let i in req.responseObject.data.data[0]) {
-                let item = req.responseObject.data.data[0][i];
+              for (let i in req.responseObject.data.data) {
+                let item = req.responseObject.data.data[i];
                 item.createTime = Tool.formatTime(item.orderCreateTime);
                 if (item.status == 1) {
                   let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
@@ -94,6 +94,7 @@ Page({
                 this.countdown(this);
               }
             };
+            Tool.showErrMsg(r)
             r.addToQueue();
         }
 
@@ -244,13 +245,13 @@ Page({
       let orderArry = that.data.list;
       for (let i = 0; i < orderArry.length; i++) {
         let order = orderArry[i];
+        console.log(mapArry.get(i))
         if (order.status == 1) {
           let second = mapArry.get(i);
           if (second > 0) {//秒数>0
             let countDownTime = Tool.timeStringForTimeCount(second);
             order.countDownTime = countDownTime + '后自动取消订单';
             mapArry.set(i, second - 1);
-
           } else {
             order.countDownTime = '交易关闭';
           }
