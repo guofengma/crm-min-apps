@@ -26,13 +26,8 @@ Page({
     }]  
   },
   onLoad: function (options) {
-    // 如果有cookie的话 表示已经登录了 
-
-    // let didLogin = Storage.getUserCookie()? true:false
-
     this.setData({
       productId: options.productId,
-      // didLogin: didLogin
     })
     this.didLogin()
     this.requestFindProductByIdApp({ productId:this.data.productId})
@@ -62,6 +57,15 @@ Page({
     let list = Storage.getShoppingCart()
     if (!list){
       list = []
+    } else {
+      for (let i = 0; i < list.length; i++) {
+        if (list[i].sareSpecId === params.sareSpecId) {
+          console.log(list[i].showCount, this.data.productBuyCount)
+          list[i].showCount += this.data.productBuyCount
+          this.updateStorageShoppingCart(list)
+          return
+        }
+      }
     }
     params.showName = this.data.productInfo.name
     params.showType = this.data.selectType.typeName
@@ -70,6 +74,9 @@ Page({
     params.showImg = this.data.imgUrls[0].small_img
     params.showCount = this.data.productBuyCount
     list.push(params)
+    this.updateStorageShoppingCart(list)
+  },
+  updateStorageShoppingCart(list){
     Storage.setShoppingCart(list)
     Event.emit('updateStorageShoppingCart')
   },
@@ -173,7 +180,7 @@ Page({
       selectType: e.detail
     })
     if (this.data.selectType.typeClicked ==1){
-      this.addToShoppingCart()
+      this.addToShoppingCart(1)
     } else {
       this.makeSureOrder()
     }
@@ -201,7 +208,7 @@ Page({
   },
   btnClicked(e){
     let n = parseInt(e.currentTarget.dataset.key)
-    if (!this.data.selectType.id){
+    if (!this.data.selectType.id || n==1){
       this.selectComponent("#prd-info-type").isVisiableClicked(n)
     } else {
       switch (n) {

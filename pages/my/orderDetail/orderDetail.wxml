@@ -95,7 +95,7 @@
             <view>创建时间：{{detail.createTime}}</view>
             <view>平台付款时间：{{detail.sysPayTime}}</view>
             <view>三方付款时间：{{detail.payTime}}</view>
-            <view>微信交易号：2东方航空电话费肯定会</view>
+            <view>三方交易号：{{detail.outTradeNo}}</view>
             <view>发货时间：{{detail.deliveryTime}}</view>
             <view>成交时间：2018-05-14 12:15:</view>
         </view>

@@ -2,7 +2,6 @@ let { Tool, RequestFactory, Storage, Event } = global
 
 Page({
   data: {
-    innerCount:[],
     didLogin:false,
     selectAll:false, //是否全选
     items:[], // 保存购物车的数据

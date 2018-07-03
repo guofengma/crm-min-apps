@@ -24,7 +24,7 @@ Component({
           productType.push(isActive[i].val)
         }
         // 已选择的类型
-        let productType2 = '已选：""' + productType.join('""') + '""'
+        let productType2 = '已选："' + productType.join('""') + '"'
 
         // 拼接已选的类型 匹配库存和价格
         let seletType = productType.join('-')
