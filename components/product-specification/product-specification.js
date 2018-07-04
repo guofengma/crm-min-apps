@@ -1,9 +1,12 @@
+let { Tool} = global
 Component({
   properties: {
     productTypeList:Array,
     priceList: Array,
     productInfo:Object,
-    imgUrl:String
+    imgUrl:String,
+    types:Number,
+    showImgs:Boolean
   },
   data: {
     visiable:false,
@@ -19,6 +22,14 @@ Component({
     makeSureType(show){
       // 点击确定 
       if (this.data.isActive.length == this.properties.productTypeList.length){
+        if (this.data.selectPrdList.stock==0){
+          Tool.showAlert('库存不足,请选择其他产品')
+          return
+        } 
+        if (this.data.selectPrdList.stock < this.data.innerCount){
+          Tool.showAlert('当前产品最多只能购买' + this.data.innerCount+'件哦~')
+          return
+        }
         let isActive = this.data.isActive
         let productType = []
         for (let i = 0; i < isActive.length;i++){
@@ -34,7 +45,7 @@ Component({
           productType: productType2
         })
         if (show !== true){
-          this.triggerEvent('subClicked', { ...index, typeClicked: this.data.typeClicked });
+          this.triggerEvent('subClicked', { ...index, typeClicked: this.data.typeClicked, productType: productType2 });
           this.isVisiableClicked()
         }
       }

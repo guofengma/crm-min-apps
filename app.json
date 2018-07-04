@@ -35,7 +35,12 @@
     "pages/my/account/account",
     "pages/my/phone/step1/step1",
     "pages/my/phone/phone",
-    "pages/my/password/password"
+    "pages/my/password/password",
+    "pages/after-sale/exchange-goods/exchange-goods",
+    "pages/after-sale/exchange-goods/apply-exchange/apply-exchange",
+    "pages/logistics/choose-logistics/choose-logistics",
+    "pages/after-sale/refund/apply-refund/apply-refund",
+    "pages/after-sale/refund/refund-detail/refund-detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

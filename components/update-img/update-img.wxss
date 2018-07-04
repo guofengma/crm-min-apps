@@ -1,0 +1,28 @@
+.choose-img-view.flexR{
+  justify-content: flex-start
+}
+.choose-img-view>view{
+  height: 170rpx;
+  width: 170rpx;
+  border-radius: 6rpx;
+  margin-right: 10rpx;
+  position: relative;
+  border: 1rpx solid #eee;
+}
+.userImg{
+  height: 100%;
+}
+
+.close-img{
+  width: 48rpx;
+  position: absolute;
+  right: 0;
+  top: 0
+}
+.choose-img-view .choose-img-holder{
+  border: 2rpx dotted #c8c8c8;
+}
+.choose-img-holder image{
+  width: 58rpx;
+  margin-bottom: 8rpx;
+}

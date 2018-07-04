@@ -1,21 +1,23 @@
 <view class='prd-info-type' bindtap='isVisiableClicked'>
-  <view class='cell-name'>规格</view>
-  <view class='cell-content'>{{productType? productType:'选择产品规格'}}</view>
-  <image mode='widthFix' src='/img/common-accessory-icon.png'></image>
+  <slot></slot>
+  <image mode='widthFix' src='/img/common-accessory-icon.png' class='jt-imgs'></image>
 </view>
 
 <view class='model-view-bg ' wx:if="{{visiable}}">
  <view class='product-specification'>
-    <view class='header'>
-      <view class='img-view'>
-        <image src='{{imgUrl}}'></image>
+    <view class='header {{showImgs? "":"active"}}'>
+      <view wx:if='{{showImgs}}'>
+        <view class='img-view'>
+          <image src='{{imgUrl}}'></image>
+        </view>
+        <!--产品信息  -->
+        <view class='header-content'>
+          <view class='price'>¥ {{selectPrdList.levelPrice? selectPrdList.levelPrice:productInfo.levelPrice}}</view>
+          <view>库存{{selectPrdList.stock?  selectPrdList.stock:priceList[0].stock}}件</view>
+          <view class='tips'>{{tips}}</view>
+        </view>
       </view>
-      <!--产品信息  -->
-      <view class='header-content'>
-         <view class='price'>¥ {{selectPrdList.levelPrice? selectPrdList.levelPrice:productInfo.levelPrice}}</view>
-         <view>库存{{selectPrdList.stock?  selectPrdList.stock:priceList[0].stock}}件</view>
-         <view class='tips'>{{tips}}</view>
-      </view>
+     
       <!--取消  -->
       <icon class='cancel' type="cancel" size="30" color='#dddddd' bindtap='isVisiableClicked'/>
     </view>

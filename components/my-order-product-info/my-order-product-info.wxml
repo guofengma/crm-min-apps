@@ -12,7 +12,7 @@
       </view>
       <view class='flexC' >
         <view>¥ {{price}}</view>
-        <!--<view class='cost-price'>¥ {{price}}</view>-->
+        <view class='cost-price' wx:if="{{showOriginalPrice}}">¥ {{showOriginalPrice}}</view>
         <view  class='gray'>x{{num}}</view>
       </view>
     </view>

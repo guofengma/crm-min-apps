@@ -245,7 +245,6 @@ Page({
       let orderArry = that.data.list;
       for (let i = 0; i < orderArry.length; i++) {
         let order = orderArry[i];
-        console.log(mapArry.get(i))
         if (order.status == 1) {
           let second = mapArry.get(i);
           if (second > 0) {//秒数>0

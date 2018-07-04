@@ -1,0 +1,53 @@
+<import src='/components/my-order-product-info/my-order-product-info.wxml'/>
+
+<import src='/components/address-info/address-info.wxml'/>
+
+<import src='/components/cell-line/cell-line.wxml'/>
+
+<import src='/components/update-img/update-img.wxml'/>
+
+<view class='apply-exchange'>
+  <!--订单信息  -->
+  <view class='container'>
+    <view class='redBg font-26 flexR tips'>仅限更换同款同款价格商品</view>
+      <view class='group-view flexR-sb font-26 whiteBg'>订单编号：45116516516156151615156165</view>
+      <template is="my-order-product-info" data="{{...item}}"/>
+      <view class='group-view flexR-sb font-26 whiteBg'>下单时间：2018-05-05 12:15：15</view>
+    </view>
+
+    <!--换货理由和选择  -->
+    <view class='container'>
+      <view class='flexR-sb font-26 whiteBg'bindtap='chooseReason' >
+        <template is="cell-line" data="{{name:'换货原因',placeholder:'请选择',content:reason.list[activeIndex]}}"/>
+      </view>
+      <view class='flexR-sb font-26 whiteBg'>
+        <product-specification id='prd-info-type' bind:subClicked="typeSubClicked"  productTypeList='{{productTypeList}}' priceList='{{priceList}}' productInfo='{{productInfo}}' bind:counterInputOnChange='counterInputOnChange' imgUrl="{{imgUrls[0].small_img}}">
+          <template is="cell-line" data="{{name:'更换型号',placeholder:'选择产品规格',content:selectType.productType}}"/>
+        </product-specification >
+      </view>
+    </view>
+
+    <!--地址   -->
+    <view class='whiteBg address active'>
+      <template is="address-info" data="{{addressType,src,...address,hasData}}"/>
+    </view>
+
+    <!--留言  -->
+    <view >
+      <view class='group-view flexR-sb gray font-26'>换货说明</view>
+      <textarea placeholder="填写后面文字"  placeholder-class='textarea gray'/>
+    </view>
+
+    <!--图片上传  -->
+    <view>
+      <view class='group-view flexR-sb gray font-26'>上传凭证</view>
+      <template is="update-img" data=""/>
+    </view>
+</view>
+
+<!--底部确认  -->
+<view class='fixed-bottom redBg font-32 flexR btn-view'>确认</view>
+
+
+<choose-after-sale-reason hidden='{{hidden}}'  bind:makeSureReason="makeSureReason" reason="{{reason}}" />
+

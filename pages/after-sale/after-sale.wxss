@@ -1,0 +1,22 @@
+.tips{
+  height: 40rpx;
+}
+.tips-exchange{
+  height: 200rpx;
+  align-items: flex-start;
+  padding-left: 80rpx;
+  color: #fff;
+  background: transparent url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/sale-after-bg.png) no-repeat; 
+  background-size: 100%;
+}
+.after-sale-line{
+  height: 80rpx;
+  padding: 0 30rpx;
+}
+
+.tips-title{
+  font-size: 36rpx;
+}
+.tips-time{
+  font-size: 24rpx;
+}

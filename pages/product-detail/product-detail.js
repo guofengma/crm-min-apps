@@ -181,7 +181,7 @@ Page({
     })
     if (this.data.selectType.typeClicked ==1){
       this.addToShoppingCart(1)
-    } else {
+    } else if (this.data.selectType.typeClicked == 2) {
       this.makeSureOrder()
     }
   },

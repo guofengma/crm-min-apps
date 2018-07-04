@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -81,6 +81,30 @@
 					"id": -1,
 					"name": "修改账号",
 					"pathName": "pages/my/password/step1/step1",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "apply-exchange",
+					"pathName": "pages/after-sale/exchange-goods/apply-exchange/apply-exchange",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "退换货详情",
+					"pathName": "pages/after-sale/exchange-goods/exchange-goods",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "申请退款",
+					"pathName": "pages/after-sale/refund/apply-refund/apply-refund",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "退款详情",
+					"pathName": "pages/after-sale/refund/refund-detail/refund-detail",
 					"query": ""
 				}
 			]

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "申请换货",
+  "usingComponents": {
+    "choose-after-sale-reason": "/components/choose-after-sale-reason/choose-after-sale-reason"
+  }
+}

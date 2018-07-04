@@ -1,0 +1,14 @@
+
+
+<template name="after-sale-prd-info">
+  <view class='after-sale-prd-info flexR-sb font-26 whiteBg'>
+   <image src='/img/search-result-1.png' class='after-sale-prd-info-img'></image>
+   <view class='after-sale-prd-info-right'>
+     <view class='ellipsis-2 after-sale-name'>哈哈哈哈哈哈就好打卡活动卡的哈看的啥课看看书的看到哈哈哈哈哈哈就好打卡活动卡的哈看的啥课看看书的看到</view>
+     <view class='gray flexR-sb '>
+       <view class='ellipsis-2 prd-types'>分类：时间冻结盛开的花盛开的花盛开的的花盛开的花盛开的的花盛开的花盛开的</view>
+       <view>x2</view>
+     </view>
+   </view>
+  </view>
+</template>
