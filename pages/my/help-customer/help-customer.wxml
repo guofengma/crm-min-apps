@@ -1,0 +1,57 @@
+<view class="help-customer">
+   <view class="header">
+       <view class="people"></view>
+       <view class="content"><text class='tips'>您好，我是小朵，下面帮助没有解决您的需求，<text class="color-red">可以点击我</text>进行反馈哦。</text></view>
+   </view>
+    <view class="hot-question">热门问题</view>
+    <view class="question-area">
+        <view class="question-item" bindtap="questionList">
+            <view class="left">
+                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_order.png" class="icon"></image>
+                <view>订单问题</view>
+            </view>
+            <view class="right">
+                <view class="item">多笔订单能否一起发货?多笔订单能否一起发货?多笔订单能否一起发货?</view>
+                <view class="item">为什么要提供身份证信息?</view>
+            </view>
+        </view>
+         <view class="question-item">
+            <view class="left">
+                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_order.png" class="icon"></image>
+                <view>订单问题</view>
+            </view>
+            <view class="right">
+                <view class="item">多笔订单能否一起发货?多笔订单能否一起发货?多笔订单能否一起发货?</view>
+                <view class="item">为什么要提供身份证信息?</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="wrap">
+        <view>
+            <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_refund.png" class="icon"></image>
+            <view>退款进度</view>
+        </view>
+        <view bindtap="questionFeedback">
+             <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_feedback.png" class="icon"></image>
+            <view>问题反馈</view>
+        </view>
+        <view>
+             <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_autorefund.png" class="icon"></image>
+            <view>自动退款</view>
+        </view>
+    </view>
+    <view class="footer">
+        <view>
+            <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_phone.png" class=""></image>
+            <view>咨询电话</view>
+            <view>09:00-18:00</view>
+        </view>
+        <view>
+            <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_customer.png" class=""></image>
+            <view>在线客服</view>
+            <view>09:00-18:00</view>
+        </view>
+    </view>
+</view>
+

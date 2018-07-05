@@ -76,7 +76,7 @@
                     <text wx:elif="{{num==3||(num==0&&item.status==3)}}">发货时间：</text>
                     <text wx:else>创建时间：</text>{{item.createTime}}
                 </view>
-                <view wx:if="{{num!=2&&item.status!=2&&item.status!=5&&item.status!=8&&item.status!=9&&item.status!=10}}">
+                <view wx:if="{{num!=2&&item.status!=2&&item.status!=5&&item.status!=9&&item.status!=10}}">
                     <view class="footer">
                         <view class="left" wx:if="{{num==1||(num==0&&item.status==1)}}">
                             {{item.countDownTime}}
@@ -92,6 +92,9 @@
                         <view class="right" wx:elif="{{num==3||(num==0&&item.status==3)}}">
                             <view class="cancel-btn">查看物流</view>
                             <view class="pay-btn" bindtap="confirmReceipt"  data-id="{{item.id}}">确认收货</view>
+                        </view>
+                        <view class="right" wx:elif="{{num==0&&item.status==8}}">
+                            <view class="pay-btn" bindtap='continueBuy' data-id="{{item.id}}">再次购买</view>
                         </view>
                     </view>
                     <view class="clearfix"></view>
