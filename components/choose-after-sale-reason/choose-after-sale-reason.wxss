@@ -16,6 +16,7 @@
   line-height: 100rpx;
   padding: 0 30rpx;
   position: relative;
+  font-size:26rpx;
 }
 .reason-cell>view{
   background: #fff url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/choose-circle.png) no-repeat center right;

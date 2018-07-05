@@ -203,8 +203,26 @@ Page({
     let count = e.detail.innerCount;
     let index = e.detail.e.currentTarget.dataset.index
     let btnName = e.detail.e.currentTarget.dataset.name
+    let list = this.data.items
+    
+    // 本次修改和上次修改一样的情况
+
+    if (list[index].showCount == count) return
+
+    //收到输入为空和0 的情况 
+
+    if (!count || count == 0) return
+
     // 如果产品的数量是1 点击了减按钮 那么不做操作
-    if (btnName == 'reduce' && this.data.items[index].showCount == 1) return 
+
+    if (list[index].stock < count){
+      Tool.showAlert('库存不足')
+      return
+    }
+    //数量为1的情况下不让减
+
+    if (btnName == 'reduce' && list[index].showCount == 1) return 
+
     if (index !== undefined){
       if(!this.data.didLogin){
         this.updateStorageShoppingCart(count, index)
@@ -260,6 +278,10 @@ Page({
       Tool.navigateTo('/pages/login/login-wx/login-wx')
       return
     }
+    if (this.data.selectList.length==0){
+      Tool.showAlert('请选择要购买的商品')
+      return
+    }
     
     Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + params+'&type=2')
   },
@@ -271,4 +293,8 @@ Page({
     Event.off('updateShoppingCart', this.getShoppingCartList);
     Event.off('didLogin', this.didLogin);
   },
+  test(){
+    // 阻止冒泡 
+    console.log('阻止冒泡')
+  }
 })

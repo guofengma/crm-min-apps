@@ -13,7 +13,7 @@
         <!--产品信息  -->
         <view class='header-content'>
           <view class='price'>¥ {{selectPrdList.levelPrice? selectPrdList.levelPrice:productInfo.levelPrice}}</view>
-          <view>库存{{selectPrdList.stock?  selectPrdList.stock:priceList[0].stock}}件</view>
+          <view>库存{{selectPrdList.stock?  selectPrdList.stock:productInfo.stock}}件</view>
           <view class='tips'>{{tips}}</view>
         </view>
       </view>

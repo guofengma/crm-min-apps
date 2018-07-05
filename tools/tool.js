@@ -639,7 +639,7 @@ export default class Tool {
     }
     // 判断人名
     static checkName(value){
-      if (!(/^([a-zA-Z0-9\u4e00-\u9fa5\·]{2,10})$/.test(value))){
+      if (!(/^([a-zA-Z0-9\u4e00-\u9fa5\·]{2,16})$/.test(value))){
         return false 
       } else {
         return true
@@ -803,7 +803,9 @@ export default class Tool {
         }
         if (req.responseObject.code==210){
           callBack =()=>{
-            this.navigateTo('/pages/login/login-wx/login-wx?isBack='+true)
+            let page = global.Storage.getWxOpenid() ? '/pages/login/login-wx/login-wx' :'/pages/login/login'
+            
+            this.navigateTo(page+'?isBack='+true)
           }
         }
         this.showAlert(req.responseObject.msg, callBack)

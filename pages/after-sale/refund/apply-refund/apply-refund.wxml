@@ -15,7 +15,7 @@
 
 <view>
   <view bindtap='chooseReason'>
-    <template is="cell-line" data="{{name:'退货原因',content:reason.list[activeIndex]}}"/>
+    <template is="cell-line" data="{{name:'退货原因',content:reason.list[activeIndex]}}"/> 
   </view>
   <view class='cell-line refund-num whiteBg'>
     退款金额： <text class='red'>¥69.00</text>

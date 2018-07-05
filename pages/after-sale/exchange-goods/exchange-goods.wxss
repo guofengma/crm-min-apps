@@ -1,36 +1,3 @@
 
-@import "/components/address-info/address-info";
-
-@import "/components/cell-line/cell-line";
-
-@import "/components/after-sale-prd-info/after-sale-prd-info";
-
-@import "/components/address-saler/address-saler";
-
 @import "/pages/after-sale/after-sale";
 
-.address-right{
-  width:15%;
-  border-right: 1rpx solid #eee;
-}
-
-.exchange-info{
-  margin-top: 10rpx;
-}
-
-.userImg{
-  margin-top: 20rpx;
-}
-.userImg image{
-  width: 166rpx;
-	height: 166rpx;
-	border-radius: 6rpx;
-  margin-right: 28rpx;
-}
-.exchange-content{
-  padding-bottom: 200rpx;
-}
-.exchange-content>view{
-  margin-bottom: 18rpx;
-  padding: 0 30rpx;
-}

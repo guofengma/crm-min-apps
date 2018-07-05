@@ -9,7 +9,9 @@ Page({
     isSee:false
   },
   onLoad: function (options) {
-  
+    this.setData({
+      isBack: options.isBack
+    })
   },
   onShow: function () {
 
@@ -30,14 +32,13 @@ Page({
 
     r.finishBlock = (req) => {
       Tool.loginOpt(req)
-      wx.switchTab({
-        url: '/pages/index/index'
-      })
+      if (this.data.isBack) {
+        Tool.navigationPop()
+      } else {
+        Tool.switchTab('/pages/index/index')
+      }
     }
-
-    r.failBlock = (req) => {
-      Tool.showAlert(req.responseObject.msg)
-    }
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
 })

@@ -1,1 +1,16 @@
-/* pages/logistics/choose-logistics/choose-logistics.wxss */
+.label-log{
+  width: 72rpx;
+  margin-right: 30rpx;
+}
+.logistics{
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+}
+
+.classification,.logistics{
+  padding: 0 30rpx;
+}
+.classification{
+  height: 64rpx;
+}

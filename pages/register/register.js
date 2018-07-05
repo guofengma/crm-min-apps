@@ -39,9 +39,7 @@ Page({
     r.finishBlock = (req) => {
       Tool.navigateTo('/pages/register/register-code/register-code?phone=' + this.data.phone + "&password=" + this.data.pwd)
     }
-    r.failBlock = (req) => {
-      Tool.showAlert(req.responseObject.msg)
-    }
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   changeInput(e){
@@ -92,7 +90,6 @@ Page({
     this.countdown(this);
     let r = RequestFactory.sendRegistrationCode(this.data.phone);
     r.finishBlock = (req) => {
-      console.log(req.responseObject)
       wx.showToast({
         title: '验证码已发送',
       })
@@ -110,7 +107,7 @@ Page({
       });
       return;
     }
-    var time = setTimeout(function () {
+    let time = setTimeout(function () {
       that.setData({
         second: second - 1,
         getCodeBtEnable: false,

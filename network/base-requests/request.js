@@ -10,18 +10,18 @@ import RequestStatus from './request-status';
 export default class Request {
     getBaseUrl(bParam) {
       //正式
-      this.baseUrl = 'https://nc.hzjure.xyz';
+      // this.baseUrl = 'https://nc.hzjure.xyz';
       // 开发 
-      // this.baseUrl = 'http://172.16.10.51:'
+      this.baseUrl = 'http://172.16.10.51:'
       // this.baseUrl = 'http://172.16.10.56:'
       // this.baseUrl = 'http://172.16.10.9:'
       // this.baseUrl = 'http://172.16.10.53:'
       // this.baseUrl = 'http://172.16.10.253:'
-      // if (bParam.port) {
-      //   this.baseUrl = this.baseUrl + bParam.port
-      // } else {
-      //   this.baseUrl = this.baseUrl + '8102';
-      // }
+      if (bParam.port) {
+        this.baseUrl = this.baseUrl + bParam.port
+      } else {
+        this.baseUrl = this.baseUrl + '8102';
+      }
       return this.baseUrl
     }
     constructor(bParam) {

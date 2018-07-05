@@ -21,8 +21,13 @@ Component({
     },
     inputOnChange: function (e) {
       // 手动填写数字
+      let innerCount = e.detail.value
+      
+      if (!innerCount || innerCount == 0) {
+        return
+      }
       this.setData({
-        innerCount: e.detail.value
+        innerCount: innerCount
       })
       this.trigger(e);
     },
@@ -35,8 +40,20 @@ Component({
     },
     trigger(e){
       this.triggerEvent('countChange', { ...this.data, e });
+    },
+    inputOnblur(e){
+      let innerCount = e.detail.value
+      let n = innerCount === 0? 1:this.properties.count
+      if (!innerCount || innerCount == 0) {
+        this.setData({
+          innerCount: n,
+          count: this.data.innerCount
+        })
+        this.trigger(e);
+      } 
     }
   },
+
   ready: function () {
     this.setData({
       innerCount: this.data.count

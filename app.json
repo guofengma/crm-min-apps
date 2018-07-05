@@ -40,7 +40,8 @@
     "pages/after-sale/exchange-goods/apply-exchange/apply-exchange",
     "pages/logistics/choose-logistics/choose-logistics",
     "pages/after-sale/refund/apply-refund/apply-refund",
-    "pages/after-sale/refund/refund-detail/refund-detail"
+    "pages/after-sale/refund/refund-detail/refund-detail",
+    "pages/logistics/write-logistics/write-logistics"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

@@ -26,10 +26,6 @@ Component({
           Tool.showAlert('库存不足,请选择其他产品')
           return
         } 
-        if (this.data.selectPrdList.stock < this.data.innerCount){
-          Tool.showAlert('当前产品最多只能购买' + this.data.innerCount+'件哦~')
-          return
-        }
         let isActive = this.data.isActive
         let productType = []
         for (let i = 0; i < isActive.length;i++){
@@ -45,6 +41,10 @@ Component({
           productType: productType2
         })
         if (show !== true){
+          if (this.data.selectPrdList.stock < this.data.innerCount) {
+            Tool.showAlert('当前产品最多只能购买' + this.data.selectPrdList.stock + '件哦~')
+            return
+          }
           this.triggerEvent('subClicked', { ...index, typeClicked: this.data.typeClicked, productType: productType2 });
           this.isVisiableClicked()
         }

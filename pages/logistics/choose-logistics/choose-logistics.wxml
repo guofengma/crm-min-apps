@@ -1,2 +1,7 @@
-<!--pages/logistics/choose-logistics/choose-logistics.wxml-->
-<text>pages/logistics/choose-logistics/choose-logistics.wxml</text>
+<block>
+  <view class='classification font-32 flexR-sb'>B</view>
+  <view class='logistics whiteBg font-30'>
+    <image mode='widthFix' src='/img/default-userImg.png' class='label-log'></image>
+    <text>百事快递</text>
+  </view>
+</block>

@@ -76,6 +76,7 @@ Page({
         addressList: addressList
       })
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   addressClicked(){

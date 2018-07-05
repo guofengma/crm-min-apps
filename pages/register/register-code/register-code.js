@@ -61,6 +61,7 @@ Page({
         invite: req.responseObject.data
       })
     }
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   inviterClicked(e){

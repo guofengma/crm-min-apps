@@ -6,10 +6,12 @@
     <view class='right-bar' style='width:{{480}}rpx'>
       <view class='ellipsis-2'>{{showName}}</view>
       <view class='gray ellipsis-2'>{{showType}}</view>
-      <view class='prd-count-box flexR'>
+      <view class='prd-count-box flexR' >
         <view class='red'>¥ {{showPrice}}</view>
         <view wx:if="{{showQnt}}" class='gray' >×{{showQnt}}</view>
-        <adder-subtractor wx:else count="{{innerCount}}" index="{{index}}" countSize='{{countSize}}' bind:countChange="counterInputOnChange"/>
+        <view wx:else catchtap='test' >
+           <adder-subtractor  count="{{innerCount}}" index="{{index}}" countSize='{{countSize}}' bind:countChange="counterInputOnChange"/>
+        </view>
       </view>
     </view>
   </view>

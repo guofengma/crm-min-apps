@@ -15,6 +15,19 @@
   <view>7天退换，请退货给商家</view>
   <view>4天12小时32分</view>
 </view>
+
+<!--退款成功以后才显示以下内容  -->
+<view class='suc-refound'>
+  <view class='whiteBg after-sale-line'>退款金额：
+   <text class='red'>¥69.00</text>
+  </view>
+  <view class='after-sale-line'>退款明细</view>
+  <view class='after-sale-line whiteBg'>退回银行卡</view>
+  <view class='after-sale-line whiteBg'>退回余额账户</view>
+  <view class='after-sale-line whiteBg'>退回代币账户</view>
+  <view class='after-sale-line whiteBg'>退回积分账户</view>
+</view>
+
 <!--地址信息  -->
 <view class='address active whiteBg'>
   <template is="address-info" data="{{addressType,...address,hasData}}"/>
@@ -26,7 +39,6 @@
 <!--物流  -->
 <view>
   <template is="cell-line" data="{{name:'退货物流',placeholder:'请填写寄回的物流信息'}}"/>
-  <template is="cell-line" data="{{name:'商家物流',placeholder:'暂无商家物流信息'}}"/>
 </view>
 
 <!--换货信息  -->
@@ -35,9 +47,9 @@
   <view class='flexR-sb after-sale-line gray'>换货订单</view>
   <template is="after-sale-prd-info" data=""/>
   <view class='exchange-content whiteBg gray'>
-    <view>换货原因：规格不符合</view>
-    <view>换货金额：¥68.00</view>
-    <view>换货说明：规格不符合</view>
+    <view>退款原因：规格不符合</view>
+    <view>退款金额：¥68.00</view>
+    <view>退款说明：规格不符合</view>
     <view>
       <view>凭证图片</view>
       <view class='userImg'>
@@ -47,8 +59,7 @@
       </view>
     </view>
     <view>申请时间：2018-05-18 12:41:56</view>
-    <view>更换型号： 32G 黑色</view>
-    <view>数量：X2 </view>
+    <view>退款编号： 3sdsdsd2112121</view>
   </view>
 </view>
 

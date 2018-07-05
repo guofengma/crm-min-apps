@@ -1,19 +1,10 @@
-@import "/components/my-order-product-info/my-order-product-info";
-
-@import "/components/address-info/address-info";
-
-@import "/components/cell-line/cell-line";
-
-@import "/components/update-img/update-img";
+@import "/pages/after-sale/apply-after-sale";
 
 .apply-exchange{
   padding-bottom: 160rpx;
 }
 .container{
   margin-bottom: 20rpx;
-}
-.tips{
-  height: 40rpx;
 }
 .my-order-product-info{
   background-color: #f7f7f7;
@@ -25,16 +16,6 @@
   height: 80rpx;
   padding: 0 30rpx;
   border-bottom: 1rpx solid #f7f7f7;
-}
-.textarea{
-  font-size: 26rpx;
-}
-textarea{
-  height: 180rpx;
-  background: #fff;
-  width: 100%;
-  padding: 20rpx 30rpx;
-  font-size: 26rpx
 }
 .choose-img-view{
   padding: 20rpx 30rpx;

@@ -39,7 +39,7 @@
     </view>
 
     <!--图片上传  -->
-    <view>
+    <view >
       <view class='group-view flexR-sb gray font-26'>上传凭证</view>
       <template is="update-img" data=""/>
     </view>
