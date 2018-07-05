@@ -36,6 +36,8 @@
     "pages/my/phone/step1/step1",
     "pages/my/phone/phone",
     "pages/my/password/password",
+    "pages/my/help-customer/help-customer",
+    "pages/my/help-customer/questionFeedback/questionFeedback",
     "pages/after-sale/exchange-goods/exchange-goods",
     "pages/after-sale/exchange-goods/apply-exchange/apply-exchange",
     "pages/logistics/choose-logistics/choose-logistics",

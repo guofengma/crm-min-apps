@@ -1,0 +1,16 @@
+<view class="order">
+    <view class="wrap">
+        <block wx:for="{{list}}" wx:key="unique">
+            <view class="item line" bindtap="toDetail" data-id="{{item.id}}">
+                <view>
+                    <text>{{item.name}}</text>
+                </view>
+                <view>
+                    <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
+                </view>
+            </view>
+        </block>
+    </view>
+
+</view>
+

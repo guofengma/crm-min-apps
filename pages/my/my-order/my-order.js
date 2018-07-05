@@ -163,6 +163,7 @@ Page({
     cancelOrder(){
         if(this.data.content==''){
             Tool.showAlert('请选择取消理由！');
+            return
         }
         let params = {
             buyerRemark: this.data.content,

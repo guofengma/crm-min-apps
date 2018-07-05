@@ -61,6 +61,11 @@ Page({
       if (!this.didLogin()) return
       Tool.navigateTo('setting/setting')
     },
+    //跳到帮助与客服页面
+    helpCustomer() {
+      if (!this.didLogin()) return
+      Tool.navigateTo('help-customer/help-customer')
+    },
     onUnload: function () {
       Event.off('refreshMemberInfoNotice', this.refreshMemberInfoNotice);
       Event.off('didLogin', this.didLogin);

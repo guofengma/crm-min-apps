@@ -65,8 +65,8 @@
         </view>
     </view>
     <view class="wrap">
-        <view class="item line">
-            <view bindtap="myCollection">
+        <view class="item line" bindtap="myCollection">
+            <view>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/sc_18-08@2x.png" alt=""></image>
                 <text>我的收藏</text>
             </view>
