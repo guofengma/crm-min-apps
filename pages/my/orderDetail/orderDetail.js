@@ -58,7 +58,6 @@ Page({
             detail.createTime=detail.createTime?Tool.formatTime(detail.createTime):'';
             detail.sysPayTime=detail.sysPayTime?Tool.formatTime(detail.sysPayTime):'';
             detail.payTime=detail.payTime?Tool.formatTime(detail.payTime):'';
-            detail.deliveryTime=detail.deliveryTime?Tool.formatTime(detail.deliveryTime):'';
             let address={};
             if(detail.status==4){
               address.addressInfo = '自提点：' + detail.storehouseProvince + detail.storehouseCity + detail.storehouseArea + detail.storehouseAddress;
@@ -67,7 +66,12 @@ Page({
                 address.recevicePhone=detail.recevicePhone;
                 address.addressInfo= detail.province + detail.city + detail.area + detail.address;
             }
-            this.data.state.time= detail.deliveryTime;
+            if(detail.sendTime!=''&&detail.sendTime!=null){
+                detail.sendTime=Tool.formatTime(detail.sendTime);
+                this.data.state.time= detail.sendTime?detail.sendTime:'';
+            }else{
+                detail.sendTime=''
+            }
             this.setData({
                 detail: detail,
                 address: address,
@@ -138,7 +142,6 @@ Page({
     cancelOrder(){
         if(this.data.content==''){
             Tool.showAlert('请选择取消理由！');
-            return
         }
         let params = {
             buyerRemark: this.data.content,
@@ -274,6 +277,10 @@ Page({
         outTradeNo: this.data.detail.outTradeNo||'', // 是否继续支付
       }
       Tool.navigateTo('/pages/order-confirm/pay/pay?isContinuePay=' + true + '&data=' + JSON.stringify(params))
+    },
+    //再次购买
+    continueBuy(){
+
     },
     onUnload: function () {
       clearTimeout(this.data.time);

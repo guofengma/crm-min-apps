@@ -95,8 +95,8 @@
             <view>创建时间：{{detail.createTime}}</view>
             <view>平台付款时间：{{detail.sysPayTime}}</view>
             <view>三方付款时间：{{detail.payTime}}</view>
-            <view>三方交易号：{{detail.outTradeNo}}</view>
-            <view>发货时间：{{detail.deliveryTime}}</view>
+            <view>三方交易号：{{detail.outTradeNo?detail.outTradeNo:''}}</view>
+            <view>发货时间：{{detail.sendTime}}</view>
             <view>成交时间：2018-05-14 12:15:</view>
         </view>
     </view>
@@ -114,6 +114,7 @@
         <view class='order-btn red flexR' wx:if="{{state.right=='确认收货'}}" bindtap="confirmReceipt">{{state.right}}</view>
         <view class='order-btn red flexR' wx:if="{{state.right=='删除订单'}}" bindtap="deleteItem">{{state.right}}</view>
         <view class='order-btn red flexR' wx:if="{{state.right=='继续支付'}}" bindtap="continuePay">{{state.right}}</view>
+        <view class='order-btn red flexR' wx:if="{{state.right=='再次购买'}}" bindtap="continueBuy">{{state.right}}</view>
     </block>
 
 </view>
