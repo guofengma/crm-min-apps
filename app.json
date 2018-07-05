@@ -48,7 +48,8 @@
     "pages/logistics/choose-logistics/choose-logistics",
     "pages/after-sale/refund/apply-refund/apply-refund",
     "pages/after-sale/refund/refund-detail/refund-detail",
-    "pages/logistics/write-logistics/write-logistics"
+    "pages/logistics/write-logistics/write-logistics",
+    "pages/after-sale/choose-after-sale/choose-after-sale"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
