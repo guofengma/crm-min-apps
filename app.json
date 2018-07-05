@@ -38,6 +38,7 @@
     "pages/my/password/password",
     "pages/my/help-customer/help-customer",
     "pages/my/information/information",
+    "pages/my/information/information/information",
     "pages/my/information/notice/notice",
     "pages/my/help-customer/questionFeedback/questionFeedback",
     "pages/my/help-customer/questionList/questionList",

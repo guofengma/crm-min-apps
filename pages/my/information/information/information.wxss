@@ -1,0 +1,34 @@
+/* pages/my/account.wxss */
+.order{
+    font-size:26rpx;
+    color: #222222;
+    margin-bottom: 20rpx;
+}
+.wrap{margin-top: 30rpx}
+.item{background: #fff;height: 120rpx;line-height:120rpx;padding: 0 30rpx;display: flex;}
+.item .left{width: 75%}
+.item view:nth-child(2){width: 25%;text-align: right;margin-right: 20rpx}
+.line{border-bottom: 1px solid #eee}
+.item image{
+    width:70rpx;
+    height:70rpx;
+    vertical-align:middle;
+    margin-right: 10rpx;
+}
+
+.jt-img{
+    width:30rpx !important;
+    height: 30rpx !important;
+    vertical-align: middle;
+    margin-left: 10rpx;
+}
+.num{
+    background-color: #e60012;
+    color: #fff;
+    border-radius: 20rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    min-width: 40rpx;
+    text-align: center;
+    display: inline-block;
+}
