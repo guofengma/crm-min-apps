@@ -12,8 +12,7 @@
   padding-top: 5rpx;
   padding-bottom: 30rpx;
 }
-.shopping-cart-line.flexR{
-  justify-content: flex-start;
+.shopping-cart-line.flexR-sb{
   box-sizing: border-box;
   background: #fff;
 }
@@ -21,7 +20,7 @@
   width: 46rpx;
 }
 .move-box{
-  width: 89%;
+  width: 88%;
 }
 .chooseImg{
   width:11%;
@@ -71,4 +70,13 @@
 }
 .leftBar image{
   margin-right: 22rpx;
+}
+.statusLabel{
+  width: 76rpx;
+	height: 39rpx;
+	background-color: #999999;
+	border-radius: 19rpx;
+  color: #fff;
+  font-size: 24rpx;
+  margin-left:30rpx; 
 }

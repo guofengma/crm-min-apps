@@ -6,5 +6,11 @@
 }
 .cell-line{
   height: 88rpx;
+  
+}
+.cell-line,.after-sale-type{
   padding: 0 30rpx;
+}
+.after-sale-type{
+  height: 96rpx;
 }
