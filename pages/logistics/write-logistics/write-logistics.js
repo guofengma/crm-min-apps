@@ -9,6 +9,7 @@ Page({
   
   },
   onCodeClickListener: function () {
+    // 扫二维码
     wx.scanCode({
       success: (res) => {
         let result = res.result;
@@ -22,12 +23,12 @@ Page({
   },
   inputOnCodechange(e){
     this.setData({
-      code: e.detail
+      code: e.detail.value
     })
   },
   inputOnPhonechange(e) {
     this.setData({
-      phone: e.detail
+      phone: e.detail.value
     })
   },
 })
