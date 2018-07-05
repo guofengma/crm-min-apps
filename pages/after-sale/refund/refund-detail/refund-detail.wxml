@@ -6,6 +6,8 @@
 
 <import src='/components/address-saler/address-saler.wxml'/>
 
+<!----------------------仅退货和退货退款公用页面 refundType为1 为退货退款 2为 仅退货---------------------------  -->
+
 <!--提示语  -->
 <view class='redBg font-26 flexR tips'>
   商家已同意换货申请，请尽快发货
@@ -44,7 +46,7 @@
 <!--换货信息  -->
 
 <view class='exchange-info font-26 '>
-  <view class='flexR-sb after-sale-line gray'>换货订单</view>
+  <view class='flexR-sb after-sale-line gray'>退款订单</view>
   <template is="after-sale-prd-info" data=""/>
   <view class='exchange-content whiteBg gray'>
     <view>退款原因：规格不符合</view>

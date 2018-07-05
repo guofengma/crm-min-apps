@@ -4,6 +4,7 @@
 
 <import src='/components/update-img/update-img.wxml'/>
 
+<!----------------------仅退货和退货退款公用页面 refundType为1 为退货退款 2为 仅退货---------------------------  -->
 
 <view class='redBg flexR tips font-26'>退回商品需由买家承担运费，请确保不影响商品完好</view>
 

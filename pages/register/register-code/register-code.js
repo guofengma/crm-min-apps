@@ -9,7 +9,6 @@ Page({
     num:4, // 请求推荐人的个数
   },
   onLoad: function (options) {
-    console.log(options)
     this.setData({
       accoutInfo: options,
       userInfo: Storage.wxUserInfo(),
@@ -19,6 +18,11 @@ Page({
   },
   onShow: function () {
 
+  },
+  inputChange(e){
+    this.setData({
+      inviteId:e.detail.value
+    })
   },
   requetSignMember() {
     let params = {
