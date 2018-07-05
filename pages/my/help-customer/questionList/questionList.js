@@ -17,7 +17,7 @@ Page({
     },
     //跳到详情页
     toDetail() {
-        Tool.navigateTo('/pages/my/account/account')
+        Tool.navigateTo('../questionDetail/questionDetail')
     },
 
     onLoad: function (options) {

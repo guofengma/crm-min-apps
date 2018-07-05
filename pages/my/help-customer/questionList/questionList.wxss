@@ -81,3 +81,10 @@
 .tips-delete-order>view{
     padding-top: 100rpx
 }
+.contact{
+    text-align: center;
+    position: fixed;
+    bottom: 30rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}

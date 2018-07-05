@@ -11,7 +11,10 @@
             </view>
         </block>
 
-
+    <view class="contact">
+        <view>联系客服8888-8888</view>
+        <view>09:00-18:00</view>
+    </view>
     </view>
 
 </view>

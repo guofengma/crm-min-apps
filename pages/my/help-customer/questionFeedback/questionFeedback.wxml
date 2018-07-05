@@ -1,16 +1,69 @@
-<view class="order">
-    <view class="wrap">
-        <block wx:for="{{list}}" wx:key="unique">
-            <view class="item line" bindtap="toDetail" data-id="{{item.id}}">
-                <view>
-                    <text>{{item.name}}</text>
-                </view>
-                <view>
-                    <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
-                </view>
+<view class="feedback">
+<import src='/components/update-img/update-img.wxml'/>
+    <view class="type">
+        <view class="item {{mask?'grey':''}}" bindtap="questionType">
+            <view>
+                <text>{{type}}</text>
             </view>
-        </block>
+            <view>
+                <image class="jt-img" src="{{mask?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/expand-btn.png':'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png'}}" mode='widthFix'></image>
+            </view>
+        </view>
+    </view>
+    <view class="wrap">
+        <view class="item">详细说明</view>
+        <view class="detail-remark">
+            <textarea bindinput="detailRemark" maxlength="100" class="textarea" placeholder="请输入一段说明文字..." />
+            <view class="number">{{count}}/100</view>
+        </view>
+    </view>
+    <view class="wrap">
+        <view class="item">上传图片</view>
+        <view class="phone-area">
+          <template is="update-img" data=""/>
+        </view>
+        
     </view>
 
+    <view class="btn {{active?'active':''}}">提交</view>
+    <!--选择类型弹窗-->
+    <view wx:if="{{mask}}" class="mask">
+        <view class="type-area">
+            <view class="item" bindtap="chooseType" data-index="1" data-content="商品相关">
+                <view>
+                    <text class="{{index==1?'color-red':''}}">商品相关</text>
+                </view>
+                <view>
+                    <image class="jt-img" src="{{index==1?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png':''}}" mode='widthFix'></image>
+                </view>
+            </view>
+            <view class="item" bindtap="chooseType" data-index="2" data-content="物流状态">
+                <view>
+                    <text class="{{index==2?'color-red':''}}">物流状态</text>
+                </view>
+                <view>
+                    <image class="jt-img" src="{{index==2?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png':''}}" mode='widthFix'></image>
+                </view>
+            </view>
+            <view class="item" bindtap="chooseType" data-index="3" data-content="客服服务">
+                <view>
+                    <text class="{{index==3?'color-red':''}}">客服服务</text>
+                </view>
+                <view>
+                    <image class="jt-img" src="{{index==3?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png':''}}" mode='widthFix'></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!--提交成功弹窗-->
+    <view wx:if="{{success}}" class="success-mask">
+        <view class="success-area">
+            <view class="success-content">
+                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/success.png"></image>
+                <view class="success">提交成功!</view>
+                <view class="tip">已提交给相关客服人员 并催促尽快处理！</view>
+            </view>
+            <view class="success-btn" bindtap="sure">确定</view>
+        </view>
+    </view>
 </view>
-

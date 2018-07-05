@@ -5,7 +5,7 @@
    </view>
     <view class="hot-question">热门问题</view>
     <view class="question-area">
-        <view class="question-item">
+        <view class="question-item" bindtap="questionList">
             <view class="left">
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_order.png" class="icon"></image>
                 <view>订单问题</view>
@@ -32,7 +32,7 @@
             <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_refund.png" class="icon"></image>
             <view>退款进度</view>
         </view>
-        <view bindtap="questionList">
+        <view bindtap="questionFeedback">
              <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_feedback.png" class="icon"></image>
             <view>问题反馈</view>
         </view>
@@ -45,12 +45,12 @@
         <view>
             <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_phone.png" class=""></image>
             <view>咨询电话</view>
-            <view>8:30-24:00</view>
+            <view>09:00-18:00</view>
         </view>
         <view>
             <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_customer.png" class=""></image>
             <view>在线客服</view>
-            <view>8:30-24:00</view>
+            <view>09:00-18:00</view>
         </view>
     </view>
 </view>

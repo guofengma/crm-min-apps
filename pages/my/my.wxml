@@ -103,7 +103,7 @@
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
-        <view class="item">
+        <view class="item" bindtap="helpCustomer">
             <view>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/bz_18-12@2x.png" alt=""></image>
                 <text>帮助与客服</text>

@@ -19,14 +19,7 @@ Page({
     toDetail() {
         Tool.navigateTo('/pages/my/account/account')
     },
-    //跳到问题反馈页面
-    questionFeedback(){
-        Tool.navigateTo('questionFeedback/questionFeedback')
-    },
-    //跳到问题列表页面
-    questionList(){
-        Tool.navigateTo('questionList/questionList')
-    },
+
     onLoad: function (options) {
     },
     onUnload: function () {
