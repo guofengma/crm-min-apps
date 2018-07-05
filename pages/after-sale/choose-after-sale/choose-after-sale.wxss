@@ -1,0 +1,10 @@
+@import "/components/my-order-product-info/my-order-product-info";
+
+
+.my-order-product-info{
+  background-color: #f7f7f7;
+}
+.cell-line{
+  height: 88rpx;
+  padding: 0 30rpx;
+}

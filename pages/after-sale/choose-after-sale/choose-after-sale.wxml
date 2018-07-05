@@ -1,0 +1,9 @@
+<import src='/components/my-order-product-info/my-order-product-info.wxml'/>
+
+<view class='after-sale-type'>服务联系</view>
+
+<view></view>
+
+<view class='cell-line whiteBg font-26 flexR-sb'>订单编号：2018-12-12 12:12：12</view>
+<template is="my-order-product-info" data="{{...item}}"/>
+<view class='cell-line whiteBg font-26 flexR-sb'>下单时间：2018-12-12 12:12：12</view>
