@@ -33,26 +33,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 1,
 			"list": [
-				{
-					"id": -1,
-					"name": "新增地址",
-					"pathName": "pages/address/new-address/new-address",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "实名认证",
-					"pathName": "pages/real-name/real-name",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "地址列表",
-					"pathName": "pages/address/choose-address/choose-address",
-					"query": ""
-				},
 				{
 					"id": -1,
 					"name": "首页",
@@ -60,57 +42,9 @@
 					"query": ""
 				},
 				{
-					"id": 4,
-					"name": "支付页",
-					"pathName": "pages/order-confirm/pay/pay",
-					"query": ""
-				},
-				{
 					"id": -1,
 					"name": "我的",
 					"pathName": "pages/my/my",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "电话",
-					"pathName": "pages/my/phone/phone",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "修改账号",
-					"pathName": "pages/my/password/step1/step1",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "帮助与客服",
-					"pathName": "pages/my/help-customer/help-customer",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "问题详情",
-					"pathName": "pages/my/help-customer/questionDetail/questionDetail",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "问题反馈",
-					"pathName": "pages/my/help-customer/questionFeedback/questionFeedback",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "选择物流公司",
-					"pathName": "pages/logistics/choose-logistics/choose-logistics",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "填写物流信息",
-					"pathName": "pages/logistics/write-logistics/write-logistics",
 					"query": ""
 				}
 			]

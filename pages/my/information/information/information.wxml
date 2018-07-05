@@ -1,0 +1,40 @@
+<!--pages/my/account.wxml-->
+<view class="order">
+    <view class="wrap">
+        <view class="item" bindtap="notice">
+            <view class="left">
+                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/notice.png" alt=""></image>
+                <text>通知</text>
+            </view>
+            <view>
+                <view class="num">3</view>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png' mode='widthFix'></image>
+            </view>
+        </view>
+    </view>
+    <view class="wrap">
+        <view class="item" bindtap="information">
+            <view class="left">
+                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/infomation.png" alt=""></image>
+                <text>消息</text>
+            </view>
+            <view>
+                <view class="num">12</view>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png' mode='widthFix'></image>
+            </view>
+        </view>
+    </view>
+    <view class="wrap">
+        <view class="item" bindtap="groupInformation">
+            <view class="left">
+                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/group-information.png" alt=""></image>
+                <text>拼店消息</text>
+            </view>
+            <view>
+                <view class="num">3</view>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png' mode='widthFix'></image>
+            </view>
+        </view>
+    </view>
+</view>
+
