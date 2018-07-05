@@ -54,7 +54,7 @@
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
-        <view class="item">
+        <view class="item" bindtap="information">
             <view>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xx_18-07@2x.png" alt=""></image>
                 <text>我的消息</text>

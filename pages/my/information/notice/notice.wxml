@@ -1,0 +1,8 @@
+<view>
+    <view class="notice-item">
+        <view class="time">05/06 15:45</view>
+        <view class="title">【有奖调研】您对我们的产品还满意吗？</view>
+        <view class="content">       想要更了解您对我们的印象如何，参加调研，即有机会赢取50元奖励。</view>
+        <view class="watch-detail">查看详情 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/detail-btn.png"></image></view>
+    </view>
+</view>

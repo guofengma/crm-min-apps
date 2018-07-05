@@ -66,11 +66,6 @@ Page({
       if (!this.didLogin()) return
       Tool.navigateTo('help-customer/help-customer')
     },
-    //我的消息
-    information() {
-      if (!this.didLogin()) return
-      Tool.navigateTo('information/information')
-    },
     onUnload: function () {
       Event.off('refreshMemberInfoNotice', this.refreshMemberInfoNotice);
       Event.off('didLogin', this.didLogin);
