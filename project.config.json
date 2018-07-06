@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 14,
 			"list": [
 				{
 					"id": -1,
@@ -97,9 +97,32 @@
 				},
 				{
 					"id": -1,
-					"name": "详情",
-					"pathName": "pages/my/information/informationDetail/informationDetail",
+					"name": "邀请者",
+					"pathName": "pages/register/register-code/register-code",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "申请换货",
+					"pathName": "pages/after-sale/exchange-goods/apply-exchange/apply-exchange",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "申请退款退货",
+					"pathName": "pages/after-sale/refund/apply-refund/apply-refund",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "退款详情",
+					"pathName": "pages/after-sale/refund/refund-detail/refund-detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "申请结果",
+					"pathName": "pages/after-sale/apply-result/apply-result"
 				}
 			]
 		}

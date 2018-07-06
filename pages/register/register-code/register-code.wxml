@@ -4,7 +4,7 @@
      <form bindsubmit="formSubmit" class='form'>
         <view class='flexR form-group'>
           <text>会员ID录入</text>
-          <input type='text' name='id' placeholder="请输入会员ID" value='{{inviteId}}'></input>
+          <input type='text' name='id' placeholder="请输入会员ID" value='{{inviteId}}' bindinput='inputChange'></input>
         </view>
         <view class="btn-area">
           <button formType="submit" class='loginBtn'>下一步</button>
