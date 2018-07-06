@@ -39,6 +39,7 @@
     <view class="tips-delete-order model-view-bg " wx:if='{{isNew}}'>
         <view>
             <view class='tips-box '>
+                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/close-icon.png" bindtap='dismissCancel'></image>
                 <view class='tips-icon flexR'>
                     <view></view>
                 </view>

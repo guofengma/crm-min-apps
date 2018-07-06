@@ -50,8 +50,11 @@
 }
 .tips-delete-order .tips-box{
     position: relative;
-    padding: 150rpx 50rpx 50rpx 50rpx;
+    padding: 150rpx 0 50rpx;
     background: #fff;
+    width: 80%;
+    border-radius: 20px;
+    margin-left: 10%;
 }
 .tips-delete-order .content{
     font-size:30rpx;
@@ -69,11 +72,22 @@
     height: 69rpx;
     border-radius: 10rpx;
     font-size: 28rpx;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 .tips-delete-order .leftBtn{
     background-color: #dddddd;
     margin-right: 10rpx;
 }
 .tips-delete-order>view{
-    padding-top: 100rpx
+    padding-top: 100rpx;
+    width: 100%;
+}
+.tips-box image{
+    width: 64rpx;
+    height: 64rpx;
+    position: absolute;
+    right: 0;
+    top:0;
+    z-index: 9999999;
 }
