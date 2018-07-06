@@ -122,6 +122,7 @@ Page({
     let r = RequestFactory.getShoppingCartList();
     r.finishBlock = (req) => {
       let data = req.responseObject.data
+      data = data ===null? []:data
       if(data.length>0){
         data.forEach((item, index) => {
           item.isTouchMove = false  //是否移动 

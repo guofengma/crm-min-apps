@@ -1,1 +1,14 @@
-/* pages/logistics/logistics.wxss */
+.logistics>view{
+  box-shadow: 0 0 20rpx 0rpx rgba(0, 0, 0, 0.1);
+	border-radius: 20rpx;
+  width:92%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.title{
+  margin-bottom: 20rpx;
+}
+.logistics{
+  padding-top: 20rpx;
+  padding-bottom: 70rpx;
+}

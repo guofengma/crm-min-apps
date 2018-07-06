@@ -7,4 +7,5 @@
    </view>
    <button bindtap='btnClicked' data-id='/pages/login/login-wx/login-wx' >微信登陆</button>
    <button bindtap='btnClicked' data-id='/pages/register/register' >注册</button> 
+   <button bindtap='btnClicked' data-id='/pages/logistics/logistics' >物流详情</button> 
 </view>
