@@ -94,7 +94,7 @@
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
-        <view class="item line">
+        <view class="item line" bindtap="invite">
             <view>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/hy_18-11@2x.png" alt=""></image>
                 <text>邀请好友</text>
