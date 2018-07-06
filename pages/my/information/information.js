@@ -2,6 +2,7 @@
 let { Tool, RequestFactory, Storage, Event } = global
 Page({
     data: {
+        isNew:true
     },
     onLoad: function (options) {
     },
@@ -29,7 +30,12 @@ Page({
       if (!this.didLogin()) return
       Tool.navigateTo('groupInformation/groupInformation')
     },
-
+    //关闭弹出框
+    dismissCancel(){
+        this.setData({
+            isNew:false
+        })
+    },
     onUnload: function () {
     },
 })

@@ -33,7 +33,11 @@
 			"list": []
 		},
 		"miniprogram": {
+<<<<<<< HEAD
 			"current": 13,
+=======
+			"current": 15,
+>>>>>>> 3d8315ea7399869a79c185548ec4ed8b560054a8
 			"list": [
 				{
 					"id": -1,
@@ -127,9 +131,14 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "仅退款详情",
 					"pathName": "pages/after-sale/only-refund/only-refund-detail/only-refund-detail",
 					"query": ""
+=======
+					"name": "通讯录",
+					"pathName": "pages/my/addressList/addressList"
+>>>>>>> 3d8315ea7399869a79c185548ec4ed8b560054a8
 				}
 			]
 		}

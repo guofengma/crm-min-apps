@@ -21,40 +21,37 @@
     font-size: 26rpx;
     color: #999999;
 }
-.money-area{
-    text-align: center;
-    margin: 30rpx 0;
-}
-.money{
-    font-size: 48rpx;
-    color: #e60012;
-}
+
 .item{
     height: 40rpx;
     line-height: 40rpx;
     font-size: 26rpx;
 }
-.watch-detail{
-    height: 81rpx;
-    line-height: 81rpx;
-    background-color: #ffffff;
-    border-top: solid 1px #eeeeee;
-    padding:0 20rpx;
-    text-align: center;
-    color: #999999;
-    font-size: 26rpx;
-}
-.watch-detail image{
-    width: 22rpx;
-    height: 20rpx;
-}
-.color-red{
-    color: #e60012;
-}
+
 .info{
-    font-size: 30rpx;
-    color: #222222;
-    padding:0 0 0 30rpx;
+    font-size: 28rpx;
+    padding:50rpx 0;
     width: 100%;
-    margin-bottom: 20rpx;
+    text-align: center;
+}
+.opr{
+    height: 120rpx;
+    background: #fff;
+    border-top: 1rpx solid #eee;
+    padding: 0 20rpx;
+}
+.btn{
+    width: 180rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-color: #ffffff;
+    border-radius: 30rpx;
+    border: solid 1rpx #e60012;
+    font-size: 26rpx;
+    color: #e60012;
+    text-align:center;
+    margin-top:30rpx;
+    margin-left:80%;
+    transform:translateX(-40%);
+
 }

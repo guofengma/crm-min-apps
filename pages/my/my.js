@@ -71,6 +71,11 @@ Page({
       if (!this.didLogin()) return
       Tool.navigateTo('information/information')
     },
+    //我的通讯录
+    addressList() {
+      if (!this.didLogin()) return
+      Tool.navigateTo('addressList/addressList')
+    },
     onUnload: function () {
       Event.off('refreshMemberInfoNotice', this.refreshMemberInfoNotice);
       Event.off('didLogin', this.didLogin);

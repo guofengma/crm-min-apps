@@ -1,0 +1,36 @@
+<view>
+    <view class="search-area">
+        <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/search-btn.png"></image>
+        <input type="text" placeholder="搜索用户名/授权码" bindconfirm="search" confirm-type="search"/>
+    </view>
+    <view class="up-area">
+        <view>
+            <view>
+                <image src="/img/address-list.png"></image>
+                <text>上级代理</text>
+            </view>
+            <view>
+                <text>1</text>
+                <!--<image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/expand-btn.png"></image>-->
+                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>
+            </view>
+        </view>
+        <view>
+            <view>
+                <view>
+                    <image src=""></image>
+                </view>
+                <view>
+                    <view>王健林（1365615）</view>
+                    <view>手机号：13892746484</view>
+                    <view>
+                        <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/card-img.png"></image>
+                    </view>
+                </view>
+                <view>
+                    <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

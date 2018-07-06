@@ -13,7 +13,7 @@
     height: 96rpx;
     line-height: 96rpx;
     background: #fff;
-    margin-top: 2rpx;
+    padding-top: 2rpx;
 }
 .tab-area .active{
     color:#e60012;

@@ -1,0 +1,89 @@
+<view class="order">
+   <!--支付详情/支付详情退款成功-->
+    <view class="detail" wx:if="{{status==1}}">
+        <view class="header">
+            <!--<view class="title">支付订单</view>-->
+            <view class="title">订单退款</view>
+            <!--<view class="money">-100.50</view>-->
+            <view class="money">+100.50</view>
+            <!--<view class="result">交易成功</view>-->
+            <view class="result success">退款成功</view>
+        </view>
+        <view class="wrap">
+            <view class="item line" bindtap="myAccount">
+                <view>
+                    <!--<text>付款方式</text>-->
+                    <text>退款账户</text>
+                </view>
+                <view>
+                    <!--<text>代币支付 ￥ 20.00</text>-->
+                    <text>代币账户 ￥ 20.00</text>
+                </view>
+            </view>
+            <view class="item line" bindtap="information">
+                <view>
+                    <!--<text>付款方式</text>-->
+                    <text>退款账户</text>
+                </view>
+                <view>
+                    <!--<text>余额支付 ￥ 80.50</text>-->
+                    <text>余额账户 ￥ 80.50</text>
+                </view>
+            </view>
+            <view class="item" bindtap="information">
+                <view>
+                    <text>商品说明</text>
+                </view>
+                <view>
+                    <text>男士短袖</text>
+                </view>
+            </view>
+        </view>
+        <view class="wrap">
+            <view class="item line" bindtap="information">
+                <view>
+                    <text>创建时间</text>
+                </view>
+                <view>
+                    <text>2018-05-05 12:45:34</text>
+                </view>
+            </view>
+            <view class="item" bindtap="information">
+                <view>
+                    <text>订单号</text>
+                </view>
+                <view>
+                    <text>89561984514986516584</text>
+                </view>
+            </view>
+        </view>
+        <view class="wrap">
+            <view class="item line" bindtap="order">
+                <view>
+                    <text>订单疑问</text>
+                </view>
+                <view>
+                    <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
+                </view>
+            </view>
+            <view class="item" bindtap="feedback">
+                <view>
+                    <text>投诉</text>
+                </view>
+                <view>
+                    <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!--提现驳回详情-->
+    <view class="back-detail wrap" wx:if="{{status==3}}">
+        <view class="header">
+            提现驳回详情
+        </view>
+        <view class="content">
+            您的提现账户存在异常，持卡人和银行卡信息不匹配，请确认后再次提交
+        </view>
+    </view>
+</view>
+

@@ -85,7 +85,7 @@
         </view>
     </view>
     <view class="wrap">
-        <view class="item line">
+        <view class="item line" bindtap="addressList">
             <view>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/txl_18-10@2x.png" alt=""></image>
                 <text>通讯录</text>
