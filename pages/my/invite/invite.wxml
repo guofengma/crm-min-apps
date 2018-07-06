@@ -1,16 +1,27 @@
 <view>
     <view class="bg">
-        <view class="detail">
-            <image src="/img/default-userImg.png" class="avature-img"></image>
-            <view class="name">马云</view>
-            <view class="level">明星CEO</view>
+        <view class="area">
+            <view class="detail">
+                <image class="avature-img" src="/img/default-userImg.png"></image>
+                <view class="info">
+                    <view class="title1">您的好友(张真真)</view>
+                    <view class="title1">邀请您参加活动</view>
+                    <view class="title2">免费领取福利</view>
+                    <view class="title3">专属你的惊喜福利活动</view>
+                    <view class="title3">数量有限赶快参与吧</view>
+                </view>
+                <image class="code" bindtap="press" src="/img/code.png"></image>
+            </view>
         </view>
-    </view>
-    <view class="area">
-        <view class="title">基本资料</view>
-        <view class="item">手机：13878355431</view>
-        <view class="item">微信号：chenshuai</view>
-        <view class="item">所在区域：浙江省杭州市萧山区</view>
-        <view class="item">收货地址：浙江省杭州市萧山区宁围街道望京大厦C2-505</view>
+        <view class="footer">
+            <image src="/img/invite-footer.png"></image>
+            <view class="footer-area">
+                <view class="tip">长按识别二维码参与活动免费领取</view>
+                <view class="opr">
+                    <view>分享</view>
+                    <view>保存图片</view>
+                </view>
+            </view>
+        </view>
     </view>
 </view>
