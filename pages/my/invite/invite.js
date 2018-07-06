@@ -8,11 +8,10 @@ Page({
     data: {
         expanded:[false,false]
     },
-    upOrDown(e){
-        let index=e.currentTarget.dataset.index;
-        this.data.expanded[index]=!this.data.expanded[index];
-        this.setData({
-            expanded:this.data.expanded
+    press(){
+        wx.previewImage({
+            current: '/img/code.png', // 当前显示图片的http链接
+            urls: ['/img/code.png'] // 需要预览的图片http链接列表
         })
     },
     onLoad: function (options) {
