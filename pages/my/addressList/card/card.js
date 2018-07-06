@@ -15,9 +15,6 @@ Page({
             expanded:this.data.expanded
         })
     },
-    card(){
-        Tool.navigateTo('card/card')
-    },
     onLoad: function (options) {
 
     },

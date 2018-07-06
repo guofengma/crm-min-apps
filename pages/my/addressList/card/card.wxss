@@ -1,0 +1,50 @@
+.bg{
+    background: url("https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/card-bg.png") no-repeat top center;
+    background-size: cover;
+    width: 100%;
+    height:500rpx;
+    position: relative;
+    text-align: center;
+}
+.detail{
+    position:absolute;
+    top:150rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.avature-img{
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+    border: solid 4rpx #ffffff
+}
+.name{
+    color: #76462e;
+    font-size: 30rpx;
+    font-weight: 600;
+    margin: 10rpx 0;
+}
+.level{
+    width: 152rpx;
+    height: 42rpx;
+    line-height: 42rpx;
+    background-image: linear-gradient(90deg, #ca7e3b 0%, #eabe9b 99%), linear-gradient(#ffffff, #ffffff);
+    background-blend-mode: normal, normal;
+    border-radius: 6rpx;
+    font-size: 26rpx;
+    color: #ffffff;
+}
+.area{
+    font-size: 30rpx;
+    color: #999999;
+    padding: 0 50rpx;
+}
+.title{
+    text-align: center;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.item{
+    height: 50rpx;
+    line-height: 50rpx;
+}
