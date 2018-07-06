@@ -2,6 +2,7 @@
 let { Tool, RequestFactory, Storage, Event } = global
 Page({
     data: {
+        isNew:false
     },
     onLoad: function (options) {
     },

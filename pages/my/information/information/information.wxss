@@ -1,34 +1,60 @@
-/* pages/my/account.wxss */
-.order{
-    font-size:26rpx;
+.time{
+    height: 70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: #999999;
+}
+.title{
+    height: 97rpx;
+    line-height: 97rpx;
+    padding:0 20rpx;
+    background-color: #ffffff;
+    border-bottom: solid 1rpx #eeeeee;
+    font-size: 30rpx;
     color: #222222;
-    margin-bottom: 20rpx;
+    text-indent: 20rpx;
 }
-.wrap{margin-top: 30rpx}
-.item{background: #fff;height: 120rpx;line-height:120rpx;padding: 0 30rpx;display: flex;}
-.item .left{width: 75%}
-.item view:nth-child(2){width: 25%;text-align: right;margin-right: 20rpx}
-.line{border-bottom: 1px solid #eee}
-.item image{
-    width:70rpx;
-    height:70rpx;
-    vertical-align:middle;
-    margin-right: 10rpx;
+.content{
+    padding: 30rpx;
+    background: #fff;
+    font-size: 26rpx;
+    color: #999999;
 }
-
-.jt-img{
-    width:30rpx !important;
-    height: 30rpx !important;
-    vertical-align: middle;
-    margin-left: 10rpx;
+.money-area{
+    text-align: center;
+    margin: 30rpx 0;
 }
-.num{
-    background-color: #e60012;
-    color: #fff;
-    border-radius: 20rpx;
+.money{
+    font-size: 48rpx;
+    color: #e60012;
+}
+.item{
     height: 40rpx;
     line-height: 40rpx;
-    min-width: 40rpx;
+    font-size: 26rpx;
+}
+.watch-detail{
+    height: 81rpx;
+    line-height: 81rpx;
+    background-color: #ffffff;
+    border-top: solid 1px #eeeeee;
+    padding:0 20rpx;
     text-align: center;
-    display: inline-block;
+    color: #999999;
+    font-size: 26rpx;
+}
+.watch-detail image{
+    width: 22rpx;
+    height: 20rpx;
+}
+.color-red{
+    color: #e60012;
+}
+.info{
+    font-size: 30rpx;
+    color: #222222;
+    padding:0 0 0 30rpx;
+    width: 100%;
+    margin-bottom: 20rpx;
 }
