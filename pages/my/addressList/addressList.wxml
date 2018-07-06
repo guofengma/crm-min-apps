@@ -1,34 +1,95 @@
 <view>
     <view class="search-area">
-        <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/search-btn.png"></image>
-        <input type="text" placeholder="搜索用户名/授权码" bindconfirm="search" confirm-type="search"/>
+        <image class="search-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/search-btn.png"></image>
+        <input type="text" class="search-inp" placeholder="搜索用户名/授权码" bindconfirm="search" confirm-type="search"/>
     </view>
     <view class="up-area">
-        <view>
-            <view>
+        <view class="header" bindtap="upOrDown" data-index="0">
+            <view class="left">
                 <image src="/img/address-list.png"></image>
                 <text>上级代理</text>
             </view>
-            <view>
+            <view class="right">
                 <text>1</text>
-                <!--<image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/expand-btn.png"></image>-->
-                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>
+                <image class="opr-btn" src="{{expanded[0]?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/expand-btn.png':'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png'}}"></image>
             </view>
+            <view class="clearfix"></view>
         </view>
-        <view>
-            <view>
-                <view>
-                    <image src=""></image>
+        <view class="list" wx:if="{{expanded[0]}}">
+            <view class="item-area">
+                <view class="item">
+                    <image class="avature-img" src="/img/default-userImg.png"></image>
                 </view>
-                <view>
+                <view class="item info">
                     <view>王健林（1365615）</view>
                     <view>手机号：13892746484</view>
                     <view>
-                        <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/card-img.png"></image>
+                        <image bindtap="card" class="card" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/card-img.png"></image>
                     </view>
                 </view>
-                <view>
-                    <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>
+                <view class="item opr">
+                    <image class="opr-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>
+                </view>
+            </view>
+            <view class="item-area">
+                <view class="item">
+                    <image class="avature-img" src="/img/default-userImg.png"></image>
+                </view>
+                <view class="item info">
+                    <view>王健林（1365615）</view>
+                    <view>手机号：13892746484</view>
+                    <view>
+                        <image bindtap="card" class="card" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/card-img.png"></image>
+                    </view>
+                </view>
+                <view class="item opr">
+                    <image class="opr-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="up-area">
+        <view class="header" bindtap="upOrDown" data-index="1">
+            <view class="left">
+                <image src="/img/address-list.png"></image>
+                <text>下级代理</text>
+            </view>
+            <view class="right">
+                <text>1</text>
+                <!--<image class="opr-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/expand-btn.png"></image>-->
+                <image class="opr-btn" src="{{expanded[1]?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/expand-btn.png':'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png'}}"></image>
+            </view>
+            <view class="clearfix"></view>
+        </view>
+        <view class="list" wx:if="{{expanded[1]}}">
+            <view class="item-area">
+                <view class="item">
+                    <image class="avature-img" src="/img/default-userImg.png"></image>
+                </view>
+                <view class="item info">
+                    <view>王健林（1365615）</view>
+                    <view>手机号：13892746484</view>
+                    <view>
+                        <image bindtap="card" class="card" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/card-img.png"></image>
+                    </view>
+                </view>
+                <view class="item opr">
+                    <image class="opr-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>
+                </view>
+            </view>
+            <view class="item-area">
+                <view class="item">
+                    <image class="avature-img" src="/img/default-userImg.png"></image>
+                </view>
+                <view class="item info">
+                    <view>王健林（1365615）</view>
+                    <view>手机号：13892746484</view>
+                    <view>
+                        <image bindtap="card" class="card" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/card-img.png"></image>
+                    </view>
+                </view>
+                <view class="item opr">
+                    <image class="opr-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>
                 </view>
             </view>
         </view>

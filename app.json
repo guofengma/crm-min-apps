@@ -43,6 +43,8 @@
     "pages/my/information/groupInformation/groupInformation",
     "pages/my/information/notice/notice",
     "pages/my/addressList/addressList",
+    "pages/my/addressList/card/card",
+    "pages/my/invite/invite",
     "pages/my/help-customer/questionFeedback/questionFeedback",
     "pages/my/help-customer/questionList/questionList",
     "pages/my/help-customer/questionDetail/questionDetail",

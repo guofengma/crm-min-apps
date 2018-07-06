@@ -1,0 +1,88 @@
+.search-area{
+  height: 110rpx;
+  position: relative;
+}
+.up-area{
+    margin-bottom: 20rpx;
+}
+.search-btn{
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    left: 8%;
+    top: 20rpx;
+    z-index: 2;
+}
+.search-inp{
+    width: 78%;
+    margin:22rpx 5%;
+    height: 84rpx;
+    line-height: 84rpx;
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    border: solid 2rpx #b2b2b2;
+    padding-left: 12%;
+    font-size: 30rpx;
+}
+.header{
+    height: 96rpx;
+    line-height: 96rpx;
+    padding: 0 5%;
+    background-color: #ffffff;
+    font-size: 30rpx;
+    color: #222222;
+}
+.header view{
+    display: inline-block;
+    width: 50%;
+}
+.left image{
+    width: 50rpx;
+    height: 50rpx;
+    margin-right: 10rpx;
+}
+.right{
+    text-align: right;
+}
+.header image{
+    vertical-align: middle;
+    margin-top: -5rpx;
+
+}
+.opr-btn{
+    width: 30rpx;
+    height: 30rpx;
+    margin-left: 10rpx;
+}
+.item-area{
+    width: 90%;
+    height: 214rpx;
+    line-height: 50rpx;
+    background-color: #ffffff;
+    box-shadow: 0 0 20rpx 0 rgba(102, 102, 102, 0.1);
+    border-radius: 20rpx;
+    margin: 20rpx 5%;
+    display: flex;
+    justify-content: space-around;
+    color: #999999;
+    font-size: 30rpx;
+}
+.avature-img{
+    width: 80rpx;
+    height: 80rpx;
+    border: solid 1rpx #999999;
+    border-radius: 50%;
+}
+.card{
+    width: 235rpx;
+    height: 58rpx;
+}
+.item{
+    margin-top: 30rpx;
+}
+.info{
+    margin-left: -60rpx;
+}
+.opr{
+    margin-top: 50rpx;
+}

@@ -76,6 +76,11 @@ Page({
       if (!this.didLogin()) return
       Tool.navigateTo('addressList/addressList')
     },
+    //邀请
+    invite() {
+      if (!this.didLogin()) return
+      Tool.navigateTo('invite/invite')
+    },
     onUnload: function () {
       Event.off('refreshMemberInfoNotice', this.refreshMemberInfoNotice);
       Event.off('didLogin', this.didLogin);
