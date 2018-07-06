@@ -1,4 +1,4 @@
-// pages/after-sale/apply-result/apply-result.js
+// pages/after-sale/only-refund/only-refund-detail/only-refund-detail.js
 Page({
 
   /**

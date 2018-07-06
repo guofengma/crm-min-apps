@@ -43,10 +43,9 @@ Component({
     },
     inputOnblur(e){
       let innerCount = e.detail.value
-      let n = innerCount === 0? 1:this.properties.count
       if (!innerCount || innerCount == 0) {
         this.setData({
-          innerCount: n,
+          innerCount: 1,
           count: this.data.innerCount
         })
         this.trigger(e);

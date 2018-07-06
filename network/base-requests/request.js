@@ -14,15 +14,15 @@ export default class Request {
       // this.baseUrl = 'http://172.16.10.56:'
       // this.baseUrl = 'http://172.16.10.9:'
       // this.baseUrl = 'http://172.16.10.53:'
-      // this.baseUrl = 'http://172.16.10.253:'
-      // if (bParam.port) {
-      //   this.baseUrl = this.baseUrl + bParam.port
-      // } else {
-      //   this.baseUrl = this.baseUrl + '8102';
-      // }
+      this.baseUrl = 'http://172.16.10.253:'
+      if (bParam.port) {
+        this.baseUrl = this.baseUrl + bParam.port
+      } else {
+        this.baseUrl = this.baseUrl + '8102';
+      }
 
       //正式
-      this.baseUrl = 'https://nc.hzjure.xyz';
+      // this.baseUrl = 'https://nc.hzjure.xyz';
       return this.baseUrl
     }
     constructor(bParam) {

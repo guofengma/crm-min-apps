@@ -1,40 +1,16 @@
-<import src='/components/address-info/address-info.wxml'/>
-
-<import src='/components/cell-line/cell-line.wxml'/>
-
 <import src='/components/after-sale-prd-info/after-sale-prd-info.wxml'/>
-
-<import src='/components/address-saler/address-saler.wxml'/>
 
 <import src='/pages/after-sale/temp-refund-info/temp-refund-info.wxml'/>
 
-
-<!--提示语  -->
-<view class='redBg font-26 flexR tips'>
-  商家已同意换货申请，请尽快发货
-</view>
 <view class='flexC tips-exchange font-26'>
-  <view class='tips-title'>商家已通过</view>
-  <view>7天退换，请退货给商家</view>
-  <view>4天12小时32分</view>
+  <view class='tips-title'>退款成功</view>
+  <!--退款中不需要要显示时间  -->
+  <view>2018-12-12 14:00:00</view>
 </view>
 
 <!--退款成功以后才显示以下内容  -->
 
 <template is="temp-refund-info" data=""/>
-
-<!--地址信息  -->
-<view class='address active whiteBg'>
-  <template is="address-info" data="{{addressType,...address,hasData}}"/>
-</view>
-
-<!--商家地址  -->
- <template is="address-saler" data="{{addressType,src,...address,hasData}}"/>
-
-<!--物流  -->
-<view>
-  <template is="cell-line" data="{{name:'退货物流',placeholder:'请填写寄回的物流信息'}}"/>
-</view>
 
 <!--换货信息  -->
 

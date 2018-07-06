@@ -62,7 +62,7 @@ Page({
               for (let i in req.responseObject.data.data) {
                 let item = req.responseObject.data.data[i];
                 item.createTime = Tool.formatTime(item.orderCreateTime);
-                if (item.status == 1) {
+                if (item.orderStatus == 1) {
                   let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
                   let timeInterval = Tool.timeIntervalFromString(item.createTime);
                   let nowTimeInterval = Tool.timeIntervalFromString(now);
@@ -70,6 +70,7 @@ Page({
                   secondMap.set(key, duration);
                 }
                 key++;
+                console.log(key)
                 datas.push(item);
               }
               this.setData({
@@ -246,7 +247,7 @@ Page({
       let orderArry = that.data.list;
       for (let i = 0; i < orderArry.length; i++) {
         let order = orderArry[i];
-        if (order.status == 1) {
+        if (order.orderStatus == 1) {
           let second = mapArry.get(i);
           if (second > 0) {//秒数>0
             let countDownTime = Tool.timeStringForTimeCount(second);

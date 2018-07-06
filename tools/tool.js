@@ -7,6 +7,8 @@
 
 var bmap = require('../libs/baidu-map/bmap-wx.min');
 
+
+
 //工具类
 
 
@@ -353,54 +355,30 @@ export default class Tool {
     }
 
     /**
-     * 选择图片
+     * 选择图片，并上传 
      * @param imgCount
      * @param successCallback
      */
-    static chooseImgsFromWX(imgCount, successCallback) {
-        wx.chooseImage({
-            count: imgCount, // 默认9
-            sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: successCallback
-        });
-    }
-
-    // 选择图片，并上传，返回临时Id
-    static chooseAndUploadImgsFromWX(imgCount, successCallback) {
-        wx.chooseImage({
-            count: imgCount, // 默认9
-            sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来是相册还是相机，默认二者都有
+    static uploadImage(imgCount, successCallback) {
+      wx.chooseImage({
+        count: imgCount, // 默认9
+        sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function (res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          let tempFilePaths = res.tempFilePaths;
+          wx.uploadFile({
+            url: global.RequestFactory.aliyunOSSUploadImage(),
+            filePath: tempFilePaths[0],
+            name: 'file',
             success: function (res) {
-                var tempFilePaths = res.tempFilePaths;
-
-                let results = [];
-                let count = 0;
-                for (let localPath of tempFilePaths) {
-                    let obj = {
-                        localPath,
-                        remoteImgId:global.Tool.guid()
-                    }
-                    results.push(obj);
-                    let r = new RequestUploadTempFile(localPath);
-                    r.finishBlock = (response,tempId)=>{
-                        if (response.filePath == obj.localPath) {
-                            obj.tempId = tempId;
-                        }
-                    };
-                    r.completeBlock = ()=>{
-                        count++;
-                        if (count >= results.length) {
-                            successCallback(results);
-                        }
-                    }
-                    r.addToQueue();
-                }
+              let fileInfo = JSON.parse(res.data);
+              successCallback(fileInfo)
             }
-        });
+          })
+        },
+      })
     }
-
 
     static idFromDataKey(key) {
         let com = key.split('.');
