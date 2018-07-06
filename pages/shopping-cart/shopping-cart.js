@@ -276,7 +276,7 @@ Page({
     // 如果没有登录 那么就跳转到登录页面
     
     if(!this.data.didLogin){
-      Tool.navigateTo('/pages/login/login-wx/login-wx')
+      Tool.navigateTo('/pages/login/login-wx/login-wx?isBack=' + true)
       return
     }
     if (this.data.selectList.length==0){

@@ -1,10 +1,43 @@
 <view class='logistics'>
-  <view class="title">
-      <text>圆通快递：784518465465622212</text>
+  <view class="title flexR-sb font-30">
+    <text>圆通快递：784518465465622212</text>
+    <image src='/img/wuliu-icon.png' mode='widthFix'></image>
   </view>
-
-  <view>
-    
-  
+  <view class='font-26'>
+    <view class='company'>
+      <view class='flexR'>
+        <image src='/img/default-userImg.png' mode='widthFix' class='logo-w'></image>
+        <view>本数据由 <text class='blue'>百世汇通</text> 提供</view>
+      </view>
+    </view>
+    <view class='infos'>
+      <block wx:for='{{list}}' wx:key='unique'>
+        <view class='flexR-sb'>
+          <view class='time-line'>
+            <view>{{item.time}}</view>
+          </view>
+          <view class='time-content'>
+            <image src='{{item.middleImage}}' mode='widthFix'class='state-icon'></image>
+            <view class='dian'><view></view></view>
+            <view class='font-30 state-title'>{{item.title}}</view>
+            <view>
+              {{item.content1}}
+              <text class='orange'>{{item.content2}}</text>
+              {{item.content3}}
+            </view>
+          </view>
+        </view>    
+      </block>
+      <!-- <view class='flexR-sb'>
+         <view class='time-line'>
+           <view>05-31</view>
+         </view>
+         <view class='time-content'>
+          <view class='dian'><view></view></view>
+          骄傲手机卡就嘎嘎的卡上固定卡深度国际爱可登噶肯定是个
+         </view>
+      </view>      -->
+    </view>  
   </view>
 </view>
+ 

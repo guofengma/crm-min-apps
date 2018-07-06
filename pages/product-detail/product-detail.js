@@ -67,6 +67,7 @@ Page({
         }
       }
     }
+    params.productStatus =4
     params.showName = this.data.productInfo.name
     params.showType = this.data.selectType.typeName
     params.showPrice = this.data.priceList[index].levelPrice
@@ -83,7 +84,7 @@ Page({
   makeSureOrder(){
     // 立即购买
     if (!this.data.didLogin) {
-      Tool.navigateTo('/pages/login/login-wx/login-wx')
+      Tool.navigateTo('/pages/login/login-wx/login-wx?isBack='+true)
       return
     }
     let params = {
