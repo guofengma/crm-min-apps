@@ -20,7 +20,7 @@ export default class Request {
       // } else {
       //   this.baseUrl = this.baseUrl + '8102';
       // }
-      
+
       // 正式
       this.baseUrl = 'https://nc.hzjure.xyz';
       return this.baseUrl
