@@ -40,6 +40,10 @@ Page({
     allOrder(e) {
       if (!this.didLogin()) return
       let index = e.currentTarget.dataset.index;
+      if(index==4){
+        Tool.navigateTo('/pages/after-sale/my-after-sale/my-after-sale')
+        return
+      }
       Tool.navigateTo('my-order/my-order?index=' + index)
     },
     //跳到我的账户页面

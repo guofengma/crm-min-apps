@@ -1,0 +1,18 @@
+@import "/components/my-order-product-info/my-order-product-info";
+
+.order-line{
+  border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+  margin-top:20rpx;
+}
+.after-sale-bottom{
+  padding: 12rpx 30rpx;
+  justify-content: flex-end;
+  border-bottom: 1rpx solid #eee;
+}
+.after-sale-btn{
+  width: 160rpx;
+	height: 60rpx;
+	border-radius: 30rpx;
+	border: 1rpx solid #dddddd;
+}

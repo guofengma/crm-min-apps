@@ -6,14 +6,18 @@
     <view class='right-bar flexR-sb'>
       <view class='topbar'>
         <view class='ellipsis-2'>{{productName}}</view>
-        <view class='gray ellipsis-2 '>
-          {{spec}}
+        <view class='gray {{isSaleAfter? "ellipsis":"ellipsis-2"}}'>
+         {{spec}}
         </view>
       </view>
       <view class='flexC' >
         <view>¥ {{price}}</view>
         <view class='cost-price' wx:if="{{showOriginalPrice}}">¥ {{showOriginalPrice}}</view>
         <view  class='gray'>x{{num}}</view>
+      </view>
+      <view class='flexR-sb isSaleAfter' wx:if='{{isSaleAfter}}'>
+        <text class='red'>仅退款</text>
+        <text class='red'>退款成功</text>
       </view>
     </view>
   </view>

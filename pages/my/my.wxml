@@ -37,7 +37,7 @@
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/yfh_03-03@2x.png" alt=""></image>
                 <view>待收货</view>
             </view>
-            <view>
+            <view bindtap="allOrder" data-index="4">
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/ywc_03-05@2x.png" alt=""></image>
                 <view>售后/退款</view>
             </view>

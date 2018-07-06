@@ -1,0 +1,10 @@
+<import src='/components/my-order-product-info/my-order-product-info.wxml'/>
+
+<block>
+  <view class='order-line'>
+    <template is="my-order-product-info" data="{{...item,isSaleAfter:true}}"/>
+  </view>
+  <view class='after-sale-bottom flexR whiteBg'>
+    <view class='after-sale-btn flexR font-26'>查看详情</view> 
+  </view>
+</block>
