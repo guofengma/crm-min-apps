@@ -1,0 +1,30 @@
+<view >
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+        <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">未使用</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">已失效</view>
+        <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">已使用</view>
+    </scroll-view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx">
+        <swiper-item wx:for="{{lists}}" wx:for-index="key" wx:for-item="list"  wx:key="{{key}}">
+            <scroll-view scroll-y="true" class="scoll-h" >
+              <block wx:for="{{list}}" wx:key="unique">
+                <view class="item-ans {{item.active? 'active':''}}" data-index='{{index}}'>
+                    <view class='coupon-left'>
+                      <view class='{{item.active? "red":"gray"}} font-30'>¥ <text >{{item.couponAmout}}</text></view>
+                      <view class='gray'>满{{item.full}}可用</view>
+                    </view>
+                    <view class='coupon-center'>
+                      <view class='font-30'>{{item.name}}</view>
+                      <view class='gray'>限品类：{{item.limit}}</view>
+                      <view class='gray' >有效期：{{item.time}}</view>
+                    </view>
+                    <view class='coupon-right flexC font-30'>
+                      <text wx:for="{{item.left}}" wx:for-item="left"  wx:key="unique">{{left}}</text>
+                    </view>
+                </view>
+              </block> 
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>

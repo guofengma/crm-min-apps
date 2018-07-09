@@ -58,7 +58,9 @@
     "pages/after-sale/only-refund/apply-result/apply-result",
     "pages/after-sale/only-refund/only-refund-detail/only-refund-detail",
     "pages/logistics/logistics",
-    "pages/after-sale/my-after-sale/my-after-sale"
+    "pages/after-sale/my-after-sale/my-after-sale",
+    "pages/my/coupon/my-coupon/my-coupon",
+    "pages/my/coupon/coupon-detail/coupon-detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

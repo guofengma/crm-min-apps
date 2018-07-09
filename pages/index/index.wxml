@@ -1,11 +1,10 @@
-<!--index.wxml-->
-<import src='/components/search-bar/search-bar.wxml' />
-
-<view class="container">
-   <view bindtap='searchClicked'>
-     <template is="search-field" data='{{disabled:true}}'/>
-   </view>
-   <button bindtap='btnClicked' data-id='/pages/login/login-wx/login-wx' >微信登陆</button>
-   <button bindtap='btnClicked' data-id='/pages/register/register' >注册</button> 
-   <button bindtap='btnClicked' data-id='/pages/logistics/logistics' >物流详情</button> 
+<view>
+  <swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:key='unique'>
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+  </swiper>
 </view>
