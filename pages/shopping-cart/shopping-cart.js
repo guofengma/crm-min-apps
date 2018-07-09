@@ -88,6 +88,10 @@ Page({
         items:list,
       }) 
       this.getTotalPrice()
+    } else {
+      this.setData({
+        tipVal: 2
+      })
     }
   },
   updateStorageShoppingCart(count, index){

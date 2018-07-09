@@ -60,4 +60,7 @@
   overflow: hidden;
   border-radius: 10rpx;
 }
-
+.login-2{
+  margin-top: 40rpx;
+  text-align: center;
+}

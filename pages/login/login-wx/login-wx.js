@@ -77,6 +77,9 @@ Page({
     }
     r.addToQueue();
   },
+  otherLogin(){
+    Tool.navigateTo('/pages/login/login')
+  },
   getUserInfo(){
     wx.getUserInfo({
       success: res => {
