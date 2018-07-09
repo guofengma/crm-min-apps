@@ -136,6 +136,12 @@
 					"name": "邀请",
 					"pathName": "pages/my/invite/invite",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "优惠券详情",
+					"pathName": "pages/my/coupon/coupon-detail/coupon-detail",
+					"query": ""
 				}
 			]
 		}
