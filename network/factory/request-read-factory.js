@@ -444,5 +444,21 @@ export default class RequestFactory {
     return this.request(url, params, '修改手机账号', true);
   }
   
+  /******************* 收藏 ******************** */
+
+  static queryProductFaviconList(params) {
+    let url = Operation.sharedInstance().queryProductFaviconList;
+    return this.request(url, params, '收藏列表查询', true);
+  }
+
+  static deleteProductFavicon(params) {
+    let url = Operation.sharedInstance().deleteProductFavicon;
+    return this.request(url, params, '删除收藏', true);
+  }
+  
+  static addProductFavicon(params) {
+    let url = Operation.sharedInstance().addProductFavicon;
+    return this.request(url, params, '新增收藏', true);
+  }
 }
 

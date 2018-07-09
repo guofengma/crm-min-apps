@@ -200,9 +200,25 @@ Page({
   },
   // 收藏
   collectionClicked(){
-    this.setData({
-      isCollection: !this.data.isCollection
-    })
+    // addProductFavicon
+    let params ={
+      productId: this.data.productId
+    }
+    let r = ''
+    if (this.data.isCollection) {
+      r = RequestFactory.deleteProductFavicon(params);
+    } else {
+      r = RequestFactory.addProductFavicon(params);
+    }
+    r.finishBlock = (req) => {
+      Event.emit('updateCollectionPrd');
+      this.setData({
+        isCollection: !this.data.isCollection
+      })
+    };
+    Tool.showErrMsg(r)
+    r.addToQueue();
+    
   },
   cartClicked(){
     Tool.switchTab('/pages/shopping-cart/shopping-cart')

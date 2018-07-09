@@ -3,19 +3,20 @@
     <delete-bar  bind:deleteClicked="deleteClicked" item='{{productList}}' index="{{index}}">
       <view class='flexR-sb my-collection boxSize'>
           <view class='img-view'>
-            <image src='/img/search-result-1.png' mode='widthFix'></image>
+            <image src='{{item.img_url}}'></image>
           </view>
           <view class='productInfo-view'>
             <view class='ellipsis-2 prd-name'>
-              哈哈哈哈哈 这周加班了很多久  哈哈哈哈啊哈哈开始都是好的开始撒开多少都不
+              {{item.name}}
             </view>
             <view class='label-view'>
-              <text class='label-by'>包邮</text >
-              <text  class='label-jf'>积分</text >
+              <text wx:if='{{item.freight_type==2}}' class='label-by'>包邮</text>
+              <text wx:if='{{item.freight_type==3}}' class='label-by'>满包邮</text>
+              <text wx:if='{{item.min_payment}}' class='label-jf'>积分</text>
             </view>
             <view class='text-view'>
-              <text class='red'>¥150.00</text>
-              <text class='gray'>¥150.00</text>
+              <text class='red'>¥{{item.group_price}}</text>
+              <text class='gray'>¥{{item.original_price}}</text>
             </view> 
           </view>
       </view>

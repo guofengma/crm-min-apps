@@ -1,5 +1,6 @@
-.img-view{
+.img-view image{
   width:240rpx;
+  height: 240rpx;
 }
 .move-box{
   background: #fff;

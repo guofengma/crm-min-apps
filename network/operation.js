@@ -78,6 +78,7 @@ export default class Operation {
 
         this.searchProduct ='/user/search/searchProduct'
 
+
     /********************** 购物车 *********************/
         // 新增
         
@@ -270,6 +271,20 @@ export default class Operation {
         // 新手机短信
 
         this.sendUserNewPhoneCode ='/commonAPI/phoneCode/sendUserNewPhoneCode'
+
+        /*************** 收藏 ******************************/ 
+
+        // 收藏列表
+
+        this.queryProductFaviconList = '/user/productFavicon/queryProductFaviconList'
+
+        //删除
+
+        this.deleteProductFavicon = '/user/productFavicon/deleteProductFavicon'
+
+        // 新增
+
+        this.addProductFavicon = '/user/productFavicon/addProductFavicon'
     }
 
     static sharedInstance() {

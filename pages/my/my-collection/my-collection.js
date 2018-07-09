@@ -2,29 +2,47 @@ let { Tool, RequestFactory, Storage, Event } = global
 
 Page({
   data: {
-    productList: [
-      { isTouchMove: false },
-      { isTouchMove: false }
-    ]
+    productList: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     Event.on('updateCollectionPrd', this.getCollectionPrd, this)
+    this.getCollectionPrd()
   },
   onShow: function () {
 
   },
   getCollectionPrd() {
-    console.log(111111)
+    let r = RequestFactory.queryProductFaviconList();
+    r.finishBlock = (req) => {
+      let data = req.responseObject.data ? req.responseObject.data:[]
+      if(data.length>0){
+        data.forEach((item)=>{
+          item.isTouchMove = false
+        })
+        this.setData({
+          productList: data
+        })
+      }
+    };
+    Tool.showErrMsg(r)
+    r.addToQueue();
   },
   deleteClicked(e) {
-    console.log(e)
     let items = e.detail.items
-    if (e.detail.index !== undefined) {
-
+    let index = e.detail.index
+    if (index !== undefined) {
+      let params = {
+        productId: items[index].id,
+      }
+      let r = RequestFactory.deleteProductFavicon(params);
+      r.finishBlock = (req) => {
+        items.splice(index, 1)
+        this.setData({
+          productList: items
+        })
+      };
+      Tool.showErrMsg(r)
+      r.addToQueue();
     }
     this.setData({
       productList: items

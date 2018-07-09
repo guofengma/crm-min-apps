@@ -1,5 +1,9 @@
 <!--广告位  -->
 <view class='ad'>
+  <view class='search-bar boxSize flexR-sb'>
+    <view class='bar flexR-sb' bindtap='searchClicked'><image src='/img/search.png' mode='widthFix'></image></view>
+    <image src='/img/index-msg.png' mode='widthFix'></image>
+  </view>
   <swiper indicator-dots="true" autoplay="true" interval='3000' style='height:415rpx;' indicator-color='#fff' indicator-active-color=' rgba(255, 255, 255, 0.6)'>
   <block wx:for="{{imgUrls}}" wx:key='unique'>
     <swiper-item>
