@@ -227,6 +227,17 @@ export default class Operation {
         // 继续去预支付
 
         this.againToPrePay  ='/order/order/againToPrePay'
+        
+
+        /**********************订单售后**************************/ 
+
+        // 申请退款
+        
+        this.orderRefund = '/order/order/orderRefund'
+
+        // 申请换货
+
+        this.applyReturnGoods = '/order/order/applyReturnGoods'
 
         
         /******************我的---设置*********************** */

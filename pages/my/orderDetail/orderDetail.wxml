@@ -31,7 +31,7 @@
                 <view class='gray'>{{state.time}}</view>
             </view>
             <view class='right-icon'>
-                <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
+              <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
             </view>
         </view>
     </view>
@@ -48,7 +48,8 @@
         <block wx:for="{{detail.list}}" wx:key="unique">
             <template is="my-order-product-info" data="{{...item}}"/>
             <view class='sale-after flexR' wx:if="{{state.middle}}">
-                <view class='order-btn btn-left flexR'>{{state.middle[0]}}</view>
+              <view class='order-btn btn-left flexR' catchtap='subBtnClicked' data-content='{{state.middle[0]}}' data-status
+="{{item.status}}">{{state.middle[0]}}</view>
             </view>
         </block>
     </view>
@@ -115,7 +116,7 @@
         <view class='order-btn red flexR' wx:if="{{state.right=='删除订单'}}" bindtap="deleteItem">{{state.right}}</view>
         <view class='order-btn red flexR' wx:if="{{state.right=='继续支付'}}" bindtap="continuePay">{{state.right}}</view>
         <view class='order-btn red flexR' wx:if="{{state.right=='再次购买'}}" bindtap="continueBuy">{{state.right}}</view>
-        <view class='order-btn red flexR' wx:if="{{state.right=='订单退款'}}" bindtap="continueBuy">{{state.right}}</view>
+        <view class='order-btn red flexR' wx:if="{{state.right=='订单退款'}}" bindtap="orderRefund">{{state.right}}</view>
     </block>
 
 </view>

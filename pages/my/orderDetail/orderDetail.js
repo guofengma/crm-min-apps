@@ -256,7 +256,7 @@ Page({
         } else if (n == 3) {
             state = {status: '卖家已发货', left: '查看物流', right: '确认收货', middle: ['申请售后','售后中','售后成功','售后失败'], orderIcon: "order-state-3.png",info:'仓库正在扫描出仓...',time:''}
         } else if (n == 4) {
-            state = {status: '等待买家自提', left: '', right: '确认收货', middle: ['退换','退换成功','退换失败'], orderIcon: "order-state-3.png",info:'',time:''}
+          state = { status: '等待买家自提', left: '', right: '确认收货', middle: ['退款', '退款成功','退款失败'], orderIcon: "order-state-3.png",info:'',time:''}
         } else if (n == 5) {
             state = {status: '交易已完成', left: '删除订单', right: '再次购买', middle: ['申请售后','售后中','售后成功','售后失败'], orderIcon: "order-state-5.png",info:'已签收',time:''};
         } else if (n == 6) {// 退款 退货等  判断 middle的状态
@@ -281,6 +281,21 @@ Page({
     //再次购买
     continueBuy(){
 
+    },
+    subBtnClicked(e){
+      // let content = e.currentTarget.content
+
+      // let status = e.currentTarget.status
+
+      if(content=='退款'){
+        this.orderRefund()
+      }
+    },
+    orderRefund(){
+      //仅退款
+    },
+    middleBtn(btnArr){
+    
     },
     onUnload: function () {
       clearTimeout(this.data.time);
