@@ -6,20 +6,60 @@ Page({
      * 页面的初始数据
      */
     data: {
-        expanded:[false,false]
+        expanded: [false, false],
+        lower: [],
+        super: {},
+        params: {},
+        number: '',
+        currentPage: 1, // 当前的页数
+        pageSize: 4, // 每次加载请求的条数 默认10
+        hasNext:true
     },
-    upOrDown(e){
-        let index=e.currentTarget.dataset.index;
-        this.data.expanded[index]=!this.data.expanded[index];
+    getList() {
+        if (this.data.hasNext) {
+            let params = {
+                pageSize: this.data.pageSize,
+                page: 1,
+            };
+            this.setData({
+                params: params
+            });
+            let r = RequestFactory.queryDealerAddressBook(params);
+            r.finishBlock = (req) => {
+                this.setData({
+                    lower: req.responseObject.data.lower,
+                    number: req.responseObject.data.number,
+                    super: req.responseObject.data.super
+                });
+                let amount=Math.ceil(this.data.number/this.data.pageSize);//总页数
+                if (amount > this.data.currentPage) {
+                    this.setData({
+                        pageSize:(++this.data.currentPage)*this.data.pageSize
+                    })
+                } else {
+                    this.data.hasNext = false
+                }
+            };
+            Tool.showErrMsg(r);
+            r.addToQueue();
+        }
+    },
+    // 上拉加载更多
+    onReachBottom() {
+        this.getList();
+    },
+    upOrDown(e) {
+        let index = e.currentTarget.dataset.index;
+        this.data.expanded[index] = !this.data.expanded[index];
         this.setData({
-            expanded:this.data.expanded
+            expanded: this.data.expanded
         })
     },
-    card(){
-        Tool.navigateTo('card/card')
+    card(e) {
+        Tool.navigateTo('card/card?userId='+e.currentTarget.dataset.id)
     },
     onLoad: function (options) {
-
+        this.getList()
     },
 
 })

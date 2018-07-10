@@ -401,7 +401,18 @@ export default class RequestFactory {
       return this.request(url, params, '退出登录', true);
   }
   
-  
+  /*******************我的---通讯录******************** */
+
+  static queryDealerAddressBook(params) {
+      let url = Operation.sharedInstance().queryDealerAddressBook;
+      return this.request(url, params, '通讯录', true);
+  }
+  static findDealerAddressBookDetails(params) {
+      let url = Operation.sharedInstance().findDealerAddressBookDetails;
+      return this.request(url, params, '通讯录详情', true);
+  }
+
+
   // 上传图片的地址 
   static aliyunOSSUploadImage(){
     let params = {
