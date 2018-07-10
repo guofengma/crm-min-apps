@@ -1,13 +1,13 @@
 <!--广告位  -->
 <view class='ad'>
   <view class='search-bar boxSize flexR-sb'>
-    <view class='bar flexR-sb' bindtap='searchClicked'><image src='/img/search.png' mode='widthFix'></image></view>
-    <image src='/img/index-msg.png' mode='widthFix'></image>
+    <view class='bar flexR-sb' catchtap='searchClicked'><image src='/img/search.png' mode='widthFix'></image></view>
+    <image src='/img/index-msg.png' mode='widthFix' catchtap='msgClicked'></image>
   </view>
   <swiper indicator-dots="true" autoplay="true" interval='3000' style='height:415rpx;' indicator-color='#fff' indicator-active-color=' rgba(255, 255, 255, 0.6)'>
   <block wx:for="{{imgUrls}}" wx:key='unique'>
     <swiper-item>
-      <image src="{{item}}" class="slide-image"/>
+      <image src="{{item.img_url}}" class="slide-image" catchtap='adListClicked' data-type='{{item.link_type}}' data-val='{{item.link_type_value}}' />
     </swiper-item>
   </block>
   </swiper>
@@ -31,14 +31,14 @@
   </view>
   <view class='recommend-content whiteBg flexR-sb'>
     <view class='recommend-img-0 overflow flexR'>
-      <image mode='widthFix' src='{{recommendImgUrl[0]}}' class='recommend-img'></image>
+      <image mode='widthFix' src='{{recommendImgUrl[0].img_url}}' class='recommend-img'></image>
     </view>
     <view class='right boxSize overflow '>
       <view class='recommend-img-1 overflow flexR'>
-        <image mode='widthFix' src='{{recommendImgUrl[1]}}' class='recommend-img'></image>
+        <image mode='widthFix' src='{{recommendImgUrl[1].img_url}}' class='recommend-img'></image>
       </view>
       <view class='recommend-img-2 overflow flexR'>
-        <image mode='widthFix' src='{{recommendImgUrl[2]}}' class='recommend-img'></image>
+        <image mode='widthFix' src='{{recommendImgUrl[2].img_url}}' class='recommend-img'></image>
       </view>
     </view>
   </view>

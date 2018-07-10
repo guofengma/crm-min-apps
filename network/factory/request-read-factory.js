@@ -153,6 +153,10 @@ export default class RequestFactory {
     return this.request(url, params, '获取商品详情页', true);
   }
 
+  static findProductByProdCodeString(params) {
+    let url = Operation.sharedInstance().findProductByProdCodeString;
+    return this.request(url, params, '根据code获取商品详情页', true);
+  }
 
   //获取热搜词
 
@@ -459,6 +463,27 @@ export default class RequestFactory {
   static addProductFavicon(params) {
     let url = Operation.sharedInstance().addProductFavicon;
     return this.request(url, params, '新增收藏', true);
+  }
+ 
+  /******************* 首页 ******************** */
+  
+  static queryAdList(Type) {
+    let params = {
+      pageType: Type
+    }
+    let url = Operation.sharedInstance().queryAdList;
+    return this.request(url, params, '轮播图查询', true);
+  }
+  
+  static topicList(params) {
+    params.port = '8101'
+    let url = Operation.sharedInstance().topicList;
+    return this.request(url, params, '获取首页专题', true);
+  }
+
+  static queryFeaturedList(params) {
+    let url = Operation.sharedInstance().queryFeaturedList;
+    return this.request(url, params, '获取推荐产品', true);
   }
 }
 

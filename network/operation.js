@@ -77,7 +77,10 @@ export default class Operation {
         // 搜索产品
 
         this.searchProduct ='/user/search/searchProduct'
+        
+        // 根据code获取产品详情
 
+        this.findProductByProdCodeString = '/user/product/findProductByProdCodeString'
 
     /********************** 购物车 *********************/
         // 新增
@@ -285,6 +288,21 @@ export default class Operation {
         // 新增
 
         this.addProductFavicon = '/user/productFavicon/addProductFavicon'
+
+        /************************** 首页 *******************************/ 
+
+        //轮播图
+
+        this.queryAdList = '/user/ad/queryAdList'
+
+        // 获取专题
+
+        this.topicList ='/admin/topic/list'
+
+        // 获取推荐产品
+
+        this.queryFeaturedList = '/user/featured/queryFeaturedList'
+        
     }
 
     static sharedInstance() {

@@ -115,6 +115,7 @@
         <view class='order-btn red flexR' wx:if="{{state.right=='删除订单'}}" bindtap="deleteItem">{{state.right}}</view>
         <view class='order-btn red flexR' wx:if="{{state.right=='继续支付'}}" bindtap="continuePay">{{state.right}}</view>
         <view class='order-btn red flexR' wx:if="{{state.right=='再次购买'}}" bindtap="continueBuy">{{state.right}}</view>
+        <view class='order-btn red flexR' wx:if="{{state.right=='订单退款'}}" bindtap="continueBuy">{{state.right}}</view>
     </block>
 
 </view>

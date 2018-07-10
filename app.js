@@ -1,4 +1,4 @@
-//app.js
+//app.js // wx31baa0076eb46332 27d5b168c1d7983d4ef0e9575db7a0f2
 import TCGlobal, {
     Storage,
     Tool,

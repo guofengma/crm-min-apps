@@ -27,10 +27,11 @@ Page({
   },
   onLoad: function (options) {
     this.setData({
-      productId: options.productId,
+      productId: options.productId || '',
+      prodCode: options.prodCode || ''
     })
     this.didLogin()
-    this.requestFindProductByIdApp({ productId:this.data.productId})
+    this.requestFindProductByIdApp()
     Event.on('didLogin', this.didLogin, this);
   },
   onShow: function () {
@@ -114,9 +115,18 @@ Page({
     Tool.showErrMsg(r)
     r.addToQueue();
   },
-  requestFindProductByIdApp(params){
+  requestFindProductByIdApp(){
     // 查询商品信息
-    let r = RequestFactory.findProductByIdApp(params);
+    let params = {
+      prodCode: this.data.prodCode,
+      productId: this.data.productId
+    }
+    let r = ''
+    if (this.data.productId){
+      r = RequestFactory.findProductByIdApp(params)
+    } else{
+      r = RequestFactory.findProductByProdCodeString(params)
+    }
     let productInfo = this.data.productInfo
     r.finishBlock = (req) => {
       let datas = req.responseObject.data
