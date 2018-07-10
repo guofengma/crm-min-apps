@@ -6,17 +6,29 @@ Page({
      * 页面的初始数据
      */
     data: {
-        expanded:[false,false]
+        userId:'',
+        detail:{}
     },
-    upOrDown(e){
-        let index=e.currentTarget.dataset.index;
-        this.data.expanded[index]=!this.data.expanded[index];
-        this.setData({
-            expanded:this.data.expanded
-        })
+    //获取详情
+    getDetail() {
+        let params = {
+            userId: this.data.userId
+        };
+        let r;
+        r = global.RequestFactory.findDealerAddressBookDetails(params);
+        r.finishBlock = (req) => {
+            this.setData({
+                detail:req.responseObject.data
+            })
+        };
+        Tool.showErrMsg(r);
+        r.addToQueue();
     },
     onLoad: function (options) {
-
+        this.setData({
+            userId: options.userId,
+        });
+        this.getDetail()
     },
 
 })

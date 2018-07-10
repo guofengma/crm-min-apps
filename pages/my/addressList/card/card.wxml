@@ -1,16 +1,16 @@
 <view>
     <view class="bg">
         <view class="detail">
-            <image src="/img/default-userImg.png" class="avature-img"></image>
-            <view class="name">马云</view>
-            <view class="level">明星CEO</view>
+            <image src="{{detail.head_img}}" class="avature-img"></image>
+            <view class="name">{{detail.realname}}</view>
+            <view class="level" wx:if="{{detail.remark}}">{{detail.remark}}</view>
         </view>
     </view>
     <view class="area">
         <view class="title">基本资料</view>
-        <view class="item">手机：13878355431</view>
-        <view class="item">微信号：chenshuai</view>
-        <view class="item">所在区域：浙江省杭州市萧山区</view>
-        <view class="item">收货地址：浙江省杭州市萧山区宁围街道望京大厦C2-505</view>
+        <view class="item">手机：{{detail.phone}}</view>
+        <view class="item">微信号：{{detail.wechat_id}}</view>
+        <view class="item">所在区域：{{detail.wechat_area}}</view>
+        <view class="item">收货地址：{{detail.address}}</view>
     </view>
 </view>

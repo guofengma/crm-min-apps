@@ -235,6 +235,16 @@ export default class Operation {
 
         this.exitLogin ='/user/memberLogin/exitLogin';
 
+        /******************我的---通讯录*********************** */
+
+        //通讯录列表
+
+        this.queryDealerAddressBook ='/user/dealer/queryDealerAddressBook';
+
+        //通讯录详情
+
+        this.findDealerAddressBookDetails ='/user/dealer/findDealerAddressBookDetails';
+
         // 修改用户头像
         
         this.updateDealerHeadImg = '/user/dealer/updateDealerHeadImgById';
