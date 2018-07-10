@@ -62,7 +62,17 @@
     float: left;
     width: 30%;
     text-align: center;
-    color:#666666
+    color:#666666;
+    position: relative;
+}
+.left:after{
+  content: '';
+  position: absolute;
+  right:0;
+  top: 0;
+  width:1rpx;
+  height: 160rpx;
+  background: #ddd;
 }
 .left image{
   margin-top: 25rpx;
@@ -74,7 +84,7 @@
 .item{
     height: 80rpx;
     line-height: 80rpx;
-    border-left:1rpx solid #ddd;
+    /* border-left:1rpx solid #ddd; */
     padding:0 20rpx;
     overflow: hidden;
     text-overflow: ellipsis;

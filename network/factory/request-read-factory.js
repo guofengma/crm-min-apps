@@ -485,5 +485,24 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().queryFeaturedList;
     return this.request(url, params, '获取推荐产品', true);
   }
+
+  /***********************帮助********************************/ 
+
+  static queryHelpQuestionList(id) {
+    console.log(id)
+    let params = id ? {typeid:id}:{}
+    let url = Operation.sharedInstance().queryHelpQuestionList;
+    return this.request(url, params, '问题列表', true);
+  }
+
+  static findHelpQuestionById(params) {
+    let url = Operation.sharedInstance().findHelpQuestionById;
+    return this.request(url, params, '根据ID查询问题详情', true);
+  }
+
+  static updateHelpQuestion(params) {
+    let url = Operation.sharedInstance().queryHelpQuestionList;
+    return this.request(url, params, '解决问题是否有用', true);
+  }
 }
 

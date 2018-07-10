@@ -27,7 +27,7 @@ Page({
           that.setData({
             token:res.data.access_token
           })
-          that.getCode()
+          //that.getCode()
         }
       });
     },

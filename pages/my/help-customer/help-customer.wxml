@@ -5,24 +5,16 @@
    </view>
     <view class="hot-question">热门问题</view>
     <view class="question-area">
-        <view class="question-item" bindtap="questionList">
-            <view class="left">
+        <view class="question-item" wx:for='{{list}}' wx:key='unique' >
+            <view class="left" catchtap="questionList" data-typeid='{{item.typeid}}'>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_order.png" class="icon"></image>
-                <view>订单问题</view>
+                <view>{{item.name}}</view>
             </view>
             <view class="right">
-                <view class="item">多笔订单能否一起发货?多笔订单能否一起发货?多笔订单能否一起发货?</view>
-                <view class="item">为什么要提供身份证信息?</view>
-            </view>
-        </view>
-         <view class="question-item">
-            <view class="left">
-                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_order.png" class="icon"></image>
-                <view>订单问题</view>
-            </view>
-            <view class="right">
-                <view class="item">多笔订单能否一起发货?多笔订单能否一起发货?多笔订单能否一起发货?</view>
-                <view class="item">为什么要提供身份证信息?</view>
+              <view class="item"  wx:for='{{item.list}}' wx:key='unique' 
+                    wx:for-item="detail" wx:for-index="key"  catchtap='toDetail'  data-id='{{detail.id}}'>
+                {{detail.title}}
+              </view>
             </view>
         </view>
     </view>

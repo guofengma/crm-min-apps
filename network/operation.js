@@ -302,6 +302,21 @@ export default class Operation {
         // 获取推荐产品
 
         this.queryFeaturedList = '/user/featured/queryFeaturedList'
+
+
+        /************************** 帮助 *******************************/
+
+        // 解决问题是否有用
+
+        this.updateHelpQuestion = '/user/helpQuestion/updateHelpQuestion'
+
+        // 根据ID查询问题详情
+
+        this.findHelpQuestionById  = '/user/helpQuestion/findHelpQuestionById'
+
+        // 问题列表 可传参 也可以不传
+
+        this.queryHelpQuestionList = '/user/helpQuestion/queryHelpQuestionList'
         
     }
 

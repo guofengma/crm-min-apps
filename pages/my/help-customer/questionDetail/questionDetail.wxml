@@ -1,21 +1,13 @@
+<import src="/libs/wxParse/wxParse.wxml" />
+
 <view class='detail'>
-    <view class="title">下单后多久发货</view>
+    <view class="title">{{list.title}}</view>
     <view class="content">
-
-        1. 如果订单为“买家已付款”，此时交易是不会自动确认收货打款给卖家的，请放心。
-
-        ① 可以点击“提醒发货”或直接旺旺联系卖家确认发货情况；
-        ② 若联系不上卖家可申请退款，申请后如果卖家48小时不处理，系统将自动退款；若卖家点击发货，退款将自动关闭，需要重新申请退款。 若还需要商品，可以在退款后搜索其他店铺的同款商品。
-
-        2. 如果订单为“卖家已发货”，建议点击【查看物流】确认货物是否已经在运往途中。
-
-        若已发货一直未收到货，联系不上卖家，可以在交易自动确认收货打款给卖家之前，延长收货时间 或 申请【仅退款】-【未收到货】，避免钱货两空。
-
-        3. 如果对卖家未按约定发货有异议，可以在退款成功后发起违背承诺的投诉
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
     <view class="opr">
-        <view class="no-help btn">没啥帮助？</view>
-        <view class="has-help btn">有用<image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/helped.png"></image><text>+1</text></view>
+        <view class="no-help btn" catchtap='isUseClicked' data-index='1'>没啥帮助？</view>
+        <view class="has-help btn" catchtap='isUseClicked' data-index='2'>有用<image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/helped.png"></image><text>+1</text></view>
     </view>
 </view>
 

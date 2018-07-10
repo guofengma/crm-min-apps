@@ -1,26 +1,28 @@
-let {Tool, RequestFactory, Event, Storage} = global;
-const app = getApp();
+let {Tool, RequestFactory } = global;
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        list: [{
-            id: 1,
-            name: '下单多久后发货'
-        }, {
-             id: 2,
-            name: '怎么改地址'
-        }
-        ]
+      list:''
     },
-    //跳到详情页
-    toDetail() {
-        Tool.navigateTo('../questionDetail/questionDetail')
-    },
+    queryHelpQuestionList(params) {
+      let r = RequestFactory.queryHelpQuestionList(params);
+      r.finishBlock = (req) => {
+        this.setData({
+          list: req.responseObject.data
+        })
+      }
 
+      r.addToQueue();
+    },
+    toDetail(e){
+      let id = e.currentTarget.dataset.id
+      Tool.navigateTo('/pages/my/help-customer/questionDetail/questionDetail?id='+id)
+    },
     onLoad: function (options) {
+      this.queryHelpQuestionList(options.id)
     },
     onUnload: function () {
     }

@@ -1,27 +1,45 @@
-let {Tool, RequestFactory, Event, Storage} = global;
-const app = getApp();
+let {Tool, RequestFactory} = global;
+
+import WxParse from '../../../../libs/wxParse/wxParse.js';
+
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
-        list: [{
-            id: 1,
-            name: '下单多久后发货'
-        }, {
-             id: 2,
-            name: '怎么改地址'
-        }
-        ]
+      
     },
-    //跳到详情页
-    toDetail() {
-        Tool.navigateTo('/pages/my/account/account')
-    },
-
     onLoad: function (options) {
+      this.findHelpQuestionById(options.id)
+    },
+    isUseClicked(e){
+      let params = {
+        id:this.data.list.id
+      }
+      let index = e.currentTarget.dataset.index
+      if(index==1){
+        params.helpNoNum = 1
+      } else {
+        params.helpYesNum = 1
+      }
+      let r = RequestFactory.updateHelpQuestion(params);
+      r.finishBlock = (req) => {
+        Tool.showSuccessToast('感谢您的评价')
+      }
+      r.addToQueue();
+    },
+    findHelpQuestionById(id) {
+      let params = {
+        id:id
+      }
+      let r = RequestFactory.findHelpQuestionById(params);
+      r.finishBlock = (req) => {
+        this.setData({
+          list: req.responseObject.data
+        })
+        let html = req.responseObject.data.content
+        WxParse.wxParse('article', 'html', html, this, 5);
+      }
+      r.addToQueue();
     },
     onUnload: function () {
+
     }
 })
