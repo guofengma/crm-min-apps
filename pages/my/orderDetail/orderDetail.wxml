@@ -47,9 +47,9 @@
     <view class='order-prd-info'>
         <block wx:for="{{detail.list}}" wx:key="unique">
             <template is="my-order-product-info" data="{{...item}}"/>
-            <view class='sale-after flexR' wx:if="{{state.middle}}">
-              <view class='order-btn btn-left flexR' catchtap='subBtnClicked' data-content='{{state.middle[0]}}' data-status
-="{{item.status}}">{{state.middle[0]}}</view>
+            <view class='sale-after flexR' wx:if="{{item.middleBtn}}">
+              <view class='order-btn btn-left flexR' catchtap='subBtnClicked' data-id='{{item.middleBtn.id}}' data-returntype
+="{{item.middleBtn.returnType}}">{{item.middleBtn.content}}</view>
             </view>
         </block>
     </view>

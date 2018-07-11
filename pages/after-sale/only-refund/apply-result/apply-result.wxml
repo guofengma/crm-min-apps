@@ -3,8 +3,8 @@
 <view class='state flexR whiteBg'>
    <image src='{{state.icon}}' mode='widthFix' class='icon'></image>
    <view>
-    <view class='{{state.className}} stateTitle'>商家拒绝你的情况</view>
-    <view class='gray font-26'>提交成功</view>
+    <view class='{{state.className}} stateTitle'>{{state.state}}</view>
+    <view class='gray font-26'>{{state.content}}</view>
     <view class='gray font-26'>2018-04-03 14:55:24</view>
    </view>
 </view>
