@@ -1,4 +1,30 @@
-@import "/pages/after-sale/apply-after-sale";
+@import "/components/my-order-product-info/my-order-product-info";
+
+/* @import "/components/address-info/address-info"; */
+
+@import "/components/cell-line/cell-line";
+
+@import "/components/update-img/update-img";
+
+.tips{
+  height: 40rpx;
+}
+
+.textarea{
+  font-size: 26rpx;
+}
+textarea{
+  height: 180rpx;
+  background: #fff;
+  width: 100%;
+  padding: 20rpx 30rpx;
+  font-size: 26rpx
+}
+
+.update-img-view{
+  padding: 20rpx 30rpx;
+  margin-bottom: 150rpx;
+}
 .cell-line{
   height: 88rpx;
   line-height: 88rpx;
