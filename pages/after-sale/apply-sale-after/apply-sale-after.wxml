@@ -19,7 +19,7 @@
   <view bindtap='chooseReason'>
     <template is="cell-line" data="{{name:'退货原因',content:reason.list[activeIndex]}}"/> 
   </view>
-  <view class='cell-line refund-num whiteBg'>
+  <view class='cell-line refund-num whiteBg' wx:if='{{refundType!=3}}'>
     退款金额： <text class='red'>¥{{list.showRefund}}</text>
   </view>
 

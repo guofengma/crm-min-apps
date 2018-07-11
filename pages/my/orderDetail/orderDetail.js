@@ -35,10 +35,10 @@ Page({
           [
             ''
           ],
-          '/pages/after-sale/refund/apply-refund/apply-refund?refundType=1', // 申请退款
+          '/pages/after-sale/apply-sale-after/apply-sale-after?refundType=1', // 申请退款
           '/pages/after-sale/only-refund/only-refund-detail/only-refund-detail',//退款中的页面
           [
-            '/pages/after-sale/refund/apply-refund/apply-refund?refundType=2', //申请退货退款
+            '/pages/after-sale/apply-sale-after/apply-sale-after?refundType=2', //申请退货退款
             '/pages/after-sale/exchange-goods/apply-exchange/apply-exchange' //申请换货
           ],
           [

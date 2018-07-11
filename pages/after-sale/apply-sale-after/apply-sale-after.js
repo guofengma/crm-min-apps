@@ -7,7 +7,7 @@ Page({
       list: ['7天无理由退换货', '未收到货', '商品描述的尺寸与实物不符', '少件/漏件', '假冒品牌/产品', '包装破损/商品破损', '未按约定时间发货', '退运费','发票问题']
     },
     activeIndex:'',
-    refundType:1, //2为退货退款 1为仅退款
+    refundType:1, //2为退货退款 1为仅退款 3为换货
     originalImg:[],
     smallImg:[],
     remark:''
@@ -45,8 +45,10 @@ Page({
     let r = ''
     if (this.data.refundType==1){
       r = RequestFactory.orderRefund(params)
-    } else {
+    } else if (this.data.refundType == 1) {
       r = RequestFactory.applyReturnGoods(params)
+    } else {
+      r = RequestFactory.applyExchangeProduct(params)
     }
     r.finishBlock = (req) => {
 
