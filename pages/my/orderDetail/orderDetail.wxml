@@ -10,7 +10,6 @@
 <view class='order-state boxSize'>
     <view class='order-state-icon'
           style="background:url('{{imgSrcUrl+state.orderIcon}}') no-repeat 10rpx center;background-size:42rpx 42rpx">
-        <!--<image class='order-state-icon' src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/order-state-1.png"></image>-->
         <view class='order-status'>
             {{state.status}}
         </view>
@@ -46,7 +45,9 @@
     <!--订单信息  -->
     <view class='order-prd-info'>
         <block wx:for="{{detail.list}}" wx:key="unique">
-            <template is="my-order-product-info" data="{{...item}}"/>
+            <view catchtap='productClicked' data-productid='{{item.productId}}'>
+              <template is="my-order-product-info" data="{{...item}}"/>
+            </view>
             <view class='sale-after flexR' wx:if="{{item.middleBtn}}">
               <view class='order-btn btn-left flexR' catchtap='subBtnClicked' data-id='{{item.middleBtn.id}}' data-returntype
 ="{{item.middleBtn.returnType}}" data-index='{{index}}'>{{item.middleBtn.content}}</view>

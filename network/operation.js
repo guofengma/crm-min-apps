@@ -82,6 +82,10 @@ export default class Operation {
 
         this.findProductByProdCodeString = '/user/product/findProductByProdCodeString'
 
+        // 获取产品规格有误
+
+        this.findProductStockBySpec = '/user/product/findProductStockBySpec'
+
     /********************** 购物车 *********************/
         // 新增
         

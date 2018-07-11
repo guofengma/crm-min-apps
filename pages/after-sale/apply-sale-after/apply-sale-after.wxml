@@ -5,8 +5,6 @@
 <import src='/components/update-img/update-img.wxml'/>
 
 
-<!----------------------仅退货和退货退款公用页面 refundType为1 为退货退款 2为 仅退货---------------------------  -->
-
 <view class='redBg flexR tips font-26'>退回商品需由买家承担运费，请确保不影响商品完好</view>
 
 <view class='order-info'>
@@ -17,9 +15,9 @@
 
 <view>
   <view bindtap='chooseReason'>
-    <template is="cell-line" data="{{name:'退货原因',content:reason.list[activeIndex]}}"/> 
+    <template is="cell-line" data="{{name:reason[refundType].choose,content:reason[refundType].list[activeIndex]}}"/> 
   </view>
-  <view class='cell-line refund-num whiteBg' wx:if='{{refundType!=3}}'>
+  <view class='cell-line refund-num whiteBg' wx:if='{{refundType!=2}}'>
     退款金额： <text class='red'>¥{{list.showRefund}}</text>
   </view>
 
@@ -29,7 +27,6 @@
 <view class='cell-line'>上传凭证</view>
 
 <view class='update-img-view whiteBg'>
-  <!-- <template is="update-img" data="{{smallImg}}"/> -->
   <update-img bind:uploadImage='uploadImage'/>
 </view>
 
@@ -37,4 +34,4 @@
 
 <view class='fixed-bottom redBg font-32 flexR btn-view' catchtap='orderRefund'>确认</view>
 
-<choose-after-sale-reason hidden='{{hidden}}'  bind:makeSureReason="makeSureReason" reason="{{reason}}" />
+<choose-after-sale-reason hidden='{{hidden}}'  bind:makeSureReason="makeSureReason" reason="{{reason[refundType]}}" />

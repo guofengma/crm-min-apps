@@ -291,7 +291,10 @@ Page({
     Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + params+'&type=2')
   },
   cartProductClicked(e){
-    Tool.navigateTo('/pages/product-detail/product-detail?productId=' + e.currentTarget.dataset.id)
+    let state = e.currentTarget.dataset.state
+    if(state == 4) {
+      Tool.navigateTo('/pages/product-detail/product-detail?productId=' + e.currentTarget.dataset.id)
+    }
   },
   onUnload: function () {
     Event.off('updateStorageShoppingCart', this.getStorageShoppingCart);

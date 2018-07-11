@@ -48,6 +48,13 @@ Page({
       productList: items
     })
   },
+  productClicked(e){
+    let state = e.currentTarget.dataset.state
+    let id = e.currentTarget.dataset.id
+    if(state ==4){
+      Tool.navigateTo('/pages/product-detail/product-detail?productId=' + id)
+    }
+  },
   onUnload: function () {
     Event.off('updateCollectionPrd', this.getCollectionPrd);
   }

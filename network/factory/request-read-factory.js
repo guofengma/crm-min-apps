@@ -157,6 +157,11 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().findProductByProdCodeString;
     return this.request(url, params, '根据code获取商品详情页', true);
   }
+  
+  static findProductStockBySpec(params) {
+    let url = Operation.sharedInstance().findProductStockBySpec;
+    return this.request(url, params, '详情页产品规格选择', true);
+  }
 
   //获取热搜词
 

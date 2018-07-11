@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "申请退货退款",
+  "navigationBarTitleText": "",
   "usingComponents": {
     "choose-after-sale-reason": "/components/choose-after-sale-reason/choose-after-sale-reason",
     "update-img": "/components/update-img/update-img"

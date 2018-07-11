@@ -1,6 +1,10 @@
-.img-view image{
+.img-view{
   width:240rpx;
   height: 240rpx;
+  position: relative;
+}
+.img-view image{
+  height: 100%;
 }
 .move-box{
   background: #fff;
@@ -24,4 +28,14 @@
 .label-view{
   margin-top: 15rpx;
   margin-bottom: 40rpx;
+}
+.invalid{
+  width: 150rpx;
+	height: 150rpx;
+	background-color: rgba(0, 0, 0, 0.6);
+	border-radius: 4rpx;
+  position: absolute;
+  left: 46rpx;
+  top: 46rpx;
+  color: #fff;
 }

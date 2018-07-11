@@ -1,4 +1,4 @@
-let { Tool} = global
+let { Tool, RequestFactory } = global
 Component({
   properties: {
     productTypeList:Array,
@@ -67,13 +67,21 @@ Component({
       let key = e.currentTarget.dataset.type
       let val = e.currentTarget.dataset.index
       let typeVal = e.currentTarget.dataset.typename
+      let id = e.currentTarget.dataset.id
       let obj = this.data.isActive
       obj[key]={}
       obj[key].index = val
       obj[key].val = typeVal
+      obj[key].id = id
       this.setData({
         isActive: obj
       })
+      let spec_id = []
+      for(let i=0;i<obj.length;i++){
+        spec_id.push(obj[i].id)
+      }
+      let params = spec_id.join('-')
+      this.findProductStockBySpec(params)
       // 如果类型选择完毕 则马上显示对应的价格和库存
       if (this.data.isActive.length == this.properties.productTypeList.length) {
         this.makeSureType(true)
@@ -102,5 +110,17 @@ Component({
       })
       this.triggerEvent('counterInputOnChange', this.data.innerCount);
     },
+    findProductStockBySpec(id){
+      let params = {
+        productId: this.properties.productInfo.id,
+        spec:id
+      }
+      let r = r = RequestFactory.findProductStockBySpec(params);
+      r.finishBlock = (req) => {
+        
+      };
+      Tool.showErrMsg(r)
+      r.addToQueue();
+    }
   }
 })

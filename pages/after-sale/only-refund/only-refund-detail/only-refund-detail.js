@@ -2,7 +2,11 @@ let { Tool, RequestFactory, Storage } = global
 
 Page({
   data: {
-    list:{}
+    list:{},
+    result: [
+      { state: "退款成功",time: '' },
+      { state: "商家退款中" }
+    ]
   },
   onLoad: function (options) {
     this.setData({

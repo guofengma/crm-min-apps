@@ -1,9 +1,10 @@
 <block wx:for='{{productList}}' wx:key="unique">
   <view class='move-box'>
     <delete-bar  bind:deleteClicked="deleteClicked" item='{{productList}}' index="{{index}}">
-      <view class='flexR-sb my-collection boxSize'>
+      <view class='flexR-sb my-collection boxSize' catchtap='productClicked' data-id='{{item.id}}' data-state='{{item.status}}'>
           <view class='img-view'>
             <image src='{{item.img_url}}'></image>
+            <view class='invalid font-30 flexR' wx:if="{{item.status!=4}}" >已失效</view>
           </view>
           <view class='productInfo-view'>
             <view class='ellipsis-2 prd-name'>

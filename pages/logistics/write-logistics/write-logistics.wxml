@@ -14,9 +14,9 @@
   </view>
 </view>
 
-<view class='cell-line font-26 flexR'>
+<!-- <view class='cell-line font-26 flexR'>
   联系电话
   <input type='text' value='{{phone}}' placeholder='请填写手机号' class='input' placeholder-class='gary' bindinput='inputOnPhonechange'></input>
-</view>
+</view> -->
 
 <view class='loginBtn fixed-bottom font-32 flexR'>提交</view>

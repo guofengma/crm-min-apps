@@ -17,7 +17,7 @@
 </view>
 <!--地址信息  -->
 <view class='address active whiteBg'>
-  <template is="address-info" data="{{addressType,...list.address,hasData:true}}"/>
+  <template is="address-info" data="{{addressType,...address,hasData:true}}"/>
 </view>
 
 <!--商家地址  -->

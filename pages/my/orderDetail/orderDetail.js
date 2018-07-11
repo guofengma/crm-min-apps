@@ -36,12 +36,10 @@ Page({
             ''
           ],
           '/pages/after-sale/apply-sale-after/apply-sale-after?refundType=1', // 申请退款
+          '/pages/after-sale/choose-after-sale/choose-after-sale',//退换
           '/pages/after-sale/only-refund/only-refund-detail/only-refund-detail',//退款中的页面
           [
-            '/pages/after-sale/apply-sale-after/apply-sale-after?refundType=2', //申请退货退款
-            '/pages/after-sale/exchange-goods/apply-exchange/apply-exchange' //申请换货
-          ],
-          [
+            '/pages/after-sale/only-refund/only-refund-detail/only-refund-detail',//退款中的页面
             '/pages/after-sale/refund/refund-detail/refund-detail',// 退货退款详情
             '/pages/after-sale/exchange-goods/exchange-goods'  //换货详情
           ]
@@ -315,7 +313,7 @@ Page({
     },
     //再次购买
     continueBuy(){
-
+      
     },
     middleBtn(){
       let detail = this.data.detail
@@ -331,17 +329,17 @@ Page({
           middle = { id: 1,content: '退款' }
         }
         if (outOrderState == 3){
-          middle = { id: 3, content: '退换' }
+          middle = { id: 2, content: '退换' }
         }
         if (outOrderState == 5) {
           // 确认收货的状态的订单售后截止时间和当前时间比
           let now = new Date().getTime()
           if (finishTime - now>0){
-            middle = { id: 3, content: '退换' }
+            middle = { id: 2, content: '退换' }
           }      
         }
         if ((innerState == 4) && returnType===null ) {
-          middle = { id:2, content: '退款中' }
+          middle = { id:3, content: '退款中' }
         }
         if ((innerState == 5 || innerState == 6) && returnType === null){
           middle = { id:4, content: '退换中' }
@@ -372,6 +370,10 @@ Page({
       let page = this.data.page[id]
 
       Tool.navigateTo(page)
+    },
+    productClicked(e){
+      let id = e.currentTarget.dataset.productid
+      Tool.navigateTo('/pages/product-detail/product-detail?productId=' + id)
     },
     onUnload: function () {
       clearTimeout(this.data.time);

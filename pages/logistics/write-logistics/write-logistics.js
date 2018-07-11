@@ -42,9 +42,9 @@ Page({
       code: e.detail.value
     })
   },
-  inputOnPhonechange(e) {
-    this.setData({
-      phone: e.detail.value
-    })
-  },
+  // inputOnPhonechange(e) {
+  //   this.setData({
+  //     phone: e.detail.value
+  //   })
+  // },
 })

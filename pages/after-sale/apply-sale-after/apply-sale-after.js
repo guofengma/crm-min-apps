@@ -2,12 +2,55 @@ let { Tool, RequestFactory, Storage} = global;
 Page({
   data: {
     hidden:false,
-    reason: {
-      title: '请选择退款原因',
-      list: ['7天无理由退换货', '未收到货', '商品描述的尺寸与实物不符', '少件/漏件', '假冒品牌/产品', '包装破损/商品破损', '未按约定时间发货', '退运费','发票问题']
-    },
+    reason:[
+      {
+        navbar:'申请退款',
+        title: '请选择退款原因', // 仅退款
+        choose:'退款原因',
+        list: [
+          '多拍/错拍/不想要', 
+          '快递/物流一直未收到', 
+          '未按约定时间发货',
+          '商品/破损/少件/污渍等', 
+          '货物破损已拒签',
+          '假冒品牌/产品',
+          '未按约定时间发货',
+          '退运费',
+          '发票问题',
+          '其他'
+        ]
+      },
+      {
+        navbar: '申请换货',
+        title: '请选择换货原因', // 换货
+        choose: '退换货原因',
+        list: [
+          '7天无理由退换货',
+          '商品描述的尺寸与实物不符',
+          '商品/破损/少件/污渍等',
+          '质量存在问题',
+          '假冒品牌/产品',
+          '其他'
+        ]
+      },
+      {
+        navbar: '申请退货',
+        title: '请选择退货原因', //退款退货
+        choose: '退货原因',
+        list: [
+          '7天无理由退换货',
+          '商品描述的尺寸与实物不符',
+          '商品/破损/少件/污渍等',
+          '假冒品牌/产品',
+          '包装破损/商品破损',
+          '退运费',
+          '发票问题',
+          '其他'
+        ]
+      },
+    ],
     activeIndex:'',
-    refundType:1, //2为退货退款 1为仅退款 3为换货
+    refundType: 0, // 0为仅退款 1为退货退款  2为换货
     originalImg:[],
     smallImg:[],
     remark:''
@@ -20,6 +63,9 @@ Page({
     this.setData({
       refundType: options.refundType,
       list: Storage.getInnerOrderList() || ''
+    })
+    wx.setNavigationBarTitle({
+      title: this.data.reason[options.refundType].navbar
     })
   },
   chooseReason(){

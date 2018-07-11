@@ -182,6 +182,31 @@ export default class Tool {
         return openinghours;
     }
 
+    // 日期倒计时 
+
+    static getDistanceTime(time, showInterval) {
+      let endTime = new Date(Date.parse(time.replace(/-/g, "/")));/*replace将时间字符串中所有的'-'替换成'/',parse将时间格式的字符串转换成毫秒*/
+      let nowTime = new Date();
+      let distance = endTime.getTime() - nowTime.getTime();/*getTime把一个date对象转换成毫秒*/
+
+      let day = 0;
+      let hour = 0;
+      let minute = 0;
+      let second = 0;
+
+      if (distance >= 0) {
+        day = Math.floor(distance / 1000 / 60 / 60 / 24);
+        hour = Math.floor(distance / 1000 / 60 / 60 % 24);
+        minute = Math.floor(distance / 1000 / 60 % 60);
+        second = Math.floor(distance / 1000 % 60);
+        distanceTime = day + "天" + hour + "时" + minute + "分" + second + "秒";
+      } else {
+        distanceTime = "目标日期小于当前日期!"
+      }
+      
+      return distanceTime
+    }
+
     //Object 空值判断
     static isEmpty(object) {
         if (object === null || object === undefined) {

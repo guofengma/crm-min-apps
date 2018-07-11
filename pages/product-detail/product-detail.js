@@ -133,6 +133,7 @@ Page({
       let typeList = datas.saleSpecValueList;
       typeList.forEach((item)=>{
         item.typeList = item.spec_values.split(',')
+        item.typeId = item.ids.split(',')
       })
       this.setData({
         imgUrls: datas.ImgUrl,
