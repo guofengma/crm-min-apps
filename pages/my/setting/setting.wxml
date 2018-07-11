@@ -25,14 +25,14 @@
                 <switch  bindchange="switchChange"/>
             </view>
         </view> -->
-        <view class="item line">
-            <view>
-                <text>清除缓存</text>
-            </view>
-            <view>
-                <text>123456</text>
-            </view>
-        </view>
+        <!--<view class="item line">-->
+            <!--<view>-->
+                <!--<text>清除缓存</text>-->
+            <!--</view>-->
+            <!--<view>-->
+                <!--<text>123456</text>-->
+            <!--</view>-->
+        <!--</view>-->
         <view class="item line" bindtap="aboutUs">
             <view>
                 <text>关于我们</text>

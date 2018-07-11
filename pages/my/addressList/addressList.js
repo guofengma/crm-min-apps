@@ -12,7 +12,7 @@ Page({
         params: {},
         number: '',
         currentPage: 1, // 当前的页数
-        pageSize: 4, // 每次加载请求的条数 默认10
+        pageSize: 5, // 每次加载请求的条数 默认5
         hasNext:true
     },
     getList() {

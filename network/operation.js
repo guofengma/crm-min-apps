@@ -325,7 +325,7 @@ export default class Operation {
         this.queryFeaturedList = '/user/featured/queryFeaturedList'
 
 
-        /************************** 帮助 *******************************/
+        /************************** 帮助中心 *******************************/
 
         // 解决问题是否有用
 
@@ -338,7 +338,11 @@ export default class Operation {
         // 问题列表 可传参 也可以不传
 
         this.queryHelpQuestionList = '/user/helpQuestion/queryHelpQuestionList'
-        
+
+        // 添加反馈
+
+        this.addFeedback = '/user/feedback/addFeedback'
+
     }
 
     static sharedInstance() {

@@ -509,7 +509,7 @@ export default class RequestFactory {
     return this.request(url, params, '获取推荐产品', true);
   }
 
-  /***********************帮助********************************/ 
+  /***********************帮助中心********************************/
 
   static queryHelpQuestionList(id) {
     let params = id ? {typeid:id}:{}
@@ -526,5 +526,11 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().queryHelpQuestionList;
     return this.request(url, params, '解决问题是否有用', true);
   }
+
+  static addFeedback(params) {
+    let url = Operation.sharedInstance().addFeedback;
+    return this.request(url, params, '添加反馈', true);
+  }
+
 }
 
