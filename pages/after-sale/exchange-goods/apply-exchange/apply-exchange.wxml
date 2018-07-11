@@ -9,10 +9,10 @@
 <view class='apply-exchange'>
   <!--订单信息  -->
   <view class='container'>
-    <view class='redBg font-26 flexR tips'>仅限更换同款同款价格商品</view>
-      <view class='group-view flexR-sb font-26 whiteBg'>订单编号：45116516516156151615156165</view>
-      <template is="my-order-product-info" data="{{...item}}"/>
-      <view class='group-view flexR-sb font-26 whiteBg'>下单时间：2018-05-05 12:15：15</view>
+      <view class='redBg font-26 flexR tips'>仅限更换同款同款价格商品</view>
+      <view class='group-view flexR-sb font-26 whiteBg'>订单编号：{{list.orderNum}}</view>
+      <template is="my-order-product-info" data="{{...list}}"/>
+      <view class='group-view flexR-sb font-26 whiteBg'>下单时间：{{list.createTime}}</view>
     </view>
 
     <!--换货理由和选择  -->
@@ -29,7 +29,7 @@
 
     <!--地址   -->
     <view class='whiteBg address active'>
-      <template is="address-info" data="{{addressType,src,...address,hasData}}"/>
+      <template is="address-info" data="{{addressType,src,...list.address,hasData:true}}"/>
     </view>
 
     <!--留言  -->
@@ -41,12 +41,12 @@
     <!--图片上传  -->
     <view >
       <view class='group-view flexR-sb gray font-26'>上传凭证</view>
-      <template is="update-img" data=""/>
+      <update-img bind:uploadImage='uploadImage'/>
     </view>
 </view>
 
 <!--底部确认  -->
-<view class='fixed-bottom redBg font-32 flexR btn-view'>确认</view>
+<view class='fixed-bottom redBg font-32 flexR btn-view' catchtap='applyExchangeProduct'>确认</view>
 
 
 <choose-after-sale-reason hidden='{{hidden}}'  bind:makeSureReason="makeSureReason" reason="{{reason}}" />

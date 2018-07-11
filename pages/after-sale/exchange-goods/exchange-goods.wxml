@@ -17,11 +17,11 @@
 </view>
 <!--地址信息  -->
 <view class='address active whiteBg'>
-  <template is="address-info" data="{{addressType,...address,hasData}}"/>
+  <template is="address-info" data="{{addressType,...list.address,hasData:true}}"/>
 </view>
 
 <!--商家地址  -->
- <template is="address-saler" data="{{addressType,src,...address,hasData}}"/>
+<template is="address-saler" data="{{addressType,src,...address,hasData}}"/>
 
 <!--物流  -->
 <view>

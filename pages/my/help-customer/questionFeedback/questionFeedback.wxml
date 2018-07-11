@@ -20,7 +20,8 @@
     <view class="wrap">
         <view class="item">上传图片</view>
         <view class="phone-area">
-          <template is="update-img" data="{{smallImg}}"/>
+          <!-- <template is="update-img" data="{{smallImg}}"/> -->
+          <update-img bind:uploadImage='uploadImage'/>
         </view>
         
     </view>

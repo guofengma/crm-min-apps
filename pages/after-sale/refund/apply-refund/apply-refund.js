@@ -1,4 +1,4 @@
-// pages/after-sale/refund/apply-refund.js
+let { Tool, RequestFactory, Storage} = global;
 Page({
   data: {
     hidden:false,
@@ -7,7 +7,10 @@ Page({
       list: ['7天无理由退换货', '未收到货', '商品描述的尺寸与实物不符', '少件/漏件', '假冒品牌/产品', '包装破损/商品破损', '未按约定时间发货', '退运费','发票问题']
     },
     activeIndex:'',
-    refundType:1, //1为仅退货退款 2为仅退款
+    refundType:1, //2为退货退款 1为仅退款
+    originalImg:[],
+    smallImg:[],
+    remark:''
   },
 
   /**
@@ -15,7 +18,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      refundType: options.refundType
+      refundType: options.refundType,
+      list: Storage.getInnerOrderList() || ''
     })
   },
   chooseReason(){
@@ -27,6 +31,38 @@ Page({
     this.setData({
       activeIndex: e.detail.activeIndex,
       hidden: e.detail.hidden
+    })
+  },
+  orderRefund(){
+    let list = this.data.list
+    let params = {
+      imgUrls: this.data.originalImg.join(','),
+      orderProductId:list.id,
+      remark: this.data.remark,
+      returnReason: this.data.reason.list[this.data.activeIndex],
+      smallImgUrls:this.data.smallImg.join(','),
+    };
+    let r = ''
+    if (this.data.refundType==1){
+      r = RequestFactory.orderRefund(params)
+    } else {
+      r = RequestFactory.applyReturnGoods(params)
+    }
+    r.finishBlock = (req) => {
+
+    };
+    Tool.showErrMsg(r)
+    r.addToQueue();
+  },
+  uploadImage(e){
+    this.setData({
+      originalImg: e.detail.originalImg,
+      smallImg: e.detail.smallImg,
+    })
+  },
+  inputChange(e){
+    this.setData({
+      remark: e.detail.value
     })
   }
 })

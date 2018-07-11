@@ -35,10 +35,10 @@ Page({
           [
             ''
           ],
-          '/pages/after-sale/refund/apply-refund/apply-refund', // 申请退款
+          '/pages/after-sale/refund/apply-refund/apply-refund?refundType=1', // 申请退款
           '/pages/after-sale/only-refund/only-refund-detail/only-refund-detail',//退款中的页面
           [
-            '/pages/after-sale/refund/apply-refund/apply-refund', //申请退货退款
+            '/pages/after-sale/refund/apply-refund/apply-refund?refundType=2', //申请退货退款
             '/pages/after-sale/exchange-goods/apply-exchange/apply-exchange' //申请换货
           ],
           [
@@ -317,9 +317,6 @@ Page({
     continueBuy(){
 
     },
-    orderRefund(){
-      //仅退款
-    },
     middleBtn(){
       let detail = this.data.detail
       let outOrderState = detail.status
@@ -360,8 +357,21 @@ Page({
     },
     subBtnClicked(e){
       let id = e.currentTarget.dataset.id
+
+      let index = e.currentTarget.dataset.index
+
+      let list = this.data.detail.list[index]
+      list.orderNum = this.data.detail.orderNum
+      list.createTime = this.data.detail.createTime
+      list.showRefund = list.price * list.num
+      list.address = this.data.address
+      Storage.setInnerOrderList(this.data.detail.list[index])
+
       let returnType = e.currentTarget.dataset.returnType
+
       let page = this.data.page[id]
+
+      Tool.navigateTo(page)
     },
     onUnload: function () {
       clearTimeout(this.data.time);

@@ -380,6 +380,8 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().againToPrePay;
     return this.request(url, params, '继续去预支付', true);
   }
+
+  
   /*******************  订单 售后******************** */
 
   static orderRefund(params) {
@@ -388,11 +390,30 @@ export default class RequestFactory {
     return this.request(url, params, '申请仅退款', true);
   }
 
+  static ExchangeProduct(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().ExchangeProduct;
+    return this.request(url, params, '申请换货', true);
+  }
+
   static applyReturnGoods(params) {
     params.port = '8103'
     let url = Operation.sharedInstance().applyReturnGoods;
-    return this.request(url, params, '申请换货', true);
+    return this.request(url, params, '申请退货', true);
   }
+
+  static findReturnProductById(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().findReturnProductById;
+    return this.request(url, params, '查看退款退货换货情况', true);
+  }
+
+  static fillInExpressInfoById(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().fillInExpressInfoById;
+    return this.request(url, params, '退货换货填写物流信息', true);
+  }
+
   
   /*******************我的---设置******************** */
 

@@ -175,4 +175,14 @@ export default class Storage {
       return this.getterFor('OrderAddress');
     }
 
+    // 售后子订单信息
+    
+    static setInnerOrderList(info) {
+      this.setterFor('innerOrderList', info)
+    }
+    
+    static getInnerOrderList() {
+      return this.getterFor('innerOrderList');
+    }
+
 }

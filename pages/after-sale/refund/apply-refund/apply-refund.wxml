@@ -10,9 +10,9 @@
 <view class='redBg flexR tips font-26'>退回商品需由买家承担运费，请确保不影响商品完好</view>
 
 <view class='order-info'>
-  <view class='cell-line whiteBg'>订单编号：212121</view>
-  <template is="my-order-product-info" data=""/>
-  <view class='cell-line whiteBg'>下单时间：212121</view>
+  <view class='cell-line whiteBg'>订单编号：{{list.orderNum}}</view>
+  <template is="my-order-product-info" data="{{...list}}"/>
+  <view class='cell-line whiteBg'>下单时间：{{list.createTime}}</view>
 </view>
 
 <view>
@@ -20,20 +20,21 @@
     <template is="cell-line" data="{{name:'退货原因',content:reason.list[activeIndex]}}"/> 
   </view>
   <view class='cell-line refund-num whiteBg'>
-    退款金额： <text class='red'>¥69.00</text>
+    退款金额： <text class='red'>¥{{list.showRefund}}</text>
   </view>
 
   <view class='cell-line'>退款说明</view>
-  <textarea   placeholder="填写后面文字"  placeholder-class='textarea gray'/>
+  <textarea   placeholder="填写后面文字"  placeholder-class='textarea gray' bindinput='inputChange'/>
 </view>
 <view class='cell-line'>上传凭证</view>
 
 <view class='update-img-view whiteBg'>
-  <template is="update-img" data="{{name:'退货原因'}}"/>
+  <!-- <template is="update-img" data="{{smallImg}}"/> -->
+  <update-img bind:uploadImage='uploadImage'/>
 </view>
 
 <!--确认按钮  -->
 
-<view class='fixed-bottom redBg font-32 flexR btn-view'>确认</view>
+<view class='fixed-bottom redBg font-32 flexR btn-view' catchtap='orderRefund'>确认</view>
 
 <choose-after-sale-reason hidden='{{hidden}}'  bind:makeSureReason="makeSureReason" reason="{{reason}}" />

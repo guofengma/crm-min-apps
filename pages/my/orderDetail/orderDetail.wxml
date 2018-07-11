@@ -49,7 +49,7 @@
             <template is="my-order-product-info" data="{{...item}}"/>
             <view class='sale-after flexR' wx:if="{{item.middleBtn}}">
               <view class='order-btn btn-left flexR' catchtap='subBtnClicked' data-id='{{item.middleBtn.id}}' data-returntype
-="{{item.middleBtn.returnType}}">{{item.middleBtn.content}}</view>
+="{{item.middleBtn.returnType}}" data-index='{{index}}'>{{item.middleBtn.content}}</view>
             </view>
         </block>
     </view>

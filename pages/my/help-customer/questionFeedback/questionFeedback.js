@@ -43,30 +43,36 @@ Page({
         });
         this.active();
     },
-    //添加图片
-    uploadImg() {
-        let callBack = (fileInfo) => {
-            let tempUrl = fileInfo.data.imageUrl;
-            let tempThumbUrl = fileInfo.data.imageThumbUrl;
-            this.data.originalImg.push(tempUrl);
-            this.data.smallImg.push(tempThumbUrl);
-            this.setData({
-                originalImg:this.data.originalImg,
-                smallImg:this.data.smallImg
-            })
-        };
-        Tool.uploadImage(1, callBack)
+    uploadImage(e) {
+      this.setData({
+        originalImg: e.detail.originalImg,
+        smallImg: e.detail.smallImg,
+      })
     },
-    //删除图片
-    deleteImg(e){
-        let index=e.currentTarget.dataset.index;
-        this.data.originalImg.splice(index,1);
-        this.data.smallImg.splice(index,1);
-        this.setData({
-            originalImg:this.data.originalImg,
-            smallImg:this.data.smallImg
-        })
-    },
+    // //添加图片
+    // uploadImg() {
+    //     let callBack = (fileInfo) => {
+    //         let tempUrl = fileInfo.data.imageUrl;
+    //         let tempThumbUrl = fileInfo.data.imageThumbUrl;
+    //         this.data.originalImg.push(tempUrl);
+    //         this.data.smallImg.push(tempThumbUrl);
+    //         this.setData({
+    //             originalImg:this.data.originalImg,
+    //             smallImg:this.data.smallImg
+    //         })
+    //     };
+    //     Tool.uploadImage(1, callBack)
+    // },
+    // //删除图片
+    // deleteImg(e){
+    //     let index=e.currentTarget.dataset.index;
+    //     this.data.originalImg.splice(index,1);
+    //     this.data.smallImg.splice(index,1);
+    //     this.setData({
+    //         originalImg:this.data.originalImg,
+    //         smallImg:this.data.smallImg
+    //     })
+    // },
     //提交成功
     addFeedback() {
         if (this.data.active) {

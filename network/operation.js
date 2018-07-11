@@ -237,7 +237,19 @@ export default class Operation {
 
         // 申请换货
 
-        this.applyReturnGoods = '/order/order/applyReturnGoods'
+        this.ExchangeProduct = '/order/order/applyExchangeProduct'
+
+        // 申请退货
+
+        this.applyReturnGoods  = '/order/order/applyReturnGoods'
+
+        // 查看退款退货换货情况
+
+        this.findReturnProductById = '/order/order/findReturnProductById'
+
+        // 退货换货填写物流信息
+
+        this.fillInExpressInfoById ='/order/order/fillInExpressInfoById'
 
         
         /******************我的---设置*********************** */

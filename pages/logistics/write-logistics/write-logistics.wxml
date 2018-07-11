@@ -2,7 +2,7 @@
 
 <import src='/components/cell-line/cell-line.wxml'/>
 
-<template is="my-order-product-info" data="{{...item}}"/>
+<template is="my-order-product-info" data="{{...list}}"/>
 
 <template is="cell-line" data="{{name:'物流公司',placeholder:'请选择物流公司'}}"/>
 
