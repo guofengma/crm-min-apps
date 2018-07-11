@@ -77,6 +77,7 @@ Page({
                 address: address,
                 state:this.data.state
             })
+            this.middleBtn()
             if (detail.status == 1){
               this.time()
             }
@@ -252,20 +253,34 @@ Page({
         if (n == 1) {
             state = {status: '等待买家付款', left: '取消订单', right: '继续支付', middle: '', orderIcon: "order-state-1.png",info:'',time:''}
         } else if (n == 2) {
-          state = { status: '买家已付款', left: '订单退款', right: '订单退款', middle: ['退款', '退款中', '退款成功', '退款失败'], orderIcon: "order-state-2.png.png",info:'等待卖家发货...',time:''}
+          // ['退款', '退款中', '退款成功', '退款失败']
+          state = { status: '买家已付款', left: '订单退款', right: '订单退款', middle: 'this.middleBtn()' , orderIcon: "order-state-2.png.png",info:'等待卖家发货...',time:''}
         } else if (n == 3) {
-            state = {status: '卖家已发货', left: '查看物流', right: '确认收货', middle: ['申请售后','售后中','售后成功','售后失败'], orderIcon: "order-state-3.png",info:'仓库正在扫描出仓...',time:''}
+          // ['退换', '退换中', '退换成功','退换失败']
+
+          state = { status: '卖家已发货', left: '查看物流', right: '确认收货', middle: 'this.middleBtn()' , orderIcon: "order-state-3.png",info:'仓库正在扫描出仓...',time:''}
         } else if (n == 4) {
-          state = { status: '等待买家自提', left: '', right: '确认收货', middle: ['退款', '退款成功','退款失败'], orderIcon: "order-state-3.png",info:'',time:''}
+
+          // ['退款', '退款成功','退款失败']
+
+          state = { status: '等待买家自提', left: '', right: '确认收货', middle: '', orderIcon: "order-state-3.png",info:'',time:''}
         } else if (n == 5) {
-            state = {status: '交易已完成', left: '删除订单', right: '再次购买', middle: ['申请售后','售后中','售后成功','售后失败'], orderIcon: "order-state-5.png",info:'已签收',time:''};
-        } else if (n == 6) {// 退款 退货等  判断 middle的状态
+          // ['退换', '退换中', '退换成功','退换失败']
+
+          state = { status: '交易已完成', left: '删除订单', right: '再次购买', middle: '', orderIcon: "order-state-5.png",info:'已签收',time:''};
+        } else if (n == 6) {
+            
+            // 退款 退货等  判断 middle的状态
             state = {status: '退货中', left: '取消支付', right: '继续支付', middle: '', orderIcon: "order-state-5.png",info:'',time:''}
-        } else if (n == 7) {// 售后完成 或者 退换货等都完成 判断 middle的状态
+        } else if (n == 7) {
+            
+            // 售后完成 或者 退换货等都完成 判断 middle的状态
             state = {status: '订单已完成', left: '删除订单', right: '再次购买', middle: '', orderIcon: "order-state-5.png",info:'已签收',time:''};
         } else if (n == 8) {
+            
             state = {status: '交易关闭', left: '', right: '删除订单', middle: '', orderIcon: "order-state-6.png",info:'',time:''}
-        } else if (n == 9) {// 不显示 ？
+        } else if (n == 9) {
+            // 不显示 ？
             state = {status: '删除订单', left: '', right: '', middle: '',info:'',time:''}
         }
         return state
@@ -294,8 +309,35 @@ Page({
     orderRefund(){
       //仅退款
     },
-    middleBtn(btnArr){
-    
+    middleBtn(){
+      let detail = this.data.detail
+      let outOrderState = detail.status
+      let childrenList = detail.list
+      let middle = ''
+      let btnArr = []
+      childrenList.forEach((item,index)=>{
+        let innerState = item.status
+        let returnType = item.returnType
+        if (outOrderState == 2 || outOrderState ==4 ){
+          middle = '退款'
+        }
+        if (outOrderState == 3 || outOrderState == 6){
+          middle = '退换'
+        }
+        if ((innerState == 4) && returnType===null ) {
+          middle = '退款中'
+        }
+        if ((innerState == 5 || innerState == 6) && returnType === null){
+          middle = '退换中'
+        }
+        if (returnType) {
+          middle = '售后完成'
+        }
+        item.middleBtn = middle
+      })
+      this.setData({
+        detail: detail
+      })
     },
     onUnload: function () {
       clearTimeout(this.data.time);
