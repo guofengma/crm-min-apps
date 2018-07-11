@@ -20,34 +20,42 @@
     <view class="wrap">
         <view class="item">上传图片</view>
         <view class="phone-area">
-          <template is="update-img" data=""/>
+          <template is="update-img" data="{{smallImg}}"/>
         </view>
         
     </view>
 
-    <view class="btn {{active?'active':''}}">提交</view>
+    <view class="btn {{active?'active':''}}" bindtap="addFeedback">提交</view>
     <!--选择类型弹窗-->
     <view wx:if="{{mask}}" class="mask">
         <view class="type-area">
-            <view class="item" bindtap="chooseType" data-index="1" data-content="商品相关">
+            <view class="item" bindtap="chooseType" data-index="1" data-content="账户问题">
                 <view>
-                    <text class="{{index==1?'color-red':''}}">商品相关</text>
+                    <text class="{{index==1?'color-red':''}}">账户问题</text>
                 </view>
                 <view>
                     <image class="jt-img" src="{{index==1?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png':''}}" mode='widthFix'></image>
                 </view>
             </view>
-            <view class="item" bindtap="chooseType" data-index="2" data-content="物流状态">
+            <view class="item" bindtap="chooseType" data-index="2" data-content="营销问题">
                 <view>
-                    <text class="{{index==2?'color-red':''}}">物流状态</text>
+                    <text class="{{index==2?'color-red':''}}">营销问题</text>
                 </view>
                 <view>
                     <image class="jt-img" src="{{index==2?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png':''}}" mode='widthFix'></image>
                 </view>
             </view>
-            <view class="item" bindtap="chooseType" data-index="3" data-content="客服服务">
+            <view class="item" bindtap="chooseType" data-index="3" data-content="购买流程">
                 <view>
-                    <text class="{{index==3?'color-red':''}}">客服服务</text>
+                    <text class="{{index==3?'color-red':''}}">购买流程</text>
+                </view>
+                <view>
+                    <image class="jt-img" src="{{index==3?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png':''}}" mode='widthFix'></image>
+                </view>
+            </view>
+            <view class="item" bindtap="chooseType" data-index="4" data-content="推广机制">
+                <view>
+                    <text class="{{index==3?'color-red':''}}">推广机制</text>
                 </view>
                 <view>
                     <image class="jt-img" src="{{index==3?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png':''}}" mode='widthFix'></image>
