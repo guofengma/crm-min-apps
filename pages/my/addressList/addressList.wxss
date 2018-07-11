@@ -1,6 +1,7 @@
 .search-area{
-  height: 110rpx;
+  height: 84rpx;
   position: relative;
+  padding:20rpx 5%;
 }
 .up-area{
     margin-bottom: 20rpx;
@@ -10,12 +11,11 @@
     height: 50rpx;
     position: absolute;
     left: 8%;
-    top: 20rpx;
+    top: 42rpx;
     z-index: 2;
 }
 .search-inp{
-    width: 78%;
-    margin:22rpx 5%;
+    width: 88%;
     height: 84rpx;
     line-height: 84rpx;
     background-color: #ffffff;
@@ -70,7 +70,7 @@
 .avature-img{
     width: 80rpx;
     height: 80rpx;
-    border: solid 1rpx #999999;
+    /*border: solid 1rpx #999999;*/
     border-radius: 50%;
 }
 .card{
