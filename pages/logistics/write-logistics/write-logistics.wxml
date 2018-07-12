@@ -2,9 +2,11 @@
 
 <import src='/components/cell-line/cell-line.wxml'/>
 
-<template is="my-order-product-info" data="{{...list}}"/>
+<template is="my-order-product-info" data="{{...list.returnProduct}}"/>
 
-<template is="cell-line" data="{{name:'物流公司',placeholder:'请选择物流公司'}}"/>
+<view catchtap='logLineClicked'>
+  <template is="cell-line" data="{{name:'物流公司',placeholder:'请选择物流公司'}}"/>
+</view>
 
 <view class='cell-line font-26 flexR-sb'>
   物流单号
@@ -19,4 +21,4 @@
   <input type='text' value='{{phone}}' placeholder='请填写手机号' class='input' placeholder-class='gary' bindinput='inputOnPhonechange'></input>
 </view> -->
 
-<view class='loginBtn fixed-bottom font-32 flexR'>提交</view>
+<view class='loginBtn fixed-bottom font-32 flexR' bindtap='fillInExpressInfoById'>提交</view>

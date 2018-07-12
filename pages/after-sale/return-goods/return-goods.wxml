@@ -18,24 +18,24 @@
 <view class='flexC tips-exchange font-26'>
   <view class='tips-title'>商家已通过</view>
   <view>7天退换，请退货给商家</view>
-  <view>4天12小时32分</view>
+  <view>{{distanceTime}}</view>
 </view>
 
 <!--退款成功以后才显示以下内容  -->
 
-<template is="temp-refund-info" data=""/>
+<template is="temp-refund-info" data="{{...datas}}"/>
 
 <!--地址信息  -->
 <view class='address active whiteBg'>
-  <template is="address-info" data="{{addressType,...address,hasData}}"/>
+  <template is="address-info" data="{{addressType,...list.address,hasData:true}}"/>
 </view>
 
 <!--商家地址  -->
- <template is="address-saler" data="{{addressType,src,...address,hasData}}"/>
+<template is="address-saler" data="{{addressType,src,datas,hasData:true}}"/>
 
 <!--物流  -->
-<view>
-  <template is="cell-line" data="{{name:'退货物流',placeholder:'请填写寄回的物流信息'}}"/>
+<view catchtap='logClicked' data-express='{{expressNo}}'>
+  <template is="cell-line" data="{{name:'退货物流',placeholder:expressNo.content}}"/>
 </view>
 
 <!--换货信息  -->
@@ -48,4 +48,4 @@
 
 <!--联系卖家  -->
 
- <contact-seller phone='{{18968047924}}'></contact-seller> 
+<contact-seller phone='{{18968047924}}'></contact-seller> 

@@ -239,7 +239,7 @@ Page({
             }
         }
 
-        var time = setTimeout(function () {
+        let time = setTimeout(function () {
             that.countdown(that);
         }, 1000);
 
@@ -252,42 +252,49 @@ Page({
         let stateArr = [
           { status: '等待买家付款', 
             bottomBtn: ['取消订单','继续支付'],
+            bottomId:[1,2],
             orderIcon: "order-state-1.png", 
             info: '',
             time: ''
           },
           { status: '买家已付款',
-            bottomBtn: ['', '订单退款'], 
+            bottomBtn: ['', '订单退款'],
+            bottomId: ['',3],
             orderIcon: "order-state-2.png.png", 
             info: '等待卖家发货...', 
             time: '' 
           },
           { status: '卖家已发货',
             bottomBtn: ['查看物流', '确认收货'], 
+            bottomId: [5, 4],
             orderIcon: "order-state-3.png",
             info: '仓库正在扫描出仓...',
             time: ''
           },
           { status: '等待买家自提',
             bottomBtn: ['', '确认收货'], 
+            bottomId: ['', 4],
             orderIcon: "order-state-3.png",
             info: '',
             time: ''
           },
           { status: '交易已完成',
             bottomBtn: ['删除订单', '再次购买'], 
+            bottomId: [6,5],
             orderIcon: "order-state-5.png",
             info: '已签收',
             time: ''
           },
           { status: '退货完成',
-            bottomBtn: ['', '再次购买'], 
+            bottomBtn: ['', '再次购买'],
+            bottomId: ['', 5], 
             orderIcon: "order-state-5.png", 
             info: '',
             time: '' 
           },
           { status: '交易关闭',
             bottomBtn: ['删除订单', '再次购买'], 
+            bottomId: [6, 5], 
             orderIcon: "order-state-6.png",
             info: '',
             time: ''
@@ -320,7 +327,6 @@ Page({
         let innerState = item.status
         let returnType = item.returnType
         let finishTime = item.finishTime
-        console.log(innerState)
         if (outOrderState == 2 || outOrderState ==4 ){
           middle = { id: 1,content: '退款' }
         }
@@ -410,6 +416,9 @@ Page({
     productClicked(e){
       let id = e.currentTarget.dataset.productid
       Tool.navigateTo('/pages/product-detail/product-detail?productId=' + id)
+    },
+    bottomBtnClicked(e){
+
     },
     onUnload: function () {
       clearTimeout(this.data.time);

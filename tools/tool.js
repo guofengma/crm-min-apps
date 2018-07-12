@@ -184,16 +184,15 @@ export default class Tool {
 
     // 日期倒计时 
 
-    static getDistanceTime(time, showInterval) {
+    static getDistanceTime(time, self) {
       let endTime = new Date(Date.parse(time.replace(/-/g, "/")));/*replace将时间字符串中所有的'-'替换成'/',parse将时间格式的字符串转换成毫秒*/
       let nowTime = new Date();
       let distance = endTime.getTime() - nowTime.getTime();/*getTime把一个date对象转换成毫秒*/
-
       let day = 0;
       let hour = 0;
       let minute = 0;
       let second = 0;
-
+      let distanceTime = ''
       if (distance >= 0) {
         day = Math.floor(distance / 1000 / 60 / 60 / 24);
         hour = Math.floor(distance / 1000 / 60 / 60 % 24);
@@ -201,10 +200,11 @@ export default class Tool {
         second = Math.floor(distance / 1000 % 60);
         distanceTime = day + "天" + hour + "时" + minute + "分" + second + "秒";
       } else {
-        distanceTime = "目标日期小于当前日期!"
+        distanceTime = null
       }
-      // setInterval(function(){getDistanceTime('2017-05-19 12:00:00','showInterval');},0);
-      return distanceTime
+      self.setData({
+        distanceTime: distanceTime
+      })
     }
 
     //Object 空值判断

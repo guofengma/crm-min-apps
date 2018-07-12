@@ -135,11 +135,13 @@ Page({
         item.typeList = item.spec_values.split(',')
         item.typeId = item.ids.split(',')
       })
+      let isCollection = datas.product.dealer_id===null? false:true
       this.setData({
         imgUrls: datas.ImgUrl,
         productInfo:datas.product,
         productTypeList: datas.saleSpecValueList,
-        priceList: datas.priceList
+        priceList: datas.priceList,
+        isCollection: isCollection
       })
       let tr = []
       let tbody = this.data.nodes

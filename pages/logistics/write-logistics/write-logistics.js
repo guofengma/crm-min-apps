@@ -8,14 +8,21 @@ Page({
   },
   onLoad: function (options) {
     this.setData({
-      list:Storage.getInnerOrderList() || ''
+      list: Storage.getAfterSaleList() || ''
     })
   },
   fillInExpressInfoById() {
+    let list = this.data.list
     let params = {
-      expressName: this.data.company,
-      expressNo: this.data.code,
-      returnProductId: this.list.id,
+      backAddress: list.returnAddress.address,
+      backPhone: list.returnAddress.recevicePhone,
+      backReceiver: list.returnAddress.receiver,
+      expressName: '45',
+      expressNo:'201807151212121212',
+      receiveAddress: list.receive.address,
+      receivePhone:list.receive.recevice_phone,
+      receiver: list.receive.receiver,
+      returnProductId: list.returnProduct.id,
     };
     let r = RequestFactory.fillInExpressInfoById(params)
     r.finishBlock = (req) => {
@@ -42,6 +49,9 @@ Page({
       code: e.detail.value
     })
   },
+  logLineClicked(){
+
+  }
   // inputOnPhonechange(e) {
   //   this.setData({
   //     phone: e.detail.value

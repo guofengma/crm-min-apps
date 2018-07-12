@@ -110,13 +110,15 @@
     <block>
         <view class='order-btn btn-left flexR' wx:if="{{state.left=='删除订单'}}" bindtap="deleteItem">{{state.bottomBtn[0]}}</view>
         <view class='order-btn btn-left flexR' wx:if="{{state.left=='取消订单'}}" bindtap="cancelItem">{{state.bottomBtn[0]}}</view>
+        <!-- <view class='order-btn btn-left flexR' data-id='{{state.bottomId[0]}}' catchtap='bottomBtnClicked'>{{state.bottomBtn[0]}}</view> -->
     </block>
     <block>
         <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='确认收货'}}" bindtap="confirmReceipt">{{state.bottomBtn[1]}}</view>
         <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='删除订单'}}" bindtap="deleteItem">{{state.bottomBtn[1]}}</view>
         <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='继续支付'}}" bindtap="continuePay">{{state.bottomBtn[1]}}</view>
         <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='再次购买'}}" bindtap="continueBuy">{{state.bottomBtn[1]}}</view>
-        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='订单退款'}}" bindtap="orderRefund">{{state.bottomBtn[1]}}</view>
+        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='订单退款'}}" bindtap="orderRefund">{{state.bottomBtn[1]}}</view> 
+        <!-- <view class='order-btn btn-left flexR' data-id='{{state.bottomId[1]}}' catchtap='bottomBtnClicked'>{{state.bottomBtn[1]}}</view> -->
     </block>
 
 </view>

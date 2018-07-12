@@ -12,7 +12,7 @@
 
 <!--退款成功以后才显示以下内容  -->
 
-<template is="temp-refund-info" data="{{...datas.returnAmountsRecord}}"/>
+<template is="temp-refund-info" data="{{...datas}}"/>
 
 <!--换货信息  -->
 

@@ -13,7 +13,7 @@
 <view class='flexC tips-exchange font-26'>
   <view class='tips-title'>商家已通过</view>
   <view>7天退换，请退货给商家</view>
-  <view>4天12小时32分</view>
+  <view>{{distanceTime}}</view>
 </view>
 <!--地址信息  -->
 <view class='address active whiteBg'>
@@ -25,8 +25,12 @@
 
 <!--物流  -->
 <view>
-  <template is="cell-line" data="{{name:'退货物流',placeholder:'请填写寄回的物流信息'}}"/>
-  <template is="cell-line" data="{{name:'商家物流',placeholder:'暂无商家物流信息'}}"/>
+  <view bindtap='logClicked' data-express='{{expressNo}}'>
+    <template is="cell-line" data="{{name:'退货物流',placeholder:expressNo.content}}"/>
+  </view>
+  <view wx:if='{{expressNo.id!=0}}' bindtap='logClicked' data-express='{{SaleExpressNo}}'>
+    <template is="cell-line" data="{{name:'商家物流',placeholder:SaleExpressNo.content}}"/>
+  </view>
 </view>
 
 <!--换货信息  -->

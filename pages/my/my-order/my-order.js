@@ -70,7 +70,6 @@ Page({
                   secondMap.set(key, duration);
                 }
                 key++;
-                console.log(key)
                 datas.push(item);
               }
               this.setData({
@@ -149,6 +148,7 @@ Page({
             }
 
         };
+        Tool.showErrMsg(r)
         r.addToQueue();
     },
     //取消订单
@@ -184,6 +184,7 @@ Page({
             }
 
         };
+        Tool.showErrMsg(r)
         r.addToQueue();
     },
     cancelItem(e) {
@@ -214,6 +215,7 @@ Page({
                 }
 
             };
+            Tool.showErrMsg(r)
             r.addToQueue();
         })
     },

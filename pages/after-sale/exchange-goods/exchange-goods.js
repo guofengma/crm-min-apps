@@ -4,12 +4,15 @@ Page({
     addressType:1,
     src:'/img/address-icon-gray.png',
     result:[
-      { state: "商家已通过", info: "7天退换，请退货给买家", time: ''},
+      { state: "商家已通过", info: "7天退换，请退货给卖家", time: ''},
       { state: "换货中", info: "等待商家确认" },
       { state: "等待买家确认收货", info: "",time:'' },
       { state: "换货完成", info: "" },
       { state: "订单异常", info: "请联系客服" }
-    ]
+    ],
+    resultIndex:0,
+    expressNo: { id: 0, content:"填写寄回的物流信息"},
+    SaleExpressNo: { id:1, content: "暂无商家物流信息"}
   },
   onLoad: function (options) {
     this.setData({
@@ -25,11 +28,54 @@ Page({
     let r = RequestFactory.findReturnProductById(params)
     r.finishBlock = (req) => {
       let datas = req.responseObject.data
+      let resultIndex = 0
+      let status = datas.returnProduct.status
+      let expressNo = this.data.expressNo
+      let SaleExpressNo = this.data.SaleExpressNo
+      let time =''
+      if (status == 1) {
+        let self = this
+        datas.endTime = Tool.formatTime(datas.returnProduct.out_time)
+        time = setInterval(function () { Tool.getDistanceTime(datas.endTime, self); }, 1000);
+      }
+      if (datas.returnProduct.express_no){
+        if (status == 1) resultIndex=1
+        expressNo = { id: 2, content: datas.returnProduct.express_no }
+      }
+      if (datas.returnProduct.ec_express_no) {
+        if (status == 1) resultIndex = 2
+        SaleExpressNo = { id: 2, content: datas.returnProduct.ec_express_no }
+      }
+      if (status==4){
+        resultIndex = 3
+      } else if (status == 5 || status == 6){
+        resultIndex = 4
+      }
       this.setData({
-        datas: datas
+        datas: datas,
+        SaleExpressNo: SaleExpressNo,
+        expressNo: expressNo,
+        resultIndex: resultIndex,
+        time: time
       })
     };
     Tool.showErrMsg(r)
     r.addToQueue();
+  },
+  logClicked(e) {
+    let express = e.currentTarget.dataset.express
+    let page = ''
+    if (express.id==0){
+      page = '/pages/logistics/write-logistics/write-logistics?id=' + this.data.datas.returnProduct.id
+    } else if (express.id == 1) {
+      return
+    } else {
+      page = '/pages/logistics/logistics'
+    }
+    Storage.setAfterSaleList(this.data.datas)
+    Tool.navigateTo(page)
+  },
+  onUnload: function () {
+    clearInterval(this.data.time)
   },
 })

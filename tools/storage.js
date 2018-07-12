@@ -185,4 +185,13 @@ export default class Storage {
       return this.getterFor('innerOrderList');
     }
 
+    // 售后信息
+    static setAfterSaleList(info) {
+      this.setterFor('afterSaleList', info)
+    }
+
+    static getAfterSaleList() {
+      return this.getterFor('afterSaleList');
+    } 
+    
 }

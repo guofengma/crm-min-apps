@@ -2,6 +2,6 @@
   <view class='classification font-32 flexR-sb'>B</view>
   <view class='logistics whiteBg font-30'>
     <image mode='widthFix' src='/img/default-userImg.png' class='label-log'></image>
-    <text>百事快递</text>
+    <text data-code='{{45}}'>百事快递(仅为测试)</text>
   </view>
 </block>
