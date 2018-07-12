@@ -1,4 +1,4 @@
-// pages/after-sale/exchange-goods/exchange-goods.js
+let { Tool, RequestFactory, Storage } = global
 Page({
   data: {
     addressType:1,
@@ -12,6 +12,24 @@ Page({
     ]
   },
   onLoad: function (options) {
-  
+    this.setData({
+      list: Storage.getInnerOrderList() || ''
+    })
+    this.findReturnProductById()
+  },
+  findReturnProductById() {
+    let list = this.data.list
+    let params = {
+      returnProductId: this.data.list.returnProductId
+    };
+    let r = RequestFactory.findReturnProductById(params)
+    r.finishBlock = (req) => {
+      let datas = req.responseObject.data
+      this.setData({
+        datas: datas
+      })
+    };
+    Tool.showErrMsg(r)
+    r.addToQueue();
   },
 })

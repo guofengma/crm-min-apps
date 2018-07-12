@@ -21,19 +21,6 @@ Page({
         ]
       },
       {
-        navbar: '申请换货',
-        title: '请选择换货原因', // 换货
-        choose: '退换货原因',
-        list: [
-          '7天无理由退换货',
-          '商品描述的尺寸与实物不符',
-          '商品/破损/少件/污渍等',
-          '质量存在问题',
-          '假冒品牌/产品',
-          '其他'
-        ]
-      },
-      {
         navbar: '申请退货',
         title: '请选择退货原因', //退款退货
         choose: '退货原因',
@@ -48,12 +35,30 @@ Page({
           '其他'
         ]
       },
+      {
+        navbar: '申请换货',
+        title: '请选择换货原因', // 换货
+        choose: '退换货原因',
+        list: [
+          '7天无理由退换货',
+          '商品描述的尺寸与实物不符',
+          '商品/破损/少件/污渍等',
+          '质量存在问题',
+          '假冒品牌/产品',
+          '其他'
+        ]
+      }
     ],
     activeIndex:'',
     refundType: 0, // 0为仅退款 1为退货退款  2为换货
     originalImg:[],
     smallImg:[],
-    remark:''
+    remark:'',
+    page:[
+      '/pages/after-sale/only-refund/apply-result/apply-result',
+      '/pages/after-sale/return-goods/return-goods',
+      '/pages/after-sale/exchange-goods/exchange-goods'
+    ]
   },
 
   /**
@@ -85,11 +90,11 @@ Page({
       imgUrls: this.data.originalImg.join(','),
       orderProductId:list.id,
       remark: this.data.remark,
-      returnReason: this.data.reason.list[this.data.activeIndex],
+      returnReason: this.data.reason[this.data.refundType].list[this.data.activeIndex],
       smallImgUrls:this.data.smallImg.join(','),
     };
     let r = ''
-    if (this.data.refundType==1){
+    if (this.data.refundType==0){
       r = RequestFactory.orderRefund(params)
     } else if (this.data.refundType == 1) {
       r = RequestFactory.applyReturnGoods(params)
@@ -97,7 +102,7 @@ Page({
       r = RequestFactory.applyExchangeProduct(params)
     }
     r.finishBlock = (req) => {
-
+      Tool.navigateTo(this.data.page[this.data.refundType])
     };
     Tool.showErrMsg(r)
     r.addToQueue();

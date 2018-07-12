@@ -395,9 +395,9 @@ export default class RequestFactory {
     return this.request(url, params, '申请仅退款', true);
   }
 
-  static ExchangeProduct(params) {
+  static applyExchangeProduct(params) {
     params.port = '8103'
-    let url = Operation.sharedInstance().ExchangeProduct;
+    let url = Operation.sharedInstance().applyExchangeProduct;
     return this.request(url, params, '申请换货', true);
   }
 
@@ -410,7 +410,20 @@ export default class RequestFactory {
   static findReturnProductById(params) {
     params.port = '8103'
     let url = Operation.sharedInstance().findReturnProductById;
-    return this.request(url, params, '查看退款退货换货情况', true);
+    let req = this.request(url, params, '查看退款退货换货情况', true);
+    req.preprocessCallback = (req, firstData) => {
+      let data = req.responseObject.data
+      let returnProduct = data.returnProduct
+      returnProduct.applyTime = global.Tool.formatTime(returnProduct.apply_time)
+      if (data.returnAmountsRecord){
+        returnProduct.showAmount = data.returnAmountsRecord.showAmount = returnProduct.price * returnProduct.num
+        if (data.returnAmountsRecord.refundTime)
+        data.returnAmountsRecord.showRefundTime = global.Tool.formatTime(data.returnAmountsRecord.refundTime)
+      }
+      data.returnAddress.addressInfo = data.returnAddress.address
+      
+    }
+    return req 
   }
 
   static fillInExpressInfoById(params) {

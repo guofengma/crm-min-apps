@@ -203,7 +203,7 @@ export default class Tool {
       } else {
         distanceTime = "目标日期小于当前日期!"
       }
-      
+      // setInterval(function(){getDistanceTime('2017-05-19 12:00:00','showInterval');},0);
       return distanceTime
     }
 

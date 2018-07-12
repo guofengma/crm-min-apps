@@ -10,7 +10,7 @@
       </view>
     </view>
     <view class='address-left'>
-      <template is="address-info" data="{{addressType,src,...address,hasData}}"/>
+      <template is="address-info" data="{{addressType,src,...datas.returnAddress,hasData}}"/>
     </view>
   </view>
 </template>

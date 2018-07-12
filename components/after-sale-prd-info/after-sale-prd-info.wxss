@@ -14,3 +14,6 @@
 .after-sale-name{
   margin-bottom: 10rpx;
 }
+.after-sale-prd-info-right{
+  height: 160rpx;
+}

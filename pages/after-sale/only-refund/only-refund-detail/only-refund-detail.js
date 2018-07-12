@@ -3,24 +3,31 @@ let { Tool, RequestFactory, Storage } = global
 Page({
   data: {
     list:{},
-    result: [
-      { state: "退款成功",time: '' },
-      { state: "商家退款中" }
-    ]
+    state:'',
+    datas:[]
   },
   onLoad: function (options) {
     this.setData({
       list: Storage.getInnerOrderList() || ''
     })
+    this.findReturnProductById()
   },
   findReturnProductById() {
     let list = this.data.list
     let params = {
-      returnProductId:this.data.list.id
+      returnProductId: this.data.list.returnProductId
     };
     let r = RequestFactory.findReturnProductById(params)
     r.finishBlock = (req) => {
-
+      let datas = req.responseObject.data
+      if (datas.returnProduct.status ==4){
+        datas.statusName = '退款成功'
+      } else {
+        datas.statusName = '退款中'
+      }
+      this.setData({
+        datas: datas
+      })
     };
     Tool.showErrMsg(r)
     r.addToQueue();

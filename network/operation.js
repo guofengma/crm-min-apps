@@ -241,7 +241,7 @@ export default class Operation {
 
         // 申请换货
 
-        this.ExchangeProduct = '/order/order/applyExchangeProduct'
+        this.applyExchangeProduct = '/order/order/applyExchangeProduct'
 
         // 申请退货
 

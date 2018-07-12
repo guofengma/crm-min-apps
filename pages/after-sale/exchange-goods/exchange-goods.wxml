@@ -17,11 +17,11 @@
 </view>
 <!--地址信息  -->
 <view class='address active whiteBg'>
-  <template is="address-info" data="{{addressType,...address,hasData:true}}"/>
+  <template is="address-info" data="{{addressType,...list.address,hasData:true}}"/>
 </view>
 
 <!--商家地址  -->
-<template is="address-saler" data="{{addressType,src,...address,hasData}}"/>
+<template is="address-saler" data="{{addressType,src,datas,hasData:true}}"/>
 
 <!--物流  -->
 <view>
@@ -33,22 +33,22 @@
 
 <view class='exchange-info font-26 '>
   <view class='flexR-sb after-sale-line gray'>换货订单</view>
-  <template is="after-sale-prd-info" data=""/>
+  <template is="after-sale-prd-info" data="{{...list}}"/>
   <view class='exchange-content whiteBg gray'>
-    <view>换货原因：规格不符合</view>
-    <view>换货金额：¥68.00</view>
-    <view>换货说明：规格不符合</view>
+    <view>换货原因：{{datas.returnProduct.return_reason}}</view>
+    <view>换货金额：¥{{list.showRefund}}</view>
+    <view>换货说明：{{datas.returnProduct.return_reason}}</view>
     <view>
       <view>凭证图片</view>
       <view class='userImg'>
-        <image src='/img/search-result-1.png/'></image>
-        <image src='/img/search-result-1.png/'></image>
-        <image src='/img/search-result-1.png/'></image>
+         <block wx:for='{{datas.imgList}}' wx:key='unique'>
+          <image src='{{item.smallImg}}'></image>
+        </block>
       </view>
     </view>
-    <view>申请时间：2018-05-18 12:41:56</view>
-    <view>更换型号： 32G 黑色</view>
-    <view>数量：X2 </view>
+    <view>申请时间：{{datas.returnProduct.applyTime}}</view>
+    <!-- <view>更换型号： 32G 黑色</view> -->
+    <view>数量：X{{datas.returnProduct.num}}</view>
   </view>
 </view>
 

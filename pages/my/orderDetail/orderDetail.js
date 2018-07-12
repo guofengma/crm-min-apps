@@ -31,19 +31,6 @@ Page({
         status: '',//订单状态
         content:'',//取消订单理由
         reason:'',
-        page:[ // 0：售后完成 1：退款 2 退款中 3 退换 4 退换中
-          [
-            ''
-          ],
-          '/pages/after-sale/apply-sale-after/apply-sale-after?refundType=1', // 申请退款
-          '/pages/after-sale/choose-after-sale/choose-after-sale',//退换
-          '/pages/after-sale/only-refund/only-refund-detail/only-refund-detail',//退款中的页面
-          [
-            '/pages/after-sale/only-refund/only-refund-detail/only-refund-detail',//退款中的页面
-            '/pages/after-sale/refund/refund-detail/refund-detail',// 退货退款详情
-            '/pages/after-sale/exchange-goods/exchange-goods'  //换货详情
-          ]
-        ]
     },
     onLoad: function (options) {
         this.setData({
@@ -262,46 +249,54 @@ Page({
     },
     orderState(n) {
         //按钮状态 left right middle 分别是底部左边 右边 和订单详情中的按钮文案
-        var state = '';
-        if (n == 1) {
-            state = {status: '等待买家付款', left: '取消订单', right: '继续支付', orderIcon: "order-state-1.png",info:'',time:''}
-        } else if (n == 2) {
-          // ['退款', '退款中', '退款成功', '退款失败']
-
-          state = { status: '买家已付款', left: '订单退款', right: '订单退款', orderIcon: "order-state-2.png.png",info:'等待卖家发货...',time:''}
-
-        } else if (n == 3) {
-          // ['退换', '退换中', '退换成功','退换失败']
-
-          state = { status: '卖家已发货', left: '查看物流', right: '确认收货',orderIcon: "order-state-3.png",info:'仓库正在扫描出仓...',time:''}
-
-        } else if (n == 4) {
-
-          // ['退款', '退款成功','退款失败']
-
-          state = { status: '等待买家自提', left: '', right: '确认收货', orderIcon: "order-state-3.png",info:'',time:''}
-
-        } else if (n == 5) {
-
-          // ['退换', '退换中', '退换成功','退换失败']
-
-          state = { status: '交易已完成', left: '删除订单', right: '再次购买', orderIcon: "order-state-5.png",info:'已签收',time:''};
-        } else if (n == 6) {
-            
-            // 退款 退货等  判断 middle的状态
-            state = {status: '退货中', left: '', right: '确认收货', orderIcon: "order-state-5.png",info:'',time:''}
-        } else if (n == 7) {
-            
-            // 售后完成 或者 退换货等都完成 判断 middle的状态
-            state = {status: '订单已完成', left: '删除订单', right: '再次购买', orderIcon: "order-state-5.png",info:'已签收',time:''};
-        } else if (n == 8) {
-            
-          state = { status: '交易关闭', left: '删除订单', right: '再次购买', orderIcon: "order-state-6.png",info:'',time:''}
-        } else if (n == 9) {
-            // 不显示 ？
-            state = {status: '删除订单', left: '', right: '',info:'',time:''}
-        }
-        return state
+        let stateArr = [
+          { status: '等待买家付款', 
+            bottomBtn: ['取消订单','继续支付'],
+            orderIcon: "order-state-1.png", 
+            info: '',
+            time: ''
+          },
+          { status: '买家已付款',
+            bottomBtn: ['', '订单退款'], 
+            orderIcon: "order-state-2.png.png", 
+            info: '等待卖家发货...', 
+            time: '' 
+          },
+          { status: '卖家已发货',
+            bottomBtn: ['查看物流', '确认收货'], 
+            orderIcon: "order-state-3.png",
+            info: '仓库正在扫描出仓...',
+            time: ''
+          },
+          { status: '等待买家自提',
+            bottomBtn: ['', '确认收货'], 
+            orderIcon: "order-state-3.png",
+            info: '',
+            time: ''
+          },
+          { status: '交易已完成',
+            bottomBtn: ['删除订单', '再次购买'], 
+            orderIcon: "order-state-5.png",
+            info: '已签收',
+            time: ''
+          },
+          { status: '退货完成',
+            bottomBtn: ['', '再次购买'], 
+            orderIcon: "order-state-5.png", 
+            info: '',
+            time: '' 
+          },
+          { status: '交易关闭',
+            bottomBtn: ['删除订单', '再次购买'], 
+            orderIcon: "order-state-6.png",
+            info: '',
+            time: ''
+          },
+          { status: '删除订单',
+            bottomBtn: ['', ''], 
+          },// 不显示？？？？
+        ]
+        return stateArr[n-1]
     },
     continuePay() {
       let params = {
@@ -325,6 +320,7 @@ Page({
         let innerState = item.status
         let returnType = item.returnType
         let finishTime = item.finishTime
+        console.log(innerState)
         if (outOrderState == 2 || outOrderState ==4 ){
           middle = { id: 1,content: '退款' }
         }
@@ -338,14 +334,16 @@ Page({
             middle = { id: 2, content: '退换' }
           }      
         }
-        if ((innerState == 4) && returnType===null ) {
-          middle = { id:3, content: '退款中' }
+        if (innerState == 4) {
+          middle = { id:3, inner: innerState,content: '退款中' } 
         }
-        if ((innerState == 5 || innerState == 6) && returnType === null){
-          middle = { id:4, content: '退换中' }
+        if (innerState == 5 || innerState == 6){
+
+          // 5 退货中 6 换货中
+          middle = { id:3, inner: innerState,content: '退换中' }
         }
         if (innerState==8 && returnType) {
-          middle = { id: 0, returnType: returnType,content: '售后完成'}
+          middle = { id: 0, inner: innerState, content: '售后完成', returnType: returnType}
         }
         item.middleBtn = middle
       })
@@ -354,22 +352,60 @@ Page({
       })
     },
     subBtnClicked(e){
-      let id = e.currentTarget.dataset.id
+      // returnProductStatus  1申请中 2已同意 3拒绝 4完成 5关闭 6超时
+
+      // getReturnProductType 1退款 2退货 3退货 
+
+      let btnTypeId = e.currentTarget.dataset.id 
 
       let index = e.currentTarget.dataset.index
 
       let list = this.data.detail.list[index]
+
       list.orderNum = this.data.detail.orderNum
+
       list.createTime = this.data.detail.createTime
+
       list.showRefund = list.price * list.num
+
       list.address = this.data.address
+
       Storage.setInnerOrderList(this.data.detail.list[index])
 
-      let returnType = e.currentTarget.dataset.returnType
+      // 跳转页面
 
-      let page = this.data.page[id]
+      this.goPage(list, btnTypeId)
+    },
+    goPage(list,btnTypeId){
+      let page = ''
+      let returnType = list.returnProductType
+      let returnProductStatus = list.returnProductStatus
+      let params = "?id=" + list.returnProductId
+      if (returnType == 1 && (returnProductStatus == 2 || returnProductStatus == 4 || returnProductStatus == 1)) {
 
-      Tool.navigateTo(page)
+        page = '/pages/after-sale/only-refund/only-refund-detail/only-refund-detail' + params 
+
+      } else if (returnType == 1 && returnProductStatus == 3) {
+
+        page = '/pages/after-sale/only-refund/apply-result/apply-result'
+
+      } else if (returnType == 2) {
+
+        page = '/pages/after-sale/return-goods/return-goods'
+
+      } else if (returnType == 3) {
+
+        page = '/pages/after-sale/exchange-goods/exchange-goods'
+
+      } else if (btnTypeId == 1) {
+        params = ''
+        page = '/pages/after-sale/apply-sale-after/apply-sale-after?refundType=0'
+
+      } else if (btnTypeId == 2) {
+        
+        page = '/pages/after-sale/choose-after-sale/choose-after-sale'
+      }
+      Tool.navigateTo(page + params)
     },
     productClicked(e){
       let id = e.currentTarget.dataset.productid

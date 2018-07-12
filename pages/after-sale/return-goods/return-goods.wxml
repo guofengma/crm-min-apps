@@ -6,7 +6,9 @@
 
 <import src='/components/address-saler/address-saler.wxml'/>
 
-<import src='/pages/after-sale/temp-refund-info/temp-refund-info.wxml'/>
+<import src='/pages/after-sale/temp/temp-refund-info/temp-refund-info.wxml'/>
+
+<import src='/pages/after-sale/temp/refund-explain/refund-explain'/>
 
 
 <!--提示语  -->
@@ -40,22 +42,8 @@
 
 <view class='exchange-info font-26 '>
   <view class='flexR-sb after-sale-line gray'>退款订单</view>
-  <template is="after-sale-prd-info" data=""/>
-  <view class='exchange-content whiteBg gray'>
-    <view>退款原因：规格不符合</view>
-    <view>退款金额：¥68.00</view>
-    <view>退款说明：规格不符合</view>
-    <view>
-      <view>凭证图片</view>
-      <view class='userImg'>
-        <image src='/img/search-result-1.png/'></image>
-        <image src='/img/search-result-1.png/'></image>
-        <image src='/img/search-result-1.png/'></image>
-      </view>
-    </view>
-    <view>申请时间：2018-05-18 12:41:56</view>
-    <view>退款编号： 3sdsdsd2112121</view>
-  </view>
+  <template is="after-sale-prd-info" data="{{...list}}"/>
+  <template is="refund-explain" data="{{datas}}"/>
 </view>
 
 <!--联系卖家  -->
