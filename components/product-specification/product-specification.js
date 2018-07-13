@@ -116,6 +116,10 @@ Component({
       this.triggerEvent('counterInputOnChange', this.data.innerCount);
     },
     findProductStockBySpec(id){
+      let productTypeList = this.properties.productTypeList
+      productTypeList.forEach((list, index) => {
+        list.types = []
+      })
       let params = {
         productId: this.properties.productInfo.id,
         specId:id
@@ -124,17 +128,51 @@ Component({
       let r = r = RequestFactory.findProductStockBySpec(params);
       r.finishBlock = (req) => {
         let datas = req.responseObject.data
+        let arrs = []
         datas.forEach((item)=>{
           let idArr = item.spec_ids.split(',')
+          item.idArr = idArr
           for(let i=0;i<idArr.length;i++){
-            for (let j = 0; j < stockArr.length;j++){
-              
+            if(arrs[i]==undefined){
+              arrs[i]=[]
+            }
+            if(arrs[i].indexOf(idArr[i])==-1){
+              arrs[i].push(idArr[i])
             }
           }
+          // productTypeList.forEach((list,index)=>{
+          //   let typeId = list.typeId
+          //   for (let i = 0; i < typeId.length; i++) {
+          //     for (let j = 0; j < idArr.length; j++) {
+          //       if (typeId[i] == idArr[j]){
+          //         let a = this.getTest(list.types, idArr[j]) 
+          //         if(!a){
+          //             list.types.push({
+          //               has: true, id: typeId[i]
+          //             }) 
+          //         }
+          //       }
+          //     }
+          //   }
+          // })
+        })
+        console.log(arrs)
+        this.setData({
+          datas: datas,
+          stockArr: stockArr,
+
         })
       };
       Tool.showErrMsg(r)
       r.addToQueue();
+    },
+    getTest(arr,id){
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[j].id==id){
+          return true
+        } 
+      }
+      return false
     }
   }
 })
