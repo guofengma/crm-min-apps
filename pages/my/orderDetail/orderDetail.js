@@ -1,4 +1,4 @@
-let {Tool, RequestFactory, Storage} = global;
+let { Tool, RequestFactory, Storage, Event} = global;
 
 Page({
     data: {
@@ -231,10 +231,10 @@ Page({
                     countdown: countDownTime + '后自动取消订单'
                 });
             } else {
-              detail.status = '8'
+              detail.status = 10
               that.setData({
                 detail:detail,
-                state: this.orderState(8)//订单状态相关信息
+                state: this.orderState(10)//订单状态相关信息
               });
             }
         }
@@ -282,15 +282,23 @@ Page({
             bottomBtn: ['删除订单', '再次购买'], 
             bottomId: [6,5],
             orderIcon: "order-state-5.png",
-            info: '已签收',
+            info: '',
             time: ''
           },
-          { status: '退货完成',
+          { status: '退货中/退货完成',
             bottomBtn: ['', '再次购买'],
             bottomId: ['', 5], 
             orderIcon: "order-state-5.png", 
             info: '',
             time: '' 
+          },
+          {
+            status: '交易已完成',
+            bottomBtn: ['删除订单', '再次购买'],
+            bottomId: [6, 5],
+            orderIcon: "order-state-5.png",
+            info: '',
+            time: ''
           },
           { status: '交易关闭',
             bottomBtn: ['删除订单', '再次购买'], 
@@ -302,6 +310,14 @@ Page({
           { status: '删除订单',
             bottomBtn: ['', ''], 
           },// 不显示？？？？
+          {
+            status: '交易关闭',
+            bottomBtn: ['删除订单', '再次购买'],
+            bottomId: [6, 5],
+            orderIcon: "order-state-6.png",
+            info: '',
+            time: ''
+          },
         ]
         return stateArr[n-1]
     },
@@ -315,7 +331,23 @@ Page({
     },
     //再次购买
     continueBuy(){
-      
+      let params = {
+        orderId: this.data.orderId,
+      };
+      let r = RequestFactory.orderOneMore(params);
+      r.finishBlock = (req) => {
+        let datas = req.responseObject.data
+        datas.forEach((item)=>{
+          item.sareSpecId = item.id
+          item.productNumber = item.num
+          item.isSelect = true
+        })
+        Storage.setShoppingCart(datas)
+        Event.emit('continueBuy'); 
+        Tool.switchTab('/pages/shopping-cart/shopping-cart')
+      };
+      Tool.showErrMsg(r)
+      r.addToQueue();
     },
     middleBtn(){
       let detail = this.data.detail
@@ -417,8 +449,8 @@ Page({
       let id = e.currentTarget.dataset.productid
       Tool.navigateTo('/pages/product-detail/product-detail?productId=' + id)
     },
-    bottomBtnClicked(e){
-
+    orderRefund(){
+      Tool.showAlert('目前只支持单件商品退款，请进行单件退款操作~')
     },
     onUnload: function () {
       clearTimeout(this.data.time);

@@ -102,7 +102,7 @@ Page({
       r = RequestFactory.applyExchangeProduct(params)
     }
     r.finishBlock = (req) => {
-      Tool.navigateTo(this.data.page[this.data.refundType])
+      Tool.navigateTo(this.data.page[this.data.refundType] + '?returnProductId=' + req.responseObject.data.returnProductId)
     };
     Tool.showErrMsg(r)
     r.addToQueue();

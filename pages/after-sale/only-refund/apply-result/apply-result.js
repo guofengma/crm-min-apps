@@ -1,13 +1,16 @@
-// pages/after-sale/apply-result/apply-result.js
+let { Tool, RequestFactory, Storage } = global
 Page({
   data: {
     state:''
   },
   onLoad: function (options) {
-    this.orderState(0)
+    this.setData({
+      list: Storage.getInnerOrderList() || ''
+    })
+    this.findReturnProductById(options.returnProductId)
   },
   onShow: function () {
-  
+
   },
   orderState(n){
     let state =''
@@ -21,5 +24,24 @@ Page({
     this.setData({
       state: state
     })
-  }
+  },
+  findReturnProductById(returnProductId) {
+    let params = {
+      returnProductId: returnProductId || this.data.list.returnProductId
+    };
+    let r = RequestFactory.findReturnProductById(params)
+    r.finishBlock = (req) => {
+      let datas = req.responseObject.data
+      this.setData({
+        datas: datas
+      })
+      if (datas.returnProduct.status==3){
+        this.orderState(2)
+      } else {
+        this.orderState(0)
+      }
+    };
+    Tool.showErrMsg(r)
+    r.addToQueue();
+  },
 })

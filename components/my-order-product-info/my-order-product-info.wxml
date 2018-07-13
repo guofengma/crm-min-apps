@@ -16,8 +16,8 @@
         <view  class='gray'>x{{num}}</view>
       </view>
       <view class='flexR-sb isSaleAfter' wx:if='{{isSaleAfter}}'>
-        <text class='red'>仅退款</text>
-        <text class='red'>退款成功</text>
+        <text class='red'>{{typeName}}</text>
+        <text class='red'>{{typeState}}</text>
       </view>
     </view>
   </view>

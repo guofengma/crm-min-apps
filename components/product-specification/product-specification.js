@@ -17,6 +17,7 @@ Component({
     selectPrdList:'', //已选的类型的商品价格等信息
     tips:'',// 提示语
     typeClicked:0, // 0 规格栏点击 1 加入购物车点击 2 立即购买点击
+    stockArr:[]
   },
   methods: {
     makeSureType(show){
@@ -29,7 +30,9 @@ Component({
         let isActive = this.data.isActive
         let productType = []
         for (let i = 0; i < isActive.length;i++){
-          productType.push(isActive[i].val)
+          if (isActive[i]){
+            productType.push(isActive[i].val)
+          }
         }
         // 已选择的类型
         let productType2 = '已选："' + productType.join('""') + '"'
@@ -78,9 +81,11 @@ Component({
       })
       let spec_id = []
       for(let i=0;i<obj.length;i++){
-        spec_id.push(obj[i].id)
+        if (obj[i]!== undefined){
+          spec_id.push(obj[i].id)
+        }
       }
-      let params = spec_id.join('-')
+      let params = spec_id.join(',')
       this.findProductStockBySpec(params)
       // 如果类型选择完毕 则马上显示对应的价格和库存
       if (this.data.isActive.length == this.properties.productTypeList.length) {
@@ -113,11 +118,20 @@ Component({
     findProductStockBySpec(id){
       let params = {
         productId: this.properties.productInfo.id,
-        spec:id
+        specId:id
       }
+      let stockArr = this.data.stockArr
       let r = r = RequestFactory.findProductStockBySpec(params);
       r.finishBlock = (req) => {
-        
+        let datas = req.responseObject.data
+        datas.forEach((item)=>{
+          let idArr = item.spec_ids.split(',')
+          for(let i=0;i<idArr.length;i++){
+            for (let j = 0; j < stockArr.length;j++){
+              
+            }
+          }
+        })
       };
       Tool.showErrMsg(r)
       r.addToQueue();

@@ -14,6 +14,7 @@ Page({
     Event.on('updateShoppingCart', this.getShoppingCartList, this)
     Event.on('updateStorageShoppingCart', this.getStorageShoppingCart, this)
     Event.on('didLogin', this.getLoginCart, this);
+    Event.on('continueBuy', this.shoppingCartLimit, this);
   },
   onShow: function () {
 
@@ -34,6 +35,10 @@ Page({
   hasStorageShoppingCart(){
     let list = Storage.getShoppingCart()
     if(list){
+      this.setData({
+        items: list,
+      })
+      this.getTotalPrice()
       return true
     } else {
       return false 
@@ -68,6 +73,7 @@ Page({
         Tool.showComfirm(req.responseObject.msg, callBack)
       }
     }
+    Tool.showErrMsg(r)
     r.addToQueue();
 
   },
@@ -79,6 +85,7 @@ Page({
       Storage.clearShoppingCart()
       this.getShoppingCartList()
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   getStorageShoppingCart(){   
@@ -136,6 +143,14 @@ Page({
           item.showType = item.spec
           item.showCount = item.productNumber || 1  // 商品数量
           item.isSelect = false  //是否选择 
+          if(this.data.items.length>0){
+            let arr = this.data.items
+            for(let i=0;i<arr.length;i++){
+              if(arr[i].id==item.id){
+                item.isSelect = arr[i].isSelect
+              }
+            }
+          }
         })
         this.setData({
           items: data

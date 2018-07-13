@@ -3,11 +3,12 @@ Page({
   data: {
     addressType:1,
     src:'/img/address-icon-gray.png',
-    result:[
+    result:[ // 换货
       { state: "商家已通过", info: "7天退换，请退货给卖家", time: ''},
       { state: "换货中", info: "等待商家确认" },
       { state: "等待买家确认收货", info: "",time:'' },
       { state: "换货完成", info: "" },
+      { state: "商家拒绝您的请求", info: "请联系客服" },
       { state: "订单异常", info: "请联系客服" }
     ],
     resultIndex:0,
@@ -18,12 +19,12 @@ Page({
     this.setData({
       list: Storage.getInnerOrderList() || ''
     })
-    this.findReturnProductById()
+    this.findReturnProductById(options.returnProductId)
   },
   findReturnProductById() {
     let list = this.data.list
     let params = {
-      returnProductId: this.data.list.returnProductId
+      returnProductId: returnProductId || this.data.list.returnProductId
     };
     let r = RequestFactory.findReturnProductById(params)
     r.finishBlock = (req) => {
@@ -35,8 +36,10 @@ Page({
       let time =''
       if (status == 1) {
         let self = this
-        datas.endTime = Tool.formatTime(datas.returnProduct.out_time)
-        time = setInterval(function () { Tool.getDistanceTime(datas.endTime, self); }, 1000);
+        if (!datas.returnProduct.express_no) {
+          datas.endTime = Tool.formatTime(datas.returnProduct.out_time)
+          time = setInterval(function () { Tool.getDistanceTime(datas.endTime, self); }, 1000);
+        }
       }
       if (datas.returnProduct.express_no){
         if (status == 1) resultIndex=1
@@ -48,8 +51,10 @@ Page({
       }
       if (status==4){
         resultIndex = 3
-      } else if (status == 5 || status == 6){
+      } else if (status == 3 ){
         resultIndex = 4
+      } else if (status == 6 || status == 5){
+        resultIndex = 5
       }
       this.setData({
         datas: datas,

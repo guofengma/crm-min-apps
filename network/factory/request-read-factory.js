@@ -434,7 +434,19 @@ export default class RequestFactory {
     return this.request(url, params, '退货换货填写物流信息', true);
   }
 
+  static orderOneMore(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().orderOneMore;
+    return this.request(url, params, '再次购买获取规格', true);
+  }
   
+  
+  static queryAftermarketOrderPageList(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().queryAftermarketOrderPageList;
+    return this.request(url, params, '我的售后', true);
+  }
+
   /*******************我的---设置******************** */
 
   static exitLogin(params) {

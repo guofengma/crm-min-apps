@@ -1,10 +1,18 @@
 <import src='/components/my-order-product-info/my-order-product-info.wxml'/>
+<import src='/components/search-bar/search-bar.wxml' />
 
-<block>
-  <view class='order-line'>
-    <template is="my-order-product-info" data="{{...item,isSaleAfter:true}}"/>
+<view style='height:100%;'>
+  <view class='sale-bar'>
+    <template is="search-field" data='{{keyWord}}'/>
   </view>
-  <view class='after-sale-bottom flexR whiteBg'>
-    <view class='after-sale-btn flexR font-26'>查看详情</view> 
-  </view>
-</block>
+  <scroll-view class="search-result" scroll-y bindscrolltolower='onScroll'>
+    <block wx:for='{{lists}}' wx:key='unique'>
+      <view class='order-line'>
+        <template is="my-order-product-info" data="{{...item,isSaleAfter:true}}"/>
+      </view>
+      <view class='after-sale-bottom flexR whiteBg'>
+        <view class='after-sale-btn flexR font-26' catchtap='goPage' data-prdid='{{item.returnProductId}}' data-id='{{item.returnProductType}}'>查看详情</view> 
+      </view>
+    </block>
+  </scroll-view>
+</view>

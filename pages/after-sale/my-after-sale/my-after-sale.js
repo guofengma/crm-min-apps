@@ -1,66 +1,92 @@
-// pages/after-sale/choose-after-sale/my-after-sale.js
+let { Tool, RequestFactory, Storage } = global
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    keyword:'',
+    totalPage: '', // 页面总页数
+    currentPage: 1, // 当前的页数
+    pageSize: 5, // 每次加载请求的条数 默认10
+    lists:[],
+    typeState: ['申请中', '申请中', '拒绝', '已完成','已完成','已超时'],
+    typeArr:[
+      { name: '仅退款', 
+        page:'/pages/after-sale/only-refund/only-refund-detail/only-refund-detail'
+      },
+      { name: '退货',
+        page: '/pages/after-sale/return-goods/return-goods' 
+      },
+      { name: '换货', 
+        page: '/pages/after-sale/exchange-goods/exchange-goods'
+      },
+    ]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    let params = {
+      page: this.data.currentPage,
+      pageSize: this.data.pageSize,
+      productName: this.data.keyword
+    }
+    this.setData({
+      params: params
+    })
+    this.queryAftermarketOrderPageList(params)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  getKeyword(e) {
+    this.setData({
+      keyword: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  searchKeyword() {
+    let { params } = this.data
+    params.page = 1
+    params.productName = this.data.keyword
+    this.setData({
+      params: params
+    })
+    this.queryAftermarketOrderPageList(this.data.params)
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  onScroll() {
+    // 向下滑动的时候请求数据
+    if (this.data.currentPage >= this.data.totalPage) return
+    let page = this.data.currentPage
+    page += 1
+    let { params } = this.data
+    params.page = page
+    this.setData({
+      currentPage: page,
+      params: params
+    })
+    this.queryAftermarketOrderPageList(this.data.params)
   },
+  queryAftermarketOrderPageList(params){
+    // returnProductStatus  1申请中 2已同意 3拒绝 4完成 5关闭 6超时
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+    // getReturnProductType 1退款 2退货 3退货 
+    let r = RequestFactory.queryAftermarketOrderPageList(params);
+    r.finishBlock = (req) => {
+      let lists = this.data.lists
+      let datas = req.responseObject.data
+      if (datas.total>0){
+        datas.data.forEach((item)=>{
+          item.imgUrl = item.specImg
+          item.typeName = this.data.typeArr[item.returnProductType-1].name
+          item.typeState = this.data.typeState[item.returnProductStatus]
+        })
+        if (!Tool.isEmptyStr(this.data.keyword)){
+          lists=[]
+        }
+        this.setData({
+          lists: lists.concat(datas.data),
+          totalPage: req.responseObject.data.total
+        })
+      } 
+    };
+    Tool.showErrMsg(r)
+    r.addToQueue();
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  goPage(e){
+    let returnProductId = e.currentTarget.dataset.prdid
+    let returnProductType = e.currentTarget.dataset.id
+    let page = this.data.typeArr[returnProductType - 1].page + "?returnProductId="+returnProductId
+    Tool.navigateTo(page)
   }
 })

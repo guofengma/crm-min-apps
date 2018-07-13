@@ -10,12 +10,12 @@ Page({
     this.setData({
       list: Storage.getInnerOrderList() || ''
     })
-    this.findReturnProductById()
+    this.findReturnProductById(options.returnProductId)
   },
-  findReturnProductById() {
+  findReturnProductById(returnProductId) {
     let list = this.data.list
     let params = {
-      returnProductId: this.data.list.returnProductId
+      returnProductId: returnProductId || this.data.list.returnProductId
     };
     let r = RequestFactory.findReturnProductById(params)
     r.finishBlock = (req) => {

@@ -12,12 +12,12 @@
 
 
 <!--提示语  -->
-<view class='redBg font-26 flexR tips'>
+<view class='redBg font-26 flexR tips' wx:if='{{expressNo.id==0}}'>
   商家已同意换货申请，请尽快发货
 </view>
 <view class='flexC tips-exchange font-26'>
-  <view class='tips-title'>商家已通过</view>
-  <view>7天退换，请退货给商家</view>
+  <view class='tips-title'>{{result[resultIndex].state}}</view>
+  <view>{{result[resultIndex].info}}</view>
   <view>{{distanceTime}}</view>
 </view>
 

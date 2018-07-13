@@ -235,6 +235,10 @@ export default class Operation {
 
         /**********************订单售后**************************/ 
 
+        // 我的售后
+
+        this.queryAftermarketOrderPageList  ='/order/order/queryAftermarketOrderPageList'
+
         // 申请退款
         
         this.orderRefund = '/order/order/orderRefund'
@@ -254,6 +258,10 @@ export default class Operation {
         // 退货换货填写物流信息
 
         this.fillInExpressInfoById ='/order/order/fillInExpressInfoById'
+
+        // 再次购买
+
+        this.orderOneMore  ='/order/order/orderOneMore'
 
         
         /******************我的---设置*********************** */
