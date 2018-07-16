@@ -128,7 +128,7 @@ Component({
       }
       let params = {
         productId: this.properties.productInfo.id,
-        specId: specId.join(',')
+        specId: specId.join('%')
       }
 
       let idParams = id

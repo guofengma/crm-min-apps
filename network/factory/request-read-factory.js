@@ -467,13 +467,13 @@ export default class RequestFactory {
 
 
   // 上传图片的地址 
-  static aliyunOSSUploadImage(){
+  static aliyunOSSUploadImage() {
     let params = {
-      port:8100
+      port: 8100
     }
     let baseUrl = new Request(params).getBaseUrl(params)
     let url = Operation.sharedInstance().aliyunOSSUploadImage;
-    return baseUrl+url 
+    return baseUrl + url
   }
 
 
