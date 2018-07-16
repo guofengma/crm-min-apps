@@ -154,6 +154,12 @@
 					"name": "退换详情",
 					"pathName": "pages/after-sale/exchange-goods/exchange-goods",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/register/register",
+					"query": ""
 				}
 			]
 		}

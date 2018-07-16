@@ -72,6 +72,8 @@ Component({
       let typeVal = e.currentTarget.dataset.typename
       let id = e.currentTarget.dataset.id
       let obj = this.data.isActive
+      let click = e.currentTarget.dataset.click
+      if(!click) return
       obj[key]={}
       obj[key].index = val
       obj[key].val = typeVal
@@ -82,11 +84,12 @@ Component({
       let spec_id = []
       for(let i=0;i<obj.length;i++){
         if (obj[i]!== undefined){
-          spec_id.push(obj[i].id)
-        }
+          spec_id[i] = obj[i].id
+        } 
       }
-      let params = spec_id.join(',')
-      this.findProductStockBySpec(params)
+      spec_id.length = this.properties.productTypeList.length
+      let params = spec_id
+      this.findProductStockBySpec(params, key,val)
       // 如果类型选择完毕 则马上显示对应的价格和库存
       if (this.data.isActive.length == this.properties.productTypeList.length) {
         this.makeSureType(true)
@@ -115,52 +118,48 @@ Component({
       })
       this.triggerEvent('counterInputOnChange', this.data.innerCount);
     },
-    findProductStockBySpec(id){
+    findProductStockBySpec(id, key, val){
       let productTypeList = this.properties.productTypeList
-      productTypeList.forEach((list, index) => {
-        list.types = []
-      })
+      let specId = []
+      for(let i=0;i<id.length;i++){
+        if(id[i]!==undefined){
+          specId.push(id[i])
+        }
+      }
       let params = {
         productId: this.properties.productInfo.id,
-        specId:id
+        specId: specId.join(',')
       }
+
+      let idParams = id
       let stockArr = this.data.stockArr
       let r = r = RequestFactory.findProductStockBySpec(params);
       r.finishBlock = (req) => {
         let datas = req.responseObject.data
-        let arrs = []
-        datas.forEach((item)=>{
-          let idArr = item.spec_ids.split(',')
-          item.idArr = idArr
-          for(let i=0;i<idArr.length;i++){
-            if(arrs[i]==undefined){
-              arrs[i]=[]
-            }
-            if(arrs[i].indexOf(idArr[i])==-1){
-              arrs[i].push(idArr[i])
-            }
+        for (let a = 0; a < idParams.length; a++) {
+          if (idParams[a] === undefined) {
+            productTypeList[a].types=[]
+            datas.forEach((item) => {
+              let idArr = item.spec_ids.split(',')
+              item.idArr = idArr
+              productTypeList.forEach((list, index) => {
+                if (list.types === undefined) {
+                  list.types = []
+                }
+                for (let i = 0; i < idArr.length; i++) {
+                  let index = productTypeList[a].typeId.indexOf(idArr[i])
+                  if (index != -1) {
+                    productTypeList[a].types[index] = true
+                  }
+                }
+              })
+            })
           }
-          // productTypeList.forEach((list,index)=>{
-          //   let typeId = list.typeId
-          //   for (let i = 0; i < typeId.length; i++) {
-          //     for (let j = 0; j < idArr.length; j++) {
-          //       if (typeId[i] == idArr[j]){
-          //         let a = this.getTest(list.types, idArr[j]) 
-          //         if(!a){
-          //             list.types.push({
-          //               has: true, id: typeId[i]
-          //             }) 
-          //         }
-          //       }
-          //     }
-          //   }
-          // })
-        })
-        console.log(arrs)
+        }     
+        
+        this.triggerEvent('productTypeListClicked', { productTypeList});
         this.setData({
-          datas: datas,
-          stockArr: stockArr,
-
+          datas: datas
         })
       };
       Tool.showErrMsg(r)
