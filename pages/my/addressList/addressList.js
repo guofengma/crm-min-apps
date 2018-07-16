@@ -9,17 +9,27 @@ Page({
         expanded: [false, false],
         lower: [],
         super: {},
-        params: {},
+        params:{},
         number: '',
         currentPage: 1, // 当前的页数
         pageSize: 5, // 每次加载请求的条数 默认5
-        hasNext:true
+        hasNext:true,
+        searchVal:''
+    },
+    search(e){
+        let params=e.detail.value;
+        this.setData({
+            searchVal:params,
+            hasNext:true
+        });
+        this.getList()
     },
     getList() {
         if (this.data.hasNext) {
             let params = {
                 pageSize: this.data.pageSize,
                 page: 1,
+                params:this.data.searchVal
             };
             this.setData({
                 params: params
