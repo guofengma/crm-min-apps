@@ -95,7 +95,7 @@ image{
   background-color: #e60012;
   color: #fff;
 }
-.graBg{
+.grayBg{
   background-color:#F8F8F8;
 }
 .whiteBg{

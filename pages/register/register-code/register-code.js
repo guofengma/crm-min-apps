@@ -4,6 +4,7 @@ Page({
     isAgree:false,
     invite:[],
     inviteId:'',
+    code:'',
     userInfo:'',
     openid:'',
     num:4, // 请求推荐人的个数
@@ -21,7 +22,7 @@ Page({
   },
   inputChange(e){
     this.setData({
-      inviteId:e.detail.value
+      code:e.detail.value
     })
   },
   requetSignMember() {
@@ -31,7 +32,8 @@ Page({
       'inviteId': this.data.inviteId,
       'headImg': this.data.userInfo.avatarUrl,
       'nickname': this.data.userInfo.nickName,
-      'openid': this.data.openid
+      'openid': this.data.openid,
+      'code':this.data.code
     };
     let r = RequestFactory.signMember(params);
     r.finishBlock = (req) => {
@@ -71,7 +73,7 @@ Page({
   inviterClicked(e){
     let id = e.currentTarget.dataset.key
     this.setData({
-      inviteId: id
+      code: id || ''
     })
   }
 })
