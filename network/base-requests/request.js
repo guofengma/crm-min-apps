@@ -11,7 +11,7 @@ export default class Request {
     getBaseUrl(bParam) {
       // 开发 
       // this.baseUrl = 'http://172.16.10.4:'
-      this.baseUrl = 'http://172.16.10.12:'
+      // this.baseUrl = 'http://172.16.10.12:'
       // this.baseUrl = 'http://172.16.10.19:'
       // this.baseUrl = 'http://172.16.10.7:'
       // this.baseUrl = 'http://172.16.10.253:'
@@ -24,7 +24,7 @@ export default class Request {
 
       // 正式
 
-      // this.baseUrl = 'https://nc.hzjure.xyz';
+      this.baseUrl = 'https://nc.hzjure.xyz';
       
       return this.baseUrl
     }

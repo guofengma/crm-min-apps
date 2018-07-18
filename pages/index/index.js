@@ -38,10 +38,6 @@ Page({
         };
         r.addToQueue();
     },
-    toDetail(e) {
-        let id=e.currentTarget.dataset.id;
-        Tool.navigateTo('/pages/product-detail/product-detail?productId=' + id)
-    },
     adListClicked(e) {
         let adType = e.currentTarget.dataset.type;
         let val = e.currentTarget.dataset.val;

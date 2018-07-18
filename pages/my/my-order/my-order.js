@@ -83,7 +83,10 @@ Page({
                   currentPage: ++this.data.currentPage
                 })
               } else {
-                this.data.hasNext = false
+                this.setData({
+                  currentPage:1,
+                  hasNext:false
+                })
               }
               if (!this.data.list.length) {
                 this.setData({
@@ -101,7 +104,7 @@ Page({
     },
     // 上拉加载更多
     onReachBottom() {
-        this.getData(this.data.num);
+      this.getData(this.data.currentPage);
     },
     //跳到订单详情
     toOrderDetail(e) {
