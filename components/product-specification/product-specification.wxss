@@ -93,10 +93,6 @@
   margin-right: 20rpx;
   margin-bottom: 20rpx;
 }
-.type-list .active{
-  background-color: #e60012;
-  color: #fff;
-}
 .counter{
   height: 180rpx;
   display: flex;
@@ -119,6 +115,11 @@
 .type-list .no-store{
   color: #b4b4b4;
   background-color: #eeeeee;
+}
+
+.type-list .active{
+  background-color: #e60012 !important;
+  color: #fff;
 }
 .header.active{
   height:70rpx;

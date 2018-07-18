@@ -7,9 +7,6 @@ import TCGlobal, {
     RequestFactory
 } from './tools/tcglobal';
 
-const normalizeUserCookie = (cookies = '') => {
-
-};
 App({
     onLaunch: function () {
         //设置全局变量

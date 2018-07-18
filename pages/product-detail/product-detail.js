@@ -134,6 +134,7 @@ Page({
       typeList.forEach((item)=>{
         item.typeList = item.spec_values.split(',')
         item.typeId = item.ids.split(',')
+        item.types = item.typeId
       })
       let isCollection = datas.product.dealer_id===null? false:true
       this.setData({
@@ -294,6 +295,11 @@ Page({
       path: '/pages/product-detail/product-detail?productId' + this.data.productId,
       imgUrl: imgUrl
     }
+  },
+  productTypeListClicked(e){
+    this.setData({
+      productTypeList: e.detail.productTypeList
+    })
   },
   wxParseTagATap: function (e) {
     let link = e.currentTarget.dataset.src
