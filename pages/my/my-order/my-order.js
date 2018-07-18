@@ -104,7 +104,7 @@ Page({
     },
     // 上拉加载更多
     onReachBottom() {
-      this.getData(this.data.currentPage);
+      this.getData(this.data.num);
     },
     //跳到订单详情
     toOrderDetail(e) {
