@@ -41,7 +41,7 @@
                         <view class="goods-inf">
                             <view class="ellipsis-2">{{oItem.productName}}
                             </view>
-                            <view class="color-classify">颜色分类：长袖 紫色</view>
+                            <view class="color-classify">{{oItem.spec}} </view>
                         </view>
                         <view>
                             <view class="price">￥{{oItem.price}}</view>
