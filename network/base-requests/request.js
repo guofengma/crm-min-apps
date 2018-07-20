@@ -24,7 +24,7 @@ export default class Request {
 
       // 正式
 
-      this.baseUrl = 'https://nc.hzjure.xyz';
+      this.baseUrl = 'https://test.dnvhot.tech';
       
       return this.baseUrl
     }
