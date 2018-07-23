@@ -452,6 +452,9 @@ Page({
     orderRefund(){
       Tool.showAlert('目前只支持单件商品退款，请进行单件退款操作~')
     },
+    seeLogistics(){
+      Tool.navigateTo('/pages/logistics/logistics')
+    },
     onUnload: function () {
       clearTimeout(this.data.time);
     },

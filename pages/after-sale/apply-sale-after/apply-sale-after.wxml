@@ -4,6 +4,8 @@
 
 <import src='/components/update-img/update-img.wxml'/>
 
+<import src='/components/address-info/address-info.wxml'/>
+
 
 <view class='redBg flexR tips font-26'>退回商品需由买家承担运费，请确保不影响商品完好</view>
 
@@ -20,9 +22,11 @@
   <view class='cell-line refund-num whiteBg' wx:if='{{refundType!=2}}'>
     退款金额： <text class='red'>¥{{list.showRefund}}</text>
   </view>
-
-  <view class='cell-line'>退款说明</view>
-  <textarea   placeholder="填写后面文字"  placeholder-class='textarea gray' bindinput='inputChange'/>
+  <view class='address active whiteBg' wx:if='{{refundType==2}}'>
+    <template is="address-info" data="{{addressType:1,...list.address,hasData:true}}"/>
+  </view>
+  <view class='cell-line'>{{reason[refundType].info}}</view>
+  <textarea   placeholder="{{placeholder.placeholder}}" disabled='{{placeholder.disabled}}' placeholder-class='textarea gray' bindinput='inputChange'/>
 </view>
 <view class='cell-line'>上传凭证</view>
 

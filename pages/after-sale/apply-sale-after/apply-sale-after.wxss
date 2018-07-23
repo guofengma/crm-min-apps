@@ -1,6 +1,6 @@
 @import "/components/my-order-product-info/my-order-product-info";
 
-/* @import "/components/address-info/address-info"; */
+@import "/components/address-info/address-info"; 
 
 @import "/components/cell-line/cell-line";
 
@@ -42,4 +42,11 @@ textarea{
 }
 .btn-view{
   height: 100rpx;
+
+}
+.btn-view{
+  height: 100rpx;
+}
+.address.active{
+  margin: 20rpx 0;
 }
