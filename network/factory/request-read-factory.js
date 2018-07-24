@@ -282,6 +282,7 @@ export default class RequestFactory {
       let url = Operation.sharedInstance().findDealerAccountByIdAPP;
       return this.request(url, params, '经销商账户', true);
   }
+  
 
   /**************我的订单********************/
 
@@ -524,6 +525,16 @@ export default class RequestFactory {
   static updateDealerNewPhone(params) {
     let url = Operation.sharedInstance().updateDealerNewPhone;
     return this.request(url, params, '修改手机账号', true);
+  }
+
+  static createWxQrcode(params) {
+    let url = Operation.sharedInstance().createWxQrcode;
+    return this.request(url, params, '获取邀请码', true);
+  }
+
+  static sweepCode(params) {
+    let url = Operation.sharedInstance().sweepCode;
+    return this.request(url, params, '邀请码是否过期', true);
   }
   
   /******************* 收藏 ******************** */

@@ -7,52 +7,70 @@ Page({
      */
     data: {
         expanded:[false,false],
-        token:''
+        token:'',
+        imgUrl:''
     },
     press(){
         wx.previewImage({
-            current: '/img/code.png', // 当前显示图片的http链接
-            urls: ['/img/code.png'] // 需要预览的图片http链接列表
+          current: this.data.imgUrl, // 当前显示图片的http链接
+          urls: [this.data.imgUrl] // 需要预览的图片http链接列表
         })
     },
     onLoad: function (options) {
-      this.getAccessToken()
+      this.refreshMemberInfoNotice()
+      this.createWxQrcode()
+      Event.on('refreshMemberInfoNotice', this.refreshMemberInfoNotice, this);
     },
-    getAccessToken(){
-      let that = this
-      wx.request({
-        url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx228ac7ba52b9b1ed&secret=ac645290e3299966fabe3cf0d0034f9b',
-        dataType: 'json',
-        success: function (res) {
-          that.setData({
-            token:res.data.access_token
-          })
-          //that.getCode()
-        }
-      });
+    refreshMemberInfoNotice() {
+      Tool.getUserInfos(this)
     },
-    getCode(){
-      let that = this
-      let params = {
-        path:'pages/register/register?id=1111111',
-        width:430,
-        auto_color:false,
-        line_color: { "r": "0", "g": "0", "b": "0" },
-        is_hyaline:false
+    createWxQrcode(){
+      // 获取邀请码
+      let r = RequestFactory.createWxQrcode();
+      r.finishBlock = (req) => {
+        this.setData({
+          imgUrl: req.responseObject.data
+        })
       }
-      wx.request({
-        url: 'https://api.weixin.qq.com/wxa/getwxacode?access_token=' +this.data.token,
-        dataType: 'json',
-        method: 'POST',
-        data: params,
-        header: {
-          'content-type': "application/json"
-        },
-        success: function (res) {
-          that.setData({
-            img:res.data
+      Tool.showErrMsg(r)
+      r.addToQueue();
+    },
+    saveImgToPhotosAlbumTap() {
+      // 保存图片到本地
+      if (Tool.isEmptyStr(this.data.imgUrl)){
+        return
+      }
+      wx.downloadFile({
+        url: this.data.imgUrl,
+        success(res) {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success(res) {
+              console.log(res)
+            },
+            fail (res) {
+              console.log(res)
+            }
           })
+        },
+        fail() {
+          console.log('fail')
         }
-      });
+      })
+    },
+    onShareAppMessage: function (res) {
+      if (res.from === 'button') {
+        // 来自页面内转发按钮
+        console.log(res.target)
+      }
+      let imgUrl = this.data.imgUrls[0].original_img ? this.data.imgUrls[0].original_img : ''
+      return {
+        title: "飓热小程序",
+        path: '/pages/product-detail/product-detail?productId' + this.data.productId,
+        imgUrl: imgUrl
+      }
+    },
+    onUnload: function () {
+      Event.off('refreshMemberInfoNotice', this.refreshMemberInfoNotice);
     }
 })

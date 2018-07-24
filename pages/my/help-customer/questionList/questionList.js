@@ -14,7 +14,7 @@ Page({
           list: req.responseObject.data
         })
       }
-
+      Tool.showErrMsg(r)
       r.addToQueue();
     },
     toDetail(e){
