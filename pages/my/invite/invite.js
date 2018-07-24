@@ -63,11 +63,10 @@ Page({
         // 来自页面内转发按钮
         console.log(res.target)
       }
-      let imgUrl = this.data.imgUrls[0].original_img ? this.data.imgUrls[0].original_img : ''
       return {
         title: "飓热小程序",
-        path: '/pages/product-detail/product-detail?productId' + this.data.productId,
-        imgUrl: imgUrl
+        path: '/pages/register/register?id' + this.data.userInfos.inviteId,
+        imgUrl: this.data.imgUrl
       }
     },
     onUnload: function () {
