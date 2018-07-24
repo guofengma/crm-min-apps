@@ -15,12 +15,14 @@ Page({
         success: false,
         originalImg: [],
         smallImg: [],
-        content:''
+        content:'',
+        showTextarea:true
     },
     //选择问题类型弹窗
     questionType() {
         this.setData({
-            mask: true
+            mask: true,
+            showTextarea:false
         })
     },
     //选择问题类型
@@ -30,7 +32,8 @@ Page({
         this.setData({
             index: index,
             mask: false,
-            type: content
+            type: content,
+            showTextarea: true
         });
         this.active();
     },

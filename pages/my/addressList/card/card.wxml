@@ -1,15 +1,15 @@
 <view>
     <view class="bg">
-        <view class="detail">
+        <view class="detail"> 
             <image src="{{detail.head_img}}" class="avature-img"></image>
-            <view class="name">{{detail.realname}}</view>
+            <view class="name">{{detail.nickname}}</view>
             <view class="level" wx:if="{{detail.remark}}">{{detail.remark}}</view>
         </view>
     </view>
     <view class="area">
         <view class="title">基本资料</view>
         <view class="item">手机：{{detail.phone}}</view>
-        <view class="item">微信号：{{detail.wechat_id}}</view>
+        <!-- <view class="item">微信号：{{detail.wechat_id}}</view> -->
         <view class="item">所在区域：{{detail.wechat_area}}</view>
         <view class="item">收货地址：{{detail.address}}</view>
     </view>

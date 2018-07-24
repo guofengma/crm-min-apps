@@ -13,7 +13,7 @@
     <view class="wrap">
         <view class="item">详细说明</view>
         <view class="detail-remark">
-            <textarea bindinput="detailRemark" maxlength="100" class="textarea" placeholder="请输入一段说明文字..." />
+             <textarea bindinput="detailRemark" maxlength="100" class="textarea {{showTextarea?'':'visibility'}}" placeholder="请输入一段说明文字..."/> 
             <view class="number">{{count}}/100</view>
         </view>
     </view>
