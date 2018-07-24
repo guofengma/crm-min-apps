@@ -112,6 +112,10 @@ Component({
     },
     counterInputOnChange(e) {
       //监督数量选择的改变
+      if (this.properties.productInfo.stock==0){
+        Tool.showAlert('库存不足,请选择其他产品')
+        return
+      }
       let count = e.detail.innerCount;
       this.setData({
         innerCount: count,
