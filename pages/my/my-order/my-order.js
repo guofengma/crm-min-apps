@@ -1,4 +1,4 @@
-let {Tool, RequestFactory, Storage} = global;
+let {Tool, RequestFactory, Storage,Event} = global;
 Page({
     data: {
         num: 0,
@@ -216,9 +216,8 @@ Page({
                 }else{
                     Tool.showSuccessToast(req.responseObject.msg)
                 }
-
             };
-            Tool.showErrMsg(r)
+            Tool.showErrMsg(r);
             r.addToQueue();
         })
     },
@@ -231,16 +230,32 @@ Page({
         this.getData(this.data.num);
     },
     continuePay(e){
-      let item = e.currentTarget.dataset.item
+      let item = e.currentTarget.dataset.item;
       let params = {
         totalAmounts: item.totalPrice + item.freightPrice, //总价
         orderNum: item.orderNum, // 订单号
         outTradeNo: item.outTrandNo  // 流水号
-      }
+      };
       Tool.navigateTo('/pages/order-confirm/pay/pay?isContinuePay=' + true + '&data=' + JSON.stringify(params))
     },
     continueBuy(e){
-      
+        let params = {
+            orderId: e.currentTarget.dataset.id,
+        };
+        let r = RequestFactory.orderOneMore(params);
+        r.finishBlock = (req) => {
+            let datas = req.responseObject.data;
+            datas.forEach((item)=>{
+                item.sareSpecId = item.id;
+                item.productNumber = item.num;
+                item.isSelect = true
+            });
+            Storage.setShoppingCart(datas);
+            Event.emit('continueBuy');
+            Tool.switchTab('/pages/shopping-cart/shopping-cart')
+        };
+        Tool.showErrMsg(r);
+        r.addToQueue();
     },
     /**
     * 倒计时
