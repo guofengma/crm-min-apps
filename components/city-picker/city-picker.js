@@ -28,8 +28,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    dianji: function () { //这里写了一个动画，让其高度变为满屏
-      var animation = wx.createAnimation({
+    clicked: function () { //这里写了一个动画，让其高度变为满屏
+      let animation = wx.createAnimation({
         duration: 500,
         timingFunction: 'ease',
       })
@@ -42,7 +42,7 @@ Component({
     },
     //取消按钮
     cancel: function () {  //这里也是动画，然其高度变为0
-      var animation = wx.createAnimation({
+      let animation = wx.createAnimation({
         duration: 500,
         timingFunction: 'ease',
       })
@@ -58,7 +58,7 @@ Component({
     //确认按钮
     makeSure: function () {
       //一样是动画，级联选择页消失，效果和取消一样
-      var animation = wx.createAnimation({
+      let animation = wx.createAnimation({
         duration: 500,
         timingFunction: 'ease',
       })

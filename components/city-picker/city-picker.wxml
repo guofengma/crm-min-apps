@@ -1,5 +1,5 @@
 <block>
-    <view bindtap="dianji" class='cell-line'>
+    <view bindtap="clicked" class='cell-line'>
       <slot></slot>
     </view>
     <view class="cascade_box" animation="{{animationData}}">

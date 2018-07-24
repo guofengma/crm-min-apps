@@ -72,8 +72,8 @@ Component({
       let typeVal = e.currentTarget.dataset.typename
       let id = e.currentTarget.dataset.id
       let obj = this.data.isActive
-      let click = e.currentTarget.dataset.click
-      if(!click) return
+      let canclick = e.currentTarget.dataset.canclick
+      if (!canclick) return
       obj[key]={}
       obj[key].index = val
       obj[key].val = typeVal
@@ -164,6 +164,10 @@ Component({
       };
       Tool.showErrMsg(r)
       r.addToQueue();
-    },
+    }
+  },
+  
+  ready: function () {
+    
   }
 })

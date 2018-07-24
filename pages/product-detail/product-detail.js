@@ -134,7 +134,11 @@ Page({
       typeList.forEach((item)=>{
         item.typeList = item.spec_values.split(',')
         item.typeId = item.ids.split(',')
-        item.types = item.typeId
+        if (datas.product.stock>0){
+          item.types = item.typeId
+        } else {
+          item.types = false
+        }
       })
       let isCollection = datas.product.dealer_id > 0 ? true:false
       this.setData({
