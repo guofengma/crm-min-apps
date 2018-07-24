@@ -1,4 +1,4 @@
-let {Tool, RequestFactory, Storage} = global;
+let { Tool, RequestFactory, Storage, Event} = global;
 Page({
     data: {
         num: 0,
@@ -239,9 +239,6 @@ Page({
       }
       Tool.navigateTo('/pages/order-confirm/pay/pay?isContinuePay=' + true + '&data=' + JSON.stringify(params))
     },
-    continueBuy(e){
-      
-    },
     /**
     * 倒计时
     */
@@ -272,6 +269,26 @@ Page({
         list: orderArry,
         time: time
       });
+    },
+    //再次购买
+    continueBuy(e) {
+      let params = {
+        orderId: e.currentTarget.dataset.id,
+      };
+      let r = RequestFactory.orderOneMore(params);
+      r.finishBlock = (req) => {
+        let datas = req.responseObject.data
+        datas.forEach((item) => {
+          item.sareSpecId = item.id
+          item.productNumber = item.num
+          item.isSelect = true
+        })
+        Storage.setShoppingCart(datas)
+        Event.emit('continueBuy');
+        Tool.switchTab('/pages/shopping-cart/shopping-cart')
+      };
+      Tool.showErrMsg(r)
+      r.addToQueue();
     },
     onUnload: function () {
       clearTimeout(this.data.time);
