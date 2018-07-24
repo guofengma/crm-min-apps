@@ -1,14 +1,20 @@
-let { Tool, RequestFactory,Storage } = global
+let { Tool, RequestFactory, Storage, Event } = global
 
 Page({
   data: {
     code:'',//物流单号
     phone:'', //手机号
-    company:'百事汇通仅为测试'
+    company:{id:"",name:''}
   },
   onLoad: function (options) {
     this.setData({
       list: Storage.getAfterSaleList() || ''
+    })
+    Event.on('updateCompany', this.updateCompany,this)
+  },
+  updateCompany(){
+    this.setData({
+      company: Storage.getExpressCom()
     })
   },
   fillInExpressInfoById() {
@@ -17,8 +23,8 @@ Page({
       backAddress: list.returnAddress.address,
       backPhone: list.returnAddress.recevicePhone,
       backReceiver: list.returnAddress.receiver,
-      expressName: '45',
-      expressNo:'201807151212121212',
+      expressName: this.data.company.id,
+      expressNo:this.data.code,
       receiveAddress: list.receive.address,
       receivePhone:list.receive.recevice_phone,
       receiver: list.receive.receiver,
@@ -26,7 +32,9 @@ Page({
     };
     let r = RequestFactory.fillInExpressInfoById(params)
     r.finishBlock = (req) => {
-
+      Storage.setExpressNo(this.data.code)
+      Event.emit('updataExpressNo')
+      Tool.navigationPop()
     };
     Tool.showErrMsg(r)
     r.addToQueue();
@@ -44,17 +52,15 @@ Page({
       }
     })
   },
-  inputOnCodechange(e){
+  inputOnchange(e){
     this.setData({
       code: e.detail.value
     })
   },
   logLineClicked(){
-
-  }
-  // inputOnPhonechange(e) {
-  //   this.setData({
-  //     phone: e.detail.value
-  //   })
-  // },
+    Tool.navigateTo('/pages/logistics/choose-logistics/choose-logistics')
+  },
+  onUnload: function () {
+    Event.off('updateCompany', this.updateCompany)
+  },
 })

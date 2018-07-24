@@ -102,7 +102,7 @@ Page({
       Tool.showAlert('请选择' + this.data.reason[this.data.refundType].choose)
       return
     }
-    if (this.data.refundType == 2){
+    if (this.data.refundType == 2 && Tool.isEmptyStr(this.data.remark)){
       Tool.showAlert(this.data.reason[this.data.refundType].placeholder)
       return
     }
@@ -123,7 +123,7 @@ Page({
       r = RequestFactory.applyExchangeProduct(params)
     }
     r.finishBlock = (req) => {
-      Tool.navigateTo(this.data.page[this.data.refundType] + '?returnProductId=' + req.responseObject.data.returnProductId)
+      Tool.redirectTo(this.data.page[this.data.refundType] + '?returnProductId=' + req.responseObject.data.returnProductId)
     };
     Tool.showErrMsg(r)
     r.addToQueue();

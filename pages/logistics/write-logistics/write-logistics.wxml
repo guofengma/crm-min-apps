@@ -5,7 +5,7 @@
 <template is="my-order-product-info" data="{{...list.returnProduct}}"/>
 
 <view catchtap='logLineClicked'>
-  <template is="cell-line" data="{{name:'物流公司',placeholder:'请选择物流公司'}}"/>
+  <template is="cell-line" data="{{name:'物流公司',placeholder:'请选择物流公司',content:company.name}}"/>
 </view>
 
 <view class='cell-line font-26 flexR-sb'>
