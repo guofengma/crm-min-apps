@@ -29,7 +29,7 @@
                         <text wx:elif="{{item.orderStatus==3}}">待收货</text>
                         <text wx:elif="{{item.orderStatus==4}}">待自提</text>
                         <text wx:elif="{{item.orderStatus==5||item.orderStatus==7}}">已完成</text>
-                        <text wx:elif="{{item.orderStatus==8}}">已关闭</text>
+                        <text wx:elif="{{item.orderStatus==6||item.orderStatus==8||item.orderStatus==10}}">已关闭</text>
                     </text>
                 </view>
             </view>
@@ -61,13 +61,13 @@
                     <text wx:elif="{{num==3||(num==0&&item.orderStatus==3)}}">发货时间：</text>
                     <text wx:else>创建时间：</text>{{item.createTime}}
                 </view>
-                <view wx:if="{{num!=2&&item.orderStatus!=2&&item.orderStatus!=9&&item.orderStatus!=10}}">
+                <view wx:if="{{num!=2&&item.orderStatus!=2&&item.orderStatus!=6&&item.orderStatus!=9&&item.orderStatus!=10}}">
                     <view class="footer">
                         <view class="left" wx:if="{{num==1||(num==0&&item.orderStatus==1)}}">
                             {{item.countDownTime}}
                         </view>
                         <view class="right" wx:if="{{num==4||(num==0&&(item.orderStatus==7||item.orderStatus==5))}}">
-                            <view class="cancel-btn" bindtap="deleteItem" data-id="{{item.id}}" data-orderStatus="{{item.orderStatus}}">删除订单</view>
+                            <view class="cancel-btn" bindtap="deleteItem" data-id="{{item.id}}" data-orderstatus="{{item.orderStatus}}">删除订单</view>
                             <view class="pay-btn" bindtap='continueBuy' data-id="{{item.id}}">再次购买</view>
                         </view>
                         <view class="right" wx:elif="{{num==1||(num==0&&item.orderStatus==1)}}">
@@ -79,8 +79,10 @@
                             <view class="pay-btn" bindtap="confirmReceipt"  data-id="{{item.id}}">确认收货</view>
                         </view>
                         <view class="right" wx:elif="{{num==0&&item.orderStatus==8}}">
+                         <view class="cancel-btn" bindtap="deleteItem" data-id="{{item.id}}" data-orderstatus="{{item.orderStatus}}">删除订单</view>
                             <view class="pay-btn" bindtap='continueBuy' data-id="{{item.id}}">再次购买</view>
                         </view>
+                         
                     </view>
                     <view class="clearfix"></view>
                 </view>

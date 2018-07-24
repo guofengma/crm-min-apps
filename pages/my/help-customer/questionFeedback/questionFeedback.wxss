@@ -29,6 +29,7 @@
     height: 200rpx;
     padding: 20rpx 5%;
     line-height: 40rpx;
+    z-index: 1
 }
 .number{
   color: #c8c8c8;
@@ -120,4 +121,7 @@
     font-size: 30rpx;
     color: #222222;
     text-align: center;
+}
+.visibility{
+  visibility:hidden
 }

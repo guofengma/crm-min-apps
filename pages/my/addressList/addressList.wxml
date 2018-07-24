@@ -21,11 +21,11 @@
                     <image class="avature-img" src="{{super.head_img}}"></image>
                 </view>
                 <view class="item info">
-                    <view>{{super.realname}}（{{super.id}}）</view>
+                    <view>{{super.nickname}}（{{super.id}}）</view>
                     <view>手机号：{{super.phone}}</view>
-                    <!-- <view>
+                     <view>
                         <image class="card" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/card-img.png"></image>
-                    </view> -->
+                    </view> 
                 </view>
                 <view class="item opr">
                     <image class="opr-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>
@@ -52,11 +52,11 @@
                     <image class="avature-img" src="{{item.head_img}}"></image>
                 </view>
                 <view class="item info">
-                    <view>{{item.realname}}（{{item.id}}）</view>
+                    <view>{{item.nickname}}（{{item.id}}）</view>
                     <view>手机号：{{item.phone}}</view>
-                    <!-- <view>
+                     <view>
                         <image class="card" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/card-img.png"></image>
-                    </view> -->
+                    </view> 
                 </view>
                 <view class="item opr">
                     <image class="opr-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>

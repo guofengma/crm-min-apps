@@ -37,7 +37,7 @@ Page({
             let params = {
                 pageSize: this.data.pageSize,
                 page: this.data.currentPage,
-                dealerId: Storage.memberId()
+                // dealerId: Storage.memberId()
             };
             this.setData({
                 params: params
@@ -113,7 +113,7 @@ Page({
     //删除订单
     deleteItem(e) {
         let id = e.currentTarget.dataset.id;
-        let status = e.currentTarget.dataset.status;
+        let status = e.currentTarget.dataset.orderstatus;
         this.setData({
             isDelete: true,
             orderId:id,
