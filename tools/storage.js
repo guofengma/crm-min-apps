@@ -193,5 +193,23 @@ export default class Storage {
     static getAfterSaleList() {
       return this.getterFor('afterSaleList');
     } 
+
+    // 保存物流单号
+    static setExpressNo(info) {
+      this.setterFor('expressNo', info)
+    }
+
+    static getExpressNo() {
+      return this.getterFor('expressNo');
+    } 
+
+    // 保存物流单号
+    static setExpressCom(info) {
+      this.setterFor('expressCom', info)
+    }
+
+    static getExpressCom() {
+      return this.getterFor('expressCom');
+    } 
     
 }
