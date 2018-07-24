@@ -422,7 +422,9 @@ export default class RequestFactory {
         if (data.returnAmountsRecord.refundTime)
         data.returnAmountsRecord.showRefundTime = global.Tool.formatTime(data.returnAmountsRecord.refundTime)
       }
-      data.returnAddress.addressInfo = data.returnAddress.address
+      if (data.returnAddress){
+        data.returnAddress.addressInfo = data.returnAddress.address
+      }
       data.receive.addressInfo = data.receive.address
     }
     return req 
@@ -576,7 +578,7 @@ export default class RequestFactory {
   }
 
   static updateHelpQuestion(params) {
-    let url = Operation.sharedInstance().queryHelpQuestionList;
+    let url = Operation.sharedInstance().updateHelpQuestion;
     return this.request(url, params, '解决问题是否有用', true);
   }
 

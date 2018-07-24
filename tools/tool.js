@@ -390,12 +390,14 @@ export default class Tool {
         success: function (res) {
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
           let tempFilePaths = res.tempFilePaths;
+          // console.log(tempFilePaths[0])
           wx.uploadFile({
             url: global.RequestFactory.aliyunOSSUploadImage(),
             filePath: tempFilePaths[0],
             name: 'file',
             success: function (res) {
               let fileInfo = JSON.parse(res.data);
+              // console.log(fileInfo)
               successCallback(fileInfo)
             }
           })

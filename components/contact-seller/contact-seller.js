@@ -18,10 +18,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    makePhoneCall: function () {
+    makePhoneCall () {
       wx.makePhoneCall({
         phoneNumber: this.properties.phone,
-        success: function () {
+        success: ()=>{
           console.log("成功拨打电话")
         }
       })

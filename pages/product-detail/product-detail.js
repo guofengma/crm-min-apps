@@ -136,7 +136,7 @@ Page({
         item.typeId = item.ids.split(',')
         item.types = item.typeId
       })
-      let isCollection = datas.product.dealer_id===null? false:true
+      let isCollection = datas.product.dealer_id > 0 ? true:false
       this.setData({
         imgUrls: datas.ImgUrl,
         productInfo:datas.product,

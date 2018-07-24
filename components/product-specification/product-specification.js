@@ -128,7 +128,7 @@ Component({
       }
       let params = {
         productId: this.properties.productInfo.id,
-        specId: specId.join('%')
+        specId: specId.join(',')
       }
 
       let idParams = id
@@ -165,13 +165,5 @@ Component({
       Tool.showErrMsg(r)
       r.addToQueue();
     },
-    getTest(arr,id){
-      for (let j = 0; j < arr.length; j++) {
-        if (arr[j].id==id){
-          return true
-        } 
-      }
-      return false
-    }
   }
 })

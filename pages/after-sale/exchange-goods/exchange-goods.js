@@ -21,7 +21,7 @@ Page({
     })
     this.findReturnProductById(options.returnProductId)
   },
-  findReturnProductById() {
+  findReturnProductById(returnProductId) {
     let list = this.data.list
     let params = {
       returnProductId: returnProductId || this.data.list.returnProductId
