@@ -29,7 +29,7 @@
         <view class='type-list'>
           <block  wx:for='{{list.typeList}}' wx:key='unique'> 
             <view class='{{(list.types[index]? "":"no-store") +" " +(isActive[key].index === index ? "active":"")}}' bindtap='typeListClicked' 
-                  data-index='{{index}}' data-type='{{key}}' data-typename='{{item}}' data-id='{{list.typeId[index]}}' data-click='{{list.types[index]}}'>
+                  data-index='{{index}}' data-type='{{key}}' data-typename='{{item}}' data-id='{{list.typeId[index]}}' data-canclick='{{list.types[index]}}'>
                   {{item}}
             </view>
           </block>

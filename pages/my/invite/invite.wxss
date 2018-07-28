@@ -65,10 +65,12 @@
     line-height: 40rpx;
 }
 .opr{
+    width: 600rpx;
+    margin: 0 auto;
     margin-top: 80rpx;
 }
-.opr view{
-    display: inline-block;
+.opr view,.share{
+    /* display: inline-block; */
     text-align: center;
     width: 37%;
     height: 96rpx;
@@ -79,8 +81,10 @@
     color: #ffffff;
     font-weight: 600;
 }
-.opr view:first-child{
-    margin-right:8%;
+.opr .share{
+    /* margin-right:8%; */
+    margin: 0;
+    background-color: transparent;
 }
 /*.footer{*/
     /*position: absolute;*/

@@ -320,6 +320,15 @@ export default class Operation {
 
         this.sendUserNewPhoneCode ='/commonAPI/phoneCode/sendUserNewPhoneCode'
 
+        // 邀请码
+
+        this.createWxQrcode = '/user/dealer/createWxQrcode'
+
+        // 邀请码是否过期
+
+        this.sweepCode ='/user/invite/sweepCode'
+
+
         /*************** 收藏 ******************************/ 
 
         // 收藏列表

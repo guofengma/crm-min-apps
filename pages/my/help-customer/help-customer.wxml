@@ -6,13 +6,13 @@
     <view class="hot-question">热门问题</view>
     <view class="question-area">
         <view class="question-item" wx:for='{{list}}' wx:key='unique' >
-            <view class="left" catchtap="questionList" data-typeid='{{item.typeid}}'>
+            <view class="left" catchtap="questionList" data-typeid='{{item.id}}'>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_order.png" class="icon"></image>
                 <view>{{item.name}}</view>
             </view>
             <view class="right">
               <view class="item"  wx:for='{{item.list}}' wx:key='unique' 
-                    wx:for-item="detail" wx:for-index="key"  catchtap='toDetail'  data-id='{{detail.id}}'>
+                    wx:for-item="detail" wx:for-index="key"  catchtap='toDetail'  data-id='{{detail.id}}' wx:if="{{key<2}}">
                 {{detail.title}}
               </view>
             </view>

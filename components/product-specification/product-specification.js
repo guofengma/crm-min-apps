@@ -72,8 +72,8 @@ Component({
       let typeVal = e.currentTarget.dataset.typename
       let id = e.currentTarget.dataset.id
       let obj = this.data.isActive
-      let click = e.currentTarget.dataset.click
-      if(!click) return
+      let canclick = e.currentTarget.dataset.canclick
+      if (!canclick) return
       obj[key]={}
       obj[key].index = val
       obj[key].val = typeVal
@@ -112,6 +112,10 @@ Component({
     },
     counterInputOnChange(e) {
       //监督数量选择的改变
+      if (this.properties.productInfo.stock==0){
+        Tool.showAlert('库存不足,请选择其他产品')
+        return
+      }
       let count = e.detail.innerCount;
       this.setData({
         innerCount: count,
@@ -164,6 +168,10 @@ Component({
       };
       Tool.showErrMsg(r)
       r.addToQueue();
-    },
+    }
+  },
+  
+  ready: function () {
+    
   }
 })

@@ -15,21 +15,24 @@ Page({
         let list = req.responseObject.data.list
         let listArr =[]
         for (let i = 0; i < typeList.length;i++){
-          let arr =[]
+          typeList[i].list=[]
+          //let arr = []
           for (let j = 0; j < list.length; j++) {
             if (list[j].name == typeList[i].name){
-              arr.push(list[j])
+              //arr.push(list[j])
+              typeList[i].list.push(list[j])
             }
           }
-          if(arr.length>0){
-            listArr.push({ name: typeList[i].name, list: arr, typeid: typeList[i].id})
-          }         
+          // if(arr.length>0){
+          //   listArr.push({ name: typeList[i].name, list: arr, typeid: typeList[i].id})
+          // }         
         }
         this.setData({
-          list: listArr
+          //list: listArr,
+          list: data.typeList
         })
       }
-      
+      Tool.showErrMsg(r)
       r.addToQueue();
     },
     

@@ -23,6 +23,7 @@ Page({
       r.finishBlock = (req) => {
         Tool.showSuccessToast('感谢您的评价')
       }
+      Tool.showErrMsg(r)
       r.addToQueue();
     },
     findHelpQuestionById(id) {
@@ -37,6 +38,7 @@ Page({
         let html = req.responseObject.data.content
         WxParse.wxParse('article', 'html', html, this, 5);
       }
+      Tool.showErrMsg(r)
       r.addToQueue();
     },
     onUnload: function () {

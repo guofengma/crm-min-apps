@@ -96,6 +96,7 @@ Page({
                     })
                 }
             };
+            Tool.showErrMsg(r)
             r.addToQueue();
         }
     },

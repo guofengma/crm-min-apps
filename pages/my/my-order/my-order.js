@@ -1,4 +1,4 @@
-let {Tool, RequestFactory, Storage,Event} = global;
+let { Tool, RequestFactory, Storage, Event} = global;
 Page({
     data: {
         num: 0,
@@ -281,7 +281,7 @@ Page({
         }
       }
 
-      var time = setTimeout(function () {
+      let time = setTimeout(function () {
         that.countdown(that);
       }, 1000)
 
