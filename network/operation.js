@@ -376,6 +376,28 @@ export default class Operation {
 
         this.addFeedback = '/user/feedback/addFeedback'
 
+        /************************** 优惠券 *******************************/
+
+        // 未使用优惠劵列表
+
+        this.getDiscountCouponNoUse = '/user/discountCouponDealer/getDiscountCouponNoUse';
+
+        // 已经优惠劵列表
+
+        this.getDiscountCouponUserd  = '/user/discountCouponDealer/getDiscountCouponUserd';
+
+        // 失效优惠劵列表
+
+        this.getDiscountCouponLosed = '/user/discountCouponDealer/getDiscountCouponLosed';
+
+        // 优惠劵详情
+
+        this.getDiscountCouponById = '/user/discountCouponDealer/getDiscountCouponById';
+
+        // 产品可用优惠劵列表
+
+        this.availableDiscountCouponForProduct = '/user/discountCoupon/availableDiscountCouponForProduct'
+
     }
 
     static sharedInstance() {

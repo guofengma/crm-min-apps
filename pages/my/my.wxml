@@ -54,6 +54,15 @@
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
+        <view class="item line" bindtap="coupon">
+            <view>
+                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/wdzh_18@2x.png" alt=""></image>
+                <text>我的优惠券</text>
+            </view>
+            <view>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
+            </view>
+        </view>
         <view class="item" bindtap="information">
             <view>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xx_18-07@2x.png" alt=""></image>

@@ -51,6 +51,11 @@ Page({
       if (!this.didLogin()) return
       Tool.navigateTo('my-account/my-account')
     },
+    //跳到我的优惠券页面
+    coupon() {
+      if (!this.didLogin()) return
+      Tool.navigateTo('coupon/my-coupon/my-coupon')
+    },
     myCollection() {
       if (!this.didLogin()) return
       Tool.navigateTo('/pages/my/my-collection/my-collection')
