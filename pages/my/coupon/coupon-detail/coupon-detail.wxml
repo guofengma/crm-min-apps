@@ -1,13 +1,13 @@
 <view class='coupon-detail flexR-sb {{active? "active":""}}'>
   <view class='left'>
-    <view class='{{active? "red":"gray"}} font-30'>¥<text class='font-72'>20</text></view>
-    <view>满500可用</view>
+    <view class='{{active? "red":"gray"}} font-30'>¥<text class='font-72'>{{detail.value}}</text></view>
+    <view>满{{detail.use_conditions}}可用</view>
   </view>
   <view class='center boxSize'>
-    <view class='font-30 '>礼包优惠券</view>
-    <view class='gray'>限品类：但是看到哈看的哈杀了</view>
-    <view class='gray'>有效期：2018.07.07-2018.08.08</view>
-    <view class='gray'>使用说明：开始打卡上看到哈说了哈第三款kshdlashdlakdk</view>
+    <view class='font-30 '>{{detail.name}}</view>
+    <view class='gray'>限品类：{{detail.productNames}}</view>
+    <view class='gray'>有效期：{{detail.start_time}}-{{detail.out_time}}</view>
+    <view class='gray'>使用说明：{{detail.remark}}</view>
   </view>
 </view>
 

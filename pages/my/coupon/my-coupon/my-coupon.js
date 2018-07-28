@@ -1,4 +1,4 @@
-let {Tool, RequestFactory, Storage, Event} = global;
+let {Tool, RequestFactory } = global;
 Page({
     data: {
         winHeight: "",//窗口高度
@@ -153,7 +153,11 @@ Page({
             })
         }
     },
-
+    //优惠券详情
+    toDetail(){
+      let id=e.currentTarget.dataset.id;
+      Tool.navigateTo('/coupon-detail/coupon-detail?id='+id)
+    },
     //判断当前滚动超过一屏时，设置tab标题滚动条。
     checkCor: function () {
         if (this.data.currentTab > 3) {
