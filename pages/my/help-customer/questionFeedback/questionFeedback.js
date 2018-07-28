@@ -24,6 +24,7 @@ Page({
             mask: true,
             showTextarea:false
         })
+        console.log(this.data.showTextareash)
     },
     //选择问题类型
     chooseType(e) {
