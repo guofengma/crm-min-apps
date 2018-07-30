@@ -31,7 +31,7 @@ Page({
   onShow: function () {
     
   },
-  sweepCode(id){
+  sweepCode(id){ // 判断邀请码是否过期等
     let params = {
       id:id
     }

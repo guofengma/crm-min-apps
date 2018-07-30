@@ -5,36 +5,9 @@ Page({
         currentTab: 0, //预设当前项的值
         scrollLeft: 0, //tab标题的滚动条位置
         lists: [ // 0是未使用 1：失效 2：已使用
-            [
-                {
-                    couponAmout: 11,
-                    full: 500,
-                    name: '会员专享',
-                    limit: '会员专享卷',
-                    active: true,
-                    left: '立即使用'
-                }
-            ],
-            [
-                {
-                    couponAmout: 11,
-                    full: 500,
-                    name: '会员专享',
-                    limit: '会员专享卷',
-                    active: false,
-                    left: '已过期'
-                }
-            ],
-            [
-                {
-                    couponAmout: 11,
-                    full: 500,
-                    name: '会员专享',
-                    limit: '会员专享卷',
-                    active: false,
-                    left: '已使用'
-                }
-            ]
+            [  ],
+            [  ],
+            [  ]
         ]
     },
     // 滚动切换标签样式
