@@ -1,0 +1,15 @@
+<import src='/pages/topic/temp/topic-prd-info/topic-prd-info.wxml'/>
+
+<import src='/pages/topic/temp/ad-info/ad-info.wxml'/>
+
+<import src='/pages/topic/temp/topic-bar/topic-bar.wxml'/>
+
+<template name="topic-temp2">
+  <template is="topic-bar" data=""/>
+  <template is="ad-info" data=""/>
+  <view class='topic-prd-content'>
+    <block>
+      <template is="topic-prd-info" data="{{width:'330',bg:'#fff',ellipsis:'ellipsis'}}"/>
+    </block>
+  </view>
+</template>

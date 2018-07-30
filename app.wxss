@@ -149,6 +149,9 @@ image{
 .font-30{
   font-size: 30rpx;
 }
+.font-24{
+  font-size: 24rpx;
+}
 .font-32{
   font-size: 32rpx;
 }

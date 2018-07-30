@@ -1,0 +1,13 @@
+.prd-img-view{
+  width:100%;
+}
+.prd-info{
+  padding: 15rpx 15rpx 24rpx 15rpx;
+  box-sizing: border-box;
+}
+.prd-name{
+  margin-bottom: 15rpx;
+}
+.topic-prd-info{
+  margin-bottom:30rpx; 
+}

@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 22,
+			"current": 23,
 			"list": [
 				{
 					"id": -1,
@@ -170,7 +170,14 @@
 				{
 					"id": -1,
 					"name": "优惠券",
-					"pathName": "pages/my/coupon/my-coupon/my-coupon"
+					"pathName": "pages/my/coupon/my-coupon/my-coupon",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "专题",
+					"pathName": "pages/topic/topic",
+					"query": ""
 				}
 			]
 		}

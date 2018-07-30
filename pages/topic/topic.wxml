@@ -1,0 +1,28 @@
+<import src='/pages/topic/temp/temp1/temp1.wxml'/>
+<import src='/pages/topic/temp/temp2/temp2.wxml'/>
+<import src='/pages/topic/temp/temp3/temp3.wxml'/>
+<import src='/pages/topic/temp/temp4/temp4.wxml'/>
+
+<view class='topic-page'>
+  <!-- 轮播 -->
+  <view class='ad-view'>
+    <image src="{{topicImgUrl }}" class="slide-image" catchtap='adListClicked'  class='ad-img'/>
+  </view>
+
+  <!-- 专题文字介绍 -->
+  <view class='infos gray font-24 '>
+    雅诗兰黛(Estee Lauder)世界顶级化妆品牌,中国唯一官方
+    网上商城。为您臻献卓效的美肤臻品、缤纷彩妆、迷人香氛;
+    更有精彩视频资讯以及更多官网独享奢宠礼遇,限时免费配送。
+  </view>
+  
+  <!-- 产品模块 -->
+  <template wx:if="{{typeId==1}}" is="topic-temp1" data=""/>
+
+  <template wx:elif="{{typeId==2}}" is="topic-temp2" data=""/>
+
+  <template wx:elif="{{typeId==3}}" is="topic-temp3" data=""/>
+
+  <template wx:elif="{{typeId==4}}" is="topic-temp4" data=""/> 
+
+</view>

@@ -1,0 +1,5 @@
+<template name="topic-bar">
+  <scroll-view scroll-x class='scroll'>
+    <view class='font-26 flexR scroll-line'>是实打实的</view>
+  </scroll-view>
+</template>

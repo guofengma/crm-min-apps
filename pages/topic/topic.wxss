@@ -1,0 +1,35 @@
+@import "/pages/topic/temp/topic-prd-info/topic-prd-info.wxss";
+
+@import "/pages/topic/temp/topic-bar/topic-bar.wxss";
+
+.ad-img{
+  height: 100%;
+  width: 100%;
+}
+.ad-view{
+  height: 350rpx;
+}
+.infos{
+  padding: 40rpx;
+  line-height: 36rpx;
+  margin-bottom: 10rpx;
+}
+.topic-page{
+  min-height: 100%;
+  background-color: #fff4f4;
+}
+.topic-prd-content{
+  padding: 0 30rpx;
+  display: flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.topic-banner{
+  width: 100%;
+}
+.topic-banner image{
+  height: 235rpx;
+}
+.topic-type{
+  height: 99rpx;
+}

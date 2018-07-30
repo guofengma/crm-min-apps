@@ -59,7 +59,8 @@
     "pages/logistics/logistics",
     "pages/after-sale/my-after-sale/my-after-sale",
     "pages/my/coupon/my-coupon/my-coupon",
-    "pages/my/coupon/coupon-detail/coupon-detail"
+    "pages/my/coupon/coupon-detail/coupon-detail",
+    "pages/topic/topic"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

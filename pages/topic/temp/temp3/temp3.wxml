@@ -1,0 +1,10 @@
+<import src='/pages/topic/temp/topic-prd-info/topic-prd-info.wxml'/>
+
+<template name="topic-temp3">
+  <view class='topic-prd-content'>
+    <template is="topic-prd-info" data="{{width:'330',bg:'#fff',ellipsis:'ellipsis'}}"/>
+    <template is="topic-prd-info" data="{{width:'330',bg:'#fff',ellipsis:'ellipsis'}}"/>
+    <template is="topic-prd-info" data="{{width:'330',bg:'#fff',ellipsis:'ellipsis'}}"/>
+    <template is="topic-prd-info" data="{{width:'330',bg:'#fff',ellipsis:'ellipsis'}}"/>
+  </view>
+</template>
