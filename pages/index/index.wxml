@@ -52,7 +52,7 @@
   </view>
   <block wx:for="{{topicImgUrl}}" wx:key='unique'>
     <view class='img-view'>
-      <image src='{{item}}'></image>
+      <image src='{{item.img_url}}'></image>
     </view>
   </block>
 </view>

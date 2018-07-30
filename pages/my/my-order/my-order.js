@@ -229,6 +229,7 @@ Page({
         }
         this.getData(this.data.num);
     },
+    //立即支付
     continuePay(e){
       let item = e.currentTarget.dataset.item;
       let params = {
@@ -238,6 +239,7 @@ Page({
       };
       Tool.navigateTo('/pages/order-confirm/pay/pay?isContinuePay=' + true + '&data=' + JSON.stringify(params))
     },
+    //再次购买
     continueBuy(e){
         let params = {
             orderId: e.currentTarget.dataset.id,

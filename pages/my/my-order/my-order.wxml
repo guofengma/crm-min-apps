@@ -80,7 +80,7 @@
                         </view>
                         <view class="right" wx:elif="{{num==0&&item.orderStatus==8}}">
                          <view class="cancel-btn" bindtap="deleteItem" data-id="{{item.id}}" data-orderstatus="{{item.orderStatus}}">删除订单</view>
-                            <view class="pay-btn" bindtap='continueBuy' data-id="{{item.id}}">再次购买</view>
+                         <view class="pay-btn" bindtap='continueBuy' data-id="{{item.id}}">再次购买</view>
                         </view>
                          
                     </view>

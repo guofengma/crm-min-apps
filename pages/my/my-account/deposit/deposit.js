@@ -1,3 +1,5 @@
+let { Tool, RequestFactory, Event } = global;
+
 Page({
     data: {
         account:'',

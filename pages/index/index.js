@@ -26,14 +26,35 @@ Page({
         ]
     },
     onLoad: function () {
+        this.topicList();
         this.queryAdList();
+        this.querySpeList();
         this.queryFeaturedList()
     },
     queryAdList() {
-        let r = RequestFactory.queryAdList(1);
+        let param={
+            pageType:1,
+            type:1,
+        };
+        // let r = RequestFactory.queryAdList(1,1);
+        let r = RequestFactory.queryAdList(param);
         r.finishBlock = (req) => {
             this.setData({
                 imgUrls: req.responseObject.data
+            })
+        };
+        r.addToQueue();
+    },
+    querySpeList() {
+        let param={
+            type:2,
+            pageType:1
+        };
+        // let r = RequestFactory.queryAdList(1,2);
+        let r = RequestFactory.queryAdList(param);
+        r.finishBlock = (req) => {
+            this.setData({
+                topicImgUrl: req.responseObject.data
             })
         };
         r.addToQueue();
