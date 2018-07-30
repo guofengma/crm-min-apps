@@ -556,12 +556,10 @@ export default class RequestFactory {
  
   /******************* 首页 ******************** */
   
-  // static queryAdList(pageType,Type) {
-  static queryAdList(params) {
-    // let params = {
-    //   pageType: pageType,
-    //   Type: Type
-    // };
+  static queryAdList(Type) {
+    let params = {
+      pageType: Type
+    }
     let url = Operation.sharedInstance().queryAdList;
     return this.request(url, params, '轮播图查询', true);
   }
@@ -600,33 +598,5 @@ export default class RequestFactory {
     return this.request(url, params, '添加反馈', true);
   }
 
-
-    /***********************帮助中心********************************/
-
-    static getDiscountCouponNoUse(params) {
-        let url = Operation.sharedInstance().getDiscountCouponNoUse;
-        return this.request(url, params, '未使用优惠劵列表', true);
-    }
-
-    static getDiscountCouponUserd(params) {
-        let url = Operation.sharedInstance().getDiscountCouponUserd;
-        return this.request(url, params, '已经优惠劵列表', true);
-    }
-
-    static getDiscountCouponLosed(params) {
-        let url = Operation.sharedInstance().getDiscountCouponLosed;
-        return this.request(url, params, '失效优惠劵列表', true);
-    }
-
-    static getDiscountCouponById(id) {
-        let params = id ;
-        let url = Operation.sharedInstance().getDiscountCouponById;
-        return this.request(url, params, '优惠劵详情', true);
-    }
-
-    static availableDiscountCouponForProduct(params) {
-        let url = Operation.sharedInstance().availableDiscountCouponForProduct;
-        return this.request(url, params, '产品可用优惠劵列表', true);
-    }
 }
 
