@@ -8,17 +8,30 @@ Page({
     userInfo:'',
     openid:'',
     num:4, // 请求推荐人的个数
+    disabled:false
   },
   onLoad: function (options) {
     this.setData({
       accoutInfo: options,
-      userInfo: Storage.wxUserInfo(),
-      openid: Storage.getWxOpenid()
+      userInfo: Storage.wxUserInfo() || false,
+      openid: Storage.getWxOpenid() || '',
     })
-    this.queryInviterList()
+    if (!options.id){
+      this.queryInviterList() // 请求邀请者
+    } else {
+      this.initInputValue() // 初始化input的值
+    }
+    
   },
   onShow: function () {
 
+  },
+  initInputValue(){
+    this.setData({
+      code: this.data.accoutInfo.id,
+      disabled:true,
+      inviteId: this.data.accoutInfo.id
+    })
   },
   inputChange(e){
     this.setData({
@@ -29,12 +42,15 @@ Page({
     let params = {
       "phone": this.data.accoutInfo.phone,
       'password': this.data.accoutInfo.password,
-      'inviteId': this.data.inviteId,
+      'inviteId': this.data.accoutInfo.id || '', // 邀请者id 
       'headImg': this.data.userInfo.avatarUrl,
       'nickname': this.data.userInfo.nickName,
       'openid': this.data.openid,
-      'code':this.data.code
     };
+    // 如果不是被邀请的 那么就取授权码
+    if (!this.data.accoutInfo.id){
+      params.code = this.data.code
+    }
     let r = RequestFactory.signMember(params);
     r.finishBlock = (req) => {
       Storage.setMemberId(req.responseObject.data.id)

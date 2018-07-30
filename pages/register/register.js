@@ -1,4 +1,4 @@
-let { Tool, RequestFactory } = global;
+let { Tool, RequestFactory, Storage } = global;
 
 Page({
   data: {
@@ -10,13 +10,49 @@ Page({
     phone:'',
     pwd:'',
     code:'',
-    isSee: false
+    isSee: false,
+    id:'', // 保存邀请码（扫描分享和点击分享页面分享）
+    userInfo:'', //用户头像等信息
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    invalidTips:{
+      invalid:false,
+      tips:''
+    },
   },
   onLoad: function (options) {
-  
+    this.setData({
+      id: options.id || '',
+      userInfo: Storage.wxUserInfo() || false
+    })
+    if (options.id){
+      this.sweepCode(options.id)
+    }
   },
   onShow: function () {
     
+  },
+  sweepCode(id){
+    let params = {
+      id:id
+    }
+    let r = RequestFactory.sweepCode(params);
+    r.finishBlock = (req) => {
+      
+    }
+    r.failBlock = (req) => {
+      let msg = req.responseObject.msg
+      if (req.responseObject.code == 600) {
+        this.setData({
+          invalidTips: {
+            invalid: true,
+            tips: msg
+          }
+        })
+      } else {
+        Tool.showAlert(msg)
+      }
+    }
+    r.addToQueue();
   },
   isSeePwd() {
     this.setData({
@@ -32,12 +68,18 @@ Page({
       Tool.showAlert("密码格式不正确");
       return
     }
-    this.verifyPhone(e.detail.value)
+    let params = {
+      phone: this.data.phone,
+      code: this.data.code,
+      password: this.data.pwd
+    }
+    // this.verifyPhone(e.detail.value)  // 改动了 
+    this.verifyPhone(params)
   },
   verifyPhone(params){
     let r = RequestFactory.findMemberByPhone(params);
     r.finishBlock = (req) => {
-      Tool.navigateTo('/pages/register/register-code/register-code?phone=' + this.data.phone + "&password=" + this.data.pwd)
+      Tool.navigateTo('/pages/register/register-code/register-code?phone=' + this.data.phone + "&password=" + this.data.pwd+'&id='+this.data.id)
     }
     Tool.showErrMsg(r)
     r.addToQueue();
@@ -118,6 +160,32 @@ Page({
     that.setData({
       time: time
     });
+  },
+  agreeGetUser(e) {
+    if (!this.data.canIUse) {
+      this.getUserInfo()
+    }
+    if (e.detail.userInfo !== undefined) {
+      this.setData({
+        userInfo: e.detail.userInfo
+      })
+      Storage.setWxUserInfo(e.detail.userInfo)
+      this.formSubmit()
+    } 
+  },
+  getUserInfo() {
+    wx.getUserInfo({
+      success: res => {
+        this.setData({
+          userInfo: e.detail.userInfo
+        })
+        Storage.setWxUserInfo(e.detail.userInfo)
+        this.formSubmit()
+      },
+      fail: function () {
+       
+      }
+    })
   },
   toLogin(){
     Tool.navigateTo('/pages/login/login')

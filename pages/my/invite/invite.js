@@ -29,7 +29,8 @@ Page({
       let r = RequestFactory.createWxQrcode();
       r.finishBlock = (req) => {
         this.setData({
-          imgUrl: req.responseObject.data
+          imgUrl: req.responseObject.data.wxQrcode,
+          inviteId: req.responseObject.data.inviteId
         })
       }
       Tool.showErrMsg(r)
@@ -65,7 +66,7 @@ Page({
       }
       return {
         title: "飓热小程序",
-        path: '/pages/register/register?id' + this.data.userInfos.inviteId,
+        path: '/pages/register/register?id' + this.data.inviteId,
         imgUrl: this.data.imgUrl
       }
     },

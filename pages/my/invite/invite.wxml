@@ -2,7 +2,7 @@
   <view class="bg">
     <view class="area">
         <view class="detail">
-            <image class="avature-img" src="/img/default-userImg.png"></image>
+            <image class="avature-img" src="{{ userInfos.headImg || '/img/default-userImg.png'}}"></image>
             <view class="info">
               <view class="title1">您的好友({{userInfos.nickname}})</view>
               <view class="title1">邀请您参加活动</view>

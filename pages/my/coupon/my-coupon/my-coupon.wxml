@@ -6,7 +6,7 @@
     </scroll-view>
     <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
      style="height:{{winHeight}}rpx">
-        <swiper-item wx:for="{{lists}}" wx:for-index="key" wx:for-item="list"  wx:key="{{key}}">
+        <swiper-item wx:for="{{lists}}" wx:for-index="key" wx:for-item="list"  wx:key="unique">
             <scroll-view scroll-y="true" class="scoll-h" >
               <block wx:for="{{list}}" wx:key="unique">
                 <view class="item-ans {{item.active? 'active':''}}" data-index='{{index}}' bindtap="toDetail" data-id="item.id">
@@ -20,8 +20,8 @@
                       <view class='gray' >有效期：{{item.outTime}}</view>
                     </view>
                     <view class='coupon-right flexC font-30'>
-                      <!--<text wx:for="{{item.left}}" wx:for-item="left"  wx:key="unique">{{left}}</text>-->
-                      <text>{{item.left}}</text>
+                      <text wx:for="{{item.left}}" wx:for-item="left"  wx:key="unique">{{left}}</text>
+                      <!-- <text>{{item.left}}</text> -->
                     </view>
                 </view>
               </block> 

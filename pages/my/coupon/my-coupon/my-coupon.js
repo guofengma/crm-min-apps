@@ -11,18 +11,8 @@ Page({
                     full: 500,
                     name: '会员专享',
                     limit: '会员专享卷',
-                    time: '2018.06.07-2018.08.07',
                     active: true,
                     left: '立即使用'
-                },
-                {
-                    couponAmout: 11,
-                    full: 500,
-                    name: '会员专享',
-                    limit: '会员专享卷',
-                    time: '2018.06.07-2018.08.07',
-                    active: false,
-                    left: '待激活'
                 }
             ],
             [
@@ -31,16 +21,6 @@ Page({
                     full: 500,
                     name: '会员专享',
                     limit: '会员专享卷',
-                    time: '2018.06.07-2018.08.07',
-                    active: false,
-                    left: '已过期'
-                },
-                {
-                    couponAmout: 11,
-                    full: 500,
-                    name: '会员专享',
-                    limit: '会员专享卷',
-                    time: '2018.06.07-2018.08.07',
                     active: false,
                     left: '已过期'
                 }
@@ -51,16 +31,6 @@ Page({
                     full: 500,
                     name: '会员专享',
                     limit: '会员专享卷',
-                    time: '2018.06.07-2018.08.07',
-                    active: false,
-                    left: '已使用'
-                },
-                {
-                    couponAmout: 11,
-                    full: 500,
-                    name: '会员专享',
-                    limit: '会员专享卷',
-                    time: '2018.06.07-2018.08.07',
                     active: false,
                     left: '已使用'
                 }

@@ -1,4 +1,4 @@
-<form bindsubmit="formSubmit" class='form'>
+<form bindsubmit="formSubmit" class='form' wx:if='{{!invalidTips.invalid}}'>
   <view class='section'>
     <view class='flexR'>
       <text>手机号</text>
@@ -18,7 +18,16 @@
   </view>
   <view class='tips'>密码为6~18位数字和字母的组合(设置的手机号将作为账号登录)</view>
   <view class="btn-area">
-    <button formType="submit" class='loginBtn' disabled='{{disabled}}' >下一步</button>
-    <view bindtap='toLogin' class='login-view'>登录</view>
+    <button formType="submit" class='loginBtn' disabled='{{disabled}}' wx:if='{{userInfo}}'>下一步</button>
+    <button wx:else open-type="getUserInfo" class="loginBtn" bindgetuserinfo="agreeGetUser" lang="zh_CN" disabled='{{disabled}}'>下一步</button>
+    <!-- 如果是被邀请的 不显示登录按钮 -->
+    <view bindtap='toLogin' class='login-view' wx:if='{{!id}}'>登录</view>
   </view>
 </form>
+
+<view class='invalid-img-view' wx:else>
+   <view class='invalid-view'>
+     <image src='/img/Invalid.png' mode='widthFix'></image>
+   </view>
+   <view class='flexR font-30 gray'>{{invalidTips.tips}}</view>
+</view>

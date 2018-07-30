@@ -4,7 +4,7 @@
      <form bindsubmit="formSubmit" class='form'>
         <view class='flexR form-group'>
           <text>会员ID录入</text>
-          <input type='text' name='id' placeholder="请输入会员ID" value='{{code}}' bindinput='inputChange'></input>
+          <input type='text' name='id' placeholder="请输入会员ID" value='{{code}}' bindinput='inputChange' disabled='{{disabled}}'></input>
         </view>
         <view class="btn-area">
           <button formType="submit" class='loginBtn'>下一步</button>
@@ -12,19 +12,21 @@
     </form>
   </view>
   <view class='inviterInfo '>
-    <view class='tips flexR'>
-     <image src='../../../img/tips-icon.png' mode="widthFix"></image>
-      请选择以下用户作为您的邀请者
-    </view>
-    <view class='inviter flexR'>
+    <view wx:if='{{!accoutInfo.id}}'>
+      <view class='tips flexR'>
+        <image src='../../../img/tips-icon.png' mode="widthFix"></image>
+        请选择以下用户作为您的邀请者
+      </view>
+      <view class='inviter flexR'>
        <view class='flexC'wx:for='{{invite}}' wx:key="unique" bindtap='inviterClicked' data-key='{{item.code}}'>
          <image src='{{ item.head_img? item.head_img:"../../../img/default-userImg.png"}}'></image>
          <text class='inviter-name ellipsis'>{{item.realname}}</text>
          <text class='inviter-level ellipsis'>{{item.name}}</text>
        </view>
-    </view>
-    <view>
-      <button class='changeBtn' bindtap='queryInviterList'>换一换</button>
+      </view>
+      <view>
+        <button class='changeBtn' bindtap='queryInviterList'>换一换</button>
+      </view>
     </view>
     <view class='rule flexR'>
       <image src='{{isAgree? "../../../img/select-icon.png":"../../../img/no-select.png"}}' 
