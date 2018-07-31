@@ -29,9 +29,10 @@
     border-radius: 20rpx;
     height: 40rpx;
     line-height: 40rpx;
-    min-width: 40rpx;
+    min-width: 20rpx;
     text-align: center;
     display: inline-block;
+    padding: 0 10rpx;
 }
 /*弹窗*/
 .tips-icon{

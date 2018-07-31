@@ -625,5 +625,33 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().availableDiscountCouponForProduct;
     return this.request(url, params, '产品可用优惠劵列表', true);
   }
+
+    /***********************我的消息********************************/
+
+    static queryTotalPushNum(params) {
+        let url = Operation.sharedInstance().queryTotalPushNum;
+        return this.request(url, params, '未查看消息数量', true);
+    }
+
+    static queryPushNum(params) {
+        let url = Operation.sharedInstance().queryPushNum;
+        return this.request(url, params, '消息未读详情', true);
+    }
+
+    static queryMessage(params) {
+        let url = Operation.sharedInstance().queryMessage;
+        return this.request(url, params, '消息', true);
+    }
+
+    static queryNoticeMessage(params) {
+        let url = Operation.sharedInstance().queryNoticeMessage;
+        return this.request(url, params, '通知详情', true);
+    }
+
+    static queryStoreMessageList(params) {
+        let url = Operation.sharedInstance().queryStoreMessageList;
+        return this.request(url, params, '拼店消息', true);
+    }
+
 }
 

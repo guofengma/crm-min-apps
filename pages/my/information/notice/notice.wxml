@@ -1,9 +1,16 @@
+<!--无数据-->
+<import src='/components/nodata-tips/nodata-tips.wxml' />
 <view>
-    <view class="notice-item">
-        <view class="time">05/06 15:45</view>
-        <view class="title">【有奖调研】您对我们的产品还满意吗？</view>
-        <view class="content">       想要更了解您对我们的印象如何，参加调研，即有机会赢取50元奖励。</view>
-        <!--问卷调查_查看详情-->
-        <!--<view class="watch-detail">查看详情 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/detail-btn.png"></image></view>-->
+
+    <block wx:if="{{list.length>0}}">
+        <view class="notice-item" wx:for="{{list}}" wx:key="unique">
+            <view class="time">{{item.pushTime}}</view>
+            <view class="title">{{item.title}}</view>
+            <view class="content">{{item.content}}</view>
+            <!--<view class="watch-detail" bindtap="informationDetail" data-id="{{item.id}}">查看详情 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/detail-btn.png"></image></view>-->
+        </view>
+    </block>
+    <view wx:else>
+        <template is="nodata-tips" />
     </view>
 </view>
