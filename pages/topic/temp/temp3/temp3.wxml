@@ -5,11 +5,8 @@
     <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
   </view>
   <view class='topic-prd-content topic-temp3'>
-    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
-    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
-    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
-    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
-    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
-    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
+    <block>
+      <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
+    </block>
   </view>
 </template>
