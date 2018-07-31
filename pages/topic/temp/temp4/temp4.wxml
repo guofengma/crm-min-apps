@@ -1,10 +1,18 @@
 <import src='/pages/topic/temp/topic-prd-info/topic-prd-info.wxml'/>
 
+<import src='/pages/topic/temp/topic-bar/topic-bar.wxml'/>
+
 <template name="topic-temp4">
+  <template is="topic-bar" data=""/>
+  <view class='topic-banner topic-temp4'>
+    <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+  </view>
   <view class='topic-prd-content'>
-    <template is="topic-prd-info" data="{{width:'330',bg:'#fff',ellipsis:'ellipsis'}}"/>
-    <template is="topic-prd-info" data="{{width:'330',bg:'#fff',ellipsis:'ellipsis'}}"/>
-    <template is="topic-prd-info" data="{{width:'330',bg:'#fff',ellipsis:'ellipsis'}}"/>
-    <template is="topic-prd-info" data="{{width:'330',bg:'#fff',ellipsis:'ellipsis'}}"/>
+    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
+    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
+    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
+    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
+    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
+    <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
   </view>
 </template>

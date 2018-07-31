@@ -1,13 +1,13 @@
 <import src='/pages/topic/temp/topic-prd-info/topic-prd-info.wxml'/>
 
-<import src='/pages/topic/temp/ad-info/ad-info.wxml'/>
-
 <import src='/pages/topic/temp/topic-bar/topic-bar.wxml'/>
 
 <template name="topic-temp2">
   <template is="topic-bar" data=""/>
-  <template is="ad-info" data=""/>
-  <view class='topic-prd-content'>
+  <view class='topic-banner topic-temp2'>
+    <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+  </view>
+  <view class='topic-prd-content topic-temp2'>
     <block>
       <template is="topic-prd-info" data="{{width:'330',bg:'#fff',ellipsis:'ellipsis'}}"/>
     </block>

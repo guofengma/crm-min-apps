@@ -1,11 +1,17 @@
-.scroll{
-  width: 100%;
+.tab-h{
   height: 100rpx;
-  background: #fff;
-  padding: 0;
+  width: 100%; 
+  overflow: hidden;
+  line-height: 100rpx;
+  white-space: nowrap;
+  margin-bottom: 20rpx;
 }
-.scroll-line{
-  height: 100%;
-  width: 50%;
+.tab-item{
+  width:50%;
   display: inline-block;
+  text-align: center;
+}
+.tab-item.active{
+  color: #e60012;
+  position: relative;
 }

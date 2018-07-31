@@ -12,7 +12,7 @@
 .infos{
   padding: 40rpx;
   line-height: 36rpx;
-  margin-bottom: 10rpx;
+  /* margin-bottom: 10rpx; */
 }
 .topic-page{
   min-height: 100%;
@@ -26,9 +26,14 @@
 }
 .topic-banner{
   width: 100%;
+  margin: 30rpx 0;
+}
+.topic-temp3.topic-banner{
+  margin-top: 0;
 }
 .topic-banner image{
   height: 235rpx;
+  vertical-align:middle;
 }
 .topic-type{
   height: 99rpx;

@@ -1,10 +1,10 @@
 <import src='/pages/topic/temp/topic-prd-info/topic-prd-info.wxml'/>
-
-<import src='/pages/topic/temp/ad-info/ad-info.wxml'/>
-
 <!-- 模板1 -->
 <template name="topic-temp1">
-  <template is="ad-info" data=""/>
+  <view class='topic-banner topic-temp1'>
+    <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+  </view>
+  <view class='topic-type flexR'>水乳</view>
   <view class='topic-prd-content'>
     <block>
       <template is="topic-prd-info" data="{{width:'330',bg:'#fff',ellipsis:'ellipsis'}}"/>

@@ -1,5 +1,7 @@
 <template name="topic-bar">
-  <scroll-view scroll-x class='scroll'>
-    <view class='font-26 flexR scroll-line'>是实打实的</view>
+  <scroll-view scroll-x="true" class="tab-h font-26 boxSize whiteBg" scroll-left="{{scrollLeft}}">
+    <view class="tab-item "  data-current="0" bindtap="swichNav">哈就好就是大家啊</view>
+    <view class="tab-item" data-current="1" bindtap="swichNav">啦啦啦</view>
+    <view class="tab-item " data-current="2" bindtap="swichNav">哈哈哈</view>
   </scroll-view>
 </template>
