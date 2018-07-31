@@ -396,7 +396,31 @@ export default class Operation {
 
         // 产品可用优惠劵列表
 
-        this.availableDiscountCouponForProduct = '/user/discountCoupon/availableDiscountCouponForProduct'
+        this.availableDiscountCouponForProduct = '/user/discountCoupon/availableDiscountCouponForProduct';
+
+        /************************** 我的消息 *******************************/
+
+        // 未查看消息数量
+
+        this.queryTotalPushNum = '/user/push/queryTotalPushNum';
+
+        // 消息未读详情
+
+        this.queryPushNum = '/user/push/queryPushNum';
+
+        // 消息
+
+        this.queryMessage = '/user/message/queryMessage';
+
+        // 通知详情
+
+        this.queryNoticeMessage = '/user/notice/queryNoticeMessage';
+
+        // 拼店消息
+
+        this.queryStoreMessageList = '/user/storeMessage/queryStoreMessageList';
+
+
 
     }
 

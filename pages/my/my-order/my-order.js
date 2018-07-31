@@ -110,6 +110,10 @@ Page({
     toOrderDetail(e) {
         Tool.navigateTo('../orderDetail/orderDetail?orderId=' + e.currentTarget.dataset.id + '&status=' + e.currentTarget.dataset.status)
     },
+  //跳到物流页面
+  logistics(e) {
+    Tool.navigateTo('../../logistics/logistics?orderId=' + e.currentTarget.dataset.id)
+  },
     //删除订单
     deleteItem(e) {
         let id = e.currentTarget.dataset.id;

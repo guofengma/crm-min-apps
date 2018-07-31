@@ -56,7 +56,7 @@
         </view>
         <view class="item line" bindtap="coupon">
             <view>
-                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/wdzh_18@2x.png" alt=""></image>
+                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/coupon.png" alt=""></image>
                 <text>我的优惠券</text>
             </view>
             <view>
