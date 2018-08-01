@@ -652,5 +652,10 @@ export default class RequestFactory {
         return this.request(url, params, '拼店消息', true);
     }
 
+    static findMessageDetail(params) {
+        let url = Operation.sharedInstance().findMessageDetail;
+        return this.request(url, params, '消息详情', true);
+    }
+
 }
 

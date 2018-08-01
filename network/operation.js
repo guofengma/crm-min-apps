@@ -420,7 +420,9 @@ export default class Operation {
 
         this.queryStoreMessageList = '/user/storeMessage/queryStoreMessageList';
 
+        // 查看消息详情
 
+        this.findMessageDetail = '/user/message/findMessageDetail';
 
     }
 

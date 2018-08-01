@@ -84,10 +84,31 @@ Page({
         if (!this.didLogin()) return;
         switch (type){
             case 1:
-                page='../informationDetail/informationDetail';//消息详情
+                page='../informationDetail/informationDetail?id='+id+'&type='+type;//支付成功
                 break;
             case 2:
-                page='../../my-order/my-order?index='+3;//待收货
+                page='../../my-order/my-order?index='+3;//订单发货
+                break;
+            case 3:
+                page='../../my-order/my-order?index='+0;//订单超时
+                break;
+            case 4:
+                page='/pages/after-sale/only-refund/only-refund-detail/only-refund-detail?returnProductId='+id;//退款申请
+                break;
+            case 5:
+                page='/pages/after-sale/return-goods/return-goods?returnProductId='+id;//退货申请
+                break;
+            case 6:
+                page='/pages/after-sale/exchange-goods/exchange-goods?returnProductId='+id;//换货申请
+                break;
+            case 7:
+                page='../informationDetail/informationDetail?id='+id+'&type='+type;//退款成功
+                break;
+            case 8:
+                page='../informationDetail/informationDetail?id='+id+'&type='+type;//提现申请驳回
+                break;
+            case 15:
+                page='pages/my/coupon/my-coupon/my-coupon';//优惠券
                 break;
         }
         Tool.navigateTo(page)
