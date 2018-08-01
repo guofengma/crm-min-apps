@@ -48,6 +48,8 @@ Component({
             Tool.showAlert('当前产品最多只能购买' + this.data.selectPrdList.stock + '件哦~')
             return
           }
+          if (isActive.length == 1 && !isActive[0].val) return
+         
           this.triggerEvent('subClicked', { ...index, typeClicked: this.data.typeClicked, productType: productType2 });
           this.isVisiableClicked()
         }

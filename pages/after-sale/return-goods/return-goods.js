@@ -1,4 +1,4 @@
-let { Tool, RequestFactory, Storage } = global
+let { Tool, RequestFactory, Storage, Event } = global
 Page({
   data: {
     addressType:1,
@@ -18,6 +18,12 @@ Page({
       list: Storage.getInnerOrderList() || ''
     })
     this.findReturnProductById(options.returnProductId)
+    Event.on('updataExpressNo', this.updataExpressNo, this)
+  },
+  updataExpressNo() {
+    this.setData({
+      expressNo: { id: 2, content: Storage.getExpressNo() }
+    })
   },
   findReturnProductById(returnProductId) {
     let list = this.data.list
@@ -74,5 +80,6 @@ Page({
   },
   onUnload: function () {
     clearInterval(this.data.time)
+    Event.off('updataExpressNo', this.updataExpressNo)
   },
 })
