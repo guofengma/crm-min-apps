@@ -67,7 +67,7 @@
                 <text>实名认证</text>
             </view>
             <view >
-                <text class="identify">{{userInfos.isRealname? "已实名认证":"未实名认知"}}</text>
+                <text class="identify">{{userInfos.isRealName}}</text>
             </view>
         </view>
     </view>

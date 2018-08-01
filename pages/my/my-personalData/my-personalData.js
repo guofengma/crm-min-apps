@@ -15,6 +15,19 @@ Page({
     },
     refreshMemberInfoNotice(){
       Tool.getUserInfos(this)
+      let userInfos = this.data.userInfos
+      let isRealName = ''
+      if (userInfos.realnameStatus==0){
+        isRealName = '待审核'
+      } else if (userInfos.realnameStatus == 1){
+        isRealName = '已实名制'
+      } else {
+        isRealName = '未实名制'
+      }
+      userInfos.isRealName = isRealName
+      this.setData({
+        userInfos: userInfos
+      })
     },
     pickerClicked(e) {
       this.setData({

@@ -556,10 +556,10 @@ export default class RequestFactory {
  
   /******************* 首页 ******************** */
   
-  static queryAdList(Type) {
-    let params = {
-      pageType: Type
-    }
+  static queryAdList(params) {
+    // let params = {
+    //   pageType: Type
+    // }
     let url = Operation.sharedInstance().queryAdList;
     return this.request(url, params, '轮播图查询', true);
   }
@@ -575,6 +575,12 @@ export default class RequestFactory {
     return this.request(url, params, '获取推荐产品', true);
   }
 
+  static getTopicDetail(params) {
+    let url = Operation.sharedInstance().getTopicDetail;
+    return this.request(url, params, '获取专题详情页', true);
+  }
+
+  
   /***********************帮助中心********************************/
 
   static queryHelpQuestionList(id) {

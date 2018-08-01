@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 25,
+			"current": 23,
 			"list": [
 				{
 					"id": -1,
@@ -174,10 +174,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 23,
 					"name": "专题",
 					"pathName": "pages/topic/topic",
-					"query": ""
+					"query": "id=1"
 				},
 				{
 					"id": -1,
@@ -188,7 +188,8 @@
 				{
 					"id": -1,
 					"name": "消息列表",
-					"pathName": "pages/my/information/information/information"
+					"pathName": "pages/my/information/information/information",
+					"query": ""
 				}
 			]
 		}

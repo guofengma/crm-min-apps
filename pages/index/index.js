@@ -14,16 +14,8 @@ Page({
             {name: '鞋子', imgurl: 'index-icon-3.png'},
             {name: '服饰', imgurl: 'index-icon-4.png'},
         ],
-        recommendImgUrl: [
-            'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-            'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-            'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-        ],
-        topicImgUrl: [
-            'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-            'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-            'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-        ]
+        recommendImgUrl: [],
+        topicImgUrl: []
     },
     onLoad: function () {
         this.topicList();
@@ -43,6 +35,7 @@ Page({
                 imgUrls: req.responseObject.data
             })
         };
+        Tool.showErrMsg(r)
         r.addToQueue();
     },
     querySpeList() {
@@ -57,6 +50,7 @@ Page({
                 topicImgUrl: req.responseObject.data
             })
         };
+        Tool.showErrMsg(r)
         r.addToQueue();
     },
     adListClicked(e) {
@@ -82,6 +76,7 @@ Page({
                 recommendImgUrl: req.responseObject.data
             })
         };
+        Tool.showErrMsg(r)
         r.addToQueue();
     },
     topicList() {
@@ -96,13 +91,18 @@ Page({
                 topicImgUrl: req.responseObject.data
             })
         };
+        Tool.showErrMsg(r)
         r.addToQueue();
     },
     searchClicked() {
         Tool.navigateTo('/pages/search/search')
     },
     msgClicked() {
-        Tool.navigateTo('/pages/my/information/information')
+      Tool.navigateTo('/pages/my/information/information')
+    },
+    topicClicked(e){
+      let id = e.currentTarget.dataset.id
+      Tool.navigateTo('/pages/topic/topic?id='+id)
     },
     onShareAppMessage: function (res) {
 
