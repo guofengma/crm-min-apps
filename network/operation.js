@@ -353,6 +353,10 @@ export default class Operation {
 
         this.topicList ='/admin/topic/list'
 
+        // 获取专题详情页
+
+        this.getTopicDetail = '/user/topic/get'
+
         // 获取推荐产品
 
         this.queryFeaturedList = '/user/featured/queryFeaturedList'

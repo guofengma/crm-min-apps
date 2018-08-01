@@ -452,8 +452,8 @@ export default class Tool {
     }
 
     static redirectTo(url, success, fail, complete) {
-        console.log('\n\n******************************************************************************************');
-        console.log('redirectTo:' + url);
+        // console.log('\n\n******************************************************************************************');
+        // console.log('redirectTo:' + url);
         wx.redirectTo({
             url: url,
             success: success,
@@ -464,8 +464,8 @@ export default class Tool {
     }
 
     static switchTab(url, success, fail, complete) {
-        console.log('\n\n******************************************************************************************');
-        console.log('switchTab:' + url);
+        // console.log('\n\n******************************************************************************************');
+        // console.log('switchTab:' + url);
         wx.switchTab({
             url: url,
             success: success,
@@ -475,8 +475,8 @@ export default class Tool {
     }
    
     static navigateTo(url, success, fail, complete) {
-        console.log('\n\n******************************************************************************************');
-        console.log('navigateTo:' + url);
+        // console.log('\n\n******************************************************************************************');
+        // console.log('navigateTo:' + url);
         wx.navigateTo({
             url: url,
             success: success,
