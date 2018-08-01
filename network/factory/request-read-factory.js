@@ -615,8 +615,7 @@ export default class RequestFactory {
     return this.request(url, params, '失效优惠劵列表', true);
   }
 
-  static getDiscountCouponById(id) {
-    let params = id;
+  static getDiscountCouponById(params) {
     let url = Operation.sharedInstance().getDiscountCouponById;
     return this.request(url, params, '优惠劵详情', true);
   }

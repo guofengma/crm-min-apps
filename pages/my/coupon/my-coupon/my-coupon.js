@@ -28,7 +28,8 @@ Page({
                 let item = req.responseObject.data[i];
                 item.outTime = Tool.formatTime(item.outTime);
                 if (item.status == 0) {
-                    item.left = ''
+                    item.left = '去使用';
+                    item.active=true
                 } else {
                     item.left = '已过期'
                 }
@@ -97,9 +98,9 @@ Page({
         }
     },
     //优惠券详情
-    toDetail(){
+    toDetail(e){
       let id=e.currentTarget.dataset.id;
-      Tool.navigateTo('/coupon-detail/coupon-detail?id='+id)
+      Tool.navigateTo('../coupon-detail/coupon-detail?id='+id)
     },
     //判断当前滚动超过一屏时，设置tab标题滚动条。
     checkCor: function () {

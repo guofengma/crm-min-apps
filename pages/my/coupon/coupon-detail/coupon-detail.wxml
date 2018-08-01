@@ -13,8 +13,8 @@
 
 <view class='tips'>
   <view>使用说明：</view>
-  <view>1.优惠券在激活有效期内可以购买指导商品</view>
-  <view>1.优惠券在激活有效期内可以购买指导商品</view>
-  <view>1.优惠券在激活有效期内可以购买指导商品</view>
+  <view>1.优惠券在激活有效期内可以购买指定商品</view>
+  <view>1.优惠券在激活有效期内可以购买指定商品</view>
+  <view>1.优惠券在激活有效期内可以购买指定商品</view>
 </view>
 <button class='loginBtn' disabled='{{disabled}}'>待激活</button>
