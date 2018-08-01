@@ -137,7 +137,7 @@ Page({
         let params = {
             orderId: this.data.orderId,
         };
-        if(this.data.status==7){//已完成订单
+        if(this.data.status==7||this.data.status==5){//已完成订单/待确认
             r=RequestFactory.deleteOrder(params)
         }else{
             r=RequestFactory.deleteClosedOrder(params)
