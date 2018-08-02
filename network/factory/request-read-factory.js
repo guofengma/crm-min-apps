@@ -336,6 +336,11 @@ export default class RequestFactory {
       let url = Operation.sharedInstance().cancelOrder;
       return this.request(url, params, '取消订单', true);
   }
+  static findDelivery(params) {
+      // params.port = '8103';
+      let url = Operation.sharedInstance().findDelivery;
+      return this.request(url, params, '查看物流', true);
+  }
 
   /*******************订单结算******************** */
 

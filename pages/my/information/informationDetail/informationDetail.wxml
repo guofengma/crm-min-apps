@@ -82,7 +82,8 @@
                     <text>创建时间</text>
                 </view>
                 <view>
-                    <text>{{detail.refund_time}}</text>
+                    <text wx:if='status==1'>{{detail.pay_time}}</text>
+                    <text wx:else>{{detail.refund_time}}</text>
                 </view>
             </view>
             <view class="item" bindtap="information">

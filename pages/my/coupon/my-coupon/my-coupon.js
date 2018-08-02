@@ -27,12 +27,8 @@ Page({
             for (let i in req.responseObject.data) {
                 let item = req.responseObject.data[i];
                 item.outTime = Tool.formatTime(item.outTime);
-                if (item.status == 0) {
-                    item.left = '去使用';
-                    item.active=true
-                } else {
-                    item.left = '已过期'
-                }
+                item.left = '立即使用';
+                item.active=true;
                 this.data.lists[0].push(item)
             }
             this.setData({
@@ -51,7 +47,7 @@ Page({
             for (let i in req.responseObject.data) {
                 let item = req.responseObject.data[i];
                 item.outTime = Tool.formatTime(item.outTime);
-                item.left = '已使用   ';
+                item.left = '已使用';
                 this.data.lists[2].push(item)
             }
             this.setData({
@@ -70,11 +66,7 @@ Page({
             for (let i in req.responseObject.data) {
                 let item = req.responseObject.data[i];
                 item.outTime = Tool.formatTime(item.outTime);
-                if (item.status == 0) {
-                    item.left = ''
-                } else {
-                    item.left = '已过期'
-                }
+                item.left = '已过期';
                 this.data.lists[1].push(item)
             }
             this.setData({

@@ -259,6 +259,10 @@ export default class Operation {
 
         this.fillInExpressInfoById ='/order/order/fillInExpressInfoById'
 
+        // 根据订单id查询快递信息
+
+        this.findDelivery ='/user/delivery/find'
+
         // 再次购买
 
         this.orderOneMore  ='/order/order/orderOneMore'

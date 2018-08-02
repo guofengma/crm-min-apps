@@ -18,8 +18,8 @@ export default class Request {
       // this.baseUrl = 'http://172.16.10.29:'
       // this.baseUrl = 'http://172.16.10.19:'
       // this.baseUrl = 'http://172.16.10.7:'
-      // this.baseUrl = 'http://172.16.10.253:'
-      this.baseUrl = 'http://172.16.10.29:'
+      this.baseUrl = 'http://172.16.10.253:'
+      // this.baseUrl = 'http://172.16.10.29:'
 
 
       if (bParam.port) {
