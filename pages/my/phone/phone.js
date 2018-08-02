@@ -1,5 +1,5 @@
 // pages/my/account.js
-let {Tool, RequestFactory, Event} = global;
+let { Tool, RequestFactory, Event, Storage} = global;
 Page({
 
     /**
@@ -41,14 +41,15 @@ Page({
         }
         let r = RequestFactory.updateDealerNewPhone(params);
         r.finishBlock = (req) => {
+            Storage.setUserAccountInfo(req.responseObject.data)
             Event.emit('refreshMemberInfoNotice');
+            this.cancel();
+            Tool.redirectTo('../account/account')
         };
         r.failBlock = (req) => {
             Tool.showAlert(req.responseObject.msg)
         };
         r.addToQueue();
-        this.cancel();
-        Tool.navigateTo('../account/account')
     },
     // 取消
     cancel() {
