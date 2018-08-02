@@ -8,7 +8,7 @@
       <view class='flexR'>
         <image src='/img/default-userImg.png' mode='widthFix' class='logo-w'></image>
         <!--<view>本数据由 <text class='blue'>百世汇通</text> 提供</view>-->
-        <view>订单状态 <text class='blue'><span wx:if="{{status==0}}">查询异常</span>
+        <view>物流状态 <text class='blue'><span wx:if="{{status==0}}">查询异常</span>
           <span wx:if="{{status==1}}">暂无记录</span>
           <span wx:if="{{status==2}}">在途中</span>
           <span wx:if="{{status==3}}">派送中</span>
@@ -22,23 +22,29 @@
       </view>
     </view>
     <view class='infos'>
-      <block wx:for='{{list}}' wx:key='unique'>
-        <view class='flexR-sb'>
-          <view class='time-line'>
-            <view>{{item.time}}</view>
-          </view>
-          <view class='time-content'>
-            <!--<image src='{{item.middleImage}}' mode='widthFix' class='state-icon'></image>-->
-            <view class='dian'><view></view></view>
-            <!--<view class='font-30 state-title'>{{item.title}}</view>-->
-            <view>
-              {{item.context}}
-              <!--<text class='orange'>{{item.content2}}</text>-->
-              <!--{{item.content3}}-->
+      <view wx:if="{{list.length>0}}">
+        <block wx:for='{{list}}' wx:key='unique'>
+          <view class='flexR-sb'>
+            <view class='time-line'>
+              <view>{{item.time}}</view>
+            </view>
+            <view class='time-content'>
+              <!--<image src='{{item.middleImage}}' mode='widthFix' class='state-icon'></image>-->
+              <view class='dian'><view></view></view>
+              <!--<view class='font-30 state-title'>{{item.title}}</view>-->
+              <view>
+                {{item.context}}
+                <!--<text class='orange'>{{item.content2}}</text>-->
+                <!--{{item.content3}}-->
+              </view>
             </view>
           </view>
-        </view>    
-      </block>
+        </block>
+      </view>
+
+      <view wx:else>
+        <view>暂无物流信息~</view>
+      </view>
     </view>  
   </view>
 </view>

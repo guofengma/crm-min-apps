@@ -23,14 +23,14 @@ export default class Request {
       // this.baseUrl = 'http://172.16.10.29:'
 
 
-      // if (bParam.port) {
-      //   this.baseUrl = this.baseUrl + bParam.port
-      // } else {
-      //   this.baseUrl = this.baseUrl + '8102';
-      // }
+      if (bParam.port) {
+        this.baseUrl = this.baseUrl + bParam.port
+      } else {
+        this.baseUrl = this.baseUrl + '8102';
+      }
 
       // 正式
-      this.baseUrl = 'https://test.dnvhot.tech';
+      // this.baseUrl = 'https://test.dnvhot.tech';
       // this.baseUrl = 'https://nc.hzjure.xyz';
       return this.baseUrl
     }
