@@ -43,7 +43,7 @@ Page({
     params.id = Storage.memberId()
     console.log(params)
     if (!Tool.checkName(params.realname)) {
-      Tool.showAlert("收货人姓名长度需在2-16位之间");
+      Tool.showAlert("请输入2-16位之间的中文姓名");
       return
     }
     if (!Tool.checkIdentityCode(params.idcard)){

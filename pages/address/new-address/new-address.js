@@ -40,19 +40,10 @@ Page({
   },
   formSubmit(e) {
       let params = e.detail.value;
-      if (this.data.region[0]) {
-          params.provinceCode = this.data.region[0].zipcode;
-      }
-      if (this.data.region[1]) {
-          params.cityCode = this.data.region[1].zipcode;
-      }
-      if (this.data.region[2]) {
-          params.areaCode = this.data.region[2].zipcode;
-      }
       // 获取用户ID
       // params.id = Storage.memberId();
       console.log(params);
-      if (!Tool.checkName(params.receiver)) {
+      if (!(params.receiver.length >3 && params.receiver.length<17)) {
           Tool.showAlert("收货人姓名长度需在2-16位之间");
           return
       }
@@ -67,6 +58,15 @@ Page({
       if (Tool.isEmptyStr(params.address)) {
           Tool.showAlert("请输入详细地址");
           return
+      }
+      if (this.data.region[0]) {
+        params.provinceCode = this.data.region[0].zipcode;
+      }
+      if (this.data.region[1]) {
+        params.cityCode = this.data.region[1].zipcode;
+      }
+      if (this.data.region[2]) {
+        params.areaCode = this.data.region[2].zipcode;
       }
       if(this.data.id){
         // 更新地址

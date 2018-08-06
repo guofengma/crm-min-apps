@@ -642,7 +642,8 @@ export default class Tool {
     }
     // 判断人名
     static checkName(value){
-      if (!(/^([a-zA-Z0-9\u4e00-\u9fa5\·]{2,16})$/.test(value))){
+      ///^([a-zA-Z0-9\u4e00-\u9fa5\·]{2,16})$/
+      if (!(/^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,16}$/.test(value))){
         return false 
       } else {
         return true
