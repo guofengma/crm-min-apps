@@ -167,7 +167,8 @@ Page({
     }
     let r = RequestFactory.submitOrder(params);
     r.finishBlock = (req) => {        
-      Event.emit('updateStorageShoppingCart')
+      //Event.emit('updateStorageShoppingCart')
+      Event.emit('updateShoppingCart')
       let data = req.responseObject.data
       Tool.redirectTo('/pages/order-confirm/pay/pay?data=' + JSON.stringify(data))
     };

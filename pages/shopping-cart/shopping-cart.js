@@ -158,7 +158,8 @@ Page({
         this.getTotalPrice()
       } else {
         this.setData({
-          tipVal: 2
+          tipVal: 2,
+          items:[]
         })
       }
     };

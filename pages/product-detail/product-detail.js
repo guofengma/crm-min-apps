@@ -41,10 +41,10 @@ Page({
     Tool.didLogin(this)
   },
   msgTipsClicked(e){
-    let n = e.currentTarget.dataset.index
+    let n = parseInt(e.currentTarget.dataset.index) 
     switch (n) {
       case 1:
-        Tool.navigateTo('')
+        Tool.navigateTo('/pages/my/information/information')
         break;
       case 2:
         Tool.switchTab('/pages/index/index')
@@ -296,7 +296,7 @@ Page({
     let imgUrl = this.data.imgUrls[0].original_img ? this.data.imgUrls[0].original_img:''
     return {
       title: "飓热小程序",
-      path: '/pages/product-detail/product-detail?productId' + this.data.productId,
+      path: '/pages/product-detail/product-detail?productId=' + this.data.productId,
       imgUrl: imgUrl
     }
   },

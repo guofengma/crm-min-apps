@@ -61,10 +61,10 @@ Page({
       Tool.showAlert("请选择你所在的省市区");
       return
     }
-    if (Tool.isEmptyStr(params.address)) {
-      Tool.showAlert("请输入详细地址");
-      return
-    }
+    // if (Tool.isEmptyStr(params.address)) {
+    //   Tool.showAlert("请输入详细地址");
+    //   return
+    // }
     this.requestSignMemberInfo(params)
   },
   requestSignMemberInfo(params){

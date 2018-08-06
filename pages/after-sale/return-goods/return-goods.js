@@ -3,7 +3,7 @@ Page({
   data: {
     addressType:1,
     result: [ // 退货
-      { state: "商家已通过", info: "7天退换，请退货给卖家",tips:"退款中",time: '倒计时' },
+      { state: "商家已通过", info: "请在规定时间内退货给卖家",tips:"退款中",time: '倒计时' },
       { state: "退货中", info: "等待商家确认",tips: "退款中" },
       { state: "退货成功", info: "",tips: "已退款",time: '完成的时间' },
       { state: "商家拒绝您的申请", info: "请联系客服" , tips: "", time: '' },

@@ -4,7 +4,7 @@ Page({
     addressType:1,
     src:'/img/address-icon-gray.png',
     result:[ // 换货
-      { state: "商家已通过", info: "7天退换，请退货给卖家", time: ''},
+      { state: "商家已通过", info: "请在规定时间内退货给卖家", time: ''},
       { state: "换货中", info: "等待商家确认" },
       { state: "等待买家确认收货", info: "",time:'' },
       { state: "换货完成", info: "" },
