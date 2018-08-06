@@ -42,8 +42,7 @@ Page({
       let params = e.detail.value;
       // 获取用户ID
       // params.id = Storage.memberId();
-      console.log(params);
-      if (!(params.receiver.length >3 && params.receiver.length<17)) {
+      if (!(params.receiver.length >1 && params.receiver.length<17)) {
           Tool.showAlert("收货人姓名长度需在2-16位之间");
           return
       }

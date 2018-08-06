@@ -38,9 +38,6 @@ Page({
             status: options.status,
             state: this.orderState(options.status)//订单状态相关信息
         });
-        if (options.status == 1) {
-            this.time()
-        }
         if(options.status==4){
             this.addressType=2
         }
@@ -78,8 +75,12 @@ Page({
                 state:this.data.state
             })
             this.middleBtn()
-            if (detail.status == 1){
-              this.time()
+            if (detail.status == 1){ // 开始倒计时
+              let that = this
+              let time = setInterval(function () { that.time() }, 1000)
+              this.setData({
+                time: time
+              })  
             }
         };
         Tool.showErrMsg(r)
@@ -111,9 +112,9 @@ Page({
         let params = {
             orderId: this.data.orderId,
         };
-        if(this.data.status==7){//已完成订单
+        if (this.data.status == 7 || this.data.status == 5 ){//已完成订单
             r=RequestFactory.deleteOrder(params)
-        }else{
+        } else if (this.data.status == 8 || this.data.status == 10 ){
             r=RequestFactory.deleteClosedOrder(params)
         }
         r.finishBlock = (req) => {
@@ -198,54 +199,18 @@ Page({
 
     },
     time() {
-        //待付款订单 倒计时处理
-      if (this.data.detail.status == '1') {
-
-        let orderTime = this.data.detail.createTime;
-        //转化为时间戳
-        let timeInterval = Tool.timeIntervalFromString(orderTime);
-        // 把当前的时间格式化 
-        let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
-        let nowTimeInterval = Tool.timeIntervalFromString(now);
-        // 当前时间和订单时间的差数
-        let duration = 30 * 60 - (nowTimeInterval - timeInterval);
-        //开始倒计时 
+      //待付款订单 倒计时处理
+      let detail = this.data.detail
+      let endTime = Tool.formatTime(detail.overtimeClosedTime) 
+      let countdown = Tool.getDistanceTime(endTime, this)
+      if (countdown == null){
+        detail.status = 10
+        clearTimeout(this.data.time);
         this.setData({
-            duration: duration
-        });
-        this.countdown(this);
+          detail: detail,
+          state: this.orderState(10)//订单状态相关信息
+        })
       }
-
-    },
-    countdown(that) {
-
-        clearTimeout(that.data.time);
-
-        let second = that.data.duration;
-        let detail = that.data.detail
-        if (detail.status == '1') {
-            if (second > 0) {//秒数>0
-                let countDownTime = Tool.timeStringForTimeCount(second);
-                that.setData({
-                    duration: second - 1,
-                    countdown: countDownTime + '后自动取消订单'
-                });
-            } else {
-              detail.status = 10
-              that.setData({
-                detail:detail,
-                state: this.orderState(10)//订单状态相关信息
-              });
-            }
-        }
-
-        let time = setTimeout(function () {
-            that.countdown(that);
-        }, 1000);
-
-        that.setData({
-            time: time
-        });
     },
     orderState(n) {
         //按钮状态 left right middle 分别是底部左边 右边 和订单详情中的按钮文案

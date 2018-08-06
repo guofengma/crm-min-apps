@@ -8,7 +8,7 @@
     <view class='header {{showImgs? "":"active"}}'>
       <view wx:if='{{showImgs}}'>
         <view class='img-view'>
-          <image src='{{imgUrl}}'></image>
+          <image src='{{selectPrdList.stock}}'></image>
         </view>
         <!--产品信息  -->
         <view class='header-content'>

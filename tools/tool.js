@@ -205,6 +205,7 @@ export default class Tool {
       self.setData({
         distanceTime: distanceTime
       })
+      return distanceTime
     }
 
     //Object 空值判断

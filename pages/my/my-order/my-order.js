@@ -29,6 +29,7 @@ Page({
             tipVal: '',
             key: 0
         });
+        console.log(index)
         this.getData(index);
     },
     //获取数据

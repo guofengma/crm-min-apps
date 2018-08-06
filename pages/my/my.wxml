@@ -7,7 +7,7 @@
         <view class="info">
             <view>
                 <text>{{userInfos.nickname}}</text>
-                <image class="smrz-img" wx:if='{{userInfos.isRealname}}' src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/smyh_03@2x.png" alt=""></image>
+                <image class="smrz-img" wx:if='{{userInfos.realnameStatus == 1}}' src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/smyh_03@2x.png" alt=""></image>
             </view>
             <view>{{userInfos.levelName || ''}}</view>
         </view>
