@@ -25,8 +25,10 @@ Page({
         region: region,
         id:list.id
       })
+      wx.setNavigationBarTitle({
+        title: '编辑收货地址'
+      })
     }
-    
   },
   onShow: function () {
 

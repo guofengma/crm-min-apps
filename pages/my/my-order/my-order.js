@@ -62,14 +62,15 @@ Page({
               for (let i in req.responseObject.data.data) {
                 let item = req.responseObject.data.data[i];
                 item.createTime = Tool.formatTime(item.orderCreateTime);
-                if (item.orderStatus == 1) {
-                  let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
-                  let timeInterval = Tool.timeIntervalFromString(item.createTime);
-                  let nowTimeInterval = Tool.timeIntervalFromString(now);
-                  let duration = 30 * 60 - (nowTimeInterval - timeInterval);
-                  secondMap.set(key, duration);
-                }
-                key++;
+                // 这块是倒计时 暂时取消不做了
+                // if (item.orderStatus == 1) {
+                //   let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
+                //   let timeInterval = Tool.timeIntervalFromString(item.createTime);
+                //   let nowTimeInterval = Tool.timeIntervalFromString(now);
+                //   let duration = 30 * 60 - (nowTimeInterval - timeInterval);
+                //   secondMap.set(key, duration);
+                // }
+                // key++;
                 datas.push(item);
               }
               this.setData({
@@ -93,9 +94,10 @@ Page({
                   tipVal: 2
                 });
               }
-              if (secondMap.size > 0) {
-                this.countdown(this);
-              }
+              // 这块是倒计时 暂时取消不做了
+              // if (secondMap.size > 0) {
+              //   this.countdown(this);
+              // }
             };
             Tool.showErrMsg(r)
             r.addToQueue();
