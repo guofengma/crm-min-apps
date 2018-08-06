@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 23,
+			"current": 26,
 			"list": [
 				{
 					"id": -1,
@@ -190,6 +190,12 @@
 					"name": "消息列表",
 					"pathName": "pages/my/information/information/information",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "实名制",
+					"pathName": "pages/real-name/real-name",
+					"query": "id=1"
 				}
 			]
 		}

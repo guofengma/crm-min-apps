@@ -39,13 +39,6 @@ Page({
   },
   formSubmit(e){
     let params = e.detail.value
-    params.province = this.data.region[0].zipcode
-    if (this.data.region[1]){
-      params.city = this.data.region[1].zipcode
-    }
-    if (this.data.region[2]){
-      params.area = this.data.region[2].zipcode
-    }
     // 获取用户ID
     params.id = Storage.memberId()
     console.log(params)
@@ -60,6 +53,13 @@ Page({
     if (this.data.region.length == 0) {
       Tool.showAlert("请选择你所在的省市区");
       return
+    }
+    params.province = this.data.region[0].zipcode
+    if (this.data.region[1]) {
+      params.city = this.data.region[1].zipcode
+    }
+    if (this.data.region[2]) {
+      params.area = this.data.region[2].zipcode
     }
     // if (Tool.isEmptyStr(params.address)) {
     //   Tool.showAlert("请输入详细地址");
