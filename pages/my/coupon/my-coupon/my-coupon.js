@@ -1,4 +1,4 @@
-let {Tool, RequestFactory } = global;
+let { Tool, RequestFactory, Storage,Event} = global;
 Page({
     data: {
         winHeight: "",//窗口高度
@@ -30,7 +30,9 @@ Page({
     },
     //未使用
     getDiscountCouponNoUse() {
-        let params = {};
+        let params = {
+          productIds: this.data.productIds
+        };
         let r = RequestFactory.getDiscountCouponNoUse(params);
         r.finishBlock = (req) => {
             this.data.lists[0] = [];
@@ -40,7 +42,13 @@ Page({
               item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
               if (currentTime > item.startTime){
                 item.left = '';
-                item.active = true;
+                if(this.data.door ==1 ){
+                  item.active = item.canUse ==1? true:false
+                  item.left = item.active? '':"不可使用"
+                } else {
+                  item.active = true;
+                }
+                item.canUseStart = true
               } else {
                 item.left = '待激活';
                 item.active = false
@@ -107,10 +115,17 @@ Page({
     },
     //优惠券详情
     toDetail(e){
-      let id=e.currentTarget.dataset.id;
+      let id=e.currentTarget.dataset.id
       let btn = e.currentTarget.dataset.btn
-      console.log(btn)
-      Tool.navigateTo('../coupon-detail/coupon-detail?id=' + id + "&btn=" + btn)
+      let canUse = e.currentTarget.dataset.canuse
+      let index = e.currentTarget.dataset.index
+      if (canUse!=1){
+        Tool.navigateTo('../coupon-detail/coupon-detail?id=' + id + "&btn=" + btn)
+      } else if (canUse==1 && this.data.lists[0][index].canUseStart) {
+        Storage.setCoupon(this.data.lists[0][index])
+        Event.emit("updateCoupon")
+        Tool.navigationPop()
+      }
     },
     //判断当前滚动超过一屏时，设置tab标题滚动条。
     checkCor: function () {
@@ -124,7 +139,7 @@ Page({
             })
         }
     },
-    onLoad: function () {
+      onLoad: function (options) {
         let that = this;
         //  高度自适应
         wx.getSystemInfo({
@@ -138,6 +153,10 @@ Page({
             });
           }
         });
+        this.setData({
+          door: options.door || '',
+          productIds: options.productIds || '',
+        })
         this.getDiscountCouponNoUse();
         this.getDiscountCouponUserd();
         this.getDiscountCouponLosed();

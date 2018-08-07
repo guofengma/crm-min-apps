@@ -98,19 +98,19 @@ Page({
       r.addToQueue();
     },
     paySuccess(payway,outTradeNo){
-      let params ={
-        amounts: this.data.payList.showTotalAmounts,
-        outTradeNo:outTradeNo,
-        payTime: Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss"),
-        tradeNo:'',
-        'type':payway
-      }
-      let r = RequestFactory.paySuccess(params);
-      r.finishBlock = (req) => {
-        this.showResult(true)
-      };
-      Tool.showErrMsg(r)
-      r.addToQueue();
+      // let params ={
+      //   amounts: this.data.payList.showTotalAmounts,
+      //   outTradeNo:outTradeNo,
+      //   payTime: Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss"),
+      //   tradeNo:'',
+      //   'type':payway
+      // }
+      // let r = RequestFactory.paySuccess(params);
+      // r.finishBlock = (req) => {
+      //   this.showResult(true)
+      // };
+      // Tool.showErrMsg(r)
+      // r.addToQueue();
     },
     isSelectPayWay(){
       let payway = { isSelect: false, index: null }
@@ -215,13 +215,13 @@ Page({
       Tool.showErrMsg(r)
       r.addToQueue();
     },
-    test(payType,req){
-      let okCb = () => {
-        this.paySuccess(payType, req.responseObject.data.outTradeNo)
-      }
-      let errCb = () => {
-        this.showResult(false)
-      }
-      Tool.showComfirm('模拟第三方支付，点击确认为支付', okCb, errCb)
-    }
+    // test(payType,req){
+    //   let okCb = () => {
+    //     this.paySuccess(payType, req.responseObject.data.outTradeNo)
+    //   }
+    //   let errCb = () => {
+    //     this.showResult(false)
+    //   }
+    //   Tool.showComfirm('模拟第三方支付，点击确认为支付', okCb, errCb)
+    // }
 })

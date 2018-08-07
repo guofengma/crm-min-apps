@@ -81,7 +81,8 @@ Page({
                     let tempList = [];
                     if (list.length) {
                         list.forEach((item) => {
-                            tempList.unshift(item)
+                          item.showDate = item.time.slice(6, 10) + "\n" + item.time.slice(11, 16)
+                          tempList.push(item)
                         });
                         this.setData({
                             list: tempList

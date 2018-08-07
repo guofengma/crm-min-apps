@@ -204,12 +204,13 @@ export default class Storage {
     } 
 
     // 保存物流单号
-    static setExpressCom(info) {
-      this.setterFor('expressCom', info)
+    static setCoupon(info) {
+      this.setterFor('coupon', info)
     }
 
-    static getExpressCom() {
-      return this.getterFor('expressCom');
+    static getCoupon() {
+      return this.getterFor('coupon');
     } 
+    
     
 }

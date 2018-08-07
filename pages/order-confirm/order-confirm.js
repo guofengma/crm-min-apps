@@ -12,6 +12,7 @@ Page({
     addressList:[],
     remark:'', // 买家留言
     door:1, //1是产品详情页进入 2是购物车进入 3是从我的订单进来的 
+    coupon:null, //优惠券信息
   },
   onLoad: function (options) {
     this.setData({
@@ -20,9 +21,19 @@ Page({
     })
     this.requestOrderInfo()
     Event.on('updateOrderAddress', this.updateOrderAddress,this)
+    Event.on('updateCoupon', this.updateCoupon,this)
   },
   onShow: function () {
   
+  },
+  updateCoupon(){
+    let coupon = Storage.getCoupon()
+    let orderInfos = this.data.orderInfos
+    orderInfos.totalAmounts = orderInfos.totalAmounts - coupon.value
+    this.setData({
+      orderInfos: orderInfos,
+      coupon: coupon
+    })
   },
   requestOrderInfo(){
     let params = { orderProductList:this.data.params}
@@ -174,6 +185,14 @@ Page({
     };
     Tool.showErrMsg(r)
     r.addToQueue();
+  },
+  couponClicked(){
+    let productIds = []
+    let orderList = this.data.orderInfos.priceList
+    orderList.forEach((item)=>{
+      productIds.push(item.product_id)
+    })
+    Tool.navigateTo("/pages/my/coupon/my-coupon/my-coupon?door=1&&productIds=" + productIds.join(","))
   },
   onUnload: function () {
     Event.off('updateOrderAddress', this.updateOrderAddress)

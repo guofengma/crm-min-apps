@@ -26,7 +26,7 @@
         <block wx:for='{{list}}' wx:key='unique'>
           <view class='flexR-sb'>
             <view class='time-line'>
-              <view>{{item.time}}</view>
+              <view>{{item.showDate}}</view>
             </view>
             <view class='time-content'>
               <!--<image src='{{item.middleImage}}' mode='widthFix' class='state-icon'></image>-->
