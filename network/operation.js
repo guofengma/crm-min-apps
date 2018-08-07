@@ -231,7 +231,19 @@ export default class Operation {
         // 继续去预支付
 
         this.againToPrePay  ='/order/order/againToPrePay'
+
+        // 主动查询订单状态
+
+        this.orderQuery = '/user/weChatPay/orderQuery'
+
+        // 发起支付
         
+        this.wxPay = '/user/weChatPay/wxPay'
+
+        // 申请退款
+   
+        this.wxRefund = '/user/weChatPay/wxRefund'
+
 
         /**********************订单售后**************************/ 
 

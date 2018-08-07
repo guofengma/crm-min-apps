@@ -91,7 +91,8 @@ Page({
       }
       let r = RequestFactory.repay(params);
       r.finishBlock = (req) => {
-        this.test(payType, req)
+        //this.test(payType, req)
+        this.wxPay(payType, req.responseObject.data.outTradeNo)
       };
       Tool.showErrMsg(r)
       r.addToQueue();
@@ -136,7 +137,7 @@ Page({
       }
       let r = RequestFactory.continuePay(params);
       r.finishBlock = (req) => {
-        this.test(payType, req)
+        this.wxPay(payType, req.responseObject.data.outTradeNo)
       };
       Tool.showErrMsg(r)
       r.addToQueue();
@@ -171,6 +172,45 @@ Page({
         this.setData( {
             payList: payList
         })
+      };
+      Tool.showErrMsg(r)
+      r.addToQueue();
+    },
+    wxPay(payType, outTradeNo){ //微信支付
+      let params = {
+        productsDescription: outTradeNo,
+        openid: Storage.getWxOpenid(),
+        orderNum: outTradeNo,
+        totalFee: this.data.payList.showTotalAmounts
+      }
+      let r = RequestFactory.wxPay(params);
+      r.finishBlock = (req) => {
+        let that = this
+        let payList = req.responseObject.data
+        wx.requestPayment({
+          'timeStamp': payList.timeStamp,
+          'nonceStr': payList.nonceStr,
+          'package': payList.package,
+          'signType': 'MD5',
+          'paySign': payList.paySign,
+          'success': function (res) {
+            that.orderQuery(outTradeNo)
+          },
+          'fail': function (res) {
+            that.showResult(false)
+          }
+        })
+      };
+      Tool.showErrMsg(r)
+      r.addToQueue();
+    },
+    orderQuery(outTradeNo){
+      let params = {
+        outTradeNo: outTradeNo,
+      }
+      let r = RequestFactory.orderQuery(params);
+      r.finishBlock = (req) => {
+        this.showResult(true)
       };
       Tool.showErrMsg(r)
       r.addToQueue();

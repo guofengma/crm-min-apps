@@ -5,8 +5,8 @@
   </view>
   <view class='center boxSize'>
     <view class='font-30 '>{{detail.name}}</view>
-    <view class='gray'>限品类：{{detail.productNames}}</view>
-    <view class='gray'>有效期：{{detail.start_time}}-{{detail.out_time}}</view>
+    <view class='gray'>限品类：{{detail.name}}</view>
+    <view class='gray'>有效期：{{detail.start_time}} - {{detail.out_time}}</view>
     <!--<view class='gray'>使用说明：{{detail.remark}}</view>-->
   </view>
 </view>
@@ -17,4 +17,4 @@
   <!--<view>1.优惠券在激活有效期内可以购买指定商品</view>-->
   <!--<view>1.优惠券在激活有效期内可以购买指定商品</view>-->
 </view>
-<button class='loginBtn' disabled='{{disabled}}'>待激活</button>
+<button class='loginBtn' wx:if="{{btn}}" disabled='{{btn!="立即使用"}}' bindtap='btnClicked'>{{btn}}</button>

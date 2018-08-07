@@ -392,6 +392,21 @@ export default class RequestFactory {
     return this.request(url, params, '继续去预支付', true);
   }
 
+  static orderQuery(params) {
+    let url = Operation.sharedInstance().orderQuery;
+    return this.request(url, params, '主动查询订单状态', true);
+  }
+
+  static wxPay(params) {
+    let url = Operation.sharedInstance().wxPay;
+    return this.request(url, params, '发起支付', true);
+  }
+
+  static wxRefund(params) {
+    let url = Operation.sharedInstance().wxRefund;
+    return this.request(url, params, '申请退款', true);
+  }
+
   
   /*******************  订单 售后******************** */
 
