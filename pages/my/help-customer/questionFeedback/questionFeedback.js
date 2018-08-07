@@ -10,31 +10,29 @@ Page({
         active: false,
         chooseType: false,
         mask: false,
-        index: 0,
+        activeIndex:0,
         type: '请选择问题类型',
         success: false,
         originalImg: [],
         smallImg: [],
         content:'',
-        showTextarea:true
+        bgImgUrl:"https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png",
+        typeArr:[
+          "请选择问题类型","账户问题", "营销问题", "购买流程","推广机制"
+        ]
     },
     //选择问题类型弹窗
     questionType() {
-        this.setData({
-            mask: true,
-            showTextarea:false
-        })
-        console.log(this.data.showTextareash)
+      this.setData({
+        mask: !this.data.mask,
+      })
     },
     //选择问题类型
     chooseType(e) {
         let index = e.currentTarget.dataset.index;
-        let content = e.currentTarget.dataset.content;
         this.setData({
-            index: index,
-            mask: false,
-            type: content,
-            showTextarea: true
+          activeIndex: index,
+          mask: !this.data.mask,
         });
         this.active();
     },
@@ -53,69 +51,45 @@ Page({
         smallImg: e.detail.smallImg,
       })
     },
-    // //添加图片
-    // uploadImg() {
-    //     let callBack = (fileInfo) => {
-    //         let tempUrl = fileInfo.data.imageUrl;
-    //         let tempThumbUrl = fileInfo.data.imageThumbUrl;
-    //         this.data.originalImg.push(tempUrl);
-    //         this.data.smallImg.push(tempThumbUrl);
-    //         this.setData({
-    //             originalImg:this.data.originalImg,
-    //             smallImg:this.data.smallImg
-    //         })
-    //     };
-    //     Tool.uploadImage(1, callBack)
-    // },
-    // //删除图片
-    // deleteImg(e){
-    //     let index=e.currentTarget.dataset.index;
-    //     this.data.originalImg.splice(index,1);
-    //     this.data.smallImg.splice(index,1);
-    //     this.setData({
-    //         originalImg:this.data.originalImg,
-    //         smallImg:this.data.smallImg
-    //     })
-    // },
     //提交成功
     addFeedback() {
-        if (this.data.active) {
-            let params = {
-                content: this.data.content,
-                type: this.data.index,
-            };
-            if(this.data.originalImg){
-                params.originalImg=this.data.originalImg.join(',');
-                params.smallImg=this.data.smallImg.join(',')
-            }
-            let r = RequestFactory.addFeedback(params);
-            r.finishBlock = (req) => {
-                if(req.responseObject.code==200){
-                    this.setData({
-                        success:true
-                    })
-                }
-            };
-            r.addToQueue();
-        }
+      if (this.data.active) {
+          let params = {
+              content: this.data.content,
+              type: this.data.activeIndex,
+          };
+          if(this.data.originalImg){
+              params.originalImg=this.data.originalImg.join(',');
+              params.smallImg=this.data.smallImg.join(',')
+          }
+          let r = RequestFactory.addFeedback(params);
+          r.finishBlock = (req) => {
+              if(req.responseObject.code==200){
+                  this.setData({
+                      success:true
+                  })
+              }
+          };
+          r.addToQueue();
+      }
     },
     //确定
     sure(){
       this.setData({
-          success:false
+        success:false
       });
-      Tool.navigateTo('../help-customer')
+      Tool.navigationPop()
     },
     active() {
-        if (this.data.index != 0 && this.data.count != 0) {
-            this.setData({
-                active: true
-            })
-        } else {
-            this.setData({
-                active: false
-            })
-        }
+      if (this.data.activeIndex !=0  && this.data.count != 0) {
+          this.setData({
+              active: true
+          })
+      } else {
+          this.setData({
+              active: false
+          })
+      }
     },
     onLoad: function (options) {
     },

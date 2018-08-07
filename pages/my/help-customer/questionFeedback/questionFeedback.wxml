@@ -3,7 +3,7 @@
     <view class="type">
         <view class="item {{mask?'grey':''}}" bindtap="questionType">
             <view>
-                <text>{{type}}</text>
+                <text>{{typeArr[activeIndex]}}</text>
             </view>
             <view>
                 <image class="jt-img" src="{{mask?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/expand-btn.png':'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png'}}" mode='widthFix'></image>
@@ -13,7 +13,8 @@
     <view class="wrap">
         <view class="item">详细说明</view>
         <view class="detail-remark">
-             <textarea bindinput="detailRemark" maxlength="100" class="textarea {{showTextarea?'':'visibility'}}" placeholder="请输入一段说明文字..."/> 
+            <textarea bindinput="detailRemark" maxlength="100" class="textarea" wx:if='{{!mask}}' placeholder="请输入一段说明文字..."/>
+            <view class='textarea' wx:else></view> 
             <view class="number">{{count}}/100</view>
         </view>
     </view>
@@ -30,38 +31,16 @@
     <!--选择类型弹窗-->
     <view wx:if="{{mask}}" class="mask">
         <view class="type-area">
-            <view class="item" bindtap="chooseType" data-index="1" data-content="账户问题">
-                <view>
-                    <text class="{{index==1?'color-red':''}}">账户问题</text>
-                </view>
-                <view>
-                    <image class="jt-img" src="{{index==1?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png':''}}" mode='widthFix'></image>
-                </view>
+          <block wx:for='{{typeArr}}' wx:key='unique'>
+            <view class="item" bindtap="chooseType" data-index="{{index}}" data-content="{{item}}" wx:if='{{index>0}}'>
+              <view>
+                  <text class="{{activeIndex==index?'color-red':''}}">{{item}}</text>
+              </view>
+              <view>
+                  <image class="jt-img" src="{{activeIndex==index?  bgImgUrl:''}}" mode='widthFix'></image>
+              </view>
             </view>
-            <view class="item" bindtap="chooseType" data-index="2" data-content="营销问题">
-                <view>
-                    <text class="{{index==2?'color-red':''}}">营销问题</text>
-                </view>
-                <view>
-                    <image class="jt-img" src="{{index==2?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png':''}}" mode='widthFix'></image>
-                </view>
-            </view>
-            <view class="item" bindtap="chooseType" data-index="3" data-content="购买流程">
-                <view>
-                    <text class="{{index==3?'color-red':''}}">购买流程</text>
-                </view>
-                <view>
-                    <image class="jt-img" src="{{index==3?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png':''}}" mode='widthFix'></image>
-                </view>
-            </view>
-            <view class="item" bindtap="chooseType" data-index="4" data-content="推广机制">
-                <view>
-                    <text class="{{index==3?'color-red':''}}">推广机制</text>
-                </view>
-                <view>
-                    <image class="jt-img" src="{{index==3?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png':''}}" mode='widthFix'></image>
-                </view>
-            </view>
+          </block>
         </view>
     </view>
     <!--提交成功弹窗-->

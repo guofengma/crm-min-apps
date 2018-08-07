@@ -193,7 +193,8 @@ Page({
         wx.setClipboardData({
             data: that.data.detail.orderNum,
             success: function(res) {
-               Tool.showSuccessToast('复制成功')
+              // wx.hideToast();
+              // Tool.showSuccessToast('复制成功')
             }
         });
 
