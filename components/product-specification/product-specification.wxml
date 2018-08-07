@@ -8,12 +8,12 @@
     <view class='header {{showImgs? "":"active"}}'>
       <view wx:if='{{showImgs}}'>
         <view class='img-view'>
-          <image src='{{selectPrdList.stock}}'></image>
+          <image src='{{selectPrdList.spec_img || imgUrl}}'></image>
         </view>
         <!--产品信息  -->
         <view class='header-content'>
-          <view class='price'>¥ {{selectPrdList.levelPrice? selectPrdList.levelPrice:productInfo.levelPrice}}</view>
-          <view>库存{{selectPrdList.stock?  selectPrdList.stock:productInfo.stock}}件</view>
+          <view class='price'>¥ {{selectPrdList.levelPrice || productInfo.levelPrice}}</view>
+          <view>库存{{selectPrdList.stock || productInfo.stock}}件</view>
           <view class='tips'>{{tips}}</view>
         </view>
       </view>

@@ -63,6 +63,7 @@ Component({
           this.setData({
             selectPrdList: list[i]
           })
+          console.log(list[i])
           return { index: i, id: list[i].id, typeName: list[i].spec}
         }
       }

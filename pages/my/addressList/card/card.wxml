@@ -3,7 +3,7 @@
         <view class="detail"> 
             <image src="{{detail.head_img}}" class="avature-img"></image>
             <view class="name">{{detail.nickname}}</view>
-            <view class="level" wx:if="{{detail.remark}}">{{detail.remark}}</view>
+            <view class="level" wx:if="{{detail.name}}">{{detail.name}}</view>
         </view>
     </view>
     <view class="area">

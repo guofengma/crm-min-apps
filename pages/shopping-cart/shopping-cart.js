@@ -153,7 +153,8 @@ Page({
           }
         })
         this.setData({
-          items: data
+          items: data,
+          tipVal:''
         })
         this.getTotalPrice()
       } else {
