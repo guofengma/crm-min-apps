@@ -6,25 +6,25 @@
 <view class='topic-page'>
   <!-- 轮播 -->
   <view class='ad-view'>
-    <image src="{{topicInfos.imgUrl}}" class="slide-image" catchtap='adListClicked'  class='ad-img'/>
+    <image src="{{topicInfos.bigBanner}}" class="slide-image" catchtap='adListClicked'  class='ad-img'/>
   </view>
 
   <!-- 专题文字介绍 -->
   <view class='infos gray font-24 '>
-    {{topicInfos.description}}
+    {{topicInfos.desc}}
   </view>
   
   <!-- 产品模块 -->
-  <block wx:for="{{topicDetailList}}"  wx:key='unique' >
+  <!-- <block wx:for="{{topicDetailList}}"  wx:key='unique' > -->
 
-    <template wx:if="{{topicTemplateId==1}}" is="topic-temp1" data="{{item}}"/>
+    <template wx:if="{{topicTemplateId==1}}" is="topic-temp1" data="{{topicDetailList,scrollLeft,currentTab}}"/>
 
-    <template wx:elif="{{topicTemplateId==2}}" is="topic-temp2" data="{{item}}"/>
+    <template wx:elif="{{topicTemplateId==2}}" is="topic-temp2" data="{{topicDetailList}}"/>
 
-    <template wx:elif="{{topicTemplateId==3}}" is="topic-temp3" data="{{item}}"/>
+    <template wx:elif="{{topicTemplateId==3}}" is="topic-temp3" data="{{topicDetailList,scrollLeft,currentTab}}"/>
 
-    <template wx:elif="{{topicTemplateId==4}}" is="topic-temp4" data="{{item}}"/> 
+    <template wx:elif="{{topicTemplateId==4}}" is="topic-temp4" data="{{topicDetailList}}"/> 
     
-  </block>
+  <!-- </block> -->
 
 </view>

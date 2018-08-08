@@ -17,7 +17,7 @@ Page({
     },
     //兑换代币
     change(){
-        Tool.navigateTo('../../../download-app/download-app')
+      Tool.navigateTo('../../../download-app/download-app')
     },
     // 提现说明
     explain(){

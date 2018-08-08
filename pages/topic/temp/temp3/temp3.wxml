@@ -2,14 +2,33 @@
 
 <import src='/pages/topic/temp/topic-bar/topic-bar.wxml'/>
 
-<template name="topic-temp4">
-  <template is="topic-bar" data=""/>
-  <view class='topic-banner topic-temp4'>
+<template name="topic-temp3">
+  <!--导航  -->
+  <template is="topic-bar" data="{{topicDetailList,scrollLeft,currentTab}}"/>
+
+   <!--产品 -->
+  <view class='topic-prd-content topic-temp3'>
+    <block wx:for='{{topicDetailList[currentTab].product}}' wx:key='unique'>
+      <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2',...item}}"/>
+    </block>
+  </view>
+  
+  <block wx:for='{{topicDetailList[currentTab].banner}}'  wx:key='unique'>
+    <view class='topic-banner topic-temp3'>
+      <image src='{{img}}'></image>
+    </view>
+    <view class='topic-prd-content'>
+      <block wx:for='{{topicDetailList[currentTab].product}}' wx:for-item="list" wx:for-index='key'  wx:key='unique'>
+        <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2',...list}}"/>
+      </block>
+    </view>
+  </block>
+  <!-- <view class='topic-banner topic-temp3'>
     <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
   </view>
   <view class='topic-prd-content'>
     <block>
       <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
     </block>
-  </view>
+  </view> -->
 </template>

@@ -1,12 +1,29 @@
 <import src='/pages/topic/temp/topic-prd-info/topic-prd-info.wxml'/>
 
-<template name="topic-temp3">
-  <view class='topic-banner topic-temp3'>
+<template name="topic-temp4">
+  <view class='topic-prd-content'>
+    <block wx:for='{{topicDetailList.product}}' wx:key='unique'>
+      <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2',...item}}"/>
+    </block>
+  </view>
+  
+  <block wx:for='{{topicDetailList.banner}}' wx:key='unique'>
+    <view class='topic-banner topic-temp4'>
+      <image src='{{img}}'></image>
+    </view>
+    <!-- <view class='topic-type flexR'>水乳</view> -->
+    <view class='topic-prd-content'>
+      <block wx:for='{{item.product}}' wx:for-item="list" wx:for-index='key'  wx:key='unique'>
+        <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2',...list}}"/>
+      </block>
+    </view>
+  </block>
+  <!-- <view class='topic-banner topic-temp4'>
     <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
   </view>
-  <view class='topic-prd-content topic-temp3'>
+  <view class='topic-prd-content topic-temp4'>
     <block>
       <template is="topic-prd-info" data="{{width:'220',bg:'#fff4f4',ellipsis:'ellipsis-2'}}"/>
     </block>
-  </view>
+  </view> -->
 </template>

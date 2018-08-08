@@ -1,11 +1,11 @@
 <template name="topic-prd-info">
   <view class='topic-prd-info whiteBg' style='width:{{width}}rpx'>
     <view class='prd-img-view'>
-      <image src='/img/default-userImg.png' mode='widthFix'></image>  
+      <image src='{{imgUrl}}' mode='widthFix'></image>  
     </view>
     <view class='prd-info' style='background:{{bg}}'>
-      <view class='{{ellipsis}} font-24 prd-name'>速度快就是打卡上打开电视机的好看dsdsdsd</view>
-      <view class='red font-30'>¥ 3448</view>
+      <view class='{{ellipsis}} font-24 prd-name'>{{name}}</view>
+      <view class='red font-30'>¥ {{price}}</view>
     </view>
   </view>
 </template>

@@ -1,15 +1,11 @@
 <template name="topic-bar">
   <view class='tab-h-view'>
     <scroll-view scroll-x="true" class="tab-h font-26 boxSize whiteBg" scroll-left="{{scrollLeft}}">
-      <view class="tab-item "  data-current="0" bindtap="swichNav">
-        <text>哈就好就是大家啊</text>
-      </view>
-      <view class="tab-item "  data-current="0" bindtap="swichNav">
-        <text>哈就好就是大家啊</text>
-      </view>
-      <view class="tab-item " data-current="2" bindtap="swichNav">
-        <text>哈就好就是大家啊</text>
-      </view>
+      <block wx:for='{{topicDetailList}}' wx:key='unique'>
+        <view class="tab-item {{currentTab==index?'red':''}}"  data-current="{{index}}" catchtap="swichNav">
+          <text data-current="{{index}}" catchtap="swichNav">{{item.name}}</text>
+        </view>
+      </block>
     </scroll-view>
   </view>
 </template>
