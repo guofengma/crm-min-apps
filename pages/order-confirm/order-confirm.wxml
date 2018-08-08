@@ -65,7 +65,7 @@
   </view>
   <!--支付bar  -->
   <view class='flexR payBar'>
-    <view>应付款 <text class='red'>：¥{{addressType==1? orderInfos.totalAmounts:orderInfos.totalPrice}}</text></view>
+    <view>应付款 <text class='red'>：¥{{addressType==1? orderInfos.totalAmounts:orderInfos.showSelfListingPrice}}</text></view>
     <view class='btn redBg flexR' bindtap='payBtnClicked'>提交订单</view>
   </view>
 </view>

@@ -32,7 +32,7 @@ Page({
                 let datas = [];
                 for (let i in req.responseObject.data.data) {
                     let item = req.responseObject.data.data[i];
-                    item.pushTime = Tool.formatTime(item.pushTime);
+                    item.pushTime = Tool.formatTime(item.orderTime);
                     datas.push(item)
                 }
                 this.setData({

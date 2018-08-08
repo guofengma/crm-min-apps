@@ -29,7 +29,14 @@ Page({
   updateCoupon(){
     let coupon = Storage.getCoupon()
     let orderInfos = this.data.orderInfos
-    orderInfos.totalAmounts = orderInfos.totalAmounts - coupon.value
+    console.log(orderInfos)
+    if (this.data.addressType==1){ // 快递
+      let val = orderInfos.totalPrice + orderInfos.totalFreightFee - coupon.value
+      orderInfos.totalAmounts = val > 0 ? val:0
+    } else {
+      let val = orderInfos.totalPrice - coupon.value
+      orderInfos.showSelfListingPrice = val > 0 ? val : 0
+    }
     this.setData({
       orderInfos: orderInfos,
       coupon: coupon
@@ -95,8 +102,17 @@ Page({
   },
   changeAddressType(e){
     let index = e.currentTarget.dataset.index
+    let orderInfos = this.data.orderInfos
     this.setData({
       addressType: e.currentTarget.dataset.index
+    })
+    if (this.data.coupon){ // 弱使用了优惠券更新
+      this.updateCoupon()
+    } else {
+      orderInfos.showSelfListingPrice = orderInfos.totalPrice
+    }
+    this.setData({
+      orderInfos: orderInfos
     })
   },
   switchChange(){
@@ -174,7 +190,8 @@ Page({
       receiver: orderAddress.receiver || '',
       recevicePhone: orderAddress.recevicePhone || '',
       storehouseId: storehouseId,
-      useScore: score
+      useScore: score,
+      couponId: this.data.coupon.id || ''
     }
     let r = RequestFactory.submitOrder(params);
     r.finishBlock = (req) => {        

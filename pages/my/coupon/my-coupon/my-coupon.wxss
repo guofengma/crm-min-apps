@@ -56,7 +56,7 @@
   background-size: 100%;
 }
 .item-ans.active{
-  background-image: url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/coupon-red.png)
+  background-image: url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/coupon-canuse.png)
 }
 .coupon-right{
   width: 100rpx;
