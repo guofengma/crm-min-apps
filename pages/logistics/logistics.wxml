@@ -24,9 +24,10 @@
     <view class='infos'>
       <view wx:if="{{list.length>0}}">
         <block wx:for='{{list}}' wx:key='unique'>
-          <view class='flexR-sb'>
+          <view class='flexR-sb gray'>
             <view class='time-line'>
-              <view>{{item.showDate}}</view>
+              <view class='font-28'>{{item.showDate}}</view>
+              <view class='font-20'>{{item.showTime}}</view>
             </view>
             <view class='time-content'>
               <!--<image src='{{item.middleImage}}' mode='widthFix' class='state-icon'></image>-->

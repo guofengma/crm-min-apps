@@ -15,27 +15,23 @@
         </view>
     </view>
     <view class="list-area">
-        <view class="list-item">
-            <image src="/img/avatar.jpg"></image>
-            <view class="detail">
-                <view class="style">店主分红</view>
-                <view class="time">2018-05-25 12:15:45</view>
-                <view class="number" bindtap="limit"><image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/icon001_03@2x.png"></image>备注：等级受限？</view>
-            </view>
-            <view class="money {{add?'add':''}}">
-                <text>{{add?'+':'-'}}</text>100.50
-            </view>
+        <view class="list-item" wx:for="{{list}}" wx:key='unique'>
+          <image src="{{iconArr[item.iconIndex].icon}}"></image>
+          <view class="detail">
+              <view class="style">
+                {{iconArr[item.iconIndex].name}}
+                <text class='red' wx:if="{{item.showName}}">({{item.showName}})</text>
+              </view>
+              <view class="time">{{item.createTime}}</view>
+              <view class="number" bindtap="limit" wx:if='{{item.status==2}}'>
+                <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/icon001_03@2x.png"></image>备注：等级受限？
+              </view>
+          </view>
+          <view class="money fr {{item.add?'add':''}}">
+             {{item.add? "+":"-" }} {{item.balance}}
+          </view>
         </view>
-        <view class="list-item">
-            <image src="/img/avatar.jpg"></image>
-            <view class="detail">
-                <view class="style">店主分红</view>
-                <view class="time">2018-05-25 12:15:45</view>
-            </view>
-            <view class="money {{add?'add':''}}">
-                <text>{{add?'+':'-'}}</text>100.50
-            </view>
-        </view>
+       
     </view>
     <!--提现说明弹窗-->
     <view class="mask" wx-if="{{isExplain}}">

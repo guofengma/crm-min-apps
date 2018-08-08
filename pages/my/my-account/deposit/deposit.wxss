@@ -51,11 +51,13 @@
 }
 .list-item{
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     background: #fff;
     width: 100%;
     margin-bottom: 2rpx;
-    padding: 30rpx 0;
+    padding: 30rpx;
+    position: relative;
+    box-sizing: border-box;
 }
 .list-item image{
     width: 100rpx;
@@ -63,6 +65,7 @@
     border-radius: 50%;
     background-color: #ff7e00;
     margin-top: 10rpx;
+    margin-right: 30rpx;
 }
 .style{
     font-size: 30rpx;
@@ -71,6 +74,8 @@
 .money{
     font-size: 36rpx;
     color: #222222;
+    position: absolute;
+    right: 30rpx;
 }
 .add{
     color: #e60012;
@@ -91,7 +96,7 @@
     margin-top: -5rpx;
 }
 .detail{
-    width: 48%;
+    width: 45%;
 }
 /*弹窗*/
 .mask{

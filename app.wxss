@@ -158,6 +158,12 @@ image{
 .font-22{
   font-size: 22rpx;
 }
+.font-28{
+  font-size: 28rpx;
+}
+.font-20{
+  font-size: 20rpx;
+}
 .jiantou{
   width: 16rpx;
 }

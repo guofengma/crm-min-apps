@@ -39,6 +39,9 @@
 .company>view{
   justify-content: flex-start;
 }
+.flexR-sb.gray{
+  align-items: flex-start
+}
 .infos{
   min-height: 300rpx;
   padding: 30rpx;
@@ -51,10 +54,11 @@
 .time-line{
   width: 100rpx;
   margin-right:10rpx;
+  text-align: right;
 }
 .time-content{
   width: 500rpx;
-  padding-top: 10rpx;
+  /* padding-top: 10rpx; */
   padding-bottom:34rpx; 
   min-height:120rpx;
   border-left: 2rpx solid #ddd; 
@@ -92,8 +96,8 @@
   z-index: 999;
 }
 .infos>view:last-child .time-content{
-  border-left:2rpx solid transparent;
-  padding-top:0;
+  /* border-left:2rpx solid transparent; */
+  /* padding-top:0; */
 }
 .orange{
   color: #ff7e00;

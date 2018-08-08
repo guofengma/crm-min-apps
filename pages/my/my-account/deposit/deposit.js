@@ -6,8 +6,9 @@ Page({
       add:false,
       isExplain:false,
       isLevel:false,
-      iconArr:[
-        "/img/tixian-icon-1.png","/img/tixian-icon-2.png"
+      iconArr: [
+        { name: "推广提成", icon:"/img/tixian-icon-1.png"},
+        { name: "销售提成", icon: "/img/tixian-icon-2.png" }
       ],
       totalPage: '', // 页面总页数
       currentPage: 1, // 当前的页数
@@ -20,9 +21,9 @@ Page({
     },
     // 提现说明
     explain(){
-        this.setData({
-            isExplain:true,
-        })
+      this.setData({
+          isExplain:true,
+      })
     },
     //备注受限
     limit(){
@@ -40,6 +41,17 @@ Page({
       r.finishBlock = (req) => {
         let datas = req.responseObject.data
         if (datas.total>0){
+          datas.data.forEach((item)=>{
+            item.createTime = Tool.formatTime(item.createTime);
+            if(item.calcType==4){
+              item.iconIndex = 1
+            } else if(item.calcType == 8) {
+              item.iconIndex = 0
+            }
+            item.add = item.type ==2?  true:false
+            item.showName = item.add ? "" : "退款"
+            item.showName = item.status == 2? "已冻结":item.showName
+          })
           this.setData({
             list: list.concat(datas.data),
             totalPage: datas.total,
@@ -69,7 +81,7 @@ Page({
     },
     onLoad: function (options) {
       this.setData({
-          account:options.account
+        account:options.account
       })
       this.getData()
     },
