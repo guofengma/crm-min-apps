@@ -60,7 +60,8 @@
     "pages/after-sale/my-after-sale/my-after-sale",
     "pages/my/coupon/my-coupon/my-coupon",
     "pages/my/coupon/coupon-detail/coupon-detail",
-    "pages/topic/topic"
+    "pages/topic/topic",
+    "pages/download-app/download-app2/download-app2"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
@@ -82,7 +83,13 @@
         "selectedIconPath": "/img/tabbar/ad01-01.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/download-app/download-app2/download-app2",
+        "text": "拼店",
+        "iconPath": "/img/tabbar/group_tab_unselected.png",
+        "selectedIconPath": "/img/tabbar/group_tab_selected.png"
+      },
+      {
+        "pagePath": "pages/download-app/download-app2/download-app2",
         "text": "发现",
         "iconPath": "/img/tabbar/ad03.png",
         "selectedIconPath": "/img/tabbar/ad03-03.png"

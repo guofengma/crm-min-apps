@@ -2,32 +2,17 @@ let { Tool, RequestFactory, Event } = global;
 
 Page({
     data: {
-        account:'',
-        add:false,
-        isExplain:false,
-        isLevel:false,
-    },
-    //页面跳转
-    toPage(e){
-        let index=e.currentTarget.dataset.index;
-        if(index==0){
-            wx.redirectTo({
-                url:''
-            })
-        }else if(index==1){
-            wx.redirectTo({
-                url:''
-            })
-        }else if(index==2){
-            wx.redirectTo({
-                url:''
-            })
-        }else if(index==3){
-            wx.redirectTo({
-                url:''
-            })
-        }
-
+      account:'',
+      add:false,
+      isExplain:false,
+      isLevel:false,
+      iconArr:[
+        "/img/tixian-icon-1.png","/img/tixian-icon-2.png"
+      ],
+      totalPage: '', // 页面总页数
+      currentPage: 1, // 当前的页数
+      pageSize: 10, // 每次加载请求的条数 默认10 
+      list:[]   
     },
     //兑换代币
     change(){
@@ -41,21 +26,52 @@ Page({
     },
     //备注受限
     limit(){
+      this.setData({
+        isLevel:true,
+      })
+    },
+    getData() {
+      let params = {
+        page: this.data.currentPage,
+        pageSize: this.data.pageSize
+      }
+      let r = global.RequestFactory.settlementTotalByDealerId(params);
+      let list = this.data.list;
+      r.finishBlock = (req) => {
+        let datas = req.responseObject.data
+        if (datas.total>0){
+          this.setData({
+            list: list.concat(datas.data),
+            totalPage: datas.total,
+          })
+        }
+      };
+      r.addToQueue();
+    },
+
+    // 上拉加载更多
+    onReachBottom() {
+      let { currentPage, totalPage } = this.data
+      currentPage++
+      if (totalPage >= currentPage) {
         this.setData({
-            isLevel:true,
+          currentPage: currentPage
         })
+        this.getData();
+      } 
     },
     // 关闭弹窗
     closeMask(){
-        this.setData({
-            isExplain:false,
-            isLevel:false,
-        })
+      this.setData({
+          isExplain:false,
+          isLevel:false,
+      })
     },
     onLoad: function (options) {
-        this.setData({
-            account:options.account
-        })
+      this.setData({
+          account:options.account
+      })
+      this.getData()
     },
     onShow: function () {
 

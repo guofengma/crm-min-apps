@@ -156,6 +156,10 @@ export default class Operation {
 
         this.findDealerAccountByIdAPP  ='/user/dealer/findDealerAccountByIdAPP';
 
+        // 分页查询待提现账户
+
+        this.settlementTotalByDealerId = '/user/settlementTotal/querySettlementTotalByDealerId'
+
         /********************** 我的订单 *********************/
 
         // 全部订单

@@ -12,7 +12,7 @@ Page({
     addressList:[],
     remark:'', // 买家留言
     door:1, //1是产品详情页进入 2是购物车进入 3是从我的订单进来的 
-    coupon:null, //优惠券信息
+    coupon:{id:""}, //优惠券信息
   },
   onLoad: function (options) {
     this.setData({
@@ -106,7 +106,7 @@ Page({
     this.setData({
       addressType: e.currentTarget.dataset.index
     })
-    if (this.data.coupon){ // 弱使用了优惠券更新
+    if (this.data.coupon.id){ // 弱使用了优惠券更新
       this.updateCoupon()
     } else {
       orderInfos.showSelfListingPrice = orderInfos.totalPrice

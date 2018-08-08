@@ -282,6 +282,11 @@ export default class RequestFactory {
       let url = Operation.sharedInstance().findDealerAccountByIdAPP;
       return this.request(url, params, '经销商账户', true);
   }
+
+  static settlementTotalByDealerId(params) {
+    let url = Operation.sharedInstance().settlementTotalByDealerId;
+    return this.request(url, params, '分页查询待提现账户', true);
+  }
   
 
   /**************我的订单********************/

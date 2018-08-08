@@ -35,7 +35,7 @@
       <view>优惠券</view>
       <view class='gray'>
         <!-- 不支持使用优惠券 -->
-        {{coupon? "已使用优惠券":"未使用优惠券"}}
+        {{coupon.id? "已使用优惠券":"未使用优惠券"}}
         <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
       </view>
     </view>
