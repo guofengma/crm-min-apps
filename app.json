@@ -61,7 +61,8 @@
     "pages/my/coupon/my-coupon/my-coupon",
     "pages/my/coupon/coupon-detail/coupon-detail",
     "pages/topic/topic",
-    "pages/download-app/download-app2/download-app2"
+    "pages/download-app/download-app2/download-app2",
+    "pages/search/search-order/search-order"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

@@ -1,7 +1,8 @@
 let { Tool, RequestFactory, Storage, Event } = global;
 Component({
   properties: {
-    num:Number
+    num:Number,
+    condition:String
   },
   data: {
     num: 0,
@@ -40,8 +41,10 @@ Component({
         let params = {
           pageSize: this.data.pageSize,
           page: this.data.currentPage,
-          // dealerId: Storage.memberId()
         };
+        if (this.properties.condition){
+          params.condition = this.properties.condition
+        }
         this.setData({
           params: params
         });
@@ -112,11 +115,11 @@ Component({
     },
     //跳到订单详情
     toOrderDetail(e) {
-      Tool.navigateTo('../orderDetail/orderDetail?orderId=' + e.currentTarget.dataset.id + '&status=' + e.currentTarget.dataset.status)
+      Tool.navigateTo('/pages/my/orderDetail/orderDetail?orderId=' + e.currentTarget.dataset.id + '&status=' + e.currentTarget.dataset.status)
     },
     //跳到物流页面
     logistics(e) {
-      Tool.navigateTo('../../logistics/logistics?orderId=' + e.currentTarget.dataset.id)
+      Tool.navigateTo('/pages/logistics/logistics?orderId=' + e.currentTarget.dataset.id)
     },
     //删除订单
     deleteItem(e) {
