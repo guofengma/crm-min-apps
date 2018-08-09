@@ -12,7 +12,7 @@
        <view wx:for='{{history}}' wx:key="unique" bindtap='getHotkeyword' data-keyword='{{item}}' >{{item}}</view>
      </view>
    </view>
-   <view class='hotwords'>
+   <view class='hotwords' wx:if='{{door==0}}'>
       <view  class='cell-line'>热门搜索</view>
       <view class='cell-result'>
          <view wx:for='{{hotWords}}' wx:key="unique" bindtap='getHotkeyword' data-keyword='{{item.wordName}}'>{{item.wordName}}</view> 

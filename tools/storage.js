@@ -203,13 +203,31 @@ export default class Storage {
       return this.getterFor('expressNo');
     } 
 
-    // 保存物流单号
+    // 保存物流公司
+    static setExpressCom(info) {
+      this.setterFor('expressCom', info)
+    }
+
+    static getExpressCom() {
+      return this.getterFor('expressCom');
+    } 
+
+    // 保存优惠券
     static setCoupon(info) {
       this.setterFor('coupon', info)
     }
 
     static getCoupon() {
       return this.getterFor('coupon');
+    } 
+
+    // 订单搜索历史
+    static setSearchOrderHistory(info) {
+      this.setterFor('searchOrderHistory', info)
+    }
+
+    static getSearchOrderHistory() {
+      return this.getterFor('searchOrderHistory');
     } 
     
     

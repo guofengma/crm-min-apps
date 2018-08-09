@@ -1,12 +1,9 @@
-<block>
-  <view class='classification font-32 flexR-sb'>B</view>
-  <view class='logistics whiteBg font-30' catchtap='logLineClicked' data-code='{{45}}'data-name='{{"百事快递(仅为测试)"}}'>
-    <image mode='widthFix' src='/img/default-userImg.png' class='label-log'></image>
-    <text >百事快递(仅为测试)</text>
-  </view>
-  <view class='classification font-32 flexR-sb'>T</view>
-  <view class='logistics whiteBg font-30' catchtap='logLineClicked' data-code='{{40}}'data-name='{{"天天快递(仅为测试)"}}'>
-    <image mode='widthFix' src='/img/default-userImg.png' class='label-log'></image>
-    <text data-code='{{40}}'data-name='{{"天天快递(仅为测试)"}}'>天天快递(仅为测试)</text>
-  </view>
+<block wx:for='{{lists}}' wx:key='unique'>
+  <view class='classification font-32 flexR-sb'>{{item.name}}</view>
+  <block wx:for='{{item.list}}' wx:key='unique' wx:for-item='list'>
+    <view class='logistics whiteBg font-30' catchtap='logLineClicked' data-code='{{list.code}}'data-name='{{list.name}}'>
+      <!-- <image mode='widthFix' src='/img/default-userImg.png' class='label-log'></image> -->
+      <text >{{list.name}}</text>
+    </view>
+  </block>
 </block>

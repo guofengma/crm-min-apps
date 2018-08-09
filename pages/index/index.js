@@ -95,7 +95,7 @@ Page({
         r.addToQueue();
     },
     searchClicked() {
-        Tool.navigateTo('/pages/search/search')
+        Tool.navigateTo('/pages/search/search?door=0')
     },
     msgClicked() {
       Tool.navigateTo('/pages/my/information/information')

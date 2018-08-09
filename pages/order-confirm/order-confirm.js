@@ -29,7 +29,6 @@ Page({
   updateCoupon(){
     let coupon = Storage.getCoupon()
     let orderInfos = this.data.orderInfos
-    console.log(orderInfos)
     if (this.data.addressType==1){ // 快递
       let val = orderInfos.totalPrice + orderInfos.totalFreightFee - coupon.value
       orderInfos.totalAmounts = val > 0 ? val:0

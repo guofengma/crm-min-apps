@@ -28,12 +28,21 @@ Page({
         item.showName = item.productNames
       }
     },
+    availableDiscountCouponForProduct(){
+      let params = {
+        productIds: this.data.productIds
+      };
+
+      let r = RequestFactory.availableDiscountCouponForProducte(params);
+      r.finishBlock = (req) => {
+
+      };
+      Tool.showErrMsg(r);
+      r.addToQueue();
+    },
     //未使用
     getDiscountCouponNoUse() {
-        let params = {
-          productIds: this.data.productIds
-        };
-        let r = RequestFactory.getDiscountCouponNoUse(params);
+        let r = RequestFactory.getDiscountCouponNoUse();
         r.finishBlock = (req) => {
             this.data.lists[0] = [];
             let currentTime = new Date().getTime() // 获取当前时间
@@ -157,7 +166,11 @@ Page({
           door: options.door || '',
           productIds: options.productIds || '',
         })
-        this.getDiscountCouponNoUse();
+        if(this.data.door==1){
+
+        } else {
+          this.getDiscountCouponNoUse();
+        }
         this.getDiscountCouponUserd();
         this.getDiscountCouponLosed();
     },

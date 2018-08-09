@@ -458,6 +458,11 @@ export default class RequestFactory {
     return req 
   }
 
+  static findAllExpress(params) {
+    let url = Operation.sharedInstance().findAllExpress;
+    return this.request(url, params, '物流公司选择', true);
+  }
+
   static fillInExpressInfoById(params) {
     params.port = '8103'
     let url = Operation.sharedInstance().fillInExpressInfoById;

@@ -91,8 +91,8 @@ Page({
       }
       let r = RequestFactory.repay(params);
       r.finishBlock = (req) => {
-        this.test(payType, req)
-        //this.wxPay(payType, req.responseObject.data.outTradeNo)
+        //this.test(payType, req)
+        this.wxPay(payType, req.responseObject.data.outTradeNo)
       };
       Tool.showErrMsg(r)
       r.addToQueue();
@@ -137,8 +137,8 @@ Page({
       }
       let r = RequestFactory.continuePay(params);
       r.finishBlock = (req) => {
-        this.test(payType, req)
-        //this.wxPay(payType, req.responseObject.data.outTradeNo)
+        //this.test(payType, req)
+        this.wxPay(payType, req.responseObject.data.outTradeNo)
       };
       Tool.showErrMsg(r)
       r.addToQueue();

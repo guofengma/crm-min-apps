@@ -13,15 +13,21 @@ Page({
     provinceCode:-1
   },
   onLoad: function (options) {
-    
-    let history = Storage.getHistorySearch()
-    if(history){
+    if (options.door == 0){
+      let history = Storage.getHistorySearch()
+      if (history) {
+        this.setData({
+          history: history
+        })
+      }
+      this.requestGetHotWordsListActive()
+      this.getLocation()
+    } else {
       this.setData({
-        history: history
+        history: Storage.getSearchOrderHistory(),
+        door: options.door
       })
     }
-    this.requestGetHotWordsListActive()
-    this.getLocation()
   },
   onShow: function () {
 
@@ -50,7 +56,11 @@ Page({
     this.setData({
       keyWord: e.currentTarget.dataset.keyword
     })
-    this.requestKeyword()
+    if(this.data.door==1){
+
+    } else {
+      this.requestKeyword()
+    }
   },
   getKeyword(e){
     this.setData({
@@ -58,7 +68,11 @@ Page({
     })
   },
   deleteKeyword(){
-    Storage.clearHistorySearch()
+    if(this.data.door==1){
+
+    } else {
+      Storage.clearHistorySearch()
+    }
     this.setData({
       history:[]
     })
@@ -70,15 +84,31 @@ Page({
       if (keywords.length > 0) {
         keywords.length == 10 ? keywords.splice(9, 1) : keywords
         keywords.unshift(str)
-        Storage.setHistorySearch(keywords)
+        if (this.data.door == 1) {
+          Storage.setSearchOrderHistory(keywords)
+        } else {
+          Storage.setHistorySearch(keywords)
+        }
+        
       } else {
-        Storage.setHistorySearch([str])
+        if (this.data.door == 1) {
+          Storage.setSearchOrderHistory([str])
+        } else {
+          Storage.setHistorySearch([str])
+        }
       }
     }
-    this.requestKeyword()
+    if (this.data.door == 1) {
+
+    } else {
+      this.requestKeyword()
+    }
   },
   requestKeyword(){
     Tool.redirectTo('/pages/search/search-result/search-result?keyword=' +this.data.keyWord+'&code=' + this.data.provinceCode)
+  },
+  requestKeyword() {
+    Tool.redirectTo('/pages/search/search-result/search-result?keyword=' + this.data.keyWord + '&code=' + this.data.provinceCode)
   },
   getProvinceList() {
     let r = RequestFactory.getProvinceList();

@@ -275,6 +275,10 @@ export default class Operation {
 
         this.fillInExpressInfoById ='/order/order/fillInExpressInfoById'
 
+        // 物流公司选择
+
+        this.findAllExpress = '/user/express/findAllExpress'
+
         // 根据订单id查询快递信息
 
         this.findDelivery ='/user/delivery/find'
@@ -421,6 +425,7 @@ export default class Operation {
         // 产品可用优惠劵列表
 
         this.availableDiscountCouponForProduct = '/user/discountCoupon/availableDiscountCouponForProduct';
+
 
         /************************** 我的消息 *******************************/
 
