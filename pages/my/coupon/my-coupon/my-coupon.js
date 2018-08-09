@@ -18,24 +18,42 @@ Page({
         this.checkCor();
     },
     getCouponType(item){
-      // 1 全品类 2 多品类 3 单品类 4 单产品
-      let myType = item.categoryType
-      if (myType==1){
-        item.showName = '全品类'
-      } else if (myType == 2 || myType == 3 ){
-        item.showName = item.firstCategoryNames
-      } else if (myType == 4) {
-        item.showName = item.productNames
-      }
+      // // 1 全品类 2 多品类 3 单品类 4 单产品
+      // let myType = item.categoryType
+      // if (myType==1){
+      //   item.showName = '全品类'
+      // } else if (myType == 2 || myType == 3 ){
+      //   item.showName = item.firstCategoryNames
+      // } else if (myType == 4) {
+      //   item.showName = item.productNames
+      // }
     },
     availableDiscountCouponForProduct(){
       let params = {
         productIds: this.data.productIds
       };
 
-      let r = RequestFactory.availableDiscountCouponForProducte(params);
+      let r = RequestFactory.availableDiscountCouponForProduct(params);
       r.finishBlock = (req) => {
-
+        this.data.lists[0] = [];
+        let currentTime = new Date().getTime() // 获取当前时间
+        for (let i in req.responseObject.data) {
+          let item = req.responseObject.data[i];
+          item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
+          if (currentTime > item.startTime) {
+            item.left = '';
+            item.canUse =1
+            item.active = true;
+            item.canUseStart = true
+          } else {
+            item.left = '待激活';
+            item.active = false
+          }
+          this.data.lists[0].push(item)
+        }
+        this.setData({
+          lists: this.data.lists
+        })
       };
       Tool.showErrMsg(r);
       r.addToQueue();
@@ -51,12 +69,8 @@ Page({
               item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
               if (currentTime > item.startTime){
                 item.left = '';
-                if(this.data.door ==1 ){
-                  item.active = item.canUse ==1? true:false
-                  item.left = item.active? '':"不可使用"
-                } else {
-                  item.active = true;
-                }
+                item.active = true;
+                item.canUse = 1
                 item.canUseStart = true
               } else {
                 item.left = '待激活';
@@ -167,7 +181,7 @@ Page({
           productIds: options.productIds || '',
         })
         if(this.data.door==1){
-
+          this.availableDiscountCouponForProduct()
         } else {
           this.getDiscountCouponNoUse();
         }

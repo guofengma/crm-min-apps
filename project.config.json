@@ -168,10 +168,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 22,
 					"name": "优惠券",
 					"pathName": "pages/my/coupon/my-coupon/my-coupon",
-					"query": ""
+					"query": "door=1"
 				},
 				{
 					"id": 23,

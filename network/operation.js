@@ -111,7 +111,6 @@ export default class Operation {
 
         this.shoppingCartLimit = '/user/shoppingCart/shoppingCartFormCookieToSessionProductNumberIsAble'
 
-        __instance(this);
 
     /********************** 地址管理 *********************/
         // 新增地址
@@ -202,6 +201,7 @@ export default class Operation {
 
         this.cancelOrder  ='/order/order/cancelOrder';
 
+
         /******************提交订单 订单结算*********************** */
 
         // 购物车结算
@@ -248,6 +248,9 @@ export default class Operation {
    
         this.wxRefund = '/user/weChatPay/wxRefund'
 
+        // 使用优惠券查询
+
+        this.orderCalcDiscountCouponAndUseScore = '/order/order/orderCalcDiscountCouponAndUseScore'
 
         /**********************订单售后**************************/ 
 
@@ -452,6 +455,9 @@ export default class Operation {
         // 查看消息详情
 
         this.findMessageDetail = '/user/message/findMessageDetail';
+
+
+        __instance(this);
 
     }
 

@@ -414,7 +414,12 @@ export default class RequestFactory {
     return this.request(url, params, '申请退款', true);
   }
 
-  
+  static orderCalcDiscountCouponAndUseScore(params) {
+    params.port = '8103'
+    let url = Operation.sharedInstance().orderCalcDiscountCouponAndUseScore;
+    return this.request(url, params, '使用优惠券查询', true);
+  }
+
   /*******************  订单 售后******************** */
 
   static orderRefund(params) {

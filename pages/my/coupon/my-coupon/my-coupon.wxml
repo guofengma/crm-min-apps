@@ -25,6 +25,7 @@
                     </view>
                 </view>
               </block> 
+              <!-- <view class='btn-view'>放弃使用优惠券</view> -->
             </scroll-view>
         </swiper-item>
     </swiper>

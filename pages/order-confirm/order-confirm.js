@@ -40,6 +40,21 @@ Page({
       orderInfos: orderInfos,
       coupon: coupon
     })
+    if (this.data.coupon.id){ // 选择了优惠券的时候请求数据
+      this.orderCalcDiscountCouponAndUseScore()
+    }
+  },
+  orderCalcDiscountCouponAndUseScore() { 
+    let params = {
+      couponId: this.data.coupon.id,
+      orderProductList: this.data.params
+    }
+    let r = RequestFactory.orderCalcDiscountCouponAndUseScore(params);
+    r.finishBlock = (req) => {
+      console.log(req.responseObject.data)
+    };
+    Tool.showErrMsg(r)
+    r.addToQueue();
   },
   requestOrderInfo(){
     let params = { orderProductList:this.data.params}
@@ -208,7 +223,7 @@ Page({
     orderList.forEach((item)=>{
       productIds.push(item.product_id)
     })
-    Tool.navigateTo("/pages/my/coupon/my-coupon/my-coupon?door=1&&productIds=" + productIds.join(","))
+    Tool.navigateTo("/pages/my/coupon/my-coupon/my-coupon?door=1&&productIds=" + "'"+productIds.join(",")+"'")
   },
   onUnload: function () {
     Event.off('updateOrderAddress', this.updateOrderAddress)
