@@ -150,6 +150,11 @@ Page({
         Tool.navigationPop()
       }
     },
+    giveUpUse(){
+      Storage.setCoupon({id:""})
+      Event.emit("updateCoupon")
+      Tool.navigationPop()
+    },
     //判断当前滚动超过一屏时，设置tab标题滚动条。
     checkCor: function () {
         if (this.data.currentTab > 3) {
@@ -171,8 +176,12 @@ Page({
                 clientWidth = res.windowWidth,
                 rpxR = 750 / clientWidth;
             let calc = clientHeight * rpxR;
+            let calc0 = clientHeight * rpxR
+            if (that.data.currentTab == 0 & options.door == 1 ){
+              calc -= 100 * rpxR
+            }
             that.setData({
-                winHeight: calc
+              winHeight: [calc, calc0, calc0],
             });
           }
         });

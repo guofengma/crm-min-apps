@@ -56,11 +56,7 @@ Page({
     this.setData({
       keyWord: e.currentTarget.dataset.keyword
     })
-    if(this.data.door==1){
-      this.requestOrder()
-    } else {
-      this.requestKeyword()
-    }
+    this.getRequest()
   },
   getKeyword(e){
     this.setData({
@@ -98,17 +94,20 @@ Page({
         }
       }
     }
-    if (this.data.door == 1) {
-      this.requestOrder()
-    } else {
-      this.requestKeyword()
-    }
+    this.getRequest()
   },
   requestKeyword(){
     Tool.redirectTo('/pages/search/search-result/search-result?keyword=' +this.data.keyWord+'&code=' + this.data.provinceCode)
   },
   requestOrder() {
     Tool.redirectTo('/pages/search/search-order/search-order?condition=' + this.data.keyWord)
+  },
+  getRequest(){
+    if (this.data.door == 1) {
+      this.requestOrder()
+    } else {
+      this.requestKeyword()
+    }
   },
   getProvinceList() {
     let r = RequestFactory.getProvinceList();

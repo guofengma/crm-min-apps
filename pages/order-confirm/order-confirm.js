@@ -28,20 +28,26 @@ Page({
   },
   updateCoupon(){
     let coupon = Storage.getCoupon()
-    let orderInfos = this.data.orderInfos
-    if (this.data.addressType==1){ // 快递
-      let val = orderInfos.totalPrice + orderInfos.totalFreightFee - coupon.value
-      orderInfos.totalAmounts = val > 0 ? val:0
-    } else {
-      let val = orderInfos.totalPrice - coupon.value
-      orderInfos.showSelfListingPrice = val > 0 ? val : 0
-    }
     this.setData({
-      orderInfos: orderInfos,
       coupon: coupon
     })
     if (this.data.coupon.id){ // 选择了优惠券的时候请求数据
       this.orderCalcDiscountCouponAndUseScore()
+    } else {
+      let orderList = this.data.orderInfos
+      if (this.data.addressType == 1) { // 快递
+        orderList.totalAmounts = orderList.orginTotalAmounts
+      } else {
+        orderList.totalAmounts = orderList.totalPrice
+      }
+      orderList.showTotalScore = orderList.totalScore
+      this.userScore(orderList)
+      if (this.data.isUseIntegral) {
+        orderList.totalAmounts -= orderList.reducePrice
+      }
+      this.setData({
+        orderInfos: orderList
+      })
     }
   },
   orderCalcDiscountCouponAndUseScore() { 
@@ -51,7 +57,24 @@ Page({
     }
     let r = RequestFactory.orderCalcDiscountCouponAndUseScore(params);
     r.finishBlock = (req) => {
-      console.log(req.responseObject.data)
+      let datas = req.responseObject.data
+      let orderList = this.data.orderInfos
+      orderList.totalAmounts = datas.totalAmounts
+      orderList.showTotalScore = datas.totalScore
+
+      if (this.data.addressType == 1) { // 快递
+        orderList.totalAmounts = datas.totalAmounts + orderList.totalFreightFee
+      } else {
+        orderList.totalAmounts = datas.totalAmounts
+      }
+      if (this.data.isUseIntegral){
+        orderList.totalAmounts -= orderList.reducePrice
+      }
+      this.userScore(orderList)
+      this.setData({
+        orderInfos: orderList
+      })
+      //this.getReducePrice()
     };
     Tool.showErrMsg(r)
     r.addToQueue();
@@ -93,13 +116,13 @@ Page({
       if (item.hasSelfLifting){
         this.queryStoreHouseList()
       }
-      // 积分抵扣计算
-      let score = item.dealer.user_score > item.totalScore ? item.totalScore : item.dealer.user_score
-      item.showScore = score 
-      item.reducePrice = item.userScoreToBalance * score
+
       item.showProduct = showProduct
-      // 当商品可以使用积分 用户积分大于0的时候 显示可以使用积分 
-      item.canUseScore = (item.totalScore > 0 && item.dealer.user_score)? true:false
+      
+      item.orginTotalAmounts = item.totalAmounts
+      item.showTotalScore = item.totalScore
+
+      this.userScore(item)
 
       let addressList = this.data.addressList
       addressList[1] = item.address
@@ -110,6 +133,15 @@ Page({
     };
     Tool.showErrMsg(r)
     r.addToQueue();
+  },
+  userScore(item){ // 计算积分
+    // 积分抵扣计算
+    let score = item.dealer.user_score > item.showTotalScore ? item.showTotalScore : item.dealer.user_score
+    item.showScore = score
+    item.reducePrice = item.userScoreToBalance * score
+    // 当商品可以使用积分 用户积分大于0的时候 显示可以使用积分 
+    item.canUseScore = (item.showTotalScore > 0 && item.dealer.user_score) ? true : false
+    return item
   },
   addressClicked(){
     Tool.navigateTo('/pages/address/choose-address/choose-address?addressType=' + this.data.addressType)
@@ -123,23 +155,27 @@ Page({
     if (this.data.coupon.id){ // 弱使用了优惠券更新
       this.updateCoupon()
     } else {
-      orderInfos.showSelfListingPrice = orderInfos.totalPrice
+      orderInfos.totalAmounts = orderInfos.totalPrice
     }
     this.setData({
       orderInfos: orderInfos
     })
   },
   switchChange(){
-    let order = this.data.orderInfos
-
-    if (!this.data.isUseIntegral){
-      order.totalAmounts -= order.reducePrice
-    } else {
-      order.totalAmounts += order.reducePrice
-    }
     this.setData({
       isUseIntegral: !this.data.isUseIntegral,
-      orderInfos: order
+    })
+    this.getReducePrice()
+  },
+  getReducePrice(){
+    let { orderInfos, isUseIntegral} = this.data
+    if (isUseIntegral) {
+      orderInfos.totalAmounts -= orderInfos.reducePrice
+    } else {
+      orderInfos.totalAmounts += orderInfos.reducePrice
+    }
+    this.setData({
+      orderInfos: orderInfos
     })
   },
   queryStoreHouseList() {
@@ -223,7 +259,7 @@ Page({
     orderList.forEach((item)=>{
       productIds.push(item.product_id)
     })
-    Tool.navigateTo("/pages/my/coupon/my-coupon/my-coupon?door=1&&productIds=" + "'"+productIds.join(",")+"'")
+    Tool.navigateTo("/pages/my/coupon/my-coupon/my-coupon?door=1&&productIds=" +productIds.join(","))
   },
   onUnload: function () {
     Event.off('updateOrderAddress', this.updateOrderAddress)

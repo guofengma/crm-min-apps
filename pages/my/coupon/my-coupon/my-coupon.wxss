@@ -78,3 +78,8 @@
 .coupon-center>view{
   margin-top: 14rpx;
 }
+.btn-view{
+  height: 100rpx;
+  width: 100%;
+  border-top: 1rpx solid #ddd;
+}

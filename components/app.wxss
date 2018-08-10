@@ -1,4 +1,3 @@
-
 .flexR{
   display: flex;
   flex-direction: row;
@@ -71,6 +70,9 @@ image{
   -webkit-line-clamp:2;
   line-height:38rpx;
 }
+.pwdImg{
+  width: 40rpx;
+}
 .tips-view{
   padding: 30rpx 40rpx;
   color: #c8c8c8;
@@ -104,6 +106,35 @@ image{
     height: 100%;
     background-color: rgba(0,0,0,.5);
 }
+.address.active{
+  padding:30rpx;
+  background: #fff url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/line-bg.png) no-repeat left bottom; 
+  background-size: 100%;
+}
+.add-address-btn{
+  height: 100rpx;
+  color: #fff; 
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 30rpx;
+}
+.label-by,.label-jf{
+  margin-right: 15rpx;
+  padding: 0rpx 8rpx;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+}
+.label-by{
+  color: #0186f5;
+  border:1rpx solid #0186f5;
+  background: #f0f8ff; 
+}
+.label-jf{
+  color: #fff;
+  background:#3cb034;
+  border:1rpx solid #3cb034;
+}
 .font-26{
   font-size: 26rpx;
 }
@@ -124,6 +155,9 @@ image{
 }
 .font-20{
   font-size: 20rpx;
+}
+.jiantou{
+  width: 16rpx;
 }
 .fixed-bottom{
   position: fixed;

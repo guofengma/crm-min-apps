@@ -24,7 +24,7 @@
         <view class="clearfix"></view>
     </view>
     <view class="inf">平台支付仅限APP使用</view>
-    <view class="wrap" bindtap="payWay" data-index='0' data-val='16'>
+    <!-- <view class="wrap" bindtap="payWay" data-index='0' data-val='16'>
         <view class="left">
             <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/icon_03-05@2x.png"></image>
             <view>银行卡支付</view>
@@ -33,7 +33,7 @@
             <image src="{{payWayActive[0]?'/img/choose-icon-c.png':'/img/choose-icon.png'}}" ></image>
         </view>
         <view class="clearfix"></view>
-    </view>
+    </view> -->
     <view class="wrap" bindtap="payWay"  data-index='1' data-val='16'>
         <view class="left">
             <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/icon_03-08@2x.png"></image>

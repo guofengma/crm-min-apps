@@ -5,7 +5,7 @@
         <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">已使用</view>
     </scroll-view>
     <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
-     style="height:{{winHeight}}rpx">
+     style="height:{{winHeight[currentTab]}}rpx">
         <swiper-item wx:for="{{lists}}" wx:for-index="key" wx:for-item="list"  wx:key="unique">
             <scroll-view scroll-y="true" class="scoll-h" >
               <block wx:for="{{list}}" wx:key="unique">
@@ -25,8 +25,8 @@
                     </view>
                 </view>
               </block> 
-              <!-- <view class='btn-view'>放弃使用优惠券</view> -->
             </scroll-view>
         </swiper-item>
     </swiper>
+    <view class='btn-view flexR fixed-bottom font-30' wx:if="{{currentTab==0&door==1}}" catchtap='giveUpUse'>放弃使用优惠券</view> 
 </view>

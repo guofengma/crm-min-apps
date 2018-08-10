@@ -1,15 +1,11 @@
 let { Tool, RequestFactory, Event, Storage } = global
 
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         payList:'',
         isShow:false, // 显示支付结果
         result:1, //支付结果
-        payWayActive:[false,false,false],
+        payWayActive:[false,true,false],
         useAmount:[false,false],
         useBalance:0,
         isContinuePay:false, //是否是继续支付
