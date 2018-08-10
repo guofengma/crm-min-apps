@@ -63,7 +63,9 @@
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
-        <view class="item" bindtap="information">
+    </view>
+    <view class="wrap">
+        <view class="item line" bindtap="information">
             <view>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xx_18-07@2x.png" alt=""></image>
                 <text>我的消息</text>
@@ -72,8 +74,6 @@
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
-    </view>
-    <view class="wrap">
         <view class="item line" bindtap="myCollection">
             <view>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/sc_18-08@2x.png" alt=""></image>
@@ -83,7 +83,7 @@
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>
-        <view class="item">
+        <!-- <view class="item">
             <view>
                 <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/sj_18-09@2x.png" alt=""></image>
                 <text>我的数据</text>
@@ -91,7 +91,7 @@
             <view>
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
-        </view>
+        </view> -->
     </view>
     <view class="wrap">
         <view class="item line" bindtap="addressList">

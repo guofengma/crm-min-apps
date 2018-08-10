@@ -3,14 +3,13 @@
         <image class="search-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/search-btn.png"></image>
         <input type="text" class="search-inp" placeholder="搜索用户名/授权码" bindconfirm="search" confirm-type="search"/>
     </view>
-    <view class="up-area">
+    <!-- <view class="up-area">
         <view class="header" bindtap="upOrDown" data-index="0">
             <view class="left">
                 <image src="/img/address-list.png"></image>
                 <text>上级代理</text>
             </view>
             <view class="right">
-                <!--<text>1</text>-->
                 <image class="opr-btn" src="{{expanded[0]?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/expand-btn.png':'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png'}}"></image>
             </view>
             <view class="clearfix"></view>
@@ -32,7 +31,7 @@
                 </view>
             </view>
         </view>
-    </view>
+    </view> -->
     <view class="up-area">
         <view class="header" bindtap="upOrDown" data-index="1">
             <view class="left">

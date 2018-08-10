@@ -108,7 +108,9 @@ Page({
           showName: item.name,
           showType: item.spec,
           showPrice: item.sale_price,
-          showQnt: item.num
+          showQnt: item.num,
+          productStatus: item.productStatus,
+          stock: item.stock,
         })
       })
       // 是否有自提的权限
