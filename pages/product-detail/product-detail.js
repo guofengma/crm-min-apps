@@ -69,6 +69,7 @@ Page({
       }
     }
     params.productStatus =4
+    params.stock = this.data.selectType.stock
     params.showName = this.data.productInfo.name
     params.showType = this.data.selectType.typeName
     params.showPrice = this.data.priceList[index].levelPrice

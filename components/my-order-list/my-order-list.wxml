@@ -62,9 +62,9 @@
         <view wx:if="{{num!=2&&item.orderStatus!=2&&item.orderStatus!=6&&item.orderStatus!=9}}">
             <view class="footer">
                 <!-- 倒计时 后面取消了  -->
-                <!-- <view class="left" wx:if="{{num==1||(num==0&&item.orderStatus==1)}}">
+                <view class="left" wx:if="{{num==1||(num==0&&item.orderStatus==1)}}">
                     {{item.countDownTime}}
-                </view> -->
+                </view> 
                 <view class="right" wx:if="{{num==4||(num==0&&(item.orderStatus==7||item.orderStatus==5 ||item.orderStatus==8 ||item.orderStatus==10 ))}}">
                   <view class="cancel-btn" bindtap="deleteItem" data-id="{{item.id}}" data-orderstatus="{{item.orderStatus}}">删除订单</view>
                   <view class="pay-btn" bindtap='continueBuy' data-id="{{item.id}}">再次购买</view>

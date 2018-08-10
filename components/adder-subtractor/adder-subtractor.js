@@ -1,3 +1,4 @@
+let { Tool } = global
 Component({
   properties: {
     count: Number,
@@ -26,6 +27,10 @@ Component({
       if (!innerCount || innerCount == 0) {
         return
       }
+      if (innerCount > 200) {
+        Tool.showAlert('最多只能购买200件')
+        innerCount =200
+      }
       this.setData({
         innerCount: innerCount
       })
@@ -33,8 +38,16 @@ Component({
     },
     addClicked: function (e) {
       // 加
+      let innerCount = this.data.innerCount
+      if (this.data.innerCount>=200){
+        Tool.showAlert('最多只能购买200件')
+        innerCount = 200
+      } else {
+        innerCount+=1
+      }
+      
       this.setData({
-        innerCount: this.data.innerCount + 1
+        innerCount: innerCount
       })
       this.trigger(e);
     },

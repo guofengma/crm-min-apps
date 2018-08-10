@@ -68,8 +68,8 @@ Page({
       Tool.uploadImage(1, callBack)
     },
     realName(){
-      if (!this.data.userInfos.isRealname){
-        Tool.redirectTo('/pages/real-name/real-name')
-      }
+      // if (!this.data.userInfos.isRealname){
+      //   Tool.redirectTo('/pages/real-name/real-name')
+      // }
     }
 })

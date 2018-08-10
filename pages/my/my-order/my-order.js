@@ -27,37 +27,8 @@ Page({
   searchOrder(){
     Tool.navigateTo('/pages/search/search?door=1')
   },
-  /**
-  * 倒计时
-  */
-  countdown: function (that) {
-    clearTimeout(this.data.time);
-    let mapArry = that.data.secondArry;
-    let orderArry = that.data.list;
-    for (let i = 0; i < orderArry.length; i++) {
-      let order = orderArry[i];
-      if (order.orderStatus == 1) {
-        let second = mapArry.get(i);
-        if (second > 0) {//秒数>0
-          let countDownTime = Tool.timeStringForTimeCount(second);
-          order.countDownTime = countDownTime + '后自动取消订单';
-          mapArry.set(i, second - 1);
-        } else {
-          order.countDownTime = '交易关闭';
-        }
-      }
-    }
-
-    let time = setTimeout(function () {
-      that.countdown(that);
-    }, 1000)
-
-    that.setData({
-      list: orderArry,
-      time: time
-    });
-  },
+  
   onUnload: function () {
-    clearTimeout(this.data.time);
+    //this.selectComponent("#orderList").onUnload();
   },
 })

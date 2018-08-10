@@ -5,7 +5,7 @@
     </view>
     <view class='right-bar' style='width:{{480}}rpx'>
       <view class='ellipsis-2'>{{showName}}</view>
-      <view class='gray ellipsis-2'>{{showType}}  {{productStatus==4 && stock>0}}</view>
+      <view class='gray ellipsis-2'>{{showType}} </view>
       <view class='prd-count-box flexR' wx:if='{{productStatus==4 && stock>0}}' >
         <view class='red'>¥ {{showPrice}}</view>
         <view wx:if="{{showQnt}}" class='gray' >×{{showQnt}}</view>

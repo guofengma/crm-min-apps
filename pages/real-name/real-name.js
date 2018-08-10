@@ -8,40 +8,19 @@ Page({
   data: {
     region: [],
     show:false,
-    hidden: false // 解决textarea最高层级的问题 
+    hidden: false, // 解决textarea最高层级的问题 
+    isDismiss:false
   },
   pickerClicked(e){
-    console.log(e.detail)
     this.setData({
       hidden: e.detail.hidden,
       region: e.detail.result
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-   
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
   formSubmit(e){
     let params = e.detail.value
     // 获取用户ID
     params.id = Storage.memberId()
-    console.log(params)
     if (!Tool.checkName(params.realname)) {
       Tool.showAlert("请输入2-16位之间的中文姓名");
       return
@@ -77,7 +56,18 @@ Page({
     r.addToQueue();
   },
   dismiss(){
-    Tool.switchTab('/pages/index/index')
+    this.setData({
+      isDismiss: true
+    })
+    let callBack = ()=>{
+      Tool.switchTab('/pages/index/index')
+    }
+    Tool.showSuccessToast('注册成功', callBack)
+  },
+  onUnload(){
+    if (!this.data.isDismiss){
+      this.dismiss()
+    }
   },
   open(){
     this.setData({

@@ -265,5 +265,6 @@ Page({
   },
   onUnload: function () {
     Event.off('updateOrderAddress', this.updateOrderAddress)
+    Event.off('updateCoupon', this.updateCoupon)
   }
 })

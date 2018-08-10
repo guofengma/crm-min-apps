@@ -36,7 +36,7 @@ Page({
             if(data.code==200){
                 Tool.showSuccessToast(data.data);
                 app.globalData.flag=true;
-                Storage.setUserCookie(null)
+                Storage.setUserCookie('out')
                 Storage.setUserAccountInfo(null)
                 Event.emit('didLogin');
                 this.cancel()

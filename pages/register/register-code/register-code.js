@@ -55,7 +55,7 @@ Page({
     r.finishBlock = (req) => {
       Storage.setMemberId(req.responseObject.data.id)
       Tool.loginOpt(req)
-      Tool.navigateTo('/pages/real-name/real-name')
+      Tool.redirectTo('/pages/real-name/real-name')
     }
     Tool.showErrMsg(r)
     r.addToQueue();

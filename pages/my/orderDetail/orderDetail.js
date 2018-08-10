@@ -204,7 +204,7 @@ Page({
       let detail = this.data.detail
       let endTime = Tool.formatTime(detail.overtimeClosedTime) 
       let countdown = Tool.getDistanceTime(endTime, this)
-      if (countdown == null){
+      if (countdown ==0){
         detail.status = 10
         clearTimeout(this.data.time);
         this.setData({

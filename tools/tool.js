@@ -184,7 +184,7 @@ export default class Tool {
 
     // 日期倒计时 
 
-    static getDistanceTime(time, self) {
+    static getDistanceTime(time, self,n) {
       let endTime = new Date(Date.parse(time.replace(/-/g, "/")));/*replace将时间字符串中所有的'-'替换成'/',parse将时间格式的字符串转换成毫秒*/
       let nowTime = new Date();
       let distance = endTime.getTime() - nowTime.getTime();/*getTime把一个date对象转换成毫秒*/
@@ -196,11 +196,21 @@ export default class Tool {
       if (distance >= 0) {
         day = Math.floor(distance / 1000 / 60 / 60 / 24);
         hour = Math.floor(distance / 1000 / 60 / 60 % 24);
+        if(n){
+          hour= day * 24 + hour
+        }
         minute = Math.floor(distance / 1000 / 60 % 60);
         second = Math.floor(distance / 1000 % 60);
-        distanceTime = day + "天" + hour + "时" + minute + "分" + second + "秒";
+        if(n){
+          distanceTime =  hour + "时" + minute + "分" + second + "秒";
+          if (hour==0){
+            distanceTime = minute + "分" + second + "秒";
+          }
+        } else{
+          distanceTime = day + "天" + hour + "时" + minute + "分" + second + "秒";
+        } 
       } else {
-        distanceTime = null
+        distanceTime = 0
       }
       self.setData({
         distanceTime: distanceTime
@@ -820,7 +830,7 @@ export default class Tool {
     // 是否登录
 
     static didLogin(that) {
-      let didLogin = global.Storage.getUserCookie() ? true : false
+      let didLogin = global.Storage.getUserCookie() !='out' ? true : false
       that.setData({
         didLogin: didLogin
       })

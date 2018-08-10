@@ -228,7 +228,11 @@ Page({
     let list = this.data.items
     
     // 本次修改和上次修改一样的情况
-
+    if (count==200){
+      this.setData({
+        items: this.data.items
+      })
+    }
     if (list[index].showCount == count) return
 
     //收到输入为空和0 的情况 

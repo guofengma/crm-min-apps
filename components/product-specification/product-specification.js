@@ -48,7 +48,10 @@ Component({
             Tool.showAlert('当前产品最多只能购买' + this.data.selectPrdList.stock + '件哦~')
             return
           }
-          if (isActive.length == 1 && !isActive[0].val) return
+          if (isActive.length == 1 && !isActive[0].val){
+            Tool.showAlert('请选择产品规格')
+            return
+          }
          
           this.triggerEvent('subClicked', { ...index, typeClicked: this.data.typeClicked, productType: productType2 });
           this.isVisiableClicked()
@@ -64,7 +67,7 @@ Component({
             selectPrdList: list[i]
           })
           console.log(list[i])
-          return { index: i, id: list[i].id, typeName: list[i].spec}
+          return { index: i, id: list[i].id, typeName: list[i].spec, stock: list[i].stock}
         }
       }
     },

@@ -21,6 +21,7 @@ Component({
     reason: '',
     orderNum: '',
     key: 0,
+    time:""
   },
   methods: {
     //获取列表数据
@@ -69,14 +70,14 @@ Component({
             let item = req.responseObject.data.data[i];
             item.createTime = Tool.formatTime(item.orderCreateTime);
             // 这块是倒计时 暂时取消不做了
-            // if (item.orderStatus == 1) {
-            //   let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
-            //   let timeInterval = Tool.timeIntervalFromString(item.createTime);
-            //   let nowTimeInterval = Tool.timeIntervalFromString(now);
-            //   let duration = 30 * 60 - (nowTimeInterval - timeInterval);
-            //   secondMap.set(key, duration);
-            // }
-            // key++;
+            if (item.orderStatus == 1) {
+              let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
+              // let timeInterval = Tool.timeIntervalFromString(item.createTime);
+              // let nowTimeInterval = Tool.timeIntervalFromString(now);
+              // let duration = 30 * 60 - (nowTimeInterval - timeInterval);
+              secondMap.set(key, 1);
+            }
+            key++;
             datas.push(item);
           }
           this.setData({
@@ -92,9 +93,9 @@ Component({
             });
           }
           // 这块是倒计时 暂时取消不做了
-          // if (secondMap.size > 0) {
-          //   this.countdown(this);
-          // }
+          if (secondMap.size > 0) {
+            this.countdown(this);
+          }
         };
         Tool.showErrMsg(r)
         r.addToQueue();
@@ -261,7 +262,61 @@ Component({
       };
       Tool.showErrMsg(r);
       r.addToQueue();
-    }
+    },
+    /**
+  * 倒计时
+  */
+    countdown: function (that) {
+      clearTimeout(this.data.time);
+      let mapArry = that.data.secondArry;
+      let orderArry = that.data.list;
+      for (let i = 0; i < orderArry.length; i++) {
+        let order = orderArry[i];
+        if (order.orderStatus == 1) {
+          let second = mapArry.get(i);
+          if (second) {//秒数>0
+            // let countDownTime = Tool.timeStringForTimeCount(second);
+            let endTime = Tool.formatTime(order.overtimeClosedTime)
+            let countdown = Tool.getDistanceTime(endTime, this,1)
+            order.countDownTime = countdown + '后自动取消订单';
+            mapArry.set(i, countdown);
+          } else {
+            //order.countDownTime = '交易关闭';
+            clearTimeout(this.data.time);
+            order.orderStatus = 10
+            this.setData({
+              list: orderArry
+            })
+          }
+        }
+      }
+
+      let time = setTimeout(function () {
+        that.countdown(that);
+      }, 1000)
+
+      that.setData({
+        list: orderArry,
+        time: time
+      });
+    },
+    time() {
+      //待付款订单 倒计时处理
+      let detail = this.data.detail
+      let endTime = Tool.formatTime(detail.overtimeClosedTime)
+      let countdown = Tool.getDistanceTime(endTime, this)
+      if (countdown == null) {
+        detail.status = 10
+        clearTimeout(this.data.time);
+        this.setData({
+          detail: detail,
+          state: this.orderState(10)//订单状态相关信息
+        })
+      }
+    },
+    onUnload(){
+      clearTimeout(this.data.time);
+    },
   },
   ready: function () {
     //this.getData(this.properties.num);
