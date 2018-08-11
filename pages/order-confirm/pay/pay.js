@@ -82,13 +82,16 @@ Page({
         amounts: this.data.payList.showTotalAmounts,
         balance: 0, // 先按照0 写死
         orderNum: this.data.payList.orderNum,
+        openid: Storage.getWxOpenid(),
         tokenCoin: 0, // 先按照0 写死
         "type": payType,
       }
       let r = RequestFactory.repay(params);
       r.finishBlock = (req) => {
         //this.test(payType, req)
-        this.wxPay(payType, req.responseObject.data.outTradeNo)
+        // this.wxPay(payType, req.responseObject.data.outTradeNo)
+        let datas = req.responseObject.data
+        this.wxPay(payType, datas.outTradeNo, datas.prePayStr)
       };
       Tool.showErrMsg(r)
       r.addToQueue();
@@ -129,12 +132,15 @@ Page({
     continuePay(payType) {
       let params = {
         outTradeNo: this.data.payList.outTradeNo,
-        "type": payType
+        "type": payType,
+        openid: Storage.getWxOpenid()
       }
       let r = RequestFactory.continuePay(params);
       r.finishBlock = (req) => {
-        //this.test(payType, req)
-        this.wxPay(payType, req.responseObject.data.outTradeNo)
+        // this.test(payType, req)
+        // this.wxPay(payType, req.responseObject.data.outTradeNo)
+        let datas = req.responseObject.data
+        this.wxPay(payType, datas.outTradeNo, datas.prePayStr)
       };
       Tool.showErrMsg(r)
       r.addToQueue();
@@ -173,33 +179,35 @@ Page({
       Tool.showErrMsg(r)
       r.addToQueue();
     },
-    wxPay(payType, outTradeNo){ //微信支付
-      let params = {
-        productsDescription: outTradeNo,
-        openid: Storage.getWxOpenid(),
-        orderNum: outTradeNo,
-        totalFee: this.data.payList.showTotalAmounts
-      }
-      let r = RequestFactory.wxPay(params);
-      r.finishBlock = (req) => {
-        let that = this
-        let payList = req.responseObject.data
-        wx.requestPayment({
-          'timeStamp': payList.timeStamp,
-          'nonceStr': payList.nonceStr,
-          'package': payList.package,
-          'signType': 'MD5',
-          'paySign': payList.paySign,
-          'success': function (res) {
-            that.orderQuery(outTradeNo)
-          },
-          'fail': function (res) {
-            that.showResult(false)
-          }
-        })
-      };
-      Tool.showErrMsg(r)
-      r.addToQueue();
+    wxPay(payType, outTradeNo, payList){ //微信支付
+      let that = this
+      wx.requestPayment({
+        'timeStamp': payList.timeStamp,
+        'nonceStr': payList.nonceStr,
+        'package': payList.package,
+        'signType': 'MD5',
+        'paySign': payList.paySign,
+        'success': function (res) {
+          that.orderQuery(outTradeNo)
+        },
+        'fail': function (res) {
+          that.showResult(false)
+        }
+      })
+      // let params = {
+      //   productsDescription: outTradeNo,
+      //   openid: Storage.getWxOpenid(),
+      //   orderNum: outTradeNo,
+      //   totalFee: this.data.payList.showTotalAmounts
+      // }
+      // let r = RequestFactory.wxPay(params);
+      // r.finishBlock = (req) => {
+      //   let that = this
+      //   let payList = req.responseObject.data
+       
+      // };
+      // Tool.showErrMsg(r)
+      // r.addToQueue();
     },
     orderQuery(outTradeNo){
       let params = {

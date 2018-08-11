@@ -14,18 +14,18 @@ Page({
   },
   onLoad: function (options) {
     if (options.door == 0){
-      let history = Storage.getHistorySearch()
-      if (history) {
-        this.setData({
-          history: history
-        })
-      }
+      this.setData({
+        history: Storage.getHistorySearch() || '',
+        door: options.door,
+        placeholder:"搜索商品"
+      })
       this.requestGetHotWordsListActive()
       this.getLocation()
     } else {
       this.setData({
-        history: Storage.getSearchOrderHistory(),
-        door: options.door
+        history: Storage.getSearchOrderHistory() || '',
+        door: options.door,
+        placeholder: "搜索订单"
       })
     }
   },
@@ -60,7 +60,7 @@ Page({
   },
   getKeyword(e){
     this.setData({
-      keyWord:e.detail.value
+      keyWord: e.detail.keyWord
     })
   },
   deleteKeyword(){

@@ -4,8 +4,10 @@
 @import "/components/tips-delete-order/tips-delete-order";
 /*搜索产品异常显示  */
 @import  "/components/result-tips/result-tips";
-
-@import "/components/search-bar/search-bar.wxss";
+.searchOrder{
+  height: 80rpx;
+  overflow: hidden
+}
 .search-field{
   padding-bottom: 0
 }

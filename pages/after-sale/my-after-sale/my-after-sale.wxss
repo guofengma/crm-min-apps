@@ -1,6 +1,7 @@
 @import "/components/my-order-product-info/my-order-product-info";
+/*搜索产品异常显示  */
 
-@import "/components/search-bar/search-bar.wxss";
+@import  "/components/result-tips/result-tips";
 .order-line{
   border-top: 1rpx solid #eee;
   border-bottom: 1rpx solid #eee;

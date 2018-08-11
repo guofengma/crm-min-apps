@@ -1,11 +1,11 @@
+@import "/components/app";
+
 input{
   font-size:26rpx;
-  padding-left:60rpx;
-  width:565rpx;
+  width:460rpx;
   height:60rpx;
   background-color:#eeeeee;
   border-radius:6rpx;
-  margin-right:25rpx;
   box-sizing:border-box;
 }
 .search{
@@ -20,12 +20,26 @@ input{
 .search-field{
   padding: 16rpx 0;
 }
+.search-img,.search-img-close image{
+  
+  width: 30rpx;
+}
 .search-img{
   position: absolute;
-  width: 30rpx;
-  left: 20rpx;
   top:12rpx;
+  left: 20rpx;
+}
+.search-img-close{
+  background-color:#eeeeee;
+  width:60rpx;
+  height: 60rpx;
+  margin-right:25rpx;
 }
 .search-bar{
   position: relative;
+}
+.input-view{
+  padding-left: 60rpx;
+  background-color:#eeeeee;
+  border-radius:6rpx;
 }

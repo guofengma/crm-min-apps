@@ -1,6 +1,3 @@
-/*搜索*/
-@import "/components/search-bar/search-bar.wxss";
-
 /*商品展示竖向  */
 @import "/components/product-info-column/product-info-column";
 

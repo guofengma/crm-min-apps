@@ -36,9 +36,9 @@ Page({
   onShow: function () {
     
   },
-  getKeyword(e) {
+  getKeyword(e){
     this.setData({
-      keyword: e.detail.value
+      keyword: e.detail.keyWord
     })
   },
   searchKeyword(){

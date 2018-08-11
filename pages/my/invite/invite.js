@@ -1,10 +1,6 @@
 // pages/my/account.js
 let {Tool, RequestFactory, Event} = global;
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         expanded:[false,false],
         token:'',
@@ -50,9 +46,7 @@ Page({
               Tool.showSuccessToast('保存成功')
             },
             fail: function (err) {
-              console.log(err);
               if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
-                console.log("当初用户拒绝，再次发起授权")
                 wx.openSetting({
                   success(settingdata) {
                     console.log(settingdata)

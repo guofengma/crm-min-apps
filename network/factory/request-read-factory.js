@@ -19,15 +19,18 @@ export default class RequestFactory {
     //请求的接口
 
     params.url = url
+    
+    if (sysInfo){
+      // 手机型号
+      params.device = sysInfo.model
 
-    // 手机型号
-    params.device = sysInfo.model
+      // 微信版本
+      params.wechatVersion = sysInfo.version
 
-    // 微信版本
-    params.wechatVersion = sysInfo.version
-
-    // 系统版本
-    params.systemVersion = sysInfo.system
+      // 系统版本
+      params.systemVersion = sysInfo.system
+    }
+  
 
     let req = new Request(params);
 

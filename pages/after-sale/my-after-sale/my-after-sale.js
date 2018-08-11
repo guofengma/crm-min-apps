@@ -17,7 +17,8 @@ Page({
       { name: '换货', 
         page: '/pages/after-sale/exchange-goods/exchange-goods'
       },
-    ]
+    ],
+    tipVal:''
   },
   onLoad: function (options) {
     let params = {
@@ -32,7 +33,7 @@ Page({
   },
   getKeyword(e) {
     this.setData({
-      keyword: e.detail.value
+      keyword: e.detail.keyWord
     })
   },
   searchKeyword() {
@@ -76,9 +77,13 @@ Page({
         }
         this.setData({
           lists: lists.concat(datas.data),
-          totalPage: req.responseObject.data.total
+          totalPage: req.responseObject.data.total,
         })
-      } 
+      }else{
+        this.setData({
+          tipVal:2
+        })
+      }
     };
     Tool.showErrMsg(r)
     r.addToQueue();

@@ -23,7 +23,7 @@ Page({
       backAddress: list.returnAddress.address,
       backPhone: list.returnAddress.recevicePhone,
       backReceiver: list.returnAddress.receiver,
-      expressName: this.data.company.id,
+      expressName: this.data.company.name,
       expressNo:this.data.code,
       receiveAddress: list.receive.address,
       receivePhone:list.receive.recevice_phone,

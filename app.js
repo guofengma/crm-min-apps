@@ -68,8 +68,10 @@ App({
         let r = global.RequestFactory.verifyWechat(params);
         r.finishBlock = (req) => {
           Tool.loginOpt(req)
+          console.log(req)
         }
         r.failBlock = (req) => {
+          console.log(req)
             if (req.responseObject.code == 600) {
                 global.Storage.setWxOpenid(req.responseObject.data)
                 Tool.navigateTo('/pages/login/login-wx/login-wx')
