@@ -61,16 +61,16 @@
             <text>¥{{detail.totalPrice-detail.freightPrice}}</text>
         </view>
         <view class='flexR-sb'>
-            <text>运费（快递）</text>
-            <text>¥{{detail.freightPrice}}</text>
+            <text>优惠券优惠</text>
+            <text>接口还没有好</text>
         </view>
-        <!--<view class='flexR-sb'>-->
-            <!--<text>优惠券优惠</text>-->
-            <!--<text>-¥20</text>-->
-        <!--</view>-->
         <view class='flexR-sb'>
             <text>积分抵扣</text>
             <text>-¥{{detail.userScore?detail.userScore:'0'}}</text>
+        </view>
+        <view class='flexR-sb'>
+            <text>运费（快递）</text>
+            <text>¥{{detail.freightPrice}}</text>
         </view>
         <view class='flexR-sb total'>
             <text>订单总价</text>
