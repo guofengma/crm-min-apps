@@ -37,7 +37,9 @@
             <view class="item" wx:for="{{item.orderProduct}}" wx:key="item"  wx:for-item="oItem">
                 <image src="{{oItem.imgUrl}}" alt=""></image>
                 <view class="goods-inf">
-                    <view class="ellipsis-2">{{oItem.productName}}
+                    <view class="ellipsis-2">
+                      <!-- <text class='label-red-border'>礼包</text> -->
+                      {{oItem.productName}}
                     </view>
                     <view class="color-classify">{{oItem.spec}} </view>
                 </view>

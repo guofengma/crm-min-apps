@@ -170,3 +170,11 @@ image{
   top: 0;
   width: 100%;
 }
+.label-red-border{
+  border:1rpx solid #e60012;
+  border-radius:6rpx;
+  padding:0rpx 10rpx;
+  color: #e60012;
+  font-size: 22rpx;
+  margin-right: 20rpx;
+}

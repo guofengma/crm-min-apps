@@ -23,12 +23,15 @@ Page({
         class: "table"
       },
       children: [],
-    }]  
+    }],
+    door:1, // 0 是礼包 1是普通产品
+    isShowGiftTips:true, //是否显示礼包升级提示
   },
   onLoad: function (options) {
     this.setData({
       productId: options.productId || '',
-      prodCode: options.prodCode || ''
+      prodCode: options.prodCode || '',
+      door: options.door || 1
     })
     this.didLogin()
     this.requestFindProductByIdApp()
@@ -95,7 +98,7 @@ Page({
       price_id: this.data.selectType.id
     }
 
-    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify([params])+'&type=1' )
+    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify([params])+'&type='+this.data.door )
   },
   addToShoppingCart(){
     // 加入购物车
@@ -309,6 +312,11 @@ Page({
   wxParseTagATap: function (e) {
     let link = e.currentTarget.dataset.src
     console.log(link)
+  },
+  closeMask(){
+    this.setData({
+      isShowGiftTips: !this.data.isShowGiftTips
+    })
   },
   onUnload: function () {
     Event.off('didLogin', this.didLogin);

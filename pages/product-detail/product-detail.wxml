@@ -36,14 +36,19 @@
     <!-- 产品信息 -->
     <view class='prd-info boxSize'>
       <view class='prd-name ellipsis-2'>{{productInfo.name}}</view>
-      <view class='price'>
+      <view class='price' wx:if='{{door==1}}'>
         <text class='price1 red'>¥ {{productInfo.levelPrice}}</text>
         <text class='price2 gray'>¥ {{productInfo.original_price}}</text>
         <text class='label-pd'>拼店价</text>
         <text class='price3 red'>积分价：¥ {{productInfo.min_payment}}</text>
       </view>
+      <view class='price' wx:else>
+        <text class='price1 red'>¥ {{productInfo.levelPrice}}</text>
+        <text class='label-pd'>V1价</text>
+        <text>升级大礼包</text>
+      </view>
       <view class='shippingInfo gray'>
-        <text style='margin-right:158rpx'>快递：{{productInfo.start_price}}</text>
+        <!-- <text style='margin-right:158rpx'>快递：{{productInfo.start_price}}</text> -->
         <text>月销售{{productInfo.saleNum}}笔</text>
       </view>
     </view>
@@ -101,7 +106,7 @@
         <template is="product-column"data="{{title:item}}" />    
     </view> -->
     <!-- 详情页 tabar  -->
-    <view class="bottom-bar flexR">
+    <view class="bottom-bar flexR" wx:if='{{door==1}}'>
       <view class='cell-line' bindtap='cartClicked'>
         <image src='/img/shoppingcart.png' mode='widthFix'></image>
         <view class='gray'>购物车</view>
@@ -117,6 +122,11 @@
         立即购买
       </view>
     </view>
+    <view class="bottom-bar gift-btn-view flexR" wx:if='{{door==0}}'>
+      <view class='buy-btn gift-btn' bindtap='giftBagClicked'>
+        立即购买
+      </view>
+    </view>
     <!--置顶的按钮-->
     <view class='goTop' bindtap='goTop' wx:if='{{floorstatus}}'>
       <image src='/img/top-icon.png' mode='widthFix'></image>
@@ -125,3 +135,7 @@
   </view>
 
 </scroll-view>
+
+<tips-info isShoW='{{isShowGiftTips}}' header='温馨提示' bind:closeMask='closeMask'>
+
+</tips-info>

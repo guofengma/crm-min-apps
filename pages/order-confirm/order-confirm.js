@@ -11,7 +11,7 @@ Page({
     orderInfos:"",
     addressList:[],
     remark:'', // 买家留言
-    door:1, //1是产品详情页进入 2是购物车进入 3是从我的订单进来的 
+    door:'', //0 是礼包 1是产品详情页进入 2是购物车进入 3是从我的订单进来的 
     coupon:{id:""}, //优惠券信息
   },
   onLoad: function (options) {

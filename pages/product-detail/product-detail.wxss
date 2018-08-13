@@ -220,6 +220,13 @@
 	linear-gradient(#ffffff, #ffffff);
 	border-radius: 0px 40rpx 40rpx 0px;
 }
+.gift-btn{
+  width: 440rpx;
+  border-radius: 40rpx;
+}
+.gift-btn-view{
+  justify-content: center;
+}
 /*置顶  */
 .goTop{
   position: fixed;

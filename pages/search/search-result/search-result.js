@@ -89,7 +89,7 @@ Page({
     r.addToQueue();
   },
   productCliked(e){
-    Tool.navigateTo('/pages/product-detail/product-detail?productId='+ e.currentTarget.dataset.id)
+    Tool.navigateTo('/pages/product-detail/product-detail?productId='+ e.currentTarget.dataset.id+'&door=1')
   },
   // getRequestUrl(params){
   //   if (this.data.keyword) {

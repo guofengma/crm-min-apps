@@ -44,14 +44,18 @@
 
     <!--订单信息  -->
     <view class='order-prd-info'>
-        <block wx:for="{{detail.list}}" wx:key="unique">
-            <view catchtap='productClicked' data-productid='{{item.productId}}'>
-              <template is="my-order-product-info" data="{{...item}}"/>
-            </view>
-            <view class='sale-after flexR' wx:if="{{item.middleBtn}}">
-              <view class='order-btn btn-left flexR' catchtap='subBtnClicked' data-id='{{item.middleBtn.id}}' data-returntype='{{item.middleBtn.returnType}}' data-index='{{index}}'>{{item.middleBtn.content}}</view>
-            </view>
-        </block>
+      <!-- <view class='gift-view whiteBg'>
+        <text class='label-red-border'>套餐</text>
+        <text class='gray font-24'>双十一套餐</text>
+      </view> -->
+      <block wx:for="{{detail.list}}" wx:key="unique">
+          <view catchtap='productClicked' data-productid='{{item.productId}}'>
+            <template is="my-order-product-info" data="{{...item}}"/>
+          </view>
+          <view class='sale-after flexR' wx:if="{{item.middleBtn}}">
+            <view class='order-btn btn-left flexR' catchtap='subBtnClicked' data-id='{{item.middleBtn.id}}' data-returntype='{{item.middleBtn.returnType}}' data-index='{{index}}'>{{item.middleBtn.content}}</view>
+          </view>
+      </block>
     </view>
 
     <!-- 商品价格等信息 -->
@@ -108,16 +112,32 @@
 
 <view class='order-bar flexR boxSize' wx:if="{{status!=8}}">
     <block>
-        <view class='order-btn btn-left flexR' wx:if="{{state.bottomBtn[0]=='删除订单'}}" bindtap="deleteItem">{{state.bottomBtn[0]}}</view>
-        <view class='order-btn btn-left flexR' wx:if="{{state.bottomBtn[0]=='取消订单'}}" bindtap="cancelItem">{{state.bottomBtn[0]}}</view> 
-        <view class='order-btn btn-left flexR' wx:if="{{state.bottomBtn[0]=='查看物流'}}" bindtap="seeLogistics">{{state.bottomBtn[0]}}</view>        
+        <view class='order-btn btn-left flexR' wx:if="{{state.bottomBtn[0]=='删除订单'}}" bindtap="deleteItem">
+          {{state.bottomBtn[0]}}
+        </view>
+        <view class='order-btn btn-left flexR' wx:if="{{state.bottomBtn[0]=='取消订单'}}" bindtap="cancelItem">
+          {{state.bottomBtn[0]}}
+        </view> 
+        <view class='order-btn btn-left flexR' wx:if="{{state.bottomBtn[0]=='查看物流'}}" bindtap="seeLogistics">
+          {{state.bottomBtn[0]}}
+        </view>        
     </block>
     <block>
-        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='确认收货'}}" bindtap="confirmReceipt">{{state.bottomBtn[1]}}</view>
-        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='删除订单'}}" bindtap="deleteItem">{{state.bottomBtn[1]}}</view>
-        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='继续支付'}}" bindtap="continuePay">{{state.bottomBtn[1]}}</view>
-        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='再次购买'}}" bindtap="continueBuy">{{state.bottomBtn[1]}}</view>
-        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='订单退款'}}" bindtap="orderRefund">{{state.bottomBtn[1]}}</view>  
+        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='确认收货'}}" bindtap="confirmReceipt">
+          {{state.bottomBtn[1]}}
+        </view>
+        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='删除订单'}}" bindtap="deleteItem">
+          {{state.bottomBtn[1]}}
+        </view>
+        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='继续支付'}}" bindtap="continuePay">
+          {{state.bottomBtn[1]}}
+        </view>
+        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='再次购买'}}" bindtap="continueBuy">
+          {{state.bottomBtn[1]}}
+        </view>
+        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='订单退款'}}" bindtap="orderRefund">
+          {{state.bottomBtn[1]}}
+        </view>  
     </block>
 
 </view>

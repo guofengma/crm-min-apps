@@ -90,3 +90,6 @@
   line-height:38rpx;
   padding-top:15rpx;
 }
+.gift-view{
+  padding:15rpx 30rpx 0 30rpx;
+}
