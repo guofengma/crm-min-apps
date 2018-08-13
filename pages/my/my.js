@@ -3,7 +3,8 @@ let { Tool, RequestFactory, Storage, Event } = global
 Page({
     data: {
       userInfos:'',
-      tabClicked:0
+      tabClicked:0,
+      tabClicked:1
     },
     onLoad: function (options) {
       this.refreshMemberInfoNotice()
@@ -12,6 +13,9 @@ Page({
       Event.on('didLogin', this.didLogin, this);
     },
     onShow: function () {
+      
+    },
+    onHide: function() {
       this.setData({
         tabClicked: 1
       })

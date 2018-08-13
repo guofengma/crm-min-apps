@@ -46,6 +46,12 @@ Page({
   requestGetHotWordsListActive(){
     let r = RequestFactory.getHotWordsListActive();
     r.finishBlock = (req) => {
+      let datas = req.responseObject.data
+      if(datas.length>0){
+        datas.forEach((item)=>{
+          item.wordName = item.wordName.length > 10 ? item.wordName.slice(0, 10) + "..." : item.wordName
+        })
+      }
       this.setData({
         hotWords: req.responseObject.data
       })
@@ -75,7 +81,7 @@ Page({
   },
   searchKeyword(){
     if (!Tool.isEmptyStr(this.data.keyWord)) {
-      let str = this.data.keyWord.length > 5 ? this.data.keyWord.slice(0, 5) + "..." : this.data.keyWord
+      let str = this.data.keyWord.length > 10 ? this.data.keyWord.slice(0, 10) + "..." : this.data.keyWord
       let keywords = this.data.history
       if (keywords.length > 0) {
         keywords.length == 10 ? keywords.splice(9, 1) : keywords

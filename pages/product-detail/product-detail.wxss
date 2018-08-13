@@ -320,3 +320,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.tips-content{
+  color: #666;
+  padding: 60rpx;
+}
+
+.tips-title{
+  margin: 60rpx auto auto 50rpx; 
+  text-align: center;
+}
+.first-tips{
+  margin-bottom: 28rpx;
+}

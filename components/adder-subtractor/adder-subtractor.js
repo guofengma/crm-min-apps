@@ -11,7 +11,7 @@ Component({
   methods: {
     subClicked: function (e) {
       // 减
-      let count = this.data.innerCount - 1;
+      let count = this.data.count - 1;
       if (count < 1 || count == undefined) {
         count = 1;
       }
@@ -32,14 +32,14 @@ Component({
         innerCount =200
       }
       this.setData({
-        innerCount: innerCount
+        innerCount: parseInt(innerCount)
       })
       this.trigger(e);
     },
     addClicked: function (e) {
       // 加
-      let innerCount = this.data.innerCount
-      if (this.data.innerCount>=200){
+      let innerCount = this.data.count
+      if (this.data.count>=200){
         Tool.showAlert('最多只能购买200件')
         innerCount = 200
       } else {
@@ -58,8 +58,7 @@ Component({
       let innerCount = e.detail.value
       if (!innerCount || innerCount == 0) {
         this.setData({
-          innerCount: 1,
-          count: this.data.innerCount
+          innerCount: 1
         })
         this.trigger(e);
       } 
@@ -67,8 +66,6 @@ Component({
   },
 
   ready: function () {
-    this.setData({
-      innerCount: this.data.count
-    })
+
   }
 })

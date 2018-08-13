@@ -25,7 +25,7 @@ Page({
       children: [],
     }],
     door:1, // 0 是礼包 1是普通产品
-    isShowGiftTips:true, //是否显示礼包升级提示
+    isShowGiftTips:false, //是否显示礼包升级提示
   },
   onLoad: function (options) {
     this.setData({
@@ -53,7 +53,7 @@ Page({
         Tool.switchTab('/pages/index/index')
         break;
       case 3:
-
+        
         break;  
     }
   },

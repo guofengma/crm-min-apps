@@ -1,4 +1,4 @@
-let { Tool, RequestFactory} = global
+let { Tool, RequestFactory, Storage} = global
 
 Page({
 
@@ -64,6 +64,9 @@ Page({
     let r = ''
     if (this.data.keyword){
       r = RequestFactory.searchProduct(params)
+      let history =  Storage.getHistorySearch()
+      history.unshift(this.data.keyword)
+      Storage.setHistorySearch(history)
     } else {
       r = RequestFactory.queryProductListAPP(params);
     }

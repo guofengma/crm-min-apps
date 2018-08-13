@@ -64,9 +64,9 @@
             <text>商品价格</text>
             <text>¥{{detail.totalPrice-detail.freightPrice}}</text>
         </view>
-        <view class='flexR-sb'>
+        <view class='flexR-sb' wx:if='{{detail.couponPrice}}'>
             <text>优惠券优惠</text>
-            <text>接口还没有好</text>
+            <text>{{detail.couponPrice}}</text>
         </view>
         <view class='flexR-sb'>
             <text>积分抵扣</text>

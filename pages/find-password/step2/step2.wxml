@@ -7,7 +7,8 @@
     </view>
     <view class='flexR'>
       <text>新密码</text>
-      <input type='{{isSee? "text":"password"}}' name='password' placeholder="请设置密码" value='{{pwd}}' bindinput='changeInput' data-index='2'></input>
+      <input wx:if='{{isSee}}' type='text' name='password' placeholder="请设置密码" value='{{pwd}}' bindinput='changeInput' data-index='2'></input>
+      <input wx:else type='password' name='password' placeholder="请设置密码" value='{{pwd}}' bindinput='changeInput' data-index='2'></input>
       <image class='pwdImg' style='margin-left:90rpx' src='{{isSee? "../../../img/see-pwd-icon.png":"../../../img/unsee-pwd-icon.png"}}' mode="widthFix" bindtap='isSeePwd'></image>
     </view>
   </view>

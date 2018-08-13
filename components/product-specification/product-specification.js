@@ -23,10 +23,6 @@ Component({
     makeSureType(show){
       // 点击确定 
       if (this.data.isActive.length == this.properties.productTypeList.length){
-        if (this.data.selectPrdList.stock==0){
-          Tool.showAlert('库存不足,请选择其他产品')
-          return
-        } 
         let isActive = this.data.isActive
         let productType = []
         for (let i = 0; i < isActive.length;i++){
@@ -34,12 +30,17 @@ Component({
             productType.push(isActive[i].val)
           }
         }
-        // 已选择的类型
-        let productType2 = '已选："' + productType.join('""') + '"'
-
         // 拼接已选的类型 匹配库存和价格
         let seletType = productType.join('-')
-        let index = this.showCurrentInfo(seletType)
+        // if(this.data.isChange){
+          let index = this.showCurrentInfo(seletType)
+        // }
+        if (this.data.selectPrdList.stock === 0) {
+          Tool.showAlert('库存不足,请选择其他产品')
+          return
+        } 
+        // 已选择的类型
+        let productType2 = '已选："' + productType.join('""') + '"'
         this.setData({
           productType: productType2
         })
@@ -66,7 +67,6 @@ Component({
           this.setData({
             selectPrdList: list[i]
           })
-          console.log(list[i])
           return { index: i, id: list[i].id, typeName: list[i].spec, stock: list[i].stock}
         }
       }
@@ -84,22 +84,19 @@ Component({
       obj[key].index = val
       obj[key].val = typeVal
       obj[key].id = id
-      this.setData({
-        isActive: obj
-      })
+      // this.setData({
+      //   isActive: obj
+      // })
       let spec_id = []
       for(let i=0;i<obj.length;i++){
         if (obj[i]!== undefined){
           spec_id[i] = obj[i].id
         } 
       }
+      let length = spec_id.length == this.properties.productTypeList.length? true:false
       spec_id.length = this.properties.productTypeList.length
       let params = spec_id
-      this.findProductStockBySpec(params, key,val)
-      // 如果类型选择完毕 则马上显示对应的价格和库存
-      if (this.data.isActive.length == this.properties.productTypeList.length) {
-        this.makeSureType(true)
-      }
+      this.findProductStockBySpec(params, key, val, length,obj)
     },
     isVisiableClicked(n){
       // 规格选择提示拼接
@@ -128,7 +125,7 @@ Component({
       })
       this.triggerEvent('counterInputOnChange', this.data.innerCount);
     },
-    findProductStockBySpec(id, key, val){
+    findProductStockBySpec(id, key, val,length,obj){
       let productTypeList = this.properties.productTypeList
       let specId = []
       for(let i=0;i<id.length;i++){
@@ -142,10 +139,24 @@ Component({
       }
 
       let idParams = id
+      
       let stockArr = this.data.stockArr
       let r = r = RequestFactory.findProductStockBySpec(params);
       r.finishBlock = (req) => {
         let datas = req.responseObject.data
+        if(length){
+          for (let i = 0; i < productTypeList.length; i++) {
+            for (let j = 0; j < productTypeList[i].types.length; j++){
+              if (key != i && val!=j){
+                productTypeList[i].types[j] = true
+              }
+            }
+          }
+          if(datas.length==0){
+            productTypeList[key].types[val] = null
+            obj[key].index = null
+          }
+        }
         for (let a = 0; a < idParams.length; a++) {
           if (idParams[a] === undefined) {
             productTypeList[a].types=[]
@@ -153,9 +164,6 @@ Component({
               let idArr = item.spec_ids.split(',')
               item.idArr = idArr
               productTypeList.forEach((list, index) => {
-                if (list.types === undefined) {
-                  list.types = []
-                }
                 for (let i = 0; i < idArr.length; i++) {
                   let index = productTypeList[a].typeId.indexOf(idArr[i])
                   if (index != -1) {
@@ -168,8 +176,16 @@ Component({
         }     
         
         this.triggerEvent('productTypeListClicked', { productTypeList});
+
+        if (this.data.isActive.length == this.properties.productTypeList.length) {
+          this.makeSureType(true)
+        }
+
+        // 如果类型选择完毕 则马上显示对应的价格和库存
         this.setData({
-          datas: datas
+          datas: datas,
+          idParams: idParams,
+          isActive: obj
         })
       };
       Tool.showErrMsg(r)
