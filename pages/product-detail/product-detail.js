@@ -328,7 +328,7 @@ Page({
     r.finishBlock = (req) => {
       let data = req.responseObject.data
       data = data === null ? [] : data
-      let size = data.length > 99 ? '···' : data.length
+      let size = data.length > 99 ?  99: data.length
       this.setData({
         size: size
       })

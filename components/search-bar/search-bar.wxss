@@ -5,7 +5,8 @@ input{
   width:460rpx;
   height:60rpx;
   background-color:#eeeeee;
-  border-radius:6rpx;
+  border-top-left-radius: 6rpx;
+  border-bottom-left-radius: 6rpx;
   box-sizing:border-box;
 }
 .search{
@@ -34,6 +35,8 @@ input{
   width:60rpx;
   height: 60rpx;
   margin-right:25rpx;
+  border-top-right-radius: 6rpx;
+  border-bottom-right-radius: 6rpx;
 }
 .search-bar{
   position: relative;

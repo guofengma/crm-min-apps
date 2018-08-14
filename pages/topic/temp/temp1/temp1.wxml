@@ -13,7 +13,7 @@
   </view>
   <block wx:for='{{topicDetailList[currentTab].banner}}'  wx:key='unique'>
     <view class='topic-banner topic-temp2'>
-      <image src='{{img}}'></image>
+      <image src='{{item.img}}'></image>
     </view>
     <view class='topic-prd-content topic-temp1'>
       <block wx:for='{{topicDetailList[currentTab].product}}' wx:for-item="list" wx:for-index='key'  wx:key='unique'>

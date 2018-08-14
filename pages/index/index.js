@@ -59,11 +59,12 @@ Page({
         let val = e.currentTarget.dataset.val;
         let page = '';
         if (adType == 1) {
-            page = '/pages/product-detail/product-detail?prodCode=' + val
+          page = '/pages/product-detail/product-detail?prodCode=' + val
         } else if (adType == 2) {
-
+          page = '/pages/topic/topic?id=' + val
         }
         Tool.navigateTo(page)
+        
     },
     queryFeaturedList() {
         let params = {

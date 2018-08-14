@@ -8,7 +8,7 @@
   </view>
   <block wx:for='{{topicDetailList.banner}}' wx:key='unique'>
     <view class='topic-banner topic-temp2'>
-      <image src='{{img}}'></image>
+      <image src='{{item.img}}'></image>
     </view>
     <!-- <view class='topic-type flexR'>水乳</view> -->
     <view class='topic-prd-content'>
