@@ -150,7 +150,8 @@ Page({
         productInfo:datas.product,
         productTypeList: datas.saleSpecValueList,
         priceList: datas.priceList,
-        isCollection: isCollection
+        isCollection: isCollection,
+        productId: datas.product.id
       })
       let tr = []
       let tbody = this.data.nodes

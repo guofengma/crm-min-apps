@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "实名制认证",
+  "navigationBarTitleText": "身份信息提交",
   "usingComponents": {
     "city-picker": "/components/city-picker/city-picker"
   }
