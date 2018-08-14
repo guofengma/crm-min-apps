@@ -12,8 +12,11 @@ Page({
       Event.on('refreshMemberInfoNotice', this.refreshMemberInfoNotice, this);
       Event.on('didLogin', this.didLogin, this);
     },
+    pageClicked(){
+      this.didLogin()
+    },
     onShow: function () {
-      
+
     },
     onHide: function() {
       this.setData({

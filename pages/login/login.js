@@ -41,4 +41,9 @@ Page({
     Tool.showErrMsg(r)
     r.addToQueue();
   },
+  changeInput(e) {
+    this.setData({
+      pwd: e.detail.value
+    })
+  }
 })

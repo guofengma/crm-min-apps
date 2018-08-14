@@ -12,8 +12,8 @@
         </view>
         <view class='flexR form-group' >
           <text>密码</text>
-          <input wx:if='{{isSee}}' type='text' name='password' placeholder="请设置密码" value='{{pwd}}'  style='margin-left:71rpx'></input>
-          <input wx:else type='password' name='password' placeholder="请设置密码" value='{{pwd}}'  style='margin-left:71rpx'></input>
+          <input wx:if='{{isSee}}' type='text' name='password' placeholder="请设置密码" value='{{pwd}}'  bindinput='changeInput' style='margin-left:71rpx'></input>
+          <input wx:else type='password' name='password' placeholder="请设置密码" value='{{pwd}}'  bindinput='changeInput' style='margin-left:71rpx'></input>
           <image class='pwdImg' src='{{isSee? "/img/see-pwd-icon.png":"/img/unsee-pwd-icon.png"}}' mode="widthFix" bindtap='isSeePwd'></image>
         </view>
       <view class="btn-area">

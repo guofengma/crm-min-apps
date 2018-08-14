@@ -114,7 +114,7 @@ Page({
     let params = {
       pageSize: this.data.pageSize,
       page: 1,
-      keyword: this.data.keyword || -1,
+      keyword: this.data.keyword || '',
       areaCode: this.data.code || -1,
     }
     switch (n) {

@@ -1,5 +1,5 @@
 <!--pages/my/account.wxml-->
-<view class="order">
+<view class="order" bindtap='pageClicked'>
     <view class="bg-area" bindtap="personalData">
         <view class="img-area">
             <image class="avatar-img" src="{{userInfos.headImg||'/img/default-userImg.png'}}" alt=""></image>
