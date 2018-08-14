@@ -29,12 +29,13 @@ Page({
       encryptedData: e.detail.encryptedData,
       iv: e.detail.iv,
     })
-    if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
-       console.log('用户拒绝了你的请求')
-    } else {
+    console.log(e.detail.errMsg)
+    if (e.detail.errMsg == 'getPhoneNumber:ok') {
       this.setData({
         visiable: !this.data.visiable,
       })
+    } else {
+      
     }   
   },
   agreeGetUser(e){

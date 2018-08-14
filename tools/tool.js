@@ -305,7 +305,7 @@ export default class Tool {
     //弹窗提示
     static showAlert(msg, okCB = () => { }) {
         wx.showModal({
-            title: '提示',
+            title: '',
             content: msg,
             showCancel: false,
             success: function (res) {
@@ -840,6 +840,13 @@ export default class Tool {
         didLogin: didLogin
       })
       return didLogin
+    }
+
+    static loginLimit(that,item) {
+      let didLogin = this.didLogin(that)
+      if (!didLogin && item.index==4){
+        this.navigateTo('/pages/login/login-wx/login-wx')
+      }
     }
 
     // 登录以后的操作

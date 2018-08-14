@@ -85,13 +85,20 @@ Page({
       let keywords = this.data.history
       if (keywords.length > 0) {
         keywords.length == 10 ? keywords.splice(9, 1) : keywords
-        keywords.unshift(str)
-        if (this.data.door == 1) {
-          Storage.setSearchOrderHistory(keywords)
-        } else {
-          Storage.setHistorySearch(keywords)
+        let hasSame = false 
+        keywords.forEach((item)=>{
+          if (item == str){
+            hasSame = true
+          }
+        })
+        if (!hasSame){
+          keywords.unshift(str)
+          if (this.data.door == 1) {
+            Storage.setSearchOrderHistory(keywords)
+          } else {
+            Storage.setHistorySearch(keywords)
+          }
         }
-        
       } else {
         if (this.data.door == 1) {
           Storage.setSearchOrderHistory([str])

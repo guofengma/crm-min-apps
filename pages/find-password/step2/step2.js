@@ -36,6 +36,7 @@ Page({
     r.finishBlock = (req) => {
       Tool.redirectTo('/pages/login/login')
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   changeInput(e) {
@@ -85,6 +86,7 @@ Page({
         title: '验证码已发送',
       })
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   countdown: function (that) { // 倒计时

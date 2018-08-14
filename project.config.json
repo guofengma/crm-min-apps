@@ -196,6 +196,12 @@
 					"name": "实名制",
 					"pathName": "pages/real-name/real-name",
 					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "忘记密码",
+					"pathName": "pages/find-password/step1/step1",
+					"query": "door=1"
 				}
 			]
 		}

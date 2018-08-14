@@ -48,7 +48,7 @@
         <text>升级大礼包</text>
       </view>
       <view class='shippingInfo gray'>
-        <!-- <text style='margin-right:158rpx'>快递：{{productInfo.start_price}}</text> -->
+        <text style='margin-right:158rpx'>快递：{{productInfo.start_price}}</text> 
         <text>月销售{{productInfo.saleNum}}笔</text>
       </view>
     </view>

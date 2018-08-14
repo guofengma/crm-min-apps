@@ -43,6 +43,7 @@ Page({
         Storage.setUserAccountInfo(req.responseObject.data)
         Event.emit('refreshMemberInfoNotice');//发出通知
       }
+      Tool.showErrMsg(r)
       r.addToQueue();
     },
     //取消

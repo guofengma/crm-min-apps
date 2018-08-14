@@ -31,7 +31,6 @@ Page({
     })
   }, 
   formSubmit(e){
-    console.log(e.detail.value.phone)
     if (!Tool.checkPhone(e.detail.value.phone)) {
       Tool.showAlert("请输入正确的手机号");
       return

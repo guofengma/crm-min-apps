@@ -57,6 +57,7 @@ Page({
       r.failBlock = (req) => {
         Tool.showAlert(req.responseObject.msg)
       }
+      Tool.showErrMsg(r)
       r.addToQueue();
     }
 })

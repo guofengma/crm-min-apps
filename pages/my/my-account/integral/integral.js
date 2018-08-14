@@ -45,6 +45,7 @@ Page({
                     this.data.hasNext = false
                 }
             };
+            Tool.showErrMsg(r)
             r.addToQueue();
         }
 

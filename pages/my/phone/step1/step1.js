@@ -35,6 +35,7 @@ Page({
           title: '验证码已发送',
         })
       };
+      Tool.showErrMsg(r)
       r.addToQueue();
     }
     Tool.codeEnable(this, callBack)
@@ -51,6 +52,7 @@ Page({
     r.failBlock = (req) => {
       Tool.showAlert(req.responseObject.msg)
     }
+    Tool.showErrMsg(r)
     r.addToQueue();
   }
 })

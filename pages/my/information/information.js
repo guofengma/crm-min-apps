@@ -23,6 +23,7 @@ Page({
                storeMessageNum:detail.storeMessageNum,
            })
         };
+        Tool.showErrMsg(r)
         r.addToQueue();
     },
     didLogin(){

@@ -42,6 +42,20 @@ Page({
     })
   },
   searchKeyword(){
+    if (!Tool.isEmpty(this.data.keyword)){
+      let history = Storage.getHistorySearch()
+      let str = this.data.keyword.length > 10 ? this.data.keyword.slice(0, 10) + "..." : this.data.keyword
+      let hasSame = false
+      history.forEach((item) => {
+        if (item == str) {
+          hasSame = true
+        }
+      })
+      if (!hasSame) {
+        history.unshift(this.data.keyword)
+        Storage.setHistorySearch(history)
+      }
+    }
     this.navbarClicked({detail:{n:1}})
   },
   reloadNet(){
@@ -64,9 +78,6 @@ Page({
     let r = ''
     if (this.data.keyword){
       r = RequestFactory.searchProduct(params)
-      let history =  Storage.getHistorySearch()
-      history.unshift(this.data.keyword)
-      Storage.setHistorySearch(history)
     } else {
       r = RequestFactory.queryProductListAPP(params);
     }

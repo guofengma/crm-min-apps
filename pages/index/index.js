@@ -15,7 +15,8 @@ Page({
             {name: '服饰', imgurl: 'index-icon-4.png'},
         ],
         recommendImgUrl: [],
-        topicImgUrl: []
+        topicImgUrl: [],
+        tabClicked:1
     },
     onLoad: function () {
         this.topicList();
@@ -103,6 +104,21 @@ Page({
     topicClicked(e){
       let id = e.currentTarget.dataset.id
       Tool.navigateTo('/pages/topic/topic?id='+id)
+    },
+    onTabItemTap(item) {
+      let num = this.data.tabClicked
+      // 阻止多次点击跳转
+      if (num == 1) {
+        Tool.loginLimit(this,item)
+      }
+      this.setData({
+        tabClicked: 2
+      })
+    },
+    onShow:function (){
+      this.setData({
+        tabClicked: 2
+      })
     },
     onShareAppMessage: function (res) {
 

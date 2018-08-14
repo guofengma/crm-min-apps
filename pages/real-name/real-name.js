@@ -53,6 +53,7 @@ Page({
       Storage.setMemberId(req.responseObject.data.id)
       this.dismiss()
     }
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   dismiss(){
