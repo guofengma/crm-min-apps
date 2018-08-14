@@ -40,6 +40,7 @@ Page({
         })
       }
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   addressClicked(e){

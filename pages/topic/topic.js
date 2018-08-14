@@ -43,5 +43,9 @@ Page({
     };
     Tool.showErrMsg(r)
     r.addToQueue();
+  },
+  productClicked(e){
+    let id = e.currentTarget.dataset.id
+    Tool.navigateTo('/pages/product-detail/product-detail?productId=' + id + '&door=1')
   }
 })

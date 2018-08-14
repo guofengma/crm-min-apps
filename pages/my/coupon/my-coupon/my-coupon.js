@@ -10,7 +10,7 @@ Page({
             [  ]
         ],
         types:{
-          MJ:"满减卷",ZK:"抵价卷",DK:"折扣卷",DJ:"抵扣卷"
+          MJ: "满减卷", ZK: "折扣卷", DK: "抵扣卷", DJ:"抵价卷"
         }
     },
     // 滚动切换标签样式
@@ -23,8 +23,8 @@ Page({
     getCouponType(item){
       let typeObj = this.data.types
       item.typeName = typeObj[item.type]
-      item.showTypeName = item.type == 'ZK' || item.type == 'DJ'? true:false
-      item.value = item.type == 'DK'?  item.value/10:item.value
+      item.showTypeName = item.type == 'DK' || item.type == 'DJ'? true:false
+      item.value = item.type == 'ZK'?  item.value/10:item.value
     },
     availableDiscountCouponForProduct(){
       let params = {

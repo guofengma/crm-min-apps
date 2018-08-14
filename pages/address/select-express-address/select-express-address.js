@@ -29,6 +29,7 @@ Page({
     r.finishBlock = (req) => {
       this.queryUserAddressList()
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   getAddressId(e){
@@ -46,6 +47,7 @@ Page({
         addressList:list
       })
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   editAddress(e){

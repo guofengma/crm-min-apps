@@ -72,8 +72,8 @@
   box-sizing: border-box;
   padding-left: 20rpx;
 }
-.coupon-left .red text{
-  font-size: 72rpx;
+.coupon-left .red text,.coupon-left .gray text {
+  font-size: 40rpx;
 }
 .coupon-center>view{
   margin-top: 14rpx;

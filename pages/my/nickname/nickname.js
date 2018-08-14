@@ -23,6 +23,7 @@ Page({
         Event.emit('refreshMemberInfoNotice');//发出通知
         Tool.navigationPop()
       };
+      Tool.showErrMsg(r)
       r.addToQueue();
     }
 })

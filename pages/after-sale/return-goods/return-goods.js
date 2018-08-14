@@ -49,7 +49,6 @@ Page({
         if (status == 1) resultIndex = 1
         expressNo = { id: 2, content: datas.returnProduct.express_no }
       }
-      console.log(status)
       if (status == 4){
         resultIndex = 2
       }

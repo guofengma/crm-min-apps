@@ -90,6 +90,7 @@ Page({
           //跳转到地址列表页面
           this.successCallBack("添加成功")
       };
+      Tool.showErrMsg(r)
       r.addToQueue();
   },
   successCallBack(title){
