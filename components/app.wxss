@@ -31,9 +31,9 @@ button::after{
 .overflow{
   overflow: hidden
 }
-image{
+/* image{
   width: 100%;
-}
+} */
 .logo{
   width: 130rpx;
   height: 130rpx;

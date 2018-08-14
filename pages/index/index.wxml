@@ -52,7 +52,7 @@
   </view>
   <block wx:for="{{topicImgUrl}}" wx:key='unique'>
     <view class='img-view' catchtap='topicClicked' data-id="{{item.link_type_value}}">
-      <image src='{{item.img_url}}'></image>
+      <image src='{{item.img_url}}' ></image>
     </view>
   </block>
 </view>

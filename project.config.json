@@ -198,9 +198,9 @@
 					"query": "id=1"
 				},
 				{
-					"id": -1,
-					"name": "忘记密码",
-					"pathName": "pages/find-password/step1/step1",
+					"id": 27,
+					"name": "支付",
+					"pathName": "pages/order-confirm/pay/pay",
 					"query": "door=1"
 				}
 			]

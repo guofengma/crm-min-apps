@@ -64,3 +64,6 @@
   margin-top: 40rpx;
   text-align: center;
 }
+.loginImg-wx{
+  width: 100%
+}

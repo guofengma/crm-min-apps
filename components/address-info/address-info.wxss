@@ -1,3 +1,6 @@
+image{
+  width: 100%;
+}
 .address-icon{
   width:6.7%; 
   margin-right: 20rpx;

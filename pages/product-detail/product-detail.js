@@ -26,6 +26,7 @@ Page({
     }],
     door:1, // 0 是礼包 1是普通产品
     isShowGiftTips:false, //是否显示礼包升级提示
+    size:0
   },
   onLoad: function (options) {
     this.setData({
@@ -35,6 +36,7 @@ Page({
     })
     this.didLogin()
     this.requestFindProductByIdApp()
+    this.getShoppingCartList()
     Event.on('didLogin', this.didLogin, this);
   },
   onShow: function () {
@@ -113,6 +115,7 @@ Page({
     }
     let r = RequestFactory.addToShoppingCart(params);
     r.finishBlock = (req) => {
+      this.getShoppingCartList()
       Event.emit('updateShoppingCart')
       Tool.showSuccessToast('添加成功')
     };
@@ -318,6 +321,19 @@ Page({
     this.setData({
       isShowGiftTips: !this.data.isShowGiftTips
     })
+  },
+  getShoppingCartList() {
+    // 查询购物车
+    let r = RequestFactory.getShoppingCartList();
+    r.finishBlock = (req) => {
+      let data = req.responseObject.data
+      data = data === null ? [] : data
+      let size = data.length > 99 ? '···' : data.length
+      this.setData({
+        size: size
+      })
+    };
+    r.addToQueue();
   },
   onUnload: function () {
     Event.off('didLogin', this.didLogin);

@@ -333,3 +333,17 @@
 .first-tips{
   margin-bottom: 28rpx;
 }
+
+.cart{
+  position: relative
+}
+.num-label{
+  position: absolute;
+  font-size: 22rpx;
+  width: 36rpx;
+  height: 36rpx;
+  top:-15rpx;
+  right:28rpx;
+  /* padding: 5rpx 6rpx; */
+  border-radius: 50rpx;
+}

@@ -99,3 +99,6 @@
 .img-view{
   margin-bottom: 10rpx;
 }
+.img-view image{
+  width: 100%;
+}

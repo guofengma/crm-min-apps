@@ -12,7 +12,7 @@
 
 <view class="search-result-container">
    <!-- <template is="search-field" data='{{keyword}}'/> -->
-   <search-bar bind:getKeyword='getKeyword' bind:searchKeyword='searchKeyword'/>
+   <search-bar bind:getKeyword='getKeyword' bind:searchKeyword='searchKeyword' keyWord='{{keyword}}'/>
    <nav-bar bind:navbarClicked="navbarClicked" ></nav-bar>
    <scroll-view class="search-result" scroll-y bindscrolltolower='onScroll' wx:if='{{productInfo.length>0}}'>
       <view class='content' style='background:{{show? "#fff":""}}'>

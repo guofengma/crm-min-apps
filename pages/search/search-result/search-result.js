@@ -87,7 +87,8 @@ Page({
       if (datas.resultCount > 0) {
         this.setData({
           productInfo: productInfo.concat(datas.data),
-          totalPage: datas.total
+          totalPage: datas.total,
+          tipVal:''
         })
       } else if (datas.resultCount == 0) {
         this.setData({

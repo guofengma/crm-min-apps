@@ -107,9 +107,10 @@
     </view> -->
     <!-- 详情页 tabar  -->
     <view class="bottom-bar flexR" wx:if='{{door==1}}'>
-      <view class='cell-line' bindtap='cartClicked'>
+      <view class='cell-line cart' bindtap='cartClicked'>
         <image src='/img/shoppingcart.png' mode='widthFix'></image>
         <view class='gray'>购物车</view>
+        <view class='num-label redBg flexR' wx:if='{{size>0}}'>{{size}}</view>
       </view>
       <view class='cell-line' bindtap='collectionClicked'>
         <image src='{{isCollection? "/img/star.png":"/img/star-gray.png" }}' mode='widthFix' ></image>

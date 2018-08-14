@@ -31,3 +31,6 @@ textarea{
   height: 84rpx;
   line-height: 84rpx;
 }
+.imgView image{
+  width: 100%;
+}

@@ -1,7 +1,9 @@
 @import "/pages/topic/temp/topic-prd-info/topic-prd-info.wxss";
 
 @import "/pages/topic/temp/topic-bar/topic-bar.wxss";
-
+.prd-img-view image{
+  width: 100%;
+}
 .ad-img{
   height: 100%;
   width: 100%;

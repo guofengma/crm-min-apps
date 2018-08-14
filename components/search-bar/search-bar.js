@@ -3,6 +3,7 @@ Component({
   properties: {
     disabled:Boolean,
     placeholder:String,
+    keyWord: String,
   },
   data: {
     keyWord:'',

@@ -230,6 +230,10 @@ Page({
         score=0
     }
     let orderAddress = this.data.addressList[this.data.addressType]
+    if (!orderAddress){
+      Tool.showAlert('请选择订单地址')
+      return
+    }
     let storehouseId = this.data.addressType == 2? orderAddress.id : ''
     let params = {
       address: orderAddress.address,
