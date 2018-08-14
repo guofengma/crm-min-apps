@@ -38,6 +38,7 @@ Page({
         for (let i in req.responseObject.data) {
           let item = req.responseObject.data[i];
           item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
+          item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
           if (currentTime > item.startTime) {
             item.left = '';
             item.canUse =1
@@ -66,6 +67,7 @@ Page({
             for (let i in req.responseObject.data) {
               let item = req.responseObject.data[i];
               item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
+              item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
               if (currentTime > item.startTime){
                 item.left = '';
                 item.active = true;
@@ -94,6 +96,7 @@ Page({
             for (let i in req.responseObject.data) {
                 let item = req.responseObject.data[i];
               item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
+              item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
                 item.left = '已使用';
                 this.getCouponType(item)
                 this.data.lists[2].push(item)
@@ -114,6 +117,7 @@ Page({
             for (let i in req.responseObject.data) {
               let item = req.responseObject.data[i];
               item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
+              item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
               item.left = '已过期';
               this.data.lists[1].push(item)
             }
@@ -143,9 +147,9 @@ Page({
       let btn = e.currentTarget.dataset.btn
       let canUse = e.currentTarget.dataset.canuse
       let index = e.currentTarget.dataset.index
-      if (canUse!=1){
+      if (canUse != 1 || this.data.door != 1){
         Tool.navigateTo('../coupon-detail/coupon-detail?id=' + id + "&btn=" + btn)
-      } else if (canUse==1 && this.data.lists[0][index].canUseStart) {
+      } else if (canUse == 1 && this.data.lists[0][index].canUseStart && this.data.door==1) {
         Storage.setCoupon(this.data.lists[0][index])
         Event.emit("updateCoupon")
         Tool.navigationPop()

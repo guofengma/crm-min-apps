@@ -86,6 +86,7 @@ Page({
   },
   updateStorageShoppingCart(list){
     Storage.setShoppingCart(list)
+    this.getShoppingCartList()
     Event.emit('updateStorageShoppingCart')
   },
   makeSureOrder(){
@@ -324,6 +325,14 @@ Page({
   },
   getShoppingCartList() {
     // 查询购物车
+    if (!this.data.didLogin){
+      let data = Storage.getShoppingCart() || []
+      let size = data.length
+      this.setData({
+        size: size
+      })
+      return
+    }
     let r = RequestFactory.getShoppingCartList();
     r.finishBlock = (req) => {
       let data = req.responseObject.data

@@ -4,7 +4,10 @@ Page({
     disabled:true,
     active:true,
     detail:{},
-    btn:""
+    btn:"",
+    types: {
+      MJ: "满减卷", ZK: "折扣卷", DK: "抵扣卷", DJ: "抵价卷"
+    }
   },
   getDetail(id){
       let params={

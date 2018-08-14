@@ -20,11 +20,11 @@ export default class Request {
       // this.baseUrl = 'http://172.16.10.7:'
       // this.baseUrl = 'http://172.16.10.253:'
 
-      // if (bParam.port) {
-      //   this.baseUrl = this.baseUrl + bParam.port
-      // } else {
-      //   this.baseUrl = this.baseUrl + '8102';
-      // }
+      if (bParam.port) {
+        this.baseUrl = this.baseUrl + bParam.port
+      } else {
+        this.baseUrl = this.baseUrl + '8102';
+      }
 
       // 正式
       this.baseUrl = 'https://test.dnvhot.tech';

@@ -22,7 +22,7 @@
                     <view class='coupon-center'>
                       <view class='font-30'>{{item.nickname}}</view>
                       <view class='gray'>限品类：{{item.name}}</view>
-                      <view class='gray' >有效期：{{item.outTime}}</view>
+                      <view class='gray' >有效期：{{item.start_time}} - {{item.outTime}}</view>
                     </view>
                     <view class='coupon-right flexC font-30' >
                       <text wx:for="{{item.left}}" wx:for-item="left"  wx:key="unique">{{left}}</text>

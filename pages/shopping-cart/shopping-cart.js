@@ -93,6 +93,7 @@ Page({
     if(list){
       this.setData({
         items:list,
+        tipVal: ''
       }) 
       this.getTotalPrice()
     } else {

@@ -2,7 +2,7 @@
 let { Tool, RequestFactory, Storage, Event } = global;
 Page({
     data: {
-
+      nickname:''
     },
     onLoad: function (options) {
      
@@ -14,6 +14,10 @@ Page({
       
     },
     updateDealerNickname() {
+      if (Tool.isEmptyStr(this.data.nickname)){
+        Tool.showAlert('请输入昵称')
+        return
+      }
       let params = {
         nickname: this.data.nickname
       }
