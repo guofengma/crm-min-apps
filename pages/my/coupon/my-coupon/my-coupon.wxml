@@ -11,7 +11,12 @@
               <block wx:for="{{list}}" wx:key="unique">
                 <view class="item-ans {{item.active? 'active':''}}" data-index='{{index}}' bindtap="toDetail" data-id="{{item.id}}" data-btn = '{{item.left}}' data-canuse='{{item.canUse}}'>
                     <view class='coupon-left'>
-                      <view class='{{item.active? "red":"gray"}} font-30'>¥ <text >{{item.value}}</text></view>
+                      <view class='{{item.active? "red":"gray"}} font-30'>
+                        {{item.type !='DK'? "¥":''}}
+                        <text >{{item.value}}</text>
+                        {{item.type =='DK'? "":'折'}}
+                      </view>
+                      <view class='gray' wx:if='{{item.showTypeName}}'>{{item.typeName}}</view>
                       <view class='gray'>满{{item.useConditions}}可用</view>
                     </view>
                     <view class='coupon-center'>

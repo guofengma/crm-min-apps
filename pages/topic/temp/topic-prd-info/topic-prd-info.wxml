@@ -5,7 +5,7 @@
     </view>
     <view class='prd-info' style='background:{{bg}}'>
       <view class='{{ellipsis}} font-24 prd-name'>{{name}}</view>
-      <view class='red font-30'>¥ {{price}}</view>
+      <view class='red font-30'>¥ {{price || 0}}</view>
     </view>
   </view>
 </template>

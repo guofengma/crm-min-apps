@@ -333,6 +333,7 @@ Page({
         size: size
       })
     };
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   onUnload: function () {

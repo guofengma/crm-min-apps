@@ -5,6 +5,7 @@
 }
 .img-view image{
   height: 100%;
+  width: 100%;
 }
 .move-box{
   background: #fff;

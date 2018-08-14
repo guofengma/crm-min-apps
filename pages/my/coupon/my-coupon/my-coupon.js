@@ -8,7 +8,10 @@ Page({
             [  ],
             [  ],
             [  ]
-        ]
+        ],
+        types:{
+          MJ:"满减卷",ZK:"抵价卷",DK:"折扣卷",DJ:"抵扣卷"
+        }
     },
     // 滚动切换标签样式
     switchTab: function (e) {
@@ -18,15 +21,10 @@ Page({
         this.checkCor();
     },
     getCouponType(item){
-      // // 1 全品类 2 多品类 3 单品类 4 单产品
-      // let myType = item.categoryType
-      // if (myType==1){
-      //   item.showName = '全品类'
-      // } else if (myType == 2 || myType == 3 ){
-      //   item.showName = item.firstCategoryNames
-      // } else if (myType == 4) {
-      //   item.showName = item.productNames
-      // }
+      let typeObj = this.data.types
+      item.typeName = typeObj[item.type]
+      item.showTypeName = item.type == 'ZK' || item.type == 'DJ'? true:false
+      item.value = item.type == 'DK'?  item.value/10:item.value
     },
     availableDiscountCouponForProduct(){
       let params = {
@@ -49,6 +47,7 @@ Page({
             item.left = '待激活';
             item.active = false
           }
+          this.getCouponType(item)
           this.data.lists[0].push(item)
         }
         this.setData({
@@ -76,6 +75,7 @@ Page({
                 item.left = '待激活';
                 item.active = false
               }
+              this.getCouponType(item)
               this.data.lists[0].push(item)
             }
             this.setData({
@@ -95,6 +95,7 @@ Page({
                 let item = req.responseObject.data[i];
               item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
                 item.left = '已使用';
+                this.getCouponType(item)
                 this.data.lists[2].push(item)
             }
             this.setData({
