@@ -5,7 +5,9 @@ Page({
   },
 
   onLoad: function (options) {
-  
+    this.setData({
+      door: options.door || ''
+    })
   },
 
   onShow: function () {

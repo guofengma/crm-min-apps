@@ -73,7 +73,7 @@ Page({
       if (req.responseObject.code == 600){
         Tool.navigateTo('/pages/register/register')
       } else if (req.responseObject.code == 215){
-        Tool.navigateTo('/pages/download-app/download-app')
+        Tool.navigateTo('/pages/download-app/download-app?door=1')
       }
     }
     r.addToQueue();

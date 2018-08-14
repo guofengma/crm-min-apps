@@ -2,7 +2,7 @@
     <view class='cash'>
         <view class="item">
             <view class="title">
-                积分账户（分））
+                积分账户（分）
             </view>
             <view class="num">
                 {{account}}
