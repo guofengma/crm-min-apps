@@ -4,7 +4,8 @@ Page({
     data: {
       userInfos:'',
       tabClicked:0,
-      tabClicked:1
+      tabClicked:1,
+      num:0
     },
     onLoad: function (options) {
       this.refreshMemberInfoNotice()
@@ -12,33 +13,46 @@ Page({
       Event.on('refreshMemberInfoNotice', this.refreshMemberInfoNotice, this);
       Event.on('didLogin', this.didLogin, this);
     },
-    pageClicked(){
-      this.didLogin()
-    },
     onShow: function () {
-
+      this.setData({
+        num:1
+      })
+      if (this.data.tabClicked!=1) return
+      if (!this.data.didLogin) {
+        Tool.navigateTo('/pages/login/login-wx/login-wx')
+      }
+      this.setData({
+        tabClicked: 2
+      })
     },
     onHide: function() {
-      this.setData({
-        tabClicked: 1
-      })
+
     },
     refreshMemberInfoNotice(){
       Tool.getUserInfos(this)
     },
     onTabItemTap(item) {
-      let num = this.data.tabClicked
+      let tabClicked = this.data.tabClicked
       // 阻止多次点击跳转
-      if (num==1){
-        this.didLogin()
+      if (tabClicked>1 && this.data.num==1){
+        Tool.navigateTo('/pages/login/login-wx/login-wx')
       } 
       this.setData({
-        tabClicked: 2
+        num: 2
       })
+      // console.log(111111111)
+      // let callBack = ()=>{
+      //   console.log(this.data.didLogin)
+      //   if (!this.data.didLogin){
+      //     Tool.navigateTo('/pages/login/login-wx/login-wx')
+      //   }
+      // }
+      // let a = Tool.throttle(callBack,1500)
+      // a()
     },
     didLogin(){
       if (!Tool.didLogin(this)){
-        Tool.navigateTo('/pages/login/login-wx/login-wx')
+        // Tool.navigateTo('/pages/login/login-wx/login-wx')
         return false
       }
       return true

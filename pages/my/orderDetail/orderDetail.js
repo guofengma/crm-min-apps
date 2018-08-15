@@ -42,6 +42,7 @@ Page({
             this.addressType=2
         }
         this.getDetail();//获取详情
+       
     },
     //获取详情
     getDetail() {
@@ -75,13 +76,13 @@ Page({
                 state:this.data.state
             })
             this.middleBtn()
-            if (detail.status == 1){ // 开始倒计时
+            if (detail.status == 1 || detail.status==3 ){ // 开始倒计时
               let that = this
               let time = setInterval(function () { that.time() }, 1000)
               this.setData({
                 time: time
               })  
-            }
+            } 
         };
         Tool.showErrMsg(r)
         r.addToQueue();
@@ -203,7 +204,13 @@ Page({
     time() {
       //待付款订单 倒计时处理
       let detail = this.data.detail
-      let endTime = Tool.formatTime(detail.overtimeClosedTime) 
+      let time = ''
+      if (detail.status==3){
+        time = detail.autoConfirmTime
+      } else {
+        time = detail.overtimeClosedTime
+      }
+      let endTime = Tool.formatTime(time) 
       let countdown = Tool.getDistanceTime(endTime, this)
       if (countdown ==0){
         detail.status = 10
@@ -326,15 +333,19 @@ Page({
         let innerState = item.status
         let returnType = item.returnType
         let finishTime = item.finishTime
+        let now = new Date().getTime()
         if (outOrderState == 2 || outOrderState ==4 ){
           middle = { id: 1,content: '退款' }
         }
-        if (outOrderState == 3){
-          middle = { id: 2, content: '退换' }
+        if (outOrderState == 3 || outOrderState == 5){
+          // 确认收货的状态的订单售后截止时间和当前时间比
+          //if (finishTime - now > 0) {
+            middle = { id: 2, content: '退换' }
+          //} 
+         
         }
         if (outOrderState == 5) {
           // 确认收货的状态的订单售后截止时间和当前时间比
-          let now = new Date().getTime()
           if (finishTime - now>0){
             middle = { id: 2, content: '退换' }
           }      

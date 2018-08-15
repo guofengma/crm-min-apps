@@ -107,19 +107,19 @@ Page({
       Tool.navigateTo('/pages/topic/topic?id='+id)
     },
     onTabItemTap(item) {
-      let num = this.data.tabClicked
-      // 阻止多次点击跳转
-      if (num == 1) {
-        Tool.loginLimit(this,item)
-      }
-      this.setData({
-        tabClicked: 2
-      })
+      // let num = this.data.tabClicked
+      // // 阻止多次点击跳转
+      // if (num == 1) {
+      //   Tool.loginLimit(this,item)
+      // }
+      // this.setData({
+      //   tabClicked: 2
+      // })
     },
     onShow:function (){
-      this.setData({
-        tabClicked: 2
-      })
+      // this.setData({
+      //   tabClicked: 2
+      // })
     },
     onShareAppMessage: function (res) {
 

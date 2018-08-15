@@ -26,10 +26,10 @@ Page({
         r.finishBlock = (req) => {
             let data = req.responseObject.data;
             this.setData({
-                available_balance: data.available_balance,
-                token_coin: data.token_coin,
-                user_score: data.user_score,
-                blocked_balances: data.blocked_balances,
+                available_balance: data.available_balance || 0,
+                token_coin: data.token_coin || 0,
+                user_score: data.user_score || 0,
+                blocked_balances: data.blocked_balances || 0,
             })
 
         };
