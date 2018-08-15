@@ -62,7 +62,7 @@
     <view class='order-pay-info gray boxSize'>
         <view class='flexR-sb'>
             <text>商品价格</text>
-            <text>¥{{detail.totalPrice-detail.freightPrice}}</text>
+            <text>¥{{detail.totalPrice}}</text>
         </view>
         <view class='flexR-sb' wx:if='{{detail.couponPrice}}'>
             <text>优惠券优惠</text>
@@ -70,7 +70,7 @@
         </view>
         <view class='flexR-sb'>
             <text>积分抵扣</text>
-            <text>-¥{{detail.userScore?detail.userScore:'0'}}</text>
+            <text>-¥{{detail.scorePrice? detail.scorePrice:'0'}}</text>
         </view>
         <view class='flexR-sb'>
             <text>运费（快递）</text>
@@ -78,7 +78,7 @@
         </view>
         <view class='flexR-sb total'>
             <text>订单总价</text>
-            <text>¥{{detail.totalPrice}}</text>
+            <text>¥{{detail.totalPrice+detail.freightPrice}}</text>
         </view>
         <view class='flexR-sb total totalPay'>
             <view class='popup'>

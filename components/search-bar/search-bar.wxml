@@ -20,7 +20,10 @@
           placeholder='{{placeholder || "搜索商品"}}' 
           bindfocus='bindfocus'
           bindblur='bindblur'
-          bindinput='getKeyword'>
+          bindinput='getKeyword'
+          confirm-type="search"
+          bindconfirm="searchKeyword"
+      >
      </input>
     </view>
     <view class='search-img-close flexR' bindtap='deleteWords'>

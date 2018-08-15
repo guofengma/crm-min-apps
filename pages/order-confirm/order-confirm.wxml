@@ -49,7 +49,7 @@
         <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
       </view> -->
        <view class='reducePrice'>
-        <view>商品积分：{{orderInfos.showTotalScore}},用户可用积分：{{orderInfos.dealer.user_score}}</view>
+        <view>积分：{{orderInfos.showTotalScore}},可用积分：{{orderInfos.dealer.user_score}}</view>
         <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
       </view>
       <view class='gray' wx:if='{{!orderInfos.canUseScore}}'>不支持积分消费 </view> 

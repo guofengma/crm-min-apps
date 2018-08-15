@@ -188,7 +188,8 @@ Page({
         'signType': 'MD5',
         'paySign': payList.paySign,
         'success': function (res) {
-          that.orderQuery(outTradeNo)
+          // that.orderQuery(outTradeNo)
+          that.showResult(true)
         },
         'fail': function (res) {
           that.showResult(false)

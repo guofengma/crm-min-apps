@@ -346,6 +346,11 @@ Page({
     Tool.showErrMsg(r)
     r.addToQueue();
   },
+  hiddenTips(){
+    this.setData({
+      msgShow:false
+    })
+  },
   onUnload: function () {
     Event.off('didLogin', this.didLogin);
   },

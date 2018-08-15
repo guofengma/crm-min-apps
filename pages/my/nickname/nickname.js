@@ -18,7 +18,7 @@ Page({
         Tool.showAlert('请输入昵称')
         return
       }
-      if (this.data.nickname.length){
+      if (this.data.nickname.length>16){
         Tool.showAlert('昵称不能多于16个字')
         return
       }

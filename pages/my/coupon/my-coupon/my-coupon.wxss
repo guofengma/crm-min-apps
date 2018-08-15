@@ -38,8 +38,11 @@
 }
 .tab-content{
   margin-top: 80rpx;
+  height: calc(100% - 80rpx)
 }
-
+.pagesize{
+  height: 100%;
+}
 .item-ans{
   width: 690rpx;
   margin:20rpx auto;

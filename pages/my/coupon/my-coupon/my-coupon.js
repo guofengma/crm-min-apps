@@ -11,14 +11,47 @@ Page({
         ],
         types:{
           MJ: "满减卷", ZK: "折扣卷", DK: "抵扣卷", DJ:"抵价卷"
+        },
+        totalPageArr:[], //保存页数 
+        params:{
+          page:1,
+          size:10
         }
+    },
+    // 上拉加载更多
+    onScroll(e) {
+      console.log(e)
+      let { totalPageArr, params, currentTab} = this.data
+      let currentPage = params.page
+      currentPage++
+      let currentTotalPage = totalPageArr[currentTab]
+      console.log(currentTotalPage, currentPage)
+      if (currentTotalPage < currentPage){
+        return
+      }
+      params.page = currentPage
+      this.setData({
+        params: params
+      })
+      if (currentTab==0){
+        if(this.data.door==1){
+          this.availableDiscountCouponForProduct()
+        } else {
+          this.getDiscountCouponNoUse();
+        }
+      } else if (currentTab==1){
+        this.getDiscountCouponLosed();
+      } else if (currentTab == 2) {
+        
+        this.getDiscountCouponUserd();
+      }
     },
     // 滚动切换标签样式
     switchTab: function (e) {
-        this.setData({
-            currentTab: e.detail.current
-        });
-        this.checkCor();
+      this.setData({
+        currentTab: e.detail.current
+      });
+      this.checkCor();
     },
     getCouponType(item){
       let typeObj = this.data.types
@@ -27,16 +60,14 @@ Page({
       item.value = item.type == 'ZK'?  item.value/10:item.value
     },
     availableDiscountCouponForProduct(){
-      let params = {
-        productIds: this.data.productIds
-      };
-
-      let r = RequestFactory.availableDiscountCouponForProduct(params);
+      let params = this.data.params
+      params.productIds = this.data.productIds
+      let r = RequestFactory.availableDiscountCouponForProduct(this.data.params);
       r.finishBlock = (req) => {
-        this.data.lists[0] = [];
+        if (req.responseObject.data.total == 0) return
         let currentTime = new Date().getTime() // 获取当前时间
-        for (let i in req.responseObject.data) {
-          let item = req.responseObject.data[i];
+        for (let i in req.responseObject.data.data) {
+          let item = req.responseObject.data.data[i];
           item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
           item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
           if (currentTime > item.startTime) {
@@ -51,8 +82,12 @@ Page({
           this.getCouponType(item)
           this.data.lists[0].push(item)
         }
+        this.data.totalPageArr[0] = req.responseObject.data.total
+        this.data.lists[0] = this.data.lists[0].concat(req.responseObject.data.data)
         this.setData({
-          lists: this.data.lists
+          lists: this.data.lists,
+          totalPageArr: this.data.totalPageArr,
+          params: params
         })
       };
       Tool.showErrMsg(r);
@@ -60,73 +95,79 @@ Page({
     },
     //未使用
     getDiscountCouponNoUse() {
-        let r = RequestFactory.getDiscountCouponNoUse();
-        r.finishBlock = (req) => {
-            this.data.lists[0] = [];
-            let currentTime = new Date().getTime() // 获取当前时间
-            for (let i in req.responseObject.data) {
-              let item = req.responseObject.data[i];
-              item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
-              item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
-              if (currentTime > item.startTime){
-                item.left = '';
-                item.active = true;
-                item.canUse = 1
-                item.canUseStart = true
-              } else {
-                item.left = '待激活';
-                item.active = false
-              }
-              this.getCouponType(item)
-              this.data.lists[0].push(item)
+      let r = RequestFactory.getDiscountCouponNoUse(this.data.params);
+      r.finishBlock = (req) => {
+          if (req.responseObject.data.total==0) return
+          let currentTime = new Date().getTime() // 获取当前时间
+          for (let i in req.responseObject.data.data) {
+            let item = req.responseObject.data.data[i];
+            item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
+            item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
+            if (currentTime > item.startTime){
+              item.left = '';
+              item.active = true;
+              item.canUse = 1
+              item.canUseStart = true
+            } else {
+              item.left = '待激活';
+              item.active = false
             }
-            this.setData({
-                lists: this.data.lists
-            })
+            this.getCouponType(item)
+          }
+          this.data.lists[0] = this.data.lists[0].concat(req.responseObject.data.data)
+          this.data.totalPageArr[0] = req.responseObject.data.total
+          this.setData({
+            lists: this.data.lists,
+            totalPageArr: this.data.totalPageArr
+          })
         };
         Tool.showErrMsg(r);
         r.addToQueue();
     },
     //已经优惠劵列表
     getDiscountCouponUserd() {
-        let params = {};
-        let r = RequestFactory.getDiscountCouponUserd(params);
+        let r = RequestFactory.getDiscountCouponUserd(this.data.params);
         r.finishBlock = (req) => {
-            this.data.lists[2] = [];
-            for (let i in req.responseObject.data) {
-                let item = req.responseObject.data[i];
-              item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
-              item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
-                item.left = '已使用';
-                this.getCouponType(item)
-                this.data.lists[2].push(item)
-            }
-            this.setData({
-                lists: this.data.lists
-            })
+          if (req.responseObject.data.total == 0) return
+          for (let i in req.responseObject.data.data) {
+            let item = req.responseObject.data.data[i];
+            item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
+            item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
+              item.left = '已使用';
+              this.getCouponType(item)
+              //this.data.lists[2].push(item)
+          }
+          this.data.totalPageArr[2] = req.responseObject.data.total
+          this.data.lists[2] = this.data.lists[2].concat(req.responseObject.data.data)
+          this.setData({
+              lists: this.data.lists,
+              totalPageArr: this.data.totalPageArr
+          })
         };
         Tool.showErrMsg(r);
         r.addToQueue();
     },
     //失效优惠劵列表
     getDiscountCouponLosed() {
-        let params = {};
-        let r = RequestFactory.getDiscountCouponLosed(params);
-        r.finishBlock = (req) => {
-            this.data.lists[1] = [];
-            for (let i in req.responseObject.data) {
-              let item = req.responseObject.data[i];
-              item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
-              item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
-              item.left = '已过期';
-              this.data.lists[1].push(item)
-            }
-            this.setData({
-                lists: this.data.lists
-            })
-        };
-        Tool.showErrMsg(r);
-        r.addToQueue();
+      let r = RequestFactory.getDiscountCouponLosed(this.data.params);
+      r.finishBlock = (req) => {
+        if (req.responseObject.data.total == 0) return
+          for (let i in req.responseObject.data.data) {
+            let item = req.responseObject.data.data[i];
+            item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
+            item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
+            item.left = '已过期';
+            //this.data.lists[1].push(item)
+          }
+          this.data.totalPageArr[1] = req.responseObject.data.total
+          this.data.lists[1] = this.data.lists[1].concat(req.responseObject.data.data)
+          this.setData({
+            lists: this.data.lists,
+            totalPageArr: this.data.totalPageArr
+          })
+      };
+      Tool.showErrMsg(r);
+      r.addToQueue();
     },
 
     // 点击标题切换当前页时改变样式
@@ -137,7 +178,7 @@ Page({
         }
         else {
             this.setData({
-                currentTab: cur
+                currentTab: cur,
             })
         }
     },

@@ -21,7 +21,6 @@ Component({
   },
   methods: {
     makeSureType(show){
-      console.log(this.data.isActive)
       // 点击确定 
       if (this.data.isActive.length == this.properties.productTypeList.length){
         if (!this.isSelectAll()) return
@@ -32,12 +31,9 @@ Component({
             productType.push(isActive[i].val)
           }
         }
-        console.log(this.data.isActive)
         // 拼接已选的类型 匹配库存和价格
         let seletType = productType.join('-')
-        // if(this.data.isChange){
-          let index = this.showCurrentInfo(seletType)
-        // }
+        let index = this.showCurrentInfo(seletType)
         if (this.data.selectPrdList.stock === 0) {
           Tool.showAlert('库存不足,请选择其他产品')
           return
@@ -87,9 +83,6 @@ Component({
       obj[key].index = val
       obj[key].val = typeVal
       obj[key].id = id
-      // this.setData({
-      //   isActive: obj
-      // })
       let spec_id = []
       for(let i=0;i<obj.length;i++){
         if (obj[i]!== undefined){
@@ -115,6 +108,9 @@ Component({
         visiable: !this.data.visiable,
         typeClicked: types
       })
+      if (this.data.visiable){
+        this.triggerEvent('hiddenTips');
+      }
     },
     counterInputOnChange(e) {
       //监督数量选择的改变
