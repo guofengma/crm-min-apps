@@ -26,7 +26,8 @@
     <template is="address-info" data="{{addressType:1,...list.address,hasData:true}}"/>
   </view>
   <view class='cell-line'>{{reason[refundType].info}}</view>
-  <textarea   placeholder="{{placeholder.placeholder}}" disabled='{{placeholder.disabled}}' placeholder-class='textarea gray' bindinput='inputChange'/>
+  <textarea wx:if='{{!hidden}}'   class='textarea' placeholder="{{placeholder.placeholder}}" disabled='{{placeholder.disabled}}' placeholder-class='textarea gray' bindinput='inputChange'/>
+  <view class='textarea' wx:else></view>
 </view>
 <view class='cell-line'>上传凭证</view>
 

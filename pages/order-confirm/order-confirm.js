@@ -143,10 +143,15 @@ Page({
     item.reducePrice = item.userScoreToBalance * score
     // 当商品可以使用积分 用户积分大于0的时候 显示可以使用积分 
     item.canUseScore = (item.showTotalScore > 0 && item.dealer.user_score) ? true : false
+    item.showTipsName = item.dealer.user_score <= 0 ? '暂无积分可用' :'不支持积分消费'
     return item
   },
   addressClicked(){
-    Tool.navigateTo('/pages/address/choose-address/choose-address?addressType=' + this.data.addressType)
+    if (this.data.addressType!=1){
+      Tool.navigateTo('/pages/address/choose-address/choose-address?addressType=' + this.data.addressType)
+    } else {
+      Tool.navigateTo('/pages/address/select-express-address/select-express-address?addressType=' + this.data.addressType)
+    }
   },
   changeAddressType(e){
     let index = e.currentTarget.dataset.index
@@ -232,6 +237,10 @@ Page({
     let orderAddress = this.data.addressList[this.data.addressType]
     if (!orderAddress){
       Tool.showAlert('请选择订单地址')
+      return
+    }
+    if (this.data.remark.length>140){
+      Tool.showAlert('买家留言不能多于140字')
       return
     }
     let storehouseId = this.data.addressType == 2? orderAddress.id : ''

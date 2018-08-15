@@ -43,6 +43,10 @@ Page({
     this.setData({
       params: params
     })
+    if (Tool.isEmptyStr(this.data.keyword)){
+      Tool.showAlert('请输入搜索内容')
+      return
+    }
     this.queryAftermarketOrderPageList(this.data.params)
   },
   onScroll() {

@@ -227,12 +227,13 @@ Page({
     let index = e.detail.e.currentTarget.dataset.index
     let btnName = e.detail.e.currentTarget.dataset.name
     let list = this.data.items
-    
-    // 如果产品的数量是1 点击了减按钮 那么不做操作
-    if (list[index].stock < count) {
+
+    //  点击了加按钮 那么不做操作 而且超过库存了
+    if (btnName != 'reduce' && list[index].stock < count) {
+      list[index].showCount=list[index].stock
       Tool.showAlert('库存不足')
       this.setData({
-        items: this.data.items
+        items: list
       })
       return
     }

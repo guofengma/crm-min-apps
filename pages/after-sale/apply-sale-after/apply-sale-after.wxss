@@ -13,7 +13,7 @@
 .textarea{
   font-size: 26rpx;
 }
-textarea{
+.textarea{
   height: 180rpx;
   background: #fff;
   width: 100%;

@@ -1,7 +1,7 @@
 <import src='/components/address-info/address-info.wxml' />
 
 <block  wx:for='{{addressList}}' wx:key='unique' >
-  <view class='select-address-box {{item.defaultStatus == 1? "active":""}}' data-index='{{index}}' bindtap="addressClicked">
+  <view class='select-address-box' data-index='{{index}}' bindtap="addressClicked">
     <view class='topBar'>
       <template is="address-info" data='{{addressType,...item}}'/>
     </view>

@@ -3,7 +3,7 @@
 <view class='select-express-address' >
   <block wx:for='{{addressList}}' wx:key='unique'>
     <view class='select-address-box  {{item.defaultStatus == 1? "active":""}}'>
-      <view class='topBar' >
+      <view class='topBar' bindtap='addressClicked' data-index='{{index}}'>
         <template is="address-info" data='{{addressType,...item}}'/>
       </view>
       <view class='address-edit-choose flexR-sb gray'>

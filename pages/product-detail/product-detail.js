@@ -74,6 +74,8 @@ Page({
       }
     }
     params.productStatus =4
+    params.product_id = this.data.productInfo.id
+    console.log(params.product_id)
     params.stock = this.data.selectType.stock
     params.showName = this.data.productInfo.name
     params.showType = this.data.selectType.typeName

@@ -208,6 +208,12 @@
 					"name": "登录",
 					"pathName": "pages/login/login",
 					"query": "door=1"
+				},
+				{
+					"id": -1,
+					"name": "申请售后",
+					"pathName": "pages/after-sale/apply-sale-after/apply-sale-after",
+					"query": ""
 				}
 			]
 		}

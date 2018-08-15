@@ -393,7 +393,7 @@ export default class Tool {
      * @param imgCount
      * @param successCallback
      */
-    static uploadImage(imgCount, successCallback) {
+    static uploadImage(imgCount, successCallback, failCallback) {
       wx.chooseImage({
         count: imgCount, // 默认9
         sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -417,6 +417,9 @@ export default class Tool {
           } else{
             global.Tool.showAlert('上传图片不能大于3M')
           }
+        },
+        fail: function () {
+          failCallback()
         },
       })
     }

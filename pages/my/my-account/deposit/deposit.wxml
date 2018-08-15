@@ -2,7 +2,7 @@
     <view class='cash'>
         <view class="item">
             <view class="title">
-                现金账户（元）
+                待提现（元）
             </view>
             <view class="num">
                 {{account}}

@@ -7,10 +7,17 @@ Component({
   data: {
     originalImg:[],
     smallImg:[],
+    clickedNum:0
   },
   methods: {
     //添加图片
     uploadImg() {
+      let clickedNum = this.data.clickedNum
+      clickedNum++
+      if (clickedNum > 3) return
+      this.setData({
+        clickedNum: clickedNum
+      })
       let callBack = (fileInfo) => {
         let tempUrl = fileInfo.data.imageUrl;
         let tempThumbUrl = fileInfo.data.imageThumbUrl;
@@ -22,10 +29,22 @@ Component({
         })
         this.triggerEvent('uploadImage', { ...this.data})
       };
-      Tool.uploadImage(1, callBack)
+      let failCallback = () =>{
+        clickedNum--
+        this.setData({
+          clickedNum: clickedNum
+        })
+      }
+      Tool.uploadImage(1, callBack, failCallback)
     },
     //删除图片
     deleteImg(e) {
+      let clickedNum = this.data.clickedNum
+      if (clickedNum == 0) return
+      clickedNum--
+      this.setData({
+        clickedNum: clickedNum
+      })
       let index = e.currentTarget.dataset.index;
       this.data.originalImg.splice(index, 1);
       this.data.smallImg.splice(index, 1);

@@ -106,6 +106,9 @@ Page({
           Storage.setHistorySearch([str])
         }
       }
+      // this.getRequest()
+    } else {
+      // Tool.showAlert('请输入搜索内容')
     }
     this.getRequest()
   },

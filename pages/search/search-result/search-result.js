@@ -55,6 +55,9 @@ Page({
         history.unshift(this.data.keyword)
         Storage.setHistorySearch(history)
       }
+    } else {
+      Tool.showAlert('请输入搜索内容')
+      return
     }
     this.navbarClicked({detail:{n:1}})
   },

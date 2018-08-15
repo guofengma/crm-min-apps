@@ -14,6 +14,7 @@
 }
 .userImg{
   height: 100%;
+  width: 100%;
 }
 .selected-img{
   overflow: hidden;

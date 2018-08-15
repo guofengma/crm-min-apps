@@ -1,3 +1,7 @@
 @import "/components/address-info/address-info";
 
 @import "/pages/address/select-address-common";
+
+.select-address-box{
+  background-image:url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/line-bg.png);
+}

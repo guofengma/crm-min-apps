@@ -1,4 +1,4 @@
-let { Tool, RequestFactory, Event} = global
+let { Tool, RequestFactory, Event, Storage} = global
 
 Page({
   data: {
@@ -11,6 +11,12 @@ Page({
   },
   onShow: function () {
 
+  },
+  addressClicked(e) {
+    let index = e.currentTarget.dataset.index
+    Storage.setOrderAddress(this.data.addressList[index])
+    Event.emit('updateOrderAddress')
+    Tool.navigationPop()
   },
   queryUserAddressList(){
     let r = RequestFactory.queryUserAddressList();
