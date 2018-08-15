@@ -202,6 +202,12 @@
 					"name": "支付",
 					"pathName": "pages/order-confirm/pay/pay",
 					"query": "door=1"
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
+					"query": "door=1"
 				}
 			]
 		}

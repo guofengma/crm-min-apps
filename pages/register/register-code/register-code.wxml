@@ -20,7 +20,7 @@
       <view class='inviter flexR'>
        <view class='flexC'wx:for='{{invite}}' wx:key="unique" bindtap='inviterClicked' data-key='{{item.code}}'>
          <image src='{{ item.head_img? item.head_img:"../../../img/default-userImg.png"}}'></image>
-         <text class='inviter-name ellipsis'>{{item.realname}}</text>
+         <text class='inviter-name ellipsis'>{{item.nickname}}</text>
          <text class='inviter-level ellipsis'>{{item.name}}</text>
        </view>
       </view>

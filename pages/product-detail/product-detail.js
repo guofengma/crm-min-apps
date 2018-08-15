@@ -87,6 +87,7 @@ Page({
   updateStorageShoppingCart(list){
     Storage.setShoppingCart(list)
     this.getShoppingCartList()
+    Tool.showSuccessToast('添加成功')
     Event.emit('updateStorageShoppingCart')
   },
   makeSureOrder(){

@@ -62,7 +62,7 @@ Page({
     this.setData({
       keyWord: e.currentTarget.dataset.keyword
     })
-    this.getRequest()
+    this.searchKeyword()
   },
   getKeyword(e){
     this.setData({

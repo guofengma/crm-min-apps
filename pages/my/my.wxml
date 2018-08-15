@@ -50,7 +50,7 @@
                 <text>我的账户</text>
             </view>
             <view>
-                <text>更多</text>
+                <!-- <text>更多</text> -->
                 <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
             </view>
         </view>

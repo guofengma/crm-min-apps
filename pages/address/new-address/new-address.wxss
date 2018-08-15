@@ -10,12 +10,15 @@
 .mar-top2{margin-top: 2rpx}
 .item view:first-child{width: 25%}
 .item input{height: 96rpx;line-height: 96rpx}
-.item textarea{width:100%;
+.item .textarea{width:100%;
     height: 128rpx;
     background-color: #ffffff;
     border-radius: 10rpx;
     border: solid 1rpx #eeeeee;
     padding: 10rpx;
+}
+.item view.textarea{
+  width: 100%;
 }
 .item view:nth-child(2){width: 75%;}
 .line{border-bottom: 1px solid #eee}

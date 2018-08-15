@@ -7,7 +7,8 @@ Page({
       recevicePhone:'',
       address:'',
       addressList:{},
-      id:''
+      id:'',
+      hidden:false
   },
   onLoad: function (options) {
     // 如果有参数 就编辑地址 无参数就创建地址
@@ -34,8 +35,10 @@ Page({
 
   },
   pickerClicked(e) {
+    console.log(e)
     this.setData({
-        region: e.detail.result
+      region: e.detail.result,
+      hidden: e.detail.hidden,
     })
   },
   formSubmit(e) {

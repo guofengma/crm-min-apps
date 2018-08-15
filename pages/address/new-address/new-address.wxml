@@ -35,7 +35,8 @@
             </view>
             </city-picker>
             <view class="item special">
-                <textarea name='address' value='{{address}}' placeholder='请输入详细地址' placeholder-style='color:#c8c8c8' hidden='{{hidden}}' />
+                <textarea name='address' wx:if="{{!hidden}}" value='{{address}}' placeholder='请输入详细地址' placeholder-style='color:#c8c8c8' class='textarea' />
+                <view wx:else class='textarea'></view>
             </view>
         </view>
        <!-- <view class="wrap">

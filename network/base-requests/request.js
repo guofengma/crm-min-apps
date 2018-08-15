@@ -12,7 +12,7 @@ export default class Request {
       // 开发 
       // this.baseUrl = 'http://172.16.10.7:'
       // this.baseUrl = 'http://172.16.10.21:'
-      // this.baseUrl = 'http://172.16.10.41:'
+      this.baseUrl = 'http://172.16.10.41:'
       // this.baseUrl = 'http://172.16.10.69:'
       // this.baseUrl = 'http://172.16.10.12:'
       // this.baseUrl = 'http://172.16.10.29:'
@@ -27,7 +27,7 @@ export default class Request {
       }
 
       // 正式
-      this.baseUrl = 'https://test.dnvhot.tech';
+      // this.baseUrl = 'https://test.dnvhot.tech';
       // this.baseUrl = 'https://nc.hzjure.xyz';
       return this.baseUrl
     }

@@ -18,6 +18,10 @@ Page({
         Tool.showAlert('请输入昵称')
         return
       }
+      if (this.data.nickname.length){
+        Tool.showAlert('昵称不能多于16个字')
+        return
+      }
       let params = {
         nickname: this.data.nickname
       }

@@ -21,8 +21,10 @@ Component({
   },
   methods: {
     makeSureType(show){
+      console.log(this.data.isActive)
       // 点击确定 
       if (this.data.isActive.length == this.properties.productTypeList.length){
+        if (!this.isSelectAll()) return
         let isActive = this.data.isActive
         let productType = []
         for (let i = 0; i < isActive.length;i++){
@@ -30,6 +32,7 @@ Component({
             productType.push(isActive[i].val)
           }
         }
+        console.log(this.data.isActive)
         // 拼接已选的类型 匹配库存和价格
         let seletType = productType.join('-')
         // if(this.data.isChange){
@@ -178,6 +181,7 @@ Component({
         this.triggerEvent('productTypeListClicked', { productTypeList});
 
         if (this.data.isActive.length == this.properties.productTypeList.length) {
+          //if (!this.isSelectAll()) return
           this.makeSureType(true)
         }
 
@@ -190,6 +194,16 @@ Component({
       };
       Tool.showErrMsg(r)
       r.addToQueue();
+    },
+    isSelectAll(){
+      let isActive = this.data.isActive
+      for(let i = 0; i<isActive.length;i++){
+        if (isActive[i] === undefined) return false 
+        if (isActive[i].id === undefined){
+          return false 
+        }
+      }
+      return true
     }
   },
   
