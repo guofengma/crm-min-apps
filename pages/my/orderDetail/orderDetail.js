@@ -56,6 +56,7 @@ Page({
             detail.createTime=detail.createTime?Tool.formatTime(detail.createTime):'';
             detail.sysPayTime=detail.sysPayTime?Tool.formatTime(detail.sysPayTime):'';
             detail.payTime=detail.payTime?Tool.formatTime(detail.payTime):'';
+            detail.showOrderTotalPrice = Tool.add(detail.totalPrice,detail.freightPrice)
             let address={};
             if(detail.status==4){
               address.addressInfo = '自提点：' + detail.storehouseProvince + detail.storehouseCity + detail.storehouseArea + detail.storehouseAddress;

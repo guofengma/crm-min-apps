@@ -10,9 +10,9 @@
 <view class='redBg flexR tips font-26'>退回商品需由买家承担运费，请确保不影响商品完好</view>
 
 <view class='order-info'>
-  <view class='cell-line whiteBg'>订单编号：{{list.orderNum}}</view>
-  <template is="my-order-product-info" data="{{...list}}"/>
-  <view class='cell-line whiteBg'>下单时间：{{list.createTime}}</view>
+  <view class='cell-line whiteBg'>订单编号：{{orderInfos.orderNum}}</view>
+  <template is="my-order-product-info" data="{{...orderInfos}}"/>
+  <view class='cell-line whiteBg'>下单时间：{{orderInfos.createTime}}</view>
 </view>
 
 <view>
@@ -20,7 +20,7 @@
     <template is="cell-line" data="{{name:reason[refundType].choose,content:reason[refundType].list[activeIndex]}}"/> 
   </view>
   <view class='cell-line refund-num whiteBg' wx:if='{{refundType!=2}}'>
-    退款金额： <text class='red'>¥{{list.showRefund}}</text>
+    退款金额： <text class='red'>¥{{orderInfos.returnMoney}}</text>
   </view>
   <view class='address active whiteBg' wx:if='{{refundType==2}}'>
     <template is="address-info" data="{{addressType:1,...list.address,hasData:true}}"/>

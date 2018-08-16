@@ -27,11 +27,9 @@ Page({
   },
   updateCoupon(){
     let coupon = Storage.getCoupon()
-    this.setData({
-      coupon: coupon
-    })
-    if (this.data.coupon.id){ // 选择了优惠券的时候请求数据
-      this.orderCalcDiscountCouponAndUseScore()
+
+    if (coupon.id){ // 选择了优惠券的时候请求数据
+      this.orderCalcDiscountCouponAndUseScore(coupon)
     } else {
       let orderList = this.data.orderInfos
       if (this.data.addressType == 1) { // 快递
@@ -49,20 +47,23 @@ Page({
       })
     }
   },
-  orderCalcDiscountCouponAndUseScore() { 
+  orderCalcDiscountCouponAndUseScore(coupon) { 
     let params = {
-      couponId: this.data.coupon.id,
+      couponId: coupon.id,
       orderProductList: this.data.params
     }
     let r = RequestFactory.orderCalcDiscountCouponAndUseScore(params);
     r.finishBlock = (req) => {
+      this.setData({
+        coupon: coupon
+      })
       let datas = req.responseObject.data
       let orderList = this.data.orderInfos
       orderList.totalAmounts = datas.totalAmounts
       orderList.showTotalScore = datas.totalScore
 
       if (this.data.addressType == 1) { // 快递
-        orderList.totalAmounts = Tool.add(datas.totalAmounts + orderList.totalFreightFee)
+        orderList.totalAmounts = Tool.add(datas.totalAmounts,orderList.totalFreightFee)
       } else {
         orderList.totalAmounts = datas.totalAmounts
       }
@@ -75,7 +76,12 @@ Page({
       })
       //this.getReducePrice()
     };
-    Tool.showErrMsg(r)
+    // Tool.showErrMsg(req)
+    r.failBlock = (req) => {
+      console.log(req)
+      console.log(11111111111)
+      Tool.showAlert('11111')
+    }
     r.addToQueue();
   },
   onPullDownRefresh: function () {

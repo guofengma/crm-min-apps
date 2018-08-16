@@ -81,6 +81,24 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.reason[options.refundType].navbar
     })
+    this.findOrderProductInfo()
+  },
+  findOrderProductInfo(){
+    let params = {
+      orderProductId: this.data.list.id,
+    }
+    let r = RequestFactory.findOrderProductInfo(params)
+
+    r.finishBlock = (req) => {
+      let data = req.responseObject.data
+      data.imgUrl = data.specImg ? data.specImg : this.data.list.imgUrl
+      data.createTime = Tool.formatTime(data.createTime)
+      this.setData({
+        orderInfos: data
+      })
+    }
+    Tool.showErrMsg(r)
+    r.addToQueue();
   },
   chooseReason(){
     this.setData({

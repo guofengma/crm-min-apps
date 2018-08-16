@@ -430,6 +430,7 @@ export default class RequestFactory {
   }
   
   static findOrderProductInfo(params) {
+    params.port = '8103'
     let url = Operation.sharedInstance().findOrderProductInfo;
     return this.request(url, params, '查看申请退款子订单详情', true);
   }

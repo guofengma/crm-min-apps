@@ -820,9 +820,9 @@ export default class Tool {
 
     static showErrMsg(r) {
       r.failBlock = (req) => {
-        let page = this.getCurrentPageUrlWithArgs() //获取当前额页面
+        // let page = this.getCurrentPageUrlWithArgs() //获取当前额页面
         let callBack = ()=>{
-
+          
         }
         if (req.responseObject.code==210){
           callBack =()=>{

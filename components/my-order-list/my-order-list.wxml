@@ -44,7 +44,7 @@
                     <view class="color-classify">{{oItem.spec}} </view>
                 </view>
                 <view>
-                    <view class="price">￥{{oItem.amounts}}</view>
+                    <view class="price">￥{{oItem.price}}</view>
                     <!--<view class="org-price">￥{{item.price}}</view>-->
                     <view class="num">x{{oItem.num}}</view>
                 </view>
@@ -53,7 +53,7 @@
 
         <view class="amount">
             <text>共{{item.orderProduct.length}}件商品 合计：</text>
-            <text class="money">￥{{item.totalPrice+item.freightPrice}}</text>
+            <text class="money">￥{{item.amounts}}</text>
             <text class="freight">(含运费￥{{item.freightPrice}})</text>
         </view>
         <view class="time">

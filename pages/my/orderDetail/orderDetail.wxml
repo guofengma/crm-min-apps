@@ -80,7 +80,7 @@
         </view>
         <view class='flexR-sb total'>
             <text>订单总价</text>
-            <text>¥{{detail.totalPrice+detail.freightPrice}}</text>
+            <text>¥{{detail.showOrderTotalPrice}}</text>
         </view>
         <view class='flexR-sb total totalPay'>
             <view class='popup'>

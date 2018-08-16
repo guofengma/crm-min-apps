@@ -159,7 +159,7 @@
 					"id": 20,
 					"name": "注册",
 					"pathName": "pages/register/register",
-					"query": "id=1"
+					"query": ""
 				},
 				{
 					"id": -1,
