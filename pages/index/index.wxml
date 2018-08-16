@@ -1,4 +1,6 @@
 <!--广告位  -->
+  
+
 <view class='ad'>
   <view class='search-bar boxSize flexR-sb'>
     <view class='bar flexR-sb' catchtap='searchClicked'><image src='/img/search.png' mode='widthFix'></image></view>

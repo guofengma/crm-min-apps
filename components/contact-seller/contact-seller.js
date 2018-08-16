@@ -1,4 +1,4 @@
-// components/contact-seller/  contact-seller.js
+let { Tool } = global
 Component({
   /**
    * 组件的属性列表
@@ -6,12 +6,9 @@ Component({
   properties: {
     phone:String
   },
-
-  /**
-   * 组件的初始数据
-   */
   data: {
-
+    userInfos:{},
+    ysf: { title: '售后页面' }
   },
 
   /**
@@ -25,6 +22,12 @@ Component({
           console.log("成功拨打电话")
         }
       })
-    }
-  }
+    },
+    refreshMemberInfoNotice() {
+      Tool.getUserInfos(this)
+    },
+  },
+  ready: function () {
+    this.refreshMemberInfoNotice()
+  },
 })

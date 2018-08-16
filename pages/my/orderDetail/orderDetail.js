@@ -113,7 +113,7 @@ Page({
         let params = {
             orderId: this.data.orderId,
         };
-        if (this.data.status == 7 || this.data.status == 5 ){//已完成订单
+        if (this.data.status == 7 || this.data.status == 5 || this.data.status == 6){//已完成订单
             r=RequestFactory.deleteOrder(params)
         } else if (this.data.status == 8 || this.data.status == 10 ){
             r=RequestFactory.deleteClosedOrder(params)
@@ -260,7 +260,7 @@ Page({
             time: ''
           },
           { status: '退货中/退货完成',
-            bottomBtn: ['', '再次购买'],
+            bottomBtn: ['删除订单', '再次购买'],
             bottomId: ['', 5], 
             orderIcon: "order-state-5.png", 
             info: '',

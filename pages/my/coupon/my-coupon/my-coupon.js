@@ -57,7 +57,7 @@ Page({
       let typeObj = this.data.types
       item.typeName = typeObj[item.type]
       item.showTypeName = item.type == 'DK' || item.type == 'DJ'? true:false
-      item.value = item.type == 'ZK'?  item.value/10:item.value
+      item.value = item.type == 'ZK'?  Tool.mul(item.value,0.1):item.value
     },
     availableDiscountCouponForProduct(){
       let params = this.data.params

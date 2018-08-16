@@ -71,10 +71,12 @@ Page({
         // 来自页面内转发按钮
         console.log(res.target)
       }
+      let title = this.data.userInfos.nickname+"邀请您加入"
+      console.log(title)
       return {
-        title: "飓热小程序",
-        path: '/pages/register/register?id' + this.data.inviteId,
-        imgUrl: this.data.imgUrl
+        title: title,
+        path: '/pages/register/register?id=' + this.data.inviteId,
+        imageUrl: this.data.imgUrl
       }
     },
     onUnload: function () {

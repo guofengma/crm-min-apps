@@ -13,7 +13,7 @@ Page({
         } else if (index == 1) {
             Tool.navigateTo('token/token?account='+this.data.token_coin)
         } else if (index == 2) {
-            Tool.navigateTo('deposit/deposit?account='+this.data.token_coin)
+            Tool.navigateTo('deposit/deposit?account=' + this.data.blocked_balances)
         } else if (index == 3) {
             Tool.navigateTo('integral/integral?account='+this.data.user_score)
         }

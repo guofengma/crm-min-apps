@@ -48,4 +48,4 @@
 
 <!--联系卖家  -->
 
-<contact-seller phone='{{18968047924}}'></contact-seller> 
+<contact-seller phone='{{18968047924}}' userInfos='{{userInfos}}'></contact-seller> 

@@ -16,10 +16,11 @@ Page({
         ],
         recommendImgUrl: [],
         topicImgUrl: [],
-        tabClicked:1
+        tabClicked:1,
+        ysf: { title: '首页' }
     },
     onLoad: function () {
-        this.topicList();
+        //this.topicList();
         this.queryAdList();
         this.querySpeList();
         this.queryFeaturedList()
@@ -82,19 +83,19 @@ Page({
         r.addToQueue();
     },
     topicList() {
-        let params = {
-            page: 0,
-            size: 1
-        };
-        let r = RequestFactory.topicList(params);
-        r.finishBlock = (req) => {
-            let data = req.responseObject.data ? req.responseObject.data : [];
-            this.setData({
-                topicImgUrl: req.responseObject.data
-            })
-        };
-        Tool.showErrMsg(r)
-        r.addToQueue();
+        // let params = {
+        //     page: 0,
+        //     size: 1
+        // };
+        // let r = RequestFactory.topicList(params);
+        // r.finishBlock = (req) => {
+        //     let data = req.responseObject.data ? req.responseObject.data : [];
+        //     this.setData({
+        //         topicImgUrl: req.responseObject.data
+        //     })
+        // };
+        // Tool.showErrMsg(r)
+        // r.addToQueue();
     },
     searchClicked() {
         Tool.navigateTo('/pages/search/search?door=0')

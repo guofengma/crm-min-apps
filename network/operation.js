@@ -53,13 +53,13 @@ export default class Operation {
     /**********  获取省市区 *******************/
 
         // 获取省
-        this.getProvinceList = '/admin/area/getProvinceList'
+        this.getProvinceList = '/user/area/getProvinceList'
 
         // 获取市
-        this.getCityList = '/admin/area/getCityList'
+        this.getCityList = '/user/area/getCityList'
 
         // 获取区
-        this.getAreaList = '/admin/area/getAreaList'
+        this.getAreaList = '/user/area/getAreaList'
 
     /********************** 搜索 *********************/  
     
@@ -85,6 +85,10 @@ export default class Operation {
         // 获取产品规格有误
 
         this.findProductStockBySpec = '/user/product/findProductStockBySpec'
+
+        // 礼包规格
+
+        this.getGiftBagSpec = '/order/giftBag/getGiftBagSpec'
 
     /********************** 购物车 *********************/
         // 新增
@@ -270,6 +274,10 @@ export default class Operation {
 
         this.applyReturnGoods  = '/order/order/applyReturnGoods'
 
+        // 查看申请退款子订单详情
+
+        this.findOrderProductInfo = '/order/orderProduct/findOrderProductInfo'
+
         // 查看退款退货换货情况
 
         this.findReturnProductById = '/order/order/findReturnProductById'
@@ -277,6 +285,10 @@ export default class Operation {
         // 退货换货填写物流信息
 
         this.fillInExpressInfoById ='/order/order/fillInExpressInfoById'
+
+        // 退换货物流查看
+
+        this.findReturnProduct = '/delivery/findReturnProduct'
 
         // 物流公司选择
 

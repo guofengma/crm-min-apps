@@ -156,10 +156,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 20,
 					"name": "注册",
 					"pathName": "pages/register/register",
-					"query": ""
+					"query": "id=1"
 				},
 				{
 					"id": -1,
@@ -214,6 +214,18 @@
 					"name": "申请售后",
 					"pathName": "pages/after-sale/apply-sale-after/apply-sale-after",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "选择物流",
+					"pathName": "pages/logistics/choose-logistics/choose-logistics",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "填写物流",
+					"pathName": "pages/logistics/write-logistics/write-logistics",
+					"query": "id=1"
 				}
 			]
 		}

@@ -5,7 +5,8 @@ Page({
       userInfos:'',
       tabClicked:0,
       tabClicked:1,
-      num:0
+      num:0,
+      ysf: { title: '我的' }
     },
     onLoad: function (options) {
       this.refreshMemberInfoNotice()
@@ -35,7 +36,10 @@ Page({
       let tabClicked = this.data.tabClicked
       // 阻止多次点击跳转
       if (tabClicked>1 && this.data.num==1){
-        Tool.navigateTo('/pages/login/login-wx/login-wx')
+        if (!this.data.didLogin) {
+          Tool.navigateTo('/pages/login/login-wx/login-wx')
+        }
+        
       } 
       this.setData({
         num: 2

@@ -8,7 +8,7 @@
   background: #fff;
   align-items: center;
 }
-.contact-seller>view{
+.contact-seller>view,.go-cart-view{
   width: 50%;
   font-size: 32rpx;
   box-sizing: border-box;
@@ -17,19 +17,29 @@
   background: #fff url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/chart-phone.png) no-repeat 90rpx top; 
   background-size: 45rpx 45rpx;
 }
-.contact-seller>view:first-child{
+.go-cart-view{
   background-image: url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/chart-msg.png)
 }
-.contact-seller>view:first-child:after{
+.contact-seller>view:last-child:after{
   content: '';
   width: 2rpx;
 	height: 60rpx;
 	background-color: #eeeeee;
   position: absolute;
-  right: 0;
+  left: 0;
   top:8rpx;
 }
 .gray{
   font-size: 24rpx;
   color: #999;
+}
+.go-cart-view{
+  background-color: transparent;
+  /* padding: 0; */
+  margin: 0;
+  line-height: inherit;
+  box-sizing: border-box;
+   text-align: left;
+  /* width: 100%;
+  height: 100%; */
 }

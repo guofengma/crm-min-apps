@@ -1,5 +1,4 @@
 let { Tool, RequestFactory, Event, Storage } = global
-
 Page({
   data: {
     innerCount:1, //件数
@@ -43,7 +42,7 @@ Page({
       orderList.showTotalScore = orderList.totalScore
       this.userScore(orderList)
       if (this.data.isUseIntegral) {
-        orderList.totalAmounts -= orderList.reducePrice
+        orderList.totalAmounts = Tool.sub(orderList.totalAmounts,orderList.reducePrice)
       }
       this.setData({
         orderInfos: orderList
@@ -63,12 +62,12 @@ Page({
       orderList.showTotalScore = datas.totalScore
 
       if (this.data.addressType == 1) { // 快递
-        orderList.totalAmounts = datas.totalAmounts + orderList.totalFreightFee
+        orderList.totalAmounts = Tool.add(datas.totalAmounts + orderList.totalFreightFee)
       } else {
         orderList.totalAmounts = datas.totalAmounts
       }
       if (this.data.isUseIntegral){
-        orderList.totalAmounts -= orderList.reducePrice
+        orderList.totalAmounts = Tool.sub(orderList.totalAmounts,orderList.reducePrice)
       }
       this.userScore(orderList)
       this.setData({
@@ -79,10 +78,14 @@ Page({
     Tool.showErrMsg(r)
     r.addToQueue();
   },
+  onPullDownRefresh: function () {
+    this.requestOrderInfo()
+  },
   requestOrderInfo(){
     let params = { orderProductList:this.data.params}
     let r = RequestFactory.makeSureOrder(params);
     r.finishBlock = (req) => {
+      wx.stopPullDownRefresh() //停止下拉刷新
       let item = req.responseObject.data
       // 渲染地址列表
       let userAdress = item.default_addr
@@ -140,7 +143,8 @@ Page({
     // 积分抵扣计算
     let score = item.dealer.user_score > item.showTotalScore ? item.showTotalScore : item.dealer.user_score
     item.showScore = score
-    item.reducePrice = item.userScoreToBalance * score
+    // item.reducePrice = item.userScoreToBalance*score
+    item.reducePrice = Tool.mul(item.userScoreToBalance,score)
     // 当商品可以使用积分 用户积分大于0的时候 显示可以使用积分 
     item.canUseScore = (item.showTotalScore > 0 && item.dealer.user_score) ? true : false
     item.showTipsName = item.dealer.user_score <= 0 ? '暂无积分可用' :'不支持积分消费'
@@ -155,14 +159,21 @@ Page({
   },
   changeAddressType(e){
     let index = e.currentTarget.dataset.index
-    let orderInfos = this.data.orderInfos
+    let { orderInfos, isUseIntegral } = this.data
     this.setData({
       addressType: e.currentTarget.dataset.index
     })
     if (this.data.coupon.id){ // 弱使用了优惠券更新
       this.updateCoupon()
     } else {
-      orderInfos.totalAmounts = orderInfos.totalPrice
+      if(index==1){
+        orderInfos.totalAmounts = orderInfos.orginTotalAmounts
+      } else {
+        orderInfos.totalAmounts = orderInfos.totalPrice
+      }
+      if (isUseIntegral) {
+        orderInfos.totalAmounts = Tool.sub(orderInfos.totalAmounts,orderInfos.reducePrice)
+      }
     }
     this.setData({
       orderInfos: orderInfos
@@ -177,9 +188,9 @@ Page({
   getReducePrice(){
     let { orderInfos, isUseIntegral} = this.data
     if (isUseIntegral) {
-      orderInfos.totalAmounts -= orderInfos.reducePrice
+      orderInfos.totalAmounts = Tool.sub(orderInfos.totalAmounts, orderInfos.reducePrice) 
     } else {
-      orderInfos.totalAmounts += orderInfos.reducePrice
+      orderInfos.totalAmounts = Tool.add(orderInfos.totalAmounts, orderInfos.reducePrice) 
     }
     this.setData({
       orderInfos: orderInfos
@@ -281,3 +292,4 @@ Page({
     Event.off('updateCoupon', this.updateCoupon)
   }
 })
+

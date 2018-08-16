@@ -7,6 +7,17 @@ import TCGlobal, {
     RequestFactory
 } from './tools/tcglobal';
 
+// import DATracker from './libs/DATracker/DATracker'
+
+// DATracker.init('55bb9a1b346ceb3899eef229e6271d7e', {
+//   appid: 'wx3b1e11958d5fe41d',
+//   apiHost: 'https://da.qiyukf.com', //线上da.qiyukf.com
+//   onPageShow: function (datracker, router, page) {
+//     //在页面路由变动时，发送页面标题的事件
+//     datracker.track_pageview({ data: page.data.ysf });
+//   }
+// });
+
 App({
     onLaunch: function () {
         //设置全局变量

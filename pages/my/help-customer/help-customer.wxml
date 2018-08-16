@@ -40,9 +40,22 @@
             <view>09:00-18:00</view>
         </view>
         <view>
-            <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_customer.png" class=""></image>
+             <!-- <button class="go-cart-view contact" open-type="contact" >
+              <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_customer.png" class=""></image>
+              <view>在线客服</view>
+              <view>09:00-18:00</view>
+            </button>  -->
+            <button class="go-cart-view contact" 
+              session-from="nickName={{userInfos.nickname}}|avatarUrl={{userInfos.headImg}}|referrerTitle={{ysf.title}}"
+              open-type="contact"
+              >
+              <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_customer.png" class=""></image>
+              <view>在线客服</view>
+              <view>09:00-18:00</view>  
+            </button>
+            <!-- <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_customer.png" class=""></image>
             <view>在线客服</view>
-            <view>09:00-18:00</view>
+            <view>09:00-18:00</view>  -->
         </view>
     </view>
 </view>

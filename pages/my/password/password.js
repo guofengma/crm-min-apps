@@ -48,7 +48,7 @@ Page({
       }
       let params = {
         oldPassword: this.data.old,
-        NewPassword: this.data.newPwd
+        newPassword: this.data.newPwd
       }
       let r = RequestFactory.updateDealerPassword(params);
       r.finishBlock = (req) => {

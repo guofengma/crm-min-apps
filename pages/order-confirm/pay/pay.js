@@ -78,6 +78,9 @@ Page({
       
     },
     payOrder(payType){
+      if (this.data.payList.showTotalAmounts==0){
+        payType=1
+      }
       let params ={
         amounts: this.data.payList.showTotalAmounts,
         balance: 0, // 先按照0 写死
@@ -88,10 +91,14 @@ Page({
       }
       let r = RequestFactory.repay(params);
       r.finishBlock = (req) => {
-        //this.test(payType, req)
+        // this.test(payType, req)
         // this.wxPay(payType, req.responseObject.data.outTradeNo)
-        let datas = req.responseObject.data
-        this.wxPay(payType, datas.outTradeNo, datas.prePayStr)
+        if (payType==1){
+          this.showResult(true)
+        } else {
+          let datas = req.responseObject.data
+          this.wxPay(payType, datas.outTradeNo, datas.prePayStr)
+        }
       };
       Tool.showErrMsg(r)
       r.addToQueue();
@@ -130,6 +137,9 @@ Page({
       Tool.redirectTo('/pages/my/my-order/my-order')
     },
     continuePay(payType) {
+      if (this.data.payList.showTotalAmounts == 0) {
+        payType = 1
+      }
       let params = {
         outTradeNo: this.data.payList.outTradeNo,
         "type": payType,
@@ -139,8 +149,13 @@ Page({
       r.finishBlock = (req) => {
         // this.test(payType, req)
         // this.wxPay(payType, req.responseObject.data.outTradeNo)
-        let datas = req.responseObject.data
-        this.wxPay(payType, datas.outTradeNo, datas.prePayStr)
+        if (payType == 1) {
+          this.showResult(true)
+        } else {
+          let datas = req.responseObject.data
+          this.wxPay(payType, datas.outTradeNo, datas.prePayStr)
+        }
+        
       };
       Tool.showErrMsg(r)
       r.addToQueue();

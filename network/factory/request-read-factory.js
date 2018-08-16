@@ -180,6 +180,13 @@ export default class RequestFactory {
   }
 
 
+  static getGiftBagSpec(params) {
+    params.port = '8103';
+    let url = Operation.sharedInstance().getGiftBagSpec;
+    return this.request(url, params, '礼包规格', true);
+  }
+
+
   /**************购物车********************/
 
   static addToShoppingCart(params) {
@@ -352,6 +359,11 @@ export default class RequestFactory {
       return this.request(url, params, '查看物流', true);
   }
 
+  static findReturnProduct(params) {
+    let url = Operation.sharedInstance().findReturnProduct;
+    return this.request(url, params, '退换货物流查看', true);
+  }
+
   /*******************订单结算******************** */
 
   static makeSureOrder(params) {
@@ -415,6 +427,11 @@ export default class RequestFactory {
   static wxRefund(params) {
     let url = Operation.sharedInstance().wxRefund;
     return this.request(url, params, '申请退款', true);
+  }
+  
+  static findOrderProductInfo(params) {
+    let url = Operation.sharedInstance().findOrderProductInfo;
+    return this.request(url, params, '查看申请退款子订单详情', true);
   }
 
   static orderCalcDiscountCouponAndUseScore(params) {

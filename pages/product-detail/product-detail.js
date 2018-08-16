@@ -35,8 +35,13 @@ Page({
       door: options.door || 1
     })
     this.didLogin()
-    this.requestFindProductByIdApp()
-    this.getShoppingCartList()
+    if(this.data.door==1){
+      this.requestFindProductByIdApp()
+      this.getShoppingCartList()
+      // this.getGiftBagSpec()
+    } else {
+
+    }
     Event.on('didLogin', this.didLogin, this);
   },
   onShow: function () {
@@ -123,6 +128,19 @@ Page({
       Event.emit('updateShoppingCart')
       Tool.showSuccessToast('添加成功')
     };
+    Tool.showErrMsg(r)
+    r.addToQueue();
+  },
+  getGiftBagSpec(){
+    let params = {
+      giftBagId: 58,
+    }
+    let r = RequestFactory.getGiftBagSpec(params)
+
+    let productInfo = this.data.productInfo
+    r.finishBlock = (req) => {
+
+    }
     Tool.showErrMsg(r)
     r.addToQueue();
   },
@@ -306,10 +324,11 @@ Page({
       console.log(res.target)
     }
     let imgUrl = this.data.imgUrls[0].original_img ? this.data.imgUrls[0].original_img:''
+    let name = this.data.productInfo.name.length > 10 ? this.data.productInfo.name.slice(0, 10) + "..." : this.data.productInfo.name
     return {
-      title: "飓热小程序",
+      title: name,
       path: '/pages/product-detail/product-detail?productId=' + this.data.productId,
-      imgUrl: imgUrl
+      imageUrl: imgUrl
     }
   },
   productTypeListClicked(e){

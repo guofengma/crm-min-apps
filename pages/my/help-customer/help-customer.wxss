@@ -134,3 +134,12 @@
 .footer>view:first-child{
     border-right: 1rpx solid #ddd;
 }
+.go-cart-view{
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  line-height: inherit;
+  font-size: 22rpx;
+  color: #666;
+}

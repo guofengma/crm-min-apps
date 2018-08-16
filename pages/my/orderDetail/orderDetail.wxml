@@ -68,7 +68,7 @@
         </view>
         <view class='flexR-sb' wx:if='{{detail.couponPrice}}'>
             <text>优惠券优惠</text>
-            <text>{{detail.couponPrice}}</text>
+            <text>-¥{{detail.couponPrice}}</text>
         </view>
         <view class='flexR-sb'>
             <text>积分抵扣</text>
@@ -97,7 +97,7 @@
         <view class='copy-btn gray flexR' bindtap="copy">复制</view>
         <view class='content gray'>
             <view>订单编号：
-                <text selectable="true">{{detail.orderNum}}</text>
+              <text selectable="true">{{detail.orderNum}}</text>
             </view>
             <view>创建时间：{{detail.createTime}}</view>
             <view>平台付款时间：{{detail.sysPayTime}}</view>
