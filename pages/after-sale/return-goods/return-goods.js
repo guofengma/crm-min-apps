@@ -72,7 +72,7 @@ Page({
     if (express.id == 0) {
       page = '/pages/logistics/write-logistics/write-logistics?id=' + this.data.datas.returnProduct.id
     } else {
-      page = '/pages/logistics/logistics'
+      page = '/pages/logistics/logistics?orderId=' + this.data.datas.returnProduct.id + '&door=1&type=1'
     }
     Storage.setAfterSaleList(this.data.datas)
     Tool.navigateTo(page)

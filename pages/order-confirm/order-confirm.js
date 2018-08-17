@@ -20,12 +20,18 @@ Page({
     })
     this.requestOrderInfo()
     Event.on('updateOrderAddress', this.updateOrderAddress,this)
-    Event.on('updateCoupon', this.updateCoupon,this)
+    Event.on('updateCoupon', this.couponClick,this)
   },
   onShow: function () {
-  
+    this.updateCoupon()
+  },
+  couponClick() {
+    this.setData({
+      couponClick:true
+    })
   },
   updateCoupon(){
+    if (!this.data.couponClick) return
     let coupon = Storage.getCoupon()
 
     if (coupon.id){ // 选择了优惠券的时候请求数据
@@ -43,7 +49,8 @@ Page({
         orderList.totalAmounts = Tool.sub(orderList.totalAmounts,orderList.reducePrice)
       }
       this.setData({
-        orderInfos: orderList
+        orderInfos: orderList,
+        couponClick:false
       })
     }
   },
@@ -76,12 +83,7 @@ Page({
       })
       //this.getReducePrice()
     };
-    // Tool.showErrMsg(req)
-    r.failBlock = (req) => {
-      console.log(req)
-      console.log(11111111111)
-      Tool.showAlert('11111')
-    }
+    Tool.showErrMsg(r)
     r.addToQueue();
   },
   onPullDownRefresh: function () {
@@ -291,11 +293,11 @@ Page({
     orderList.forEach((item)=>{
       productIds.push(item.product_id)
     })
-    Tool.navigateTo("/pages/my/coupon/my-coupon/my-coupon?door=1&&productIds=" +productIds.join(","))
+    Tool.navigateTo("/pages/my/coupon/my-coupon/my-coupon?door=1&&productIds=" + this.data.params)
   },
   onUnload: function () {
     Event.off('updateOrderAddress', this.updateOrderAddress)
-    Event.off('updateCoupon', this.updateCoupon)
+    Event.off('updateCoupon', this.couponClick)
   }
 })
 

@@ -1,4 +1,4 @@
-<view class='logistics'>
+<view class='logistics' wx:if="{{list.length>0}}">
   <view class="title flexR-sb font-30">
     <text>{{expTextName}}：{{mailNo}}</text>
     <image src='/img/wuliu-icon.png' mode='widthFix'></image>
@@ -22,7 +22,7 @@
       </view>
     </view>
     <view class='infos'>
-      <view wx:if="{{list.length>0}}">
+      <view>
         <block wx:for='{{list}}' wx:key='unique'>
           <view class='flexR-sb gray'>
             <view class='time-line'>
@@ -42,11 +42,12 @@
           </view>
         </block>
       </view>
-
-      <view wx:else>
-        <view>暂无物流信息~</view>
-      </view>
     </view>  
   </view>
+</view>
+
+<view class='no-logistics flexC' wx:else>
+  <image src='/img/wuliu-tips.png' mode='widthFix'></image>
+  <view class='gray font-30'>{{tips}}</view>
 </view>
  

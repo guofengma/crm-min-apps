@@ -40,6 +40,9 @@
   margin-top: 80rpx;
   height: calc(100% - 80rpx)
 }
+.tab-content.tab-active{
+  height: calc(100% - 190rpx)
+}
 .pagesize{
   height: 100%;
 }
@@ -85,4 +88,9 @@
   height: 100rpx;
   width: 100%;
   border-top: 1rpx solid #ddd;
+}
+.coupon-img image{
+  width: 230rpx;
+  margin-top: 200rpx;
+  margin-bottom: 20rpx;
 }

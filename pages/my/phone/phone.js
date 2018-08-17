@@ -16,6 +16,10 @@ Page({
   },
   //下一步
   next() {
+    if (Tool.isEmptyStr(this.data.phone)){
+      Tool.showAlert("手机号不能为空");
+      return
+    }
     if (!Tool.checkPhone(this.data.phone)) {
         Tool.showAlert("请输入正确的手机号");
         return

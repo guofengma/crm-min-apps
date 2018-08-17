@@ -276,6 +276,11 @@ Page({
       this.setData({
         items: items
       })
+      if (items.length == 0) {
+        this.setData({
+          tipVal: 2
+        })
+      }
       this.getTotalPrice()
     };
     r.addToQueue();

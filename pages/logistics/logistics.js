@@ -52,46 +52,60 @@ Page({
             //     content1: '包裹正在分拣中',
             // },
         ],
+        tips:'物流信息查询中...'
     },
     onLoad: function (options) {
         this.setData({
-            id: options.orderId || ''
+            id: options.orderId || '',
+            door: options.door || '',
+            type: options.type || ''
         });
         this.getDelivery()
     },
     getDelivery() {
-        let params = {
+        let params ='' 
+        let r = ''
+        if(this.data.door==1){
+          params = {
+            id: this.data.id,
+            "type": this.data.type
+          };
+          r = RequestFactory.findReturnProduct(params);
+        } else {
+          params = {
             orderId: this.data.id
-        };
-        let r = RequestFactory.findDelivery(params);
-        // let {lists} = this.data
+          };
+          r = RequestFactory.findDelivery(params);
+        }
         r.finishBlock = (req) => {
-            let datas = req.responseObject.data;
-            if (datas) {
-                if (datas.showapi_res_body && datas.showapi_res_body.data) {
-
-                    this.setData({
-                        img: datas.img,
-                        expTextName: datas.showapi_res_body.expTextName,
-                        mailNo: datas.showapi_res_body.mailNo,
-                        status: datas.showapi_res_body.status,
-                        phone: datas.phone
-                    })
-                    let list = datas.showapi_res_body.data;
-                    let tempList = [];
-                    if (list.length) {
-                        list.forEach((item) => {
-                          item.showDate = item.time.slice(6, 10)  
-                          item.showTime = item.time.slice(11, 16)
-                          tempList.push(item)
-                        });
-                        this.setData({
-                            list: tempList
-                        })
-                    }
-                }
-
+          let datas = req.responseObject.data;
+          if (datas) {
+            if (datas.showapi_res_body && datas.showapi_res_body.data) {
+              this.setData({
+                img: datas.img,
+                expTextName: datas.showapi_res_body.expTextName,
+                mailNo: datas.showapi_res_body.mailNo,
+                status: datas.showapi_res_body.status,
+                phone: datas.phone
+              })
+              let list = datas.showapi_res_body.data;
+              let tempList = [];
+              if (list.length) {
+                list.forEach((item) => {
+                  item.showDate = item.time.slice(6, 10)  
+                  item.showTime = item.time.slice(11, 16)
+                  tempList.push(item)
+                });
+                this.setData({
+                    list: tempList
+                })
+              } else {
+                this.setData({
+                  tips: '暂无物流信息~'
+                })
+              }
             }
+          }
         };
         Tool.showErrMsg(r);
         r.addToQueue();

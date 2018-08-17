@@ -75,13 +75,14 @@ Page({
   },
   logClicked(e) {
     let express = e.currentTarget.dataset.express
+    let types = e.currentTarget.dataset.type
     let page = ''
     if (express.id==0){
       page = '/pages/logistics/write-logistics/write-logistics?id=' + this.data.datas.returnProduct.id
     } else if (express.id == 1) {
       return
     } else {
-      page = '/pages/logistics/logistics?orderId='+this.data.list.id
+      page = '/pages/logistics/logistics?orderId=' + this.data.datas.returnProduct.id + '&door=1&type='+types
     }
     Storage.setAfterSaleList(this.data.datas)
     Tool.navigateTo(page)

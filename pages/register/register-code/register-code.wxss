@@ -36,10 +36,10 @@
 .tips{
   margin-bottom: 52rpx;
 }
-.inviter-name{
+/* .inviter-name{
   width: 62rpx;
-}
-.inviter-level{
+} */
+.inviter-level,.inviter-name{
   width: 110rpx;
 }
 .inviter .flexC{

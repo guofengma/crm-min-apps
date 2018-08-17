@@ -20,12 +20,10 @@ Page({
     },
     // 上拉加载更多
     onScroll(e) {
-      console.log(e)
       let { totalPageArr, params, currentTab} = this.data
       let currentPage = params.page
       currentPage++
       let currentTotalPage = totalPageArr[currentTab]
-      console.log(currentTotalPage, currentPage)
       if (currentTotalPage < currentPage){
         return
       }
@@ -35,7 +33,7 @@ Page({
       })
       if (currentTab==0){
         if(this.data.door==1){
-          this.availableDiscountCouponForProduct()
+          //this.availableDiscountCouponForProduct()
         } else {
           this.getDiscountCouponNoUse();
         }
@@ -60,34 +58,33 @@ Page({
       item.value = item.type == 'ZK'?  Tool.mul(item.value,0.1):item.value
     },
     availableDiscountCouponForProduct(){
-      let params = this.data.params
-      params.productIds = this.data.productIds
-      let r = RequestFactory.availableDiscountCouponForProduct(this.data.params);
+      let params = {
+        orderProductList: this.data.productIds
+      }
+      let r = RequestFactory.availableDiscountCouponForProduct(params);
       r.finishBlock = (req) => {
-        if (req.responseObject.data.total == 0) return
         let currentTime = new Date().getTime() // 获取当前时间
-        for (let i in req.responseObject.data.data) {
-          let item = req.responseObject.data.data[i];
+        for (let i in req.responseObject.data) {
+          let item = req.responseObject.data[i];
           item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
           item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
+          let nickname = item.name
+          item.name = item.nickname
+          item.nickname = nickname
           if (currentTime > item.startTime) {
             item.left = '';
             item.canUse =1
             item.active = true;
             item.canUseStart = true
-          } else {
-            item.left = '待激活';
-            item.active = false
           }
           this.getCouponType(item)
           this.data.lists[0].push(item)
         }
-        this.data.totalPageArr[0] = req.responseObject.data.total
-        this.data.lists[0] = this.data.lists[0].concat(req.responseObject.data.data)
+        // this.data.totalPageArr[0] = req.responseObject.data.total
+        // this.data.lists[0] = this.data.lists[0].concat(req.responseObject.data.data)
+        this.data.lists[0] = req.responseObject.data
         this.setData({
-          lists: this.data.lists,
-          totalPageArr: this.data.totalPageArr,
-          params: params
+          lists: this.data.lists
         })
       };
       Tool.showErrMsg(r);

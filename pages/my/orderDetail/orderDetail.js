@@ -328,9 +328,9 @@ Page({
       let detail = this.data.detail
       let outOrderState = detail.status
       let childrenList = detail.list
-      let middle = ''
       let btnArr = []
       childrenList.forEach((item,index)=>{
+        let middle = ''
         let innerState = item.status
         let returnType = item.returnType
         let finishTime = item.finishTime
@@ -338,7 +338,7 @@ Page({
         if (outOrderState == 2 || outOrderState ==4 ){
           middle = { id: 1,content: '退款' }
         }
-        if (outOrderState == 3 || outOrderState == 5){
+        if (outOrderState == 3 ){
           // 确认收货的状态的订单售后截止时间和当前时间比
           //if (finishTime - now > 0) {
             middle = { id: 2, content: '退换' }
@@ -347,6 +347,7 @@ Page({
         }
         if (outOrderState == 5) {
           // 确认收货的状态的订单售后截止时间和当前时间比
+          console.log(finishTime - now > 0)
           if (finishTime - now>0){
             middle = { id: 2, content: '退换' }
           }      
@@ -364,6 +365,7 @@ Page({
         }
         item.middleBtn = middle
       })
+      
       this.setData({
         detail: detail
       })

@@ -84,11 +84,11 @@
   color: #fff;
 }
 .reducePrice{
-  min-height:88rpx;
-  width:60%;
-  text-align:justify;
+  /* min-height:88rpx; */
+  width:66%;
+  /* text-align:justify;
   line-height:38rpx;
-  padding-top:15rpx;
+  padding-top:15rpx; */
 }
 .gift-view{
   padding:15rpx 30rpx 0 30rpx;

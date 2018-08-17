@@ -43,14 +43,16 @@
         <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
       </view>
     </view>
-    <view class='flexR-sb user_score' style='height:auto !important'>
+    <view class='flexR-sb user_score'>
       <!-- <view>
         商品积分：{{orderInfos.totalScore}},用户可用积分：{{orderInfos.dealer.user_score}}
         <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
       </view> -->
        <view class='reducePrice'>
-        <view>积分：{{orderInfos.showTotalScore}},可用积分：{{orderInfos.dealer.user_score}}</view>
-        <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
+        <view>
+          共{{orderInfos.dealer.user_score}}积分,可用积分: {{orderInfos.showTotalScore}}
+          <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
+        </view>
       </view>
       <view class='gray' wx:if='{{!orderInfos.canUseScore}}'>{{orderInfos.showTipsName}} </view> 
       <image class='switch' wx:else 

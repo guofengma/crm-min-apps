@@ -25,10 +25,10 @@
 
 <!--物流  -->
 <view>
-  <view bindtap='logClicked' data-express='{{expressNo}}'>
+  <view bindtap='logClicked' data-express='{{expressNo}}' data-type='1'>
     <template is="cell-line" data="{{name:'退货物流',placeholder:expressNo.content}}"/>
   </view>
-  <view wx:if='{{expressNo.id!=0}}' bindtap='logClicked' data-express='{{SaleExpressNo}}'>
+  <view wx:if='{{expressNo.id!=0}}' bindtap='logClicked' data-express='{{SaleExpressNo}}' data-type='2'>
     <template is="cell-line" data="{{name:'商家物流',placeholder:SaleExpressNo.content}}"/>
   </view>
 </view>
@@ -40,8 +40,8 @@
   <template is="after-sale-prd-info" data="{{...list}}"/>
   <view class='exchange-content whiteBg gray'>
     <view>换货原因：{{datas.returnProduct.return_reason}}</view>
-    <view>换货金额：¥{{list.showRefund}}</view>
-    <view>换货说明：{{datas.returnProduct.return_reason}}</view>
+    <!-- <view>换货金额：¥{{list.showRefund}}</view> -->
+    <view>换货说明：{{datas.returnProduct.remark}}</view>
     <view>
       <view>凭证图片</view>
       <view class='userImg'>

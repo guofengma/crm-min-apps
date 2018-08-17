@@ -143,6 +143,7 @@ Component({
       let r = r = RequestFactory.findProductStockBySpec(params);
       r.finishBlock = (req) => {
         let datas = req.responseObject.data
+        console.log(key, val, length)
         if(length){
           for (let i = 0; i < productTypeList.length; i++) {
             for (let j = 0; j < productTypeList[i].types.length; j++){

@@ -1,9 +1,5 @@
 let { Tool, RequestFactory, Storage } = global
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     userInfo:'',
     visiable:false,
@@ -16,34 +12,35 @@ Page({
   },
   onLoad: function (options) {
     this.setData({
-      openid: Storage.getWxOpenid(),
-      userInfo: Storage.wxUserInfo(),
+      openid: Storage.getWxOpenid() || '',
+      userInfo: Storage.wxUserInfo() || '',
       isBack: options.isBack || false
     })
   },
   onShow: function () {
   
   },
-  getPhoneNumber(e){
-    this.setData({
-      encryptedData: e.detail.encryptedData,
-      iv: e.detail.iv,
-    })
-    console.log(e.detail.errMsg)
-    if (e.detail.errMsg == 'getPhoneNumber:ok') {
+  getPhoneNumber(e){  // 获取手机号
+    if (e.detail.errMsg == 'getPhoneNumber:ok'){
       this.setData({
-        visiable: !this.data.visiable,
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv,
       })
-    } else {
-      
-    }   
+      if (!this.data.userInfo){
+        this.setData({
+          visiable: !this.data.visiable
+        })
+      } else if (this.data.userInfo) {
+        this.requetLogin()
+      }
+    } 
   },
-  agreeGetUser(e){
+  agreeGetUser(e){ // 获取用户信息
     if (!this.data.canIUse){
       this.getUserInfo()
     }
     this.setData({
-      visiable: !this.data.visiable
+      visiable: false
     })
     if (e.detail.userInfo !== undefined){
       this.getLogin(e.detail.userInfo)
@@ -102,6 +99,7 @@ Page({
     this.requetLogin()
   },
   tips(){
+    let that = this 
     wx.showModal({
       title: '用户未授权',
       content: '如需正常使用该小程序功能，请按确定并在授权管理中选中“用户信息”，然后点按确定。最后再重新进入小程序即可正常使用。',
@@ -111,7 +109,7 @@ Page({
           wx.openSetting({
             success: function success(resopen) {
               //  获取用户数据
-              // that.checkSettingStatu();
+              that.getUserInfo()
             }
           });
         }

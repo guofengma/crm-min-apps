@@ -1,11 +1,11 @@
+
 <view class='pagesize'>
     <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
         <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">未使用</view>
         <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">已失效</view>
         <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">已使用</view>
     </scroll-view>
-    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
-     >
+    <swiper class="tab-content {{currentTab==0&&door==1? 'tab-active':''}}" current="{{currentTab}}" duration="300" bindchange="switchTab">
         <swiper-item wx:for="{{lists}}" wx:for-index="key" wx:for-item="list"  wx:key="{{key}}">
             <scroll-view scroll-y class="scoll-h" bindscrolltolower="onScroll" wx:if='{{currentTab==key}}'>
               <block wx:for="{{list}}" wx:key="{{index}}">
@@ -29,7 +29,11 @@
                       <!-- <text>{{item.left}}</text> -->
                     </view>
                 </view>
-              </block> 
+              </block>
+              <view wx:if='{{list.length==0}}' class='flexC coupon-img'>
+                <image src='/img/coupon-icon.png' mode='widthFix'></image>
+                <view class='gray font-30'>暂无优惠券~</view>
+              </view>
             </scroll-view>
         </swiper-item>
     </swiper>

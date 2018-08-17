@@ -100,11 +100,11 @@
               <text selectable="true">{{detail.orderNum}}</text>
             </view>
             <view>创建时间：{{detail.createTime}}</view>
-            <view>平台付款时间：{{detail.sysPayTime}}</view>
+            <view wx:if='{{detail.sysPayTime}}'>平台付款时间：{{detail.sysPayTime}}</view>
             <view>三方付款时间：{{detail.payTime}}</view>
             <view>三方交易号：{{detail.outTradeNo?detail.outTradeNo:''}}</view>
             <view>发货时间：{{detail.sendTime}}</view>
-            <view>成交时间：2018-05-14 12:15:</view>
+            <view>成交时间：{{detail.payTime}}</view>
         </view>
     </view>
 

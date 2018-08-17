@@ -226,6 +226,12 @@
 					"name": "填写物流",
 					"pathName": "pages/logistics/write-logistics/write-logistics",
 					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "支付页面",
+					"pathName": "pages/order-confirm/pay/pay",
+					"query": ""
 				}
 			]
 		}

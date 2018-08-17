@@ -7,6 +7,7 @@
   </view>
   <view>
     <button class='loginBtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信登录</button>
+    <!-- <button class='loginBtn' bindtap=''>微信登录</button> -->
     <!-- <view class='gray font-26 login-2'>
      <text catchtap='otherLogin'>账号登录</text>
     </view> -->
@@ -17,9 +18,9 @@
 <block wx:if="{{visiable}}">
   <view class="model-view-bg">
     <view class="my-award-filter">
-        <view class="title"><view>提示</view></view>
-        <view class='content'>您同意了授权</view>
-        <button open-type="getUserInfo" class="agree" bindgetuserinfo="agreeGetUser" lang="zh_CN">确定</button>
+      <view class="title"><view>提示</view></view>
+      <view class='content'>您同意了授权</view>
+      <button open-type="getUserInfo" class="agree" bindgetuserinfo="agreeGetUser" lang="zh_CN">确定</button>
     </view>
   </view>
 </block>
