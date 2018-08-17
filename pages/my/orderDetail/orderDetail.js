@@ -57,6 +57,9 @@ Page({
             detail.sysPayTime=detail.sysPayTime?Tool.formatTime(detail.sysPayTime):'';
             detail.payTime=detail.payTime?Tool.formatTime(detail.payTime):'';
             detail.showOrderTotalPrice = Tool.add(detail.totalPrice,detail.freightPrice)
+            if (detail.expressNo){
+              this.getDelivery(detail)
+            }
             let address={};
             if(detail.status==4){
               address.addressInfo = '自提点：' + detail.storehouseProvince + detail.storehouseCity + detail.storehouseArea + detail.storehouseAddress;
@@ -250,21 +253,21 @@ Page({
             bottomBtn: ['', '确认收货'], 
             bottomId: ['', 4],
             orderIcon: "order-state-3.png",
-            info: '',
+            info: '等待买家自提...',
             time: ''
           },
           { status: '交易已完成',
             bottomBtn: ['删除订单', '再次购买'], 
             bottomId: [6,5],
             orderIcon: "order-state-5.png",
-            info: '',
+            info: '仓库正在扫描出仓...',
             time: ''
           },
           { status: '退货中/退货完成',
             bottomBtn: ['删除订单', '再次购买'],
             bottomId: ['', 5], 
             orderIcon: "order-state-5.png", 
-            info: '',
+            info: '仓库正在扫描出仓...',
             time: '' 
           },
           {
@@ -272,7 +275,7 @@ Page({
             bottomBtn: ['删除订单', '再次购买'],
             bottomId: [6, 5],
             orderIcon: "order-state-5.png",
-            info: '',
+            info: '仓库正在扫描出仓...',
             time: ''
           },
           { status: '交易关闭',
@@ -347,7 +350,6 @@ Page({
         }
         if (outOrderState == 5) {
           // 确认收货的状态的订单售后截止时间和当前时间比
-          console.log(finishTime - now > 0)
           if (finishTime - now>0){
             middle = { id: 2, content: '退换' }
           }      
@@ -434,8 +436,42 @@ Page({
       Tool.showAlert('目前只支持单件商品退款，请进行单件退款操作~')
     },
     seeLogistics(e){
-       let id = this.data.orderId;
+      let id = this.data.orderId;
       Tool.navigateTo('/pages/logistics/logistics?orderId='+id)
+    },
+    logisticsClicked(){
+      // 跳转查看物流信息
+      if (this.data.detail.expressNo){
+        // let page = '/pages/logistics/logistics?orderId=' + this.data.orderId
+        // Tool.navigateTo(page)
+        this.seeLogistics()
+      }
+    },
+    getDelivery(detail) {
+      // 查询物流信息最后一条数据
+      let params = {
+        orderId: this.data.orderId
+      };
+      let r = RequestFactory.findDelivery(params);
+      let state = this.orderState(detail.status)
+      r.finishBlock = (req) => {
+        let datas = req.responseObject.data;
+        if (datas) {
+          if (datas.showapi_res_body && datas.showapi_res_body.data) {
+            let list = datas.showapi_res_body.data;
+            let tempList = [];
+            if (list.length) {
+              state.info = list[list.length-1].context
+              state.info = list[list.length-1].time
+            } 
+          }
+        }
+        this.setData({
+          state: state
+        })
+      };
+      Tool.showErrMsg(r);
+      r.addToQueue();
     },
     onUnload: function () {
       clearTimeout(this.data.time);

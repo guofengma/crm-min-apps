@@ -6,7 +6,7 @@
   <view class='font-26'>
     <view class='company'>
       <view class='flexR'>
-        <image src='/img/default-userImg.png' mode='widthFix' class='logo-w'></image>
+        <image src='/img/wuliu-icon-de.png' mode='widthFix' class='logo-w'></image>
         <!--<view>本数据由 <text class='blue'>百世汇通</text> 提供</view>-->
         <view>物流状态 <text class='blue'><span wx:if="{{status==0}}">查询异常</span>
           <span wx:if="{{status==1}}">暂无记录</span>
