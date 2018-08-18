@@ -2,7 +2,7 @@
 
 <template name="after-sale-prd-info">
   <view class='after-sale-prd-info flexR-sb font-26 whiteBg'>
-   <image src='{{imgUrl}}' class='after-sale-prd-info-img'></image>
+   <image src='{{imgUrl || spec_img}}' class='after-sale-prd-info-img'></image>
    <view class='after-sale-prd-info-right'>
      <view class='ellipsis-2 after-sale-name'>{{productName}}</view>
      <view class='gray flexR-sb '>

@@ -391,7 +391,7 @@ export default class Operation {
 
         // 获取专题
 
-        this.topicList ='/admin/topic/list'
+        // this.topicList ='/admin/topic/list'
 
         // 获取专题详情页
 

@@ -124,12 +124,12 @@ Page({
         }
         r.finishBlock = (req) => {
             if(req.responseObject.code==200){
-                this.setData({
-                    isDelete:false,
-                });
-                Tool.navigateTo('../my-order/my-order')
+              this.setData({
+                  isDelete:false,
+              });
+              Tool.navigateTo('../my-order/my-order')
             }else{
-                Tool.showSuccessToast(req.responseObject.msg)
+              Tool.showSuccessToast(req.responseObject.msg)
             }
 
         };

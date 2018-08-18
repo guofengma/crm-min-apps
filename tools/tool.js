@@ -185,9 +185,11 @@ export default class Tool {
     // 日期倒计时 
 
     static getDistanceTime(time, self,n) {
-      let endTime = new Date(Date.parse(time.replace(/-/g, "/")));/*replace将时间字符串中所有的'-'替换成'/',parse将时间格式的字符串转换成毫秒*/
+      /*replace将时间字符串中所有的'-'替换成'/',parse将时间格式的字符串转换成毫秒*/
+      let endTime = new Date(Date.parse(time.replace(/-/g, "/")));
       let nowTime = new Date();
-      let distance = endTime.getTime() - nowTime.getTime();/*getTime把一个date对象转换成毫秒*/
+      /*getTime把一个date对象转换成毫秒*/
+      let distance = endTime.getTime() - nowTime.getTime();
       let day = 0;
       let hour = 0;
       let minute = 0;

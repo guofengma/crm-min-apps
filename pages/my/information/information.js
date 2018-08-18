@@ -8,7 +8,8 @@ Page({
         storeMessageNum:''
     },
     onLoad: function (options) {
-        this.queryPushNum()
+      this.queryPushNum()
+      Event.on('queryPushNum', this.queryPushNum, this)
     },
     onShow: function () {
     },
@@ -55,5 +56,6 @@ Page({
         })
     },
     onUnload: function () {
+      Event.off('queryPushNum', this.queryPushNum)
     },
 })

@@ -50,9 +50,9 @@ App({
     },
     getUserInfos(code) {
         let self = this
-        if (global.Storage.getUserCookie() === 'out'){
-          return
-        } 
+        // if (global.Storage.getUserCookie() === 'out'){
+        //   return
+        // } 
         self.toLogin(code)
         wx.getSetting({
             success: res => {

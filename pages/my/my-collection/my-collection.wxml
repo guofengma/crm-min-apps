@@ -16,7 +16,7 @@
               <text wx:if='{{item.min_payment}}' class='label-jf'>积分</text>
             </view>
             <view class='text-view'>
-              <text class='red'>¥{{item.group_price}}</text>
+              <text class='red'>¥{{item.price}}</text>
               <text class='gray'>¥{{item.original_price}}</text>
             </view> 
           </view>

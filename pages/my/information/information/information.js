@@ -28,6 +28,7 @@ Page({
                 for (let i in req.responseObject.data.data) {
                     let item = req.responseObject.data.data[i];
                     item.creatTime = Tool.formatTime(item.creatTime);
+                    item.pushTime = Tool.formatTime(item.pushTime);
                     item.title=this.data.title[item.type-1];
                     item.payStyle=this.payStyle(item.payType);
                     datas.push(item)
@@ -43,8 +44,8 @@ Page({
                 } else {
                     this.data.hasNext = false
                 }
+                Event.emit('queryPushNum')
             };
-            Tool.showErrMsg(r)
             r.addToQueue();
         }
 
@@ -81,6 +82,7 @@ Page({
     informationDetail(e){
         let type=e.currentTarget.dataset.type;
         let id=e.currentTarget.dataset.id;
+        let tdId=e.currentTarget.dataset.tdid;
         let page='';
         if (!this.didLogin()) return;
         switch (type){
@@ -88,19 +90,19 @@ Page({
                 page='../informationDetail/informationDetail?id='+id+'&type='+type;//支付成功
                 break;
             case 2:
-                page='../../my-order/my-order?index='+3;//订单发货
+                page='../../orderDetail/orderDetail?orderId='+tdId+'&status=3';//订单发货
                 break;
             case 3:
-                page='../../my-order/my-order?index='+0;//订单超时
+                page='../../orderDetail/orderDetail?orderId='+tdId+'&status=10';//订单超时
                 break;
             case 4:
-                page='/pages/after-sale/only-refund/only-refund-detail/only-refund-detail?returnProductId='+id;//退款申请
+                page = '/pages/after-sale/only-refund/only-refund-detail/only-refund-detail?returnProductId=' + tdId;//退款申请
                 break;
             case 5:
-                page='/pages/after-sale/return-goods/return-goods?returnProductId='+id;//退货申请
+                page = '/pages/after-sale/return-goods/return-goods?returnProductId=' + tdId;//退货申请
                 break;
             case 6:
-                page='/pages/after-sale/exchange-goods/exchange-goods?returnProductId='+id;//换货申请
+                page = '/pages/after-sale/exchange-goods/exchange-goods?returnProductId=' + tdId;//换货申请
                 break;
             case 7:
                 page='../informationDetail/informationDetail?id='+id+'&type='+type;//退款成功
@@ -109,7 +111,7 @@ Page({
                 page='../informationDetail/informationDetail?id='+id+'&type='+type;//提现申请驳回
                 break;
             case 15:
-                page='pages/my/coupon/my-coupon/my-coupon';//优惠券
+                page='/pages/my/coupon/my-coupon/my-coupon';//优惠券
                 break;
         }
         Tool.navigateTo(page)

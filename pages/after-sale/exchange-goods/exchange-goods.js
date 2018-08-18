@@ -35,6 +35,8 @@ Page({
     let r = RequestFactory.findReturnProductById(params)
     r.finishBlock = (req) => {
       let datas = req.responseObject.data
+      datas.receive.recevicePhone = datas.receive.recevice_phone
+      // datas.returnProduct.
       let resultIndex = 0
       let status = datas.returnProduct.status
       let expressNo = this.data.expressNo

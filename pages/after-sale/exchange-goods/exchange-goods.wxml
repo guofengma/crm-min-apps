@@ -17,7 +17,7 @@
 </view>
 <!--地址信息  -->
 <view class='address active whiteBg'>
-  <template is="address-info" data="{{addressType,...list.address,hasData:true}}"/>
+  <template is="address-info" data="{{addressType,...datas.receive,hasData:true}}"/>
 </view>
 
 <!--商家地址  -->
@@ -37,7 +37,7 @@
 
 <view class='exchange-info font-26 '>
   <view class='flexR-sb after-sale-line gray'>换货订单</view>
-  <template is="after-sale-prd-info" data="{{...list}}"/>
+  <template is="after-sale-prd-info" data="{{...datas.returnProduct}}"/>
   <view class='exchange-content whiteBg gray'>
     <view>换货原因：{{datas.returnProduct.return_reason}}</view>
     <!-- <view>换货金额：¥{{list.showRefund}}</view> -->

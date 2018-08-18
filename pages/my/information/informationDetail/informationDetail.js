@@ -37,12 +37,11 @@ Page({
                   detail.total = detail.actual_amounts + detail.actual_balance + detail.actual_token_coin
                 }
                 detail.pay_time = detail.pay_time ? Tool.formatTime(detail.pay_time ):'';
-                detail.pay_time = detail.pay_time ? Tool.formatTime(detail.pay_time) : '';
+                detail.create_time = detail.create_time ? Tool.formatTime(detail.create_time) : '';
                 this.setData({
                     detail: detail
                 })
             }
-
         };
         Tool.showErrMsg(r);
         r.addToQueue();

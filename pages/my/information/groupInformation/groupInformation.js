@@ -21,6 +21,7 @@ Page({
                     time: Tool.formatTime(datas[0].pushTime)
                 })
             }
+            Event.emit('queryPushNum')
         };
         Tool.showErrMsg(r)
         r.addToQueue();

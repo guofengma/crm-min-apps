@@ -30,6 +30,7 @@ Page({
             let r = global.RequestFactory.queryNoticeMessage(params);
             let lists = this.data.list;
             r.finishBlock = (req) => {
+                Event.emit('queryPushNum')
                 let datas = [];
                 for (let i in req.responseObject.data.data) {
                   let item = req.responseObject.data.data[i];
