@@ -3,7 +3,7 @@ let { Tool, RequestFactory, Event, Storage } = global
 Page({
     data: {
         payList:'',
-        isShow:false, // 显示支付结果
+        isShow:true, // 显示支付结果
         result:1, //支付结果
         payWayActive:[false,true,false],
         useAmount:[false,false],
@@ -133,8 +133,14 @@ Page({
         result:bool,
       })
     },
-    goPage(){
-      Tool.redirectTo('/pages/my/my-order/my-order')
+    goPage(e){
+      let index = e.currentTarget.dataset.index
+      if(index == 1){
+        Tool.switchTab('/pages/index/index')
+      } else {
+        Tool.redirectTo('/pages/my/my-order/my-order')
+      }
+      
     },
     continuePay(payType) {
       if (this.data.payList.showTotalAmounts == 0) {

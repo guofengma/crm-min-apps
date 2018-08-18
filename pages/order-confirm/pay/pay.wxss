@@ -110,3 +110,15 @@
   bottom: 0;
   font-size: 20rpx;
 }
+.btn-sm{
+  width: 186rpx;
+	height: 60rpx;
+	border-radius: 10rpx;
+	border:  1rpx solid #d51243;
+}
+.btn-left{
+  margin-right: 40rpx;
+}
+.btn-sm-veiw{
+  margin: 50rpx 0 35rpx 0;
+}

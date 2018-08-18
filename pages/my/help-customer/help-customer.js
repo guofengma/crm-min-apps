@@ -50,6 +50,15 @@ Page({
       let id = e.currentTarget.dataset.typeid
       Tool.navigateTo('questionList/questionList?id='+id)
     },
+    makePhoneCall() {
+      wx.makePhoneCall({
+        phoneNumber: '17612187031',
+        success: () => {
+          console.log("成功拨打电话")
+        }
+      })
+    },
     onUnload: function () {
+      
     }
 })
