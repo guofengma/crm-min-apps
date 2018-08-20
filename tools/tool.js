@@ -840,7 +840,8 @@ export default class Tool {
     // 是否登录
 
     static didLogin(that) {
-      let didLogin = global.Storage.getUserCookie() !='out' ? true : false
+      // let didLogin = global.Storage.getUserCookie() !='out' ? true : false
+      let didLogin = global.Storage.getUserCookie()? true : false
       that.setData({
         didLogin: didLogin
       })

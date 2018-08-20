@@ -28,6 +28,7 @@ Page({
       this.setData({
         datas: datas
       })
+      Event.emit('getDetail')
     };
     Tool.showErrMsg(r)
     r.addToQueue();

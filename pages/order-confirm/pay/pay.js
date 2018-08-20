@@ -3,7 +3,7 @@ let { Tool, RequestFactory, Event, Storage } = global
 Page({
     data: {
         payList:'',
-        isShow:true, // 显示支付结果
+        isShow:false, // 显示支付结果
         result:1, //支付结果
         payWayActive:[false,true,false],
         useAmount:[false,false],

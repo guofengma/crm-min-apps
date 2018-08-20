@@ -62,7 +62,7 @@ Page({
         datas: datas,
         resultIndex: resultIndex
       })
-
+      Event.emit('getDetail')
     };
     Tool.showErrMsg(r)
     r.addToQueue();

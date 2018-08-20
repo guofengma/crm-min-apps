@@ -1,11 +1,12 @@
 <view class="help-customer">
   <view class="header">
     <view class="people"></view>
-    <view class="content">
-      <text class='tips'>您好，我是小朵，下面帮助没有解决您的需求,
-        <text class="color-red">可以点击我</text>进行反馈哦
-      </text>
+    <button  class='go-cart-view contact-btn'
+            session-from="nickName={{userInfos.nickname}}|avatarUrl={{userInfos.headImg}}|referrerTitle={{ysf.title}}"
+            open-type="contact">
+       <view class="content"> <text class='tips'>您好，我是小朵，下面帮助没有解决您的需求,<text class="color-red">可以点击我</text>进行反馈哦</text>
     </view>
+    </button>
   </view>
   <view class="hot-question">热门问题</view>
   <view class="question-area">

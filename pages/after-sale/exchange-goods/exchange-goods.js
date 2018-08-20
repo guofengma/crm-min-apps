@@ -71,6 +71,7 @@ Page({
         resultIndex: resultIndex,
         time: time
       })
+      Event.emit('getDetail')
     };
     Tool.showErrMsg(r)
     r.addToQueue();

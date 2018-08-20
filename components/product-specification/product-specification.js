@@ -14,48 +14,38 @@ Component({
     isSelect:false,// 是否选择了商品类型
     productType: '',  // 已选择的类型
     isActive:[{index:'',val:''}],
-    selectPrdList:'', //已选的类型的商品价格等信息
+    selectPrdList:{}, //已选的类型的商品价格等信息
     tips:'',// 提示语
     typeClicked:0, // 0 规格栏点击 1 加入购物车点击 2 立即购买点击
-    stockArr:[]
   },
   methods: {
     makeSureType(show){
       // 点击确定 
-      if (this.data.isActive.length == this.properties.productTypeList.length){
-        if (!this.isSelectAll()) return
-        let isActive = this.data.isActive
-        let productType = []
-        for (let i = 0; i < isActive.length;i++){
-          if (isActive[i]){
-            productType.push(isActive[i].val)
-          }
-        }
-        // 拼接已选的类型 匹配库存和价格
-        let seletType = productType.join('-')
-        let index = this.showCurrentInfo(seletType)
-        if (this.data.selectPrdList.stock === 0) {
-          Tool.showAlert('库存不足,请选择其他产品')
-          return
-        } 
-        // 已选择的类型
-        let productType2 = '已选："' + productType.join('""') + '"'
+      if (!this.isSelectAll()) return
+      let isActive = this.data.isActive
+      let productType = []
+      isActive.forEach((item, index) => {
+        productType.push(item.val)
+      })
+      // 拼接已选的类型 匹配库存和价格
+      let seletType = productType.join('-')
+      // 显示价格
+      let index = this.showCurrentInfo(seletType)
+
+      // 如果被选择的库存小于用户输入的库存 发生在先选择数量再选择规格的情况下
+      if (this.data.selectPrdList.stock < this.data.innerCount) {
         this.setData({
-          productType: productType2
+          innerCount: this.data.selectPrdList.stock,
         })
-        if (show !== true){
-          if (this.data.selectPrdList.stock < this.data.innerCount) {
-            Tool.showAlert('当前产品最多只能购买' + this.data.selectPrdList.stock + '件哦~')
-            return
-          }
-          if (isActive.length == 1 && !isActive[0].val){
-            Tool.showAlert('请选择产品规格')
-            return
-          }
-         
-          this.triggerEvent('subClicked', { ...index, typeClicked: this.data.typeClicked, productType: productType2 });
-          this.isVisiableClicked()
-        }
+      }
+      // 已选择的类型
+      let productType2 = '已选："' + productType.join('""') + '"'
+      this.setData({
+        productType: productType2
+      })
+      if(show != true){
+        this.triggerEvent('subClicked', { ...index, typeClicked: this.data.typeClicked, productType: productType2 });
+        this.isVisiableClicked()
       }
     },
     showCurrentInfo(types){
@@ -72,27 +62,35 @@ Component({
     },
     typeListClicked(e){
       // 选择的类型 使其 active
+
       let key = e.currentTarget.dataset.type
-      let val = e.currentTarget.dataset.index
-      let typeVal = e.currentTarget.dataset.typename
+      let index = e.currentTarget.dataset.index
+      let val = e.currentTarget.dataset.typename
       let id = e.currentTarget.dataset.id
-      let obj = this.data.isActive
+
+      // 深复制数组
+      let obj = [...this.data.isActive]
       let canclick = e.currentTarget.dataset.canclick
       if (!canclick) return
-      obj[key]={}
-      obj[key].index = val
-      obj[key].val = typeVal
-      obj[key].id = id
+      obj[key]={index,val,id}
       let spec_id = []
-      for(let i=0;i<obj.length;i++){
-        if (obj[i]!== undefined){
-          spec_id[i] = obj[i].id
-        } 
-      }
-      let length = spec_id.length == this.properties.productTypeList.length? true:false
+      
+      // 如果二次点击同一个规格 那么去掉 只点击一次 就加入请求
+      this.data.isActive.forEach((item,index)=>{
+        if (item.id == obj[key].id){
+          spec_id[index] = undefined
+          obj[key] = {}
+        } else {
+          for (let i = 0; i < obj.length; i++) {
+            if (obj[i] !== undefined) {
+              spec_id[i] = obj[i].id
+            }
+          }
+        }
+      })
+      // 数组长度等于规格清单数组长度
       spec_id.length = this.properties.productTypeList.length
-      let params = spec_id
-      this.findProductStockBySpec(params, key, val, length,obj)
+      this.findProductStockBySpec(spec_id, key, index,obj)
     },
     isVisiableClicked(n){
       // 规格选择提示拼接
@@ -119,47 +117,42 @@ Component({
         return
       }
       let count = e.detail.innerCount;
+      if (this.data.selectPrdList.stock < count){
+        Tool.showAlert('当前产品最多只能购买' + this.data.selectPrdList.stock + '件哦~')
+        count = this.data.selectPrdList.stock
+      }
       this.setData({
         innerCount: count,
       })
       this.triggerEvent('counterInputOnChange', this.data.innerCount);
     },
-    findProductStockBySpec(id, key, val,length,obj){
+    findProductStockBySpec(idParams, key, index ,obj){
       let productTypeList = this.properties.productTypeList
       let specId = []
-      for(let i=0;i<id.length;i++){
-        if(id[i]!==undefined){
-          specId.push(id[i])
+      idParams.forEach((item,index)=>{
+        if (item !== undefined) {
+          specId.push(item)
         }
-      }
+      })
+
       let params = {
         productId: this.properties.productInfo.id,
         specId: specId.join(',')
       }
 
-      let idParams = id
-      
-      let stockArr = this.data.stockArr
       let r = r = RequestFactory.findProductStockBySpec(params);
       r.finishBlock = (req) => {
         let datas = req.responseObject.data
-        console.log(key, val, length)
-        if(length){
-          for (let i = 0; i < productTypeList.length; i++) {
-            for (let j = 0; j < productTypeList[i].types.length; j++){
-              if (key != i && val!=j){
-                productTypeList[i].types[j] = true
-              }
-            }
-          }
-          if(datas.length==0){
-            productTypeList[key].types[val] = null
-            obj[key].index = null
-          }
+        let isSelectAll = this.isSelectAll()
+        // 已经选好所以的规格值以后 更换某个规格 但无库存的情况下置灰
+        if (datas.length == 0 && isSelectAll) {
+          productTypeList[key].types[index] = null
+          obj[key].index = null
         }
+        // 渲染没有选择的那一列是否有库存
         for (let a = 0; a < idParams.length; a++) {
           if (idParams[a] === undefined) {
-            productTypeList[a].types=[]
+            productTypeList[a].types = []
             datas.forEach((item) => {
               let idArr = item.spec_ids.split(',')
               item.idArr = idArr
@@ -175,31 +168,33 @@ Component({
           }
         }     
         
-        this.triggerEvent('productTypeListClicked', { productTypeList});
-
-        if (this.data.isActive.length == this.properties.productTypeList.length) {
-          //if (!this.isSelectAll()) return
-          this.makeSureType(true)
+        // 如果返回有数据 或者 无数据的情况下并没有选完所以的规格 刷新数据
+        if (datas.length > 0 || (datas.length == 0 && !isSelectAll)) {
+          this.setData({
+            isActive: obj,
+            datas: datas
+          })
         }
+        // 渲染规格
 
-        // 如果类型选择完毕 则马上显示对应的价格和库存
-        this.setData({
-          datas: datas,
-          idParams: idParams,
-          isActive: obj
-        })
+        this.triggerEvent('productTypeListClicked', { productTypeList });
+
+        // 渲染对应的库存和价格
+        this.makeSureType(true)
       };
       Tool.showErrMsg(r)
       r.addToQueue();
     },
-    isSelectAll(){
+    isSelectAll(){ // 是否选择了所有的规格选项
       let isActive = this.data.isActive
-      for(let i = 0; i<isActive.length;i++){
-        if (isActive[i] === undefined) return false 
-        if (isActive[i].id === undefined){
+      if (!(this.data.isActive.length == this.properties.productTypeList.length)){
+        return false 
+      }
+      isActive.forEach((item,index)=>{
+        if (item.id == undefined || item === undefined ){
           return false 
         }
-      }
+      })
       return true
     }
   },

@@ -36,11 +36,12 @@ Page({
         this.setData({
             orderId: options.orderId,
             status: options.status,
-            state: this.orderState(options.status)//订单状态相关信息
+            // state:
         });
         if(options.status==4){
             this.addressType=2
         }
+        Event.on('getDetail', this.getDetail,this)
         this.getDetail();//获取详情
        
     },
@@ -77,7 +78,7 @@ Page({
             this.setData({
                 detail: detail,
                 address: address,
-                state:this.data.state
+                state: this.orderState(detail.status)//订单状态相关信息this.data.state
             })
             this.middleBtn()
             if (detail.status == 1 || detail.status==3 ){ // 开始倒计时
@@ -474,6 +475,7 @@ Page({
       r.addToQueue();
     },
     onUnload: function () {
-      clearTimeout(this.data.time);
+      clearTimeout(this.data.time)
+      Event.off('getDetail', this.getDetail)
     },
 })
