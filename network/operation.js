@@ -61,6 +61,12 @@ export default class Operation {
 
         // 获取区
         this.getAreaList = '/user/area/getAreaList'
+    
+    /**********  获取数据字典 *******************/
+
+        // dType 1 取消订单 2 退款理由 3 换货理由 4 退货退款 5 问题类型 
+
+        this.queryDictionaryDetailsType = '/user/dictionary/queryDictionaryDetailsType'
 
     /********************** 搜索 *********************/  
     
@@ -90,6 +96,10 @@ export default class Operation {
         // 礼包规格
 
         this.getGiftBagSpec = '/order/giftBag/getGiftBagSpec'
+
+        // 礼包详情
+
+        this.getGiftBagDetail = '/order/giftBag/getGiftBagDetail'
 
     /********************** 购物车 *********************/
         // 新增

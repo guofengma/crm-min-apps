@@ -10,16 +10,16 @@ Page({
         info: "退款说明",
         placeholder:"请填写退款说明",
         list: [
-          '多拍/错拍/不想要', 
-          '快递/物流一直未收到', 
-          '未按约定时间发货',
-          '商品/破损/少件/污渍等', 
-          '货物破损已拒签',
-          '假冒品牌/产品',
-          '未按约定时间发货',
-          '退运费',
-          '发票问题',
-          '其他'
+          // '多拍/错拍/不想要', 
+          // '快递/物流一直未收到', 
+          // '未按约定时间发货',
+          // '商品/破损/少件/污渍等', 
+          // '货物破损已拒签',
+          // '假冒品牌/产品',
+          // '未按约定时间发货',
+          // '退运费',
+          // '发票问题',
+          // '其他'
         ]
       },
       {
@@ -29,14 +29,14 @@ Page({
         info:"退货说明",
         placeholder: "请填写退货说明",
         list: [
-          '7天无理由退换货',
-          '商品描述的尺寸与实物不符',
-          '商品/破损/少件/污渍等',
-          '假冒品牌/产品',
-          '包装破损/商品破损',
-          '退运费',
-          '发票问题',
-          '其他'
+          // '7天无理由退换货',
+          // '商品描述的尺寸与实物不符',
+          // '商品/破损/少件/污渍等',
+          // '假冒品牌/产品',
+          // '包装破损/商品破损',
+          // '退运费',
+          // '发票问题',
+          // '其他'
         ]
       },
       {
@@ -46,17 +46,20 @@ Page({
         info: "换货说明",
         placeholder: "请填写退货说明",
         list: [
-          '7天无理由退换货',
-          '商品描述的尺寸与实物不符',
-          '商品/破损/少件/污渍等',
-          '质量存在问题',
-          '假冒品牌/产品',
-          '其他'
+          // '7天无理由退换货',
+          // '商品描述的尺寸与实物不符',
+          // '商品/破损/少件/污渍等',
+          // '质量存在问题',
+          // '假冒品牌/产品',
+          // '其他'
         ]
       }
     ],
     activeIndex:'',
     refundType: 0, // 0为仅退款 1为退货退款  2为换货
+    queryReasonParams:[
+      2,4,3
+    ], // 2 退款理由 3 换货理由 4 退货退款
     originalImg:[],
     smallImg:[],
     remark:'',
@@ -82,6 +85,23 @@ Page({
       title: this.data.reason[options.refundType].navbar
     })
     this.findOrderProductInfo()
+    this.queryDictionaryDetailsType(options.refundType)
+  },
+  queryDictionaryDetailsType(refundType){
+    let params = {
+      dType: this.data.queryReasonParams[refundType],
+    }
+    let r = RequestFactory.queryDictionaryDetailsType(params)
+
+    r.finishBlock = (req) => {
+
+      this.data.reason[refundType].list = req.responseObject.data
+      this.setData({
+        reason: this.data.reason
+      })
+    }
+    Tool.showErrMsg(r)
+    r.addToQueue();
   },
   findOrderProductInfo(){
     let params = {

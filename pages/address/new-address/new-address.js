@@ -61,6 +61,7 @@ Page({
           Tool.showAlert("请输入详细地址");
           return
       }
+      
       if (this.data.region[0]) {
         params.provinceCode = this.data.region[0].zipcode;
       }

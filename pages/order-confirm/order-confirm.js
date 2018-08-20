@@ -162,7 +162,7 @@ Page({
     if (this.data.addressType!=1){
       Tool.navigateTo('/pages/address/choose-address/choose-address?addressType=' + this.data.addressType)
     } else {
-      Tool.navigateTo('/pages/address/select-express-address/select-express-address?addressType=' + this.data.addressType)
+      Tool.navigateTo('/pages/address/select-express-address/select-express-address?addressType=' + this.data.addressType+'&door=1')
     }
   },
   changeAddressType(e){

@@ -25,7 +25,7 @@ Page({
       children: [],
     }],
     door:1, // 0 是礼包 1是普通产品
-    isShowGiftTips:false, //是否显示礼包升级提示
+    // isShowGiftTips:false, //是否显示礼包升级提示
     size:0
   },
   onLoad: function (options) {
@@ -80,7 +80,6 @@ Page({
     }
     params.productStatus =4
     params.product_id = this.data.productInfo.id
-    console.log(params.product_id)
     params.stock = this.data.selectType.stock
     params.showName = this.data.productInfo.name
     params.showType = this.data.selectType.typeName
@@ -132,8 +131,9 @@ Page({
     r.addToQueue();
   },
   getGiftBagSpec(){
+
     let params = {
-      giftBagId: 58,
+      giftBagId: 1,
     }
     let r = RequestFactory.getGiftBagSpec(params)
 
@@ -340,11 +340,11 @@ Page({
     let link = e.currentTarget.dataset.src
     console.log(link)
   },
-  closeMask(){
-    this.setData({
-      isShowGiftTips: !this.data.isShowGiftTips
-    })
-  },
+  // closeMask(){
+  //   this.setData({
+  //     isShowGiftTips: !this.data.isShowGiftTips
+  //   })
+  // },
   getShoppingCartList() {
     // 查询购物车
     if (!this.data.didLogin){

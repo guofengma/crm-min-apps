@@ -137,7 +137,14 @@ export default class RequestFactory {
     return this.request(url, params, '获取区');
   }
 
-  // 获取商品列表 queryProductListAPP
+  // 获取商品列表 queryDictionaryDetailsType
+
+  // 获取区
+  static queryDictionaryDetailsType(params) {
+    let url = Operation.sharedInstance().queryDictionaryDetailsType;
+    return this.request(url, params, '获取数字字典');
+  }
+
   
   /**************产品********************/
 
@@ -184,6 +191,12 @@ export default class RequestFactory {
     params.port = '8103';
     let url = Operation.sharedInstance().getGiftBagSpec;
     return this.request(url, params, '礼包规格', true);
+  }
+
+  static getGiftBagDetail(params) {
+    params.port = '8103';
+    let url = Operation.sharedInstance().getGiftBagDetail;
+    return this.request(url, params, '礼包详情', true);
   }
 
 

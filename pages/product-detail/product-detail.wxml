@@ -147,7 +147,7 @@
 
 </scroll-view>
 
-<tips-info isShoW='{{isShowGiftTips}}' header='温馨提示' bind:closeMask=''>
+<!-- <tips-info isShoW='{{isShowGiftTips}}' header='温馨提示' bind:closeMask=''>
   <view class='tips-title'>XXX升级礼包为定制产品</view>
   <view class='font-28 tips-content'>
     <view class='first-tips'>
@@ -157,4 +157,4 @@
       消费权限，该礼包产品不可退换货，如有产品质量问题，可联系客服进行申诉
     </view>
   </view>
-</tips-info>
+</tips-info> -->

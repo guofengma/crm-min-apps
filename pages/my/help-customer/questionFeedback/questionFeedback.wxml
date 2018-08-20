@@ -3,7 +3,7 @@
     <view class="type">
         <view class="item {{mask?'grey':''}}" bindtap="questionType">
             <view>
-                <text>{{typeArr[activeIndex]}}</text>
+                <text>{{typeArr[activeIndex].dValue}}</text>
             </view>
             <view>
                 <image class="jt-img" src="{{mask?'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/expand-btn.png':'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png'}}" mode='widthFix'></image>
@@ -32,9 +32,9 @@
     <view wx:if="{{mask}}" class="mask">
         <view class="type-area">
           <block wx:for='{{typeArr}}' wx:key='unique'>
-            <view class="item" bindtap="chooseType" data-index="{{index}}" data-content="{{item}}" wx:if='{{index>0}}'>
+            <view class="item" bindtap="chooseType" data-index="{{index}}" data-content="{{item.dValue}}" wx:if='{{index>0}}'>
               <view>
-                  <text class="{{activeIndex==index?'color-red':''}}">{{item}}</text>
+                  <text class="{{activeIndex==index?'color-red':''}}">{{item.dValue}}</text>
               </view>
               <view>
                   <image class="jt-img" src="{{activeIndex==index?  bgImgUrl:''}}" mode='widthFix'></image>

@@ -18,8 +18,26 @@ Page({
         content:'',
         bgImgUrl:"https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/checked.png",
         typeArr:[
-          "请选择问题类型","账户问题", "营销问题", "购买流程","推广机制"
+          // "请选择问题类型","账户问题", "营销问题", "购买流程","推广机制"
         ]
+    },
+    onLoad: function (options) {
+      this.queryDictionaryDetailsType()
+    },
+    queryDictionaryDetailsType() {
+      let params = {
+        dType:5,
+      }
+      let r = RequestFactory.queryDictionaryDetailsType(params)
+
+      r.finishBlock = (req) => {
+        req.responseObject.data.unshift({ "dValue": "请选择问题类型", "dKey": "" })
+        this.setData({
+          typeArr: req.responseObject.data
+        })
+      }
+      Tool.showErrMsg(r)
+      r.addToQueue();
     },
     //选择问题类型弹窗
     questionType() {
@@ -92,8 +110,7 @@ Page({
           })
       }
     },
-    onLoad: function (options) {
-    },
+    
     onUnload: function () {
     }
 })

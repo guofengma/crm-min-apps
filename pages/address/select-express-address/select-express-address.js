@@ -8,15 +8,20 @@ Page({
   onLoad: function (options) {
     this.queryUserAddressList()
     Event.on('updateAdressList', this.queryUserAddressList, this)
+    this.setData({
+      door: options.door || ''
+    })
   },
   onShow: function () {
 
   },
   addressClicked(e) {
-    let index = e.currentTarget.dataset.index
-    Storage.setOrderAddress(this.data.addressList[index])
-    Event.emit('updateOrderAddress')
-    Tool.navigationPop()
+   if(this.data.door==1){
+     let index = e.currentTarget.dataset.index
+     Storage.setOrderAddress(this.data.addressList[index])
+     Event.emit('updateOrderAddress')
+     Tool.navigationPop()
+   }
   },
   queryUserAddressList(){
     let r = RequestFactory.queryUserAddressList();

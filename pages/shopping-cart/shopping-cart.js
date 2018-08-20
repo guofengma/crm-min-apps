@@ -208,7 +208,9 @@ Page({
     let totalPrice = 0
     for (let i = 0; i<items.length;i++){
       if (items[i].isSelect){
-        totalPrice += items[i].showCount * items[i].showPrice
+        // totalPrice += items[i].showCount * items[i].showPrice
+        let unitPrice = Tool.mul(items[i].showCount,items[i].showPrice)
+        totalPrice = Tool.add(totalPrice, unitPrice)
         let list = { "price_id": items[i].id, "num": items[i].showCount }
         selectList.push(list)
       }

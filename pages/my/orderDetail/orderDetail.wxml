@@ -137,9 +137,9 @@
         <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='再次购买'}}" bindtap="continueBuy">
           {{state.bottomBtn[1]}}
         </view>
-        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='订单退款'}}" bindtap="orderRefund">
+        <!-- <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='订单退款'}}" bindtap="orderRefund">
           {{state.bottomBtn[1]}}
-        </view>  
+        </view>   -->
     </block>
 
 </view>

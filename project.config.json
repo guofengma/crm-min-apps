@@ -210,10 +210,10 @@
 					"query": "door=1"
 				},
 				{
-					"id": -1,
+					"id": 29,
 					"name": "申请售后",
 					"pathName": "pages/after-sale/apply-sale-after/apply-sale-after",
-					"query": ""
+					"query": "refundType=0"
 				},
 				{
 					"id": -1,
@@ -231,6 +231,12 @@
 					"id": -1,
 					"name": "支付页面",
 					"pathName": "pages/order-confirm/pay/pay",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "礼包页面",
+					"pathName": "pages/product-detail/gift-bag-detail/gift-bag-detail",
 					"query": ""
 				}
 			]
