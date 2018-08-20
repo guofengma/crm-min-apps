@@ -72,7 +72,9 @@
     line-height: 69rpx;
     border-radius: 10rpx;
     font-size: 28rpx;
-    margin-right: 10rpx;
+}
+.btn-content>view:first-child{
+  margin-right: 30rpx;
 }
 .tips-delete-order .leftBtn{
     background-color: #eee;

@@ -96,15 +96,15 @@
         <!--复制按钮  -->
         <view class='copy-btn gray flexR' bindtap="copy">复制</view>
         <view class='content gray'>
-            <view>订单编号：
-              <text selectable="true">{{detail.orderNum}}</text>
-            </view>
-            <view>创建时间：{{detail.createTime}}</view>
-            <view wx:if='{{detail.sysPayTime}}'>平台付款时间：{{detail.sysPayTime}}</view>
-            <view>三方付款时间：{{detail.payTime}}</view>
-            <view>三方交易号：{{detail.outTradeNo?detail.outTradeNo:''}}</view>
-            <view>发货时间：{{detail.sendTime}}</view>
-            <view>成交时间：{{detail.payTime}}</view>
+          <view>订单编号：
+            <text selectable="true">{{detail.orderNum}}</text>
+          </view>
+          <view>创建时间：{{detail.createTime}}</view>
+          <view wx:if='{{detail.sysPayTime}}'>平台付款时间：{{detail.sysPayTime}}</view>
+          <view wx:if='{{detail.payTime}}'>三方付款时间：{{detail.payTime}}</view>
+          <view wx:if='{{detail.outTradeNo}}'>三方交易号：{{detail.outTradeNo}}</view>
+          <view wx:if='{{detail.sendTime}}'>发货时间：{{detail.sendTime}}</view>
+          <view wx:if='{{detail.payTime}}'>成交时间：{{detail.payTime}}</view>
         </view>
     </view>
 
@@ -132,7 +132,7 @@
           {{state.bottomBtn[1]}}
         </view>
         <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='继续支付'}}" bindtap="continuePay">
-          {{state.bottomBtn[1]}}
+          {{detail.outTradeNo? "继续支付":"去支付"}}
         </view>
         <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='再次购买'}}" bindtap="continueBuy">
           {{state.bottomBtn[1]}}

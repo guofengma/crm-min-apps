@@ -8,13 +8,14 @@
 .wrap{margin-top: 30rpx}
 .item{background: #fff;height: 120rpx;line-height:120rpx;padding: 0 30rpx;display: flex;}
 .item .left{width: 75%}
+
 .item view:nth-child(2){width: 25%;text-align: right;margin-right: 20rpx}
 .line{border-bottom: 1px solid #eee}
 .item image{
     width:70rpx;
     height:70rpx;
     vertical-align:middle;
-    margin-right: 10rpx;
+    margin-right: 14px;
 }
 
 .jt-img{

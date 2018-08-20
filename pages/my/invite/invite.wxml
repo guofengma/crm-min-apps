@@ -19,7 +19,9 @@
             <view class="tip">长按识别二维码参与活动免费领取</view>
             <view class="opr flexR-sb">
               <!-- <view>分享</view> -->
-              <button class='share'  open-type="share" >分享</button>
+              <view>
+                <button class='share'  open-type="share" >分享</button>
+              </view>
               <view catchtap='saveImgToPhotosAlbumTap'>保存图片</view>
             </view>
         </view>

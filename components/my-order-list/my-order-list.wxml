@@ -73,7 +73,9 @@
                 </view>
                 <view class="right" wx:elif="{{num==1||(num==0&&item.orderStatus==1)}}">
                     <view class="cancel-btn" bindtap="cancelItem" data-ordernum="{{item.orderNum}}">取消订单</view>
-                    <view class="pay-btn" bindtap='continuePay'  data-item="{{item}}">立即支付</view>
+                    <view class="pay-btn" bindtap='continuePay'  data-item="{{item}}">
+                      {{item.outTrandNo? "继续支付":"去支付"}}
+                    </view>
                 </view>
                 <view class="right" wx:elif="{{num==3||(num==0&&item.orderStatus==3)}}">
                     <view class="cancel-btn" bindtap="logistics" data-id="{{item.id}}" wx:if="{{item.orderStatus!=4}}">查看物流</view>

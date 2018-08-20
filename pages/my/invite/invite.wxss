@@ -70,29 +70,22 @@
     margin-top: 80rpx;
 }
 .opr view,.share{
-    /* display: inline-block; */
     text-align: center;
     width: 37%;
     height: 96rpx;
     line-height: 96rpx;
     border-radius: 10rpx;
-    border: solid 1rpx #513187;
+    border: 1rpx  solid #513187;
     font-size: 30rpx;
     color: #ffffff;
     font-weight: 600;
 }
-.opr .share{
-    /* margin-right:8%; */
-    margin: 0;
+.share{
     background-color: transparent;
+    border:0;
+    width: 100%;
 }
-/*.footer{*/
-    /*position: absolute;*/
-    /*bottom:120rpx;*/
-    /*left: 50%;*/
-    /*transform: translateX(-50%);*/
-    /*width: 100%;*/
-/*}*/
+
 .footer{
     position: fixed;
     bottom: 0;

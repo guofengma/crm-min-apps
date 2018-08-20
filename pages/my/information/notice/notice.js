@@ -11,7 +11,7 @@ Page({
         hasNext: true//是否有下一页
     },
     onLoad: function (options) {
-          this.getData()
+       this.getData()
     },
     onShow: function () {
 
@@ -19,71 +19,66 @@ Page({
     },
     //获取数据
     getData() {
-        if (this.data.hasNext) {
-            let params = {
-                pageSize: this.data.pageSize,
-                page: this.data.currentPage,
-            };
+      if (this.data.hasNext) {
+        let params = {
+            pageSize: this.data.pageSize,
+            page: this.data.currentPage,
+        };
+        this.setData({
+            params: params
+        });
+        let r = global.RequestFactory.queryNoticeMessage(params);
+        let lists = this.data.list;
+        r.finishBlock = (req) => {
+            Event.emit('queryPushNum')
+            let datas = [];
+            for (let i in req.responseObject.data.data) {
+              let item = req.responseObject.data.data[i];
+              datas.push(item)
+              item.orderTime = Tool.formatTime(item.orderTime)
+            }
             this.setData({
-                params: params
+              list: lists.concat(datas),
             });
-            let r = global.RequestFactory.queryNoticeMessage(params);
-            let lists = this.data.list;
-            r.finishBlock = (req) => {
-                Event.emit('queryPushNum')
-                let datas = [];
-                for (let i in req.responseObject.data.data) {
-                  let item = req.responseObject.data.data[i];
-                  datas.push(item)
-                }
+            let list = lists.concat(datas)
+            let listArr = []
+            // 多次渲染模板
+            for (let i = 0; i < list.length; i++) {
+              listArr = [...list]
+              WxParse.wxParse('content' + i, 'html', list[i].content, this);
+              if (i === list.length - 1) {
+                WxParse.wxParseTemArray("list", 'content', list.length, this)
+              }
+            }
+            // 渲染模板以后 重置对象
+            this.data.list.map((item, index, arr) => {
+              Object.assign(arr[index][0], arr[index][0], listArr[index])
+            });
+            this.setData({
+              list: this.data.list,
+              totalPage: req.responseObject.data.total,
+            })
+            if (this.data.totalPage > this.data.currentPage) {
                 this.setData({
-                    list: lists.concat(datas),
-                });
-                let list = lists.concat(datas)
-                let that = this;
-                let listArr = []
-                for (let i = 0; i < list.length; i++) {
-                  listArr.push({ 
-                    "orderTime": Tool.formatTime(list[i].orderTime), 
-                    "pushCountry": list[i].pushCountry, 
-                    "title": list[i].title, 
-                    "noticeId": list[i].noticeId,
-                    "content": list[i].content, 
-                    "status": list[i].status
-                  })
-                  WxParse.wxParse('content' + i, 'html', list[i].content, this);
-                  if (i === list.length - 1) {
-                    WxParse.wxParseTemArray("list", 'content', list.length, this)
-                  }
-                }
-                let list2 = this.data.list 
-                list2.map((item, index, arr) => {
-                  arr[index][0].orderTime = listArr[index].orderTime
-                  arr[index][0].pushCountry = listArr[index].pushCountry
-                  arr[index][0].title = listArr[index].title
-                  arr[index][0].noticeId = listArr[index].noticeId
-                  arr[index][0].content = listArr[index].content
-                  arr[index][0].status = listArr[index].status
-                });
-                this.setData({
-                  list: list2,
-                  totalPage: req.responseObject.data.total,
+                    currentPage: ++this.data.currentPage
                 })
-                if (this.data.totalPage > this.data.currentPage) {
-                    this.setData({
-                        currentPage: ++this.data.currentPage
-                    })
-                } else {
-                    this.data.hasNext = false
-                }
-            };
-            Tool.showErrMsg(r)
-            r.addToQueue();
-        }
+            } else {
+                this.data.hasNext = false
+            }
+          };
+          Tool.showErrMsg(r)
+          r.addToQueue();
+      }
 
     },
     // 上拉加载更多
     onReachBottom() {
+      // let { totalPage, currentPage} = this.data
+      // currentPage++
+      // if (totalPage < currentPage) return
+      // this.setData({
+      //   currentPage: currentPage
+      // })
       this.getData();
     },
     //跳到详情页

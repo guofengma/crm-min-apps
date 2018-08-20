@@ -28,10 +28,12 @@
   position: relative;
 }
 .scroll-y{
-  padding: 0 40rpx;
   box-sizing: border-box;
   max-height: 680rpx;
   min-height: 200rpx;
+}
+.prd-type-info,.counter{
+  padding: 0 40rpx;
 }
 .header{
   padding-left: 280rpx;

@@ -983,6 +983,18 @@ export default class Tool {
       }
       return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
     }
+    
+    // 是否是iPhone 34rpx的底部像素差
 
+    static isIPhoneX(that) {
+      let isIPhoneX = global.Storage.sysInfo().isIphoneX
+      // console.log(global.Storage.sysInfo())
+      let className = isIPhoneX ? 'fixed-bottom-iPhoneX' : 'fixed-bottom'
+      let showBottom = isIPhoneX
+      that.setData({
+        isIPhoneX: { isIPhoneX, showBottom, className }
+      })
+      return { isIPhoneX, showBottom, className }
+    }
 }
 

@@ -19,9 +19,9 @@ Page({
         r.finishBlock = (req) => {
            let detail=req.responseObject.data;
            this.setData({
-               noticeNum:detail.noticeNum,
-               messageNum:detail.messageNum,
-               storeMessageNum:detail.storeMessageNum,
+            noticeNum:detail.noticeNum,
+            messageNum:detail.messageNum,
+            storeMessageNum:detail.storeMessageNum,
            })
         };
         Tool.showErrMsg(r)

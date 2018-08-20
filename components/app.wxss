@@ -1,3 +1,6 @@
+.sub-page{
+  height: 100%;
+}
 .flexR{
   display: flex;
   flex-direction: row;
@@ -164,7 +167,11 @@ button::after{
   bottom: 0;
   width: 100%;
 }
-
+.fixed-bottom-iPhoneX{
+  position: 34rpx;
+  bottom: 0;
+  width: 100%;
+}
 .fixed-top{
   position: fixed;
   top: 0;

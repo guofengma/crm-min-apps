@@ -2,7 +2,7 @@
 .order{
     font-size:26rpx;
     color: #222222;
-    margin-bottom: 20rpx;
+    margin-bottom:40rpx;
 }
 .bg-area{
     background: url("https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/dbj_02@2x.png") no-repeat top center;

@@ -13,8 +13,8 @@
     <view class="wrap">
         <view class="item">详细说明</view>
         <view class="detail-remark">
-            <textarea bindinput="detailRemark" maxlength="100" class="textarea" wx:if='{{!mask}}' placeholder="请输入一段说明文字..."/>
-            <view class='textarea' wx:else></view> 
+            <textarea bindinput="detailRemark" maxlength="100" class="textarea" wx:if='{{!mask&&!success}}' placeholder="请输入一段说明文字..."/>
+            <view class='textarea' wx:if="{{mask || success }}"></view> 
             <view class="number">{{count}}/100</view>
         </view>
     </view>
