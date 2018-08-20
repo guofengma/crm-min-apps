@@ -1,0 +1,3 @@
+<template name="iPhoneX-line">
+  <view class='iPhoneX-line fixed-bottom'></view>
+</template>
