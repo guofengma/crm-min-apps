@@ -213,7 +213,7 @@
 					"id": 29,
 					"name": "申请售后",
 					"pathName": "pages/after-sale/apply-sale-after/apply-sale-after",
-					"query": "refundType=0"
+					"query": "refundType=2"
 				},
 				{
 					"id": -1,

@@ -112,7 +112,7 @@
 
 <!--order bar  -->
 
-<view class='order-bar flexR boxSize' wx:if="{{status!=8}}">
+<view class='order-bar flexR boxSize' >
     <block>
         <view class='order-btn btn-left flexR' wx:if="{{state.bottomBtn[0]=='删除订单'}}" bindtap="deleteItem">
           {{state.bottomBtn[0]}}
