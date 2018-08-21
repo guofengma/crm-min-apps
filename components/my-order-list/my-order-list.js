@@ -11,14 +11,11 @@ Component({
     currentPage: 1, // 当前的页数
     pageSize: 10, // 每次加载请求的条数 默认10
     list: [],
-    hasNext: true,//是否有下一页
     tipVal: '',//是否暂无数据
     isCancel: false,//是否取消订单
     isDelete: false, //是否删除订单
     orderId: '',
     status: '',
-    content: '',//取消订单理由
-    reason: '',
     orderNum: '',
     key: 0,
     time:""
@@ -28,7 +25,6 @@ Component({
     getList(e) {
       this.setData({
         num: this.properties.num,
-        hasNext: true,
         list: [],
         tipVal: '',
         key: 0,
@@ -38,69 +34,63 @@ Component({
     },
     //获取数据
     getData(index) {
-      if (this.data.hasNext) {
-        let params = {
-          pageSize: this.data.pageSize,
-          page: this.data.currentPage,
-        };
-        if (this.properties.condition){
-          params.condition = this.properties.condition
+      let params = {
+        pageSize: this.data.pageSize,
+        page: this.data.currentPage,
+      };
+      if (this.properties.condition){
+        params.condition = this.properties.condition
+      }
+      this.setData({
+        params: params
+      });
+      let r;
+      if (index == 0) {//全部订单
+        r = RequestFactory.queryAllOrderPageList(params);
+      } else if (index == 1) {//待支付
+        r = RequestFactory.queryUnPaidOrderPageList(params);
+      } else if (index == 2) {//待发货
+        r = RequestFactory.queryUnSendOutOrderPageList(params);
+      } else if (index == 3) {//待收货
+        r = RequestFactory.queryWaitReceivingOrderPageList(params);
+      } else if (index == 4) {//已完成
+        r = RequestFactory.queryCompletedOrderPageList(params);
+      }
+      let list = this.data.list;
+      r.finishBlock = (req) => {
+        let datas = [];
+        let secondMap = new Map();
+        let key = this.data.key;
+        for (let i in req.responseObject.data.data) {
+          let item = req.responseObject.data.data[i];
+          item.createTime = Tool.formatTime(item.orderCreateTime);
+          // 这块是倒计时 
+          if (item.orderStatus == 1) {
+            let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
+            secondMap.set(key, 1);
+          }
+          key++;
+          datas.push(item);
         }
         this.setData({
-          params: params
+          list: list.concat(datas),
+          totalPage: req.responseObject.data.total,
+          secondArry: secondMap,
+          key: key
         });
-        let r;
-        if (index == 0) {//全部订单
-          r = RequestFactory.queryAllOrderPageList(params);
-        } else if (index == 1) {//待支付
-          r = RequestFactory.queryUnPaidOrderPageList(params);
-        } else if (index == 2) {//待发货
-          r = RequestFactory.queryUnSendOutOrderPageList(params);
-        } else if (index == 3) {//待收货
-          r = RequestFactory.queryWaitReceivingOrderPageList(params);
-        } else if (index == 4) {//已完成
-          r = RequestFactory.queryCompletedOrderPageList(params);
-        }
-        let list = this.data.list;
-        r.finishBlock = (req) => {
-          let datas = [];
-          let secondMap = new Map();
-          let key = this.data.key;
-          for (let i in req.responseObject.data.data) {
-            let item = req.responseObject.data.data[i];
-            item.createTime = Tool.formatTime(item.orderCreateTime);
-            // 这块是倒计时 
-            if (item.orderStatus == 1) {
-              let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
-              // let timeInterval = Tool.timeIntervalFromString(item.createTime);
-              // let nowTimeInterval = Tool.timeIntervalFromString(now);
-              // let duration = 30 * 60 - (nowTimeInterval - timeInterval);
-              secondMap.set(key, 1);
-            }
-            key++;
-            datas.push(item);
-          }
+
+        if (!this.data.list.length) {
           this.setData({
-            list: list.concat(datas),
-            totalPage: req.responseObject.data.total,
-            secondArry: secondMap,
-            key: key
+            tipVal: 2
           });
-
-          if (!this.data.list.length) {
-            this.setData({
-              tipVal: 2
-            });
-          }
-          // 这块是倒计时 暂时取消不做了
-          if (secondMap.size > 0) {
-            this.countdown(this);
-          }
-        };
-        Tool.showErrMsg(r)
-        r.addToQueue();
-      }
-
+        }
+        // 这块是倒计时 暂时取消不做了
+        if (secondMap.size > 0) {
+          this.countdown(this);
+        }
+      };
+      Tool.showErrMsg(r)
+      r.addToQueue();
     },
     // 上拉加载更多
     onReachBottom() {
@@ -154,8 +144,7 @@ Component({
         if (req.responseObject.code == 200) {
           this.setData({
             isDelete: false,
-            list: [],
-            hasNext: true
+            list: []
           });
           this.getData(this.data.num);
         } else {
@@ -169,8 +158,7 @@ Component({
     cancelOrder() {
       this.setData({
         isCancel: false,
-        list: [],
-        hasNext: true
+        list: []
       });
       this.getData(this.data.num);
     },
@@ -193,8 +181,7 @@ Component({
         r.finishBlock = (req) => {
           if (req.responseObject.code == 200) {
             that.setData({
-              list: [],
-              hasNext: true
+              list: []
             });
             that.getData(that.data.num);
           } else {

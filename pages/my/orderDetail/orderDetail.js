@@ -29,8 +29,6 @@ Page({
         detail: {},//详情信息
         orderId: '',//订单ID
         status: '',//订单状态
-        content:'',//取消订单理由
-        reason:'',
     },
     onLoad: function (options) {
         this.setData({

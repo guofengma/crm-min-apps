@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 33,
 			"list": [
 				{
 					"id": -1,
@@ -234,10 +234,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 33,
 					"name": "礼包页面",
 					"pathName": "pages/product-detail/gift-bag-detail/gift-bag-detail",
-					"query": ""
+					"query": "giftBagId=66"
 				}
 			]
 		}

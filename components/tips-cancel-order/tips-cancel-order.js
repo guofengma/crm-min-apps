@@ -6,7 +6,8 @@ Component({
     door:Number
   },
   data: {
-    reason:''
+    reason:'',
+    content:''
   },
   methods: {
     queryDictionaryDetailsType() { //获取取消订单的理由

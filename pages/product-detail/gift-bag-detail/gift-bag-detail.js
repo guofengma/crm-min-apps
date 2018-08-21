@@ -100,7 +100,7 @@ Page({
               attrs: { class: 'td frist-td' },
               children: [{
                 type: "text",
-                text: datas.infoValue[i].parm
+                text: datas.infoValue[i].param
               }]
             },
             {
@@ -108,7 +108,7 @@ Page({
               attrs: { class: 'td td2' },
               children: [{
                 type: "text",
-                text: datas.infoValue[i].param_value
+                text: datas.infoValue[i].paramValue
               }]
             }
             ]

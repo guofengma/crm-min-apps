@@ -14,9 +14,9 @@ export default class Request {
     // this.baseUrl = 'http://172.16.10.21:'
     // this.baseUrl = 'http://172.16.10.41:'
     // this.baseUrl = 'http://172.16.10.69:'
-    this.baseUrl = 'http://172.16.10.12:'
+    // this.baseUrl = 'http://172.16.10.12:'
     // this.baseUrl = 'http://172.16.10.29:'
-    // this.baseUrl = 'http://172.16.10.19:'
+    this.baseUrl = 'http://172.16.10.19:'
     // this.baseUrl = 'http://172.16.10.7:'
     // this.baseUrl = 'http://172.16.10.253:'
 
