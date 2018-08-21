@@ -450,7 +450,7 @@ export default class Operation {
 
         // 产品可用优惠劵列表
 
-        this.availableDiscountCouponForProduct = '/user/discountCoupon/availableDiscountCouponForProduct';
+        this.availableDiscountCouponForProduct = '/order/order/availableDiscountCouponForProduct';
         // this.availableDiscountCouponForProduct = '/user/discountCoupon/availableDiscountCoupon';
 
 

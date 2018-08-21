@@ -698,6 +698,7 @@ export default class RequestFactory {
   }
 
   static availableDiscountCouponForProduct(params) {
+    params.port = '8103'  
     let url = Operation.sharedInstance().availableDiscountCouponForProduct;
     return this.request(url, params, '产品可用优惠劵列表', true);
   }

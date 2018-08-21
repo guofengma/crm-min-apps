@@ -49,6 +49,9 @@ Page({
   getFormCookieToSessionParams(){
     let list = Storage.getShoppingCart()
     if (!list) return
+    this.setData({
+      items: list,
+    })
     let isArrParams = []
     for (let i = 0; i < list.length; i++) {
       isArrParams.push({

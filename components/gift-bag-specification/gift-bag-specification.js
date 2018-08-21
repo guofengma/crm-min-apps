@@ -25,8 +25,11 @@ Component({
       let productType = []
       let priceList = []
       isActive.forEach((item, index) => {
-        productType.push(item.val)
-        priceList.push(item.id)
+        productType.push(item.spec)
+        item.num=1
+        priceList.push({
+          ...item
+        })
       })
 
       // 如果被选择的库存小于用户输入的库存 发生在先选择数量再选择规格的情况下
@@ -48,14 +51,17 @@ Component({
     typeListClicked(e){
 
       // 选择的类型 使其 active
-      
+      let stock = e.currentTarget.dataset.stock
+      if (stock==0) return
       let key = e.currentTarget.dataset.type
       let index = e.currentTarget.dataset.index
       let val = e.currentTarget.dataset.typename // 名称
       let id = e.currentTarget.dataset.id //价格id
       // 深复制数组
       let obj = [...this.data.isActive]
-      obj[key]={index,val,id}
+      let item = this.data.productTypeList[key].value[index]
+      console.log(item)
+      obj[key] = { index,...item}
       this.setData({
         isActive: obj
       })
@@ -70,7 +76,7 @@ Component({
       this.data.productTypeList.forEach((item,index)=>{
         tips.push(item.name)
       })
-      tips = '请选择'+tips.join(',')+'规格'
+      tips = '请选择'+tips.join(',')
       //是否显示模态框
       this.setData({
         tips:tips,

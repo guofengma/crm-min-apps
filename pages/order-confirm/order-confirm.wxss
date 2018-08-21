@@ -57,9 +57,9 @@
 .payBar{
   justify-content: flex-end;
   font-size: 30rpx;
-  position: fixed;
+  /* position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100%; */
   border-top: 1rpx solid #eee;
   background: #fff;
   z-index: 9999;

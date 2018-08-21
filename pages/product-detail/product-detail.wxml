@@ -1,4 +1,4 @@
-
+<import src='/components/iPhoneX-line/iPhoneX-line.wxml'/>
 <!--商品展示竖向  -->
 <!-- <import src='/components/product-info-column/product-info-column.wxml' /> -->
 
@@ -116,7 +116,7 @@
         <template is="product-column"data="{{title:item}}" />    
     </view> -->
     <!-- 详情页 tabar  -->
-    <view class="bottom-bar flexR" wx:if='{{door==1}}'>
+    <view class="bottom-bar flexR {{isIPhoneX.className}}">
       <view class='cell-line cart' bindtap='cartClicked'>
         <image src='/img/shoppingcart.png' mode='widthFix'></image>
         <view class='gray'>购物车</view>
@@ -133,11 +133,6 @@
         立即购买
       </view>
     </view>
-    <view class="bottom-bar gift-btn-view flexR" wx:if='{{door==0}}'>
-      <view class='buy-btn gift-btn' bindtap='giftBagClicked'>
-        立即购买
-      </view>
-    </view>
     <!--置顶的按钮-->
     <view class='goTop' bindtap='goTop' wx:if='{{floorstatus}}'>
       <image src='/img/top-icon.png' mode='widthFix'></image>
@@ -146,6 +141,9 @@
   </view>
 
 </scroll-view>
+
+<!--适配iPhone X  -->
+<template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" />
 
 <!-- <tips-info isShoW='{{isShowGiftTips}}' header='温馨提示' bind:closeMask=''>
   <view class='tips-title'>XXX升级礼包为定制产品</view>

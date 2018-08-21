@@ -13,6 +13,7 @@
 }
 .my-order{
   padding-top: 170rpx;
+  padding-bottom: 40rpx;
 }
 .tab-area{
     display: flex;

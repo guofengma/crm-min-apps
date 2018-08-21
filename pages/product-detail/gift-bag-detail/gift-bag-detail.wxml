@@ -7,6 +7,8 @@
 
 <import src="/libs/wxParse/wxParse.wxml" />
 
+<import src='/components/iPhoneX-line/iPhoneX-line.wxml'/>
+
 <scroll-view class="bigWrap" scroll-y="true" scroll-top="{{scrollTop}}"   bindscroll="scroll" style="height:100%">
   <view class='prduct-detail-view'>
     <!--topbar  -->
@@ -37,8 +39,8 @@
     <view class='prd-info boxSize'>
       <view class='prd-name ellipsis-2'>{{productInfo.name}}</view>
       <view class='price'>
-        <text class='price1 red'>¥ {{productInfo.levelPrice}}</text>
-        <text class='label-pd'>V1价</text>
+        <text class='price1 red'>¥ {{productInfo.price}}</text>
+        <text class='label-pd'>{{productInfo.level}}价</text>
         <text>升级大礼包</text>
       </view>
       <view class='shippingInfo gray'>
@@ -53,11 +55,10 @@
             productTypeList='{{productTypeList}}' 
             productInfo='{{productInfo}}' 
             bind:subClicked="typeSubClicked"  
-            imgUrl="{{headerImg}}" 
+            imgUrl="{{imgUrls[0].small_img}}" 
             showImgs='{{true}}' 
             bind:productTypeListClicked='productTypeListClicked'
             bind:hiddenTips='hiddenTips'
-            giftPrice='{{giftPrice}}'
         >
         <view class='cell-name'>规格</view>
         <view class='cell-content'>{{selectType.productType? selectType.productType:'选择产品规格'}}</view>
@@ -96,7 +97,7 @@
   </view>
     </view>
   
-    <view class="bottom-bar gift-btn-view flexR">
+    <view class="bottom-bar gift-btn-view flexR {{isIPhoneX.className}}">
       <view class='buy-btn gift-btn' bindtap='giftBagClicked'>
         立即购买
       </view>
@@ -121,3 +122,6 @@
     </view>
   </view>
 </tips-info>
+
+<!--适配iPhone X  -->
+<template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" />

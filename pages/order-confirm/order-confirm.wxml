@@ -2,6 +2,7 @@
 
 <import src='/components/cart-product-info/cart-product-info.wxml' />
 
+<import src='/components/iPhoneX-line/iPhoneX-line.wxml'/>
 
 <view class='orderComfirm'>
   <!--订单地址类型  -->
@@ -25,17 +26,17 @@
   </view>
   <!--商品信息  -->
   <view class='order-prd-info'>
-    <!-- <view  wx:if='{{door==0}}' class='gift-view whiteBg'>
+    <view  wx:if='{{door==0}}' class='gift-view whiteBg'>
       <text class='label-red-border'>套餐</text>
       <text class='gray font-24'>双十一套餐</text>
-    </view> -->
+    </view> 
     <block wx:for="{{orderInfos.showProduct}}" wx:key='unique'>
        <template is="cart-product-info" data='{{innerCount,imgSize:180,...item}}'/>
     </block>
   </view>
   <!--购买支付信息  -->
   <view  class='order-info-other'>
-    <view class='flexR-sb' bindtap='couponClicked'>
+    <view class='flexR-sb' bindtap='couponClicked' wx:if='{{door!=0}}'>
       <view>优惠券</view>
       <view class='gray'>
         <!-- 不支持使用优惠券 -->
@@ -43,14 +44,14 @@
         <image src='/img/common-accessory-icon.png' mode='widthFix'></image>
       </view>
     </view>
-    <view class='flexR-sb user_score'>
+    <view class='flexR-sb user_score' wx:if='{{door!=0}}'>
       <!-- <view>
         商品积分：{{orderInfos.totalScore}},用户可用积分：{{orderInfos.dealer.user_score}}
         <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
       </view> -->
        <view class='reducePrice'>
         <view>
-          共{{orderInfos.dealer.user_score}}积分,可用积分: {{orderInfos.showTotalScore}}
+          共{{orderInfos.dealer.userScore}}积分,可用积分: {{orderInfos.showTotalScore}}
           <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
         </view>
       </view>
@@ -70,8 +71,11 @@
     </view>
   </view>
   <!--支付bar  -->
-  <view class='flexR payBar'>
+  <view class='flexR payBar {{isIPhoneX.className}}'>
     <view>应付款 <text class='red'>：¥{{orderInfos.totalAmounts}}</text></view>
     <view class='btn redBg flexR' bindtap='payBtnClicked'>提交订单</view>
   </view>
 </view>
+
+<!--适配iPhone X  -->
+<template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" />

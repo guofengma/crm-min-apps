@@ -183,9 +183,6 @@
   justify-content: flex-start;
   padding: 14rpx 30rpx;
   padding-right: 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
 .bottom-bar image{
   width: 44rpx;

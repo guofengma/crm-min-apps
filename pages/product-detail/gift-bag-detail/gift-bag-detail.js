@@ -9,7 +9,6 @@ Page({
     activeIndex: 1, // 轮播图片的index 
     show: true,
     msgShow: false,
-    isCollection: false, // 是否收藏了该商品
     selectType: {}, // 是否选择了商品类型
     floorstatus: false, // 是否显示置顶的按钮
     giftBagId: '', // 商品id
@@ -24,7 +23,6 @@ Page({
             },
             children: [],
     }],
-    door: 1, // 0 是礼包 1是普通产品
     isShowGiftTips:false, //是否显示礼包升级提示
     size: 0
   },
@@ -34,7 +32,7 @@ Page({
       door: options.door || 1
     })
     this.didLogin()
-    this.getGiftBagSpec()
+    // this.getGiftBagSpec()
     this.getGiftBagDetail()
     Event.on('didLogin', this.didLogin, this);
   },
@@ -43,6 +41,7 @@ Page({
   },
   didLogin() {
     Tool.didLogin(this)
+    Tool.isIPhoneX(this)
   },
   msgTipsClicked(e) {
     let n = parseInt(e.currentTarget.dataset.index)
@@ -68,13 +67,18 @@ Page({
       this.selectComponent("#prd-info-type").isVisiableClicked()
       return
     }
+
     let params = {
-      giftBagId: this.data.giftBagId,
-      num: 1,
-      price_id: this.data.selectType
+      orderProducts: [{
+        num:1,
+        priceId: this.data.productInfo.id,
+        productId: this.data.productInfo.id,
+        priceList: this.data.selectType.priceList
+      }],
+      orderType: 98
     }
 
-    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify([params]) + '&type=' + this.data.door)
+    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify(params))
   },
   getGiftBagDetail() { //获取礼包详情
     let params = {
@@ -85,12 +89,28 @@ Page({
 
     r.finishBlock = (req) => {
       let datas = req.responseObject.data
+      // 渲染库存
+      let giftStock = []
+      datas.specList.forEach((items) => {
+        let total = 0
+        items.value.forEach((item) => {
+          total += item.stock
+        })
+        giftStock.push(total)
+      })
+
+      // 显示各礼包总库存里面的最小库存
+
+      datas.product.showStock = Math.min(...giftStock)
+
       this.setData({
         imgUrls: datas.ImgUrl,
         productInfo: datas.product,
-        priceList: datas.priceList,
-        productId: datas.product.id
+        // priceList: datas.priceList,
+        productId: datas.product.id,
+        productTypeList: datas.specList
       })
+      // 渲染表格
       let tr = []
       let tbody = this.data.nodes
       for (let i = 0; i < datas.infoValue.length; i++) {
@@ -125,23 +145,6 @@ Page({
       })
       let html = datas.product.content
       WxParse.wxParse('article', 'html', html, this, 5);
-    }
-    Tool.showErrMsg(r)
-    r.addToQueue();
-  },
-  getGiftBagSpec() { // 获取礼包规格
-    let params = {
-      giftBagId: this.data.giftBagId,
-    }
-    let r = RequestFactory.getGiftBagSpec(params)
-
-    r.finishBlock = (req) => {
-      let datas = req.responseObject.data
-      this.setData({
-        headerImg: datas.img,
-        productTypeList: datas.specList,
-        giftPrice:datas.price
-      })
     }
     Tool.showErrMsg(r)
     r.addToQueue();
@@ -206,7 +209,7 @@ Page({
     let name = this.data.productInfo.name.length > 10 ? this.data.productInfo.name.slice(0, 10) + "..." : this.data.productInfo.name
     return {
       title: name,
-      path: '/pages/product-detail/product-detail?productId=' + this.data.productId,
+      path: '/pages/product-detail/product-detail?productId=' + this.data.productId +"&type=0",
       imageUrl: imgUrl
     }
   },

@@ -59,7 +59,7 @@ Page({
     },
     availableDiscountCouponForProduct(){
       let params = {
-        orderProductList: this.data.productIds
+        orderParam: this.data.productIds
       }
       let r = RequestFactory.availableDiscountCouponForProduct(params);
       r.finishBlock = (req) => {

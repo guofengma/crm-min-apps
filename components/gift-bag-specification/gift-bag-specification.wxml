@@ -8,12 +8,12 @@
     <view class='header {{showImgs? "":"active"}}'>
       <view wx:if='{{showImgs}}'>
         <view class='img-view'>
-          <image src='{{selectPrdList.spec_img || imgUrl}}'></image>
+          <image src='{{imgUrl}}'></image>
         </view>
         <!--产品信息  -->
         <view class='header-content'>
-          <view class='price'>¥ {{ giftPrice || productInfo.levelPrice}}</view>
-          <view>库存{{selectPrdList.stock!==undefined?  selectPrdList.stock: productInfo.stock}}件</view>
+          <view class='price'>¥ {{ productInfo.price}}</view>
+          <view>库存{{productInfo.showStock}}件</view>
           <view class='tips'>{{tips}}</view>
         </view>
       </view>
@@ -28,8 +28,8 @@
         <view class='type-name'>{{list.name}}</view>
         <view class='type-list'>
           <block  wx:for='{{list.value}}' wx:key='unique'> 
-            <view class='{{isActive[key].index === index ? "active":""}}' bindtap='typeListClicked' 
-                  data-index='{{index}}' data-type='{{key}}' data-typename='{{item.spec}}' data-id='{{item.priceId}}'>
+            <view class='{{(item.stock==0? "no-store":"") +" " +(isActive[key].index === index ? "active":"")}}'  bindtap='typeListClicked' 
+                  data-index='{{index}}' data-type='{{key}}' data-typename='{{item.spec}}' data-id='{{item.priceId}}' data-stock="{{item.stock}}">
                   {{item.spec}}
             </view>
           </block>

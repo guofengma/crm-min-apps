@@ -180,9 +180,9 @@ button::after{
   width: 100%;
 }
 .fixed-bottom-iPhoneX{
-  position: 34rpx;
-  bottom: 0;
-  width: 100%;
+  position: fixed;
+  bottom: 34rpx;
+  width: 100%; 
 }
 .fixed-top{
   position: fixed;

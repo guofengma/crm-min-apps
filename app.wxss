@@ -1,3 +1,4 @@
+@import "/components/iPhoneX-line/iPhoneX-line";
 
 @import "/components/app.wxss";
 

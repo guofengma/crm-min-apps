@@ -24,24 +24,17 @@ Page({
       },
       children: [],
     }],
-    door:1, // 0 是礼包 1是普通产品
-    // isShowGiftTips:false, //是否显示礼包升级提示
     size:0
   },
   onLoad: function (options) {
     this.setData({
       productId: options.productId || '',
       prodCode: options.prodCode || '',
-      door: options.door || 1
     })
     this.didLogin()
-    if(this.data.door==1){
-      this.requestFindProductByIdApp()
-      this.getShoppingCartList()
-      // this.getGiftBagSpec()
-    } else {
-
-    }
+    this.requestFindProductByIdApp()
+    this.getShoppingCartList()
+    Tool.isIPhoneX(this)
     Event.on('didLogin', this.didLogin, this);
   },
   onShow: function () {
@@ -102,13 +95,20 @@ Page({
       Tool.navigateTo('/pages/login/login-wx/login-wx?isBack='+true)
       return
     }
+    // let params = {
+    //   productId: this.data.productInfo.id,
+    //   num: this.data.productBuyCount,
+    //   price_id: this.data.selectType.id,
+    // }
     let params = {
-      productId: this.data.productInfo.id,
-      num: this.data.productBuyCount,
-      price_id: this.data.selectType.id
+      orderProducts:[{
+        num: this.data.productBuyCount,
+        priceId: this.data.selectType.id,
+        productId: this.data.productInfo.id
+      }],
+      orderType:99
     }
-
-    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify([params])+'&type='+this.data.door )
+    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify(params)+'&type='+this.data.door )
   },
   addToShoppingCart(){
     // 加入购物车

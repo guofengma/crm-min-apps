@@ -19,6 +19,7 @@ Page({
       door: options.type
     })
     this.requestOrderInfo()
+    Tool.isIPhoneX(this)
     Event.on('updateOrderAddress', this.updateOrderAddress,this)
     Event.on('updateCoupon', this.couponClick,this)
   },
@@ -55,10 +56,16 @@ Page({
     }
   },
   orderCalcDiscountCouponAndUseScore(coupon) { 
+    // let params = {
+    //   couponId: coupon.id,
+    //   orderProductList: this.data.params
+    // }
+    let param = JSON.parse(this.data.params)
+    param.couponId = coupon.id
     let params = {
-      couponId: coupon.id,
-      orderProductList: this.data.params
+      orderParam: JSON.stringify(param)
     }
+    console.log(params)
     let r = RequestFactory.orderCalcDiscountCouponAndUseScore(params);
     r.finishBlock = (req) => {
       this.setData({
@@ -90,13 +97,14 @@ Page({
     this.requestOrderInfo()
   },
   requestOrderInfo(){
-    let params = { orderProductList:this.data.params}
+    
+    let params = { orderParam: this.data.params }
     let r = RequestFactory.makeSureOrder(params);
     r.finishBlock = (req) => {
       wx.stopPullDownRefresh() //停止下拉刷新
       let item = req.responseObject.data
       // 渲染地址列表
-      let userAdress = item.default_addr
+      let userAdress = item.defaultAddr
 
       if (userAdress){
         item.address = {
@@ -113,19 +121,19 @@ Page({
      
       //渲染产品信息列表
       let showProduct =[]
-      item.priceList.forEach((item)=>{
+      item.orderProductList.forEach((item)=>{
         showProduct.push({
-          showImg: item.spec_img,
+          showImg: item.specImg,
           showName: item.name,
           showType: item.spec,
-          showPrice: item.sale_price,
+          showPrice: item.salePrice,
           showQnt: item.num,
           productStatus: item.productStatus,
           stock: item.stock,
         })
       })
       // 是否有自提的权限
-      item.hasSelfLifting = (item.dealer.picked_up==1? true:false)
+      item.hasSelfLifting = (item.dealer.pickedUp==1? true:false)
       if (item.hasSelfLifting){
         this.queryStoreHouseList()
       }
@@ -149,13 +157,13 @@ Page({
   },
   userScore(item){ // 计算积分
     // 积分抵扣计算
-    let score = item.dealer.user_score > item.showTotalScore ? item.showTotalScore : item.dealer.user_score
+    let score = item.dealer.userScore > item.showTotalScore ? item.showTotalScore : item.dealer.userScore
     item.showScore = score
     // item.reducePrice = item.userScoreToBalance*score
     item.reducePrice = Tool.mul(item.userScoreToBalance,score)
     // 当商品可以使用积分 用户积分大于0的时候 显示可以使用积分 
-    item.canUseScore = (item.showTotalScore > 0 && item.dealer.user_score) ? true : false
-    item.showTipsName = item.dealer.user_score <= 0 ? '暂无积分可用' :'不支持积分消费'
+    item.canUseScore = (item.showTotalScore > 0 && item.dealer.userScore) ? true : false
+    item.showTipsName = item.dealer.userScore <= 0 ? '暂无积分可用' :'不支持积分消费'
     return item
   },
   addressClicked(){
@@ -225,9 +233,16 @@ Page({
     this.setData({
       addressList: addressList
     })
-    let params ={
-      cityCode: address.cityCode,
-      orderProductList: this.data.params
+    // let params ={
+    //   cityCode: address.cityCode,
+    //   orderProductList: this.data.params
+    // }
+    let params = {
+      orderParam: JSON.stringify({
+        "cityCode": address.cityCode,
+        "orderProducts": JSON.parse(this.data.params).orderProducts,
+        "orderType": JSON.parse(this.data.params).orderType,
+      })
     }
     let orderInfos = this.data.orderInfos
     if (this.data.addressType==2) return
@@ -263,20 +278,38 @@ Page({
       return
     }
     let storehouseId = this.data.addressType == 2? orderAddress.id : ''
+    // let params = {
+    //   address: orderAddress.address,
+    //   areaCode: orderAddress.areaCode || '',
+    //   buyerRemark: this.data.remark,
+    //   cityCode: orderAddress.cityCode || '',
+    //   orderProductList: this.data.params,
+    //   pickedUp: this.data.addressType,
+    //   provinceCode: orderAddress.provinceCode || '',
+    //   receiver: orderAddress.receiver || '',
+    //   recevicePhone: orderAddress.recevicePhone || '',
+    //   storehouseId: storehouseId,
+    //   useScore: score,
+    //   couponId: this.data.coupon.id || ''
+    // }
     let params = {
-      address: orderAddress.address,
-      areaCode: orderAddress.areaCode || '',
-      buyerRemark: this.data.remark,
-      cityCode: orderAddress.cityCode || '',
-      orderProductList: this.data.params,
-      pickedUp: this.data.addressType,
-      provinceCode: orderAddress.provinceCode || '',
-      receiver: orderAddress.receiver || '',
-      recevicePhone: orderAddress.recevicePhone || '',
-      storehouseId: storehouseId,
-      useScore: score,
-      couponId: this.data.coupon.id || ''
+      orderParam: JSON.stringify({
+        "address": orderAddress.address,
+        "areaCode": orderAddress.areaCode || '',
+        "buyerRemark": this.data.remark,
+        "cityCode": orderAddress.cityCode || '',
+        "couponId": this.data.coupon.id || '',
+        "orderProducts": JSON.parse(this.data.params).orderProducts,
+        "orderType": JSON.parse(this.data.params).orderType,
+        "pickedUp": this.data.addressType,
+        "provinceCode": orderAddress.provinceCode || '',
+        "receiver": orderAddress.receiver || '',
+        "recevicePhone": orderAddress.recevicePhone || '',
+        "storehouseId": storehouseId,
+        "useScore": score
+      })
     }
+    console.log(params)
     let r = RequestFactory.submitOrder(params);
     r.finishBlock = (req) => {        
       //Event.emit('updateStorageShoppingCart')
@@ -289,9 +322,9 @@ Page({
   },
   couponClicked(){
     let productIds = []
-    let orderList = this.data.orderInfos.priceList
+    let orderList = this.data.orderInfos.orderProductList
     orderList.forEach((item)=>{
-      productIds.push(item.product_id)
+      productIds.push(item.productId)
     })
     Tool.navigateTo("/pages/my/coupon/my-coupon/my-coupon?door=1&&productIds=" + this.data.params)
   },
