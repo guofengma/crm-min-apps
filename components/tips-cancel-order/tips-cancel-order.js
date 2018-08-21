@@ -62,6 +62,7 @@ Component({
     },
   },
   ready: function () {
+    console.log(111111)
     this.queryDictionaryDetailsType()
   }
 })

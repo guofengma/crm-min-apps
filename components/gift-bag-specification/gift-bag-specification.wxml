@@ -12,7 +12,7 @@
         </view>
         <!--产品信息  -->
         <view class='header-content'>
-          <view class='price'>¥ {{selectPrdList.levelPrice || productInfo.levelPrice}}</view>
+          <view class='price'>¥ {{ giftPrice || productInfo.levelPrice}}</view>
           <view>库存{{selectPrdList.stock!==undefined?  selectPrdList.stock: productInfo.stock}}件</view>
           <view class='tips'>{{tips}}</view>
         </view>
@@ -29,7 +29,7 @@
         <view class='type-list'>
           <block  wx:for='{{list.value}}' wx:key='unique'> 
             <view class='{{isActive[key].index === index ? "active":""}}' bindtap='typeListClicked' 
-                  data-index='{{index}}' data-type='{{key}}' data-typename='{{item.spec}}' data-id='{{item.id}}'>
+                  data-index='{{index}}' data-type='{{key}}' data-typename='{{item.spec}}' data-id='{{item.priceId}}'>
                   {{item.spec}}
             </view>
           </block>

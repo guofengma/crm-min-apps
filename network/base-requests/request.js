@@ -27,7 +27,7 @@ export default class Request {
     }
 
     // 正式
-    // this.baseUrl = 'https://test.dnvhot.tech';
+    this.baseUrl = 'https://test.dnvhot.tech';
     // this.baseUrl = 'https://nc.hzjure.xyz';
     return this.baseUrl
   }

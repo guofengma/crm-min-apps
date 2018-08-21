@@ -13,22 +13,22 @@ Page({
         };
         let r = global.RequestFactory.queryStoreMessageList(params);
         r.finishBlock = (req) => {
-            if (req.responseObject.data.resultCount > 0) {
-                let datas = [];
-                datas = req.responseObject.data.data;
-                this.setData({
-                    hasInf: true,
-                    time: Tool.formatTime(datas[0].pushTime)
-                })
-            }
-            Event.emit('queryPushNum')
+          if (req.responseObject.data.resultCount > 0) {
+              let datas = [];
+              datas = req.responseObject.data.data;
+              this.setData({
+                  hasInf: true,
+                  time: Tool.formatTime(datas[0].pushTime)
+              })
+          }
+          Event.emit('queryPushNum')
         };
         Tool.showErrMsg(r)
         r.addToQueue();
     },
 
     onLoad: function (options) {
-        this.getData()
+      this.getData()
     },
     onShow: function () {
 

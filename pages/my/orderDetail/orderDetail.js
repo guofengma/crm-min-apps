@@ -43,6 +43,7 @@ Page({
         this.getDetail();//获取详情
        
     },
+    cancelOrder(){},
     //获取详情
     getDetail() {
         let params = {

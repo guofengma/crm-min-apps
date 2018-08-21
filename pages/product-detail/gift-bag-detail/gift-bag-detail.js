@@ -12,7 +12,7 @@ Page({
     isCollection: false, // 是否收藏了该商品
     selectType: {}, // 是否选择了商品类型
     floorstatus: false, // 是否显示置顶的按钮
-    productId: '', // 商品id
+    giftBagId: '', // 商品id
     productInfo: '', // 商品信息
     productTypeList: [],
     productBuyCount: 1, //商品购买数量
@@ -30,8 +30,7 @@ Page({
   },
   onLoad: function (options) {
     this.setData({
-      productId: options.productId || '',
-      prodCode: options.prodCode || '',
+      giftBagId: options.giftBagId || '',
       door: options.door || 1
     })
     this.didLogin()
@@ -59,23 +58,27 @@ Page({
         break;
     }
   },
-  makeSureOrder() {
+  giftBagClicked() {
     // 立即购买
-    if (!this.data.didLogin) {
+    if (!this.data.didLogin) { // 未登录
       Tool.navigateTo('/pages/login/login-wx/login-wx?isBack=' + true)
       return
     }
+    if (!this.data.selectType.productType){ // 未选择
+      this.selectComponent("#prd-info-type").isVisiableClicked()
+      return
+    }
     let params = {
-      productId: this.data.productInfo.id,
-      num: this.data.productBuyCount,
-      price_id: this.data.selectType.id
+      giftBagId: this.data.giftBagId,
+      num: 1,
+      price_id: this.data.selectType
     }
 
     Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify([params]) + '&type=' + this.data.door)
   },
-  getGiftBagDetail() {
+  getGiftBagDetail() { //获取礼包详情
     let params = {
-      giftBagId: 66,
+      giftBagId: this.data.giftBagId,
     }
 
     let r = RequestFactory.getGiftBagDetail(params)
@@ -126,9 +129,9 @@ Page({
     Tool.showErrMsg(r)
     r.addToQueue();
   },
-  getGiftBagSpec() {
+  getGiftBagSpec() { // 获取礼包规格
     let params = {
-      giftBagId: 66,
+      giftBagId: this.data.giftBagId,
     }
     let r = RequestFactory.getGiftBagSpec(params)
 
@@ -136,7 +139,8 @@ Page({
       let datas = req.responseObject.data
       this.setData({
         headerImg: datas.img,
-        productTypeList: datas.specList
+        productTypeList: datas.specList,
+        giftPrice:datas.price
       })
     }
     Tool.showErrMsg(r)
@@ -146,11 +150,6 @@ Page({
     this.setData({
       selectType: e.detail
     })
-    if (this.data.selectType.typeClicked == 1) {
-      this.addToShoppingCart(1)
-    } else if (this.data.selectType.typeClicked == 2) {
-      this.makeSureOrder()
-    }
   },
   sliderChange(e) {
     this.setData({
@@ -179,7 +178,6 @@ Page({
     })
   },
   scroll: function (e, res) {
-
     this.setData({
       msgShow: false
     });
