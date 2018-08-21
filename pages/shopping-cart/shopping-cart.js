@@ -38,7 +38,7 @@ Page({
       this.setData({
         items: list,
       })
-      if (list.showPrice){ // 从详情页进来的有价格 从再次购买进入的没有价格 防止报错
+      if (list.showPrice) { // 从详情页进来的有价格 从再次购买进入的没有价格 防止报错
         this.getTotalPrice()
       }
       return true
@@ -159,7 +159,7 @@ Page({
           items: data,
           tipVal:''
         })
-        //this.getTotalPrice()
+        this.getTotalPrice()
       } else {
         this.setData({
           tipVal: 2,
@@ -337,7 +337,6 @@ Page({
     Event.off('updateStorageShoppingCart', this.getStorageShoppingCart);
     Event.off('updateShoppingCart', this.getShoppingCartList);
     Event.off('didLogin', this.didLogin);
-    Event.off('continueBuy', this.shoppingCartLimit);
   },
   test(){
     // 阻止冒泡 
