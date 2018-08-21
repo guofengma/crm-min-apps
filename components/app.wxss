@@ -109,6 +109,18 @@ button::after{
     height: 100%;
     background-color: rgba(0,0,0,.5);
 }
+
+/*模态框的样式  */
+
+.model-view-bg .tips-box{
+  width: 590rpx;
+	min-height: 300rpx;
+	background-color: #ffffff;
+	border-radius: 20rpx;
+  box-sizing: border-box;
+}
+
+
 .address.active{
   padding:30rpx;
   background: #fff url(https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/line-bg.png) no-repeat left bottom; 

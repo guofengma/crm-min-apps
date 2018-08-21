@@ -2,7 +2,7 @@
 <view>
     <import src='/components/tips-cancel-order/tips-cancel-order.wxml' />
 
-    <import src='/components/tips-delete-order/tips-delete-order.wxml' />
+    <!-- <import src='/components/tips-delete-order/tips-delete-order.wxml' /> -->
     <!--搜索结果异常显示  -->
     <import src='/components/result-tips/result-tips.wxml' />
 

@@ -1,6 +1,6 @@
 @import "/components/app";
 
-@import "/components/tips-cancel-order/tips-cancel-order";
+/* @import "/components/tips-cancel-order/tips-cancel-order"; */
 
 @import "/components/tips-delete-order/tips-delete-order";
 /*搜索产品异常显示  */

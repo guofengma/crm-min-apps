@@ -2,7 +2,7 @@
 
 <import src='/components/address-info/address-info.wxml'/>
 
-<import src='/components/tips-cancel-order/tips-cancel-order.wxml'/>
+<!-- <import src='/components/tips-cancel-order/tips-cancel-order.wxml'/> -->
 
 <import src='/components/tips-delete-order/tips-delete-order.wxml'/>
 
@@ -147,6 +147,8 @@
 
 
         <!--提示框  -->
-<template is="tips-cancel-order" data='{{isCancel,content,reason}}'/>
+<!-- <template is="tips-cancel-order" data='{{isCancel,content,reason}}'/> -->
 
-<template is="tips-delete-order" data='{{isDelete}}'/>
+<tips-cancel-order isCancel='{{isCancel}}' bind:dismissCancel='dismissCancel' orderNum='{{detail.orderNum}}'/>
+
+<template is="tips-delete-order" data='{{isDelete}}' />

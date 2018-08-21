@@ -1,8 +1,8 @@
-<import src='/components/tips-cancel-order/tips-cancel-order.wxml' />
+<!-- <import src='/components/tips-cancel-order/tips-cancel-order.wxml' /> -->
 
 <import src='/components/tips-delete-order/tips-delete-order.wxml' />
 <!--搜索结果异常显示  -->
-<import src='/components/result-tips/result-tips.wxml' />
+<import src='/components/result-tips/result-tips.wxml' />  
 
 <import src='/components/search-bar/search-bar.wxml' />
 
@@ -95,6 +95,13 @@
 <template is="result-tips" wx-if='{{tipVal}}' data="{{tipVal}}" />
 
 <!--提示框  -->
-<template is="tips-cancel-order" data='{{isCancel,reason,content}}'/>
+<!-- <template is="tips-cancel-order" data='{{isCancel,reason,content}}'/> -->
+
+<tips-cancel-order isCancel='{{isCancel}}' 
+  bind:dismissCancel='dismissCancel' 
+  orderNum='{{orderNum}}' 
+  door='{{1}}'
+  bind:cancelOrder = 'cancelOrder'
+/>
 
 <template is="tips-delete-order" data='{{isDelete}}'/>

@@ -1,3 +1,5 @@
+@import "/components/app";
+
 .tips-content>view,.tips-header{
   height: 100rpx;
   line-height: 100rpx;

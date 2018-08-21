@@ -107,11 +107,11 @@ Page({
 
     },
     dismissCancel() {
-        //取消取消订单
-        this.setData({
-            isCancel: false,
-            isDelete: false,
-        })
+      //取消取消订单
+      this.setData({
+          isCancel: false,
+          isDelete: false,
+      })
     },
     deleteOrder(){
         let r;
@@ -131,37 +131,6 @@ Page({
               Tool.navigateTo('../my-order/my-order')
             }else{
               Tool.showSuccessToast(req.responseObject.msg)
-            }
-
-        };
-        Tool.showErrMsg(r)
-        r.addToQueue();
-    },
-    //取消订单
-    reasonClicked(e) {
-        //取消订单的理由
-        let content=e.currentTarget.dataset.content;
-        let index=e.currentTarget.dataset.index;
-        this.setData({
-            content:content,
-            reason:index
-        });
-    },
-    cancelOrder(){
-        if(this.data.content==''){
-            Tool.showAlert('请选择取消理由！');
-            return
-        }
-        let params = {
-            buyerRemark: this.data.content,
-            orderNum: this.data.detail.orderNum,
-        };
-        let r=RequestFactory.cancelOrder(params);
-        r.finishBlock = (req) => {
-            if(req.responseObject.code==200){
-                Tool.navigateTo('../my-order/my-order')
-            }else{
-                Tool.showSuccessToast(req.responseObject.msg)
             }
 
         };

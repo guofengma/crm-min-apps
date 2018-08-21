@@ -2,7 +2,7 @@
 
 @import "/components/address-info/address-info";
 
-@import "/components/tips-cancel-order/tips-cancel-order";
+/* @import "/components/tips-cancel-order/tips-cancel-order"; */
 
 @import "/components/tips-delete-order/tips-delete-order";
 
@@ -168,15 +168,6 @@
   width: 22rpx;
 }
 
-/*模态框的样式  */
-
-.model-view-bg .tips-box{
-  width: 590rpx;
-	min-height: 300rpx;
-	background-color: #ffffff;
-	border-radius: 20rpx;
-  box-sizing: border-box;
-}
 
 .gift-view{
   padding:15rpx 30rpx 0 30rpx;

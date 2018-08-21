@@ -69,7 +69,7 @@ Component({
           for (let i in req.responseObject.data.data) {
             let item = req.responseObject.data.data[i];
             item.createTime = Tool.formatTime(item.orderCreateTime);
-            // 这块是倒计时 暂时取消不做了
+            // 这块是倒计时 
             if (item.orderStatus == 1) {
               let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
               // let timeInterval = Tool.timeIntervalFromString(item.createTime);
@@ -166,41 +166,13 @@ Component({
       Tool.showErrMsg(r)
       r.addToQueue();
     },
-    //取消订单
-    reasonClicked(e) {
-      //取消订单的理由
-      let content = e.currentTarget.dataset.content;
-      let index = e.currentTarget.dataset.index;
-      this.setData({
-        content: content,
-        reason: index
-      });
-    },
     cancelOrder() {
-      if (this.data.content == '') {
-        Tool.showAlert('请选择取消理由！');
-        return
-      }
-      let params = {
-        buyerRemark: this.data.content,
-        orderNum: this.data.orderNum,
-      };
-      let r = RequestFactory.cancelOrder(params);
-      r.finishBlock = (req) => {
-        if (req.responseObject.code == 200) {
-          this.setData({
-            isCancel: false,
-            list: [],
-            hasNext: true
-          });
-          this.getData(this.data.num);
-        } else {
-          Tool.showSuccessToast(req.responseObject.msg)
-        }
-
-      };
-      Tool.showErrMsg(r)
-      r.addToQueue();
+      this.setData({
+        isCancel: false,
+        list: [],
+        hasNext: true
+      });
+      this.getData(this.data.num);
     },
     cancelItem(e) {
       let orderNum = e.currentTarget.dataset.ordernum;
