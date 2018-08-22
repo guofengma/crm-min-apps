@@ -79,3 +79,14 @@
     padding: 10rpx 20rpx;
     text-align: justify;
 }
+.contact-btn{
+  background: transparent;
+  width: 100%;
+  font-size: inherit;
+  color: inherit;
+  padding-left: 0;
+  padding-right: 0;
+}
+.contact-btn view{
+  text-align: left;
+}

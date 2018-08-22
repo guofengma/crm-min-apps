@@ -104,13 +104,19 @@
                     <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
                 </view>
             </view>
-            <view class="item" bindtap="feedback">
-                <view>
-                    <text>投诉</text>
-                </view>
-                <view>
-                    <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
-                </view>
+            <view class="item">
+              <button class="go-cart-view contact-btn flexR-sb" 
+                session-from="nickName={{userInfos.nickname}}|avatarUrl={{userInfos.headImg}}|referrerTitle={{ysf.title}}"
+                open-type="contact"
+              >
+              <view>
+                  <text>投诉</text>
+              </view>
+              <view>
+                <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png' mode='widthFix'></image>
+              </view>
+            </button>
+
             </view>
         </view>
     </view>

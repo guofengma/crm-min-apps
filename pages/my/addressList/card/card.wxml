@@ -1,6 +1,6 @@
 <view>
     <view class="bg">
-        <view class="detail"> 
+        <view class="detail flexC"> 
             <image src="{{detail.head_img}}" class="avature-img"></image>
             <view class="name">{{detail.nickname}}</view>
             <view class="level" wx:if="{{detail.name}}">{{detail.name}}</view>

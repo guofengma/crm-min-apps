@@ -7,7 +7,7 @@ Page({
         detail:{}
     },
     onLoad: function (options) {
-      
+      Tool.getUserInfos(this)
       this.getDetail(options.id,options.type);
       this.setData({
         status:options.type
