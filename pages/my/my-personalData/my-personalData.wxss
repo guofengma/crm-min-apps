@@ -22,11 +22,14 @@
 }
 
 .item view:nth-child(2) {
-    width: 60%;
+    width: 74%;
     text-align: right;
     margin-right: 20rpx
 }
-
+.region text{
+  display: inline-block;
+  width: 100%;
+}
 .line {
     border-bottom: 1px solid #eee
 }

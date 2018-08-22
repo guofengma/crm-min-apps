@@ -53,8 +53,8 @@
               <view>
                 <text>所在区域</text>
               </view>
-              <view>
-                  <text>{{region[0].name + region[1].name+ region[2].name || userInfos.showRegion ||''}}</text>
+              <view class='region ellipsis'>
+                  <text class='ellipsis'>{{region[0].name + region[1].name+ region[2].name || userInfos.showRegion ||''}}</text>
                   <image class="jt-img" src='https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/xjt_10@2x.png'
                         mode='widthFix'></image>
               </view>
