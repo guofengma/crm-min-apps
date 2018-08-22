@@ -74,19 +74,6 @@ export default class RequestFactory {
     let url = Operation.sharedInstance().signMember;
     return this.request(url, params, '注册', 1);
   }
-
-  // 获取注册验证码 sendRegistrationCode
-  static sendRegistrationCode(phone) {
-    let url = Operation.sharedInstance().sendRegistrationCode;
-    let bodyParameters = {
-      "url": url,
-      "port":'8100',
-      "phone": phone
-    };
-    let req = new Request(bodyParameters);
-    req.name = '获取注册短信';
-    return req;
-  }
   
   // 获取邀请者ID queryInviterList
   static queryInviterList(params) {
@@ -108,12 +95,6 @@ export default class RequestFactory {
     return this.request(url, params, '重置密码');
   }
 
-  // 重置密码短信验证
-  static sendUserUpdateCode(params) {
-    params.port = '8100'
-    let url = Operation.sharedInstance().sendUserUpdateCode;
-    return this.request(url, params, '重置密码短信验证');
-  }
   
   /********************获取省市区********************/
 
@@ -521,6 +502,47 @@ export default class RequestFactory {
     return this.request(url, params, '我的售后', true);
   }
 
+  /******************* 短信 ******************* */
+  
+  static sendMessage(params) {
+    let url = Operation.sharedInstance().sendMessage;
+    return this.request(url, params, '发送短信', true);
+  }
+  
+  // 以下不再用
+
+  static sendUserPhoneCode(params) {
+    params.port = '8100'
+    let url = Operation.sharedInstance().sendUserPhoneCode;
+    return this.request(url, params, '修改手机账号--发生短信到旧手机验证', true);
+  }
+
+  static sendUserNewPhoneCode(params) {
+    params.port = '8100'
+    let url = Operation.sharedInstance().sendUserNewPhoneCode;
+    return this.request(url, params, '修改手机账号--发生短信到新手机验证', true);
+  }
+
+  // 获取注册验证码 sendRegistrationCode
+  static sendRegistrationCode(phone) {
+    let url = Operation.sharedInstance().sendRegistrationCode;
+    let bodyParameters = {
+      "url": url,
+      "port": '8100',
+      "phone": phone
+    };
+    let req = new Request(bodyParameters);
+    req.name = '获取注册短信';
+    return req;
+  } 
+
+  // 重置密码短信验证
+  static sendUserUpdateCode(params) {
+    params.port = '8100'
+    let url = Operation.sharedInstance().sendUserUpdateCode;
+    return this.request(url, params, '重置密码短信验证');
+  }
+  
   /*******************我的---设置******************** */
 
   static exitLogin(params) {
@@ -579,18 +601,6 @@ export default class RequestFactory {
   static updateDealerPhone(params){
     let url = Operation.sharedInstance().updateDealerPhoneById;
     return this.request(url, params, '验证旧手机验证码是否正确', true);
-  }
-  
-  static sendUserPhoneCode(params){
-    params.port = '8100'
-    let url = Operation.sharedInstance().sendUserPhoneCode;
-    return this.request(url, params, '修改手机账号--发生短信到旧手机验证', true);
-  }
-
-  static sendUserNewPhoneCode(params) {
-    params.port = '8100'
-    let url = Operation.sharedInstance().sendUserNewPhoneCode;
-    return this.request(url, params, '修改手机账号--发生短信到新手机验证', true);
   }
   
   static updateDealerNewPhone(params) {

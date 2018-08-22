@@ -68,9 +68,9 @@ Page({
           let item = req.responseObject.data[i];
           item.outTime = Tool.formatTime(item.outTime).slice(0, 10);
           item.start_time = Tool.formatTime(item.startTime).slice(0, 10);
-          let nickname = item.name
-          item.name = item.nickname
-          item.nickname = nickname
+          // let nickname = item.name
+          // item.name = item.nickname
+          // item.nickname = nickname
           if (currentTime > item.startTime) {
             item.left = '';
             item.canUse =1

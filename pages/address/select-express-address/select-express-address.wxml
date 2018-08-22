@@ -1,4 +1,5 @@
 <import src='/components/address-info/address-info.wxml' />
+<import src='/components/iPhoneX-line/iPhoneX-line.wxml'/>
 
 <view class='select-express-address' >
   <block wx:for='{{addressList}}' wx:key='unique'>
@@ -19,7 +20,10 @@
   </block>
 
   <!--新增按钮  -->
-  <view class='add-address-btn  flexR redBg' bindtap='newAddress'>
+  <view class='add-address-btn  flexR redBg {{isIPhoneX.className}}' bindtap='newAddress'>
     + 添加新的收货地址
   </view>
+
+  <!--适配iPhone X  -->
+  <template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" />
 </view>

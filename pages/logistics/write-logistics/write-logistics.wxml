@@ -2,6 +2,8 @@
 
 <import src='/components/cell-line/cell-line.wxml'/>
 
+<import src='/components/iPhoneX-line/iPhoneX-line.wxml'/>
+
 <template is="my-order-product-info" data="{{...list.returnProduct}}"/>
 
 <view catchtap='logLineClicked'>
@@ -21,4 +23,7 @@
   <input type='text' value='{{phone}}' placeholder='请填写手机号' class='input' placeholder-class='gary' bindinput='inputOnPhonechange'></input>
 </view> -->
 
-<view class='loginBtn fixed-bottom font-32 flexR' bindtap='fillInExpressInfoById'>提交</view>
+<view class='loginBtn {{isIPhoneX.className}} font-32 flexR' bindtap='fillInExpressInfoById'>提交</view>
+
+<!--适配iPhone X  -->
+<template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" />

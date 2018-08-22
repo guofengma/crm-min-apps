@@ -107,31 +107,50 @@ Page({
       let userAdress = item.defaultAddr
 
       if (userAdress){
-        item.address = {
-          hasData: userAdress.receiver ? true : false,
-          receiver: userAdress.receiver,
-          recevicePhone: userAdress.recevicePhone,
-          addressInfo: userAdress.province + userAdress.city + userAdress.area + userAdress.address,
-          address: userAdress.address,
-          areaCode: userAdress.areaCode,
-          cityCode: userAdress.cityCode,
-          provinceCode: userAdress.provinceCode
-        }
+        item.address = { ...userAdress}
+        item.address.addressInfo = userAdress.province + userAdress.city + userAdress.area + userAdress.address
+        item.address.hasData = userAdress.receiver ? true : false
+        // item.address = {
+        //   hasData: userAdress.receiver ? true : false,
+        //   receiver: userAdress.receiver,
+        //   recevicePhone: userAdress.recevicePhone,
+        //   addressInfo: userAdress.province + userAdress.city + userAdress.area + userAdress.address,
+        //   address: userAdress.address,
+        //   areaCode: userAdress.areaCode,
+        //   cityCode: userAdress.cityCode,
+        //   provinceCode: userAdress.provinceCode
+        // }
       }
      
       //渲染产品信息列表
       let showProduct =[]
-      item.orderProductList.forEach((item)=>{
-        showProduct.push({
-          showImg: item.specImg,
-          showName: item.name,
-          showType: item.spec,
-          showPrice: item.salePrice,
-          showQnt: item.num,
-          productStatus: item.productStatus,
-          stock: item.stock,
+      if(this.data.door!=0){
+        item.orderProductList.forEach((item0) => {
+          showProduct.push({
+            showImg: item0.specImg,
+            showName: item0.name,
+            showType: item0.spec,
+            showPrice: item0.salePrice,
+            showQnt: item0.num,
+            productStatus: item0.productStatus,
+            stock: item0.stock,
+          })
         })
-      })
+      }
+      if(this.data.door==0){
+        item.orderProductList[0].priceList.forEach((item0,index)=>{
+          showProduct.push({
+            showImg: item0.specImg,
+            showName: item0.productName,
+            showType: item0.spec,
+            showPrice: item0.originalPrice,
+            showQnt: item0.num,
+            productStatus: 4,
+            stock: 1,
+          })
+        })
+      }
+
       // 是否有自提的权限
       item.hasSelfLifting = (item.dealer.pickedUp==1? true:false)
       if (item.hasSelfLifting){
@@ -315,6 +334,7 @@ Page({
       //Event.emit('updateStorageShoppingCart')
       Event.emit('updateShoppingCart')
       let data = req.responseObject.data
+      
       Tool.redirectTo('/pages/order-confirm/pay/pay?data=' + JSON.stringify(data))
     };
     Tool.showErrMsg(r)

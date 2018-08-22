@@ -106,11 +106,11 @@
 .sale-after{
   border-bottom: 1rpx solid #eee;
 }
-.order-bar{
+/* .order-bar{
   position: fixed;
   bottom: 0;
   width: 100%;
-}
+} */
 .copy-btn{
   width: 100rpx;
 	height: 44rpx;

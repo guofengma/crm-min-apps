@@ -6,6 +6,8 @@
 
 <import src='/components/tips-delete-order/tips-delete-order.wxml'/>
 
+<import src='/components/iPhoneX-line/iPhoneX-line.wxml'/>
+
 <view class='orderDetail'>
 <view class='order-state boxSize'>
     <view class='order-state-icon'
@@ -112,7 +114,7 @@
 
 <!--order bar  -->
 
-<view class='order-bar flexR boxSize' >
+<view class='{{isIPhoneX.className}} order-bar flexR boxSize' >
     <block>
         <view class='order-btn btn-left flexR' wx:if="{{state.bottomBtn[0]=='删除订单'}}" bindtap="deleteItem">
           {{state.bottomBtn[0]}}
@@ -152,3 +154,6 @@
 <tips-cancel-order isCancel='{{isCancel}}' bind:dismissCancel='dismissCancel' orderNum='{{detail.orderNum}}'/>
 
 <template is="tips-delete-order" data='{{isDelete}}' />
+
+<!--适配iPhone X  -->
+<template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" />

@@ -28,9 +28,9 @@
             </view>
         </view>
     </view>
-    <view class="img-area">
+    <!-- <view class="img-area">
         <image src="/img/icon_05@2x.png"></image>
-    </view>
+    </view> -->
     <!--确认弹窗-->
     <view class="tips-delete-order model-view-bg " wx:if='{{unBinded}}'>
         <view>

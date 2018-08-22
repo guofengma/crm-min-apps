@@ -31,10 +31,6 @@ export default class Operation {
         // 注册
         this.signMember = '/user/memberSign/signMember'
 
-        // 获取注册验证码 commonAPI
-
-        this.sendRegistrationCode ='/user/phoneCode/sendRegistrationCode'
-
         // 获取推荐人列表
         this.queryInviterList = '/user/memberSign/queryInviterList'
 
@@ -43,9 +39,6 @@ export default class Operation {
 
         // 忘记密码 
         this.resetPassword = '/user/memberLogin/resetPassword'
-
-        // 忘记密码短信 commonAPI
-        this.sendUserUpdateCode = '/user/phoneCode/sendUserUpdateCode'
         
         // 实名制
         this.signMemberInfo = '/user/memberSign/signMemberInfo'
@@ -358,17 +351,10 @@ export default class Operation {
 
         this.updateDealerNewPhone = '/user/dealer/updateDealerNewPhoneById'
 
-        // 旧手机短信短信 commonAPI
-
-        this.sendUserPhoneCode = '/user/phoneCode/sendUserPhoneCode'
-
         // 验证旧手机短信是否正确
 
         this.updateDealerPhoneById = '/user/dealer/updateDealerPhoneById'
 
-        // 新手机短信 commonAPI
-
-        this.sendUserNewPhoneCode ='/user/phoneCode/sendUserNewPhoneCode'
 
         // 邀请码
 
@@ -378,6 +364,36 @@ export default class Operation {
 
         this.sweepCode ='/user/invite/sweepCode'
 
+        /*************** 短信 ******************************/
+
+        // 旧手机短信 commonAPI
+
+        this.sendUserPhoneCode = '/user/phoneCode/sendUserPhoneCode'
+
+        // 新手机短信 commonAPI
+
+        this.sendUserNewPhoneCode = '/user/phoneCode/sendUserNewPhoneCode'
+
+        // 忘记密码短信 commonAPI
+
+        this.sendUserUpdateCode = '/user/phoneCode/sendUserUpdateCode'
+
+        // 获取注册验证码 commonAPI
+
+        this.sendRegistrationCode = '/user/phoneCode/sendRegistrationCode'
+
+        /* 统一的短信接口
+          1. code对应传递值-------> 用户注册：MOBILE_REGISTRATION_CODE 
+          手机验证码登录：MOBILE_CODELOGIN_CODE 
+          设置交易密码：MOBILE_SETDEALPASSWORD_CODE 
+          忘记交易密码：MOBILE_FORGETDEALPASSWORD_CODE 
+          手机号修改验证旧手机：MOBILE_VERIFYAULDPHONE_CODE 
+          手机号修改绑定新手机：MOBILE_VERIFYNEWPHONE_CODE
+          登录时忘记密码：MOBILE_FORGETPASSWORD_CODE
+          2. phone:string
+        */
+
+        this.sendMessage = '/user/phoneCode/sendMessage'
 
         /*************** 收藏 ******************************/ 
 

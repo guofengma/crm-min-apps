@@ -1,6 +1,6 @@
 <view class='prd-info-type' bindtap='isVisiableClicked'>
   <slot></slot>
-  <image mode='widthFix' src='/img/common-accessory-icon.png' class='jt-imgs'></image>
+  <!-- <image mode='widthFix' src='/img/common-accessory-icon.png' class='jt-imgs'></image> -->
 </view>
 
 <view class='model-view-bg ' wx:if="{{visiable}}">

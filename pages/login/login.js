@@ -10,7 +10,7 @@ Page({
   },
   onLoad: function (options) {
     this.setData({
-      isBack: options.isBack
+      isBack: options.isBack || ''
     })
   },
   onShow: function () {

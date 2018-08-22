@@ -273,18 +273,19 @@ Page({
   },
   btnClicked(e){
     let n = parseInt(e.currentTarget.dataset.key)
-    if (!this.data.selectType.id || n==1){
-      this.selectComponent("#prd-info-type").isVisiableClicked(n)
-    } else {
-      switch (n) {
-        case 1:
-          this.addToShoppingCart()
-          break;
-        case 2:
-          this.makeSureOrder()
-          break;
-      }
-    }
+    this.selectComponent("#prd-info-type").isVisiableClicked(n)
+    // if (!this.data.selectType.id || n==1){
+      
+    // } else {
+    //   switch (n) {
+    //     case 1:
+    //       this.addToShoppingCart()
+    //       break;
+    //     case 2:
+    //       this.makeSureOrder()
+    //       break;
+    //   }
+    // }
    
   },
   goTop: function (e) {

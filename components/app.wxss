@@ -129,9 +129,6 @@ button::after{
 .add-address-btn{
   height: 100rpx;
   color: #fff; 
-  position: fixed;
-  bottom: 0;
-  width: 100%;
   font-size: 30rpx;
 }
 .label-by,.label-jf{

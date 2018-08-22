@@ -54,7 +54,7 @@
     </view>
     <!--产品规格选择  -->
     <view class='chooseBox'>
-      <view>
+      <!-- <view> -->
         <product-specification id='prd-info-type' 
             bind:subClicked="typeSubClicked"  
             productTypeList='{{productTypeList}}' 
@@ -66,10 +66,10 @@
             bind:productTypeListClicked='productTypeListClicked'
             bind:hiddenTips='hiddenTips'
         >
-        <view class='cell-name'>规格</view>
-        <view class='cell-content'>{{selectType.productType? selectType.productType:'选择产品规格'}}</view>
+        <!-- <view class='cell-name'>规格</view>
+        <view class='cell-content'>{{selectType.productType? selectType.productType:'选择产品规格'}}</view> -->
         </product-specification >
-      </view>
+      <!-- </view> -->
       <view class='gray'>
         <text class='label red' >服务</text>
         正品保障·急速发货 七天无理由退换货
@@ -141,6 +141,7 @@
   </view>
 
 </scroll-view>
+
 
 <!--适配iPhone X  -->
 <template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" />

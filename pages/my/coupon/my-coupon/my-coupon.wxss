@@ -38,7 +38,7 @@
 }
 .tab-content{
   margin-top: 80rpx;
-  height: calc(100% - 80rpx)
+  height: calc(100% - 80rpx);
 }
 .tab-content.tab-active{
   height: calc(100% - 190rpx)

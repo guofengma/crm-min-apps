@@ -80,7 +80,12 @@ Page({
       showSecond: true
     });
     this.countdown(this);
-    let r = RequestFactory.sendUserUpdateCode({ phone: this.data.phone});
+    let params = {
+      code: 'MOBILE_FORGETPASSWORD_CODE',
+      phone: this.data.phone
+    }
+    let r = RequestFactory.sendMessage(params);
+    // let r = RequestFactory.sendUserUpdateCode({ phone: this.data.phone});
     r.finishBlock = (req) => {
       wx.showToast({
         title: '验证码已发送',

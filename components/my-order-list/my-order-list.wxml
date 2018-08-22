@@ -38,7 +38,7 @@
                 <image src="{{oItem.imgUrl}}" alt=""></image>
                 <view class="goods-inf">
                     <view class="ellipsis-2">
-                      <!-- <text class='label-red-border'>礼包</text> -->
+                      <text class='label-red-border' wx:if='{{oItem.orderType==98}}'>礼包</text> 
                       {{oItem.productName}}
                     </view>
                     <view class="color-classify">{{oItem.spec}} </view>

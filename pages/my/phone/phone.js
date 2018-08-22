@@ -70,17 +70,20 @@ Page({
         return
     }
     let params = {
-        phone: this.data.phone
+      code: 'MOBILE_VERIFYNEWPHONE_CODE',
+      phone: this.data.phone
     }
+    
     let callBack = () => {
-        let r = RequestFactory.sendUserNewPhoneCode(params);
-        r.finishBlock = (req) => {
-            wx.showToast({
-                title: '验证码已发送',
-            })
-        };
-        Tool.showErrMsg(r)
-        r.addToQueue();
+      let r = RequestFactory.sendMessage(params);
+      // let r = RequestFactory.sendUserNewPhoneCode(params);
+      r.finishBlock = (req) => {
+          wx.showToast({
+              title: '验证码已发送',
+          })
+      };
+      Tool.showErrMsg(r)
+      r.addToQueue();
     }
     Tool.codeEnable(this, callBack)
   },

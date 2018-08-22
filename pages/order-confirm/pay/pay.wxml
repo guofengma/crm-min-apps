@@ -1,4 +1,5 @@
-<!--pages/pay/pay.wxml-->
+<import src='/components/iPhoneX-line/iPhoneX-line.wxml'/>
+
 <view class="pay">
     <view class="wrap gray" wx:if='{{!isContinuePay}}'>
         <view class="left">
@@ -54,11 +55,13 @@
         </view>
         <view class="clearfix"></view>
     </view> -->
-    <view class="footer">
+    <view class="footer {{isIPhoneX.className}} whiteBg">
         <!--{{payList.scorePrice? '积分抵扣'+payList.scorePrice+'元,':""}}  -->
         <view>{{!isContinuePay ? '合计':'还需支付'}}：<text>￥{{payList.showTotalAmounts}}</text></view>
         <view bindtap='payBtnCliked'>立即支付</view>
     </view>
+    <!--适配iPhone X  -->
+    <template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" />
 </view>
 
 <view class="pay-tips boxSize model-view-bg " wx:if='{{isShow}}'>

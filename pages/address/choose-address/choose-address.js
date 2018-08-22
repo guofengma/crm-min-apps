@@ -1,25 +1,18 @@
 let { Tool, RequestFactory, Event, Storage} = global
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     active:true,
     addressType:1,
     addressList:[]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     if (options.addressType){
       this.setData({
         addressType: options.addressType
       })
     }
+    Tool.isIPhoneX(this)
     this.queryAddressList()
     Event.on('updateAdressList', this.queryAddressList, this)
   },

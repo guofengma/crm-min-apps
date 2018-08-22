@@ -1,3 +1,6 @@
+<import src='/components/iPhoneX-line/iPhoneX-line.wxml'/>
+
+
 <view class="help-customer">
   <view class="header">
     <view class="people"></view>
@@ -38,7 +41,7 @@
           <view>自动退款</view>
       </view>
   </view>
-  <view class="footer">
+  <view class="footer {{isIPhoneX.className}}">
       <view bindtap='makePhoneCall'>
           <image src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/help_phone.png" class=""></image>
           <view>咨询电话</view>
@@ -63,5 +66,7 @@
           <view>09:00-18:00</view>  -->
       </view>
   </view>
+  <!--适配iPhone X  -->
+  <template wx:if='{{isIPhoneX.isIPhoneX}}' is="iPhoneX-line" />
 </view>
 

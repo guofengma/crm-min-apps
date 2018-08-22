@@ -27,8 +27,8 @@
   <!--商品信息  -->
   <view class='order-prd-info'>
     <view  wx:if='{{door==0}}' class='gift-view whiteBg'>
-      <text class='label-red-border'>套餐</text>
-      <text class='gray font-24'>双十一套餐</text>
+      <text class='label-red-border'>礼包</text>
+      <text class='gray font-24'>{{orderInfos.orderProductList[0].name}}</text>
     </view> 
     <block wx:for="{{orderInfos.showProduct}}" wx:key='unique'>
        <template is="cart-product-info" data='{{innerCount,imgSize:180,...item}}'/>

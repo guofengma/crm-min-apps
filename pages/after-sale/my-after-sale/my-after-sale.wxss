@@ -2,6 +2,7 @@
 /*搜索产品异常显示  */
 
 @import  "/components/result-tips/result-tips";
+
 .order-line{
   border-top: 1rpx solid #eee;
   border-bottom: 1rpx solid #eee;
@@ -21,6 +22,7 @@
 .search-result{
   height: 100%;
   padding-top: 92rpx;
+  padding-bottom: 20rpx;
 }
 .sale-bar{
   position: fixed;

@@ -6,6 +6,7 @@ Page({
     addressList:[]
   },
   onLoad: function (options) {
+    Tool.isIPhoneX(this)
     this.queryUserAddressList()
     Event.on('updateAdressList', this.queryUserAddressList, this)
     this.setData({

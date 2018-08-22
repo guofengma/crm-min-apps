@@ -7,6 +7,7 @@ Page({
     company:{id:"",name:''}
   },
   onLoad: function (options) {
+    Tool.isIPhoneX(this) 
     this.setData({
       list: Storage.getAfterSaleList() || ''
     })

@@ -36,6 +36,7 @@ Page({
             status: options.status,
             // state:
         });
+        Tool.isIPhoneX(this)
         if(options.status==4){
             this.addressType=2
         }

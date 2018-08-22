@@ -86,6 +86,7 @@ Page({
     })
     this.findOrderProductInfo()
     this.queryDictionaryDetailsType(options.refundType)
+    Tool.isIPhoneX(this) 
   },
   queryDictionaryDetailsType(refundType){
     let params = {

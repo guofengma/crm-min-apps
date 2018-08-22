@@ -3,7 +3,7 @@
 <!--搜索结果异常显示  -->
 <import src='/components/result-tips/result-tips.wxml' />
 
-<view style='height:100%;' wx:if='{{!tipVal}}'>
+<view wx:if='{{!tipVal}}' class='sub-page'>
   <view class='sale-bar'>
     <search-bar bind:getKeyword='getKeyword' bind:searchKeyword='searchKeyword'/>
   </view>

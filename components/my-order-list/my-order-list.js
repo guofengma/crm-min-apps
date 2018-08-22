@@ -64,6 +64,8 @@ Component({
         for (let i in req.responseObject.data.data) {
           let item = req.responseObject.data.data[i];
           item.createTime = Tool.formatTime(item.orderCreateTime);
+          // 礼包不显示产品描述
+          if (item.orderProduct[0].orderType == 98) item.orderProduct[0].spec=''
           // 这块是倒计时 
           if (item.orderStatus == 1) {
             let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
@@ -79,7 +81,7 @@ Component({
           key: key
         });
 
-        if (!this.data.list.length) {
+        if (!req.responseObject.data.total) {
           this.setData({
             tipVal: 2
           });
@@ -121,7 +123,6 @@ Component({
         orderId: id,
         status: status
       });
-      console.log(this.data.isDelete)
     },
     dismissCancel() {
       //取消取消订单

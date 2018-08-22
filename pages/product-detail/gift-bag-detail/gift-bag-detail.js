@@ -78,7 +78,7 @@ Page({
       orderType: 98
     }
 
-    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify(params))
+    Tool.navigateTo('/pages/order-confirm/order-confirm?params=' + JSON.stringify(params) + "&type=0")
   },
   getGiftBagDetail() { //获取礼包详情
     let params = {
@@ -209,7 +209,7 @@ Page({
     let name = this.data.productInfo.name.length > 10 ? this.data.productInfo.name.slice(0, 10) + "..." : this.data.productInfo.name
     return {
       title: name,
-      path: '/pages/product-detail/product-detail?productId=' + this.data.productId +"&type=0",
+      path: '/pages/product-detail/product-detail?productId=' + this.data.productId,
       imageUrl: imgUrl
     }
   },

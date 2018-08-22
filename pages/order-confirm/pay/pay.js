@@ -13,6 +13,7 @@ Page({
         payType:'',//上次支付时选择的支付方式
     },
     onLoad: function (options) {
+      Tool.isIPhoneX(this) 
       // 提交订单时返回的数据
       let payList = JSON.parse(options.data)
       payList.showTotalAmounts = payList.totalAmounts
