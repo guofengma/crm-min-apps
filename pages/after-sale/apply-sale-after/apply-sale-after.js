@@ -150,7 +150,7 @@ Page({
       imgUrls: this.data.originalImg.join(','),
       orderProductId:list.id,
       remark: this.data.remark,
-      returnReason: this.data.reason[this.data.refundType].list[this.data.activeIndex],
+      returnReason: this.data.reason[this.data.refundType].list[this.data.activeIndex].dValue,
       smallImgUrls:this.data.smallImg.join(','),
     };
     let r = ''
