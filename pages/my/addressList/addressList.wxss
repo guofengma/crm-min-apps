@@ -61,11 +61,11 @@
     background-color: #ffffff;
     box-shadow: 0 0 20rpx 0 rgba(102, 102, 102, 0.1);
     border-radius: 20rpx;
-    margin: 20rpx 5%;
-    display: flex;
-    justify-content: space-around;
+    margin: 20rpx auto;
     color: #999999;
     font-size: 30rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
 }
 .avature-img{
     width: 80rpx;
@@ -76,13 +76,11 @@
 .card{
     width: 235rpx;
     height: 58rpx;
+    margin-top: 6rpx;
 }
 .item{
-    margin-top: 30rpx;
+  align-items: flex-start
 }
 .info{
-    margin-left: -60rpx;
-}
-.opr{
-    margin-top: 50rpx;
+  margin-left: 24rpx;
 }

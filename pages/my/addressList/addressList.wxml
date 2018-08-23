@@ -46,7 +46,7 @@
             <view class="clearfix"></view>
         </view>
         <view class="list" wx:if="{{expanded[1]}}" wx:for="{{lower}}" wx:key="unique">
-            <view class="item-area" bindtap="card" data-id="{{item.id}}">
+            <!-- <view class="item-area" bindtap="card" data-id="{{item.id}}">
                 <view class="item">
                     <image class="avature-img" src="{{item.head_img}}"></image>
                 </view>
@@ -60,22 +60,24 @@
                 <view class="item opr">
                     <image class="opr-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>
                 </view>
+            </view> -->
+            <view class="item-area flexR-sb" bindtap="card" data-id="{{item.id}}">
+              <view class='item flexR'>
+                <view>
+                  <image class="avature-img" src="{{item.head_img || '/img/default-userImg.png'}}"></image>
+                </view>
+                <view class='info'>
+                  <view>{{item.nickname}}（{{item.id}}）</view>
+                  <view>手机号：{{item.phone}}</view>
+                  <view>
+                    <image bindtap="card" class="card" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/card-img.png"></image>
+                  </view>
+                </view>
+              </view>
+              <view class="opr">
+                <image class="opr-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>
+              </view>
             </view>
-            <!--<view class="item-area">-->
-                <!--<view class="item">-->
-                    <!--<image class="avature-img" src="/img/default-userImg.png"></image>-->
-                <!--</view>-->
-                <!--<view class="item info">-->
-                    <!--<view>王健林（1365615）</view>-->
-                    <!--<view>手机号：13892746484</view>-->
-                    <!--<view>-->
-                        <!--<image bindtap="card" class="card" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/card-img.png"></image>-->
-                    <!--</view>-->
-                <!--</view>-->
-                <!--<view class="item opr">-->
-                    <!--<image class="opr-btn" src="https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/packup-btn.png"></image>-->
-                <!--</view>-->
-            <!--</view>-->
         </view>
     </view>
 </view>

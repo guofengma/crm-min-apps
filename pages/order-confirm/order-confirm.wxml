@@ -49,17 +49,22 @@
         商品积分：{{orderInfos.totalScore}},用户可用积分：{{orderInfos.dealer.user_score}}
         <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
       </view> -->
-       <view class='reducePrice'>
-        <view>
+      <view class='reducePrice' >
+        <view wx:if='{{orderInfos.canUseScore}}'>
           共{{orderInfos.dealer.userScore}}积分,可用积分: {{orderInfos.showTotalScore}}
           <text class='red'>抵 ¥ {{orderInfos.reducePrice}}</text>
         </view>
+        <view wx:else>{{orderInfos.showTipsName}}</view>
       </view>
-      <view class='gray' wx:if='{{!orderInfos.canUseScore}}'>{{orderInfos.showTipsName}} </view> 
-      <image class='switch' wx:else 
-        src='{{ isUseIntegral? "/img/switch-2.png":"/img/switch-1.png"}}' 
-        mode='widthFix' bindtap='switchChange'  >
+      <image class='switch' 
+          src='{{ isUseIntegral? "/img/switch-2.png":"/img/switch-1.png"}}'  
+          mode='widthFix' bindtap='switchChange'  >
       </image>
+      <!-- <view class='gray' wx:if='{{!orderInfos.canUseScore}}'>{{orderInfos.showTipsName}} </view> 
+      <image class='switch' wx:else 
+        src='{{ isUseIntegral? "/img/switch-2.png":"/img/switch-1.png"}}'  
+        mode='widthFix' bindtap='switchChange'  >
+      </image> -->
     </view>
     <view class='flexR-sb'>
       <view>运费</view>

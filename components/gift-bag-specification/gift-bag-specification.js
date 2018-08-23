@@ -7,7 +7,8 @@ Component({
     imgUrl:String,
     types:Number,
     showImgs:Boolean,
-    giftPrice:Number
+    giftPrice:Number,
+    isIphoneX: Boolean
   },
   data: {
     visiable:false,

@@ -3,7 +3,7 @@
     <view class='flexR codeView'>
       <text>验证码</text>
       <input type='text' name='code' placeholder="请输入验证号" value='{{code}}' bindinput='changeInput' data-index='1'></input>
-      <text catchtap="getCodeTap" class='codeBtn'>{{showSecond? second+"后重新获取":"获取验证码"}}</text>
+      <text catchtap="getCodeTap" class='codeBtn'>{{showSecond? second+"秒后重新获取":"获取验证码"}}</text>
     </view>
     <view class='flexR'>
       <text>新密码</text>

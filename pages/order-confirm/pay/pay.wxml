@@ -72,8 +72,8 @@
       <view class='gray'>已通知商家，会给你尽快发货</view>
       <view class='gray'>请耐心等待</view>
       <!-- <view class='btn flexR' bindtap='goPage'>确认</view> -->
-      <view class='font-30 red flexR btn-sm-veiw'>
-        <view class='btn-sm btn-left flexR' bindtap='goPage' data-index='1'>返回首页</view>
+      <view class='font-30 red flexR-sb btn-sm-veiw'>
+        <view class='btn-sm flexR' bindtap='goPage' data-index='1'>返回首页</view>
         <view class='btn-sm flexR' bindtap='goPage' data-index='2'>查看订单</view>
       </view>
     </block>

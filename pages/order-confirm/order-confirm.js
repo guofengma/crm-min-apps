@@ -110,16 +110,6 @@ Page({
         item.address = { ...userAdress}
         item.address.addressInfo = userAdress.province + userAdress.city + userAdress.area + userAdress.address
         item.address.hasData = userAdress.receiver ? true : false
-        // item.address = {
-        //   hasData: userAdress.receiver ? true : false,
-        //   receiver: userAdress.receiver,
-        //   recevicePhone: userAdress.recevicePhone,
-        //   addressInfo: userAdress.province + userAdress.city + userAdress.area + userAdress.address,
-        //   address: userAdress.address,
-        //   areaCode: userAdress.areaCode,
-        //   cityCode: userAdress.cityCode,
-        //   provinceCode: userAdress.provinceCode
-        // }
       }
      
       //渲染产品信息列表
@@ -215,6 +205,7 @@ Page({
     })
   },
   switchChange(){
+    if (!this.data.orderInfos.canUseScore) return
     this.setData({
       isUseIntegral: !this.data.isUseIntegral,
     })
@@ -252,10 +243,6 @@ Page({
     this.setData({
       addressList: addressList
     })
-    // let params ={
-    //   cityCode: address.cityCode,
-    //   orderProductList: this.data.params
-    // }
     let params = {
       orderParam: JSON.stringify({
         "cityCode": address.cityCode,
@@ -297,20 +284,6 @@ Page({
       return
     }
     let storehouseId = this.data.addressType == 2? orderAddress.id : ''
-    // let params = {
-    //   address: orderAddress.address,
-    //   areaCode: orderAddress.areaCode || '',
-    //   buyerRemark: this.data.remark,
-    //   cityCode: orderAddress.cityCode || '',
-    //   orderProductList: this.data.params,
-    //   pickedUp: this.data.addressType,
-    //   provinceCode: orderAddress.provinceCode || '',
-    //   receiver: orderAddress.receiver || '',
-    //   recevicePhone: orderAddress.recevicePhone || '',
-    //   storehouseId: storehouseId,
-    //   useScore: score,
-    //   couponId: this.data.coupon.id || ''
-    // }
     let params = {
       orderParam: JSON.stringify({
         "address": orderAddress.address,

@@ -50,7 +50,7 @@
     </view>
     <!--产品规格选择  -->
     <view class='chooseBox'>
-      <view>
+      <!-- <view> -->
         <product-specification id='prd-info-type'  
             productTypeList='{{productTypeList}}' 
             productInfo='{{productInfo}}' 
@@ -59,11 +59,12 @@
             showImgs='{{true}}' 
             bind:productTypeListClicked='productTypeListClicked'
             bind:hiddenTips='hiddenTips'
+            isIphoneX='{{isIPhoneX.isIPhoneX}}'
         >
-        <view class='cell-name'>规格</view>
-        <view class='cell-content'>{{selectType.productType? selectType.productType:'选择产品规格'}}</view>
+        <!-- <view class='cell-name'>规格</view>
+        <view class='cell-content'>{{selectType.productType? selectType.productType:'选择产品规格'}}</view> -->
         </product-specification >
-      </view>
+      <!-- </view> -->
       <view class='gray'>
         <text class='label red' >服务</text>
         正品保障·急速发货 七天无理由退换货
@@ -98,7 +99,7 @@
     </view>
   
     <view class="bottom-bar gift-btn-view flexR {{isIPhoneX.className}}">
-      <view class='buy-btn gift-btn' bindtap='giftBagClicked'>
+      <view class='buy-btn gift-btn' bindtap='giftBagClicked' data-key='1'>
         立即购买
       </view>
     </view>

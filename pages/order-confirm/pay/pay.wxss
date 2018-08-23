@@ -112,9 +112,7 @@
 	border-radius: 10rpx;
 	border:  1rpx solid #d51243;
 }
-.btn-left{
-  margin-right: 40rpx;
-}
 .btn-sm-veiw{
   margin: 50rpx 0 35rpx 0;
+  width: 74%
 }

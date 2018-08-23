@@ -57,7 +57,7 @@ button::after{
 }
 .form input{
   margin-left: 45rpx;
-  width:380rpx;
+  width:360rpx;
 }
 /*溢出省略号  */
 .ellipsis{

@@ -4,7 +4,7 @@
 </view>
 
 <view class='model-view-bg ' wx:if="{{visiable}}">
- <view class='product-specification'>
+ <view class='product-specification {{isIphoneX? "isIphoneX":""}}'>
     <view class='header {{showImgs? "":"active"}}'>
       <view wx:if='{{showImgs}}'>
         <view class='img-view'>

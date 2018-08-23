@@ -167,11 +167,12 @@ Page({
   },
   btnClicked(e) {
     let n = parseInt(e.currentTarget.dataset.key)
-    if (!this.data.selectType.id || n == 1) {
-      this.selectComponent("#prd-info-type").isVisiableClicked(n)
-    } else {
-      this.makeSureOrder()
-    }
+    this.selectComponent("#prd-info-type").isVisiableClicked(n)
+    // if (!this.data.selectType.id || n == 1) {
+    //   
+    // } else {
+    //   this.makeSureOrder()
+    // }
 
   },
   goTop: function (e) {

@@ -11,7 +11,7 @@
         <view class="section">
             <view class="item">验证码</view>
             <input type="text" class="small-inp inp" placeholder-style="color:#c8c8c8;" placeholder="请输入验证码" value='{{code}}' bindinput='changeInput'/>
-            <view bindtap="getCodeTap" class='code'>{{showSecond? second+"后重新获取":"获取验证码"}}</view>
+            <view bindtap="getCodeTap" class='code'>{{showSecond? second+"秒后重新获取":"获取验证码"}}</view>
         </view>
     </view>
     <view class="btn" bindtap="next">下一步</view>

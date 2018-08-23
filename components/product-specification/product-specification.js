@@ -6,7 +6,8 @@ Component({
     productInfo:Object,
     imgUrl:String,
     types:Number,
-    showImgs:Boolean
+    showImgs:Boolean,
+    isIphoneX: Boolean
   },
   data: {
     visiable:false,
@@ -74,17 +75,18 @@ Component({
       if (!canclick) return
       obj[key]={index,val,id}
       let spec_id = []
-      
+      for (let i = 0; i < obj.length; i++) {
+        if (obj[i] !== undefined) {
+          spec_id[i] = obj[i].id
+        }
+      }
+      console.log(this.data.isActive)
       // 如果二次点击同一个规格 那么去掉 只点击一次 就加入请求
       this.data.isActive.forEach((item,index)=>{
-        if (item.id == obj[key].id){
-          spec_id[index] = undefined
-          obj[key] = {}
-        } else {
-          for (let i = 0; i < obj.length; i++) {
-            if (obj[i] !== undefined) {
-              spec_id[i] = obj[i].id
-            }
+        if(item){
+          if (item.id == obj[key].id) {
+            spec_id[index] = undefined
+            obj[key] = {}
           }
         }
       })
@@ -188,7 +190,7 @@ Component({
     isSelectAll(){ // 是否选择了所有的规格选项
       let isActive = this.data.isActive
       let arr = isActive.filter((item)=>{
-        if (item.id && item !== undefined) {
+        if (item !== undefined && item.id) {
           return item
         }
       })
