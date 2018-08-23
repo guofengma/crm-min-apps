@@ -136,7 +136,7 @@
         <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='继续支付'}}" bindtap="continuePay">
           {{detail.outTradeNo? "继续支付":"去支付"}}
         </view>
-        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='再次购买'}}" bindtap="continueBuy">
+        <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='再次购买' && detail.orderType!=98}}" bindtap="continueBuy">
           {{state.bottomBtn[1]}}
         </view>
         <!-- <view class='order-btn red flexR' wx:if="{{state.bottomBtn[1]=='订单退款'}}" bindtap="orderRefund">

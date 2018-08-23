@@ -209,20 +209,26 @@ Page({
   },
   getTotalPrice(index){
     let items = this.data.items
-    let selectList = []
+    let orderProducts = []
     let totalPrice = 0
     for (let i = 0; i<items.length;i++){
       if (items[i].isSelect){
         // totalPrice += items[i].showCount * items[i].showPrice
         let unitPrice = Tool.mul(items[i].showCount,items[i].showPrice)
         totalPrice = Tool.add(totalPrice, unitPrice)
-        let list = { "price_id": items[i].id, "num": items[i].showCount }
-        selectList.push(list)
+        // let list = { "price_id": items[i].id, "num": items[i].showCount }
+        
+        orderProducts.push({
+          num: items[i].showCount,
+          priceId: items[i].id,
+          productId: items[i].product_id
+        })
+        // selectList.push(orderProducts)
       }
     }
     this.setData({
       totalPrice: totalPrice,
-      selectList: selectList
+      selectList: orderProducts
     })
   },
   cartProductClicked(e){
@@ -315,7 +321,10 @@ Page({
     this.getTotalPrice()
   },
   makeOrder(){
-    let params = JSON.stringify(this.data.selectList)
+    let params = JSON.stringify({
+      orderProducts:this.data.selectList,
+      orderType: 99
+    })
     
     // 如果没有登录 那么就跳转到登录页面
     

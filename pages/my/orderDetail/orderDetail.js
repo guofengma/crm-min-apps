@@ -75,19 +75,31 @@ Page({
             }else{
                 detail.sendTime=''
             }
+
+            if (detail.orderType == 98) {
+              detail.list = detail.list[0].orderProductPrices
+              detail.list.forEach((item)=>{
+                item.price = item.originalPrice
+                item.num = item.productNum
+                item.imgUrl = item.specImg
+              })
+            } else {
+              this.middleBtn()
+            }
+
+            if (detail.status == 1 || detail.status == 3) { // 开始倒计时
+              let that = this
+              let time = setInterval(function () { that.time() }, 1000)
+              this.setData({
+                time: time
+              })
+            } 
+
             this.setData({
                 detail: detail,
                 address: address,
                 state: this.orderState(detail.status)//订单状态相关信息this.data.state
             })
-            this.middleBtn()
-            if (detail.status == 1 || detail.status==3 ){ // 开始倒计时
-              let that = this
-              let time = setInterval(function () { that.time() }, 1000)
-              this.setData({
-                time: time
-              })  
-            } 
         };
         Tool.showErrMsg(r)
         r.addToQueue();

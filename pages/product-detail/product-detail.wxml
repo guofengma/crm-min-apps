@@ -36,16 +36,11 @@
     <!-- 产品信息 -->
     <view class='prd-info boxSize'>
       <view class='prd-name ellipsis-2'>{{productInfo.name}}</view>
-      <view class='price' wx:if='{{door==1}}'>
+      <view class='price'>
         <text class='price1 red'>¥ {{productInfo.levelPrice}}</text>
         <text class='price2 gray'>¥ {{productInfo.original_price}}</text>
         <!-- <text class='label-pd'>拼店价：¥{{productInfo.group_price}}</text> -->
         <text class='price3 red'>积分价：¥ {{productInfo.min_payment}}</text>
-      </view>
-      <view class='price' wx:else>
-        <text class='price1 red'>¥ {{productInfo.levelPrice}}</text>
-        <text class='label-pd'>V1价</text>
-        <text>升级大礼包</text>
       </view>
       <view class='shippingInfo gray'>
         <text style='margin-right:158rpx'>快递：{{productInfo.start_price}}</text> 
