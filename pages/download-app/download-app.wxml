@@ -2,7 +2,9 @@
    <view class='logo-app'></view>
    <view>
      <text wx:if='{{door==1}}'>朵女郎经销商老用户请下载APP激活</text>
-     <text wx:else>小程序端暂未开放该业务,请下载APP</text>
+     <text wx:else>
+        小程序端{{title? title:"暂未开放该业务"}},请下载APP
+     </text>
      <view class='downloadBtn'>下载APP</view>
    </view>
 </view>

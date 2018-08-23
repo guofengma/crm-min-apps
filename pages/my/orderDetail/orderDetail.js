@@ -83,10 +83,8 @@ Page({
                 item.num = item.productNum
                 item.imgUrl = item.specImg
               })
-            } else {
-              this.middleBtn()
             }
-
+            
             if (detail.status == 1 || detail.status == 3) { // 开始倒计时
               let that = this
               let time = setInterval(function () { that.time() }, 1000)
@@ -100,6 +98,9 @@ Page({
                 address: address,
                 state: this.orderState(detail.status)//订单状态相关信息this.data.state
             })
+            if (detail.orderType != 98){
+              this.middleBtn()
+            }
         };
         Tool.showErrMsg(r)
         r.addToQueue();

@@ -9,7 +9,7 @@
       <city-picker bind:pickerClicked="pickerClicked">
         <view>
            <view wx:if='{{region.length==0}}'>请选择你所在的省市区</view> 
-           <view wx:else class='result'>
+           <view wx:else class='result ellipsis'>
             <view>{{region[0].name}}</view>
             <view>{{region[1].name? " - "+ region[1].name+ " - ":''}}</view>
             <view>{{region[2].name}}</view>
@@ -17,8 +17,8 @@
         </view>
       </city-picker>
     </view>
-     <textarea name='address' placeholder='请输入详细地址' placeholder-style='color:#c8c8c8' hidden='{{hidden}}' />
-     <button formType="submit" class='loginBtn' >提交</button>
-     <view class='dimiss' bindtap='dismiss'>跳过</view>
+    <textarea name='address' placeholder='请输入详细地址' placeholder-style='color:#c8c8c8' hidden='{{hidden}}' />
+    <button formType="submit" class='loginBtn' >提交</button>
+    <view class='dimiss' bindtap='dismiss'>跳过</view>
   </form>
 </view>

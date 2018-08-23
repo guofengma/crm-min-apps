@@ -12,7 +12,7 @@ Page({
     this.setData({
       id: options.id
     })
-    this.getTopicDetail()
+    this.getTopicDetail(options.id)
   },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
@@ -26,9 +26,9 @@ Page({
       })
     }
   },
-  getTopicDetail(){
+  getTopicDetail(id){
     let params = {
-      id: this.data.id
+      id: id
     };
     let r = RequestFactory.getTopicDetail(params);
     r.finishBlock = (req) => {
@@ -46,6 +46,15 @@ Page({
   },
   productClicked(e){
     let id = e.currentTarget.dataset.id
-    Tool.navigateTo('/pages/product-detail/product-detail?productId=' + id + '&door=1')
+    let prdType = e.currentTarget.dataset.type
+    if (prdType ==1 ){
+      Tool.navigateTo('/pages/product-detail/product-detail?productId=' + id + '&door=1')
+    } else if (prdType==2){
+      Tool.navigateTo('/pages/product-detail/gift-bag-detail/gift-bag-detail?giftBagId=' + id + '&door=1')
+    } else if (prdType == 3) {
+      Tool.navigateTo('/pages/download-app/download-app?title='+'不能购买此产品')
+    } else if (prdType == 5){
+      this.getTopicDetail(id)
+    }
   }
 })

@@ -29,7 +29,6 @@ Page({
   onLoad: function (options) {
     this.setData({
       giftBagId: options.giftBagId || '',
-      door: options.door || 1
     })
     this.didLogin()
     // this.getGiftBagSpec()

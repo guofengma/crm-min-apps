@@ -6,7 +6,8 @@ Page({
 
   onLoad: function (options) {
     this.setData({
-      door: options.door || ''
+      door: options.door || '',
+      title: options.title || '',
     })
   },
 

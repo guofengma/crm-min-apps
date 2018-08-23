@@ -1,5 +1,5 @@
 <template name="topic-prd-info">
-  <view class='topic-prd-info whiteBg' style='width:{{width}}rpx' bindtap='productClicked' data-id='{{id}}'>
+  <view class='topic-prd-info whiteBg' style='width:{{width}}rpx' bindtap='productClicked' data-id='{{businessId}}' data-type="{{type}}">
     <view class='prd-img-view'>
       <image src='{{imgUrl}}' mode='widthFix'></image>  
     </view>
