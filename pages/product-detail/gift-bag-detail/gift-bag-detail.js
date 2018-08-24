@@ -153,6 +153,7 @@ Page({
     this.setData({
       selectType: e.detail
     })
+    this.giftBagClicked()
   },
   sliderChange(e) {
     this.setData({

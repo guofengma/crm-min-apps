@@ -315,6 +315,7 @@ Page({
       let detail = this.data.detail
       let outOrderState = detail.status
       let childrenList = detail.list
+      let state = this.data.state
       let btnArr = []
       childrenList.forEach((item,index)=>{
         let middle = ''
@@ -340,11 +341,13 @@ Page({
         }
         if (innerState == 4) {
           middle = { id:3, inner: innerState,content: '退款中' } 
+          state.isHiddenComfirmBtn = true
         }
         if (innerState == 5 || innerState == 6){
 
           // 5 退货中 6 换货中
           middle = { id:3, inner: innerState,content: '退换中' }
+          state.isHiddenComfirmBtn = true
         }
         if (innerState==8 && returnType) {
           middle = { id: 0, inner: innerState, content: '售后完成', returnType: returnType}
@@ -353,7 +356,8 @@ Page({
       })
       
       this.setData({
-        detail: detail
+        detail: detail,
+        state: state
       })
     },
     subBtnClicked(e){

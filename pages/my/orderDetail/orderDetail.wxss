@@ -87,6 +87,7 @@
 	height: 60rpx;
 	border-radius: 30rpx;
 	border: 1rpx solid;
+  margin-left: 22rpx;
 }
 .order-prd-info .btn-left{
   margin-right: 0;
@@ -94,7 +95,7 @@
 .btn-left{
   color: #666;
   border-color: #ddd;
-  margin-right: 22rpx;
+  /* margin-right: 22rpx; */
 }
 .order-bar,.sale-after{
   justify-content:flex-end;

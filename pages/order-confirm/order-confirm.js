@@ -66,7 +66,6 @@ Page({
     let params = {
       orderParam: JSON.stringify(param)
     }
-    console.log(params)
     let r = RequestFactory.orderCalcDiscountCouponAndUseScore(params);
     r.finishBlock = (req) => {
       this.setData({
@@ -302,13 +301,12 @@ Page({
         "useScore": score
       })
     }
-    console.log(params)
     let r = RequestFactory.submitOrder(params);
     r.finishBlock = (req) => {        
       //Event.emit('updateStorageShoppingCart')
       Event.emit('updateShoppingCart')
       let data = req.responseObject.data
-      
+      Storage.setPayOrderList(data)
       Tool.redirectTo('/pages/order-confirm/pay/pay?data=' + JSON.stringify(data))
     };
     Tool.showErrMsg(r)

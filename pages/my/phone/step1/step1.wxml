@@ -1,5 +1,5 @@
 <view class='view-box'>
-  <view class='gray'>短息验证码将发送至绑定的手机号：+86 {{userInfos.showPhone}}</view>
+  <view class='gray'>短信验证码将发送至绑定的手机号：+86 {{userInfos.showPhone}}</view>
 
   <view class='flexR-sb codeView'>
     <text>验证码</text>

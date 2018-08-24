@@ -16,7 +16,8 @@ Page({
     onLoad: function (options) {
       Tool.isIPhoneX(this) 
       // 提交订单时返回的数据
-      let payList = JSON.parse(options.data)
+      // let payList = JSON.parse(options.data)
+      let payList = Storage.getPayOrderList() || {}
       payList.showTotalAmounts = payList.totalAmounts
       this.setData({
         payList: payList,
@@ -196,7 +197,7 @@ Page({
         payList.showTotalAmounts = datas.needPay
         payList.scorePrice = datas.scorePrice
         this.setData( {
-            payList: payList
+          payList: payList
         })
       };
       Tool.showErrMsg(r)

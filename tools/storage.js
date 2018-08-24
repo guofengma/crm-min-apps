@@ -230,5 +230,13 @@ export default class Storage {
       return this.getterFor('searchOrderHistory');
     } 
     
+    // 搜索订单的数据
+    static setPayOrderList(info) {
+      this.setterFor('payOrderList', info)
+    }
+
+    static getPayOrderList() {
+      return this.getterFor('payOrderList');
+    } 
     
 }

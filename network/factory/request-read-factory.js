@@ -101,19 +101,19 @@ export default class RequestFactory {
   // 获取省
   static getProvinceList() {
     let url = Operation.sharedInstance().getProvinceList;
-    return this.request(url, { port: '8101' }, '获取省份');
+    return this.request(url, {}, '获取省份');
   }
 
   // 获取市
   static getCityList(params) {
-    params.port = '8101'
+    // params.port = '8101'
     let url = Operation.sharedInstance().getCityList;
     return this.request(url, params, '获取市');
   }
 
   // 获取区
   static getAreaList(params) {
-    params.port = '8101'
+    // params.port = '8101'
     let url = Operation.sharedInstance().getAreaList;
     return this.request(url, params, '获取区');
   }

@@ -33,7 +33,7 @@
     </view> -->
     <!--确认弹窗-->
     <view class="tips-delete-order model-view-bg " wx:if='{{unBinded}}'>
-        <view>
+        <view class='flexR'>
             <view class='tips-box '>
                 <view class='tips-icon flexR'>
                     <view>
