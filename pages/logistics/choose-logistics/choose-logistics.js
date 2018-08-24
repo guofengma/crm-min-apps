@@ -2,7 +2,7 @@ let { Tool, RequestFactory, Storage, Event } = global
 
 Page({
   data: {
-    
+    ysf: { title: '选择物流公司' },
   },
   onLoad: function (options) {
     this.findAllExpress()

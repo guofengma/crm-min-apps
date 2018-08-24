@@ -5,7 +5,6 @@
 
 import RequestQueue from './request-queue';
 import RequestStatus from './request-status';
-
 //请求基类
 export default class Request {
   getBaseUrl(bParam) {

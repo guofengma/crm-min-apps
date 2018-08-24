@@ -2,6 +2,7 @@ let { Tool, RequestFactory, Storage } = global;
 
 Page({
   data: {
+    ysf: { title: '注册' },
     getCodeBtEnable: true,
     second: '59',
     showSecond: false,

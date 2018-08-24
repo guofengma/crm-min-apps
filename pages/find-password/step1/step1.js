@@ -7,7 +7,7 @@ Page({
    */
   data: {
     disabled:true,
-
+    ysf: { title: '忘记密码' },
   },
 
   /**

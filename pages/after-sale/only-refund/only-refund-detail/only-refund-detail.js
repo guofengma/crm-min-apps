@@ -2,6 +2,7 @@ let { Tool, RequestFactory, Storage } = global
 
 Page({
   data: {
+    ysf: { title: '仅退款详情' },
     list:{},
     state:'',
     datas:[]

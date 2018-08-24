@@ -1,5 +1,6 @@
 let { Tool, RequestFactory, Storage, Event } = global
 
+
 Page({
   data: {
     didLogin:false,
@@ -7,7 +8,8 @@ Page({
     items:[], // 保存购物车的数据
     totalPrice:0, // 总价
     selectList:[], //选中的产品
-    tipVal:''
+    tipVal:'',
+    ysf: { title: '购物车' }
   },
   onLoad: function (options) {
     this.getLoginCart()

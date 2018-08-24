@@ -3,7 +3,8 @@ let { Tool, RequestFactory } = global
 Page({
   data: {
     num:0,
-    condition:''
+    condition:'',
+    ysf: { title: '搜索订单' }
   },
   onLoad: function (options) {
     this.setData({

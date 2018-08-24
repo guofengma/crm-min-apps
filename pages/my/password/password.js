@@ -2,6 +2,7 @@ let { Tool, RequestFactory, Storage, Event } = global
 
 Page({
     data: {
+      ysf: { title: '修改密码' },
       reNew:'',
       old:'',
       newPwd:'',

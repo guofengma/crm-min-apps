@@ -1,6 +1,7 @@
 let { Tool, RequestFactory, Storage, Event } = global
 Page({
   data: {
+    ysf: { title: '退货退款详情' },
     addressType:1,
     result: [ // 退货
       { state: "商家已通过", info: "请在规定时间内退货给卖家",tips:"退款中",time: '倒计时' },

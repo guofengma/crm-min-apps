@@ -1,6 +1,7 @@
 let { Tool, RequestFactory, Storage } = global
 Page({
   data: {
+    ysf: { title: '我的售后' },
     keyword:'',
     totalPage: '', // 页面总页数
     currentPage: 1, // 当前的页数

@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    ysf: { title: '账号登录' },
     isSee:false
   },
   onLoad: function (options) {

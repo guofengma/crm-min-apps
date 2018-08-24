@@ -2,6 +2,7 @@ let { Tool, RequestFactory, Storage } = global;
 Page({
   data: {
     isAgree:false,
+    ysf: { title: '授权码录入' },
     invite:[],
     inviteId:'',
     code:'',

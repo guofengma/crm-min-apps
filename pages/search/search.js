@@ -10,7 +10,8 @@ Page({
     history: [],
     hotWords:[],
     province:'',
-    provinceCode:-1
+    provinceCode:-1,
+    ysf: { title: '搜索' }
   },
   onLoad: function (options) {
     if (options.door == 0){

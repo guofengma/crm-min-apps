@@ -2,13 +2,14 @@ let { Tool, RequestFactory, Event} = global
 
 Page({
   data: {
-      region: [],
-      receiver:'',
-      recevicePhone:'',
-      address:'',
-      addressList:{},
-      id:'',
-      hidden:false
+    ysf: { title: '新增收货地址' },
+    region: [],
+    receiver:'',
+    recevicePhone:'',
+    address:'',
+    addressList:{},
+    id:'',
+    hidden:false
   },
   onLoad: function (options) {
     // 如果有参数 就编辑地址 无参数就创建地址

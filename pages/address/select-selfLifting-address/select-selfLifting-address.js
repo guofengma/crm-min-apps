@@ -1,6 +1,7 @@
 let { Tool, RequestFactory} = global
 Page({
   data: {
+    ysf: { title: '自提地址管理' },
     addressList:[],
     addressType:2,
     active:true

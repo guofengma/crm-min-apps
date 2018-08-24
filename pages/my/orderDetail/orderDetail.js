@@ -2,33 +2,34 @@ let { Tool, RequestFactory, Storage, Event} = global;
 
 Page({
     data: {
-        addressType: 1,
-        src: '/img/address-icon-gray.png',
-        address: {
-            receiver:'',
-            recevicePhone:'',
-            addressInfo:''
-        },
-        hasData:true,
-        imgSrcUrl: 'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/',
-        logIcon: 'order-state-3-dark.png',
-        isCancel: false,//是否取消订单
-        isDelete: false, //是否删除订单
-        secondArry: [],
-        state: {
-            status:'',
-            left:'',
-            right:'',
-            middle:'',
-            orderIcon: "order-state-1.png",
-            info:'',
-            time:'',
-        },
-        time: Object,
-        countdown: '',
-        detail: {},//详情信息
-        orderId: '',//订单ID
-        status: '',//订单状态
+      ysf: { title: '订单详情' },
+      addressType: 1,
+      src: '/img/address-icon-gray.png',
+      address: {
+          receiver:'',
+          recevicePhone:'',
+          addressInfo:''
+      },
+      hasData:true,
+      imgSrcUrl: 'https://dnlcrm.oss-cn-beijing.aliyuncs.com/xcx/',
+      logIcon: 'order-state-3-dark.png',
+      isCancel: false,//是否取消订单
+      isDelete: false, //是否删除订单
+      secondArry: [],
+      state: {
+          status:'',
+          left:'',
+          right:'',
+          middle:'',
+          orderIcon: "order-state-1.png",
+          info:'',
+          time:'',
+      },
+      time: Object,
+      countdown: '',
+      detail: {},//详情信息
+      orderId: '',//订单ID
+      status: '',//订单状态
     },
     onLoad: function (options) {
         this.setData({

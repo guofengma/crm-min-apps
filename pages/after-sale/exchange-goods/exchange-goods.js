@@ -1,6 +1,7 @@
 let { Tool, RequestFactory, Storage, Event } = global
 Page({
   data: {
+    ysf: { title: '换货详情' },
     addressType:1,
     src:'/img/address-icon-gray.png',
     result:[ // 换货

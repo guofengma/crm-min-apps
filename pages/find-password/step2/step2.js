@@ -2,6 +2,7 @@ let { Tool, RequestFactory } = global;
 
 Page({
   data: {
+    ysf: { title: '忘记密码' },
     getCodeBtEnable: true,
     second: '59',
     showSecond: false,

@@ -7,10 +7,13 @@ import TCGlobal, {
     RequestFactory
 } from './tools/tcglobal';
 
-// import DATracker from './libs/DATracker/DATracker'
+const ald = require('./utils/ald-stat.js')
 
-// DATracker.init('55bb9a1b346ceb3899eef229e6271d7e', {
-//   appid: 'wx3b1e11958d5fe41d',
+
+// import DATracker from './libs/DATracker/DATracker'
+                
+// DATracker.init('ac645290e3299966fabe3cf0d0034f9b', {
+//   appid: 'wx228ac7ba52b9b1ed',
 //   apiHost: 'https://da.qiyukf.com', //线上da.qiyukf.com
 //   onPageShow: function (datracker, router, page) {
 //     //在页面路由变动时，发送页面标题的事件
@@ -28,6 +31,9 @@ App({
         global.Touches = Touches;
         global.RequestFactory = RequestFactory;
         this.wxLogin()
+    },
+    onShow: function () {
+      // 比如记录小程序启动时长
     },
     globalData: {
         userInfo: null,

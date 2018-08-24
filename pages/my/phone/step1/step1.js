@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    ysf: { title: '修改手机号' },
     getCodeBtEnable: true,
     second: '59',
     showSecond: false,

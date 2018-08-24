@@ -4,7 +4,8 @@ Page({
   data: {
     code:'',//物流单号
     phone:'', //手机号
-    company:{id:"",name:''}
+    company:{id:"",name:''},
+    ysf: { title: '填写物流信息' },
   },
   onLoad: function (options) {
     Tool.isIPhoneX(this) 

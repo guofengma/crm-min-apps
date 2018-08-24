@@ -1,6 +1,7 @@
 let { Tool, RequestFactory, Event, Storage } = global
 Page({
   data: {
+    ysf: { title: '订单确认' },
     innerCount:1, //件数
     isUseIntegral:false, //能否使用积分和是否使用积分
     addressType:1, //1 快递 2自提

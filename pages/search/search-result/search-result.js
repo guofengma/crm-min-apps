@@ -14,7 +14,8 @@ Page({
     currentPage:1, // 当前的页数
     pageSize: 10, // 每次加载请求的条数 默认10 
     params:{},
-    code:''
+    code:'',
+    ysf: { title: '搜索结果' }
   },
   onLoad: function (options) {
     

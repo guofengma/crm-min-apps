@@ -4,6 +4,7 @@ import WxParse from '../../../libs/wxParse/wxParse.js';
 
 Page({
   data: {
+    ysf: { title: '礼包详情' },
     didLogin: false,
     imgUrls: [],
     activeIndex: 1, // 轮播图片的index 

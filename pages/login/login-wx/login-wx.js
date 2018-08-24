@@ -1,6 +1,7 @@
 let { Tool, RequestFactory, Storage } = global
 Page({
   data: {
+    ysf: { title: '微信登录' },
     userInfo:'',
     visiable:false,
     isAgree:false,

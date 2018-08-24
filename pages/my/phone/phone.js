@@ -1,15 +1,16 @@
 let { Tool, RequestFactory, Event, Storage} = global;
 Page({
   data: {
-      isNext: false,
-      isTime: false,
-      phone: '',
-      getCodeBtEnable: true,
-      second: '59',
-      showSecond: false,
-      time: Object,
-      disabled: true,
-      code: "",
+    ysf: { title: '修改手机号' },
+    isNext: false,
+    isTime: false,
+    phone: '',
+    getCodeBtEnable: true,
+    second: '59',
+    showSecond: false,
+    time: Object,
+    disabled: true,
+    code: "",
   },
   onLoad: function (options) {
 

@@ -2,12 +2,9 @@
 let { Tool, RequestFactory, Event, Storage} = global;
 const app=getApp();
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
-        isLoginOut:false
+      ysf: { title: '设置' },
+      isLoginOut:false
     },
     //账号与安全
     account(){

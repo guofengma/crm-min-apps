@@ -2,6 +2,7 @@ let { Tool, RequestFactory, Event, Storage} = global
 
 Page({
   data: {
+    ysf: { title: '地址选择' },
     active:true,
     addressType:1,
     addressList:[]

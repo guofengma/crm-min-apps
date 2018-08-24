@@ -1,6 +1,7 @@
 let { Tool, RequestFactory, Storage } = global
 Page({
   data: {
+    ysf: { title: '申请售后结果' },
     state:''
   },
   onLoad: function (options) {

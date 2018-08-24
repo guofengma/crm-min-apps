@@ -2,15 +2,16 @@ let { Tool, RequestFactory, Event, Storage } = global
 
 Page({
     data: {
-        payList:'',
-        isShow:false, // 显示支付结果
-        result:1, //支付结果
-        payWayActive:[false,true,false],
-        useAmount:[false,false],
-        useBalance:0,
-        isContinuePay:false, //是否是继续支付
-        outTrandNo:'',
-        payType:'',//上次支付时选择的支付方式
+      ysf: { title: '支付方式' },
+      payList:'',
+      isShow:false, // 显示支付结果
+      result:1, //支付结果
+      payWayActive:[false,true,false],
+      useAmount:[false,false],
+      useBalance:0,
+      isContinuePay:false, //是否是继续支付
+      outTrandNo:'',
+      payType:'',//上次支付时选择的支付方式
     },
     onLoad: function (options) {
       Tool.isIPhoneX(this) 

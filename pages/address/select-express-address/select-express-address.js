@@ -2,6 +2,7 @@ let { Tool, RequestFactory, Event, Storage} = global
 
 Page({
   data: {
+    ysf: { title: '收货地址管理' },
     addressType:1,
     addressList:[]
   },

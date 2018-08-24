@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    ysf: { title: '身份信息提交' },
     region: [],
     show:false,
     hidden: false, // 解决textarea最高层级的问题 
